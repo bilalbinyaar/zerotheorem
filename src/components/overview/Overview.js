@@ -4,12 +4,13 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { RiCheckboxBlankFill } from 'react-icons/ri';
+import texture from '../../assets/transparent.jpg';
 
 const Overview = () => {
   return (
     <div className='overview'>
         <div className='container'>
-            <h2>Overview: </h2>
+            <h2>Overview</h2>
             <div className='overview-text-indicator'>
                 <p>Percentage of models currently predicting long and short for each time horizon.</p>
                 <div className='overview-indicators'>
@@ -37,7 +38,7 @@ const Overview = () => {
                                 <p>
                                    24-01-2022  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
@@ -46,10 +47,10 @@ const Overview = () => {
                         </div>
                         <div className='percentage-wapper'>
                             <div className='percentage-long'>
-                                <p>Short</p>
+                                <p>Long</p>
                             </div>
                             <div className='percentage-short'>
-                                <p>Long</p>
+                                <p>Short</p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +65,7 @@ const Overview = () => {
                                 <p>
                                    24-01-2022  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
@@ -73,10 +74,10 @@ const Overview = () => {
                         </div>
                         <div className='percentage-wapper'>
                             <div className='percentage-long'>
-                                <p>Short</p>
+                                <p>Long</p>
                             </div>
                             <div className='percentage-short'>
-                                <p>Long</p>
+                                <p>Short</p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +92,7 @@ const Overview = () => {
                                 <p>
                                    24-01-2022  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
@@ -100,10 +101,10 @@ const Overview = () => {
                         </div>
                         <div className='percentage-wapper'>
                             <div className='percentage-long'>
-                                <p>Short</p>
+                                <p>Long</p>
                             </div>
                             <div className='percentage-short'>
-                                <p>Long</p>
+                                <p>Short</p>
                             </div>
                         </div>
                     </div>
@@ -118,7 +119,7 @@ const Overview = () => {
                                 <p>
                                    24-01-2022  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
@@ -127,10 +128,10 @@ const Overview = () => {
                         </div>
                         <div className='percentage-wapper'>
                             <div className='percentage-long'>
-                                <p>Short</p>
+                                <p>Long</p>
                             </div>
                             <div className='percentage-short'>
-                                <p>Long</p>
+                                <p>Short</p>
                             </div>
                         </div>
                     </div>
@@ -148,7 +149,7 @@ const Overview = () => {
                                 <p>
                                    24-01-2022  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
@@ -157,10 +158,10 @@ const Overview = () => {
                         </div>
                         <div className='percentage-wapper'>
                             <div className='percentage-long'>
-                                <p>Short</p>
+                                <p>Long</p>
                             </div>
                             <div className='percentage-short'>
-                                <p>Long</p>
+                                <p>Short</p>
                             </div>
                         </div>
                     </div>
@@ -175,7 +176,7 @@ const Overview = () => {
                                 <p>
                                    24-01-2022  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
@@ -184,10 +185,10 @@ const Overview = () => {
                         </div>
                         <div className='percentage-wapper'>
                             <div className='percentage-long'>
-                                <p>Short</p>
+                                <p>Long</p>
                             </div>
                             <div className='percentage-short'>
-                                <p>Long</p>
+                                <p>Short</p>
                             </div>
                         </div>
                     </div>
@@ -200,22 +201,22 @@ const Overview = () => {
                             </div>
                             <div className='date-stamp'>
                                 <p>
-                                   24-01-2022  00:00:00 
+                                   00-00-0000  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
                                 </Tooltip>
                             </div>
                         </div>
-                        <div className='percentage-wapper'>
-                            <div className='percentage-long'>
-                                <p>Short</p>
-                            </div>
-                            <div className='percentage-short'>
+                        <div className='percentage-wapper-disable'>
+                            {/* <div className='percentage-long'>
                                 <p>Long</p>
                             </div>
+                            <div className='percentage-short'>
+                                <p>Short</p>
+                            </div> */}
                         </div>
                     </div>
                     <div className='overview-card overview-ml'>
@@ -227,22 +228,22 @@ const Overview = () => {
                             </div>
                             <div className='date-stamp'>
                                 <p>
-                                   24-01-2022  00:00:00 
+                                   00-00-0000  00:00:00 
                                 </p>
-                                <Tooltip title="Time Horizon">
+                                <Tooltip title="Forecast time">
                                     <IconButton>
                                         <BsFillInfoCircleFill />
                                     </IconButton>
                                 </Tooltip>
                             </div>
                         </div>
-                        <div className='percentage-wapper'>
-                            <div className='percentage-long'>
-                                <p>Short</p>
-                            </div>
-                            <div className='percentage-short'>
+                        <div className='percentage-wapper-disable'>
+                            {/* <div className='percentage-long'>
                                 <p>Long</p>
                             </div>
+                            <div className='percentage-short'>
+                                <p>Short</p>
+                            </div> */}
                         </div>
                     </div>
                 </div>

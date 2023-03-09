@@ -89,7 +89,7 @@ const Footer = () => {
                         </p>
                       </div>
                       <div className="news-footer">
-                        <span>March, 09</span>
+                        <span>March 09</span>
                         {/* <BsDot />
                         <span>
                           <AiFillEye className="news-footer-icon" /> 1.7K
