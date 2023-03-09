@@ -1,0 +1,19 @@
+.light-theme {
+  --color-day-white: #ffffff;
+  --color-day-grey: #f5f5f5;
+  --color-day-yellow: #fddd4e;
+  --color-day-red: #ff2e2e;
+  --color-day-green: #16c784;
+  --color-day-greydark: #d9d9d9;
+  --color-day-black: #000000;
+}
+
+.dark-theme {
+  --color-day-white: rgb(0, 0, 78);
+  --color-day-grey: #f5f5f5;
+  --color-day-yellow: #fddd4e;
+  --color-day-red: #ff2e2e;
+  --color-day-green: #16c784;
+  --color-day-greydark: #d9d9d9;
+  --color-day-black: #000000;
+}

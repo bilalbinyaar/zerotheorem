@@ -1,0 +1,208 @@
+{"data":[
+    {
+        "id":1,
+        "currency":"ATL",
+        "time_horizon":"Atlanta",
+        "date":"East",
+        "forecast":"Southeast",
+        "next_forecast ":"Atlanta Hawks",
+        "model":"Hawks"
+    },
+
+    {
+        "id":2,
+        "currency":"BOS",
+        "time_horizon":"Boston",
+        "date":"East",
+        "forecast":"Atlantic",
+        "next_forecast ":"Boston Celtics",
+        "model":"Celtics"
+    },
+
+    {
+        "id":3,
+        "currency":"BKN",
+        "time_horizon":"Brooklyn",
+        "date":"East",
+        "forecast":"Atlantic",
+        "next_forecast ":"Brooklyn Nets",
+        "model":"Nets"
+    },
+
+    {
+        "id":4,
+        "currency":"CHA",
+        "time_horizon":"Charlotte",
+        "date":"East",
+        "forecast":"Southeast",
+        "next_forecast ":"Charlotte Hornets",
+        "model":"Hornets"
+    },
+
+    {
+        "id":5,
+        "currency":"CHI",
+        "time_horizon":"Chicago",
+        "date":"East",
+        "forecast":"Central",
+        "next_forecast ":"Chicago Bulls",
+        "model":"Bulls"
+    },
+
+    {
+        "id":6,
+        "currency":"CLE",
+        "time_horizon":"Cleveland",
+        "date":"East",
+        "forecast":"Central",
+        "next_forecast ":"Cleveland Cavaliers",
+        "model":"Cavaliers"
+    },
+
+    {
+        "id":7,
+        "currency":"DAL",
+        "time_horizon":"Dallas",
+        "date":"West",
+        "forecast":"Southwest",
+        "next_forecast ":"Dallas Mavericks",
+        "model":"Mavericks"
+    },
+
+    {
+        "id":8,
+        "currency":"DEN",
+        "time_horizon":"Denver",
+        "date":"West",
+        "forecast":"Northwest",
+        "next_forecast ":"Denver Nuggets",
+        "model":"Nuggets"
+    },
+
+    {
+        "id":9,
+        "currency":"DET",
+        "time_horizon":"Detroit",
+        "date":"East",
+        "forecast":"Central",
+        "next_forecast ":"Detroit Pistons",
+        "model":"Pistons"
+    },
+
+    {
+        "id":10,
+        "currency":"GSW",
+        "time_horizon":"Golden State",
+        "date":"West",
+        "forecast":"Pacific",
+        "next_forecast ":"Golden State Warriors",
+        "model":"Warriors"
+    },
+
+    {
+        "id":11,
+        "currency":"HOU",
+        "time_horizon":"Houston",
+        "date":"West",
+        "forecast":"Southwest",
+        "next_forecast ":"Houston Rockets",
+        "model":"Rockets"
+    },
+
+    {
+        "id":12,
+        "currency":"IND",
+        "time_horizon":"Indiana",
+        "date":"East",
+        "forecast":"Central",
+        "next_forecast ":"Indiana Pacers",
+        "model":"Pacers"
+    },
+
+    {
+        "id":13,
+        "currency":"LAC",
+        "time_horizon":"LA",
+        "date":"West",
+        "forecast":"Pacific",
+        "next_forecast ":"LA Clippers",
+        "model":"Clippers"
+    },
+
+    {
+        "id":14,
+        "currency":"LAL",
+        "time_horizon":"Los Angeles",
+        "date":"West",
+        "forecast":"Pacific",
+        "next_forecast ":"Los Angeles Lakers",
+        "model":"Lakers"
+    },
+
+    {
+        "id":15,"currency":"MEM",
+        "time_horizon":"Memphis",
+        "date":"West",
+        "forecast":"Southwest",
+        "next_forecast ":"Memphis Grizzlies",
+        "model":"Grizzlies"
+    },
+
+    {
+        "id":16,
+        "currency":"MIA",
+        "time_horizon":"Miami",
+        "date":"East",
+        "forecast":"Southeast",
+        "next_forecast ":"Miami Heat",
+        "model":"Heat"
+    },
+
+    {
+        "id":17,
+        "currency":"MIL",
+        "time_horizon":"Milwaukee",
+        "date":"East",
+        "forecast":"Central",
+        "next_forecast ":"Milwaukee Bucks",
+        "model":"Bucks"
+    },
+
+    {
+        "id":18,
+        "currency":"MIN",
+        "time_horizon":"Minnesota",
+        "date":"West",
+        "forecast":"Northwest",
+        "next_forecast ":"Minnesota Timberwolves",
+        "model":"Timberwolves"
+    },
+
+    {
+        "id":19,
+        "currency":"NOP",
+        "time_horizon":"New Orleans",
+        "date":"West",
+        "forecast":"Southwest",
+        "next_forecast ":"New Orleans Pelicans",
+        "model":"Pelicans"
+    },
+
+    {
+        "id":20,
+        "currency":"NYK",
+        "time_horizon":"New York",
+        "date":"East",
+        "forecast":"Atlantic",
+        "next_forecast ":"New York Knicks",
+        "model":"Knicks"
+    }],
+    
+    "meta":{
+        "total_pages":1,
+        "current_page":1,
+        "next_page":null,
+        "per_page":5,
+        "total_count":20
+    }
+}

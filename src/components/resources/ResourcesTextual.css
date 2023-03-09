@@ -1,0 +1,29 @@
+.res-textual-section .container {
+  padding: 1rem 4rem 2rem 4rem;
+}
+
+.res-det-heading {
+  text-align: center;
+}
+
+.para-div-res {
+  text-align: justify;
+}
+
+.for-resources-page video {
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .res-textual-section .container {
+    padding: 1.5rem 0rem;
+  }
+
+  .side-bar {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .res-det-heading {
+    font-size: 16px;
+  }
+}

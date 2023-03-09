@@ -1,0 +1,129 @@
+.recently-viewd {
+    padding: 3rem 0rem !important;
+}
+
+.model-details-right {
+    width: 100%;
+    margin-top: 0.8rem;
+}
+
+.model-details-right-cards{
+    display: flex;
+    justify-content: space-between;
+}
+.model-details-right-card {
+    background-color: var(--color-forecasts-card);
+    padding: 0.6rem;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.for-margin {
+    margin: 0 0.8rem;
+}
+
+.details-right {
+    padding-bottom: 0.8rem;
+    justify-content: flex-start;
+}
+
+.model-details-right-percentage {
+    display: flex;
+    color: var(--color-day-green);
+    align-items: flex-end;
+    /* justify-content: center; */
+}
+
+.model-details-right-percentage p{
+    margin-top: 0 !important;
+    color: var(--color-day-green);
+    font-size: 12px !important;
+}
+
+.model-details-right-percentage h2 {
+    color: var(--color-day-green);
+    margin-top: 0;
+    /* font-size: 12px;
+    font-weight: 600; */
+}
+
+.model-details-right-percentage-icon {
+    font-size: 10px;
+}
+
+.model-details-right-card-inner-recent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.model-details-right-card-inner-recent h3 {
+    /* margin-right: 0.5rem; */
+    font-size: 11px;
+}
+
+.model-details-right-card-inner-graph-recent {
+    display: flex;
+    justify-content: center;
+}
+
+.model-details-right-card-inner-body h2 {
+    padding-top: 0.5rem;
+    font-size: 19px;
+}
+
+
+.model-details-left-body-recent {
+    display: flex;
+    width: 100%;
+    /* justify-content: left; */
+}
+
+.model-details-left-body-stats-recent {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    border-radius: 4.5px;
+    background-color: var(--color-stats-bg);
+    padding: 2px 5px;
+}
+
+.model-details-left-body-icon-recent {
+    font-size: 8px;
+}
+
+.model-details-left-body-recent p {
+    margin-top: 0px;
+    font-size: 11px;
+}
+
+.model-details-right-percentage-recent {
+    width: 100%;
+}
+
+.model-details-right-card-inner-body-recent {
+    width: 100%;
+}
+
+.for-recent-margin {
+    margin-right: 5px !important;
+    margin-left: 0px !important;
+}
+
+.for-recent-card-margin {
+    margin-right: 0.5rem;
+}
+
+
+@media screen and (max-width: 480px) {
+  .recently-viewd {
+    display: none;
+  }  
+}

@@ -1,0 +1,137 @@
+.current-position .container {
+    padding: 0rem;
+}
+
+.current-position-heading {
+    font-size: 20px;
+}
+
+.for-h3-font {
+    font-size: 16px;
+}
+
+.current-position-body-spans{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.current-position-spans {
+    padding: 0 0.4rem;
+}
+
+.current-position-spans span{
+    font-size: 13px;
+    color: var(--color-day-black);
+}
+
+.no-padding {
+    padding-left: 0 !important;
+}
+
+.for-green {
+    color: var(--color-day-green) !important;
+}
+
+.for-red {
+    color: var(--color-day-red) !important;
+}
+
+.current-position-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.ep-cp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ep {
+    margin-right: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ep p {
+    font-size: 13px;
+}
+
+.cp p {
+    font-size: 13px;
+}
+
+.cp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.for-ep-color {
+    margin-right: 0.5rem;
+    color: purple;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.for-cp-color {
+    margin-right: 0.5rem;
+    color: orange;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+
+@media screen and (max-width: 480px) {
+    .current-position-spans {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0rem 0.2rem;
+    }
+
+    .current-position-spans span {
+        font-size: 10px;
+    }
+
+    .for-red {
+        margin-left: 0.1rem;
+    }
+
+    .for-green {
+        margin-left: 0.1rem;
+    }
+
+    .current-position-body {
+        margin-top: 8px;
+        justify-content: start;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .for-h3-font {
+        font-size: 14px;
+    }
+    
+    .ep p {
+    font-size: 11px;
+}
+
+    .cp p {
+        font-size: 11px;
+    }
+
+    .for-ep-color {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+    .for-cp-color {
+        font-weight: 700;
+        font-size: 14px;
+    }
+}

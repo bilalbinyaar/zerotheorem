@@ -1,0 +1,103 @@
+.graphs-table .container {
+  padding: 0rem;
+}
+
+.graph-table-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.table-card {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: var(--color-forecasts-card);
+  border-radius: 8px;
+}
+
+.table-card-head h3 {
+  text-align: center;
+}
+
+.column-details {
+  margin-top: 1.5rem;
+}
+
+.column-details span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-black-opcaity);
+  width: 100%;
+}
+
+.for-weight {
+  font-weight: 600 !important;
+  color: var(--color-day-black) !important;
+}
+
+.for-mt {
+  margin-top: 3rem !important;
+}
+
+.table-card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left !important;
+}
+
+/* th, td {
+  padding: 5px;
+  text-align: left;
+} */
+
+/* table, th, td {
+  border: 1px solid var(--color-grid-border);
+  border-collapse: collapse;
+} */
+
+.for-table {
+  padding: 0.2rem;
+  margin-top: 0.6rem;
+  width: 100%;
+}
+
+.for-table-head {
+  font-size: 11px;
+  color: var(--color-day-black);
+  padding: 0.8rem 0.2rem;
+  text-align: left;
+}
+
+.for-table-data {
+  font-size: 11px;
+  color: var(--color-day-black);
+  padding: 0.8rem 0.2rem;
+  text-align: left;
+}
+
+@media screen and (max-width: 480px) {
+  .graph-table-main {
+    flex-direction: column;
+  }
+
+  .table-card {
+    margin: 0.2rem 0rem 1.2rem 0rem !important;
+  }
+
+  .table-card-head h3 {
+    font-size: 14px;
+  }
+
+  .for-table-head button {
+    display: none;
+  }
+}

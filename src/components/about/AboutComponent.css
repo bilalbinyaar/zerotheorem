@@ -1,0 +1,206 @@
+.about .container {
+  padding: 1rem 0rem 3rem 0rem;
+}
+
+.color-yellow {
+  color: var(--color-day-yellow);
+}
+
+.about-head h1 {
+  text-align: center;
+  font-weight: 700 !important;
+}
+
+.for-mb {
+  margin-bottom: 1.2rem;
+}
+
+.about-top p {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* .about-video {
+    height: 450px;
+} */
+
+.about-video video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.about-spans {
+  display: flex;
+  text-align: left;
+  padding-bottom: 0.4rem;
+  /* padding-left: 0.8rem; */
+}
+
+.about-spans p {
+  padding-right: 0.8rem;
+  text-align: justify;
+}
+
+.sorez {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-forecasts-card);
+  padding: 3rem 5rem;
+  border-radius: 15px;
+  width: 100%;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.sorez-head {
+  text-align: center !important;
+}
+
+.justify-text p {
+  text-align: justify;
+}
+
+.mission-section {
+  display: flex;
+  margin-bottom: 3rem !important;
+}
+
+.sorez-mission {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* background-color: var(--color-gradient-two); */
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  width: 100%;
+  box-shadow: 0px 4px 24px var(--color-box-shadow-day);
+}
+
+.mission-text {
+  text-align: center !important;
+}
+
+.about-separator {
+  display: flex;
+  justify-content: center;
+  margin: 45px 0;
+}
+
+.sorez-img {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.mission-img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sorez-img img {
+  height: 242px;
+  width: 201px;
+}
+
+.for-line-height {
+  line-height: 1.4;
+}
+
+.about-margin {
+  margin: 0 0.8rem;
+}
+
+.mission-text a {
+  display: contents !important;
+  color: var(--color-day-yellow);
+}
+
+.equation-img-about {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.equation-img-about img{
+  width: 50% !important;
+}
+
+.equatinon-description a {
+  display: contents !important;
+  color: var(--color-day-yellow);
+}
+
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+sub { 
+  top: 0.4em; 
+}
+
+
+
+
+/* .sorez-text {
+  margin-left: 4rem;
+} */
+
+/* .for-img img{
+    border-radius: 50%;
+    border: 5px solid var(--color-day-yellow);
+} */
+
+@media screen and (max-width: 480px) {
+  
+
+  .sorez-text {
+    margin: 1rem 0rem;
+  }
+
+  .about-text p {
+    text-align: justify;
+  }
+  
+  .mission-section {
+    flex-direction: column;
+  }
+
+  .about-margin {
+    margin: 0;
+  }
+
+  .for-mt {
+    margin-top: 1.2rem !important;
+  }
+
+  .sorez {
+    margin-top: 2rem !important;
+    flex-direction: column;
+    padding: 1.5rem 3rem;
+    box-shadow: 0px 1px 15px rgb(0 0 0 / 25%);
+  }
+
+  .for-br-removal br:nth-child(1) {
+    display: none;
+  }
+
+  .for-br-removal br:nth-child(3) {
+    display: none;
+  }
+
+  .for-br-removal br:nth-child(5) {
+    display: none;
+  }
+
+  .for-br-removal br:nth-child(7) {
+    display: none;
+  }
+
+  .equation-img-about img {
+    width: 100% !important;
+  }
+}

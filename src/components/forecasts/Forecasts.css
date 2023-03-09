@@ -1,0 +1,499 @@
+.forecasts .container {
+  padding: 4rem 0rem 1rem 0rem;
+}
+
+.top-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecasts-cards {
+  display: flex;
+  margin-top: 0.6rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecasts-card {
+  background-color: var(--color-forecasts-card);
+  width: 100%;
+  border-radius: 12px;
+  padding: 0.6rem;
+  display: flex;
+}
+
+.card-margin {
+  margin-right: 0.5rem;
+}
+
+.forecasts-icons {
+  width: 24px;
+  height: 24px;
+  color: var(--color-forecasts-card-series-index);
+}
+
+.card-column-one {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 100%;
+}
+
+.forecasts-index-numbers {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.forecasts-index-numbers span {
+  margin: 5px;
+  padding: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-forecasts-card-series-index);
+}
+
+.card-column-two {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+}
+
+.forecasts-series {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.forecasts-series span {
+  margin: 5px;
+  padding: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  color: var(--color-day-black);
+}
+
+.dollar-icon {
+  color: var(--color-day-green);
+  margin-right: 10px;
+}
+
+.card-column-three {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 100%;
+}
+
+.forecasts-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecasts-more h3 {
+  color: var(--color-day-green) !important;
+}
+
+.card-column-three h3 {
+  color: var(--color-day-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-icon {
+  color: var(--color-day-yellow);
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.forecasts-percentage {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.forecasts-percentage span {
+  margin: 5px;
+  padding: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-day-red);
+  font-weight: 300;
+}
+
+.arrow-down-icon {
+  width: 10px;
+  height: 10px;
+  margin-right: 2px;
+}
+
+.announcement-card {
+  width: 100%;
+}
+
+.announcement-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title-div {
+  display: flex;
+  align-items: center;
+}
+
+.forecasts-more h3 {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+}
+
+.news-inner {
+  /* margin-top: 1.1rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+}
+
+.news-textual {
+  margin-left: 1rem;
+}
+
+.news-head {
+  display: flex;
+  align-items: center;
+}
+
+.news-heading {
+  padding-bottom: 5.5px;
+  margin-left: 3px;
+  color: var(--color-forecasts-card-series-index);
+  font-weight: 700;
+}
+
+.news-body p {
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.news-footer {
+  display: flex;
+  align-items: center;
+  color: var(--color-forecasts-card-series-index);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.news-footer span {
+  display: flex;
+  align-items: center;
+}
+
+.news-footer-icon {
+  margin-right: 3px;
+}
+
+/* .best-peformer-heading {
+    margin-top: 35px;
+} */
+
+.title-div h2 {
+  padding: 5px 10px;
+  background-color: var(--forecasts-model-index);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.forecasts-model-name h3 {
+  margin-left: 0.5rem;
+  color: var(--forecasts-model-name);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.for-forecast-card-details {
+  margin-top: 5px !important;
+  background-color: var(--forecasts-model-index) !important;
+}
+
+.for-forecast-card-details p {
+  margin: 0 !important;
+}
+
+.forecasts-details-margin {
+  margin-left: 0.5rem !important;
+}
+
+.bar-for-best {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+}
+
+.drop-down-best {
+  padding: 6px;
+  margin-left: 0.5rem;
+  background-color: var(--color-forecasts-card);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.drop-down-best h2 {
+  font-size: 12px;
+}
+
+.best-down-icon {
+  font-size: 11px;
+  margin-left: 5px;
+  color: var(--color-day-black);
+  font-weight: 500;
+}
+
+.filter-drop-down {
+  background: var(--forecasts-model-index);
+  padding: 0.5rem;
+  width: 4.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 19.66rem;
+  top: 16.5rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.filter-drop-down-list {
+  position: relative;
+}
+
+.filter-drop-down-list div {
+  padding-bottom: 0.4rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.filter-drop-down-list p {
+  text-align: center;
+  margin-top: 0 !important;
+}
+
+.all-time-div {
+  display: flex;
+  align-items: center;
+  position: sticky;
+}
+
+.all-time-div-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+}
+
+.forecast-mob {
+  display: none;
+}
+
+.forecast-web {
+  display: block;
+}
+
+.forecasts-details {
+  display: flex;
+  align-items: center;
+}
+
+.forcasts-description {
+  width: 90%;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.equation-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+
+.equation-img img {
+  width: 100%;
+}
+
+.equation-i-div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 95%;
+}
+
+.equation-caption {
+  font-weight: 600 !important;
+}
+
+.model-details-left-body-stats:hover {
+  background-color: var(--color-day-yellow) !important;
+  cursor: pointer;
+  color: black !important;
+}
+
+#toggle-none {
+  visibility: hidden;
+}
+
+
+
+/* .model-details-left-body-stats p:hover {
+  color: black;
+} */
+
+@media screen and (min-width: 1880px) {
+  .filter-drop-down {
+    width: 4.44rem;
+    left: 34.471rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .forecasts .container {
+    padding: 2.2rem 0rem 0rem 0rem;
+  }
+
+  .forecasts-details {
+    flex-direction: column;
+  }
+
+  .equation-img {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+
+  .drop-down-best {
+    background-color: var(--color-day-yellow);
+  }
+
+  .bar-for-best {
+    margin-top: 25px;
+  }
+
+  .forecasts-cards {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .forecasts-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .forecasts-card {
+    padding: 0.5rem;
+  }
+
+  .card-margin {
+    margin-right: 0.4rem;
+  }
+
+  .title-div h2 {
+    font-size: 11px;
+  }
+
+  .forecasts-model-name h3 {
+    font-size: 11px;
+    text-align: left;
+  }
+
+  .forecasts-more h3 {
+    font-size: 10px;
+  }
+
+  .model-details-left-body-stats-icon {
+    font-size: 9px;
+  }
+
+  .para-margin {
+    margin-right: 3px;
+  }
+
+  .model-details-left-body p {
+    font-size: 12px;
+  }
+
+  .filter-drop-down {
+    left: 17rem;
+    top: 14.6rem;
+  }
+
+  .forecast-mob {
+    display: flex;
+  }
+
+  .forecast-web {
+    display: none;
+  }
+
+  .forcasts-description {
+    width: 100%;
+    font-size: 11px;
+  }
+
+  .swipe-right {
+    position: absolute;
+    right: 28px;
+    top: 80%;
+    width: 35px;
+    height: 35px;
+    z-index: 1000;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swipe-right-icon {
+    height: 27px;
+    width: 27px;
+    color: var(--color-day-yellow);
+    /* background-color: black; 
+    border: 1px solid var(--color-day-yellow); */
+  }
+
+  .equation-i-div {
+    display: none;
+  }
+}
+
+.for-bg {
+  background-color: var(--color-day-green) !important;
+  color: var(--color-day-white) !important;
+}
+
+.for-bg p {
+  color: var(--color-day-white) !important;
+}
