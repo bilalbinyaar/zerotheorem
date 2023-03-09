@@ -1296,7 +1296,10 @@ const SideBar = () => {
                 </Link>
               </div>
             </div>
-          )}       
+          )}
+
+
+          
 
           {/* MENU ITEM 8 */}
           <div className="main-item">
@@ -1311,6 +1314,10 @@ const SideBar = () => {
             </Link>
           </div>
 
+
+          <div className='adsense-placeholder-resources'>
+            <img src={Gads} alt='ad-img'/>
+          </div>
         </div>
       </div>
     </div>

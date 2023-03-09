@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import CanvasJSReact from "../../../canvasjs.stock.react";
 import { useStateContext } from "../../../ContextProvider";
 
@@ -6,12 +6,6 @@ const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
-  const windowWidth = useRef(window.innerWidth);
-
-  var flag = true;
-  if (windowWidth.current <= 480) {
-    flag = false;
-  }
   const [model_name, set_model_name] = useState(props.model_name);
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
@@ -26,7 +20,6 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
       enabled: false, //change it to true
     },
     navigator: {
-      enabled: flag,
       axisX: {
         labelFontSize: 10,
       },
@@ -77,7 +70,7 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
                 });
               }
             } else {
-              if (parseFloat(data["response"][index].pnl_sum) >= 0) {
+              if (parseInt(data["response"][index].pnl_sum) >= 0) {
                 if (temp_negative_series.length != 0) {
                   main_series.push({
                     type: "splineArea",
@@ -92,7 +85,7 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
                     x: new Date(
                       parseInt(data["response"][index].ledger_timestamp) * 1000
                     ),
-                    y: parseFloat(data["response"][index].pnl_sum),
+                    y: parseInt(data["response"][index].pnl_sum),
                   });
                 }
               } else {
@@ -110,7 +103,7 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
                     x: new Date(
                       parseInt(data["response"][index].ledger_timestamp) * 1000
                     ),
-                    y: parseFloat(data["response"][index].pnl_sum),
+                    y: parseInt(data["response"][index].pnl_sum),
                   });
                 }
               }

@@ -2,6 +2,7 @@ FROM node:alpine3.16 as build
 WORKDIR /app
 
 COPY package.json .
+RUN npm install react-tradingview-widget@1.3.2 lightweight-charts@4.0.0 --force
 RUN npm install
 
 COPY . .

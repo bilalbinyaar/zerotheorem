@@ -1,4 +1,5 @@
 import React, { useState, useEffect, memo } from "react";
+import AdsensePlaceHolder from "../components/adsense/AdsensePlaceHolder";
 import Forecasts from "../components/forecasts/Forecasts";
 import ModelDataGrid from "../components/modelDataGrid/ModelDataGrid";
 import Horizon from "../components/timeHorizon/Horizon";
@@ -19,6 +20,7 @@ const Home = () => {
     <React.Fragment>
       {/* <Line_chart_recharts /> */}
       <Forecasts />
+      <AdsensePlaceHolder />
       {/* <Horizon /> */}
       <ModelDataGrid />
     </React.Fragment>

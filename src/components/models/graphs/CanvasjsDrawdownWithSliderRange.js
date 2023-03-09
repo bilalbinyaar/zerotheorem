@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import CanvasJSReact from "../../../canvasjs.stock.react";
 import { useStateContext } from "../../../ContextProvider";
 
@@ -6,12 +6,6 @@ const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 const CanvasjsDrawdownWithSliderRange = (props) => {
-  const windowWidth = useRef(window.innerWidth);
-
-  var flag = true;
-  if (windowWidth.current <= 480) {
-    flag = false;
-  }
   const [model_name, set_model_name] = useState(props.model_name);
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
@@ -26,8 +20,6 @@ const CanvasjsDrawdownWithSliderRange = (props) => {
       enabled: false, //change it to true
     },
     navigator: {
-      enabled: flag,
-
       axisX: {
         labelFontSize: 10,
       },
@@ -195,7 +187,6 @@ const CanvasjsDrawdownWithSliderRange = (props) => {
           },
         ],
         navigator: {
-          enabled: flag,
           axisX: {
             labelFontSize: 10,
           },
@@ -212,29 +203,6 @@ const CanvasjsDrawdownWithSliderRange = (props) => {
     }
     setIsLoaded(true);
   }, [cummulative_pnl]);
-
-  //   useEffect(() => {
-  //     fetch("https://canvasjs.com/data/gallery/react/btcusd2017-18.json")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         const dps = [];
-  //         for (let i = 0; i < data.length; i++) {
-  //           if (i % 2 === 0) {
-  //             dps.push({
-  //               x: new Date(data[i].date),
-  //               y: 1 * Number(data[i].close),
-  //             });
-  //           } else {
-  //             dps.push({
-  //               x: new Date(data[i].date),
-  //               y: -1 * Number(data[i].close),
-  //             });
-  //           }
-  //         }
-  //         setDataPoints(dps);
-  //         setIsLoaded(true);
-  //       });
-  //   }, []);
 
   const containerProps = {
     width: "100%",

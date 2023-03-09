@@ -9,7 +9,7 @@ import {
 import { BsArrowRightShort } from "react-icons/bs";
 import { useStateContext } from "../../ContextProvider";
 // import ForecastsSpline from "../models/graphs/ForecastsSpline";
-import ForecastsSplineCanvasjs from "../models/graphs/ForecastsSplineCanvasjs";
+// import TradingViewTopPerformer from "../models/graphs/TradingViewTopPerformer";
 // import CanvasSplineForcasteCard from "../models/graphs/CanvasSplineForcasteCard";
 import { useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
@@ -22,9 +22,8 @@ import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EquationBlack from "../../assets/equation-black.png";
 import EquationWhite from "../../assets/equation-white.png";
-import { Link } from "react-router-dom";
 import AdsensePlaceHolder from "../adsense/AdsensePlaceHolder";
-
+import TradingViewTopPerformer from "../models/graphs/TradingViewTopPerformer";
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
 const Forecasts = () => {
@@ -499,9 +498,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[0].strategy_name.replace("_", "-")}`
+                                `/${
+                                  Object.values(topPerformerModels)[0]
+                                    .strategy_name
+                                }`
                               );
                             }}
                           >
@@ -511,7 +511,6 @@ const Forecasts = () => {
                                 )[0].strategy_name.replace("_", "-")
                               : "Model Name"}
                           </h3>
-
                           <div className="model-details-left-body for-forecasts-card">
                             <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
                               <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
@@ -592,7 +591,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[0] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[0].strategy_name
                             }
@@ -612,9 +611,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[1].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[1]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -711,7 +711,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[1] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[1].strategy_name
                             }
@@ -731,9 +731,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[2].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[2]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -827,7 +828,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[2] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[2].strategy_name
                             }
@@ -847,9 +848,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[3].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[3]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -943,7 +945,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[3] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[3].strategy_name
                             }
@@ -963,9 +965,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[4].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[4]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -1059,7 +1062,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[4] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[4].strategy_name
                             }
@@ -1080,9 +1083,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[5].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[5]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -1176,7 +1180,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[5] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[5].strategy_name
                             }
@@ -1196,9 +1200,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[6].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[6]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -1292,7 +1297,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[6] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[6].strategy_name
                             }
@@ -1312,9 +1317,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[7].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[7]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -1408,7 +1414,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[7] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[7].strategy_name
                             }
@@ -1428,9 +1434,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[8].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[8]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -1524,7 +1531,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[8] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[8].strategy_name
                             }
@@ -1544,9 +1551,10 @@ const Forecasts = () => {
                           <h3
                             onClick={() => {
                               linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[9].strategy_name.replace("_", "-")}`,
+                                `/${
+                                  Object.values(topPerformerModels)[9]
+                                    .strategy_name
+                                }`,
                                 {
                                   state: {
                                     model_name:
@@ -1640,7 +1648,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[9] ? (
-                          <ForecastsSplineCanvasjs
+                          <TradingViewTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[9].strategy_name
                             }
@@ -1675,9 +1683,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[0].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[0]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -1763,7 +1772,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[0] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[0].strategy_name
                           }
@@ -1783,9 +1792,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[1].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[1]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -1869,7 +1879,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[1] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[1].strategy_name
                           }
@@ -1889,9 +1899,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[2].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[2]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -1975,7 +1986,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[2] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[2].strategy_name
                           }
@@ -1995,9 +2006,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[3].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[3]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -2083,7 +2095,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[3] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[3].strategy_name
                           }
@@ -2103,9 +2115,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[4].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[4]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -2189,7 +2202,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[4] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[4].strategy_name
                           }
@@ -2209,9 +2222,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[5].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[5]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -2295,7 +2309,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[5] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[5].strategy_name
                           }
@@ -2315,9 +2329,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[6].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[6]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -2401,7 +2416,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[6] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[6].strategy_name
                           }
@@ -2421,9 +2436,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[7].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[7]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -2507,7 +2523,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[7] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[7].strategy_name
                           }
@@ -2527,9 +2543,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[8].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[8]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -2613,7 +2630,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[8] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[8].strategy_name
                           }
@@ -2633,9 +2650,10 @@ const Forecasts = () => {
                         <h3
                           onClick={() => {
                             linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[9].strategy_name.replace("_", "-")}`,
+                              `/${
+                                Object.values(topPerformerModels)[9]
+                                  .strategy_name
+                              }`,
                               {
                                 state: {
                                   model_name:
@@ -2719,7 +2737,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[9] ? (
-                        <ForecastsSplineCanvasjs
+                        <TradingViewTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[9].strategy_name
                           }

@@ -281,9 +281,7 @@ const MobileDataGrid = () => {
   // To Link Grid Rows to Models Component
   const linkModels = useNavigate();
   const handleRowClickEvent = (params) => {
-    linkModels(`/${params.row.modelName}`, {
-      state: { model_name: params.row.modelName },
-    });
+    linkModels("/model", { state: { model_name: params.row.modelName } });
   };
   // To Link Grid Rows to Models Component
 

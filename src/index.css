@@ -80,7 +80,18 @@ body {
   margin: 0 auto;
   padding: 4rem 3.4rem;
 }
-
+.container2 {
+  width: 72%;
+  margin: 0 auto;
+  padding: 4rem 3.4rem;
+}
+@media screen and (max-width: 480px) {
+  .container2 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 3.4rem;
+  }
+}
 @media screen and (min-width: 1880px) {
   .container {
     width: 68%;
@@ -1022,7 +1033,7 @@ a {
     border-bottom: none !important;
   }
 
-  .css-gbhmnp.css-gbhmnp::before {
+  .css-gbhmnp::before {
     border-bottom: none !important;
   }
 }

@@ -45,9 +45,3 @@
     color: var(--color-day-yellow);
     display: contents;
 }
-
-@media screen and (max-width: 480px) {
-    .faq {
-        padding: 0;
-    }
-}

@@ -5,11 +5,6 @@ import { useStateContext } from "../../../ContextProvider";
 const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 function CandleGraphCanvasjs(props) {
-  const windowWidth = useRef(window.innerWidth);
-  // const [flag_for_navigator, set_flag_for_navigator] = useState(true);
-  // if (windowWidth.current <= 480) {
-  //   set_flag_for_navigator(false);
-  // }
   const [model_name, set_model_name] = useState(null);
   console.log("I am here with values -->", props.model_name, model_name);
 
@@ -73,28 +68,6 @@ function CandleGraphCanvasjs(props) {
           var unique_coins = {};
           var index = 0;
           for (var i = 0; i < data["response"].length; i++) {
-            var dt = new Date(
-              parseInt(data["response"][i].forecast_time) * 1000
-            ).toLocaleString();
-            var year = dt.split("/")[2].split(",")[0];
-            var month = dt.split("/")[0];
-            if (month.length == 1) {
-              month = "0" + month;
-            }
-            var day = dt.split("/")[1];
-            if (day.length == 1) {
-              day = "0" + day;
-            }
-            var hours = dt.split(", ")[1].split(":")[0];
-            if (hours.length == 1) {
-              hours = "0" + hours;
-            }
-            var minutes = dt.split(":")[1];
-            if (minutes.length == 1) {
-              minutes = "0" + minutes;
-            }
-            var dt_str =
-              year + "-" + month + "-" + day + " " + hours + ":" + minutes;
             // console.log(data["response"][i].strategy_name);
             data_for_strategies[data["response"][i].strategy_name] = {
               current_position: data["response"][i].current_position,
@@ -102,7 +75,11 @@ function CandleGraphCanvasjs(props) {
               currency: data["response"][i].currency,
               date_started: data["response"][i].date_started,
               entry_price: data["response"][i].entry_price,
-              forecast_time: dt_str,
+              forecast_time: new Date(
+                parseInt(data["response"][i].forecast_time) * 1000
+              )
+                .toISOString()
+                .slice(0, 16),
               next_forecast: data["response"][i].next_forecast,
               current_price: data["response"][i].current_price,
               strategy_name: data["response"][i].strategy_name,
@@ -205,10 +182,6 @@ function CandleGraphCanvasjs(props) {
         });
     }
   }, [strategies]);
-  var flag = true;
-  if (windowWidth.current <= 480) {
-    flag = false;
-  }
   const options = {
     theme: "light2",
     backgroundColor: "transparent",
@@ -382,8 +355,6 @@ function CandleGraphCanvasjs(props) {
       },
     ],
     navigator: {
-      enabled: flag, //Change it to true
-
       axisX: {
         labelFontSize: 10,
       },

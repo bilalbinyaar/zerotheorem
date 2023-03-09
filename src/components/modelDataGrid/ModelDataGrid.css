@@ -114,11 +114,6 @@
   }
 }
 
-@media screen and (max-width: 370px) {
-  .currency-auto {
-    width: 50% !important;
-  }
-} 
 /* SEARCH FILTERS CSS */
 
 /* MUI CSS */

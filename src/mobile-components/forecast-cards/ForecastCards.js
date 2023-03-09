@@ -169,16 +169,8 @@ const ForecastCards = () => {
           }
           if (JSON.stringify(data_for_strategies) !== "{}") {
             setStrategies(data_for_strategies);
-            set_model_search_selection(model_names);
-            //  console.log("Strategies final -->", data_for_strategies);
+            // console.log("Strategies final -->", data_for_strategies);
             Set_strategies_cache({ strategies: data_for_strategies });
-            Set_coin_search_selection_cache({
-              coin_names: coin_names,
-            });
-            Set_model_search_selection_cache({
-              model_names: model_names,
-            });
-            console.log("Here are model names --->", model_names);
           }
         })
         .catch((err) => console.log(err));
@@ -205,18 +197,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[0].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[0]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[0].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[0]
@@ -307,18 +293,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[1].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[1]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[1].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[1]
@@ -409,18 +389,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[2].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[2]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[2].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[2]
@@ -511,18 +485,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[3].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[3]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[3].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[3]
@@ -613,18 +581,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[4].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[4]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[4].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[4]
@@ -715,18 +677,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[5].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[5]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[5].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[5]
@@ -817,18 +773,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[6].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[6]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[6].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[6]
@@ -919,18 +869,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[7].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[7]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[7].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[7]
@@ -1021,18 +965,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[8].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[8]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[8].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[8]
@@ -1123,18 +1061,12 @@ const ForecastCards = () => {
                 <div className="forecasts-model-name">
                   <h3
                     onClick={() => {
-                      linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[9].strategy_name
-                        }`,
-                        {
-                          state: {
-                            model_name:
-                              Object.values(topPerformerModels)[9]
-                                .strategy_name,
-                          },
-                        }
-                      );
+                      linkModels("/model", {
+                        state: {
+                          model_name:
+                            Object.values(topPerformerModels)[9].strategy_name,
+                        },
+                      });
                     }}
                   >
                     {Object.values(topPerformerModels)[9]
