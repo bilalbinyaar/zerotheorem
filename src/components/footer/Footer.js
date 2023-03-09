@@ -6,7 +6,7 @@ import { useStateContext } from "../../ContextProvider";
 import { AiFillEye, AiFillHeart, AiOutlineTwitter } from "react-icons/ai";
 import newsImg from "../../assets/announce.jpg";
 import { BsDot } from "react-icons/bs";
-import vehcainLogo from "../../assets/vehcain-logo.png";
+import ztFav from "../../assets/favicon.ico";
 import vetLogo from "../../assets/vet-logo.png";
 import { FaDiscord } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
@@ -74,22 +74,23 @@ const Footer = () => {
                       <div className="news-head">
                         <span>
                           <img
-                            src={vehcainLogo}
+                            src={ztFav}
                             alt="vehcain logo"
                             width="18px"
                           />
                         </span>
-                        <span className="news-heading">VeChain Foundation</span>
+                        <span className="news-heading">Zero Theorem</span>
                       </div>
                       <div className="news-body">
                         <p>
-                          VeChain x B.R.E.W 2022 — Dimitris Neocleous Leads
-                          VeChain Adoption in Leads in VeChain in...
+                          ZT x Beta Release 2023 — Launching Soon.
+                          <br/>
+                          Zero Theorem Beta version is releasing on 19th March 2023. 
                         </p>
                       </div>
                       <div className="news-footer">
-                        <span>Dec 21</span>
-                        <BsDot />
+                        <span>March, 09</span>
+                        {/* <BsDot />
                         <span>
                           <AiFillEye className="news-footer-icon" /> 1.7K
                         </span>
@@ -100,7 +101,7 @@ const Footer = () => {
                         <BsDot />
                         <span>
                           <img src={vetLogo} alt="vehcain logo" width="12px" />
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </div>
@@ -108,14 +109,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* <div className='footer-btn'>
-                    <Link to='/login'><button className='btn btn-nav'>About Us</button></Link>
-                </div> */}
-            {/* <div className='footer-icons-div'>
-                    <FaDiscord className='footer-icons dis'/>
-                    <AiOutlineTwitter className='footer-icons twi'/>
-                    <FaTelegramPlane className='footer-icons tele'/>
-                </div> */}
           </div>
         </div>
 
@@ -126,14 +119,6 @@ const Footer = () => {
             </p>
           </div>
           <div className="footer-inner-right for-footer-bar">
-            {/* <div className='footer-btn'>
-                    <Link to='/login'><button className='btn btn-nav'>About Us</button></Link>
-                </div>
-                <div className='footer-icons-div'>
-                    <FaDiscord className='footer-icons dis'/>
-                    <AiOutlineTwitter className='footer-icons twi'/>
-                    <FaTelegramPlane className='footer-icons tele'/>
-                </div> */}
 
             <div className="forecasts-card footer-card">
               <div className="announcement-card">
@@ -150,14 +135,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* <div className='footer-btn'>
-                    <Link to='/login'><button className='btn btn-nav'>About Us</button></Link>
-                </div> */}
-            {/* <div className='footer-icons-div'>
-                    <FaDiscord className='footer-icons dis'/>
-                    <AiOutlineTwitter className='footer-icons twi'/>
-                    <FaTelegramPlane className='footer-icons tele'/>
-                </div> */}
           </div>
         </div>
       </div>

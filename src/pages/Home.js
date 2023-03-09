@@ -1,10 +1,9 @@
 import React, { useState, useEffect, memo } from "react";
 import Forecasts from "../components/forecasts/Forecasts";
 import ModelDataGrid from "../components/modelDataGrid/ModelDataGrid";
+import Overview from "../components/overview/Overview";
 import Horizon from "../components/timeHorizon/Horizon";
 import { useStateContext } from "../ContextProvider";
-// import { Line_chart_recharts } from "../components/models/graphs/Line_chart_recharts";
-// import { CircleLoader } from "react-spinners/CircleLoader";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -14,13 +13,12 @@ const Home = () => {
       setLoading(false);
     }, 1000);
   }, []);
-  // console.log("Home in dark mode");
+
   return (
     <React.Fragment>
-      {/* <Line_chart_recharts /> */}
       <Forecasts />
-      {/* <Horizon /> */}
       <ModelDataGrid />
+      <Overview />
     </React.Fragment>
   );
 };

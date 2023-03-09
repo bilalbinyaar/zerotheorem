@@ -832,6 +832,11 @@ a {
     min-height: 38px !important;
     padding: 3px 12px !important;
   }
+
+  /* MUI CURRENCY AND MODEL DROPDOWNS */
+  .css-p0rm37 {
+    top: -9px !important;
+  }
 }
 /* MUI ALL TIME DROP DOWN */
 
@@ -843,7 +848,7 @@ a {
 .css-p0rm37 {
   color: var(--color-day-black) !important;
   font-size: 12px !important;
-  top: -9px !important;
+  top: -6px !important;
 }
 
 .css-vubbuv {
