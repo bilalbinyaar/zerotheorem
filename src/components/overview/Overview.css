@@ -123,11 +123,26 @@
 .percentage-long p {
     margin-top: 0;
     text-align: center;
+    color: white;
+}
+
+.percentage-long:hover {
+    margin-right: 0.4rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.percentage-short:hover {
+    margin-left: 0.4rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
 }
 
 .percentage-short p {
     text-align: center;
     margin-top: 0;
+    color: white;
+    font-weight: 500;
 }
 
 @media screen and (max-width: 480px) {
