@@ -72,6 +72,29 @@
   align-items: center;
 }
 
+@media screen and (max-width: 480px) {
+  .overview-indicators {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 24px;
+  }
+  .overview-heading {
+    margin-left: 24px;
+  }
+  .overview-card {
+    background-color: var(--color-forecasts-card);
+    width: 70%;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1rem !important;
+  }
+}
+
 .indicator {
   display: flex;
   justify-content: center;
@@ -87,7 +110,12 @@
   width: 14px;
   margin-right: 0.2rem;
 }
-
+/* .overview-mobile {
+  display: flex !important;
+} */
+.mobile-overview {
+  display: flex !important;
+}
 .indicator-short {
   color: var(--color-day-red);
   width: 14px;
@@ -154,8 +182,17 @@
   border-radius: 6px;
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .overview {
-    display: none;
+    display: flex;
   }
+} */
+
+.overview-mob {
+  display: flex !important;
+  /* display: flex; */
+  margin-top: 0.6rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }

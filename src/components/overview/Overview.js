@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Overview.css";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
@@ -63,397 +63,553 @@ const Overview = () => {
       set_position_analysis_stats(position_stats_cache["position_stats"]);
     }
   }, []);
+  const windowWidth = useRef(window.innerWidth);
+
   return (
-    <div className="overview">
-      <div className="container">
-        <h2>
-          Percentage Overview
-          <Tooltip
-            title="Percentage of models currently predicting long and short for each
+    <div>
+      {windowWidth.current <= 480 ? (
+        <div></div>
+      ) : (
+        // <div className="overview-mobile">
+        //   <div className="overview-header">
+        //     <h2 className="overview-heading">
+        //       Percentage Overview
+        //       <Tooltip
+        //         title="Percentage of models currently predicting long and short for each
+        //     time horizon."
+        //       >
+        //         <IconButton>
+        //           <BsFillInfoCircleFill />
+        //         </IconButton>
+        //       </Tooltip>
+        //     </h2>
+
+        //     {/* <div className="overview-text-indicator">
+        //       <p></p>
+        //     </div> */}
+        //     <div className="overview-indicators">
+        //       <div className="indicator">
+        //         <RiCheckboxBlankFill className="indicator-long" />
+        //         <p>Long</p>
+        //       </div>
+        //       <div className="indicator">
+        //         <RiCheckboxBlankFill className="indicator-short" />
+        //         <p>Short</p>
+        //       </div>
+        //     </div>
+        //   </div>
+
+        //   <div className="">
+        //     <div className="overview-wapper">
+        //       <div className="overview-wapper-top">
+        //         <div className="overview-card">
+        //           <div className="overview-details">
+        //             <div className="time-stamp">
+        //               <p>24h</p>
+        //             </div>
+        //             <div className="date-stamp">
+        //               <p>
+        //                 {position_analysis_stats["24h"]
+        //                   ? position_analysis_stats["24h"].forecast_time
+        //                   : "0"}
+        //               </p>
+        //               <Tooltip title="Forecast time">
+        //                 <IconButton>
+        //                   <BsFillInfoCircleFill />
+        //                 </IconButton>
+        //               </Tooltip>
+        //             </div>
+        //           </div>
+        //           <div className="percentage-wapper">
+        //             {position_analysis_stats["24h"] ? (
+        //               <div
+        //                 className="percentage-long"
+        //                 style={{
+        //                   width: `${position_analysis_stats["24h"].long_percentage}%`,
+        //                 }}
+        //               >
+        //                 <p>
+        //                   {position_analysis_stats["24h"]
+        //                     ? position_analysis_stats["24h"].long_percentage
+        //                     : "0"}
+        //                   {"%"}
+        //                 </p>
+        //               </div>
+        //             ) : (
+        //               "0"
+        //             )}
+        //             {position_analysis_stats["24h"] ? (
+        //               <div
+        //                 className="percentage-short"
+        //                 style={{
+        //                   width: `${position_analysis_stats["24h"].short_percentage}%`,
+        //                 }}
+        //               >
+        //                 <p>
+        //                   {position_analysis_stats["24h"]
+        //                     ? position_analysis_stats["24h"].short_percentage
+        //                     : "0"}
+        //                   {"%"}
+        //                 </p>
+        //               </div>
+        //             ) : (
+        //               "0"
+        //             )}
+        //           </div>
+        //         </div>
+        //       </div>
+        //     </div>
+        //     <div className="overview-wapper">
+        //       <div className="overview-wapper-top">
+        //         <div className="overview-card">
+        //           <div className="overview-details">
+        //             <div className="time-stamp">
+        //               <p>24h</p>
+        //             </div>
+        //             <div className="date-stamp">
+        //               <p>
+        //                 {position_analysis_stats["24h"]
+        //                   ? position_analysis_stats["24h"].forecast_time
+        //                   : "0"}
+        //               </p>
+        //               <Tooltip title="Forecast time">
+        //                 <IconButton>
+        //                   <BsFillInfoCircleFill />
+        //                 </IconButton>
+        //               </Tooltip>
+        //             </div>
+        //           </div>
+        //           <div className="percentage-wapper">
+        //             {position_analysis_stats["24h"] ? (
+        //               <div
+        //                 className="percentage-long"
+        //                 style={{
+        //                   width: `${position_analysis_stats["24h"].long_percentage}%`,
+        //                 }}
+        //               >
+        //                 <p>
+        //                   {position_analysis_stats["24h"]
+        //                     ? position_analysis_stats["24h"].long_percentage
+        //                     : "0"}
+        //                   {"%"}
+        //                 </p>
+        //               </div>
+        //             ) : (
+        //               "0"
+        //             )}
+        //             {position_analysis_stats["24h"] ? (
+        //               <div
+        //                 className="percentage-short"
+        //                 style={{
+        //                   width: `${position_analysis_stats["24h"].short_percentage}%`,
+        //                 }}
+        //               >
+        //                 <p>
+        //                   {position_analysis_stats["24h"]
+        //                     ? position_analysis_stats["24h"].short_percentage
+        //                     : "0"}
+        //                   {"%"}
+        //                 </p>
+        //               </div>
+        //             ) : (
+        //               "0"
+        //             )}
+        //           </div>
+        //         </div>
+        //       </div>
+        //     </div>
+        //   </div>
+        // </div>
+        <div className="overview">
+          <div className="container">
+            <h2>
+              Percentage Overview
+              <Tooltip
+                title="Percentage of models currently predicting long and short for each
             time horizon."
-          >
-            <IconButton>
-              <BsFillInfoCircleFill />
-            </IconButton>
-          </Tooltip>
-        </h2>
+              >
+                <IconButton>
+                  <BsFillInfoCircleFill />
+                </IconButton>
+              </Tooltip>
+            </h2>
 
-        <div className="overview-text-indicator">
-          <p></p>
-          <div className="overview-indicators">
-            <div className="indicator">
-              <RiCheckboxBlankFill className="indicator-long" />
-              <p>Long</p>
-            </div>
-            <div className="indicator">
-              <RiCheckboxBlankFill className="indicator-short" />
-              <p>Short</p>
-            </div>
-          </div>
-        </div>
-        <div className="overview-wapper">
-          <div className="overview-wapper-top">
-            <div className="overview-card">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>24h</p>
+            <div className="overview-text-indicator">
+              <p></p>
+              <div className="overview-indicators">
+                <div className="indicator">
+                  <RiCheckboxBlankFill className="indicator-long" />
+                  <p>Long</p>
                 </div>
-                <div className="date-stamp">
-                  <p>
-                    {position_analysis_stats["24h"]
-                      ? position_analysis_stats["24h"].forecast_time
-                      : "0"}
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
+                <div className="indicator">
+                  <RiCheckboxBlankFill className="indicator-short" />
+                  <p>Short</p>
                 </div>
-              </div>
-              <div className="percentage-wapper">
-                {position_analysis_stats["24h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["24h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["24h"]
-                        ? position_analysis_stats["24h"].long_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["24h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["24h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["24h"]
-                        ? position_analysis_stats["24h"].short_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
               </div>
             </div>
-            <div className="overview-card overview-ml">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>12h</p>
+            <div className="overview-wapper">
+              <div className="overview-wapper-top">
+                <div className="overview-card">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>24h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {position_analysis_stats["24h"]
+                          ? position_analysis_stats["24h"].forecast_time
+                          : "0"}
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["24h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["24h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["24h"]
+                            ? position_analysis_stats["24h"].long_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["24h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["24h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["24h"]
+                            ? position_analysis_stats["24h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                  </div>
                 </div>
-                <div className="date-stamp">
-                  <p>
-                    {position_analysis_stats["12h"]
-                      ? position_analysis_stats["12h"].forecast_time
-                      : "0"}
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
+                <div className="overview-card overview-ml">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>12h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {position_analysis_stats["12h"]
+                          ? position_analysis_stats["12h"].forecast_time
+                          : "0"}
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["12h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["12h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["12h"]
+                            ? position_analysis_stats["12h"].long_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["12h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["12h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["12h"]
+                            ? position_analysis_stats["12h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                  </div>
+                </div>
+                <div className="overview-card overview-ml">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>8h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {position_analysis_stats["8h"]
+                          ? position_analysis_stats["8h"].forecast_time
+                          : "0"}
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["8h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["8h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["8h"]
+                            ? position_analysis_stats["8h"].long_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["8h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["8h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["8h"]
+                            ? position_analysis_stats["8h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                  </div>
+                </div>
+                <div className="overview-card overview-ml">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>6h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {position_analysis_stats["6h"]
+                          ? position_analysis_stats["6h"].forecast_time
+                          : "0"}
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["6h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["6h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["6h"]
+                            ? position_analysis_stats["6h"].long_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["6h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["6h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["6h"]
+                            ? position_analysis_stats["6h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                  </div>
                 </div>
               </div>
-              <div className="percentage-wapper">
-                {position_analysis_stats["12h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["12h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["12h"]
-                        ? position_analysis_stats["12h"].long_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["12h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["12h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["12h"]
-                        ? position_analysis_stats["12h"].short_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-              </div>
-            </div>
-            <div className="overview-card overview-ml">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>8h</p>
-                </div>
-                <div className="date-stamp">
-                  <p>
-                    {position_analysis_stats["8h"]
-                      ? position_analysis_stats["8h"].forecast_time
-                      : "0"}
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-              </div>
-              <div className="percentage-wapper">
-                {position_analysis_stats["8h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["8h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["8h"]
-                        ? position_analysis_stats["8h"].long_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["8h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["8h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["8h"]
-                        ? position_analysis_stats["8h"].short_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-              </div>
-            </div>
-            <div className="overview-card overview-ml">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>6h</p>
-                </div>
-                <div className="date-stamp">
-                  <p>
-                    {position_analysis_stats["6h"]
-                      ? position_analysis_stats["6h"].forecast_time
-                      : "0"}
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-              </div>
-              <div className="percentage-wapper">
-                {position_analysis_stats["6h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["6h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["6h"]
-                        ? position_analysis_stats["6h"].long_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["6h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["6h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["6h"]
-                        ? position_analysis_stats["6h"].short_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-              </div>
-            </div>
-          </div>
 
-          <div className="overview-wapper-bottom">
-            <div className="overview-card">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>4h</p>
-                </div>
-                <div className="date-stamp">
-                  <p>
-                    {position_analysis_stats["4h"]
-                      ? position_analysis_stats["4h"].forecast_time
-                      : "0"}
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-              </div>
-              <div className="percentage-wapper">
-                {position_analysis_stats["4h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["4h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["4h"]
-                        ? position_analysis_stats["4h"].long_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
+              <div className="overview-wapper-bottom">
+                <div className="overview-card">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>4h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {position_analysis_stats["4h"]
+                          ? position_analysis_stats["4h"].forecast_time
+                          : "0"}
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
                   </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["4h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["4h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["4h"]
-                        ? position_analysis_stats["4h"].short_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["4h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["4h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["4h"]
+                            ? position_analysis_stats["4h"].long_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["4h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["4h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["4h"]
+                            ? position_analysis_stats["4h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
                   </div>
-                ) : (
-                  "0"
-                )}
-              </div>
-            </div>
-            <div className="overview-card overview-ml">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>3h</p>
                 </div>
-                <div className="date-stamp">
-                  <p>
-                    {position_analysis_stats["3h"]
-                      ? position_analysis_stats["3h"].forecast_time
-                      : "0"}
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-              </div>
-              <div className="percentage-wapper">
-                {position_analysis_stats["3h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["3h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["3h"]
-                        ? position_analysis_stats["3h"].long_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
+                <div className="overview-card overview-ml">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>3h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {position_analysis_stats["3h"]
+                          ? position_analysis_stats["3h"].forecast_time
+                          : "0"}
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
                   </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["3h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["3h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["3h"]
-                        ? position_analysis_stats["3h"].short_percentage
-                        : "0"}
-                      {"%"}
-                    </p>
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["3h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["3h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["3h"]
+                            ? position_analysis_stats["3h"].long_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["3h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["3h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["3h"]
+                            ? position_analysis_stats["3h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
                   </div>
-                ) : (
-                  "0"
-                )}
-              </div>
-            </div>
-            <div className="overview-card overview-ml">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>2h</p>
                 </div>
-                <div className="date-stamp">
-                  <p>
-                    {/* {position_analysis_stats["2h"]
+                <div className="overview-card overview-ml">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>2h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {/* {position_analysis_stats["2h"]
                       ? position_analysis_stats["2h"].forecast_time
                       : "0"} */}
-                    00-00-0000 00:00:00
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-              </div>
-              <div className="percentage-wapper-disable">
-                {/* <div className='percentage-long'>
+                        00-00-0000 00:00:00
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="percentage-wapper-disable">
+                    {/* <div className='percentage-long'>
                                 <p>Long</p>
                             </div>
                             <div className='percentage-short'>
                                 <p>Short</p>
                             </div> */}
-              </div>
-              {/* <div className="percentage-wapper">
+                  </div>
+                  {/* <div className="percentage-wapper">
                 {position_analysis_stats["2h"] ? (
                   <div
                     className="percentage-long"
@@ -487,35 +643,35 @@ const Overview = () => {
                   "0"
                 )}
               </div> */}
-            </div>
-            <div className="overview-card overview-ml">
-              <div className="overview-details">
-                <div className="time-stamp">
-                  <p>1h</p>
                 </div>
-                <div className="date-stamp">
-                  <p>
-                    {/* {position_analysis_stats["1h"]
+                <div className="overview-card overview-ml">
+                  <div className="overview-details">
+                    <div className="time-stamp">
+                      <p>1h</p>
+                    </div>
+                    <div className="date-stamp">
+                      <p>
+                        {/* {position_analysis_stats["1h"]
                       ? position_analysis_stats["1h"].forecast_time
                       : "0"} */}
-                    00-00-0000 00:00:00
-                  </p>
-                  <Tooltip title="Forecast time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-              </div>
-              <div className="percentage-wapper-disable">
-                {/* <div className='percentage-long'>
+                        00-00-0000 00:00:00
+                      </p>
+                      <Tooltip title="Forecast time">
+                        <IconButton>
+                          <BsFillInfoCircleFill />
+                        </IconButton>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="percentage-wapper-disable">
+                    {/* <div className='percentage-long'>
                                 <p>Long</p>
                             </div>
                             <div className='percentage-short'>
                                 <p>Short</p>
                             </div> */}
-              </div>
-              {/* <div className="percentage-wapper">
+                  </div>
+                  {/* <div className="percentage-wapper">
                 {position_analysis_stats["1h"] ? (
                   <div
                     className="percentage-long"
@@ -549,10 +705,12 @@ const Overview = () => {
                   "0"
                 )}
               </div> */}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

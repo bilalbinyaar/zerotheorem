@@ -87,9 +87,21 @@ const Footer = () => {
                     <div className="news-textual">
                       <div className="news-head">
                         <span>
-                          <img src={ztFav} alt="vehcain logo" width="18px" />
+                          {theme === "dark-theme" ? (
+                            <img
+                              src={logoWhite}
+                              alt="vehcain logo"
+                              width="160px"
+                            />
+                          ) : (
+                            <img
+                              src={logoBlack}
+                              alt="vehcain logo"
+                              width="160px"
+                            />
+                          )}
                         </span>
-                        <span className="news-heading">Zero Theorem</span>
+                        {/* <span className="news-heading">Zero Theorem</span> */}
                       </div>
                       <div className="news-body">
                         <p>
