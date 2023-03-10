@@ -28,6 +28,7 @@ import AdsensePlaceHolder from "../adsense/AdsensePlaceHolder";
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
 const Forecasts = () => {
+  // console.log("Hello");
   // TOTAL PNL COLORS
   const forColor = (total_pnl, id) => {
     try {
@@ -62,7 +63,7 @@ const Forecasts = () => {
   const [drop, setDrop] = useState(false);
   const dropDown = () => setDrop(!drop);
   // All time Drop Down End
-  const [topPerformerModels, setTopPerformersModels] = useState([]);
+  const [topPerformerModels, setTopPerformersModels] = useState({});
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
       fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
@@ -109,7 +110,7 @@ const Forecasts = () => {
             };
           }
           if (JSON.stringify(model_names) !== "{}") {
-            // console.log("Sortable -->", model_names);
+            console.log("Sortable -->", model_names);
 
             const sorted = Object.keys(model_names)
               .map((key) => {
@@ -505,7 +506,7 @@ const Forecasts = () => {
                               );
                             }}
                           >
-                            {Object.values(topPerformerModels)[0]
+                            {Object.keys(topPerformerModels).length > 0
                               ? Object.values(
                                   topPerformerModels
                                 )[0].strategy_name.replace("_", "-")

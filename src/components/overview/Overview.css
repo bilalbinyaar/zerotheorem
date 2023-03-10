@@ -1,161 +1,161 @@
 .overview .container {
-    padding: 1rem 0rem 2rem 0rem;
+  padding: 1rem 0rem 2rem 0rem;
 }
 
 .overview-wapper {
-    margin-top: 1.2rem;
+  margin-top: 1.2rem;
 }
 
 .overview-wapper-top {
-    display: flex;
-    margin: 1rem 0rem;
+  display: flex;
+  margin: 1rem 0rem;
 }
 
 .overview-wapper-bottom {
-    display: flex;
+  display: flex;
 }
 
 .overview-ml {
-    margin-left: 0.8rem;
+  margin-left: 0.8rem;
 }
 
 .overview-card {
-    background-color: var(--color-forecasts-card);
-    width: 100%;
-    padding: 1rem 1.2rem;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  background-color: var(--color-forecasts-card);
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .overview-details {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .time-stamp p {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .date-stamp p {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .time-stamp {
-    background-color: var(--color-day-greydark);
-    padding: 0.2rem 0.9rem;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: var(--color-day-greydark);
+  padding: 0.2rem 0.9rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .date-stamp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .overview-text-indicator {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .overview-indicators {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .indicator {
-    display: flex;
-    justify-content: center;
-    align-items: end;
+  display: flex;
+  justify-content: center;
+  align-items: end;
 }
 
 .indicator p {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .indicator-long {
-    color: var(--color-day-green);
-    width: 14px;
-    margin-right: 0.2rem;
+  color: var(--color-day-green);
+  width: 14px;
+  margin-right: 0.2rem;
 }
 
 .indicator-short {
-    color: var(--color-day-red);
-    width: 14px;
-    margin-left: 1.4rem;
-    margin-right: 0.2rem;
+  color: var(--color-day-red);
+  width: 14px;
+  margin-left: 1.4rem;
+  margin-right: 0.2rem;
 }
 
 .percentage-wapper {
-    margin-top: 0.8rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 0.8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .percentage-long {
-    background-color: var(--color-day-green);
-    width: 100%;
-    padding: 0.6rem 0;
-    border-bottom-left-radius: 6px;
-    border-top-left-radius: 6px;
+  background-color: var(--color-day-green);
+  width: 100%;
+  padding: 0.6rem 0;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
 }
 
 .percentage-short {
-    background-color: var(--color-day-red);
-    width: 100%;
-    padding: 0.6rem 0;
-    border-bottom-right-radius: 6px;
-    border-top-right-radius: 6px;
+  background-color: var(--color-day-red);
+  width: 100%;
+  padding: 0.6rem 0;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .percentage-long p {
-    margin-top: 0;
-    text-align: center;
-    color: white;
+  margin-top: 0;
+  text-align: center;
+  color: white;
 }
 
 .percentage-long:hover {
-    margin-right: 0.4rem;
-    cursor: pointer;
-    transition: all 0.5s ease;
+  margin-right: 0.4rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
 }
 
 .percentage-short:hover {
-    margin-left: 0.4rem;
-    cursor: pointer;
-    transition: all 0.5s ease;
+  margin-left: 0.4rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
 }
 
 .percentage-short p {
-    text-align: center;
-    margin-top: 0;
-    color: white;
-    font-weight: 500;
+  text-align: center;
+  margin-top: 0;
+  color: white;
+  font-weight: 500;
 }
 
 .percentage-wapper-disable {
-    width: 100%;
-    /* background-image: url(../../assets/transparent.jpg);
+  width: 100%;
+  /* background-image: url(../../assets/transparent.jpg);
     background-blend-mode: overlay; */
-    background-color: rgba(128, 128, 128, 0.2);
-    margin-top: 0.8rem;
-    padding: 1.15rem;
-    border-radius: 6px;
+  background-color: rgba(128, 128, 128, 0.2);
+  margin-top: 0.8rem;
+  padding: 1.15rem;
+  border-radius: 6px;
 }
 
 @media screen and (max-width: 480px) {
-    .overview {
-        display: none;
-    }
+  .overview {
+    display: none;
+  }
 }

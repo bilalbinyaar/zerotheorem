@@ -208,7 +208,9 @@ const RecentlyViewed = (props) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
-                    `/${Object.values(topPerformerModels)[0].strategy_name}`
+                    `/${Object.values(
+                      topPerformerModels
+                    )[0].strategy_name.replace("_", "-")}`
                   );
                 }}
               >
@@ -289,7 +291,9 @@ const RecentlyViewed = (props) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
-                    `/${Object.values(topPerformerModels)[1].strategy_name}`,
+                    `/${Object.values(
+                      topPerformerModels
+                    )[1].strategy_name.replace("_", "-")}`,
                     {
                       state: {
                         model_name:
@@ -376,7 +380,9 @@ const RecentlyViewed = (props) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
-                    `/${Object.values(topPerformerModels)[2].strategy_name}`,
+                    `/${Object.values(
+                      topPerformerModels
+                    )[2].strategy_name.replace("_", "-")}`,
                     {
                       state: {
                         model_name:
@@ -463,7 +469,9 @@ const RecentlyViewed = (props) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
-                    `/${Object.values(topPerformerModels)[3].strategy_name}`,
+                    `/${Object.values(
+                      topPerformerModels
+                    )[3].strategy_name.replace("_", "-")}`,
                     {
                       state: {
                         model_name:
@@ -550,7 +558,9 @@ const RecentlyViewed = (props) => {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
-                    `/${Object.values(topPerformerModels)[4].strategy_name}`,
+                    `/${Object.values(
+                      topPerformerModels
+                    )[4].strategy_name.replace("_", "-")}`,
                     {
                       state: {
                         model_name:

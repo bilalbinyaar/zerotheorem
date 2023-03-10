@@ -121,7 +121,13 @@ export const ContextProvider = ({ children }) => {
     individual_pnl_canvasjs_graph_cache,
     set_individual_pnl_canvasjs_graph_cache,
   ] = useState({});
-
+  const [position_stats_cache, set_position_stats_cache] = useState({});
+  const Set_position_stats_cache = (new_data) => {
+    // const updated_data = [...cache, new_data];
+    let stats = Object.assign(position_stats_cache, new_data);
+    set_position_stats_cache(stats);
+    // console.log("My updated data in cache -->", obj);
+  };
   const Set_sorted_stats_cache = (new_data) => {
     // const updated_data = [...cache, new_data];
     let obj = Object.assign(sorted_stats_cache, new_data);
@@ -323,6 +329,8 @@ export const ContextProvider = ({ children }) => {
         Set_individual_pnl_canvasjs_graph_cache,
         drawdown_negative_canvasjs_graph_cache,
         Set_drawdown_negative_canvasjs_graph_cache,
+        position_stats_cache,
+        Set_position_stats_cache,
       }}
     >
       {children}

@@ -210,7 +210,7 @@ const ModelNameCol = (props) => {
     <div className="forecasts-model-name">
       <h3
         onClick={() => {
-          linkModels(`/${props.value[2]}`, {
+          linkModels(`/${props.value[2].replace("_", "-")}`, {
             state: {
               model_name: props.value[2],
             },

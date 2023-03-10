@@ -206,9 +206,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[0].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[0].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -308,9 +308,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[1].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[1].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -410,9 +410,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[2].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[2].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -512,9 +512,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[3].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[3].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -614,9 +614,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[4].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[4].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -716,9 +716,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[5].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[5].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -818,9 +818,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[6].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[6].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -920,9 +920,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[7].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[7].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -1022,9 +1022,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[8].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[8].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:
@@ -1124,9 +1124,9 @@ const ForecastCards = () => {
                   <h3
                     onClick={() => {
                       linkModels(
-                        `/${
-                          Object.values(topPerformerModels)[9].strategy_name
-                        }`,
+                        `/${Object.values(
+                          topPerformerModels
+                        )[9].strategy_name.replace("_", "-")}`,
                         {
                           state: {
                             model_name:

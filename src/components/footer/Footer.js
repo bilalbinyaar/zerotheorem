@@ -5,6 +5,8 @@ import logoWhite from "../../assets/logo-white.svg";
 import { useStateContext } from "../../ContextProvider";
 import { AiFillEye, AiFillHeart, AiOutlineTwitter } from "react-icons/ai";
 import newsImg from "../../assets/announce.jpg";
+import Announcements_Light_Mode from "../../assets/Announcements_Light mode.jpg";
+import Announcements_Dark_Mode from "../../assets/Announcements_darkmode.jpg";
 import { BsDot } from "react-icons/bs";
 import ztFav from "../../assets/favicon.ico";
 import vetLogo from "../../assets/vet-logo.png";
@@ -69,27 +71,36 @@ const Footer = () => {
 
                 <div className="announcement-news">
                   <div className="news-inner footer-news-inner">
-                    <img className="news-img" src={newsImg} alt="news" />
+                    {theme === "dark-theme" ? (
+                      <img
+                        className="news-img"
+                        src={Announcements_Dark_Mode}
+                        alt="news"
+                      />
+                    ) : (
+                      <img
+                        className="news-img"
+                        src={Announcements_Light_Mode}
+                        alt="news"
+                      />
+                    )}
                     <div className="news-textual">
                       <div className="news-head">
                         <span>
-                          <img
-                            src={ztFav}
-                            alt="vehcain logo"
-                            width="18px"
-                          />
+                          <img src={ztFav} alt="vehcain logo" width="18px" />
                         </span>
                         <span className="news-heading">Zero Theorem</span>
                       </div>
                       <div className="news-body">
                         <p>
                           ZT x Beta Release 2023 — Launching Soon.
-                          <br/>
-                          Zero Theorem Beta version is releasing on 19th March 2023. 
+                          <br />
+                          Zero Theorem Beta version is releasing on 19th March
+                          2023.
                         </p>
                       </div>
                       <div className="news-footer">
-                        <span>March 09</span>
+                        <span>March 09, 2023</span>
                         {/* <BsDot />
                         <span>
                           <AiFillEye className="news-footer-icon" /> 1.7K
@@ -108,7 +119,6 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -119,7 +129,6 @@ const Footer = () => {
             </p>
           </div>
           <div className="footer-inner-right for-footer-bar">
-
             <div className="forecasts-card footer-card">
               <div className="announcement-card">
                 <div className="announcement-news">
@@ -134,7 +143,6 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

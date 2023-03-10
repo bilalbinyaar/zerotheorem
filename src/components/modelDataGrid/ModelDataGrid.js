@@ -392,7 +392,7 @@ const ModelDataGrid = () => {
   // To Link Grid Rows to Models Component
   const linkModels = useNavigate();
   const handleRowClickEvent = (params) => {
-    linkModels(`/${params.row.modelName}`);
+    linkModels(`/${params.row.modelName.replace("_", "-")}`);
   };
   // To Link Grid Rows to Models Component
 
