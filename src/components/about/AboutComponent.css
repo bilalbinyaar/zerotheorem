@@ -143,7 +143,7 @@ sub {
 }
 
 .mt-extra {
-  margin-top: 4.5rem;
+  margin-top: 4rem;
 }
 
 
@@ -177,8 +177,12 @@ sub {
     margin: 0;
   }
 
+  .mt-extra {
+    margin-top: 2rem;
+  }
+
   .for-mt {
-    margin-top: 1.2rem !important;
+    margin-top: 2rem !important;
   }
 
   .sorez {

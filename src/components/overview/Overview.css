@@ -2,6 +2,10 @@
   padding: 1rem 0rem 2rem 0rem;
 }
 
+.overview-mobile .container {
+  padding: 1rem 0rem 2rem 0rem;
+}
+
 .overview-wapper {
   margin-top: 1.2rem;
 }
@@ -13,6 +17,7 @@
 
 .overview-wapper-bottom {
   display: flex;
+  margin: 1rem 0rem;
 }
 
 .overview-ml {
@@ -72,29 +77,6 @@
   align-items: center;
 }
 
-@media screen and (max-width: 480px) {
-  .overview-indicators {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: 24px;
-  }
-  .overview-heading {
-    margin-left: 24px;
-  }
-  .overview-card {
-    background-color: var(--color-forecasts-card);
-    width: 70%;
-    padding: 1rem 1.2rem;
-    border-radius: 8px;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 1rem !important;
-  }
-}
-
 .indicator {
   display: flex;
   justify-content: center;
@@ -110,12 +92,8 @@
   width: 14px;
   margin-right: 0.2rem;
 }
-/* .overview-mobile {
-  display: flex !important;
-} */
-.mobile-overview {
-  display: flex !important;
-}
+
+
 .indicator-short {
   color: var(--color-day-red);
   width: 14px;
@@ -182,17 +160,27 @@
   border-radius: 6px;
 }
 
-/* @media screen and (max-width: 480px) {
-  .overview {
+
+@media screen and (max-width: 480px) {
+  .overview-mobile {
     display: flex;
   }
-} */
 
-.overview-mob {
-  display: flex !important;
-  /* display: flex; */
-  margin-top: 0.6rem;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
+  .overview-wapper {
+    display: flex;
+    overflow-x: scroll;
+    margin-top: 0.6rem;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  } 
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .overview-wapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .overview-card {
+    width: 220px;
+  }
 }
