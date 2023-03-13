@@ -110,7 +110,7 @@ const Forecasts = () => {
             };
           }
           if (JSON.stringify(model_names) !== "{}") {
-            console.log("Sortable -->", model_names);
+            // console.log("Sortable -->", model_names);
 
             const sorted = Object.keys(model_names)
               .map((key) => {
@@ -125,10 +125,10 @@ const Forecasts = () => {
         })
         .catch((err) => console.log(err));
     } else {
-      console.log(
-        "I am using cached values of sorted stats -->",
-        sorted_stats_cache
-      );
+      // console.log(
+      //   "I am using cached values of sorted stats -->",
+      //   sorted_stats_cache
+      // );
       setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
     }
   }, []);
@@ -151,13 +151,13 @@ const Forecasts = () => {
           for (var i = 0; i < data["response"].length; i++) {
             model_names.push({
               label: data["response"][i].strategy_name.replace("_", "-"),
-              value: index,
+              // value: i,
             });
             if (!unique_coins[data["response"][i].currency]) {
               unique_coins[data["response"][i].currency] = 1;
               coin_names.push({
                 label: data["response"][i].currency,
-                value: index,
+                // value: i,
               });
             }
             var dt = new Date(

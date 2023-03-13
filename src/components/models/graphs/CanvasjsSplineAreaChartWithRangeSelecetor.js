@@ -124,7 +124,7 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
             let end_time = parseInt(data["response"][len].ledger_timestamp);
             let avg = (end_time - start_time) / 2;
             let result = avg + start_time;
-            console.log("Values are --->", start_time, end_time, avg, result);
+            // console.log("Values are --->", start_time, end_time, avg, result);
             // console.log("Result -->", len, start_time, avg, result);
             setStart(new Date(result) * 1000);
             setEnd(

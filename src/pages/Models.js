@@ -23,7 +23,7 @@ import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/Canvasj
 import TradingViewWidgetGraph from "../components/models/graphs/TradingViewWidgetGraph";
 const Models = () => {
   const location = useLocation();
-  console.log("Pathname -->", location.pathname.replace("/", ""));
+  // console.log("Pathname -->", location.pathname.replace("/", ""));
   const name = location.pathname.replace("/", "").replace("-", "_");
 
   // console.log("Name -->", name);

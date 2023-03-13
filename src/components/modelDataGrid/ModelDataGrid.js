@@ -69,17 +69,9 @@ const ModelDataGrid = () => {
 
   // console.log("I am called here to due to dark mode");
   const [rows_cached, set_rows_cached] = useState([]);
-  const [coin_search_selection, set_coin_search_selection] = useState([
-    { label: "Ripple", value: 1 },
-    { label: "BTC", value: 2 },
-    { label: "Ethereum", value: 3 },
-  ]);
-  console.log("Testing data ", coin_search_selection);
-  const [model_search_selection, set_model_search_selection] = useState([
-    { label: "Area50", value: 1 },
-    { label: "Area51", value: 2 },
-    { label: "Area52", value: 3 },
-  ]);
+  const [coin_search_selection, set_coin_search_selection] = useState([]);
+  // console.log("Testing data ", coin_search_selection);
+  const [model_search_selection, set_model_search_selection] = useState([]);
 
   const handleChangeForCoinSelection = (event, values) => {
     if (values != null) {
@@ -231,13 +223,16 @@ const ModelDataGrid = () => {
             var unique_coins = {};
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
-              var name = data["response"][i].strategy_name.replace("_", "-");
-              model_names.push(name);
+              // var name = data["response"][i].strategy_name.replace("_", "-");
+              model_names.push({
+                label: data["response"][i].strategy_name.replace("_", "-"),
+                // value: i,
+              });
               if (!unique_coins[data["response"][i].currency]) {
                 unique_coins[data["response"][i].currency] = 1;
                 coin_names.push({
                   label: data["response"][i].currency,
-                  value: index,
+                  // value: i,
                 });
               }
               var dt = new Date(
@@ -293,7 +288,7 @@ const ModelDataGrid = () => {
               Set_model_search_selection_cache({
                 model_names: model_names,
               });
-              console.log("Here are model names --->", model_names);
+              // console.log("Here are model names --->", model_names);
             }
           })
           .catch((err) => console.log(err));
@@ -326,7 +321,7 @@ const ModelDataGrid = () => {
             var model_names = {};
             for (var i = 0; i < data["msg"].length; i++) {
               // console.log(data["msg"][i].strategy_name);
-              var name = data["msg"][i].strategy_name;
+              // var name = data["msg"][i].strategy_name;
               model_names[data["msg"][i].strategy_name] = {
                 strategy_name: data["msg"][i].strategy_name,
                 current_drawdown: data["msg"][i].current_drawdown,
@@ -643,7 +638,7 @@ const ModelDataGrid = () => {
   const handleChangeForTimeHorizonSelection = (id, timeH) => {
     // var for_style = set_curr_active(id);
     // document.getElementById(id).style = "background-color : green !important";
-    console.log("Current active is -->", id);
+    // console.log("Current active is -->", id);
 
     if (timeH == "All") {
       setRows(rows_cached);
