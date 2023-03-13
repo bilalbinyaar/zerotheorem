@@ -111,6 +111,7 @@
     padding-left: 1rem;
 }
 
+
 @media screen and (min-width:480px) {
     .dark-lite {
         width: 23%;
@@ -120,12 +121,21 @@
 
 @media screen and (max-width:1240px) {
 
+    .dark-lite {
+        width: 2%;
+    }
+
     .hamburger {
         display: flex;
     }
 
     .welcome-user-div {
         display: none !important;
+    }
+
+    .nav-logo-div a{
+        align-items: center;
+        justify-content: center;
     }
 
     .nav-btn{
@@ -141,7 +151,7 @@
         position: absolute;
         flex-direction: column;
         justify-content: start;
-        top: 87px;
+        top: 77px;
         left: 0;
         width: 50%;
         height: 90vh;
@@ -174,6 +184,12 @@
 
 }
 
+@media screen and (max-width:775px) {
+    .dark-lite {
+        width: 3%;
+    }
+}
+
 
 @media screen and (max-width:480px) {
     .nav-logo-img {
@@ -202,6 +218,10 @@
 
     .nav-menu li {
         padding: 1.5rem;
+    }
+
+    .dark-lite {
+        width: 3.5%;
     }
 }
 

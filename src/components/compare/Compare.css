@@ -67,3 +67,23 @@ table{
 .no-bl {
   border-left: 0px !important;
 }
+
+@media screen and (max-width: 480px) {
+
+  .compare-searches {
+    margin-top: 2rem;
+  }
+
+  .to-hide {
+    display: none;
+  }
+
+  .tg th {
+    width: 120px;
+    font-size: 12px;
+  }
+
+  .tg td {
+    font-size: 12px;
+  }
+}

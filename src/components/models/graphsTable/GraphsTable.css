@@ -85,6 +85,7 @@
   text-align: left;
 }
 
+
 @media screen and (max-width: 1300px) {
   .for-table-head {
     font-size: 10px;
@@ -96,6 +97,26 @@
     padding: 0.4rem 0.1rem;
   }
 }
+
+@media screen and (max-width: 1060px) {
+  .graph-table-main {
+    flex-direction: column;
+  }
+
+  .table-card {
+    margin-top: 0.8rem !important;
+  }
+
+  .for-table-head {
+    text-align: center;
+  }
+
+  .for-table-data {
+    text-align: center;
+  }
+
+}
+
 
 @media screen and (max-width: 480px) {
   .graph-table-main {

@@ -83,7 +83,7 @@ export default function NavMobile(props) {
           <CustomLink to="/">Forecasts</CustomLink>
           <CustomLink to="/resources">Resources</CustomLink>
           <CustomLink to="/about">About</CustomLink>
-          <CustomLink to="/faq" onClick={toCloseNav}>FAQs</CustomLink>
+          <CustomLink to="/faqs" onClick={toCloseNav}>FAQs</CustomLink>
           
         </ul>
 
@@ -102,7 +102,7 @@ export default function NavMobile(props) {
             <CustomLink to="/" onClick={toCloseNav}>Forecasts</CustomLink>
             <CustomLink to="/resources" onClick={toCloseNav}>Resources</CustomLink>
             <CustomLink to="/about" onClick={toCloseNav}>About</CustomLink>
-            <CustomLink to="/faq" onClick={toCloseNav}>FAQs</CustomLink>
+            <CustomLink to="/faqs" onClick={toCloseNav}>FAQs</CustomLink>
 
 
             {/* {authCheck === true ? (

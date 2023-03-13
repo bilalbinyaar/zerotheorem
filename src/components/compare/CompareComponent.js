@@ -520,7 +520,7 @@ const CompareComponent = () => {
                   />
                   <Autocomplete
                     id="country-select-demo"
-                    className="model-compare-search"
+                    className="model-compare-search to-hide"
                     sx={{
                       backgroundColor: "var(--color-forecasts-card)",
                       borderRadius: "5px",
@@ -760,7 +760,7 @@ const CompareComponent = () => {
                         <th className="tg-0lax">
                             {/* <ComparisonChartCanvas  model_name={"ZT1_0M24BTC26"}/> */}
                         </th>
-                        <th className="tg-0lax">
+                        <th className="tg-0lax to-hide">
                             {/* <ComparisonChartCanvas  model_name={"ZT1_0M24BTC26"} /> */}
                         </th>
                     </tr>
@@ -770,73 +770,73 @@ const CompareComponent = () => {
                         <td className="tg-0lax">Time Horizon</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Currency</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Start Date</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Forecast</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Forecast Time</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Next Forecast</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">1d PNL</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">7d PNL</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">15d PNL</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">30d PNL</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">45d PNL</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">60d PNL</td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Max DD
@@ -848,7 +848,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Max DD Day
@@ -860,7 +860,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Average DD 
@@ -872,7 +872,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Average DD Days
@@ -884,7 +884,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Current DD
@@ -896,7 +896,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Current DD Days
@@ -908,7 +908,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Total Wins
@@ -920,7 +920,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Total Losses
@@ -932,7 +932,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Consecutive Wins
@@ -944,7 +944,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Consecutive Losses
@@ -956,7 +956,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Win Percentage
@@ -968,7 +968,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Win/Loss Ratio
@@ -980,7 +980,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Aggregate Profit
@@ -992,7 +992,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Aggregate Loss
@@ -1004,7 +1004,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Average Daily PNL
@@ -1016,7 +1016,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">R2 Score
@@ -1028,7 +1028,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Sharpe
@@ -1040,7 +1040,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     <tr>
                         <td className="tg-0lax">Sortino
@@ -1052,7 +1052,7 @@ const CompareComponent = () => {
                         </td>
                         <td className="tg-0lax"></td>
                         <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax to-hide"></td>
                     </tr>
                     </tbody>
                     </table>

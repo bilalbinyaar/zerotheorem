@@ -160,6 +160,45 @@
   border-radius: 6px;
 }
 
+@media screen and (max-width: 968px) {
+  .time-stamp p {
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .date-stamp p {
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .percentage-long p {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .percentage-short p {
+    font-size: 10px;
+  }
+
+  .overview-details {
+    flex-direction: column;
+  }
+
+  .time-stamp {
+    margin-bottom: 0.4rem;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .date-stamp button {
+    display: none;
+  }
+
+  .date-stamp p {
+    text-align: center;
+  }
+}
+
 
 @media screen and (max-width: 480px) {
   .overview-mobile {

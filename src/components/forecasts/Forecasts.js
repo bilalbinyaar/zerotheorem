@@ -490,7 +490,7 @@ const Forecasts = () => {
           {/* FOR WEB VIEW */}
           {checked === true ? (
             <div className="forecast-web">
-              <div className="forecasts-cards">
+              <div className="forecasts-cards tablet-view-card">
                 <div className="forecasts-card card-margin">
                   <div className="announcement-card">
                     <div className="announcement-row">

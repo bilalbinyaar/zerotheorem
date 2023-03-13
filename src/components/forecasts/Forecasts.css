@@ -400,6 +400,51 @@
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .forecast-web {
+    display: none;
+  }
+
+  .forecast-mob {
+    display: flex;
+  }
+
+  .forecasts-cards {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .forecasts-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 775px) {
+  .forecasts-details {
+    flex-direction: column;
+  }
+
+  .forcasts-description {
+    width: 100%;
+  }
+
+  .equation-img {
+    margin-left: 0rem;
+    margin-top: 0.8rem;
+  }
+
+  .equation-img img {
+    width: 80%;
+  }
+
+  .equation-i-div {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .forecasts .container {
     padding: 2.2rem 0rem 0rem 0rem;

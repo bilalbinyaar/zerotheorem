@@ -68,7 +68,7 @@ function App() {
               <Route path="/resources" element={<Introduction />} />
               <Route path="/:name" element={<Models />} />
               <Route path="/about" element={<About />} />
-              <Route path="/faq" element={<FAQ />} />
+              <Route path="/faqs" element={<FAQ />} />
               <Route path="/compare" element={<Compare />} />
 
               {/* RESOURCES ROUTING FOR MAIN ITEMS */}

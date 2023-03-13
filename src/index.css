@@ -741,6 +741,14 @@ a {
   align-items: center; */
 }
 
+@media screen and (max-width: 480px) {
+  .comparison-spline {
+    width: 110px !important;
+    height: 110px !important;
+  }
+
+}
+
 .pagination {
   top: -6.3vh;
   width: 100%;
@@ -780,6 +788,41 @@ a {
     margin-top: 6px;
     color: var(--color-day-black);
   }
+}
+
+@media screen and (max-width: 1060px) {
+  .css-1aumtv5 {
+    width: 200px !important;
+  }
+
+}
+
+@media screen and (max-width: 1020px) {
+  .css-1aumtv5 {
+    width: 175px !important;
+  }
+
+}
+
+@media screen and (max-width: 968px) {
+  .css-1aumtv5 {
+    width: 145px !important;
+  }
+
+}
+
+@media screen and (max-width: 885px) {
+  .css-1aumtv5 {
+    width: 115px !important;
+  }
+
+}
+
+@media screen and (max-width: 885px) {
+  .css-1aumtv5 {
+    width: 100px !important;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
