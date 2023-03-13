@@ -375,6 +375,12 @@
   color: black;
 }
 
+@media screen and (max-width: 1300px) {
+  .model-details-left-body p {
+    font-size: 10px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .for-font-size {
     font-size: 10px !important;

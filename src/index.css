@@ -769,6 +769,19 @@ a {
   }
 }
 
+@media screen and (max-width: 1300px) {
+  .best-performing-spline div {
+    width: 200px !important;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 6px;
+    color: var(--color-day-black);
+  }
+}
+
 @media screen and (max-width: 480px) {
   .pagination {
     top: -4.9vh;
