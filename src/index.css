@@ -733,6 +733,14 @@ a {
   align-items: center;
 }
 
+.comparison-spline {
+  width: 290px !important;
+  height: 110px !important;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
 .pagination {
   top: -6.3vh;
   width: 100%;
@@ -758,6 +766,19 @@ a {
 @media screen and (min-width: 1440px) {
   .pagination {
     top: -4.3vh;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .best-performing-spline div {
+    width: 200px !important;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 6px;
+    color: var(--color-day-black);
   }
 }
 
@@ -827,6 +848,12 @@ a {
   border-color: var(--color-day-yellow) !important;
 }
 
+.css-p0rm37 {
+  color: var(--color-day-black) !important;
+  font-size: 12px !important;
+  top: -6px !important;
+}
+
 @media screen and (max-width: 480px) {
   .css-1km1ehz {
     min-height: 38px !important;
@@ -835,7 +862,7 @@ a {
 
   /* MUI CURRENCY AND MODEL DROPDOWNS */
   .css-p0rm37 {
-    top: -9px !important;
+    top: -10px !important;
   }
 }
 /* MUI ALL TIME DROP DOWN */
@@ -843,12 +870,6 @@ a {
 /* MUI CURRENCY AND MODEL DROPDOWNS */
 .MuiOutlinedInput-root {
   padding: 0px !important;
-}
-
-.css-p0rm37 {
-  color: var(--color-day-black) !important;
-  font-size: 12px !important;
-  top: -6px !important;
 }
 
 .css-vubbuv {

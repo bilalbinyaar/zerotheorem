@@ -52,6 +52,8 @@ import Reinforcement from "./components/resources/resourcestextual/initialSoluti
 import ProblemFormulataion from "./components/resources/resourcestextual/initialSolution/ProblemFormulataion";
 import DRL from "./components/resources/resourcestextual/initialSolution/DRL";
 import ExperimentalResults from "./components/resources/resourcestextual/initialSolution/ExperimentalResults";
+import Compare from "./pages/Compare";
+
 // import sitemap from "./sitemap.xml";
 function Sitemap() {
   return (
@@ -85,6 +87,7 @@ function Sitemap() {
     </div>
   );
 }
+
 function App() {
   const { Login, user, error, loading } = useStateContext();
 
@@ -101,6 +104,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
               {/* <Route path="/sitemap.xml" component={Sitemap} /> */}
+              <Route path="/compare" element={<Compare />} />
 
               {/* RESOURCES ROUTING FOR MAIN ITEMS */}
               <Route path="/resources" element={<Introduction />} />

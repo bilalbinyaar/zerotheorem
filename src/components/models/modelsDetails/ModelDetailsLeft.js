@@ -10,6 +10,7 @@ import {
 import { BsCurrencyExchange } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useStateContext } from "../../../ContextProvider";
+import { Link } from "react-router-dom";
 
 const ModelDetailsLeft = (props) => {
   // const [strategy, setStrategy] = useState({});
@@ -322,6 +323,15 @@ const ModelDetailsLeft = (props) => {
                 ? strategies[props.model_name].currency
                 : null}
             </p>
+          </div>
+        </div>
+
+        {/* Body # 4 */}
+        <div className="model-details-left-body">
+          <div className="model-details-left-body-stats compare-btn-div">
+            <Link to="/compare" state={{ model_name: `${props.model_name}` }}>
+              <p className="compare-btn">Compare</p>
+            </Link>
           </div>
         </div>
       </div>
