@@ -52,6 +52,7 @@ import Reinforcement from "./components/resources/resourcestextual/initialSoluti
 import ProblemFormulataion from "./components/resources/resourcestextual/initialSolution/ProblemFormulataion";
 import DRL from "./components/resources/resourcestextual/initialSolution/DRL";
 import ExperimentalResults from "./components/resources/resourcestextual/initialSolution/ExperimentalResults";
+import Compare from "./pages/Compare";
 
 function App() {
   const { Login, user, error, loading } = useStateContext();
@@ -68,6 +69,7 @@ function App() {
               <Route path="/:name" element={<Models />} />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route path="/compare" element={<Compare />} />
 
               {/* RESOURCES ROUTING FOR MAIN ITEMS */}
               <Route path="/resources" element={<Introduction />} />

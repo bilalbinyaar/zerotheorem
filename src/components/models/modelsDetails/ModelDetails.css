@@ -364,6 +364,17 @@
   display: block;
 }
 
+.compare-btn-div {
+  background-color: var(--color-day-yellow);
+  width: 155px;
+}
+
+.compare-btn {
+  font-size: 16px !important;
+  font-weight: 500;
+  color: black;
+}
+
 @media screen and (max-width: 480px) {
   .for-font-size {
     font-size: 10px !important;
