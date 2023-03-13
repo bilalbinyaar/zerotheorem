@@ -758,10 +758,10 @@ const CompareComponent = () => {
                             <ComparisonChartCanvas model_name={"ZT1_0M24BTC26"} />
                         </th>
                         <th className="tg-0lax">
-                            <ComparisonChartCanvas  model_name={"ZT1_0M24BTC26"}/>
+                            {/* <ComparisonChartCanvas  model_name={"ZT1_0M24BTC26"}/> */}
                         </th>
                         <th className="tg-0lax">
-                            <ComparisonChartCanvas  model_name={"ZT1_0M24BTC26"} />
+                            {/* <ComparisonChartCanvas  model_name={"ZT1_0M24BTC26"} /> */}
                         </th>
                     </tr>
                     </thead>
