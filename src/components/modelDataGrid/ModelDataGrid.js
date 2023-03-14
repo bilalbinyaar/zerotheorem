@@ -19,6 +19,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
+import TradingViewSplineAreaChart from "../models/graphs/TvSplineAreaChart";
 import IconButton from "@mui/material/IconButton";
 import {
   GridColDef,
