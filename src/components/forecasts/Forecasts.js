@@ -21,7 +21,7 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EquationBlack from "../../assets/equation-black.png";
-import TvSplineAreaChartTopPerformer from "../models/graphs/TvSplineAreaChartTopPerformer";
+import SplineTradeViewCard from "../models/graphs/SplineTradeViewCard";
 import EquationWhite from "../../assets/equation-white.png";
 import { Link } from "react-router-dom";
 import AdsensePlaceHolder from "../adsense/AdsensePlaceHolder";
@@ -595,7 +595,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[0] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[0].strategy_name
                             }
@@ -714,7 +714,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[1] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[1].strategy_name
                             }
@@ -830,7 +830,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[2] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[2].strategy_name
                             }
@@ -946,7 +946,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[3] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[3].strategy_name
                             }
@@ -1062,7 +1062,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[4] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[4].strategy_name
                             }
@@ -1179,7 +1179,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[5] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[5].strategy_name
                             }
@@ -1295,7 +1295,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[6] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[6].strategy_name
                             }
@@ -1411,7 +1411,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[7] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[7].strategy_name
                             }
@@ -1527,7 +1527,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[8] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[8].strategy_name
                             }
@@ -1643,7 +1643,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[9] ? (
-                          <TvSplineAreaChartTopPerformer
+                          <SplineTradeViewCard
                             model_name={
                               Object.values(topPerformerModels)[9].strategy_name
                             }
@@ -1767,7 +1767,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[0] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[0].strategy_name
                           }
@@ -1873,7 +1873,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[1] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[1].strategy_name
                           }
@@ -1979,7 +1979,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[2] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[2].strategy_name
                           }
@@ -2087,7 +2087,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[3] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[3].strategy_name
                           }
@@ -2193,7 +2193,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[4] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[4].strategy_name
                           }
@@ -2299,7 +2299,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[5] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[5].strategy_name
                           }
@@ -2405,7 +2405,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[6] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[6].strategy_name
                           }
@@ -2511,7 +2511,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[7] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[7].strategy_name
                           }
@@ -2617,7 +2617,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[8] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[8].strategy_name
                           }
@@ -2723,7 +2723,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[9] ? (
-                        <TvSplineAreaChartTopPerformer
+                        <SplineTradeViewCard
                           model_name={
                             Object.values(topPerformerModels)[9].strategy_name
                           }
