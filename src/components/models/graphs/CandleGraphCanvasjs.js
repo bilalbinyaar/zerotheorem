@@ -11,7 +11,7 @@ function CandleGraphCanvasjs(props) {
   //   set_flag_for_navigator(false);
   // }
   const [model_name, set_model_name] = useState(null);
-  console.log("I am here with values -->", props.model_name, model_name);
+  // console.log("I am here with values -->", props.model_name, model_name);
 
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
@@ -58,7 +58,12 @@ function CandleGraphCanvasjs(props) {
   const [current_price, set_current_price] = useState(null);
 
   const [strategies, setStrategies] = useState(null);
-  const { strategies_cache, Set_strategies_cache } = useStateContext();
+  const {
+    strategies_cache,
+    Set_strategies_cache,
+    Set_coin_search_selection_cache,
+    Set_model_search_selection_cache,
+  } = useStateContext();
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
       fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategies", {
@@ -73,6 +78,17 @@ function CandleGraphCanvasjs(props) {
           var unique_coins = {};
           var index = 0;
           for (var i = 0; i < data["response"].length; i++) {
+            model_names.push({
+              label: data["response"][i].strategy_name.replace("_", "-"),
+              // value: i,
+            });
+            if (!unique_coins[data["response"][i].currency]) {
+              unique_coins[data["response"][i].currency] = 1;
+              coin_names.push({
+                label: data["response"][i].currency,
+                // value: i,
+              });
+            }
             var dt = new Date(
               parseInt(data["response"][i].forecast_time) * 1000
             ).toLocaleString();
@@ -115,6 +131,12 @@ function CandleGraphCanvasjs(props) {
             setStrategies(data_for_strategies);
             //console.log("Strategies final -->", data_for_strategies);
             Set_strategies_cache({ strategies: data_for_strategies });
+            Set_coin_search_selection_cache({
+              coin_names: coin_names,
+            });
+            Set_model_search_selection_cache({
+              model_names: model_names,
+            });
           }
         })
         .catch((err) => console.log(err));
@@ -147,10 +169,10 @@ function CandleGraphCanvasjs(props) {
           const dps1 = [];
           const dps2 = [];
           const dps3 = [];
-          console.log(
-            "Finally btc data -->",
-            new Date(parseInt(data["response"][0].timestamp) * 1000)
-          );
+          // console.log(
+          //   "Finally btc data -->",
+          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+          // );
 
           for (let i = 0; i < data["response"].length; i++) {
             dps1.push({

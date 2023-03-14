@@ -52,7 +52,7 @@ export const ContextProvider = ({ children }) => {
   const [error, setError] = useState("");
 
   const Login = (details) => {
-    console.log(details);
+    // console.log(details);
 
     if (details.password === adminUser.password) {
       // console.log("Logged In");

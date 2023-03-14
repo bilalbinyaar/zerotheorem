@@ -20,10 +20,9 @@ import IndividualPnlCanvasjs from "../components/models/graphs/IndividualPnlCanv
 // import DrawdownCanvasjsSliderRange from "../components/models/graphs/DrawdownCanvasjsSliderRange";
 import CanvasjsSplineAreaChartWithRangeSelecetor from "../components/models/graphs/CanvasjsSplineAreaChartWithRangeSelecetor";
 import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/CanvasjsDrawdownWithSliderRange";
-import TradingViewWidgetGraph from "../components/models/graphs/TradingViewWidgetGraph";
 const Models = () => {
   const location = useLocation();
-  console.log("Pathname -->", location.pathname.replace("/", ""));
+  // console.log("Pathname -->", location.pathname.replace("/", ""));
   const name = location.pathname.replace("/", "").replace("-", "_");
 
   // console.log("Name -->", name);
@@ -33,8 +32,10 @@ const Models = () => {
     <React.Fragment>
       <ModelDetails model_name={name} />
       {/* <CurrentPosition /> */}
+      {/* <TradingViewSplineAreaChart model_name={name} /> */}
       {/* <CandleGraph /> */}
       <CandleGraphCanvasjs model_name={name} />
+      {/* <TradingViewSplineAreaChart model_name={name} /> */}
       {/* <TradingViewWidgetGraph /> */}
 
       <CumulativePNL />

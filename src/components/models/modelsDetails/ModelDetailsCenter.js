@@ -108,13 +108,13 @@ const ModelDetailsCenter = (props) => {
             for (var i = 0; i < data["response"].length; i++) {
               model_names.push({
                 label: data["response"][i].strategy_name.replace("_", "-"),
-                value: index,
+                // value: i,
               });
               if (!unique_coins[data["response"][i].currency]) {
                 unique_coins[data["response"][i].currency] = 1;
                 coin_names.push({
                   label: data["response"][i].currency,
-                  value: index,
+                  // value: i,
                 });
               }
               var dt = new Date(
@@ -163,7 +163,7 @@ const ModelDetailsCenter = (props) => {
               Set_model_search_selection_cache({
                 model_names: model_names,
               });
-              console.log("Here are model names --->", model_names);
+              // console.log("Here are model names --->", model_names);
             }
           })
           .catch((err) => console.log(err));

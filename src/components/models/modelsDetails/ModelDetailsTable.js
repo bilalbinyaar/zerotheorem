@@ -17,7 +17,7 @@ const ModelDetailsTable = (props) => {
         // console.log(data["response"].length);
         var data_for_strategy = {};
         for (var i = 0; i < data["response"].length; i++) {
-          console.log("Strategy -->", data["response"][i].strategy_name);
+          // console.log("Strategy -->", data["response"][i].strategy_name);
           data_for_strategy[data["response"][i].strategy_name] = {
             current_position: data["response"][i].current_position,
             time_horizon: data["response"][i].time_horizon,
@@ -29,7 +29,7 @@ const ModelDetailsTable = (props) => {
         }
         if (JSON.stringify(data_for_strategy) !== "{}") {
           setStrategy(data_for_strategy);
-          console.log("Data for setting strategy -->", data_for_strategy);
+          // console.log("Data for setting strategy -->", data_for_strategy);
         }
       })
       .catch((err) => console.log(err));

@@ -53,7 +53,7 @@ const Overview = () => {
             };
           }
           if (JSON.stringify(stats) !== "{}") {
-            console.log("Stats -->", stats);
+            // console.log("Stats -->", stats);
             set_position_analysis_stats(stats);
             Set_position_stats_cache({ position_stats: stats });
           }
@@ -71,11 +71,8 @@ const Overview = () => {
       {windowWidth.current <= 568 ? (
         <div className="overview-mobile">
           <div className="container">
-
             <div className="overview-text-indicator">
-              <h2>
-              Percentage Overview
-            </h2>
+              <h2>Percentage Overview</h2>
               <div className="overview-indicators">
                 <div className="indicator">
                   <RiCheckboxBlankFill className="indicator-long" />
@@ -511,22 +508,20 @@ const Overview = () => {
           </div>
         </div>
       ) : (
-
         <div className="overview">
           <div className="container">
-
             <div className="overview-text-indicator">
               <h2>
-              Percentage Overview
-              <Tooltip
-                title="Percentage of models currently predicting long and short for each
+                Percentage Overview
+                <Tooltip
+                  title="Percentage of models currently predicting long and short for each
               time horizon."
-              >
-                <IconButton>
-                  <BsFillInfoCircleFill />
-                </IconButton>
-              </Tooltip>
-            </h2>
+                >
+                  <IconButton>
+                    <BsFillInfoCircleFill />
+                  </IconButton>
+                </Tooltip>
+              </h2>
               <div className="overview-indicators">
                 <div className="indicator">
                   <RiCheckboxBlankFill className="indicator-long" />

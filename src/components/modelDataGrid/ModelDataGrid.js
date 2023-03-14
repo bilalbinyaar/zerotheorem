@@ -19,6 +19,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
+
 import IconButton from "@mui/material/IconButton";
 import {
   GridColDef,
@@ -69,17 +70,9 @@ const ModelDataGrid = () => {
 
   // console.log("I am called here to due to dark mode");
   const [rows_cached, set_rows_cached] = useState([]);
-  const [coin_search_selection, set_coin_search_selection] = useState([
-    { label: "Ripple", value: 1 },
-    { label: "BTC", value: 2 },
-    { label: "Ethereum", value: 3 },
-  ]);
-  console.log("Testing data ", coin_search_selection);
-  const [model_search_selection, set_model_search_selection] = useState([
-    { label: "Area50", value: 1 },
-    { label: "Area51", value: 2 },
-    { label: "Area52", value: 3 },
-  ]);
+  const [coin_search_selection, set_coin_search_selection] = useState([]);
+  // console.log("Testing data ", coin_search_selection);
+  const [model_search_selection, set_model_search_selection] = useState([]);
 
   const handleChangeForCoinSelection = (event, values) => {
     if (values != null) {
@@ -231,13 +224,16 @@ const ModelDataGrid = () => {
             var unique_coins = {};
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
-              var name = data["response"][i].strategy_name.replace("_", "-");
-              model_names.push(name);
+              // var name = data["response"][i].strategy_name.replace("_", "-");
+              model_names.push({
+                label: data["response"][i].strategy_name.replace("_", "-"),
+                // value: i,
+              });
               if (!unique_coins[data["response"][i].currency]) {
                 unique_coins[data["response"][i].currency] = 1;
                 coin_names.push({
                   label: data["response"][i].currency,
-                  value: index,
+                  // value: i,
                 });
               }
               var dt = new Date(
@@ -293,7 +289,7 @@ const ModelDataGrid = () => {
               Set_model_search_selection_cache({
                 model_names: model_names,
               });
-              console.log("Here are model names --->", model_names);
+              // console.log("Here are model names --->", model_names);
             }
           })
           .catch((err) => console.log(err));
@@ -326,7 +322,7 @@ const ModelDataGrid = () => {
             var model_names = {};
             for (var i = 0; i < data["msg"].length; i++) {
               // console.log(data["msg"][i].strategy_name);
-              var name = data["msg"][i].strategy_name;
+              // var name = data["msg"][i].strategy_name;
               model_names[data["msg"][i].strategy_name] = {
                 strategy_name: data["msg"][i].strategy_name,
                 current_drawdown: data["msg"][i].current_drawdown,
@@ -425,7 +421,7 @@ const ModelDataGrid = () => {
           </Tooltip>
         </strong>
       ),
-      flex: 1.4,
+      flex: 1.55,
       renderCell: (cellValues) => {
         return <ModelNameCol value={cellValues.value} />;
       },
@@ -437,7 +433,7 @@ const ModelDataGrid = () => {
       width: 130,
       sortable: true,
       headerAlign: "center",
-      flex: 1.5,
+      flex: 1.95,
       renderHeader: (params) => (
         <strong>
           {"Start Date "}
@@ -458,7 +454,7 @@ const ModelDataGrid = () => {
       width: 180,
       sortable: true,
       headerAlign: "center",
-      flex: 1.4,
+      flex: 1.8,
 
       cellClassName: (params) => {
         if (params.value == null) {
@@ -491,7 +487,7 @@ const ModelDataGrid = () => {
       width: 140,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 2.5,
       renderHeader: (params) => (
         <strong>
           {"Forecast Time"}
@@ -513,7 +509,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: false,
       headerAlign: "center",
-      flex: 1.6,
+      flex: 1.79,
       renderCell: (cellValues) => {
         // console.log("Here is the model -->", cellValues.value);
         return <Timer time_horizon={cellValues.value} />;
@@ -539,7 +535,7 @@ const ModelDataGrid = () => {
       width: 100,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 2.15,
       renderHeader: (params) => (
         <strong>
           {"Avg Daily PNL"}
@@ -561,7 +557,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: true,
       headerAlign: "center",
-      flex: 1.3,
+      flex: 1.54,
       renderHeader: (params) => (
         <strong>
           {"7d PNL "}
@@ -583,7 +579,7 @@ const ModelDataGrid = () => {
       width: 110,
       sortable: true,
       headerAlign: "center",
-      flex: 1.45,
+      flex: 1.75,
       renderHeader: (params) => (
         <strong>
           {"Total PNL "}
@@ -615,9 +611,10 @@ const ModelDataGrid = () => {
       field: "pnlGraph",
       headerName: "PNL Graph",
       sortable: false,
-      width: 120,
       headerAlign: "center",
-      flex: 1.35,
+      flex: 2.5,
+      width: 175,
+
       renderCell: (cellValues) => {
         // console.log("I am called in dark mode -->", cellValues.value);
         return <DataGridGraph model_name={cellValues.value} />;
@@ -643,7 +640,7 @@ const ModelDataGrid = () => {
   const handleChangeForTimeHorizonSelection = (id, timeH) => {
     // var for_style = set_curr_active(id);
     // document.getElementById(id).style = "background-color : green !important";
-    console.log("Current active is -->", id);
+    // console.log("Current active is -->", id);
 
     if (timeH == "All") {
       setRows(rows_cached);
@@ -695,9 +692,8 @@ const ModelDataGrid = () => {
       field: "pnlGraph",
       headerName: "PNL Graph",
       sortable: false,
-      width: 100,
+      width: 175,
       headerAlign: "center",
-      flex: 1,
       renderCell: (cellValues) => {
         return <DataGridGraph model_name={cellValues.value} />;
       },

@@ -54,6 +54,40 @@ import DRL from "./components/resources/resourcestextual/initialSolution/DRL";
 import ExperimentalResults from "./components/resources/resourcestextual/initialSolution/ExperimentalResults";
 import Compare from "./pages/Compare";
 
+// import sitemap from "./sitemap.xml";
+function Sitemap() {
+  return (
+    <div>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+          <loc>https://zerotheorem.com/</loc>
+          <lastmod>2023-03-13</lastmod>
+          <changefreq>daily</changefreq>
+          <priority>1.0</priority>
+        </url>
+        <url>
+          <loc>https://zerotheorem.com/about</loc>
+          <lastmod>2023-03-13</lastmod>
+          <changefreq>weekly</changefreq>
+          <priority>0.8</priority>
+        </url>
+        <url>
+          <loc>https://zerotheorem.com/resources</loc>
+          <lastmod>2023-03-13</lastmod>
+          <changefreq>weekly</changefreq>
+          <priority>0.7</priority>
+        </url>
+        <url>
+          <loc>https://zerotheorem.com/faq</loc>
+          <lastmod>2023-03-13</lastmod>
+          <changefreq>daily</changefreq>
+          <priority>0.9</priority>
+        </url>
+      </urlset>{" "}
+    </div>
+  );
+}
+
 function App() {
   const { Login, user, error, loading } = useStateContext();
 
@@ -214,7 +248,12 @@ function App() {
             <Footer />
           </div>
         ) : (
-          <LoginForm Login={Login} error={error} />
+          <div>
+            <LoginForm Login={Login} error={error} />
+            <Routes basename="/zero-theorem">
+              <Route path="/sitemap.xml" component={Sitemap} />
+            </Routes>
+          </div>
         )}
       </React.Fragment>
     )

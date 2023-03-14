@@ -88,7 +88,7 @@ const MobileDataGrid = () => {
     if (strategies == null && pnl_for_each_strategy == null) {
       return;
     } else {
-      console.log("Hi here is pnl for each -->", pnl_for_each_strategy);
+      // console.log("Hi here is pnl for each -->", pnl_for_each_strategy);
       var data_for_rows = [];
       var index = 0;
 
@@ -108,7 +108,7 @@ const MobileDataGrid = () => {
       if (data_for_rows.length != 0) {
         setRows(data_for_rows);
         set_rows_cached(data_for_rows);
-        console.log("Here are data grid--->", data_for_rows);
+        // console.log("Here are data grid--->", data_for_rows);
       }
     }
   }, [strategies]);
@@ -132,13 +132,13 @@ const MobileDataGrid = () => {
             for (var i = 0; i < data["response"].length; i++) {
               model_names.push({
                 label: data["response"][i].strategy_name,
-                value: index,
+                // value: i,
               });
               if (!unique_coins[data["response"][i].currency]) {
                 unique_coins[data["response"][i].currency] = 1;
                 coin_names.push({
                   label: data["response"][i].currency,
-                  value: index,
+                  // value: i,
                 });
               }
               var dt = new Date(
@@ -184,7 +184,7 @@ const MobileDataGrid = () => {
             }
             if (JSON.stringify(data_for_strategies) !== "{}") {
               setStrategies(data_for_strategies);
-              console.log("Strategies final -->", data_for_strategies);
+              // console.log("Strategies final -->", data_for_strategies);
               Set_strategies_cache({ strategies: data_for_strategies });
               Set_coin_search_selection_cache({
                 coin_names: coin_names,
@@ -196,10 +196,10 @@ const MobileDataGrid = () => {
           })
           .catch((err) => console.log(err));
       } else {
-        console.log(
-          "I am using cached value of strategies -->",
-          strategies_cache
-        );
+        // console.log(
+        //   "I am using cached value of strategies -->",
+        //   strategies_cache
+        // );
         setStrategies(strategies_cache["strategies"]);
         set_coin_search_selection(coin_selection_cache["coin_names"]);
         set_model_search_selection(model_selection_cache["model_names"]);
