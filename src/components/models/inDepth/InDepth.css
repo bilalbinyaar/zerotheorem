@@ -44,8 +44,25 @@
     font-size: 16px;
 }
 
+@media screen and (max-width: 768px) {
+    .in-depth-charts {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-@media screen and (max-width: 480px) {
+    .in-depth-nc {
+        width: 100%;
+    }
+    
+    .in-depth-gd {
+        width: 100%;
+        margin: 0;
+    }
+
+}
+
+
+@media screen and (max-width: 568px) {
     .in-depth-charts {
         flex-direction: column;
         align-items: flex-start;

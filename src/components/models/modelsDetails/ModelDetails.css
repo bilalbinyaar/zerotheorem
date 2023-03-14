@@ -366,7 +366,7 @@
 
 .compare-btn-div {
   background-color: var(--color-day-yellow);
-  width: 155px;
+  width: 110px;
 }
 
 .compare-btn {
@@ -381,7 +381,38 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
+  .model-details-main{
+    flex-direction: column;
+  }
+
+  .model-details-left-body-main {
+    display: flex;
+    margin-bottom: 1.6rem;
+  }
+
+  .model-details-left-body-wrapper {
+    display: flex;
+  }
+
+  .model-details-center {
+    margin: 0rem 0rem 1.6rem 0rem;
+  }
+
+  .model-details-right-new {
+    padding-left: 0;
+  }
+
+  .model-details-right-card-new {
+    width: 100%;
+  }
+
+  .row-for-details {
+    justify-content: unset;
+  }
+}
+
+@media screen and (max-width: 568px) {
   .for-font-size {
     font-size: 10px !important;
   }
@@ -401,6 +432,7 @@
 
   .model-details-left-body-main {
     display: flex;
+    flex-direction: column;
   }
 
   .model-details-left-top-percentage {
@@ -488,6 +520,10 @@
 
   .for-tooltip {
     margin-right: 0.4rem;
+  }
+
+  .model-details-left-body-wrapper {
+    display: flex;
   }
 }
 

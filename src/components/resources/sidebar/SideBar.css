@@ -127,7 +127,7 @@
   border-radius: 5px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .sidebar-head h1 {
     display: none;
   }

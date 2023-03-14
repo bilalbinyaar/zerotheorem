@@ -68,7 +68,7 @@ const Overview = () => {
 
   return (
     <div>
-      {windowWidth.current <= 480 ? (
+      {windowWidth.current <= 568 ? (
         <div className="overview-mobile">
           <div className="container">
 

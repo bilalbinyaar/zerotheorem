@@ -68,7 +68,7 @@ table{
   border-left: 0px !important;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
 
   .compare-searches {
     margin-top: 2rem;

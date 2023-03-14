@@ -37,11 +37,8 @@ const Introduction = () => {
               )}
             </div>
             <div className="about-video for-mb for-resources-page">
-              {/* {
-                windowWidth.current <= 480 ? () : ()
-                } */}
 
-              {windowWidth.current <= 480 ? (
+              {windowWidth.current <= 568 ? (
                 <div>
                   {theme == "dark-theme" ? (
                     <video src={AnimationVideoMobileDay} autoPlay loop />

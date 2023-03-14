@@ -762,7 +762,7 @@ const ModelDataGrid = () => {
   return (
     <div className="model-grid">
       <div className="container">
-        {windowWidth.current <= 480 ? (
+        {windowWidth.current <= 568 ? (
           <div className="model-grid-mob">
             <div className="horizon">
               <div className="horizon-row">

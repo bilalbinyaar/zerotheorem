@@ -87,7 +87,7 @@ export default function Navbar() {
 
   return (
     <div className="header">
-      {windowWidth.current <= 480 ? (
+      {windowWidth.current <= 568 ? (
         <NavMobile />
       ) : (
         <div className="container">
