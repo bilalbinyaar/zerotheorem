@@ -28,17 +28,17 @@ const TvCumulativePnlChart = (props) => {
           for (var index = 0; index < data["response"].length; index++) {
             // console.log(data["response"][index].ledger_timestamp);
             if (parseInt(data["response"][index].pnl) != 0) {
-              console.log(
-                "Non zero values -->",
-                data["response"][index].pnl_sum
-              );
+              // console.log(
+              //   "Non zero values -->",
+              //   data["response"][index].pnl_sum
+              // );
 
               cum_pnl.push({
                 time: parseInt(data["response"][index].ledger_timestamp),
                 value: parseInt(data["response"][index].pnl_sum),
               });
             } else {
-              console.log(data["response"][index].pnl_sum);
+              // console.log(data["response"][index].pnl_sum);
             }
           }
 
