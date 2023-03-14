@@ -445,7 +445,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .forecasts .container {
     padding: 2.2rem 0rem 0rem 0rem;
   }

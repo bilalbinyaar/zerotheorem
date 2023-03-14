@@ -118,14 +118,22 @@
 }
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .graph-table-main {
     flex-direction: column;
   }
 
   .table-card {
-    margin: 0.2rem 0rem 1.2rem 0rem !important;
+    margin: 0.2rem 0rem 0.4rem 0rem !important;
   }
+
+  /* .for-table-head {
+    text-align: left;
+  }
+
+  .for-table-data {
+    text-align: left;
+  } */
 
   .table-card-head h3 {
     font-size: 14px;
@@ -133,5 +141,9 @@
 
   .for-table-head button {
     display: none;
+  }
+
+  .graph-table-main {
+    margin-bottom: 1.2rem;
   }
 }

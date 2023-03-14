@@ -85,8 +85,8 @@
     font-size: 16px;
 }
 
+@media screen and (max-width: 768px) {
 
-@media screen and (max-width: 480px) {
     .current-position-spans {
         display: flex;
         justify-content: center;
@@ -94,8 +94,21 @@
         padding: 0rem 0.2rem;
     }
 
+    .current-position-body {
+        justify-content: start;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 568px) {
+
     .current-position-spans span {
         font-size: 10px;
+    }
+
+    .current-position-body {
+        margin-top: 8px;
     }
 
     .for-red {
@@ -104,13 +117,6 @@
 
     .for-green {
         margin-left: 0.1rem;
-    }
-
-    .current-position-body {
-        margin-top: 8px;
-        justify-content: start;
-        align-items: flex-start;
-        flex-direction: column;
     }
 
     .for-h3-font {

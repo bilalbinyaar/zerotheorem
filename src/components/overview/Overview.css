@@ -110,7 +110,7 @@
 }
 
 .percentage-long {
-  background-color: var(--color-day-green);
+  background-color: #16c784de;
   width: 100%;
   padding: 0.6rem 0;
   border-bottom-left-radius: 6px;
@@ -118,7 +118,7 @@
 }
 
 .percentage-short {
-  background-color: var(--color-day-red);
+  background-color: #ff2e2edb;
   width: 100%;
   padding: 0.6rem 0;
   border-bottom-right-radius: 6px;
@@ -224,7 +224,7 @@
 }
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .overview-mobile {
     display: flex;
   }

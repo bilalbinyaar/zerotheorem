@@ -280,58 +280,69 @@ const ModelDetailsLeft = (props) => {
       </div>
 
       <div className="model-details-left-body-main">
-        {/* Body # 1 */}
-        <div className="model-details-left-body">
-          <div className="model-details-left-body-stats rank for-font-size">
-            <p>
-              Rank #
-              {stats[props.model_name] ? stats[props.model_name].rank : null}
-            </p>
+
+        <div className="model-details-left-body-wrapper">
+        
+          {/* Body # 1 */}
+          <div className="model-details-left-body">
+            <div className="model-details-left-body-stats rank for-font-size">
+              <p>
+                Rank #
+                {stats[props.model_name] ? stats[props.model_name].rank : null}
+              </p>
+            </div>
+            {/* <div className="model-details-left-body-stats visited">
+              <p className="para-margin for-font-size">Visited by</p>
+              <p className="for-font-size">3,655,820</p>
+            </div> */}
           </div>
-          {/* <div className="model-details-left-body-stats visited">
-            <p className="para-margin for-font-size">Visited by</p>
-            <p className="for-font-size">3,655,820</p>
-          </div> */}
+
+          {/* Body # 2 */}
+          <div className="model-details-left-body">
+            <div className="model-details-left-body-stats hours">
+              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+              <p className="for-font-size">
+                {strategies[props.model_name]
+                  ? strategies[props.model_name].time_horizon
+                  : null}
+              </p>
+            </div>
+            <div className="model-details-left-body-stats date">
+              <AiOutlineCalendar className="model-details-left-body-stats-icon para-margin" />
+              <p className="para-margin for-font-size">
+                {strategies[props.model_name]
+                  ? strategies[props.model_name].date_started
+                  : null}
+              </p>
+            </div>
+          </div>
+
+          {/* Body # 3 */}
+          <div className="model-details-left-body">
+            <div className="model-details-left-body-stats hours">
+              <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
+              <p className="for-font-size">
+                {strategies[props.model_name]
+                  ? strategies[props.model_name].currency
+                  : null}
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        {/* Body # 2 */}
-        <div className="model-details-left-body">
-          <div className="model-details-left-body-stats hours">
-            <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-            <p className="for-font-size">
-              {strategies[props.model_name]
-                ? strategies[props.model_name].time_horizon
-                : null}
-            </p>
-          </div>
-          <div className="model-details-left-body-stats date">
-            <AiOutlineCalendar className="model-details-left-body-stats-icon para-margin" />
-            <p className="para-margin for-font-size">
-              {strategies[props.model_name]
-                ? strategies[props.model_name].date_started
-                : null}
-            </p>
-          </div>
-        </div>
+        <div>
 
-        {/* Body # 3 */}
-        <div className="model-details-left-body">
-          <div className="model-details-left-body-stats hours">
-            <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
-            <p className="for-font-size">
-              {strategies[props.model_name]
-                ? strategies[props.model_name].currency
-                : null}
-            </p>
-          </div>
-        </div>
+          {/* Body # 4 */}
+          <div className="model-details-left-body">
+            <div className="model-details-left-body-stats compare-btn-div">
+              <Link to='/compare'>
+                <p className="compare-btn">
+                  Compare
+                </p>
+              </Link>
+            </div>
 
-        {/* Body # 4 */}
-        <div className="model-details-left-body">
-          <div className="model-details-left-body-stats compare-btn-div">
-            <Link to="/compare" state={{ model_name: `${props.model_name}` }}>
-              <p className="compare-btn">Compare</p>
-            </Link>
           </div>
         </div>
       </div>

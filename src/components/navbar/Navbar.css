@@ -118,7 +118,7 @@
 
 
 
-@media screen and (min-width:480px) {
+@media screen and (min-width:568px) {
     .dark-lite {
         width: 23%;
     }
@@ -157,7 +157,7 @@
         position: absolute;
         flex-direction: column;
         justify-content: start;
-        top: 77px;
+        top: 75px;
         left: 0;
         width: 50%;
         height: 90vh;
@@ -176,7 +176,7 @@
     }
 
     .nav-menu li {
-        padding: 1rem;
+        padding: 2rem;
         width: 100%;
     }
 
@@ -199,7 +199,7 @@
 }
 
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:568px) {
     .nav-logo-img {
         width: 65%;
     }
@@ -230,6 +230,10 @@
 
     .dark-lite {
         width: 3.5%;
+    }
+
+    .nav-icons {
+        font-size: 16px;
     }
 }
 

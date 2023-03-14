@@ -115,7 +115,7 @@ p {
   color: var(--color-day-black);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   h1 {
     font-size: 22px;
   }
@@ -408,7 +408,7 @@ label[data-shrink="false"]
   border-radius: 2px;
 } 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
     min-height: 35px !important;
   }
@@ -662,7 +662,7 @@ a {
   color: var(--color-day-yellow);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .apexcharts-toolbar {
     display: none !important;
   }
@@ -741,7 +741,7 @@ a {
   align-items: center; */
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .comparison-spline {
     width: 110px !important;
     height: 110px !important;
@@ -825,7 +825,7 @@ a {
 
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .pagination {
     top: -4.9vh;
   }
@@ -897,7 +897,7 @@ a {
   top: -6px !important;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .css-1km1ehz {
     min-height: 38px !important;
     padding: 3px 12px !important;
@@ -1028,7 +1028,7 @@ a {
   text-align: center;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 568px) {
   .bg-long {
     display: none;
   }
@@ -1071,7 +1071,7 @@ a {
   color: var(--color-day-black) !important;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .css-1omp2b7 {
     font-size: 11px !important;
   }
@@ -1082,7 +1082,7 @@ a {
   z-index: 3 !important;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .css-whi0l6 {
     display: none !important;
   }
@@ -1138,7 +1138,7 @@ a {
   z-index: 4;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 568px) {
   .css-1yy0dv2 {
     justify-content: center !important;
   }
