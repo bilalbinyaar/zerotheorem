@@ -366,11 +366,11 @@
 
 .compare-btn-div {
   background-color: var(--color-day-yellow);
-  width: 110px;
+  width: 90px;
 }
 
 .compare-btn {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 500;
   color: black;
 }
@@ -381,7 +381,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 908px) {
   .model-details-main{
     flex-direction: column;
   }
@@ -411,6 +411,37 @@
     justify-content: unset;
   }
 }
+
+/* @media screen and (max-width: 768px) {
+  .model-details-main{
+    flex-direction: column;
+  }
+
+  .model-details-left-body-main {
+    display: flex;
+    margin-bottom: 1.6rem;
+  }
+
+  .model-details-left-body-wrapper {
+    display: flex;
+  }
+
+  .model-details-center {
+    margin: 0rem 0rem 1.6rem 0rem;
+  }
+
+  .model-details-right-new {
+    padding-left: 0;
+  }
+
+  .model-details-right-card-new {
+    width: 100%;
+  }
+
+  .row-for-details {
+    justify-content: unset;
+  }
+} */
 
 @media screen and (max-width: 568px) {
   .for-font-size {

@@ -9,6 +9,7 @@
 .about-head h1 {
   text-align: center;
   font-weight: 700 !important;
+  font-size: 26px;
 }
 
 .for-mb {
@@ -157,6 +158,12 @@ sub {
     border-radius: 50%;
     border: 5px solid var(--color-day-yellow);
 } */
+
+@media screen and (max-width: 918px) {
+  .mission-section {
+    flex-direction: column;
+  }
+}
 
 @media screen and (max-width: 568px) {
   

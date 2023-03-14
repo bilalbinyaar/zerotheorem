@@ -173,7 +173,7 @@ const TradingViewSplineArea = (props) => {
     <div
       className="best-performing-spline"
       ref={chartContainerRef}
-      style={{ width: "175px", height: "60px" }} // Set a fixed width and height
+      style={{ width: "150px", height: "50px" }} // Set a fixed width and height
     />
   );
 };
