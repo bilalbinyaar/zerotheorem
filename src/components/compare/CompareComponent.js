@@ -46,6 +46,7 @@ const CompareComponent = () => {
       // handleChangePage("", 1);
       // setRows(res);
     } else {
+      set_model_name_1("");
       // setRows(rows_cached);
     }
   };
@@ -61,6 +62,8 @@ const CompareComponent = () => {
       // handleChangePage("", 1);
       // setRows(res);
     } else {
+      set_model_name_2("");
+
       // setRows(rows_cached);
     }
   };
@@ -76,6 +79,8 @@ const CompareComponent = () => {
       // handleChangePage("", 1);
       // setRows(res);
     } else {
+      set_model_name_3("");
+
       // setRows(rows_cached);
     }
   };
@@ -159,7 +164,7 @@ const CompareComponent = () => {
             if (JSON.stringify(data_for_strategies) !== "{}") {
               setStrategies(data_for_strategies);
               set_model_names(model_names);
-              console.log("Using model names -->", model_names);
+              // console.log("Using model names -->", model_names);
               //  console.log("Strategies final -->", data_for_strategies);
               Set_strategies_cache({ strategies: data_for_strategies });
               Set_coin_search_selection_cache({
@@ -182,10 +187,10 @@ const CompareComponent = () => {
         //   "Here are model names c--->",
         //   model_selection_cache["model_names"]
         // );
-        console.log(
-          "Using model names -->",
-          model_selection_cache["model_names"]
-        );
+        // console.log(
+        //   "Using model names -->",
+        //   model_selection_cache["model_names"]
+        // );
         set_model_names(model_selection_cache["model_names"]);
       }
     }

@@ -47,7 +47,7 @@ const TradingViewSplineArea = (props) => {
 
   useEffect(() => {
     if (cummulative_pnl.length != 0) {
-      console.log("Here is the values --->", data_for_pnl_graph);
+      //   console.log("Here is the values --->", data_for_pnl_graph);
 
       set_data_for_pnl_graph(cummulative_pnl);
     }
@@ -81,7 +81,7 @@ const TradingViewSplineArea = (props) => {
       return;
     } else {
       if (data_for_pnl_graph && chartContainerRef.current) {
-        console.log("Here is the values --->", data_for_pnl_graph);
+        // console.log("Here is the values --->", data_for_pnl_graph);
         // Create a new chart
         chartRef.current = createChart(chartContainerRef.current, {
           //   width: 100,

@@ -4,17 +4,18 @@ import { useState, memo } from "react";
 import { useStateContext } from "../../../ContextProvider";
 import { faSlash } from "@fortawesome/free-solid-svg-icons";
 
-const TvSplineAreaChartTopPerformer = (props) => {
+const TvCumulativePnlChart = (props) => {
   const [model_name, set_model_name] = useState(props.model_name);
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
   }
-  const { spline_graph_cache, Set_spline_graph_cache } = useStateContext();
+  const { spline_graph_cum_cache, Set_spline_graph_cum_cache } =
+    useStateContext();
   const [data_for_pnl_graph, set_data_for_pnl_graph] = useState([]);
   const [cummulative_pnl, set_cum_pnl] = useState([]);
 
   useEffect(() => {
-    if (!spline_graph_cache[props.model_name] && props.model_name != "") {
+    if (!spline_graph_cum_cache[props.model_name]) {
       // console.log("I received model name for graph -->", props.model_name);
 
       fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/${props.model_name}`, {
@@ -25,26 +26,39 @@ const TvSplineAreaChartTopPerformer = (props) => {
           // console.log("I received data for each series -->", data["response"]);
           var cum_pnl = [];
           for (var index = 0; index < data["response"].length; index++) {
-            cum_pnl.push({
-              time: index,
-              value: parseInt(data["response"][index].pnl_sum),
-            });
+            // console.log(data["response"][index].ledger_timestamp);
+            if (parseInt(data["response"][index].pnl) != 0) {
+              console.log(
+                "Non zero values -->",
+                data["response"][index].pnl_sum
+              );
+
+              cum_pnl.push({
+                time: parseInt(data["response"][index].ledger_timestamp),
+                value: parseInt(data["response"][index].pnl_sum),
+              });
+            } else {
+              console.log(data["response"][index].pnl_sum);
+            }
           }
 
           // await delay(1000);
           if (cum_pnl.length != 0) {
+            // const chartData = cum_pnl
+            //   .sort((a, b) => a.time - b.time)
+            //   .map((item) => ({
+            //     time: new Date(item.time * 1000),
+            //     value: item.value,
+            //   }));
+            // console.log(chartData);
             set_cum_pnl(cum_pnl);
-            Set_spline_graph_cache({ [props.model_name]: cum_pnl });
+            Set_spline_graph_cum_cache({ [props.model_name]: cum_pnl });
           }
           // console.log("Cum pnl -->", cum_pnl);
         })
         .catch((err) => console.log(err));
     } else {
-      if (props.model_name != "") {
-        set_cum_pnl(spline_graph_cache[props.model_name]);
-      } else {
-        set_data_for_pnl_graph([]);
-      }
+      set_cum_pnl(spline_graph_cum_cache[props.model_name]);
 
       // console.log(
       //   "I am using cached value for straight spline graph -->",
@@ -94,19 +108,22 @@ const TvSplineAreaChartTopPerformer = (props) => {
         chartRef.current = createChart(chartContainerRef.current, {
           //   width: 100,
           //   height: 100,
-          priceLineVisible: false,
+          priceLineVisible: true,
 
           rightPriceScale: {
-            visible: false, // Set to false to hide the y-axis
+            visible: true, // Set to false to hide the y-axis
           },
-          handleScale: false, // Set to false to disable scaling
-          handleScroll: false, // Set to false to disable scrolling
-          handleZoom: false,
+          //   leftPriceScale: {
+          //     visible: true, // Set to false to hide the y-axis
+          //   },
+          handleScale: true, // Set to false to disable scaling
+          handleScroll: true, // Set to false to disable scrolling
+          //   handleZoom: true,
           handleScale: {
-            visible: false,
+            visible: true,
             axisPressedMouseMove: {
-              time: false,
-              price: false,
+              time: true,
+              price: true,
             },
           },
           layout: {
@@ -115,7 +132,7 @@ const TvSplineAreaChartTopPerformer = (props) => {
           },
           crosshair: {
             // mode: CrosshairMode.Normal,
-            visible: false,
+            visible: true,
           },
           grid: {
             vertLines: {
@@ -131,13 +148,13 @@ const TvSplineAreaChartTopPerformer = (props) => {
           },
           priceScale: {
             // borderColor: "#485c7b",
-            visible: false,
-            priceLineVisible: false,
+            visible: true,
+            priceLineVisible: true,
 
             // borderWidth: 1, // Set a fixed width for the price scale borders
           },
           timeScale: {
-            visible: false,
+            visible: true,
             borderColor: "#000000",
             borderWidth: 1, // Set a fixed width for the time scale borders
             maxBarSpacing: 20, // Set a maximum bar spacing to prevent bars from becoming too wide
@@ -179,11 +196,11 @@ const TvSplineAreaChartTopPerformer = (props) => {
 
   return (
     <div
-      className="best-performing-spline"
+      className="container"
       ref={chartContainerRef}
-      style={{ width: "200px", height: "100px" }} // Set a fixed width and height
+      style={{ width: "60%", height: "400px" }} // Set a fixed width and height
     />
   );
 };
 
-export default TvSplineAreaChartTopPerformer;
+export default TvCumulativePnlChart;

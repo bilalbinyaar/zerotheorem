@@ -104,6 +104,7 @@ export const ContextProvider = ({ children }) => {
 
   const [coin_selection_cache, set_coin_selection_cache] = useState({});
   const [model_selection_cache, set_model_selection_cache] = useState({});
+  const [spline_graph_cum_cache, set_spline_graph_cum_cache] = useState({});
   const [negative_canvasjs_graph_cache, set_negative_canvasjs_graph_cache] =
     useState({});
   const [
@@ -235,6 +236,12 @@ export const ContextProvider = ({ children }) => {
     set_drawdown_canvasjs_graph_cache(obj13);
     // console.log("My updated data in cache -->", obj12);
   };
+  const Set_spline_graph_cum_cache = (new_data) => {
+    // const updated_data = [...cache, new_data];
+    let obj29 = Object.assign(spline_graph_cum_cache, new_data);
+    set_spline_graph_cum_cache(obj29);
+    // console.log("My updated data in cache -->", obj12);
+  };
   // PRELOADER
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("spinner");
@@ -331,6 +338,8 @@ export const ContextProvider = ({ children }) => {
         Set_drawdown_negative_canvasjs_graph_cache,
         position_stats_cache,
         Set_position_stats_cache,
+        spline_graph_cum_cache,
+        Set_spline_graph_cum_cache,
       }}
     >
       {children}

@@ -20,6 +20,7 @@ import IndividualPnlCanvasjs from "../components/models/graphs/IndividualPnlCanv
 // import DrawdownCanvasjsSliderRange from "../components/models/graphs/DrawdownCanvasjsSliderRange";
 import CanvasjsSplineAreaChartWithRangeSelecetor from "../components/models/graphs/CanvasjsSplineAreaChartWithRangeSelecetor";
 import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/CanvasjsDrawdownWithSliderRange";
+import TvCumulativePnlChart from "../components/models/graphs/TvCumulativePnlChart";
 const Models = () => {
   const location = useLocation();
   // console.log("Pathname -->", location.pathname.replace("/", ""));
@@ -39,6 +40,7 @@ const Models = () => {
       {/* <TradingViewWidgetGraph /> */}
 
       <CumulativePNL />
+      <TvCumulativePnlChart model_name={name} />
       <CanvasjsSplineAreaChartWithRangeSelecetor model_name={name} />
 
       {/* <CanvasjsSplineAreaChart model_name={name} /> */}
