@@ -222,4 +222,8 @@
   .overview-card {
     width: 220px;
   }
+
+  .overview-details {
+    flex-direction: row;
+  }
 }
