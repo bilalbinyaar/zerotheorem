@@ -1355,7 +1355,7 @@ const ModelDataGrid = () => {
               </Box>
             </div>
           </div>
-        ) : (
+        ) :  (
           <div className="model-grid-web">
             <div className="horizon">
               <div className="horizon-row">
