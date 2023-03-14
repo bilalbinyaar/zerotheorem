@@ -19,7 +19,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
-import TradingViewSplineAreaChart from "../models/graphs/TvSplineAreaChart";
+
 import IconButton from "@mui/material/IconButton";
 import {
   GridColDef,
@@ -421,7 +421,7 @@ const ModelDataGrid = () => {
           </Tooltip>
         </strong>
       ),
-      flex: 1.4,
+      flex: 1.55,
       renderCell: (cellValues) => {
         return <ModelNameCol value={cellValues.value} />;
       },
@@ -433,7 +433,7 @@ const ModelDataGrid = () => {
       width: 130,
       sortable: true,
       headerAlign: "center",
-      flex: 1.5,
+      flex: 1.95,
       renderHeader: (params) => (
         <strong>
           {"Start Date "}
@@ -454,7 +454,7 @@ const ModelDataGrid = () => {
       width: 180,
       sortable: true,
       headerAlign: "center",
-      flex: 1.4,
+      flex: 1.8,
 
       cellClassName: (params) => {
         if (params.value == null) {
@@ -487,7 +487,7 @@ const ModelDataGrid = () => {
       width: 140,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 2.5,
       renderHeader: (params) => (
         <strong>
           {"Forecast Time"}
@@ -509,7 +509,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: false,
       headerAlign: "center",
-      flex: 1.6,
+      flex: 1.79,
       renderCell: (cellValues) => {
         // console.log("Here is the model -->", cellValues.value);
         return <Timer time_horizon={cellValues.value} />;
@@ -535,7 +535,7 @@ const ModelDataGrid = () => {
       width: 100,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 2.15,
       renderHeader: (params) => (
         <strong>
           {"Avg Daily PNL"}
@@ -557,7 +557,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: true,
       headerAlign: "center",
-      flex: 1.3,
+      flex: 1.54,
       renderHeader: (params) => (
         <strong>
           {"7d PNL "}
@@ -579,7 +579,7 @@ const ModelDataGrid = () => {
       width: 110,
       sortable: true,
       headerAlign: "center",
-      flex: 1.45,
+      flex: 1.75,
       renderHeader: (params) => (
         <strong>
           {"Total PNL "}
@@ -611,9 +611,10 @@ const ModelDataGrid = () => {
       field: "pnlGraph",
       headerName: "PNL Graph",
       sortable: false,
-      width: 120,
       headerAlign: "center",
-      flex: 1.35,
+      flex: 2.5,
+      width: 175,
+
       renderCell: (cellValues) => {
         // console.log("I am called in dark mode -->", cellValues.value);
         return <DataGridGraph model_name={cellValues.value} />;
@@ -691,9 +692,8 @@ const ModelDataGrid = () => {
       field: "pnlGraph",
       headerName: "PNL Graph",
       sortable: false,
-      width: 100,
+      width: 175,
       headerAlign: "center",
-      flex: 1,
       renderCell: (cellValues) => {
         return <DataGridGraph model_name={cellValues.value} />;
       },

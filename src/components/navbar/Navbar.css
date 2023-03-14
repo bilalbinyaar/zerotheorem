@@ -111,6 +111,13 @@
     padding-left: 1rem;
 }
 
+.nav-icons {
+    margin-right: 0.7rem;
+    font-size: 18px;
+}
+
+
+
 @media screen and (min-width:480px) {
     .dark-lite {
         width: 23%;
@@ -120,12 +127,21 @@
 
 @media screen and (max-width:1240px) {
 
+    .dark-lite {
+        width: 2%;
+    }
+
     .hamburger {
         display: flex;
     }
 
     .welcome-user-div {
         display: none !important;
+    }
+
+    .nav-logo-div a{
+        align-items: center;
+        justify-content: center;
     }
 
     .nav-btn{
@@ -141,7 +157,7 @@
         position: absolute;
         flex-direction: column;
         justify-content: start;
-        top: 87px;
+        top: 77px;
         left: 0;
         width: 50%;
         height: 90vh;
@@ -166,12 +182,20 @@
 
     .nav-menu a {
         font-size: 1rem;
+        display: flex;
+        align-items: center;
     }
 
     .nav-menu li.active {
     color: var(--color-day-yellow);
     }
 
+}
+
+@media screen and (max-width:775px) {
+    .dark-lite {
+        width: 3%;
+    }
 }
 
 
@@ -202,6 +226,10 @@
 
     .nav-menu li {
         padding: 1.5rem;
+    }
+
+    .dark-lite {
+        width: 3.5%;
     }
 }
 

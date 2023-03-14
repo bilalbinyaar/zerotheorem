@@ -70,7 +70,7 @@ export default function Navbar() {
 
   return (
     <div className="header">
-      {windowWidth.current <= 480 ? (
+      {windowWidth.current <= 1240 ? (
         <NavMobile />
       ) : (
         <div className="container">
@@ -99,7 +99,7 @@ export default function Navbar() {
             <CustomLink to="/about" onClick={toCloseNav}>
               About
             </CustomLink>
-            <CustomLink to="/faq" onClick={toCloseNav}>
+            <CustomLink to="/faqs" onClick={toCloseNav}>
               FAQs
             </CustomLink>
           </ul>
@@ -125,7 +125,7 @@ export default function Navbar() {
               <CustomLink to="/about" onClick={toCloseNav}>
                 About
               </CustomLink>
-              <CustomLink to="/faq" onClick={toCloseNav}>
+              <CustomLink to="/faqs" onClick={toCloseNav}>
                 FAQs
               </CustomLink>
 

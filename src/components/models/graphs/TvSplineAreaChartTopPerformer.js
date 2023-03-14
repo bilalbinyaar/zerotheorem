@@ -4,7 +4,11 @@ import { useState, memo } from "react";
 import { useStateContext } from "../../../ContextProvider";
 import { faSlash } from "@fortawesome/free-solid-svg-icons";
 
-const TradingViewSplineArea = (props) => {
+const TvSplineAreaChartTopPerformer = (props) => {
+  const [model_name, set_model_name] = useState(props.model_name);
+  if (model_name != props.model_name) {
+    set_model_name(props.model_name);
+  }
   const { spline_graph_cache, Set_spline_graph_cache } = useStateContext();
   const [data_for_pnl_graph, set_data_for_pnl_graph] = useState([]);
   const [cummulative_pnl, set_cum_pnl] = useState([]);
@@ -43,7 +47,7 @@ const TradingViewSplineArea = (props) => {
       //   straight_spline_graph_cache[props.model_name]
       // );
     }
-  }, []);
+  }, [model_name]);
 
   useEffect(() => {
     if (cummulative_pnl.length != 0) {
@@ -173,9 +177,9 @@ const TradingViewSplineArea = (props) => {
     <div
       className="best-performing-spline"
       ref={chartContainerRef}
-      style={{ width: "175px", height: "60px" }} // Set a fixed width and height
+      style={{ width: "200px", height: "100px" }} // Set a fixed width and height
     />
   );
 };
 
-export default TradingViewSplineArea;
+export default TvSplineAreaChartTopPerformer;

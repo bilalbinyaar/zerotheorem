@@ -65,6 +65,7 @@ const Overview = () => {
   }, []);
   const windowWidth = useRef(window.innerWidth);
 
+
   return (
     <div>
       {windowWidth.current <= 480 ? (
@@ -398,7 +399,7 @@ const Overview = () => {
                         {/* {position_analysis_stats["2h"]
                       ? position_analysis_stats["2h"].forecast_time
                       : "0"} */}
-                        00-00-0000 00:00:00
+                        0000-00-00 00:00
                       </p>
                     </div>
                   </div>
@@ -455,7 +456,7 @@ const Overview = () => {
                         {/* {position_analysis_stats["1h"]
                       ? position_analysis_stats["1h"].forecast_time
                       : "0"} */}
-                        00-00-0000 00:00:00
+                        0000-00-00 00:00
                       </p>
                     </div>
                   </div>
@@ -877,7 +878,7 @@ const Overview = () => {
                         {/* {position_analysis_stats["2h"]
                       ? position_analysis_stats["2h"].forecast_time
                       : "0"} */}
-                        00-00-0000 00:00:00
+                        0000-00-00 00:00
                       </p>
                       <Tooltip title="Forecast time">
                         <IconButton>
@@ -939,7 +940,7 @@ const Overview = () => {
                         {/* {position_analysis_stats["1h"]
                       ? position_analysis_stats["1h"].forecast_time
                       : "0"} */}
-                        00-00-0000 00:00:00
+                        0000-00-00 00:00
                       </p>
                       <Tooltip title="Forecast time">
                         <IconButton>

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import './FAQ.css';
 
-var link = <Link to='/resources'>Resources</Link>;
+var link = <Link to='/resources'>resources</Link>;
 
 
 export const questions = [
     {
         id: 1,
         question: 'What is Zero Theorem?',
-        answer: <p className="answers-api">Zero Theorem is an economic framework consisting of state-of-the-art machine learning methods used for an empirical proof on a set of Governing Equations that value digital assets. The resultant output of the proof is a range of forward price estimations (or forecasted directions) for Bitcoin and like proof of work (PoW) crypto-currencies. If you like to dive deep into the math please go to our {link} section. </p>
+        answer: <p className="answers-api">Zero Theorem is an economic framework consisting of state-of-the-art machine learning methods used for an empirical proof on a set of Governing Equations that value digital assets. The resultant output of the proof is a range of forward price estimations (or forecasted directions) for Bitcoin and like proof of work (PoW) crypto-currencies. If you like to dive deep into the math please go to our {link}. </p>
     },
     
     {

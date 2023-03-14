@@ -21,6 +21,7 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EquationBlack from "../../assets/equation-black.png";
+import TvSplineAreaChartTopPerformer from "../models/graphs/TvSplineAreaChartTopPerformer";
 import EquationWhite from "../../assets/equation-white.png";
 import { Link } from "react-router-dom";
 import AdsensePlaceHolder from "../adsense/AdsensePlaceHolder";
@@ -490,7 +491,7 @@ const Forecasts = () => {
           {/* FOR WEB VIEW */}
           {checked === true ? (
             <div className="forecast-web">
-              <div className="forecasts-cards">
+              <div className="forecasts-cards tablet-view-card">
                 <div className="forecasts-card card-margin">
                   <div className="announcement-card">
                     <div className="announcement-row">
@@ -593,7 +594,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[0] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[0].strategy_name
                             }
@@ -712,7 +713,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[1] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[1].strategy_name
                             }
@@ -828,7 +829,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[2] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[2].strategy_name
                             }
@@ -944,7 +945,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[3] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[3].strategy_name
                             }
@@ -1060,7 +1061,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[4] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[4].strategy_name
                             }
@@ -1177,7 +1178,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[5] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[5].strategy_name
                             }
@@ -1293,7 +1294,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[6] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[6].strategy_name
                             }
@@ -1409,7 +1410,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[7] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[7].strategy_name
                             }
@@ -1525,7 +1526,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[8] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[8].strategy_name
                             }
@@ -1641,7 +1642,7 @@ const Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[9] ? (
-                          <ForecastsSplineCanvasjs
+                          <TvSplineAreaChartTopPerformer
                             model_name={
                               Object.values(topPerformerModels)[9].strategy_name
                             }
@@ -1764,7 +1765,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[0] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[0].strategy_name
                           }
@@ -1870,7 +1871,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[1] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[1].strategy_name
                           }
@@ -1976,7 +1977,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[2] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[2].strategy_name
                           }
@@ -2084,7 +2085,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[3] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[3].strategy_name
                           }
@@ -2190,7 +2191,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[4] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[4].strategy_name
                           }
@@ -2296,7 +2297,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[5] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[5].strategy_name
                           }
@@ -2402,7 +2403,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[6] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[6].strategy_name
                           }
@@ -2508,7 +2509,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[7] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[7].strategy_name
                           }
@@ -2614,7 +2615,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[8] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[8].strategy_name
                           }
@@ -2720,7 +2721,7 @@ const Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[9] ? (
-                        <ForecastsSplineCanvasjs
+                        <TvSplineAreaChartTopPerformer
                           model_name={
                             Object.values(topPerformerModels)[9].strategy_name
                           }

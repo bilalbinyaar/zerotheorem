@@ -8,7 +8,7 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { useLocation } from "react-router-dom";
-
+import TvSplineAreaChartTopPerformer from "../models/graphs/TvSplineAreaChartTopPerformer";
 const CompareComponent = () => {
   const [Flag, setFlag] = useState(null);
   const [stats, set_stats] = useState({});
@@ -710,7 +710,7 @@ const CompareComponent = () => {
           />
           <Autocomplete
             id="country-select-demo"
-            className="model-compare-search"
+            className="model-compare-search to-hide"
             sx={{
               backgroundColor: "var(--color-forecasts-card)",
               borderRadius: "5px",
@@ -938,17 +938,17 @@ const CompareComponent = () => {
                   {/* <ComparisonChartCanvas /> */}
                 </th>
                 <th className="tg-0lax">
-                  <ComparisonChartCanvas
+                  <TvSplineAreaChartTopPerformer
                     model_name={model_name_1.replace("-", "_")}
                   />
                 </th>
                 <th className="tg-0lax">
-                  <ComparisonChartCanvas
+                  <TvSplineAreaChartTopPerformer
                     model_name={model_name_2.replace("-", "_")}
                   />
                 </th>
-                <th className="tg-0lax">
-                  <ComparisonChartCanvas
+                <th className="tg-0lax to-hide">
+                  <TvSplineAreaChartTopPerformer
                     model_name={model_name_3.replace("-", "_")}
                   />
                 </th>
@@ -967,7 +967,7 @@ const CompareComponent = () => {
                     ? strategies[model_name_2].time_horizon
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {strategies[model_name_3]
                     ? strategies[model_name_3].time_horizon
                     : null}
@@ -985,7 +985,7 @@ const CompareComponent = () => {
                     ? strategies[model_name_2].currency
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {strategies[model_name_3]
                     ? strategies[model_name_3].currency
                     : null}
@@ -1003,7 +1003,7 @@ const CompareComponent = () => {
                     ? strategies[model_name_2].date_started
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {strategies[model_name_3]
                     ? strategies[model_name_3].date_started
                     : null}
@@ -1021,7 +1021,7 @@ const CompareComponent = () => {
                     ? strategies[model_name_2].current_position
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {strategies[model_name_3]
                     ? strategies[model_name_3].current_position
                     : null}
@@ -1039,7 +1039,7 @@ const CompareComponent = () => {
                     ? strategies[model_name_2].forecast_time
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {strategies[model_name_3]
                     ? strategies[model_name_3].forecast_time
                     : null}
@@ -1057,7 +1057,7 @@ const CompareComponent = () => {
                     ? strategies[model_name_2].next_forecast
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {strategies[model_name_3]
                     ? strategies[model_name_3].next_forecast
                     : null}
@@ -1071,7 +1071,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_1 : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_1 : null}
                 </td>
               </tr>
@@ -1083,7 +1083,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_7 : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_7 : null}
                 </td>
               </tr>
@@ -1095,7 +1095,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_15 : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_15 : null}
                 </td>
               </tr>
@@ -1107,7 +1107,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_30 : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_30 : null}
                 </td>
               </tr>
@@ -1119,7 +1119,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_45 : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_45 : null}
                 </td>
               </tr>
@@ -1131,7 +1131,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_60 : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_60 : null}
                 </td>
               </tr>
@@ -1154,7 +1154,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].max_drawdown
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].max_drawdown
                     : null}
@@ -1179,7 +1179,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].max_drawdown_duration
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].max_drawdown_duration
                     : null}
@@ -1204,7 +1204,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].average_drawdown
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].average_drawdown
                     : null}
@@ -1229,7 +1229,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].average_drawdown_duration
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].average_drawdown_duration
                     : null}
@@ -1254,7 +1254,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].current_drawdown
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].current_drawdown
                     : null}
@@ -1279,7 +1279,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].curr_drawdown_duration
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].curr_drawdown_duration
                     : null}
@@ -1300,7 +1300,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].total_wins : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].total_wins : null}
                 </td>
               </tr>
@@ -1323,7 +1323,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].total_losses
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].total_losses
                     : null}
@@ -1348,7 +1348,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].consective_wins
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].consective_wins
                     : null}
@@ -1373,7 +1373,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].consective_losses
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].consective_losses
                     : null}
@@ -1398,7 +1398,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].win_percentage
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].win_percentage
                     : null}
@@ -1423,7 +1423,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].win_loss_ratio
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].win_loss_ratio
                     : null}
@@ -1448,7 +1448,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].total_positive_pnl
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].total_positive_pnl
                     : null}
@@ -1473,7 +1473,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].total_negative_pnl
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].total_negative_pnl
                     : null}
@@ -1498,7 +1498,7 @@ const CompareComponent = () => {
                     ? stats[model_name_2].average_daily_pnl
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3]
                     ? stats[model_name_3].average_daily_pnl
                     : null}
@@ -1519,7 +1519,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].r2_score : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].r2_score : null}
                 </td>
               </tr>
@@ -1538,7 +1538,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].sharpe : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].sharpe : null}
                 </td>
               </tr>
@@ -1557,7 +1557,7 @@ const CompareComponent = () => {
                 <td className="tg-0lax">
                   {stats[model_name_2] ? stats[model_name_2].sortino : null}
                 </td>
-                <td className="tg-0lax">
+                <td className="tg-0lax to-hide">
                   {stats[model_name_3] ? stats[model_name_3].sortino : null}
                 </td>
               </tr>

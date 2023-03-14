@@ -9,7 +9,7 @@ import ModelDetailsRightGraph from "../models/modelsDetails/modelDetailsRightGra
 import { useState, useEffect } from "react";
 import { useStateContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
-
+import TvSplineAreaChartTopPerformer from "../models/graphs/TvSplineAreaChartTopPerformer";
 const RecentlyViewed = (props) => {
   const {
     stats_cache,

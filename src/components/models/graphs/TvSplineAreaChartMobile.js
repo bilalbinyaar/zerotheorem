@@ -4,7 +4,7 @@ import { useState, memo } from "react";
 import { useStateContext } from "../../../ContextProvider";
 import { faSlash } from "@fortawesome/free-solid-svg-icons";
 
-const TradingViewSplineArea = (props) => {
+const TvSplineAreaChartMobile = (props) => {
   const { spline_graph_cache, Set_spline_graph_cache } = useStateContext();
   const [data_for_pnl_graph, set_data_for_pnl_graph] = useState([]);
   const [cummulative_pnl, set_cum_pnl] = useState([]);
@@ -178,4 +178,4 @@ const TradingViewSplineArea = (props) => {
   );
 };
 
-export default TradingViewSplineArea;
+export default TvSplineAreaChartMobile;

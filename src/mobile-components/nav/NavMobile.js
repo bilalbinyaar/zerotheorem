@@ -6,7 +6,10 @@ import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretDown, AiFillHome, AiFillInfoCircle } from "react-icons/ai";
+import { BsFillLayersFill, BsInfoSquareFill, BsFillInfoCircleFill } from 'react-icons/bs';
+import { FaQuestionCircle } from 'react-icons/fa';
+import '../../components/navbar/Navbar.css';
 
 export default function NavMobile(props) {
   const [click, setClick] = useState(false);
@@ -83,7 +86,7 @@ export default function NavMobile(props) {
           <CustomLink to="/">Forecasts</CustomLink>
           <CustomLink to="/resources">Resources</CustomLink>
           <CustomLink to="/about">About</CustomLink>
-          <CustomLink to="/faq" onClick={toCloseNav}>FAQs</CustomLink>
+          <CustomLink to="/faqs" onClick={toCloseNav}>FAQs</CustomLink>
           
         </ul>
 
@@ -99,10 +102,10 @@ export default function NavMobile(props) {
               <div className="display-none"></div>
             )}
 
-            <CustomLink to="/" onClick={toCloseNav}>Forecasts</CustomLink>
-            <CustomLink to="/resources" onClick={toCloseNav}>Resources</CustomLink>
-            <CustomLink to="/about" onClick={toCloseNav}>About</CustomLink>
-            <CustomLink to="/faq" onClick={toCloseNav}>FAQs</CustomLink>
+            <CustomLink to="/" onClick={toCloseNav}><AiFillHome className="nav-icons"/>Forecasts</CustomLink>
+            <CustomLink to="/resources" onClick={toCloseNav}><BsFillLayersFill className="nav-icons"/>Resources</CustomLink>
+            <CustomLink to="/about" onClick={toCloseNav}><BsFillInfoCircleFill className="nav-icons"/>About</CustomLink>
+            <CustomLink to="/faqs" onClick={toCloseNav}><FaQuestionCircle className="nav-icons"/>FAQs</CustomLink>
 
 
             {/* {authCheck === true ? (

@@ -130,6 +130,43 @@
     text-align: justify;
 }
 
+@media screen and (max-width: 688px) {
+    .footer .container {
+        padding: 0;
+    }
+
+    .footer .container {
+        flex-direction: column-reverse;
+    }
+
+    .footer-logo-div {
+        display: none;
+    }
+
+    .footer-inner-right {
+        margin-top: 2.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-inner-left p {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .for-footer-bar {
+        margin-bottom: 0.4rem;
+    }
+
+    .footer-news-inner {
+        justify-content: center !important;
+        padding-top: 1rem !important;
+    }
+
+    .footer-copyright-text {
+        text-align: center;
+    } 
+}
+
 
 @media screen and (max-width: 480px) {
     .footer .container {

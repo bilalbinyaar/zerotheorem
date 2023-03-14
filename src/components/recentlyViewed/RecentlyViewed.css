@@ -121,6 +121,19 @@
     margin-right: 0.5rem;
 }
 
+@media screen and (max-width: 1060px) {
+    .model-details-right-cards {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .model-details-right-cards::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 
 @media screen and (max-width: 480px) {
   .recently-viewd {
