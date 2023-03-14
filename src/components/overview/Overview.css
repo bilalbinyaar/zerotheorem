@@ -199,6 +199,30 @@
   }
 }
 
+@media screen and (max-width: 568px) {
+  .overview-wapper {
+    display: flex;
+    overflow-x: scroll;
+    margin-top: 0.6rem;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  } 
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .overview-wapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .overview-card {
+    width: 220px;
+  }
+
+  .overview-details {
+    flex-direction: row;
+  }
+}
+
 
 @media screen and (max-width: 480px) {
   .overview-mobile {

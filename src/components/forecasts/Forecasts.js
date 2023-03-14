@@ -28,7 +28,8 @@ import AdsensePlaceHolder from "../adsense/AdsensePlaceHolder";
 
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
-const Forecasts = () => {
+const 
+Forecasts = () => {
   // console.log("Hello");
   // TOTAL PNL COLORS
   const forColor = (total_pnl, id) => {
@@ -1657,6 +1658,7 @@ const Forecasts = () => {
           ) : null}
 
           {/* FOR MOBILE VIEW  */}
+          {checked === true ? (
           <div className="forecast-mob">
             {/* <div className="swipe-right" id='toHide'>
                 <BsArrowRightShort className="swipe-right-icon" />
@@ -2732,7 +2734,7 @@ const Forecasts = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> ) : null }
 
           {/* <div>
               <AdsensePlaceHolder />
