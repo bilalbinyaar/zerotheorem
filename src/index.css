@@ -592,7 +592,7 @@ form .form-inner input[type="submit"]:hover {
 }
 
 .res-textual {
-  width: 100%;
+  width: 90%;
 }
 
 .apexcharts-legend-text {
@@ -742,8 +742,11 @@ a {
 }
 
 .compare-charts {
-  width: 290px;
   height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
 }
 
 @media screen and (max-width: 568px) {

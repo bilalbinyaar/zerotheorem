@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Compare.css";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useStateContext } from "../../ContextProvider";
@@ -9,6 +9,7 @@ import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { useLocation } from "react-router-dom";
 import TvSplineAreaChartTopPerformer from "../models/graphs/TvSplineAreaChartTopPerformer";
+import CompareComponentMobile from "./CompareComponentMobile";
 const CompareComponent = () => {
   const [Flag, setFlag] = useState(null);
   const [stats, set_stats] = useState({});
@@ -265,675 +266,41 @@ const CompareComponent = () => {
       }
     }
   }, [Flag]);
+
+
+  const [selectedItem, setSelectedItem] = useState("24h");
+  const handleChangeForTimeHorizonSelection = (id, timeH) => {
+    if (timeH == "24h") {
+      setRows(rows_cached);
+    } else {
+      // handleChangePage("", 1);
+
+      const res = rows_cached.filter((item) => {
+        return item.timeHorizon == timeH;
+      });
+      setRows(res);
+    }
+  };
+  const handleChangeForModelSelection = (event, values) => {
+    // console.log("Search dropdown -->", values);
+    if (values != null) {
+      // setRows({});
+      const res = rows_cached.filter((item) => {
+        return item.modelName == values.label;
+      });
+      // handleChangePage("", 1);
+      setRows(res);
+    } else {
+      setRows(rows_cached);
+    }
+  };
+
+  const windowWidth = useRef(window.innerWidth);
+
   return (
     <div className="compare">
       <div className="container">
         <h1>Comparisons</h1>
-
-        <div className="compare-searches">
-          <p className="visibility-hidden">search bar 1</p>
-          <Autocomplete
-            id="country-select-demo"
-            className="model-compare-search"
-            sx={{
-              backgroundColor: "var(--color-forecasts-card)",
-              borderRadius: "5px",
-              labelColor: "red",
-              fontSize: "11px",
-              marginLeft: "0.4rem",
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-black)",
-              },
-
-              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
-                color: "var(--color-day-black)",
-              },
-              "& div  >.MuiAutocomplete-option.Mui-focused": {
-                backgroundColor: "var(--color-day-yellow)",
-                color: "#000000",
-              },
-
-              "& div >.MuiOutlinedInput-root": {
-                padding: "4px",
-              },
-
-              "& div div >.MuiAutocomplete-input": {
-                padding: "4.5px 4px 4.5px 6px",
-              },
-
-              "& div >.MuiAutocomplete-option": {
-                fontSize: "12px",
-                margin: "0",
-                color: "var(--color-day-black)",
-              },
-
-              "& .MuiAutocomplete-noOptions": {
-                color: "var(--color-day-black)",
-                fontSize: "12px",
-              },
-
-              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
-                backgroundColor: "var(--color-dropdown-bg)",
-              },
-
-              "& div div >.MuiAutocomplete-input": {
-                fontSize: "11px",
-              },
-
-              "& .css-1xc3v61-indicatorContainer": {
-                backgroundColor: "var(--color-day-white)",
-              },
-
-              "& .css-13cymwt-control": {
-                minHeight: "34px",
-                height: "34px",
-              },
-
-              "& .css-i4bv87-MuiSvgIcon-root": {
-                width: "0.8em !important",
-                height: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-i4bv87-MuiSvgIcon-root": {
-                width: "0.8em !important",
-                height: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& div div >.MuiOutlinedInput-root": {
-                backgroundColor: "var(--color-forecasts-card) !important",
-                color: "var(--color-day-black) !important",
-              },
-
-              "& div div >.MuiOutlinedInput-root:focus": {
-                border: "0 !important",
-              },
-
-              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
-                borderColor: "var(--color-day-yellow) !important",
-              },
-
-              "& div >.MuiOutlinedInput-notchedOutline": {
-                border: "0px solid var(--color-day-yellow) !important",
-              },
-
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                fontSize: "12px !important",
-                color: "var(--color-day-black) !important",
-                top: "-6px !important",
-              },
-
-              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
-                {
-                  backgroundColor: "var(--color-dropdown-bg) !important",
-                  color: "var(--color-day-black) !important",
-                },
-
-              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                {
-                  color: "var(--color-day-yellow) !important",
-                },
-
-              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-yellow) !important",
-              },
-
-              "& .css-ptiqhd-MuiSvgIcon-root": {
-                height: "0.8em !important",
-                width: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
-                padding: "3px 8px !important",
-                backgroundColor: "var(--color-day-yellow) !important",
-                borderRadius: "4px",
-                display: "flex !important",
-                justifyContent: "center !important",
-                alignItems: "center !important",
-                fontSize: "15px !important",
-                textAlign: "center !important",
-              },
-
-              "& .optgroup": {
-                padding: "2px !important",
-              },
-
-              "& div div >.optgroup": {
-                backgroundColor: "var(--color-day-white) !important",
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .mui-options": {
-                padding: "0px 15px",
-              },
-
-              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
-                borderBottom: "2px solid var(--color-day-black) !important",
-              },
-
-              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-black) !important",
-                fontSize: "14px !important",
-              },
-
-              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
-                {
-                  borderBottom: "1px solid var(--color-day-yellow) !important",
-                },
-
-              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
-                {
-                  borderBottom: "2px solid var(--color-day-yellow) !important",
-                },
-
-              "& #demo-simple-select-standard-label": {
-                color: "var(--color-day-yellow) !important",
-              },
-
-              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
-                {
-                  backgroundColor: "var(--color-day-yellow) !important",
-                  color: "black",
-                },
-
-              "& .css-1869usk-MuiFormControl-root": {
-                height: "60px !important",
-              },
-
-              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
-                {
-                  color: "var(--color-day-black) !important",
-                  fontSize: "14px !important",
-                },
-
-              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
-                fontSize: "13px !important",
-              },
-
-              "& .css-nlvv43-MuiFormControl-root": {
-                margin: "0px 8px !important",
-                height: "30px !important",
-              },
-
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                fontSize: "12px !important",
-                color: "var(--color-day-black) !important",
-                top: "-8px !important",
-              },
-            }}
-            defaultValue={default_value}
-            onChange={handleChangeForModelSelection1}
-            options={model_names}
-            autoHighlight
-            getOptionLabel={(option) => option.label}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Models"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { width: "70%" }, // set the width to auto
-
-                  autoComplete: "new-password", // disable autocomplete and autofill
-                }}
-              />
-            )}
-          />
-          <Autocomplete
-            id="country-select-demo"
-            className="model-compare-search"
-            sx={{
-              backgroundColor: "var(--color-forecasts-card)",
-              borderRadius: "5px",
-              labelColor: "red",
-              fontSize: "11px",
-              marginLeft: "0.4rem",
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-black)",
-              },
-
-              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
-                color: "var(--color-day-black)",
-              },
-              "& div  >.MuiAutocomplete-option.Mui-focused": {
-                backgroundColor: "var(--color-day-yellow)",
-                color: "#000000",
-              },
-
-              "& div >.MuiOutlinedInput-root": {
-                padding: "4px",
-              },
-
-              "& div div >.MuiAutocomplete-input": {
-                padding: "4.5px 4px 4.5px 6px",
-              },
-
-              "& div >.MuiAutocomplete-option": {
-                fontSize: "12px",
-                margin: "0",
-                color: "var(--color-day-black)",
-              },
-
-              "& .MuiAutocomplete-noOptions": {
-                color: "var(--color-day-black)",
-                fontSize: "12px",
-              },
-
-              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
-                backgroundColor: "var(--color-dropdown-bg)",
-              },
-
-              "& div div >.MuiAutocomplete-input": {
-                fontSize: "11px",
-              },
-
-              "& .css-1xc3v61-indicatorContainer": {
-                backgroundColor: "var(--color-day-white)",
-              },
-
-              "& .css-13cymwt-control": {
-                minHeight: "34px",
-                height: "34px",
-              },
-
-              "& .css-i4bv87-MuiSvgIcon-root": {
-                width: "0.8em !important",
-                height: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-i4bv87-MuiSvgIcon-root": {
-                width: "0.8em !important",
-                height: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& div div >.MuiOutlinedInput-root": {
-                backgroundColor: "var(--color-forecasts-card) !important",
-                color: "var(--color-day-black) !important",
-              },
-
-              "& div div >.MuiOutlinedInput-root:focus": {
-                border: "0 !important",
-              },
-
-              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
-                borderColor: "var(--color-day-yellow) !important",
-              },
-
-              "& div >.MuiOutlinedInput-notchedOutline": {
-                border: "0px solid var(--color-day-yellow) !important",
-              },
-
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                fontSize: "12px !important",
-                color: "var(--color-day-black) !important",
-                top: "-6px !important",
-              },
-
-              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
-                {
-                  backgroundColor: "var(--color-dropdown-bg) !important",
-                  color: "var(--color-day-black) !important",
-                },
-
-              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                {
-                  color: "var(--color-day-yellow) !important",
-                },
-
-              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-yellow) !important",
-              },
-
-              "& .css-ptiqhd-MuiSvgIcon-root": {
-                height: "0.8em !important",
-                width: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
-                padding: "3px 8px !important",
-                backgroundColor: "var(--color-day-yellow) !important",
-                borderRadius: "4px",
-                display: "flex !important",
-                justifyContent: "center !important",
-                alignItems: "center !important",
-                fontSize: "15px !important",
-                textAlign: "center !important",
-              },
-
-              "& .optgroup": {
-                padding: "2px !important",
-              },
-
-              "& div div >.optgroup": {
-                backgroundColor: "var(--color-day-white) !important",
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .mui-options": {
-                padding: "0px 15px",
-              },
-
-              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
-                borderBottom: "2px solid var(--color-day-black) !important",
-              },
-
-              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-black) !important",
-                fontSize: "14px !important",
-              },
-
-              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
-                {
-                  borderBottom: "1px solid var(--color-day-yellow) !important",
-                },
-
-              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
-                {
-                  borderBottom: "2px solid var(--color-day-yellow) !important",
-                },
-
-              "& #demo-simple-select-standard-label": {
-                color: "var(--color-day-yellow) !important",
-              },
-
-              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
-                {
-                  backgroundColor: "var(--color-day-yellow) !important",
-                  color: "black",
-                },
-
-              "& .css-1869usk-MuiFormControl-root": {
-                height: "60px !important",
-              },
-
-              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
-                {
-                  color: "var(--color-day-black) !important",
-                  fontSize: "14px !important",
-                },
-
-              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
-                fontSize: "13px !important",
-              },
-
-              "& .css-nlvv43-MuiFormControl-root": {
-                margin: "0px 8px !important",
-                height: "30px !important",
-              },
-
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                fontSize: "12px !important",
-                color: "var(--color-day-black) !important",
-                top: "-8px !important",
-              },
-            }}
-            onChange={handleChangeForModelSelection2}
-            options={model_names}
-            autoHighlight
-            getOptionLabel={(option) => option.label}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Models"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { width: "70%" }, // set the width to auto
-
-                  autoComplete: "new-password", // disable autocomplete and autofill
-                }}
-              />
-            )}
-          />
-          <Autocomplete
-            id="country-select-demo"
-            className="model-compare-search to-hide"
-            sx={{
-              backgroundColor: "var(--color-forecasts-card)",
-              borderRadius: "5px",
-              labelColor: "red",
-              fontSize: "11px",
-              marginLeft: "0.4rem",
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-black)",
-              },
-
-              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
-                color: "var(--color-day-black)",
-              },
-              "& div  >.MuiAutocomplete-option.Mui-focused": {
-                backgroundColor: "var(--color-day-yellow)",
-                color: "#000000",
-              },
-
-              "& div >.MuiOutlinedInput-root": {
-                padding: "4px",
-              },
-
-              "& div div >.MuiAutocomplete-input": {
-                padding: "4.5px 4px 4.5px 6px",
-              },
-
-              "& div >.MuiAutocomplete-option": {
-                fontSize: "12px",
-                margin: "0",
-                color: "var(--color-day-black)",
-              },
-
-              "& .MuiAutocomplete-noOptions": {
-                color: "var(--color-day-black)",
-                fontSize: "12px",
-              },
-
-              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
-                backgroundColor: "var(--color-dropdown-bg)",
-              },
-
-              "& div div >.MuiAutocomplete-input": {
-                fontSize: "11px",
-              },
-
-              "& .css-1xc3v61-indicatorContainer": {
-                backgroundColor: "var(--color-day-white)",
-              },
-
-              "& .css-13cymwt-control": {
-                minHeight: "34px",
-                height: "34px",
-              },
-
-              "& .css-i4bv87-MuiSvgIcon-root": {
-                width: "0.8em !important",
-                height: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-i4bv87-MuiSvgIcon-root": {
-                width: "0.8em !important",
-                height: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& div div >.MuiOutlinedInput-root": {
-                backgroundColor: "var(--color-forecasts-card) !important",
-                color: "var(--color-day-black) !important",
-              },
-
-              "& div div >.MuiOutlinedInput-root:focus": {
-                border: "0 !important",
-              },
-
-              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
-                borderColor: "var(--color-day-yellow) !important",
-              },
-
-              "& div >.MuiOutlinedInput-notchedOutline": {
-                border: "0px solid var(--color-day-yellow) !important",
-              },
-
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                fontSize: "12px !important",
-                color: "var(--color-day-black) !important",
-                top: "-6px !important",
-              },
-
-              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
-                {
-                  backgroundColor: "var(--color-dropdown-bg) !important",
-                  color: "var(--color-day-black) !important",
-                },
-
-              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                {
-                  color: "var(--color-day-yellow) !important",
-                },
-
-              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-yellow) !important",
-              },
-
-              "& .css-ptiqhd-MuiSvgIcon-root": {
-                height: "0.8em !important",
-                width: "0.8em !important",
-                fill: "var(--color-black-opcaity) !important",
-              },
-
-              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
-                padding: "3px 8px !important",
-                backgroundColor: "var(--color-day-yellow) !important",
-                borderRadius: "4px",
-                display: "flex !important",
-                justifyContent: "center !important",
-                alignItems: "center !important",
-                fontSize: "15px !important",
-                textAlign: "center !important",
-              },
-
-              "& .optgroup": {
-                padding: "2px !important",
-              },
-
-              "& div div >.optgroup": {
-                backgroundColor: "var(--color-day-white) !important",
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .mui-options": {
-                padding: "0px 15px",
-              },
-
-              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
-                borderBottom: "2px solid var(--color-day-black) !important",
-              },
-
-              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
-                color: "var(--color-day-black) !important",
-                fontSize: "14px !important",
-              },
-
-              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
-                {
-                  borderBottom: "1px solid var(--color-day-yellow) !important",
-                },
-
-              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
-                {
-                  borderBottom: "2px solid var(--color-day-yellow) !important",
-                },
-
-              "& #demo-simple-select-standard-label": {
-                color: "var(--color-day-yellow) !important",
-              },
-
-              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
-                color: "var(--color-day-black) !important",
-              },
-
-              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
-                {
-                  backgroundColor: "var(--color-day-yellow) !important",
-                  color: "black",
-                },
-
-              "& .css-1869usk-MuiFormControl-root": {
-                height: "60px !important",
-              },
-
-              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
-                {
-                  color: "var(--color-day-black) !important",
-                  fontSize: "14px !important",
-                },
-
-              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
-                fontSize: "13px !important",
-              },
-
-              "& .css-nlvv43-MuiFormControl-root": {
-                margin: "0px 8px !important",
-                height: "30px !important",
-              },
-
-              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                fontSize: "12px !important",
-                color: "var(--color-day-black) !important",
-                top: "-8px !important",
-              },
-            }}
-            onChange={handleChangeForModelSelection3}
-            options={model_names}
-            autoHighlight
-            getOptionLabel={(option) => option.label}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Models"
-                inputProps={{
-                  ...params.inputProps,
-                  style: { width: "70%" }, // set the width to auto
-
-                  autoComplete: "new-password", // disable autocomplete and autofill
-                }}
-              />
-            )}
-          />
-        </div>
 
         <div className="search-table">
           <table className="tg no-bl">
@@ -943,19 +310,1849 @@ const CompareComponent = () => {
                   {/* <ComparisonChartCanvas /> */}
                 </th>
                 <th className="tg-0lax border-remove">
-                  <TvSplineAreaChartTopPerformer
-                    model_name={model_name_1.replace("-", "_")}
-                  />
+                  {windowWidth.current <= 568 ? (<CompareComponentMobile />) : (
+                  <div>
+                    <div className="search-filter-wapper">
+                      <div className="compare-search-wrapper">
+                        {/* MODEL SEARCH BAR */}
+                        <Autocomplete
+                          id="country-select-demo"
+                          className="model-compare-search"
+                          sx={{
+                            backgroundColor: "var(--color-forecasts-card)",
+                            borderRadius: "5px",
+                            labelColor: "red",
+                            fontSize: "11px",
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
+                              color: "var(--color-day-black)",
+                            },
+                            "& div  >.MuiAutocomplete-option.Mui-focused": {
+                              backgroundColor: "var(--color-day-yellow)",
+                              color: "#000000",
+                            },
+
+                            "& div >.MuiOutlinedInput-root": {
+                              padding: "4px",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              padding: "4.5px 4px 4.5px 6px",
+                            },
+
+                            "& div >.MuiAutocomplete-option": {
+                              fontSize: "12px",
+                              margin: "0",
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& .MuiAutocomplete-noOptions": {
+                              color: "var(--color-day-black)",
+                              fontSize: "12px",
+                            },
+
+                            "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                              backgroundColor: "var(--color-dropdown-bg)",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              fontSize: "11px",
+                            },
+
+                            "& .css-1xc3v61-indicatorContainer": {
+                              backgroundColor: "var(--color-day-white)",
+                            },
+
+                            "& .css-13cymwt-control": {
+                              minHeight: "34px",
+                              height: "34px",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root": {
+                              backgroundColor: "var(--color-forecasts-card) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root:focus": {
+                              border: "0 !important",
+                            },
+
+                            "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                              borderColor: "var(--color-day-yellow) !important",
+                            },
+
+                            "& div >.MuiOutlinedInput-notchedOutline": {
+                              border: "0px solid var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-6px !important",
+                            },
+
+                            "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                              {
+                                backgroundColor: "var(--color-dropdown-bg) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                              {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-ptiqhd-MuiSvgIcon-root": {
+                              height: "0.8em !important",
+                              width: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                              padding: "3px 8px !important",
+                              backgroundColor: "var(--color-day-yellow) !important",
+                              borderRadius: "4px",
+                              display: "flex !important",
+                              justifyContent: "center !important",
+                              alignItems: "center !important",
+                              fontSize: "15px !important",
+                              textAlign: "center !important",
+                            },
+
+                            "& .optgroup": {
+                              padding: "2px !important",
+                            },
+
+                            "& div div >.optgroup": {
+                              backgroundColor: "var(--color-day-white) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .mui-options": {
+                              padding: "0px 15px",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                              borderBottom: "2px solid var(--color-day-black) !important",
+                            },
+
+                            "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black) !important",
+                              fontSize: "14px !important",
+                            },
+
+                            "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                              {
+                                borderBottom: "1px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                              {
+                                borderBottom: "2px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& #demo-simple-select-standard-label": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                              {
+                                backgroundColor: "var(--color-day-yellow) !important",
+                                color: "black",
+                              },
+
+                            "& .css-1869usk-MuiFormControl-root": {
+                              height: "60px !important",
+                            },
+
+                            "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                              {
+                                color: "var(--color-day-black) !important",
+                                fontSize: "14px !important",
+                              },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                              fontSize: "13px !important",
+                            },
+
+                            "& .css-nlvv43-MuiFormControl-root": {
+                              margin: "0px 8px !important",
+                              height: "30px !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-8px !important",
+                            },
+                          }}
+                          defaultValue={default_value}
+                          onChange={handleChangeForModelSelection1}
+                          options={model_names}
+                          autoHighlight
+                          getOptionLabel={(option) => option.label}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label="Models"
+                              inputProps={{
+                                ...params.inputProps,
+                                style: { width: "70%" }, // set the width to auto
+
+                                autoComplete: "new-password", // disable autocomplete and autofill
+                              }}
+                            />
+                          )}
+                        />
+                        {/* CURRENCIES SEARCH BAR */}
+                        <Autocomplete
+                          id="country-select-demo"
+                          className="model-compare-search"
+                          sx={{
+                            backgroundColor: "var(--color-forecasts-card)",
+                            borderRadius: "5px",
+                            labelColor: "red",
+                            fontSize: "11px",
+                            marginLeft: "0.4rem",
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
+                              color: "var(--color-day-black)",
+                            },
+                            "& div  >.MuiAutocomplete-option.Mui-focused": {
+                              backgroundColor: "var(--color-day-yellow)",
+                              color: "#000000",
+                            },
+
+                            "& div >.MuiOutlinedInput-root": {
+                              padding: "4px",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              padding: "4.5px 4px 4.5px 6px",
+                            },
+
+                            "& div >.MuiAutocomplete-option": {
+                              fontSize: "12px",
+                              margin: "0",
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& .MuiAutocomplete-noOptions": {
+                              color: "var(--color-day-black)",
+                              fontSize: "12px",
+                            },
+
+                            "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                              backgroundColor: "var(--color-dropdown-bg)",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              fontSize: "11px",
+                            },
+
+                            "& .css-1xc3v61-indicatorContainer": {
+                              backgroundColor: "var(--color-day-white)",
+                            },
+
+                            "& .css-13cymwt-control": {
+                              minHeight: "34px",
+                              height: "34px",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root": {
+                              backgroundColor: "var(--color-forecasts-card) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root:focus": {
+                              border: "0 !important",
+                            },
+
+                            "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                              borderColor: "var(--color-day-yellow) !important",
+                            },
+
+                            "& div >.MuiOutlinedInput-notchedOutline": {
+                              border: "0px solid var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-6px !important",
+                            },
+
+                            "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                              {
+                                backgroundColor: "var(--color-dropdown-bg) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                              {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-ptiqhd-MuiSvgIcon-root": {
+                              height: "0.8em !important",
+                              width: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                              padding: "3px 8px !important",
+                              backgroundColor: "var(--color-day-yellow) !important",
+                              borderRadius: "4px",
+                              display: "flex !important",
+                              justifyContent: "center !important",
+                              alignItems: "center !important",
+                              fontSize: "15px !important",
+                              textAlign: "center !important",
+                            },
+
+                            "& .optgroup": {
+                              padding: "2px !important",
+                            },
+
+                            "& div div >.optgroup": {
+                              backgroundColor: "var(--color-day-white) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .mui-options": {
+                              padding: "0px 15px",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                              borderBottom: "2px solid var(--color-day-black) !important",
+                            },
+
+                            "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black) !important",
+                              fontSize: "14px !important",
+                            },
+
+                            "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                              {
+                                borderBottom: "1px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                              {
+                                borderBottom: "2px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& #demo-simple-select-standard-label": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                              {
+                                backgroundColor: "var(--color-day-yellow) !important",
+                                color: "black",
+                              },
+
+                            "& .css-1869usk-MuiFormControl-root": {
+                              height: "60px !important",
+                            },
+
+                            "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                              {
+                                color: "var(--color-day-black) !important",
+                                fontSize: "14px !important",
+                              },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                              fontSize: "13px !important",
+                            },
+
+                            "& .css-nlvv43-MuiFormControl-root": {
+                              margin: "0px 8px !important",
+                              height: "30px !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-8px !important",
+                            },
+                          }}
+                          defaultValue={default_value}
+                          onChange={handleChangeForModelSelection1}
+                          options={model_names}
+                          autoHighlight
+                          getOptionLabel={(option) => option.label}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label="Currenices"
+                              inputProps={{
+                                ...params.inputProps,
+                                style: { width: "70%" }, // set the width to auto
+
+                                autoComplete: "new-password", // disable autocomplete and autofill
+                              }}
+                            />
+                          )}
+                        />
+                        {/* TIME HORIZON */}
+                      </div>
+                      {/* TIME HORIZON */}
+                      <div className="horizon-left-comparison">
+                        <div className="hours-list-comparison">
+                          <ul id="hours-list-div-comparison">
+                            {/* <li
+                              id="hours-listings hours_filter_All"
+                              style={{
+                                background: selectedItem === "All" ? "#fddd4e" : "",
+                                color: selectedItem === "All" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_All",
+                                  "All"
+                                );
+                                setSelectedItem("All");
+                              }}
+                            >
+                              All
+                            </li> */}
+                            <li
+                              id="hours-listings hour_filter_24"
+                              style={{
+                                background: selectedItem === "24h" ? "#fddd4e" : "",
+                                color: selectedItem === "24h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_24",
+                                  "24h"
+                                );
+                                setSelectedItem("24h");
+                              }}
+                            >
+                              24h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_12"
+                              style={{
+                                background: selectedItem === "12h" ? "#fddd4e" : "",
+                                color: selectedItem === "12h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_24",
+                                  "12h"
+                                );
+                                setSelectedItem("12h");
+                              }}
+                            >
+                              12h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_8"
+                              style={{
+                                background: selectedItem === "8h" ? "#fddd4e" : "",
+                                color: selectedItem === "8h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_8",
+                                  "8h"
+                                );
+                                setSelectedItem("8h");
+                              }}
+                            >
+                              8h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_3"
+                              style={{
+                                background: selectedItem === "6h" ? "#fddd4e" : "",
+                                color: selectedItem === "6h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_6",
+                                  "6h"
+                                );
+                                setSelectedItem("6h");
+                              }}
+                            >
+                              6h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_3"
+                              style={{
+                                background: selectedItem === "4h" ? "#fddd4e" : "",
+                                color: selectedItem === "4h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_4",
+                                  "4h"
+                                );
+                                setSelectedItem("4h");
+                              }}
+                            >
+                              4h
+                            </li>
+                            <li
+                              style={{
+                                background: selectedItem === "3h" ? "#fddd4e" : "",
+                                color: selectedItem === "3h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_3",
+                                  "3h"
+                                );
+                                setSelectedItem("3h");
+                              }}
+                            >
+                              3h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_2"
+                              style={{
+                                background: selectedItem === "2h" ? "#fddd4e" : "",
+                                color: selectedItem === "2h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_2",
+                                  "2h"
+                                );
+                                setSelectedItem("2h");
+                              }}
+                            >
+                              2h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_1"
+                              style={{
+                                background: selectedItem === "1h" ? "#fddd4e" : "",
+                                color: selectedItem === "1h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_1",
+                                  "1h"
+                                );
+                                setSelectedItem("1h");
+                              }}
+                            >
+                              1h
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <TvSplineAreaChartTopPerformer
+                      model_name={model_name_1.replace("-", "_")}
+                    />
+                  </div> 
+                  ) }
                 </th>
                 <th className="tg-0lax border-remove">
-                  <TvSplineAreaChartTopPerformer
-                    model_name={model_name_2.replace("-", "_")}
-                  />
+                  {windowWidth.current <= 568 ? (<CompareComponentMobile />) : (
+                    <div>
+                      <div className="search-filter-wapper">
+                      <div className="compare-search-wrapper">
+                        {/* MODEL SEARCH BAR */}
+                        <Autocomplete
+                          id="country-select-demo"
+                          className="model-compare-search"
+                          sx={{
+                            backgroundColor: "var(--color-forecasts-card)",
+                            borderRadius: "5px",
+                            labelColor: "red",
+                            fontSize: "11px",
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
+                              color: "var(--color-day-black)",
+                            },
+                            "& div  >.MuiAutocomplete-option.Mui-focused": {
+                              backgroundColor: "var(--color-day-yellow)",
+                              color: "#000000",
+                            },
+
+                            "& div >.MuiOutlinedInput-root": {
+                              padding: "4px",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              padding: "4.5px 4px 4.5px 6px",
+                            },
+
+                            "& div >.MuiAutocomplete-option": {
+                              fontSize: "12px",
+                              margin: "0",
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& .MuiAutocomplete-noOptions": {
+                              color: "var(--color-day-black)",
+                              fontSize: "12px",
+                            },
+
+                            "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                              backgroundColor: "var(--color-dropdown-bg)",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              fontSize: "11px",
+                            },
+
+                            "& .css-1xc3v61-indicatorContainer": {
+                              backgroundColor: "var(--color-day-white)",
+                            },
+
+                            "& .css-13cymwt-control": {
+                              minHeight: "34px",
+                              height: "34px",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root": {
+                              backgroundColor: "var(--color-forecasts-card) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root:focus": {
+                              border: "0 !important",
+                            },
+
+                            "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                              borderColor: "var(--color-day-yellow) !important",
+                            },
+
+                            "& div >.MuiOutlinedInput-notchedOutline": {
+                              border: "0px solid var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-6px !important",
+                            },
+
+                            "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                              {
+                                backgroundColor: "var(--color-dropdown-bg) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                              {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-ptiqhd-MuiSvgIcon-root": {
+                              height: "0.8em !important",
+                              width: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                              padding: "3px 8px !important",
+                              backgroundColor: "var(--color-day-yellow) !important",
+                              borderRadius: "4px",
+                              display: "flex !important",
+                              justifyContent: "center !important",
+                              alignItems: "center !important",
+                              fontSize: "15px !important",
+                              textAlign: "center !important",
+                            },
+
+                            "& .optgroup": {
+                              padding: "2px !important",
+                            },
+
+                            "& div div >.optgroup": {
+                              backgroundColor: "var(--color-day-white) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .mui-options": {
+                              padding: "0px 15px",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                              borderBottom: "2px solid var(--color-day-black) !important",
+                            },
+
+                            "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black) !important",
+                              fontSize: "14px !important",
+                            },
+
+                            "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                              {
+                                borderBottom: "1px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                              {
+                                borderBottom: "2px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& #demo-simple-select-standard-label": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                              {
+                                backgroundColor: "var(--color-day-yellow) !important",
+                                color: "black",
+                              },
+
+                            "& .css-1869usk-MuiFormControl-root": {
+                              height: "60px !important",
+                            },
+
+                            "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                              {
+                                color: "var(--color-day-black) !important",
+                                fontSize: "14px !important",
+                              },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                              fontSize: "13px !important",
+                            },
+
+                            "& .css-nlvv43-MuiFormControl-root": {
+                              margin: "0px 8px !important",
+                              height: "30px !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-8px !important",
+                            },
+                          }}
+                          onChange={handleChangeForModelSelection2}
+                          options={model_names}
+                          autoHighlight
+                          getOptionLabel={(option) => option.label}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label="Models"
+                              inputProps={{
+                                ...params.inputProps,
+                                style: { width: "70%" }, // set the width to auto
+
+                                autoComplete: "new-password", // disable autocomplete and autofill
+                              }}
+                            />
+                          )}
+                        />
+                        {/* CURRENCIES SEARCH BAR */}
+                        <Autocomplete
+                          id="country-select-demo"
+                          className="model-compare-search"
+                          sx={{
+                            backgroundColor: "var(--color-forecasts-card)",
+                            borderRadius: "5px",
+                            labelColor: "red",
+                            fontSize: "11px",
+                            marginLeft: "0.4rem",
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
+                              color: "var(--color-day-black)",
+                            },
+                            "& div  >.MuiAutocomplete-option.Mui-focused": {
+                              backgroundColor: "var(--color-day-yellow)",
+                              color: "#000000",
+                            },
+
+                            "& div >.MuiOutlinedInput-root": {
+                              padding: "4px",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              padding: "4.5px 4px 4.5px 6px",
+                            },
+
+                            "& div >.MuiAutocomplete-option": {
+                              fontSize: "12px",
+                              margin: "0",
+                              color: "var(--color-day-black)",
+                            },
+
+                            "& .MuiAutocomplete-noOptions": {
+                              color: "var(--color-day-black)",
+                              fontSize: "12px",
+                            },
+
+                            "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                              backgroundColor: "var(--color-dropdown-bg)",
+                            },
+
+                            "& div div >.MuiAutocomplete-input": {
+                              fontSize: "11px",
+                            },
+
+                            "& .css-1xc3v61-indicatorContainer": {
+                              backgroundColor: "var(--color-day-white)",
+                            },
+
+                            "& .css-13cymwt-control": {
+                              minHeight: "34px",
+                              height: "34px",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-i4bv87-MuiSvgIcon-root": {
+                              width: "0.8em !important",
+                              height: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root": {
+                              backgroundColor: "var(--color-forecasts-card) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& div div >.MuiOutlinedInput-root:focus": {
+                              border: "0 !important",
+                            },
+
+                            "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                              borderColor: "var(--color-day-yellow) !important",
+                            },
+
+                            "& div >.MuiOutlinedInput-notchedOutline": {
+                              border: "0px solid var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-6px !important",
+                            },
+
+                            "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                              {
+                                backgroundColor: "var(--color-dropdown-bg) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                              {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-ptiqhd-MuiSvgIcon-root": {
+                              height: "0.8em !important",
+                              width: "0.8em !important",
+                              fill: "var(--color-black-opcaity) !important",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                              padding: "3px 8px !important",
+                              backgroundColor: "var(--color-day-yellow) !important",
+                              borderRadius: "4px",
+                              display: "flex !important",
+                              justifyContent: "center !important",
+                              alignItems: "center !important",
+                              fontSize: "15px !important",
+                              textAlign: "center !important",
+                            },
+
+                            "& .optgroup": {
+                              padding: "2px !important",
+                            },
+
+                            "& div div >.optgroup": {
+                              backgroundColor: "var(--color-day-white) !important",
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .mui-options": {
+                              padding: "0px 15px",
+                            },
+
+                            "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                              borderBottom: "2px solid var(--color-day-black) !important",
+                            },
+
+                            "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                              color: "var(--color-day-black) !important",
+                              fontSize: "14px !important",
+                            },
+
+                            "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                              {
+                                borderBottom: "1px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                              {
+                                borderBottom: "2px solid var(--color-day-yellow) !important",
+                              },
+
+                            "& #demo-simple-select-standard-label": {
+                              color: "var(--color-day-yellow) !important",
+                            },
+
+                            "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                              color: "var(--color-day-black) !important",
+                            },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                              {
+                                backgroundColor: "var(--color-day-yellow) !important",
+                                color: "black",
+                              },
+
+                            "& .css-1869usk-MuiFormControl-root": {
+                              height: "60px !important",
+                            },
+
+                            "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                              {
+                                color: "var(--color-day-black) !important",
+                                fontSize: "14px !important",
+                              },
+
+                            "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                              fontSize: "13px !important",
+                            },
+
+                            "& .css-nlvv43-MuiFormControl-root": {
+                              margin: "0px 8px !important",
+                              height: "30px !important",
+                            },
+
+                            "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                              fontSize: "12px !important",
+                              color: "var(--color-day-black) !important",
+                              top: "-8px !important",
+                            },
+                          }}
+                          defaultValue={default_value}
+                          onChange={handleChangeForModelSelection1}
+                          options={model_names}
+                          autoHighlight
+                          getOptionLabel={(option) => option.label}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label="Currenices"
+                              inputProps={{
+                                ...params.inputProps,
+                                style: { width: "70%" }, // set the width to auto
+
+                                autoComplete: "new-password", // disable autocomplete and autofill
+                              }}
+                            />
+                          )}
+                        />
+                      </div>
+              
+                      {/* TIME HORIZON */}
+                      <div className="horizon-left-comparison">
+                          <div className="hours-list-comparison">
+                            <ul id="hours-list-div-comparison">
+                              {/* <li
+                                id="hours-listings hours_filter_All"
+                                style={{
+                                  background: selectedItem === "All" ? "#fddd4e" : "",
+                                  color: selectedItem === "All" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_All",
+                                    "All"
+                                  );
+                                  setSelectedItem("All");
+                                }}
+                              >
+                                All
+                              </li> */}
+                              <li
+                                id="hours-listings hour_filter_24"
+                                style={{
+                                  background: selectedItem === "24h" ? "#fddd4e" : "",
+                                  color: selectedItem === "24h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_24",
+                                    "24h"
+                                  );
+                                  setSelectedItem("24h");
+                                }}
+                              >
+                                24h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_12"
+                                style={{
+                                  background: selectedItem === "12h" ? "#fddd4e" : "",
+                                  color: selectedItem === "12h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_24",
+                                    "12h"
+                                  );
+                                  setSelectedItem("12h");
+                                }}
+                              >
+                                12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_8"
+                                style={{
+                                  background: selectedItem === "8h" ? "#fddd4e" : "",
+                                  color: selectedItem === "8h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_8",
+                                    "8h"
+                                  );
+                                  setSelectedItem("8h");
+                                }}
+                              >
+                                8h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background: selectedItem === "6h" ? "#fddd4e" : "",
+                                  color: selectedItem === "6h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_6",
+                                    "6h"
+                                  );
+                                  setSelectedItem("6h");
+                                }}
+                              >
+                                6h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background: selectedItem === "4h" ? "#fddd4e" : "",
+                                  color: selectedItem === "4h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_4",
+                                    "4h"
+                                  );
+                                  setSelectedItem("4h");
+                                }}
+                              >
+                                4h
+                              </li>
+                              <li
+                                style={{
+                                  background: selectedItem === "3h" ? "#fddd4e" : "",
+                                  color: selectedItem === "3h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_3",
+                                    "3h"
+                                  );
+                                  setSelectedItem("3h");
+                                }}
+                              >
+                                3h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_2"
+                                style={{
+                                  background: selectedItem === "2h" ? "#fddd4e" : "",
+                                  color: selectedItem === "2h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_2",
+                                    "2h"
+                                  );
+                                  setSelectedItem("2h");
+                                }}
+                              >
+                                2h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_1"
+                                style={{
+                                  background: selectedItem === "1h" ? "#fddd4e" : "",
+                                  color: selectedItem === "1h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_1",
+                                    "1h"
+                                  );
+                                  setSelectedItem("1h");
+                                }}
+                              >
+                                1h
+                              </li>
+                            </ul>
+                          </div>
+                      </div>
+                    </div>
+                    <TvSplineAreaChartTopPerformer
+                      model_name={model_name_2.replace("-", "_")}
+                    />        
+                    </div>    
+                  ) }             
                 </th>
                 <th className="tg-0lax to-hide border-remove">
-                  <TvSplineAreaChartTopPerformer
-                    model_name={model_name_3.replace("-", "_")}
-                  />
+                  {windowWidth.current <= 568 ? (<CompareComponentMobile />) : (
+                    <div>
+                      <div className="search-filter-wapper">
+                        <div className="compare-search-wrapper">
+                          {/* MODEL SEARCH BAR */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search to-hide"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
+                                color: "var(--color-day-black)",
+                              },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                                backgroundColor: "var(--color-dropdown-bg)",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor: "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                                borderColor: "var(--color-day-yellow) !important",
+                              },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border: "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                                fontSize: "12px !important",
+                                color: "var(--color-day-black) !important",
+                                top: "-6px !important",
+                              },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor: "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor: "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                                borderBottom: "2px solid var(--color-day-black) !important",
+                              },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                                color: "var(--color-day-black) !important",
+                                fontSize: "14px !important",
+                              },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom: "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom: "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor: "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                                fontSize: "13px !important",
+                              },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                                fontSize: "12px !important",
+                                color: "var(--color-day-black) !important",
+                                top: "-8px !important",
+                              },
+                            }}
+                            onChange={handleChangeForModelSelection3}
+                            options={model_names}
+                            autoHighlight
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Models"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
+                          {/* CURRENCIES SEARCH BAR */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              marginLeft: "0.4rem",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input": {
+                                color: "var(--color-day-black)",
+                              },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                                backgroundColor: "var(--color-dropdown-bg)",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor: "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                                borderColor: "var(--color-day-yellow) !important",
+                              },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border: "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                                fontSize: "12px !important",
+                                color: "var(--color-day-black) !important",
+                                top: "-6px !important",
+                              },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor: "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor: "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                                borderBottom: "2px solid var(--color-day-black) !important",
+                              },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                                color: "var(--color-day-black) !important",
+                                fontSize: "14px !important",
+                              },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom: "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom: "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor: "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                                fontSize: "13px !important",
+                              },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                                fontSize: "12px !important",
+                                color: "var(--color-day-black) !important",
+                                top: "-8px !important",
+                              },
+                            }}
+                            defaultValue={default_value}
+                            onChange={handleChangeForModelSelection1}
+                            options={model_names}
+                            autoHighlight
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Currenices"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />       
+                        </div>
+                        {/* TIME HORIZON */}
+                        <div className="horizon-left-comparison">
+                            <div className="hours-list-comparison">
+                              <ul id="hours-list-div-comparison">
+                                {/* <li
+                                  id="hours-listings hours_filter_All"
+                                  style={{
+                                    background: selectedItem === "All" ? "#fddd4e" : "",
+                                    color: selectedItem === "All" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_All",
+                                      "All"
+                                    );
+                                    setSelectedItem("All");
+                                  }}
+                                >
+                                  All
+                                </li> */}
+                                <li
+                                  id="hours-listings hour_filter_24"
+                                  style={{
+                                    background: selectedItem === "24h" ? "#fddd4e" : "",
+                                    color: selectedItem === "24h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_24",
+                                      "24h"
+                                    );
+                                    setSelectedItem("24h");
+                                  }}
+                                >
+                                  24h
+                                </li>
+                                <li
+                                  id="hours-listings hour_filter_12"
+                                  style={{
+                                    background: selectedItem === "12h" ? "#fddd4e" : "",
+                                    color: selectedItem === "12h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_24",
+                                      "12h"
+                                    );
+                                    setSelectedItem("12h");
+                                  }}
+                                >
+                                  12h
+                                </li>
+                                <li
+                                  id="hours-listings hour_filter_8"
+                                  style={{
+                                    background: selectedItem === "8h" ? "#fddd4e" : "",
+                                    color: selectedItem === "8h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_8",
+                                      "8h"
+                                    );
+                                    setSelectedItem("8h");
+                                  }}
+                                >
+                                  8h
+                                </li>
+                                <li
+                                  id="hours-listings hour_filter_3"
+                                  style={{
+                                    background: selectedItem === "6h" ? "#fddd4e" : "",
+                                    color: selectedItem === "6h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_6",
+                                      "6h"
+                                    );
+                                    setSelectedItem("6h");
+                                  }}
+                                >
+                                  6h
+                                </li>
+                                <li
+                                  id="hours-listings hour_filter_3"
+                                  style={{
+                                    background: selectedItem === "4h" ? "#fddd4e" : "",
+                                    color: selectedItem === "4h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_4",
+                                      "4h"
+                                    );
+                                    setSelectedItem("4h");
+                                  }}
+                                >
+                                  4h
+                                </li>
+                                <li
+                                  style={{
+                                    background: selectedItem === "3h" ? "#fddd4e" : "",
+                                    color: selectedItem === "3h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_3",
+                                      "3h"
+                                    );
+                                    setSelectedItem("3h");
+                                  }}
+                                >
+                                  3h
+                                </li>
+                                <li
+                                  id="hours-listings hour_filter_2"
+                                  style={{
+                                    background: selectedItem === "2h" ? "#fddd4e" : "",
+                                    color: selectedItem === "2h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_2",
+                                      "2h"
+                                    );
+                                    setSelectedItem("2h");
+                                  }}
+                                >
+                                  2h
+                                </li>
+                                <li
+                                  id="hours-listings hour_filter_1"
+                                  style={{
+                                    background: selectedItem === "1h" ? "#fddd4e" : "",
+                                    color: selectedItem === "1h" ? "black" : "",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    handleChangeForTimeHorizonSelection(
+                                      "hour_filter_1",
+                                      "1h"
+                                    );
+                                    setSelectedItem("1h");
+                                  }}
+                                >
+                                  1h
+                                </li>
+                              </ul>
+                            </div>
+                        </div>
+                      </div>
+                      <TvSplineAreaChartTopPerformer
+                        model_name={model_name_3.replace("-", "_")}
+                      />       
+                    </div>
+                  ) }  
                 </th>
               </tr>
             </thead>

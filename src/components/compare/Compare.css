@@ -5,16 +5,18 @@
 .compare-searches {
     display: flex;
     justify-content: space-between;
+    margin-top: 3rem;
+    display: none;
 }
 
 .visibility-hidden {
     visibility: hidden;
-    width: 50%;
+    width: 25%;
 } 
 
 .model-compare-search {
-    width: 50% !important;
-    margin-left: 1.5rem;
+  width: 100% !important;
+  /* margin-left: 1.5rem; */
 }
 
 .search-table {
@@ -56,11 +58,11 @@ table{
   overflow:hidden;
   padding:18px 6px;
   word-break:normal;
-  width: 302px;
+  width: 185px;
 }
 
 .tg .tg-0lax {
-  text-align:left;
+  text-align: center;
   vertical-align:top
 }
 
@@ -74,7 +76,163 @@ table{
 
 .for-th {
   font-weight: 600;
+  text-align: left !important;
 }
+
+.horizon-left-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 2px solid var(--color-forecasts-card);
+  padding: 4px;
+  border-radius: 5px;
+  margin-top: 0.8rem;
+}
+
+.horizon-row-comparison {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.horizon-left-comparison h3 {
+  color: var(--color-day-black);
+}
+
+.divider-icon-comparison {
+  margin: 0 15px;
+  color: var(--color-day-greydark);
+}
+
+.hours-list-comparison ul {
+  display: flex;
+  list-style: none;
+}
+
+.hours-list-comparison li {
+  border-radius: 3px;
+  padding: 1px 0.52rem;
+  font-size: 11px;
+  margin: 0 4px;
+  color: var(--color-day-black);
+  background-color: var(--color-forecasts-card);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hours-list-comparison li:hover {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active1 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active2 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active3 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active4 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active5 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active6 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active7 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.hours-list-comparison .active8 {
+  background-color: var(--color-day-yellow);
+  color: black;
+}
+
+.horizon-right-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currency-search {
+  margin-right: 1.5rem;
+}
+
+.search-filter-wapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-filter-wapper-old {
+  display: none;
+}
+
+.search-filter-wapper-margin {
+  margin-left: 0.6rem;
+}
+
+.compare-search-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media screen and (min-width: 1330px) {
+  .visibility-hidden {
+    width: 15%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .horizon-left-comparison {
+    padding: 4px 12px;
+  }
+
+  .hours-list-comparison li {
+    padding: 2px 0.7rem;
+    border-radius: 3px;
+    font-size: 11px;
+    margin: 0 3px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 775px) {
+
+  .horizon-left-comparison {
+    width: 100%;
+  }
+
+  .horizon-left-comparison h3 {
+    text-align: center;
+  }
+}
+
 
 @media screen and (max-width: 568px) {
 
@@ -97,5 +255,50 @@ table{
 
   .visibility-hidden {
     width: 29%;
+  }
+
+    .horizon-left-comparison {
+    padding: 0rem 0rem 0rem 0rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin-bottom: 1rem; */
+    background-color: transparent;
+    flex-direction: column;
+    width: 25%;
+    margin-right: 0.4rem;
+  }
+
+  .horizon-row-comparison {
+    justify-content: flex-start;
+    /* flex-direction: column; */
+    align-items: center;
+    width: 100%;
+  }
+
+  .divider-icon-comparison {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-day-yellow);
+    color: var(--color-day-black);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+  }
+
+  .divider-icon-comparison p {
+    margin-top: 0;
+    padding-right: 5px;
+  }
+
+  .dd-ico-comparison {
+    width: 12px;
+  }
+
+  .horizon-left-comparison h3 {
+    font-weight: 300;
+  }
+
+  .all-horizon-comparison {
+    margin: 6px 0px !important;
   }
 }

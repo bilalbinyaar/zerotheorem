@@ -459,6 +459,10 @@
     margin-left: 0;
   }
 
+  .equation-img img {
+    width: 100%;
+  }
+
   .drop-down-best {
     background-color: var(--color-day-yellow);
   }

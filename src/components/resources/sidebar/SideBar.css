@@ -3,7 +3,7 @@
   background-color: var(--color-forecasts-card);
   width: 100%;
   border-top-right-radius: 15px;
-  padding: 2rem;
+  padding: 2rem 4rem;
   overflow-y: scroll;
 }
 
