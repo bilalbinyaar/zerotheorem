@@ -3,31 +3,10 @@ import ReactApexChart from "react-apexcharts";
 import { useStateContext } from "../../../ContextProvider";
 
 const GradientDonut = (props) => {
-  // const [series, setSeries] = useState([70, 30]);
-
-  // useEffect(() => {
-  //   fetch(
-  //     `https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stat/${props.model_name}`,
-  //     {
-  //       method: "get",
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Dought values -->", data["response"][0]);
-  //       var data_for_stat = [];
-  //       data_for_stat.push(data["response"][0].total_wins);
-  //       data_for_stat.push(data["response"][0].total_losses);
-  //       //console.log("Strategy -->", data["response"][i].strategy_name);
-  //       // data_for_stat.push(data["response"]);
-  //       if (data_for_stat.length !== 0) {
-  //         setSeries(data_for_stat);
-  //         // console.log("Data for setting stat -->", data_for_stat);
-  //       }
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
+  const [model_name, set_model_name] = useState(props.model_name);
+  if (model_name != props.model_name) {
+    set_model_name(props.model_name);
+  }
   const [stats, setStats] = useState(null);
   const [series, setSeries] = useState([]);
   const { stats_cache, Set_stats_cache } = useStateContext();
@@ -94,7 +73,7 @@ const GradientDonut = (props) => {
       // console.log("I am using cached values of stats -->", stats_cache);
       setStats(stats_cache["stats"]);
     }
-  }, []);
+  }, [model_name]);
 
   useEffect(() => {
     if (stats == null) {

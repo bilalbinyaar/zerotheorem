@@ -23,6 +23,7 @@ import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/Canvasj
 import TradingViewWidgetGraph from "../components/models/graphs/TradingViewWidgetGraph";
 import TvCumulativePnlChart from "../components/models/graphs/TvCumulativePnlChart";
 import TvDrawdownChart from "../components/models/graphs/TvDrawdownChart";
+import GradientDonut from "../components/models/graphs/GradientDonut";
 const Models = () => {
   const location = useLocation();
   // console.log("Pathname -->", location.pathname.replace("/", ""));

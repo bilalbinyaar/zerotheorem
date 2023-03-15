@@ -59,7 +59,7 @@ const TradingViewWidgetGraph = () => {
             interval={1}
             // timeframe={"1"}
             // timeframe_id={"1"}
-            hide_legend={true}
+            // hide_legend={true}
             timezone="UTC"
             style="1"
             containerId="tv_chart_container"
@@ -96,7 +96,7 @@ const TradingViewWidgetGraph = () => {
             interval={1}
             // timeframe={"1"}
             // timeframe_id={"1"}
-            hide_legend={true}
+            // hide_legend={true}
             timezone="UTC"
             style="1"
             containerId="tv_chart_container"
