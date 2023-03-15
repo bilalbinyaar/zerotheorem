@@ -52,7 +52,7 @@ table{
   border: 1px solid var(--color-grid-border);
   border-top: 0px;
   font-size:14px;
-  font-weight:normal;
+  font-weight: 600;
   overflow:hidden;
   padding:18px 6px;
   word-break:normal;
@@ -66,6 +66,14 @@ table{
 
 .no-bl {
   border-left: 0px !important;
+}
+
+.border-remove td{
+  border: none;
+}
+
+.for-th {
+  font-weight: 600;
 }
 
 @media screen and (max-width: 568px) {
@@ -85,5 +93,9 @@ table{
 
   .tg td {
     font-size: 12px;
+  }
+
+  .visibility-hidden {
+    width: 29%;
   }
 }

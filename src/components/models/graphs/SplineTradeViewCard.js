@@ -4,7 +4,7 @@ import { useState, memo } from "react";
 import { useStateContext } from "../../../ContextProvider";
 import { faSlash } from "@fortawesome/free-solid-svg-icons";
 
-const TvSplineAreaChartTopPerformer = (props) => {
+const SplineTradeViewCard = (props) => {
   const [model_name, set_model_name] = useState(props.model_name);
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
@@ -181,8 +181,9 @@ const TvSplineAreaChartTopPerformer = (props) => {
     <div
       className="compare-charts"
       ref={chartContainerRef}
+      style={{ width: "200px", height: "90px" }} // Set a fixed width and height
     />
   );
 };
 
-export default TvSplineAreaChartTopPerformer;
+export default SplineTradeViewCard;

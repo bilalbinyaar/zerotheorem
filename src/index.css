@@ -741,10 +741,20 @@ a {
   align-items: center; */
 }
 
+.compare-charts {
+  width: 290px;
+  height: 110px;
+}
+
 @media screen and (max-width: 568px) {
   .comparison-spline {
     width: 110px !important;
     height: 110px !important;
+  }
+
+  .compare-charts {
+    width: 120px;
+    height: 90px;
   }
 }
 

@@ -939,20 +939,20 @@ const CompareComponent = () => {
           <table className="tg no-bl">
             <thead className="no-bl">
               <tr>
-                <th className="tg-0lax no-bl" visibility="hidden">
+                <th className="tg-0lax no-bl border-remove" visibility="hidden">
                   {/* <ComparisonChartCanvas /> */}
                 </th>
-                <th className="tg-0lax">
+                <th className="tg-0lax border-remove">
                   <TvSplineAreaChartTopPerformer
                     model_name={model_name_1.replace("-", "_")}
                   />
                 </th>
-                <th className="tg-0lax">
+                <th className="tg-0lax border-remove">
                   <TvSplineAreaChartTopPerformer
                     model_name={model_name_2.replace("-", "_")}
                   />
                 </th>
-                <th className="tg-0lax to-hide">
+                <th className="tg-0lax to-hide border-remove">
                   <TvSplineAreaChartTopPerformer
                     model_name={model_name_3.replace("-", "_")}
                   />
@@ -961,7 +961,7 @@ const CompareComponent = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="tg-0lax">Time Horizon</td>
+                <td className="tg-0lax for-th">Time Horizon</td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].time_horizon
@@ -979,7 +979,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">Currency</td>
+                <td className="tg-0lax for-th">Currency</td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].currency
@@ -997,7 +997,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">Start Date</td>
+                <td className="tg-0lax for-th">Start Date</td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].date_started
@@ -1015,7 +1015,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">Forecast</td>
+                <td className="tg-0lax for-th">Forecast</td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].current_position
@@ -1033,7 +1033,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">Forecast Time</td>
+                <td className="tg-0lax for-th">Forecast Time</td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].forecast_time
@@ -1051,7 +1051,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">Next Forecast</td>
+                <td className="tg-0lax for-th">Next Forecast</td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].next_forecast
@@ -1069,7 +1069,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">1d PNL</td>
+                <td className="tg-0lax for-th">1d PNL</td>
                 <td className="tg-0lax">
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_1 : null}
                 </td>
@@ -1081,7 +1081,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">7d PNL</td>
+                <td className="tg-0lax for-th">7d PNL</td>
                 <td className="tg-0lax">
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_7 : null}
                 </td>
@@ -1093,7 +1093,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">15d PNL</td>
+                <td className="tg-0lax for-th">15d PNL</td>
                 <td className="tg-0lax">
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_15 : null}
                 </td>
@@ -1105,7 +1105,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">30d PNL</td>
+                <td className="tg-0lax for-th">30d PNL</td>
                 <td className="tg-0lax">
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_30 : null}
                 </td>
@@ -1117,7 +1117,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">45d PNL</td>
+                <td className="tg-0lax for-th">45d PNL</td>
                 <td className="tg-0lax">
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_45 : null}
                 </td>
@@ -1129,7 +1129,7 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">60d PNL</td>
+                <td className="tg-0lax for-th">60d PNL</td>
                 <td className="tg-0lax">
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_60 : null}
                 </td>
@@ -1141,9 +1141,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
-                  Max DD
-                  <Tooltip title="X">
+                <td className="tg-0lax for-th">
+                  Max Drawdown
+                  <Tooltip title="Maximum DrawDown – measurement of maximum negative yield experienced in the past">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1166,9 +1166,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
-                  Max DD Day
-                  <Tooltip title="X">
+                <td className="tg-0lax for-th">
+                  Max Drawdown Day
+                  <Tooltip title="Maximum DrawDown Days – measurement of the maximum number of days the model was in a negative yield">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1191,9 +1191,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
-                  Average DD
-                  <Tooltip title="X">
+                <td className="tg-0lax for-th">
+                  Average Drawdown
+                  <Tooltip title="Average DrawDown – the average negative yield experienced by the model">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1216,9 +1216,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
-                  Average DD Days
-                  <Tooltip title="X">
+                <td className="tg-0lax for-th">
+                  Average Drawdown Days
+                  <Tooltip title="Average DrawDown Days – the average number of days in a negative yield experienced by the model">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1241,9 +1241,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
-                  Current DD
-                  <Tooltip title="X">
+                <td className="tg-0lax for-th">
+                  Current Drawdown
+                  <Tooltip title="Current DrawDown – the actual negative yield (if in a negative) that is currently being experienced by the model">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1266,9 +1266,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
-                  Current DD Days
-                  <Tooltip title="X">
+                <td className="tg-0lax for-th">
+                  Current Drawdown Days
+                  <Tooltip title="Current DrawDown Days – the actual number of days in a negative yield (if in a negative) that is currently being experienced by the model">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1291,9 +1291,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Total Wins
-                  <Tooltip title="X">
+                  <Tooltip title="The total number of Wins the model has experienced">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1310,9 +1310,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Total Losses
-                  <Tooltip title="X">
+                  <Tooltip title="The total number of losses the model has experienced">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1335,9 +1335,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Consecutive Wins
-                  <Tooltip title="X">
+                  <Tooltip title="The maximum amount of sequential wins the model has experienced">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1360,9 +1360,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Consecutive Losses
-                  <Tooltip title="X">
+                  <Tooltip title="The maximum amount of sequential losses the model has experienced">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1385,9 +1385,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Win Percentage
-                  <Tooltip title="X">
+                  <Tooltip title="The percentage amount of wins the model has experienced">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1410,9 +1410,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Win/Loss Ratio
-                  <Tooltip title="X">
+                  <Tooltip title="The ratio of the win size vs the loss size. Above 1 means the model wins more than it losses on average">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1435,9 +1435,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Aggregate Profit
-                  <Tooltip title="X">
+                  <Tooltip title="The total amount of positive yield generated by the model">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1460,9 +1460,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Aggregate Loss
-                  <Tooltip title="X">
+                  <Tooltip title="The total amount of negative yield generated by the model">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1485,9 +1485,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Average Daily PNL
-                  <Tooltip title="X">
+                  <Tooltip title="Average daily PNL">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1510,9 +1510,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   R2 Score
-                  <Tooltip title="X">
+                  <Tooltip title="A measurement representing the descriptive power of the model. The closer the R2 score is to 1 the better the model is">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1529,9 +1529,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Sharpe
-                  <Tooltip title="X">
+                  <Tooltip title="The ratio of annualised yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
@@ -1548,9 +1548,9 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
+                <td className="tg-0lax for-th">
                   Sortino
-                  <Tooltip title="X">
+                  <Tooltip title="The ratio of annualised yield over the negative standard deviation of yield that the model has experienced. The higher the Sortino ratio the less risky the model performance is">
                     <IconButton>
                       <BsFillInfoCircleFill />
                     </IconButton>
