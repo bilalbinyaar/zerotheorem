@@ -202,7 +202,7 @@ const ComparisonChartCanvas = (props) => {
               gridColor: "#43577533",
               tickColor: "#43577533",
               minimum: -20,
-              maximum: 200,
+              maximum: 150,
               gridColor: "#43577533",
               gridThickness: 0,
               labelFontColor: "rgb(55, 61, 63)",

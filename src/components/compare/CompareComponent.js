@@ -965,19 +965,25 @@ const CompareComponent = () => {
                   {/* <ComparisonChartCanvas /> */}
                 </th>
                 <th className="tg-0lax border-remove">
-                  <ComparisonChartCanvas
-                    model_name={model_name_1.replace("-", "_")}
-                  />
+                  {model_name_1 == "" ? null : (
+                    <ComparisonChartCanvas
+                      model_name={model_name_1.replace("-", "_")}
+                    />
+                  )}
                 </th>
                 <th className="tg-0lax border-remove">
-                  <ComparisonChartCanvas
-                    model_name={model_name_2.replace("-", "_")}
-                  />
+                  {model_name_2 == "" ? null : (
+                    <ComparisonChartCanvas
+                      model_name={model_name_2.replace("-", "_")}
+                    />
+                  )}
                 </th>
                 <th className="tg-0lax to-hide border-remove">
-                  <ComparisonChartCanvas
-                    model_name={model_name_3.replace("-", "_")}
-                  />
+                  {model_name_3 == "" ? null : (
+                    <ComparisonChartCanvas
+                      model_name={model_name_3.replace("-", "_")}
+                    />
+                  )}
                 </th>
               </tr>
             </thead>
