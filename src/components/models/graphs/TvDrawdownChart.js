@@ -4,20 +4,19 @@ import { useState, memo } from "react";
 import { useStateContext } from "../../../ContextProvider";
 import { faSlash } from "@fortawesome/free-solid-svg-icons";
 
-const TvCumulativePnlChart = (props) => {
+const TvDrawdownChart = (props) => {
   const windowWidth = useRef(window.innerWidth);
 
   const [model_name, set_model_name] = useState(props.model_name);
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
   }
-  const { spline_graph_cum_cache, Set_spline_graph_cum_cache } =
-    useStateContext();
+  const { tv_drawdown_cache, Set_tv_drawdown_cache } = useStateContext();
   const [data_for_pnl_graph, set_data_for_pnl_graph] = useState([]);
   const [cummulative_pnl, set_cum_pnl] = useState([]);
 
   useEffect(() => {
-    if (!spline_graph_cum_cache[props.model_name]) {
+    if (!tv_drawdown_cache[props.model_name]) {
       // console.log("I received model name for graph -->", props.model_name);
 
       fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/${props.model_name}`, {
@@ -37,7 +36,7 @@ const TvCumulativePnlChart = (props) => {
 
               cum_pnl.push({
                 time: parseInt(data["response"][index].ledger_timestamp),
-                value: parseInt(data["response"][index].pnl_sum),
+                value: parseInt(data["response"][index].drawdown),
               });
             } else {
               // console.log(data["response"][index].pnl_sum);
@@ -54,13 +53,13 @@ const TvCumulativePnlChart = (props) => {
             //   }));
             // console.log(chartData);
             set_cum_pnl(cum_pnl);
-            Set_spline_graph_cum_cache({ [props.model_name]: cum_pnl });
+            Set_tv_drawdown_cache({ [props.model_name]: cum_pnl });
           }
           // console.log("Cum pnl -->", cum_pnl);
         })
         .catch((err) => console.log(err));
     } else {
-      set_cum_pnl(spline_graph_cum_cache[props.model_name]);
+      set_cum_pnl(tv_drawdown_cache[props.model_name]);
 
       // console.log(
       //   "I am using cached value for straight spline graph -->",
@@ -178,8 +177,9 @@ const TvCumulativePnlChart = (props) => {
         const mappedData = data_for_pnl_graph.map(({ time, value }) => ({
           time,
           value,
-          topColor: value >= 0 ? "#16c784" : "#ff2e2e",
-          lineColor: value >= 0 ? "#16c784" : "#ff2e2e",
+          topColor: "#ff2e2e",
+          bottomCOlor: "#ff2e2e",
+          lineColor: "#ff2e2e",
         }));
 
         areaSeries.setData(mappedData);
@@ -202,7 +202,7 @@ const TvCumulativePnlChart = (props) => {
         <div
           className="container2"
           ref={chartContainerRef}
-          style={{ width: "90%", height: "400px" }} // Set a fixed width and height
+          style={{ width: "90%", height: "200px" }} // Set a fixed width and height
         />
       ) : (
         <div
@@ -215,4 +215,4 @@ const TvCumulativePnlChart = (props) => {
   );
 };
 
-export default TvCumulativePnlChart;
+export default TvDrawdownChart;

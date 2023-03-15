@@ -746,7 +746,6 @@ a {
     width: 110px !important;
     height: 110px !important;
   }
-
 }
 
 .pagination {
@@ -794,35 +793,30 @@ a {
   .css-1aumtv5 {
     width: 200px !important;
   }
-
 }
 
 @media screen and (max-width: 1020px) {
   .css-1aumtv5 {
     width: 175px !important;
   }
-
 }
 
 @media screen and (max-width: 968px) {
   .css-1aumtv5 {
     width: 145px !important;
   }
-
 }
 
 @media screen and (max-width: 885px) {
   .css-1aumtv5 {
     width: 115px !important;
   }
-
 }
 
 @media screen and (max-width: 885px) {
   .css-1aumtv5 {
     width: 100px !important;
   }
-
 }
 
 @media screen and (max-width: 568px) {
@@ -1165,4 +1159,31 @@ a {
 }
 #tv_chart_container {
   background-color: yellow !important;
+}
+.container2 {
+  width: 77.5%;
+  margin: 0 auto;
+  height: 400px !important;
+  margin-bottom: 7%;
+  padding: 4rem 3.4rem;
+}
+@media screen and (max-width: 480px) {
+  .container2 {
+    margin-right: 10% !important;
+    margin-bottom: 20% !important;
+  }
+}
+.container3 {
+  width: 74%;
+  margin: 0 auto;
+  /* height: 400px !important; */
+  padding: 4rem 3.4rem;
+}
+@media screen and (max-width: 480px) {
+  .container3 {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 7%;
+    padding: 4rem 3.4rem;
+  }
 }

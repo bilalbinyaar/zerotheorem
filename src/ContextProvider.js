@@ -118,6 +118,7 @@ export const ContextProvider = ({ children }) => {
   const [individual_pnl_graph_cache, set_individual_pnl_graph_cache] = useState(
     {}
   );
+  const [tv_drawdown_cache, set_tv_drawdown_cache] = useState({});
   const [
     individual_pnl_canvasjs_graph_cache,
     set_individual_pnl_canvasjs_graph_cache,
@@ -127,6 +128,13 @@ export const ContextProvider = ({ children }) => {
     // const updated_data = [...cache, new_data];
     let stats = Object.assign(position_stats_cache, new_data);
     set_position_stats_cache(stats);
+    // console.log("My updated data in cache -->", obj);
+  };
+
+  const Set_tv_drawdown_cache = (new_data) => {
+    // const updated_data = [...cache, new_data];
+    let stats = Object.assign(tv_drawdown_cache, new_data);
+    set_tv_drawdown_cache(stats);
     // console.log("My updated data in cache -->", obj);
   };
   const Set_sorted_stats_cache = (new_data) => {
@@ -340,6 +348,8 @@ export const ContextProvider = ({ children }) => {
         Set_position_stats_cache,
         spline_graph_cum_cache,
         Set_spline_graph_cum_cache,
+        tv_drawdown_cache,
+        Set_tv_drawdown_cache,
       }}
     >
       {children}
