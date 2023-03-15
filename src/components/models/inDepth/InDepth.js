@@ -5,7 +5,6 @@ import "./InDepth.css";
 import CanvasDoughnut from "../graphs/CanvasDoughnut";
 import CanvasNegativeBar from "../graphs/CanvasNegativeBar";
 import IndividualPnlCanvasjs from "../graphs/IndividualPnlCanvasjs";
-
 const InDepth = (props) => {
   return (
     <div className="in-depth">
@@ -19,14 +18,13 @@ const InDepth = (props) => {
             <div className="for-hr"></div>
             {/* <NegativeColumns model_name={props.model_name} /> */}
             {/* <CanvasNegativeBar model_name={props.model_name} /> */}
-            <NegativeColumns model_name={props.model_name} />
+            <IndividualPnlCanvasjs model_name={props.model_name} />
           </div>
           <div className="in-depth-gd">
             <h3>Win/Loss</h3>
             <div className="for-hr"></div>
             {/* <GradientDonut model_name={props.model_name} /> */}
-            {/* <CanvasDoughnut model_name={props.model_name} /> */}
-            <GradientDonut model_name={props.model_name} />
+            <CanvasDoughnut model_name={props.model_name} />
           </div>
         </div>
       </div>

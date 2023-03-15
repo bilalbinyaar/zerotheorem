@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Overview.css";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import { Tooltip } from "@mui/material";
+import { Hidden, Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { RiCheckboxBlankFill } from "react-icons/ri";
 import texture from "../../assets/transparent.jpg";
@@ -65,7 +65,6 @@ const Overview = () => {
   }, []);
   const windowWidth = useRef(window.innerWidth);
 
-
   return (
     <div>
       {windowWidth.current <= 568 ? (
@@ -108,10 +107,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["24h"]
-                            ? position_analysis_stats["24h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["24h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["24h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -125,10 +132,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["24h"]
-                            ? position_analysis_stats["24h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["24h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["24h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -158,10 +173,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["12h"]
-                            ? position_analysis_stats["12h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["12h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["12h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -175,10 +198,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["12h"]
-                            ? position_analysis_stats["12h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["12h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["12h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -208,10 +239,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["8h"]
-                            ? position_analysis_stats["8h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["8h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["8h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -225,10 +264,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["8h"]
-                            ? position_analysis_stats["8h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["8h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["8h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -258,10 +305,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["6h"]
-                            ? position_analysis_stats["6h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["6h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["6h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -275,10 +330,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["6h"]
-                            ? position_analysis_stats["6h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["6h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["6h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -311,10 +374,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["4h"]
-                            ? position_analysis_stats["4h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["4h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["4h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -328,10 +399,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["4h"]
-                            ? position_analysis_stats["4h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["4h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["4h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -361,10 +440,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["3h"]
-                            ? position_analysis_stats["3h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["3h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["3h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -562,10 +649,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["24h"]
-                            ? position_analysis_stats["24h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["24h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["24h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -579,10 +674,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["24h"]
-                            ? position_analysis_stats["24h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["24h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["24h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -617,10 +720,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["12h"]
-                            ? position_analysis_stats["12h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["12h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["12h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -634,10 +745,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["12h"]
-                            ? position_analysis_stats["12h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["12h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["12h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -672,10 +791,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["8h"]
-                            ? position_analysis_stats["8h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["8h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["8h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -689,10 +816,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["8h"]
-                            ? position_analysis_stats["8h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["8h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["8h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -727,10 +862,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["6h"]
-                            ? position_analysis_stats["6h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["6h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["6h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -744,10 +887,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["6h"]
-                            ? position_analysis_stats["6h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["6h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["6h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -785,10 +936,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["4h"]
-                            ? position_analysis_stats["4h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["4h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["4h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -802,10 +961,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["4h"]
-                            ? position_analysis_stats["4h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["4h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["4h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -840,10 +1007,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["3h"]
-                            ? position_analysis_stats["3h"].long_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["3h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["3h"].long_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (
@@ -857,10 +1032,18 @@ const Overview = () => {
                         }}
                       >
                         <p>
-                          {position_analysis_stats["3h"]
-                            ? position_analysis_stats["3h"].short_percentage
-                            : "0"}
-                          {"%"}
+                          {position_analysis_stats["3h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["3h"].short_percentage}%`
+                          )}
                         </p>
                       </div>
                     ) : (

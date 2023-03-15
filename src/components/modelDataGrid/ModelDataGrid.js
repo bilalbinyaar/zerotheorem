@@ -19,7 +19,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import TradingViewSplineAreaChart from "../models/graphs/TvSplineAreaChart";
 import IconButton from "@mui/material/IconButton";
 import {
   GridColDef,
@@ -392,12 +392,16 @@ const ModelDataGrid = () => {
   };
   // To Link Grid Rows to Models Component
 
-
-
-
   const columns = [
-    { field: "id", headerName: "#", headerAlign: "center", width: 30, id: "grid-tab"},
-
+    { field: "id", headerName: "#", headerAlign: "center", width: 40 },
+    // {
+    //   field: "modelName",
+    //   headerName: "Model Name",
+    //   width: 110,
+    //   sortable: true,
+    //   headerAlign: "center",
+    //   flex: 1.2,
+    // },
     {
       field: "modelNameMob",
       // headerName: "Model",
@@ -417,7 +421,7 @@ const ModelDataGrid = () => {
           </Tooltip>
         </strong>
       ),
-      flex: 1.7,
+      flex: 1.4,
       renderCell: (cellValues) => {
         return <ModelNameCol value={cellValues.value} />;
       },
@@ -429,7 +433,7 @@ const ModelDataGrid = () => {
       width: 130,
       sortable: true,
       headerAlign: "center",
-      flex: 1.9,
+      flex: 1.5,
       renderHeader: (params) => (
         <strong>
           {"Start Date "}
@@ -450,7 +454,7 @@ const ModelDataGrid = () => {
       width: 180,
       sortable: true,
       headerAlign: "center",
-      flex: 1.7,
+      flex: 1.4,
 
       cellClassName: (params) => {
         if (params.value == null) {
@@ -483,7 +487,7 @@ const ModelDataGrid = () => {
       width: 140,
       sortable: true,
       headerAlign: "center",
-      flex: 2.5,
+      flex: 1.75,
       renderHeader: (params) => (
         <strong>
           {"Forecast Time"}
@@ -505,7 +509,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: false,
       headerAlign: "center",
-      flex: 1.79,
+      flex: 1.6,
       renderCell: (cellValues) => {
         // console.log("Here is the model -->", cellValues.value);
         return <Timer time_horizon={cellValues.value} />;
@@ -531,7 +535,7 @@ const ModelDataGrid = () => {
       width: 100,
       sortable: true,
       headerAlign: "center",
-      flex: 2.15,
+      flex: 1.75,
       renderHeader: (params) => (
         <strong>
           {"Avg Daily PNL"}
@@ -553,7 +557,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: true,
       headerAlign: "center",
-      flex: 1.54,
+      flex: 1.3,
       renderHeader: (params) => (
         <strong>
           {"7d PNL "}
@@ -575,7 +579,7 @@ const ModelDataGrid = () => {
       width: 110,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 1.45,
       renderHeader: (params) => (
         <strong>
           {"Total PNL "}
@@ -607,10 +611,9 @@ const ModelDataGrid = () => {
       field: "pnlGraph",
       headerName: "PNL Graph",
       sortable: false,
+      width: 120,
       headerAlign: "center",
-      flex: 2.1,
-      width: 150,
-
+      flex: 1.35,
       renderCell: (cellValues) => {
         // console.log("I am called in dark mode -->", cellValues.value);
         return <DataGridGraph model_name={cellValues.value} />;
@@ -658,7 +661,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: false,
       headerAlign: "center",
-      flex: 1.3,
+      flex: 1.4,
       renderCell: (cellValues) => {
         // console.log("I am mobile component bro");
         return <ModelNameCol value={cellValues.value} />;
@@ -668,10 +671,10 @@ const ModelDataGrid = () => {
     {
       field: "totalpnl",
       headerName: "Total PNL",
-      width: 90,
+      width: 100,
       sortable: true,
       headerAlign: "center",
-      flex: 0.6,
+      flex: 1,
       cellClassName: (params) => {
         if (params.value == null) {
           return "";
@@ -688,9 +691,9 @@ const ModelDataGrid = () => {
       field: "pnlGraph",
       headerName: "PNL Graph",
       sortable: false,
-      width: 130,
-      flex: 1.4,
+      width: 100,
       headerAlign: "center",
+      flex: 1,
       renderCell: (cellValues) => {
         return <DataGridGraph model_name={cellValues.value} />;
       },
@@ -755,7 +758,7 @@ const ModelDataGrid = () => {
   return (
     <div className="model-grid">
       <div className="container">
-        {windowWidth.current <= 568 ? (
+        {windowWidth.current <= 480 ? (
           <div className="model-grid-mob">
             <div className="horizon">
               <div className="horizon-row">
@@ -1348,7 +1351,7 @@ const ModelDataGrid = () => {
               </Box>
             </div>
           </div>
-        ) :  (
+        ) : (
           <div className="model-grid-web">
             <div className="horizon">
               <div className="horizon-row">

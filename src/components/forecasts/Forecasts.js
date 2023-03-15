@@ -21,15 +21,13 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EquationBlack from "../../assets/equation-black.png";
-import SplineTradeViewCard from "../models/graphs/SplineTradeViewCard";
 import EquationWhite from "../../assets/equation-white.png";
 import { Link } from "react-router-dom";
 import AdsensePlaceHolder from "../adsense/AdsensePlaceHolder";
 
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
-const 
-Forecasts = () => {
+const Forecasts = () => {
   // console.log("Hello");
   // TOTAL PNL COLORS
   const forColor = (total_pnl, id) => {
@@ -112,7 +110,7 @@ Forecasts = () => {
             };
           }
           if (JSON.stringify(model_names) !== "{}") {
-            // console.log("Sortable -->", model_names);
+            console.log("Sortable -->", model_names);
 
             const sorted = Object.keys(model_names)
               .map((key) => {
@@ -127,10 +125,10 @@ Forecasts = () => {
         })
         .catch((err) => console.log(err));
     } else {
-      // console.log(
-      //   "I am using cached values of sorted stats -->",
-      //   sorted_stats_cache
-      // );
+      console.log(
+        "I am using cached values of sorted stats -->",
+        sorted_stats_cache
+      );
       setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
     }
   }, []);
@@ -153,13 +151,13 @@ Forecasts = () => {
           for (var i = 0; i < data["response"].length; i++) {
             model_names.push({
               label: data["response"][i].strategy_name.replace("_", "-"),
-              // value: i,
+              value: index,
             });
             if (!unique_coins[data["response"][i].currency]) {
               unique_coins[data["response"][i].currency] = 1;
               coin_names.push({
                 label: data["response"][i].currency,
-                // value: i,
+                value: index,
               });
             }
             var dt = new Date(
@@ -492,7 +490,7 @@ Forecasts = () => {
           {/* FOR WEB VIEW */}
           {checked === true ? (
             <div className="forecast-web">
-              <div className="forecasts-cards tablet-view-card">
+              <div className="forecasts-cards">
                 <div className="forecasts-card card-margin">
                   <div className="announcement-card">
                     <div className="announcement-row">
@@ -595,7 +593,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[0] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[0].strategy_name
                             }
@@ -714,7 +712,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[1] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[1].strategy_name
                             }
@@ -830,7 +828,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[2] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[2].strategy_name
                             }
@@ -946,7 +944,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[3] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[3].strategy_name
                             }
@@ -1062,7 +1060,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[4] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[4].strategy_name
                             }
@@ -1179,7 +1177,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[5] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[5].strategy_name
                             }
@@ -1295,7 +1293,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[6] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[6].strategy_name
                             }
@@ -1411,7 +1409,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[7] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[7].strategy_name
                             }
@@ -1527,7 +1525,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[8] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[8].strategy_name
                             }
@@ -1643,7 +1641,7 @@ Forecasts = () => {
                     <div className="announcement-news">
                       <div className="news-inner">
                         {Object.values(topPerformerModels)[9] ? (
-                          <SplineTradeViewCard
+                          <ForecastsSplineCanvasjs
                             model_name={
                               Object.values(topPerformerModels)[9].strategy_name
                             }
@@ -1658,7 +1656,6 @@ Forecasts = () => {
           ) : null}
 
           {/* FOR MOBILE VIEW  */}
-          {checked === true ? (
           <div className="forecast-mob">
             {/* <div className="swipe-right" id='toHide'>
                 <BsArrowRightShort className="swipe-right-icon" />
@@ -1767,7 +1764,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[0] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[0].strategy_name
                           }
@@ -1873,7 +1870,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[1] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[1].strategy_name
                           }
@@ -1979,7 +1976,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[2] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[2].strategy_name
                           }
@@ -2087,7 +2084,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[3] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[3].strategy_name
                           }
@@ -2193,7 +2190,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[4] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[4].strategy_name
                           }
@@ -2299,7 +2296,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[5] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[5].strategy_name
                           }
@@ -2405,7 +2402,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[6] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[6].strategy_name
                           }
@@ -2511,7 +2508,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[7] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[7].strategy_name
                           }
@@ -2617,7 +2614,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[8] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[8].strategy_name
                           }
@@ -2723,7 +2720,7 @@ Forecasts = () => {
                   <div className="announcement-news">
                     <div className="news-inner">
                       {Object.values(topPerformerModels)[9] ? (
-                        <SplineTradeViewCard
+                        <ForecastsSplineCanvasjs
                           model_name={
                             Object.values(topPerformerModels)[9].strategy_name
                           }
@@ -2734,7 +2731,7 @@ Forecasts = () => {
                 </div>
               </div>
             </div>
-          </div> ) : null }
+          </div>
 
           {/* <div>
               <AdsensePlaceHolder />
