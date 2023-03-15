@@ -236,6 +236,10 @@ table{
 
 @media screen and (max-width: 568px) {
 
+  .compare-search-wrapper {
+    flex-direction: column;
+  }
+
   .compare-searches {
     margin-top: 2rem;
   }

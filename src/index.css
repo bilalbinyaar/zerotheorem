@@ -749,6 +749,10 @@ a {
   margin-top: 3rem;
 }
 
+.candle-chart .container {
+  padding: 3rem 0rem;
+}
+
 @media screen and (max-width: 568px) {
   .comparison-spline {
     width: 110px !important;

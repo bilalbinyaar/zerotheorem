@@ -35,7 +35,8 @@ const TradingViewWidgetGraph = () => {
   };
 
   return (
-    <div class="container3">
+    <div className="candle-chart"> 
+      <div class="container">
       {theme === "dark-theme" ? (
         <div>
           <h2 className="current-position-heading">Current Position</h2>
@@ -111,7 +112,9 @@ const TradingViewWidgetGraph = () => {
           />
         </div>
       )}
+      </div>
     </div>
+    
   );
 };
 

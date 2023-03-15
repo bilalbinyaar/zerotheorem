@@ -26,7 +26,7 @@ const ComparisonChartCanvas = (props) => {
       enabled: false, //change it to true
     },
     navigator: {
-      enabled: flag,
+      enabled: false,
       axisX: {
         labelFontSize: 10,
       },
@@ -202,7 +202,6 @@ const ComparisonChartCanvas = (props) => {
               gridColor: "#43577533",
               tickColor: "#43577533",
               minimum: -20,
-              maximum: 150,
               gridColor: "#43577533",
               gridThickness: 0,
               labelFontColor: "rgb(55, 61, 63)",
@@ -257,28 +256,7 @@ const ComparisonChartCanvas = (props) => {
     setIsLoaded(true);
   }, [cummulative_pnl]);
 
-  //   useEffect(() => {
-  //     fetch("https://canvasjs.com/data/gallery/react/btcusd2017-18.json")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         const dps = [];
-  //         for (let i = 0; i < data.length; i++) {
-  //           if (i % 2 === 0) {
-  //             dps.push({
-  //               x: new Date(data[i].date),
-  //               y: 1 * Number(data[i].close),
-  //             });
-  //           } else {
-  //             dps.push({
-  //               x: new Date(data[i].date),
-  //               y: -1 * Number(data[i].close),
-  //             });
-  //           }
-  //         }
-  //         setDataPoints(dps);
-  //         setIsLoaded(true);
-  //       });
-  //   }, []);
+
 
   const containerProps = {
     width: "100%",
@@ -287,15 +265,8 @@ const ComparisonChartCanvas = (props) => {
   };
 
   return (
-    // <div>
-    //   {isLoaded && (
-    //     <CanvasJSStockChart containerProps={containerProps} options={options} />
-    //   )}
-    //   </div>
     <div className="canvas-main-div">
-      <div className="container">
         <CanvasJSStockChart containerProps={containerProps} options={options} />
-      </div>
     </div>
   );
 };

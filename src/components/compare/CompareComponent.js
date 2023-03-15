@@ -332,7 +332,7 @@ const CompareComponent = () => {
                   {/* <ComparisonChartCanvas /> */}
                 </th>
                 <th className="tg-0lax border-remove">
-                  {windowWidth.current <= 568 ? (<CompareComponentMobile />) : (
+                  {windowWidth.current <= 568 ? (<CompareComponentMobile model_name = {model_name_1}/>) : (
                   <div>
                     <div className="search-filter-wapper">
                       <div className="compare-search-wrapper">
@@ -941,7 +941,7 @@ const CompareComponent = () => {
                         </div>
                       </div>
                     </div>
-                    <TvSplineAreaChartTopPerformer
+                    <ComparisonChartCanvas
                       model_name={model_name_1.replace("-", "_")}
                     />
                   </div> 
@@ -1556,7 +1556,7 @@ const CompareComponent = () => {
                           </div>
                       </div>
                     </div>
-                    <TvSplineAreaChartTopPerformer
+                    <ComparisonChartCanvas
                       model_name={model_name_2.replace("-", "_")}
                     />        
                     </div>    
@@ -2170,7 +2170,7 @@ const CompareComponent = () => {
                             </div>
                         </div>
                       </div>
-                      <TvSplineAreaChartTopPerformer
+                      <ComparisonChartCanvas
                         model_name={model_name_3.replace("-", "_")}
                       />       
                     </div>
