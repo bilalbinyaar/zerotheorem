@@ -178,7 +178,15 @@ const ComparisonChartCanvas = (props) => {
               gridColor: "#43577533",
               tickColor: "#43577533",
               lineThickness: 1,
+              labelFontColor: "rgb(55, 61, 63)",
+              gridThickness: 0,
+              tickColor: "#43577533",
+              tickThickness: 0,
+              lineThickness: 0,
               tickLength: 0,
+              labelFormatter: function () {
+                return " ";
+              },
               crosshair: {
                 enabled: false,
                 snapToDataPoint: false,
@@ -194,7 +202,14 @@ const ComparisonChartCanvas = (props) => {
               gridColor: "#43577533",
               tickColor: "#43577533",
               minimum: -20,
-              maximum: 150,
+              maximum: 200,
+              gridColor: "#43577533",
+              gridThickness: 0,
+              labelFontColor: "rgb(55, 61, 63)",
+              tickColor: "#43577533",
+              labelFormatter: function () {
+                return " ";
+              },
               labelFontSize: 10,
               crosshair: {
                 enabled: false,

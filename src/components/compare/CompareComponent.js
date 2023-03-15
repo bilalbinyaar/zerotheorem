@@ -10,6 +10,28 @@ import IconButton from "@mui/material/IconButton";
 import { useLocation } from "react-router-dom";
 import TvSplineAreaChartTopPerformer from "../models/graphs/TvSplineAreaChartTopPerformer";
 const CompareComponent = () => {
+  const forBgColor = (total_pnl, id) => {
+    if (total_pnl < 0) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    } else if (total_pnl >= 0) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    }
+  };
+  const forBgColorPosition = (position, id) => {
+    if (position == "Short") {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    } else if (position == "Long") {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    }
+  };
   const [Flag, setFlag] = useState(null);
   const [stats, set_stats] = useState({});
   const location = useLocation();
@@ -943,17 +965,17 @@ const CompareComponent = () => {
                   {/* <ComparisonChartCanvas /> */}
                 </th>
                 <th className="tg-0lax border-remove">
-                  <TvSplineAreaChartTopPerformer
+                  <ComparisonChartCanvas
                     model_name={model_name_1.replace("-", "_")}
                   />
                 </th>
                 <th className="tg-0lax border-remove">
-                  <TvSplineAreaChartTopPerformer
+                  <ComparisonChartCanvas
                     model_name={model_name_2.replace("-", "_")}
                   />
                 </th>
                 <th className="tg-0lax to-hide border-remove">
-                  <TvSplineAreaChartTopPerformer
+                  <ComparisonChartCanvas
                     model_name={model_name_3.replace("-", "_")}
                   />
                 </th>
@@ -1016,17 +1038,51 @@ const CompareComponent = () => {
               </tr>
               <tr>
                 <td className="tg-0lax for-th">Forecast</td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"position"}
+                  onChange={
+                    strategies[model_name_1]
+                      ? forBgColorPosition(
+                          strategies[model_name_1].current_position,
+                          "position"
+                        )
+                      : null
+                  }
+                >
                   {strategies[model_name_1]
                     ? strategies[model_name_1].current_position
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"position2"}
+                  onChange={
+                    strategies[model_name_2]
+                      ? forBgColorPosition(
+                          strategies[model_name_2].current_position,
+                          "position2"
+                        )
+                      : null
+                  }
+                >
                   {strategies[model_name_2]
                     ? strategies[model_name_2].current_position
                     : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"position3"}
+                  onChange={
+                    strategies[model_name_3]
+                      ? forBgColorPosition(
+                          strategies[model_name_3].current_position,
+                          "position3"
+                        )
+                      : null
+                  }
+                >
+                  {" "}
                   {strategies[model_name_3]
                     ? strategies[model_name_3].current_position
                     : null}
@@ -1070,73 +1126,217 @@ const CompareComponent = () => {
               </tr>
               <tr>
                 <td className="tg-0lax for-th">1d PNL</td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl-bg"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColor(stats[model_name_1].pnl_sum_1, "pnl-bg")
+                      : null
+                  }
+                >
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_1 : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl2"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColor(stats[model_name_2].pnl_sum_1, "pnl2")
+                      : null
+                  }
+                >
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_1 : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"pnl3"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColor(stats[model_name_3].pnl_sum_1, "pnl3")
+                      : null
+                  }
+                >
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_1 : null}
                 </td>
               </tr>
               <tr>
                 <td className="tg-0lax for-th">7d PNL</td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl4"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColor(stats[model_name_1].pnl_sum_7, "pnl4")
+                      : null
+                  }
+                >
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_7 : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl5"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColor(stats[model_name_2].pnl_sum_7, "pnl5")
+                      : null
+                  }
+                >
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_7 : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"pnl6"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColor(stats[model_name_3].pnl_sum_7, "pnl6")
+                      : null
+                  }
+                >
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_7 : null}
                 </td>
               </tr>
               <tr>
                 <td className="tg-0lax for-th">15d PNL</td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl7"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColor(stats[model_name_1].pnl_sum_15, "pnl7")
+                      : null
+                  }
+                >
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_15 : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl8"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColor(stats[model_name_2].pnl_sum_15, "pnl8")
+                      : null
+                  }
+                >
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_15 : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"pnl9"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColor(stats[model_name_3].pnl_sum_15, "pnl9")
+                      : null
+                  }
+                >
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_15 : null}
                 </td>
               </tr>
               <tr>
                 <td className="tg-0lax for-th">30d PNL</td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl10"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColor(stats[model_name_1].pnl_sum_30, "pnl10")
+                      : null
+                  }
+                >
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_30 : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl11"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColor(stats[model_name_2].pnl_sum_30, "pnl11")
+                      : null
+                  }
+                >
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_30 : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"pnl12"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColor(stats[model_name_3].pnl_sum_30, "pnl12")
+                      : null
+                  }
+                >
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_30 : null}
                 </td>
               </tr>
               <tr>
                 <td className="tg-0lax for-th">45d PNL</td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl13"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColor(stats[model_name_1].pnl_sum_45, "pnl13")
+                      : null
+                  }
+                >
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_45 : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl14"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColor(stats[model_name_2].pnl_sum_45, "pnl14")
+                      : null
+                  }
+                >
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_45 : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"pnl15"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColor(stats[model_name_3].pnl_sum_45, "pnl15")
+                      : null
+                  }
+                >
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_45 : null}
                 </td>
               </tr>
               <tr>
                 <td className="tg-0lax for-th">60d PNL</td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl16"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColor(stats[model_name_1].pnl_sum_60, "pnl16")
+                      : null
+                  }
+                >
                   {stats[model_name_1] ? stats[model_name_1].pnl_sum_60 : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"pnl17"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColor(stats[model_name_2].pnl_sum_60, "pnl17")
+                      : null
+                  }
+                >
                   {stats[model_name_2] ? stats[model_name_2].pnl_sum_60 : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"pnl18"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColor(stats[model_name_3].pnl_sum_60, "pnl18")
+                      : null
+                  }
+                >
                   {stats[model_name_3] ? stats[model_name_3].pnl_sum_60 : null}
                 </td>
               </tr>

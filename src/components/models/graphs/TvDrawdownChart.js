@@ -118,7 +118,7 @@ const TvDrawdownChart = (props) => {
           //     visible: true, // Set to false to hide the y-axis
           //   },
           handleScale: true, // Set to false to disable scaling
-          handleScroll: true, // Set to false to disable scrolling
+          handleScroll: false, // Set to false to disable scrolling
           //   handleZoom: true,
           handleScale: {
             visible: true,
