@@ -4,6 +4,7 @@ import SideBar from '../../sidebar/SideBar';
 
 const SV = () => {
   return (
+    <div className="container resources-container">
     <div className='resources'>
       <div className='res-sidebar'>
         <SideBar />
@@ -20,6 +21,7 @@ const SV = () => {
                 </div> 
             </div>
       </div>
+    </div>
     </div>
   )
 }

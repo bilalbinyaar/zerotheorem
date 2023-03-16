@@ -10,6 +10,7 @@ const SwrtVolume = () => {
   const { theme } = useStateContext();
 
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -32,6 +33,7 @@ const SwrtVolume = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

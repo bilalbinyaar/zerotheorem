@@ -4,9 +4,11 @@ import Introduction from "../components/resources/resourcestextual/Introduction"
 const Resources = () => {
   return (
     <div className="resources">
+
       <div className="res-textual">
         <Introduction />
       </div>
+
     </div>
   );
 };

@@ -216,7 +216,7 @@ const ComparisonChartCanvas = (props) => {
               // prefix: "$",
               gridColor: "#43577533",
               tickColor: "#43577533",
-              minimum: minValue,
+              minimum: -20,
               gridColor: "#43577533",
               gridThickness: 0,
               labelFontColor: "rgb(55, 61, 63)",

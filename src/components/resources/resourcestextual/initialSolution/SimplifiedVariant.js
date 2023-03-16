@@ -8,23 +8,25 @@ import { useStateContext } from "../../../../ContextProvider";
 const SimplifiedVariant = () => {
   const { theme } = useStateContext();
   return (
-    <div className="resources">
-      <div className="res-sidebar">
-        <SideBar />
-      </div>
-      <div className="res-textual">
-        <div className="res-textual-section">
-          <div className="container">
-            <div className="document">
-              {theme === "dark-theme" ? (
-                <div className="img-doc">
-                  <img src={P2Night} alt="p1" />
-                </div>
-              ) : (
-                <div className="img-doc">
-                  <img src={P2Day} alt="p1" />
-                </div>
-              )}
+    <div className="container resources-container">
+      <div className="resources">
+        <div className="res-sidebar">
+          <SideBar />
+        </div>
+        <div className="res-textual">
+          <div className="res-textual-section">
+            <div className="container">
+              <div className="document">
+                {theme === "dark-theme" ? (
+                  <div className="img-doc max-width">
+                    <img src={P2Night} alt="p1" />
+                  </div>
+                ) : (
+                  <div className="img-doc max-width">
+                    <img src={P2Day} alt="p1" />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

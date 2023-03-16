@@ -17,7 +17,9 @@ const Introduction = () => {
   // FOR RESPONSIVENESS
 
   return (
-    <div className="resources">
+    <div className="container resources-container">
+      <div className="resources">
+
       <div className="res-sidebar">
         <SideBar />
       </div>
@@ -59,7 +61,11 @@ const Introduction = () => {
           </div>
         </div>
       </div>
+
+
     </div>
+    </div>
+    
   );
 };
 

@@ -12,6 +12,7 @@ const Dedication = () => {
   // FOR RESPONSIVENESS
 
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -34,6 +35,7 @@ const Dedication = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

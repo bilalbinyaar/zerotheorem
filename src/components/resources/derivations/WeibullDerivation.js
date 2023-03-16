@@ -9,6 +9,7 @@ const WeibullDerivation = () => {
   const { theme } = useStateContext();
 
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -31,6 +32,7 @@ const WeibullDerivation = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -7,8 +7,6 @@ import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
-import { AiFillCaretDown } from "react-icons/ai";
-import { width } from "@mui/system";
 import NavMobile from "./NavMobile";
 
 export default function Navbar() {

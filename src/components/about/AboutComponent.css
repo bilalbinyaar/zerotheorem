@@ -166,7 +166,9 @@ sub {
 }
 
 @media screen and (max-width: 568px) {
-  
+  .about-head h1 {
+    font-size: 24px;
+  }
 
   .sorez-text {
     margin: 1rem 0rem;

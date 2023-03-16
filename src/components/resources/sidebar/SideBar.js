@@ -55,6 +55,8 @@ const SideBar = () => {
 
   return (
     <div className="res-main-for-height">
+
+      
       {/* FOR MOBILE */}
       <div className="heading-mob" onClick={oneClickRes}>
         <h1>Resources</h1>
@@ -83,7 +85,7 @@ const SideBar = () => {
             </Link>
           </div> */}
           {/* MENU ITEM 1 */}
-          <div className="main-item" onClick={() => setShowOne(!showOne)}>
+          <div className="main-item display-none-resources" onClick={() => setShowOne(!showOne)}>
             <div className="main-item-icon-div">
               {showOne ? (
                 <div className="for-icon-div-main-item-sep">
@@ -407,7 +409,7 @@ const SideBar = () => {
             </div>
           )}
           {/* MENU ITEM 5 */}
-          <div className="main-item" onClick={() => setShowFive(!showFive)}>
+          <div className="main-item display-none-resources" onClick={() => setShowFive(!showFive)}>
             <div className="main-item-icon-div">
               {showFive ? (
                 <div className="for-icon-div-main-item-sep">
@@ -424,7 +426,7 @@ const SideBar = () => {
             </div>
           </div>
           {showFive && (
-            <div className="sub-items">
+            <div className="sub-items display-none-resources">
               {/* SUB MENU ITEM 5.1 */}
               <div
                 className="sub-breakdown-menu"
@@ -528,7 +530,7 @@ const SideBar = () => {
             </div>
             <div>
               <Link>
-                <h3>An Initial Solution</h3>
+                <h3>An Example Solution</h3>
               </Link>
             </div>
           </div>
@@ -711,7 +713,7 @@ const SideBar = () => {
             </Link>
           </div> */}
           {/* MENU ITEM 1 */}
-          <div className="main-item" onClick={() => setShowOne(!showOne)}>
+          <div className="main-item display-none-resources" onClick={() => setShowOne(!showOne)}>
             <div className="main-item-icon-div">
               {showOne ? (
                 <div className="for-icon-div-main-item-sep">
@@ -1035,7 +1037,7 @@ const SideBar = () => {
             </div>
           )}
           {/* MENU ITEM 5 */}
-          <div className="main-item" onClick={() => setShowFive(!showFive)}>
+          <div className="main-item display-none-resources" onClick={() => setShowFive(!showFive)}>
             <div className="main-item-icon-div">
               {showFive ? (
                 <div className="for-icon-div-main-item-sep">
@@ -1052,7 +1054,7 @@ const SideBar = () => {
             </div>
           </div>
           {showFive && (
-            <div className="sub-items">
+            <div className="sub-items display-none-resources">
               {/* SUB MENU ITEM 5.1 */}
               <div
                 className="sub-breakdown-menu"
@@ -1156,7 +1158,7 @@ const SideBar = () => {
             </div>
             <div>
               <Link>
-                <h3>An Initial Solution</h3>
+                <h3>An Example Solution</h3>
               </Link>
             </div>
           </div>
@@ -1313,6 +1315,7 @@ const SideBar = () => {
 
         </div>
       </div>
+
     </div>
   );
 };

@@ -4,6 +4,7 @@ import SideBar from '../../sidebar/SideBar';
 
 const RewardFunction = () => {
   return (
+    <div className="container resources-container">
     <div className='resources'>
       <div className='res-sidebar'>
         <SideBar />
@@ -20,6 +21,7 @@ const RewardFunction = () => {
                 </div> 
             </div>
       </div>
+    </div>
     </div>
   )
 }

@@ -80,7 +80,7 @@ const CompareComponent = () => {
 
   const [rows, setRows] = useState([]);
   const [strategies, setStrategies] = useState({});
-
+  const [time_horizon_selected, set_time_horizon_selected] = useState("All");
   const [rows_cached, set_rows_cached] = useState([]);
   const handleChangeForModelSelection1 = (event, values) => {
     // console.log("Search dropdown -->", values);
@@ -134,7 +134,7 @@ const CompareComponent = () => {
     }
   };
   const handleChangeForCoinSelection1 = (event, values) => {
-    // console.log("Search dropdown -->", values);
+    // console.log("Search dropdown -->", values.label);
     if (values != null) {
       if (selectedItem == "All") {
         let output = model_selection_cache["model_names"].filter((obj) => {
@@ -158,7 +158,33 @@ const CompareComponent = () => {
       }
     }
   };
-
+  const handleChangeForTimeSelection1 = (event, values) => {
+    // console.log("Search dropdown -->", values.label);
+    if (values != null) {
+      set_time_horizon_selected(values.label);
+      if (values.label === "All") {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === values.label;
+        });
+        set_model_names(output);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === values.label;
+        });
+        set_model_names(output);
+      }
+    } else {
+      // set_time_horizon_selected("All");
+      if (values.label === "All") {
+        set_model_names(model_selection_cache["model_names"]);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === values.label;
+        });
+        set_model_names(output);
+      }
+    }
+  };
   const handleChangeForCoinSelection2 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
@@ -214,6 +240,58 @@ const CompareComponent = () => {
   const [model_name_2, set_model_name_2] = useState("");
   const [model_name_3, set_model_name_3] = useState("");
   const [model_names, set_model_names] = useState([]);
+  const [time_horizons, set_time_horizons] = useState([
+    {
+      label: "All",
+    },
+    {
+      label: "24h",
+    },
+    {
+      label: "12h",
+    },
+    {
+      label: "6h",
+    },
+    {
+      label: "4h",
+    },
+    {
+      label: "3h",
+    },
+    {
+      label: "2h",
+    },
+    {
+      label: "1h",
+    },
+  ]);
+  const [time_horizons2, set_time_horizons2] = useState([
+    {
+      label: "All",
+    },
+    {
+      label: "24h",
+    },
+    {
+      label: "12h",
+    },
+    {
+      label: "6h",
+    },
+    {
+      label: "4h",
+    },
+    {
+      label: "3h",
+    },
+    {
+      label: "2h",
+    },
+    {
+      label: "1h",
+    },
+  ]);
   const [model_names2, set_model_names2] = useState([]);
   const [model_names3, set_model_names3] = useState([]);
   const [selectedItem2, setSelectedItem2] = useState("All");
@@ -361,12 +439,14 @@ const CompareComponent = () => {
               r2_score: data["msg"][i].r2_score,
               sharpe: data["msg"][i].sharpe,
               sortino: data["msg"][i].sortino,
-              total_pnl: data["msg"][i].total_pnl,
+              total_pnl: data["msg"][i].total_pnl, // defaultValue={default_value}
+
               total_positive_pnl: data["msg"][i].total_positive_pnl,
               total_negative_pnl: data["msg"][i].total_negative_pnl,
               total_wins: data["msg"][i].total_wins,
               total_losses: data["msg"][i].total_losses,
-              consective_wins: data["msg"][i].consective_wins,
+              consective_wins: data["msg"][i].consective_wins, // defaultValue={default_value}
+
               consective_losses: data["msg"][i].consective_losses,
               win_percentage: data["msg"][i].win_percentage,
               loss_percentage: data["msg"][i].loss_percentage,
@@ -474,21 +554,935 @@ const CompareComponent = () => {
   return (
     <div className="compare">
       <div className="container">
-        <h1>Comparisons</h1>
+        <h1>Compare</h1>
 
         <div className="search-table">
           <table className="tg no-bl">
             <thead className="no-bl">
               <tr>
-                <th className="tg-0lax no-bl border-remove" visibility="hidden">
-                  {/* <ComparisonChartCanvas /> */}
-                </th>
+                <th
+                  className="tg-0lax no-bl border-remove"
+                  visibility="hidden"
+                ></th>
                 <th className="tg-0lax border-remove">
                   {windowWidth.current <= 568 ? (
-                    <CompareComponentMobile model_name={model_name_1} />
+                    /* Mobile search bars*/
+                    <div>
+                      <div className="search-filter-wapper">
+                        <div className="compare-search-wrapper">
+                          {/* TIME HORIZON */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              marginBottom: "0.8rem",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg)",
+                                },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor:
+                                  "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus":
+                                {
+                                  borderColor:
+                                    "var(--color-day-yellow) !important",
+                                },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border:
+                                  "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-6px !important",
+                                },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor:
+                                    "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor:
+                                  "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor:
+                                  "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-black) !important",
+                                },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom:
+                                    "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor:
+                                    "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root":
+                                {
+                                  fontSize: "13px !important",
+                                },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-8px !important",
+                                },
+                            }}
+                            // defaultValue={time_horizon_selected}
+                            onChange={handleChangeForTimeSelection1}
+                            // value={time_horizon_selected}
+                            options={time_horizons}
+                            autoHighlight
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Time"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
+                          {/* CURRENCIES SEARCH BAR */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              marginBottom: "0.8rem",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg)",
+                                },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor:
+                                  "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus":
+                                {
+                                  borderColor:
+                                    "var(--color-day-yellow) !important",
+                                },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border:
+                                  "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-6px !important",
+                                },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor:
+                                    "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor:
+                                  "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor:
+                                  "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-black) !important",
+                                },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom:
+                                    "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor:
+                                    "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root":
+                                {
+                                  fontSize: "13px !important",
+                                },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-8px !important",
+                                },
+                            }}
+                            // defaultValue={default_value}
+                            onChange={handleChangeForCoinSelection1}
+                            options={currencies}
+                            autoHighlight
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Currenices"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
+                          {/* MODEL SEARCH BAR */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              marginBottom: "0.8rem",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg)",
+                                },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor:
+                                  "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus":
+                                {
+                                  borderColor:
+                                    "var(--color-day-yellow) !important",
+                                },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border:
+                                  "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-6px !important",
+                                },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor:
+                                    "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor:
+                                  "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor:
+                                  "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-black) !important",
+                                },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom:
+                                    "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor:
+                                    "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root":
+                                {
+                                  fontSize: "13px !important",
+                                },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-8px !important",
+                                },
+                            }}
+                            // defaultValue={default_value}
+                            onChange={handleChangeForModelSelection1}
+                            options={model_names}
+                            autoHighlight
+                            defaultValue={default_value}
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Models"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
+                          {model_name_1 ? (
+                            <ComparisonChartCanvas
+                              model_name={model_name_1.replace("-", "_")}
+                            />
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
                   ) : (
                     <div>
                       <div className="search-filter-wapper">
+                        {/* TIME HORIZON */}
+                        <h3 className="horizon-comparison-title">
+                          Time Horizon
+                        </h3>
+                        <div className="horizon-left-comparison">
+                          <div className="hours-list-comparison">
+                            <ul id="hours-list-div-comparison">
+                              <li
+                                id="hours-listings hours_filter_All"
+                                style={{
+                                  background:
+                                    selectedItem === "All" ? "#fddd4e" : "",
+                                  color: selectedItem === "All" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_All",
+                                    "All"
+                                  );
+                                  setSelectedItem("All");
+                                }}
+                              >
+                                All
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_24"
+                                style={{
+                                  background:
+                                    selectedItem === "24h" ? "#fddd4e" : "",
+                                  color: selectedItem === "24h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_24",
+                                    "24h"
+                                  );
+                                  setSelectedItem("24h");
+                                }}
+                              >
+                                24h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_12"
+                                style={{
+                                  background:
+                                    selectedItem === "12h" ? "#fddd4e" : "",
+                                  color: selectedItem === "12h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_24",
+                                    "12h"
+                                  );
+                                  setSelectedItem("12h");
+                                }}
+                              >
+                                12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_8"
+                                style={{
+                                  background:
+                                    selectedItem === "8h" ? "#fddd4e" : "",
+                                  color: selectedItem === "8h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_8",
+                                    "8h"
+                                  );
+                                  setSelectedItem("8h");
+                                }}
+                              >
+                                8h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background:
+                                    selectedItem === "6h" ? "#fddd4e" : "",
+                                  color: selectedItem === "6h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_6",
+                                    "6h"
+                                  );
+                                  setSelectedItem("6h");
+                                }}
+                              >
+                                6h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background:
+                                    selectedItem === "4h" ? "#fddd4e" : "",
+                                  color: selectedItem === "4h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_4",
+                                    "4h"
+                                  );
+                                  setSelectedItem("4h");
+                                }}
+                              >
+                                4h
+                              </li>
+                              <li
+                                style={{
+                                  background:
+                                    selectedItem === "3h" ? "#fddd4e" : "",
+                                  color: selectedItem === "3h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_3",
+                                    "3h"
+                                  );
+                                  setSelectedItem("3h");
+                                }}
+                              >
+                                3h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_2"
+                                style={{
+                                  background:
+                                    selectedItem === "2h" ? "#fddd4e" : "",
+                                  color: selectedItem === "2h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_2",
+                                    "2h"
+                                  );
+                                  setSelectedItem("2h");
+                                }}
+                              >
+                                2h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_1"
+                                style={{
+                                  background:
+                                    selectedItem === "1h" ? "#fddd4e" : "",
+                                  color: selectedItem === "1h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_1",
+                                    "1h"
+                                  );
+                                  setSelectedItem("1h");
+                                }}
+                              >
+                                1h
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                         <div className="compare-search-wrapper">
                           {/* MODEL SEARCH BAR */}
                           <Autocomplete
@@ -741,7 +1735,7 @@ const CompareComponent = () => {
                               borderRadius: "5px",
                               labelColor: "red",
                               fontSize: "11px",
-                              marginLeft: "0.4rem",
+                              marginRight: "0.4rem",
                               "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
                                 {
                                   color: "var(--color-day-black)",
@@ -975,175 +1969,6 @@ const CompareComponent = () => {
                               />
                             )}
                           />
-                          {/* TIME HORIZON */}
-                        </div>
-                        {/* TIME HORIZON */}
-                        <div className="horizon-left-comparison">
-                          <div className="hours-list-comparison">
-                            <ul id="hours-list-div-comparison">
-                              <li
-                                id="hours-listings hours_filter_All"
-                                style={{
-                                  background:
-                                    selectedItem === "All" ? "#fddd4e" : "",
-                                  color: selectedItem === "All" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_All",
-                                    "All"
-                                  );
-                                  setSelectedItem("All");
-                                }}
-                              >
-                                All
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_24"
-                                style={{
-                                  background:
-                                    selectedItem === "24h" ? "#fddd4e" : "",
-                                  color: selectedItem === "24h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_24",
-                                    "24h"
-                                  );
-                                  setSelectedItem("24h");
-                                }}
-                              >
-                                24h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_12"
-                                style={{
-                                  background:
-                                    selectedItem === "12h" ? "#fddd4e" : "",
-                                  color: selectedItem === "12h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_24",
-                                    "12h"
-                                  );
-                                  setSelectedItem("12h");
-                                }}
-                              >
-                                12h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_8"
-                                style={{
-                                  background:
-                                    selectedItem === "8h" ? "#fddd4e" : "",
-                                  color: selectedItem === "8h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_8",
-                                    "8h"
-                                  );
-                                  setSelectedItem("8h");
-                                }}
-                              >
-                                8h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_3"
-                                style={{
-                                  background:
-                                    selectedItem === "6h" ? "#fddd4e" : "",
-                                  color: selectedItem === "6h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_6",
-                                    "6h"
-                                  );
-                                  setSelectedItem("6h");
-                                }}
-                              >
-                                6h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_3"
-                                style={{
-                                  background:
-                                    selectedItem === "4h" ? "#fddd4e" : "",
-                                  color: selectedItem === "4h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_4",
-                                    "4h"
-                                  );
-                                  setSelectedItem("4h");
-                                }}
-                              >
-                                4h
-                              </li>
-                              <li
-                                style={{
-                                  background:
-                                    selectedItem === "3h" ? "#fddd4e" : "",
-                                  color: selectedItem === "3h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_3",
-                                    "3h"
-                                  );
-                                  setSelectedItem("3h");
-                                }}
-                              >
-                                3h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_2"
-                                style={{
-                                  background:
-                                    selectedItem === "2h" ? "#fddd4e" : "",
-                                  color: selectedItem === "2h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_2",
-                                    "2h"
-                                  );
-                                  setSelectedItem("2h");
-                                }}
-                              >
-                                2h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_1"
-                                style={{
-                                  background:
-                                    selectedItem === "1h" ? "#fddd4e" : "",
-                                  color: selectedItem === "1h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection(
-                                    "hour_filter_1",
-                                    "1h"
-                                  );
-                                  setSelectedItem("1h");
-                                }}
-                              >
-                                1h
-                              </li>
-                            </ul>
-                          </div>
                         </div>
                       </div>
                       {model_name_1 ? (
@@ -1156,10 +1981,920 @@ const CompareComponent = () => {
                 </th>
                 <th className="tg-0lax border-remove">
                   {windowWidth.current <= 568 ? (
-                    <CompareComponentMobile />
+                    <div>
+                      <div className="search-filter-wapper">
+                        <div className="compare-search-wrapper">
+                          {/* TIME HORIZON */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              marginBottom: "0.8rem",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg)",
+                                },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor:
+                                  "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus":
+                                {
+                                  borderColor:
+                                    "var(--color-day-yellow) !important",
+                                },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border:
+                                  "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-6px !important",
+                                },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor:
+                                    "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor:
+                                  "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor:
+                                  "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-black) !important",
+                                },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom:
+                                    "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor:
+                                    "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root":
+                                {
+                                  fontSize: "13px !important",
+                                },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-8px !important",
+                                },
+                            }}
+                            // defaultValue={default_value}
+                            onChange={handleChangeForModelSelection2}
+                            options={time_horizons2}
+                            autoHighlight
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Time"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
+                          {/* CURRENCIES SEARCH BAR */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              marginBottom: "0.8rem",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg)",
+                                },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor:
+                                  "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus":
+                                {
+                                  borderColor:
+                                    "var(--color-day-yellow) !important",
+                                },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border:
+                                  "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-6px !important",
+                                },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor:
+                                    "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor:
+                                  "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor:
+                                  "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-black) !important",
+                                },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom:
+                                    "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor:
+                                    "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root":
+                                {
+                                  fontSize: "13px !important",
+                                },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-8px !important",
+                                },
+                            }}
+                            // defaultValue={default_value}
+                            onChange={handleChangeForCoinSelection2}
+                            options={currencies2}
+                            autoHighlight
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Currenices"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
+                          {/* MODEL SEARCH BAR */}
+                          <Autocomplete
+                            id="country-select-demo"
+                            className="model-compare-search"
+                            sx={{
+                              backgroundColor: "var(--color-forecasts-card)",
+                              borderRadius: "5px",
+                              labelColor: "red",
+                              fontSize: "11px",
+                              marginBottom: "0.8rem",
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+
+                              "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                                {
+                                  color: "var(--color-day-black)",
+                                },
+                              "& div  >.MuiAutocomplete-option.Mui-focused": {
+                                backgroundColor: "var(--color-day-yellow)",
+                                color: "#000000",
+                              },
+
+                              "& div >.MuiOutlinedInput-root": {
+                                padding: "4px",
+                              },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                padding: "4.5px 4px 4.5px 6px",
+                              },
+
+                              "& div >.MuiAutocomplete-option": {
+                                fontSize: "12px",
+                                margin: "0",
+                                color: "var(--color-day-black)",
+                              },
+
+                              "& .MuiAutocomplete-noOptions": {
+                                color: "var(--color-day-black)",
+                                fontSize: "12px",
+                              },
+
+                              "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper":
+                                {
+                                  backgroundColor: "var(--color-dropdown-bg)",
+                                },
+
+                              "& div div >.MuiAutocomplete-input": {
+                                fontSize: "11px",
+                              },
+
+                              "& .css-1xc3v61-indicatorContainer": {
+                                backgroundColor: "var(--color-day-white)",
+                              },
+
+                              "& .css-13cymwt-control": {
+                                minHeight: "34px",
+                                height: "34px",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-i4bv87-MuiSvgIcon-root": {
+                                width: "0.8em !important",
+                                height: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& div div >.MuiOutlinedInput-root": {
+                                backgroundColor:
+                                  "var(--color-forecasts-card) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& div div >.MuiOutlinedInput-root:focus": {
+                                border: "0 !important",
+                              },
+
+                              "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus":
+                                {
+                                  borderColor:
+                                    "var(--color-day-yellow) !important",
+                                },
+
+                              "& div >.MuiOutlinedInput-notchedOutline": {
+                                border:
+                                  "0px solid var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-6px !important",
+                                },
+
+                              "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                                {
+                                  backgroundColor:
+                                    "var(--color-dropdown-bg) !important",
+                                  color: "var(--color-day-black) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-ptiqhd-MuiSvgIcon-root": {
+                                height: "0.8em !important",
+                                width: "0.8em !important",
+                                fill: "var(--color-black-opcaity) !important",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                                padding: "3px 8px !important",
+                                backgroundColor:
+                                  "var(--color-day-yellow) !important",
+                                borderRadius: "4px",
+                                display: "flex !important",
+                                justifyContent: "center !important",
+                                alignItems: "center !important",
+                                fontSize: "15px !important",
+                                textAlign: "center !important",
+                              },
+
+                              "& .optgroup": {
+                                padding: "2px !important",
+                              },
+
+                              "& div div >.optgroup": {
+                                backgroundColor:
+                                  "var(--color-day-white) !important",
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .mui-options": {
+                                padding: "0px 15px",
+                              },
+
+                              "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-black) !important",
+                                },
+
+                              "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                                {
+                                  borderBottom:
+                                    "1px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                                {
+                                  borderBottom:
+                                    "2px solid var(--color-day-yellow) !important",
+                                },
+
+                              "& #demo-simple-select-standard-label": {
+                                color: "var(--color-day-yellow) !important",
+                              },
+
+                              "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                                color: "var(--color-day-black) !important",
+                              },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                                {
+                                  backgroundColor:
+                                    "var(--color-day-yellow) !important",
+                                  color: "black",
+                                },
+
+                              "& .css-1869usk-MuiFormControl-root": {
+                                height: "60px !important",
+                              },
+
+                              "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                                {
+                                  color: "var(--color-day-black) !important",
+                                  fontSize: "14px !important",
+                                },
+
+                              "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root":
+                                {
+                                  fontSize: "13px !important",
+                                },
+
+                              "& .css-nlvv43-MuiFormControl-root": {
+                                margin: "0px 8px !important",
+                                height: "30px !important",
+                              },
+
+                              "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
+                                {
+                                  fontSize: "12px !important",
+                                  color: "var(--color-day-black) !important",
+                                  top: "-8px !important",
+                                },
+                            }}
+                            // defaultValue={default_value}
+                            onChange={handleChangeForModelSelection2}
+                            options={model_names2}
+                            autoHighlight
+                            getOptionLabel={(option) => option.label}
+                            renderInput={(params) => (
+                              <TextField
+                                {...params}
+                                label="Models"
+                                inputProps={{
+                                  ...params.inputProps,
+                                  style: { width: "70%" }, // set the width to auto
+
+                                  autoComplete: "new-password", // disable autocomplete and autofill
+                                }}
+                              />
+                            )}
+                          />
+                          {model_name_2 ? (
+                            <ComparisonChartCanvas
+                              model_name={model_name_2.replace("-", "_")}
+                            />
+                          ) : null}{" "}
+                        </div>
+                      </div>
+                    </div>
                   ) : (
                     <div>
                       <div className="search-filter-wapper">
+                        {/* TIME HORIZON */}
+                        <h3 className="horizon-comparison-title">
+                          Time Horizon
+                        </h3>
+                        <div className="horizon-left-comparison">
+                          <div className="hours-list-comparison">
+                            <ul id="hours-list-div-comparison">
+                              <li
+                                id="hours-listings hours_filter_All"
+                                style={{
+                                  background:
+                                    selectedItem2 === "All" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "All" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_All",
+                                    "All"
+                                  );
+                                  setSelectedItem2("All");
+                                }}
+                              >
+                                All
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_24"
+                                style={{
+                                  background:
+                                    selectedItem2 === "24h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "24h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_24",
+                                    "24h"
+                                  );
+                                  setSelectedItem2("24h");
+                                }}
+                              >
+                                24h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_12"
+                                style={{
+                                  background:
+                                    selectedItem2 === "12h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "12h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_24",
+                                    "12h"
+                                  );
+                                  setSelectedItem2("12h");
+                                }}
+                              >
+                                12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_8"
+                                style={{
+                                  background:
+                                    selectedItem2 === "8h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "8h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_8",
+                                    "8h"
+                                  );
+                                  setSelectedItem2("8h");
+                                }}
+                              >
+                                8h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background:
+                                    selectedItem2 === "6h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "6h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_6",
+                                    "6h"
+                                  );
+                                  setSelectedItem2("6h");
+                                }}
+                              >
+                                6h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background:
+                                    selectedItem2 === "4h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "4h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_4",
+                                    "4h"
+                                  );
+                                  setSelectedItem2("4h");
+                                }}
+                              >
+                                4h
+                              </li>
+                              <li
+                                style={{
+                                  background:
+                                    selectedItem2 === "3h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "3h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_3",
+                                    "3h"
+                                  );
+                                  setSelectedItem2("3h");
+                                }}
+                              >
+                                3h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_2"
+                                style={{
+                                  background:
+                                    selectedItem2 === "2h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "2h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_2",
+                                    "2h"
+                                  );
+                                  setSelectedItem2("2h");
+                                }}
+                              >
+                                2h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_1"
+                                style={{
+                                  background:
+                                    selectedItem2 === "1h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "1h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_1",
+                                    "1h"
+                                  );
+                                  setSelectedItem2("1h");
+                                }}
+                              >
+                                1h
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                         <div className="compare-search-wrapper">
                           {/* MODEL SEARCH BAR */}
                           <Autocomplete
@@ -1411,7 +3146,7 @@ const CompareComponent = () => {
                               borderRadius: "5px",
                               labelColor: "red",
                               fontSize: "11px",
-                              marginLeft: "0.4rem",
+                              marginRight: "0.4rem",
                               "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
                                 {
                                   color: "var(--color-day-black)",
@@ -1646,175 +3381,6 @@ const CompareComponent = () => {
                             )}
                           />
                         </div>
-
-                        {/* TIME HORIZON */}
-                        <div className="horizon-left-comparison">
-                          <div className="hours-list-comparison">
-                            <ul id="hours-list-div-comparison">
-                              <li
-                                id="hours-listings hours_filter_All"
-                                style={{
-                                  background:
-                                    selectedItem2 === "All" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "All" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_All",
-                                    "All"
-                                  );
-                                  setSelectedItem2("All");
-                                }}
-                              >
-                                All
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_24"
-                                style={{
-                                  background:
-                                    selectedItem2 === "24h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "24h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_24",
-                                    "24h"
-                                  );
-                                  setSelectedItem2("24h");
-                                }}
-                              >
-                                24h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_12"
-                                style={{
-                                  background:
-                                    selectedItem2 === "12h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "12h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_24",
-                                    "12h"
-                                  );
-                                  setSelectedItem2("12h");
-                                }}
-                              >
-                                12h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_8"
-                                style={{
-                                  background:
-                                    selectedItem2 === "8h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "8h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_8",
-                                    "8h"
-                                  );
-                                  setSelectedItem2("8h");
-                                }}
-                              >
-                                8h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_3"
-                                style={{
-                                  background:
-                                    selectedItem2 === "6h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "6h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_6",
-                                    "6h"
-                                  );
-                                  setSelectedItem2("6h");
-                                }}
-                              >
-                                6h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_3"
-                                style={{
-                                  background:
-                                    selectedItem2 === "4h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "4h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_4",
-                                    "4h"
-                                  );
-                                  setSelectedItem2("4h");
-                                }}
-                              >
-                                4h
-                              </li>
-                              <li
-                                style={{
-                                  background:
-                                    selectedItem2 === "3h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "3h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_3",
-                                    "3h"
-                                  );
-                                  setSelectedItem2("3h");
-                                }}
-                              >
-                                3h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_2"
-                                style={{
-                                  background:
-                                    selectedItem2 === "2h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "2h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_2",
-                                    "2h"
-                                  );
-                                  setSelectedItem2("2h");
-                                }}
-                              >
-                                2h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_1"
-                                style={{
-                                  background:
-                                    selectedItem2 === "1h" ? "#fddd4e" : "",
-                                  color: selectedItem2 === "1h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection2(
-                                    "hour_filter_1",
-                                    "1h"
-                                  );
-                                  setSelectedItem2("1h");
-                                }}
-                              >
-                                1h
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
                       </div>
                       {model_name_2 ? (
                         <ComparisonChartCanvas
@@ -1830,11 +3396,182 @@ const CompareComponent = () => {
                   ) : (
                     <div>
                       <div className="search-filter-wapper">
+                        {/* TIME HORIZON */}
+                        <h3 className="horizon-comparison-title">
+                          Time Horizon
+                        </h3>
+                        <div className="horizon-left-comparison">
+                          <div className="hours-list-comparison">
+                            <ul id="hours-list-div-comparison">
+                              <li
+                                id="hours-listings hours_filter_All"
+                                style={{
+                                  background:
+                                    selectedItem3 === "All" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "All" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_All",
+                                    "All"
+                                  );
+                                  setSelectedItem3("All");
+                                }}
+                              >
+                                All
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_24"
+                                style={{
+                                  background:
+                                    selectedItem3 === "24h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "24h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_24",
+                                    "24h"
+                                  );
+                                  setSelectedItem3("24h");
+                                }}
+                              >
+                                24h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_12"
+                                style={{
+                                  background:
+                                    selectedItem3 === "12h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "12h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_24",
+                                    "12h"
+                                  );
+                                  setSelectedItem3("12h");
+                                }}
+                              >
+                                12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_8"
+                                style={{
+                                  background:
+                                    selectedItem3 === "8h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "8h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_8",
+                                    "8h"
+                                  );
+                                  setSelectedItem3("8h");
+                                }}
+                              >
+                                8h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background:
+                                    selectedItem3 === "6h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "6h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_6",
+                                    "6h"
+                                  );
+                                  setSelectedItem3("6h");
+                                }}
+                              >
+                                6h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background:
+                                    selectedItem3 === "4h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "4h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_4",
+                                    "4h"
+                                  );
+                                  setSelectedItem3("4h");
+                                }}
+                              >
+                                4h
+                              </li>
+                              <li
+                                style={{
+                                  background:
+                                    selectedItem3 === "3h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "3h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_3",
+                                    "3h"
+                                  );
+                                  setSelectedItem3("3h");
+                                }}
+                              >
+                                3h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_2"
+                                style={{
+                                  background:
+                                    selectedItem3 === "2h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "2h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_2",
+                                    "2h"
+                                  );
+                                  setSelectedItem3("2h");
+                                }}
+                              >
+                                2h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_1"
+                                style={{
+                                  background:
+                                    selectedItem3 === "1h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "1h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_1",
+                                    "1h"
+                                  );
+                                  setSelectedItem3("1h");
+                                }}
+                              >
+                                1h
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                         <div className="compare-search-wrapper">
                           {/* MODEL SEARCH BAR */}
                           <Autocomplete
                             id="country-select-demo"
-                            className="model-compare-search to-hide"
+                            className="model-compare-search"
                             sx={{
                               backgroundColor: "var(--color-forecasts-card)",
                               borderRadius: "5px",
@@ -2055,6 +3792,7 @@ const CompareComponent = () => {
                                   top: "-8px !important",
                                 },
                             }}
+                            // defaultValue={default_value}
                             onChange={handleChangeForModelSelection3}
                             options={model_names3}
                             autoHighlight
@@ -2081,7 +3819,7 @@ const CompareComponent = () => {
                               borderRadius: "5px",
                               labelColor: "red",
                               fontSize: "11px",
-                              marginLeft: "0.4rem",
+                              marginRight: "0.4rem",
                               "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root":
                                 {
                                   color: "var(--color-day-black)",
@@ -2316,174 +4054,6 @@ const CompareComponent = () => {
                             )}
                           />
                         </div>
-                        {/* TIME HORIZON */}
-                        <div className="horizon-left-comparison">
-                          <div className="hours-list-comparison">
-                            <ul id="hours-list-div-comparison">
-                              <li
-                                id="hours-listings hours_filter_All"
-                                style={{
-                                  background:
-                                    selectedItem3 === "All" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "All" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_All",
-                                    "All"
-                                  );
-                                  setSelectedItem3("All");
-                                }}
-                              >
-                                All
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_24"
-                                style={{
-                                  background:
-                                    selectedItem3 === "24h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "24h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_24",
-                                    "24h"
-                                  );
-                                  setSelectedItem3("24h");
-                                }}
-                              >
-                                24h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_12"
-                                style={{
-                                  background:
-                                    selectedItem3 === "12h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "12h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_24",
-                                    "12h"
-                                  );
-                                  setSelectedItem3("12h");
-                                }}
-                              >
-                                12h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_8"
-                                style={{
-                                  background:
-                                    selectedItem3 === "8h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "8h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_8",
-                                    "8h"
-                                  );
-                                  setSelectedItem3("8h");
-                                }}
-                              >
-                                8h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_3"
-                                style={{
-                                  background:
-                                    selectedItem3 === "6h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "6h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_6",
-                                    "6h"
-                                  );
-                                  setSelectedItem3("6h");
-                                }}
-                              >
-                                6h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_3"
-                                style={{
-                                  background:
-                                    selectedItem3 === "4h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "4h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_4",
-                                    "4h"
-                                  );
-                                  setSelectedItem3("4h");
-                                }}
-                              >
-                                4h
-                              </li>
-                              <li
-                                style={{
-                                  background:
-                                    selectedItem3 === "3h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "3h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_3",
-                                    "3h"
-                                  );
-                                  setSelectedItem3("3h");
-                                }}
-                              >
-                                3h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_2"
-                                style={{
-                                  background:
-                                    selectedItem3 === "2h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "2h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_2",
-                                    "2h"
-                                  );
-                                  setSelectedItem3("2h");
-                                }}
-                              >
-                                2h
-                              </li>
-                              <li
-                                id="hours-listings hour_filter_1"
-                                style={{
-                                  background:
-                                    selectedItem3 === "1h" ? "#fddd4e" : "",
-                                  color: selectedItem3 === "1h" ? "black" : "",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  handleChangeForTimeHorizonSelection3(
-                                    "hour_filter_1",
-                                    "1h"
-                                  );
-                                  setSelectedItem3("1h");
-                                }}
-                              >
-                                1h
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
                       </div>
                       {model_name_3 ? (
                         <ComparisonChartCanvas
@@ -2497,7 +4067,14 @@ const CompareComponent = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="tg-0lax for-th">Time Horizon</td>
+                <td className="tg-0lax for-th">
+                  Time Horizon
+                  <Tooltip title="Time between predictions">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].time_horizon
@@ -2515,7 +4092,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Currency</td>
+                <td className="tg-0lax for-th">
+                  Currency
+                  <Tooltip title="Forecasted currency">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].currency
@@ -2533,7 +4117,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Start Date</td>
+                <td className="tg-0lax for-th">
+                  Start Date
+                  <Tooltip title="Forecasts start date">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].date_started
@@ -2551,7 +4142,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Forecast</td>
+                <td className="tg-0lax for-th">
+                  Forecast
+                  <Tooltip title="Price/Directional prediction for current time">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"position"}
@@ -2603,7 +4201,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Forecast Time</td>
+                <td className="tg-0lax for-th">
+                  Forecast Time
+                  <Tooltip title="Time in which the forecast is created (in local system time)">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].forecast_time
@@ -2621,7 +4226,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Next Forecast</td>
+                <td className="tg-0lax for-th">
+                  Next Forecast
+                  <Tooltip title="Countdown clock till time of next forecast">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].next_forecast
@@ -2639,7 +4251,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">1d PNL</td>
+                <td className="tg-0lax for-th">
+                  1d PNL
+                  <Tooltip title="PNL of last 1 day">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl-bg"}
@@ -2675,7 +4294,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">7d PNL</td>
+                <td className="tg-0lax for-th">
+                  7d PNL
+                  <Tooltip title="PNL of last 7 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl4"}
@@ -2711,7 +4337,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">15d PNL</td>
+                <td className="tg-0lax for-th">
+                  15d PNL
+                  <Tooltip title="PNL of last 15 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl7"}
@@ -2747,7 +4380,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">30d PNL</td>
+                <td className="tg-0lax for-th">
+                  30d PNL
+                  <Tooltip title="PNL of last 30 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl10"}
@@ -2783,7 +4423,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">45d PNL</td>
+                <td className="tg-0lax for-th">
+                  45d PNL
+                  <Tooltip title="PNL of last 45 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl13"}
@@ -2819,7 +4466,14 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">60d PNL</td>
+                <td className="tg-0lax for-th">
+                  60d PNL
+                  <Tooltip title="PNL of last 60 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl16"}
@@ -2881,7 +4535,7 @@ const CompareComponent = () => {
               </tr>
               <tr>
                 <td className="tg-0lax for-th">
-                  Max Drawdown Day
+                  Max Drawdown Days
                   <Tooltip title="Maximum DrawDown Days – measurement of the maximum number of days the model was in a negative yield">
                     <IconButton>
                       <BsFillInfoCircleFill />
