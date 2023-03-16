@@ -985,7 +985,7 @@ const CompareComponentMobile = () => {
             </div>              
         </div>
         {/* <ComparisonChartCanvas
-            model_name={model_name_1.replace("-", "_")}
+            model_name={"ZT1_0M24BTC26"}
         /> */}
     </div> 
   )

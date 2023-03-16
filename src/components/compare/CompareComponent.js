@@ -322,7 +322,7 @@ const CompareComponent = () => {
   return (
     <div className="compare">
       <div className="container">
-        <h1>Comparisons</h1>
+        <h1>Compare</h1>
 
         <div className="search-table">
           <table className="tg no-bl">

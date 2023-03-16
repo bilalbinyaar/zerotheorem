@@ -1149,6 +1149,12 @@ a {
   z-index: 4;
 }
 
+.MuiDataGrid-columnHeaderTitleContainerContent strong {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 568px) {
   .css-1yy0dv2 {
     justify-content: center !important;
