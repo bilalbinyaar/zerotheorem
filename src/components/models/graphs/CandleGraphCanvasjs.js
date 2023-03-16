@@ -246,7 +246,7 @@ function CandleGraphCanvasjs(props) {
         height: null,
         width: null,
         responsive: true,
-        zoomEnabled: true, // Enable zoom
+        zoomEnabled: false, // Enable zoom
 
         axisX: {
           gridColor: "#43577533",

@@ -33,6 +33,29 @@ const CompareComponent = () => {
         .setAttribute("style", "color: #16c784 !important");
     }
   };
+
+  const forBgColorWinLoss = (value, id) => {
+    if (value < 50) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    } else if (value >= 50) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    }
+  };
+  const forBgColorWinLossRatio = (value, id) => {
+    if (value < 1) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    } else if (value >= 1) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    }
+  };
   // const [Flag, setFlag] = useState(null);
   const [stats, set_stats] = useState({});
   const location = useLocation();
@@ -3084,17 +3107,50 @@ const CompareComponent = () => {
                     </IconButton>
                   </Tooltip>
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"win1"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColorWinLoss(
+                          stats[model_name_1].win_percentage,
+                          "win1"
+                        )
+                      : null
+                  }
+                >
                   {stats[model_name_1]
                     ? stats[model_name_1].win_percentage
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"win2"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColorWinLoss(
+                          stats[model_name_2].win_percentage,
+                          "win2"
+                        )
+                      : null
+                  }
+                >
                   {stats[model_name_2]
                     ? stats[model_name_2].win_percentage
                     : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"win3"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColorWinLoss(
+                          stats[model_name_3].win_percentage,
+                          "win3"
+                        )
+                      : null
+                  }
+                >
                   {stats[model_name_3]
                     ? stats[model_name_3].win_percentage
                     : null}
@@ -3109,17 +3165,50 @@ const CompareComponent = () => {
                     </IconButton>
                   </Tooltip>
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"win4"}
+                  onChange={
+                    stats[model_name_1]
+                      ? forBgColorWinLossRatio(
+                          stats[model_name_1].win_loss_ratio,
+                          "win4"
+                        )
+                      : null
+                  }
+                >
                   {stats[model_name_1]
                     ? stats[model_name_1].win_loss_ratio
                     : null}
                 </td>
-                <td className="tg-0lax">
+                <td
+                  className="tg-0lax"
+                  id={"win5"}
+                  onChange={
+                    stats[model_name_2]
+                      ? forBgColorWinLossRatio(
+                          stats[model_name_2].win_loss_ratio,
+                          "win5"
+                        )
+                      : null
+                  }
+                >
                   {stats[model_name_2]
                     ? stats[model_name_2].win_loss_ratio
                     : null}
                 </td>
-                <td className="tg-0lax to-hide">
+                <td
+                  className="tg-0lax to-hide"
+                  id={"win6"}
+                  onChange={
+                    stats[model_name_3]
+                      ? forBgColorWinLossRatio(
+                          stats[model_name_3].win_loss_ratio,
+                          "win6"
+                        )
+                      : null
+                  }
+                >
                   {stats[model_name_3]
                     ? stats[model_name_3].win_loss_ratio
                     : null}

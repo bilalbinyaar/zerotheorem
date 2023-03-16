@@ -170,7 +170,7 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
             // rangeSelector: {
             //   enabled: false, //change it to true
             // },
-            zoomEnabled: true, // Enable zoom
+            zoomEnabled: false, // Enable zoom
 
             axisX: {
               //   lineColor: "#43577533",

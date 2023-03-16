@@ -124,7 +124,7 @@ const IndividualPnlCanvasjs = (props) => {
     // ],
     charts: [
       {
-        zoomEnabled: true, // Enable zoom
+        zoomEnabled: false, // Enable zoom
 
         axisX: {
           //   lineColor: "#43577533",
