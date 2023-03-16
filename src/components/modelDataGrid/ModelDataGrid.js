@@ -76,16 +76,61 @@ const ModelDataGrid = () => {
 
   const handleChangeForCoinSelection = (event, values) => {
     if (values != null) {
+      if (selectedItem == "All") {
+        const res = rows_cached.filter((item) => {
+          return item.currency == values.label;
+        });
+        set_model_search_selection(model_selection_cache["model_names"]);
+        setRows(res);
+      } else {
+        const res = rows_cached.filter((item) => {
+          return item.currency === values.label;
+        });
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.currency === values.label && obj.value == selectedItem;
+        });
+        set_model_search_selection(output);
+        setRows(res);
+      }
       // setRows({});
-      const res = rows_cached.filter((item) => {
-        return item.currency == values.label;
-      });
-      setRows(res);
     } else {
-      setRows(rows_cached);
+      if (selectedItem === "All") {
+        set_model_search_selection(model_selection_cache["model_names"]);
+        setRows(rows_cached);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === selectedItem;
+        });
+        set_model_search_selection(output);
+        setRows(rows_cached);
+      }
     }
   };
-
+  // const handleChangeForCoinSelection3 = (event, values) => {
+  //   // console.log("Search dropdown -->", values);
+  //   if (values != null) {
+  //     if (selectedItem3 == "All") {
+  //       let output = model_selection_cache["model_names"].filter((obj) => {
+  //         return obj.currency === values.label;
+  //       });
+  //       set_model_names3(output);
+  //     } else {
+  //       let output = model_selection_cache["model_names"].filter((obj) => {
+  //         return obj.currency === values.label && obj.value === selectedItem3;
+  //       });
+  //       set_model_names3(output);
+  //     }
+  //   } else {
+  //     if (selectedItem3 == "All") {
+  //       set_model_names3(model_selection_cache["model_names"]);
+  //     } else {
+  //       let output = model_selection_cache["model_names"].filter((obj) => {
+  //         return obj.value === selectedItem3;
+  //       });
+  //       set_model_names3(output);
+  //     }
+  //   }
+  // };
   const handleChangeForModelSelection = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
@@ -227,7 +272,8 @@ const ModelDataGrid = () => {
               // var name = data["response"][i].strategy_name.replace("_", "-");
               model_names.push({
                 label: data["response"][i].strategy_name.replace("_", "-"),
-                // value: i,
+                value: data["response"][i].time_horizon,
+                currency: data["response"][i].currency,
               });
               if (!unique_coins[data["response"][i].currency]) {
                 unique_coins[data["response"][i].currency] = 1;
@@ -643,12 +689,17 @@ const ModelDataGrid = () => {
 
     if (timeH == "All") {
       setRows(rows_cached);
+      set_model_search_selection(model_selection_cache["model_names"]);
     } else {
       handleChangePage("", 1);
 
       const res = rows_cached.filter((item) => {
         return item.timeHorizon == timeH;
       });
+      let output = model_selection_cache["model_names"].filter((obj) => {
+        return obj.value === timeH;
+      });
+      set_model_search_selection(output);
       setRows(res);
     }
   };

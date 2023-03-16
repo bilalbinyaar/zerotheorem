@@ -117,7 +117,8 @@ const ForecastCards = () => {
           for (var i = 0; i < data["response"].length; i++) {
             model_names.push({
               label: data["response"][i].strategy_name,
-              // value: i,
+              value: data["response"][i].time_horizon,
+              currency: data["response"][i].currency,
             });
             if (!unique_coins[data["response"][i].currency]) {
               unique_coins[data["response"][i].currency] = 1;

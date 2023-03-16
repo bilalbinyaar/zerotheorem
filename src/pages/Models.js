@@ -35,8 +35,8 @@ const Models = () => {
       <ModelDetails model_name={name} />
       {/* <CurrentPosition /> */}
       {/* <CandleGraph /> */}
-      <TradingViewWidgetGraph />
-      {/* <CandleGraphCanvasjs model_name={name} /> */}
+      {/* <TradingViewWidgetGraph /> */}
+      <CandleGraphCanvasjs model_name={name} />
       {/* <TradingViewSplineAreaChart model_name={name} /> */}
       {/* <TradingViewWidgetGraph /> */}
 
