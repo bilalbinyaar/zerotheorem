@@ -39,6 +39,8 @@ const ComparisonChartCanvas = (props) => {
   });
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
+  const [minValue, setMinValue] = useState(null);
+  const [maxValue, setMaxValue] = useState(null);
   const {
     drawdown_negative_canvasjs_graph_cache,
     Set_drawdown_negative_canvasjs_graph_cache,
@@ -57,7 +59,17 @@ const ComparisonChartCanvas = (props) => {
           var main_series = [];
           var temp_positive_series = [];
           var temp_negative_series = [];
+          var min_value = Infinity;
+          var max_value = -Infinity;
           for (var index = 0; index < data["response"].length; index++) {
+            if (parseFloat(data["response"][index].pnl_sum) < min_value) {
+              min_value = parseFloat(data["response"][index].pnl_sum);
+              setMinValue(min_value);
+            }
+            if (data["response"][index].pnl_sum > max_value) {
+              max_value = data["response"][index].pnl_sum;
+              setMaxValue(max_value);
+            }
             if (index + 1 == data["response"].length) {
               if (temp_positive_series.length != 0) {
                 main_series.push({
@@ -117,9 +129,9 @@ const ComparisonChartCanvas = (props) => {
             }
           }
           // console.log("Testing data -->", main_series);
+          let len = data["response"].length - 1;
 
-          if (main_series.length != 0) {
-            let len = data["response"].length - 1;
+          if (main_series.length != len) {
             let start_time = parseInt(data["response"][0].ledger_timestamp);
             let end_time = parseInt(data["response"][len].ledger_timestamp);
             let avg = (end_time - start_time) / 2;
@@ -134,6 +146,9 @@ const ComparisonChartCanvas = (props) => {
             Set_drawdown_negative_canvasjs_graph_cache({
               [props.model_name]: main_series,
             });
+            // setMinValue(min_value);
+            // setMaxValue(max_value);
+            // console.log("Here is min and max", min_value, max_value);
           }
           // console.log("Cum pnl -->", cum_pnl);
         })
@@ -201,7 +216,7 @@ const ComparisonChartCanvas = (props) => {
               // prefix: "$",
               gridColor: "#43577533",
               tickColor: "#43577533",
-              minimum: -20,
+              minimum: minValue,
               gridColor: "#43577533",
               gridThickness: 0,
               labelFontColor: "rgb(55, 61, 63)",
@@ -256,8 +271,6 @@ const ComparisonChartCanvas = (props) => {
     setIsLoaded(true);
   }, [cummulative_pnl]);
 
-
-
   const containerProps = {
     width: "100%",
     height: "200px",
@@ -266,7 +279,7 @@ const ComparisonChartCanvas = (props) => {
 
   return (
     <div className="canvas-main-div">
-        <CanvasJSStockChart containerProps={containerProps} options={options} />
+      <CanvasJSStockChart containerProps={containerProps} options={options} />
     </div>
   );
 };

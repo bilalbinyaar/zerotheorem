@@ -3,6 +3,8 @@ import CanvasJSReact from "../../../canvasjs.react";
 import { useStateContext } from "../../../ContextProvider";
 
 function CanvasSplineForcasteCard(props) {
+  const [minValue, setMinValue] = useState(null);
+  const [maxValue, setMaxValue] = useState(null);
   const { negative_canvasjs_graph_cache, Set_negative_canvasjs_graph_cache } =
     useStateContext();
   const [
@@ -27,7 +29,17 @@ function CanvasSplineForcasteCard(props) {
           var main_series = [];
           var temp_positive_series = [];
           var temp_negative_series = [];
+          var min_value = Infinity;
+          var max_value = -Infinity;
           for (var index = 0; index < data["response"].length; index++) {
+            if (parseFloat(data["response"][index].pnl_sum) < min_value) {
+              min_value = parseFloat(data["response"][index].pnl_sum);
+              setMinValue(min_value);
+            }
+            if (data["response"][index].pnl_sum > max_value) {
+              max_value = data["response"][index].pnl_sum;
+              setMaxValue(max_value);
+            }
             if (index + 1 == data["response"].length) {
               if (temp_positive_series.length != 0) {
                 main_series.push({
