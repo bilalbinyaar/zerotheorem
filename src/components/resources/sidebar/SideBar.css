@@ -3,7 +3,8 @@
   background-color: var(--color-forecasts-card);
   width: 100%;
   border-top-right-radius: 15px;
-  padding: 2rem 4rem;
+  /* padding: 2rem 4rem; */
+  padding: 2rem 1rem;
   overflow-y: scroll;
 }
 
@@ -84,7 +85,7 @@
 }
 
 .document {
-  padding-top: 0.8rem;
+  padding-top: 1rem;
 }
 
 .res-main-for-height {
@@ -125,6 +126,10 @@
 
 .adsense-placeholder-resources img {
   border-radius: 5px;
+}
+
+.display-none-resources {
+  display: none !important;
 }
 
 @media screen and (max-width: 568px) {

@@ -8,6 +8,7 @@ import { useStateContext } from "../../../../ContextProvider";
 const Reinforcement = () => {
   const { theme } = useStateContext();
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -30,6 +31,7 @@ const Reinforcement = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

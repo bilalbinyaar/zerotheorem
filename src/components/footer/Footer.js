@@ -145,11 +145,13 @@ const Footer = () => {
               <div className="announcement-card">
                 <div className="announcement-news">
                   <div className="news-inner footer-news-inner inner-footer-bar">
-                    <p className="footer-follow-text">Follow us</p>
+                    <p className="footer-follow-text">Find us</p>
                     <div className="footer-icons-div">
-                      <FaDiscord className="footer-icons dis" />
-                      <AiOutlineTwitter className="footer-icons twi" />
-                      <FaTelegramPlane className="footer-icons tele" />
+                      {/* <FaDiscord className="footer-icons dis" /> */}
+                      <Link to='https://twitter.com/zer0theorem' target='_blank'>
+                        <AiOutlineTwitter className="footer-icons twi" />
+                      </Link>
+                      {/* <FaTelegramPlane className="footer-icons tele" /> */}
                     </div>
                   </div>
                 </div>

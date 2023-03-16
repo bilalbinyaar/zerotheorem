@@ -71,7 +71,7 @@ const Overview = () => {
         <div className="overview-mobile">
           <div className="container">
             <div className="overview-text-indicator">
-              <h2>Percentage Overview</h2>
+              <h2>Long vs Short Overview</h2>
               <div className="overview-indicators">
                 <div className="indicator">
                   <RiCheckboxBlankFill className="indicator-long" />
@@ -88,7 +88,7 @@ const Overview = () => {
                 <div className="overview-card">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>24h</p>
+                      <p>24h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -154,7 +154,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>12h</p>
+                      <p>12h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -220,7 +220,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>8h</p>
+                      <p>8h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -286,7 +286,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>6h</p>
+                      <p>6h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -355,7 +355,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>4h</p>
+                      <p>4h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -421,7 +421,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>3h</p>
+                      <p>3h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -479,7 +479,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>2h</p>
+                      <p>2h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -536,7 +536,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>1h</p>
+                      <p>1h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -599,7 +599,7 @@ const Overview = () => {
           <div className="container">
             <div className="overview-text-indicator">
               <h2>
-                Percentage Overview
+                Long vs Short Overview
                 <Tooltip
                   title="Percentage of models currently predicting long and short for each
               time horizon."
@@ -625,7 +625,7 @@ const Overview = () => {
                 <div className="overview-card">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>24h</p>
+                      <p>24h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -696,7 +696,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>12h</p>
+                      <p>12h  Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -767,7 +767,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>8h</p>
+                      <p>8h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -838,7 +838,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>6h</p>
+                      <p>6h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -912,7 +912,7 @@ const Overview = () => {
                 <div className="overview-card">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>4h</p>
+                      <p>4h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -983,7 +983,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>3h</p>
+                      <p>3h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -1054,7 +1054,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>2h</p>
+                      <p>2h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
@@ -1116,7 +1116,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>1h</p>
+                      <p>1h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>

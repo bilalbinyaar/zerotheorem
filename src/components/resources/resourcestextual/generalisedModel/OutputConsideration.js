@@ -10,6 +10,7 @@ const OutputConsideration = () => {
   const { theme } = useStateContext();
 
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -33,6 +34,8 @@ const OutputConsideration = () => {
         </div>
       </div>
     </div>
+    </div>
+
   );
 };
 

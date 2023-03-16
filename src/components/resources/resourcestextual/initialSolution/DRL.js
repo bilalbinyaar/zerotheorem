@@ -9,6 +9,7 @@ const DRL = () => {
   const { theme } = useStateContext();
 
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -31,6 +32,7 @@ const DRL = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

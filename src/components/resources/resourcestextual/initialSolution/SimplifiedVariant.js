@@ -8,6 +8,7 @@ import { useStateContext } from "../../../../ContextProvider";
 const SimplifiedVariant = () => {
   const { theme } = useStateContext();
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -29,6 +30,7 @@ const SimplifiedVariant = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

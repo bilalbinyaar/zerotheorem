@@ -8,6 +8,7 @@ import { useStateContext } from "../../../../ContextProvider";
 const ExperimentalResults = () => {
   const { theme } = useStateContext();
   return (
+    <div className="container resources-container">
     <div className="resources">
       <div className="res-sidebar">
         <SideBar />
@@ -30,6 +31,7 @@ const ExperimentalResults = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

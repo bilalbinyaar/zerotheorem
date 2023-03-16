@@ -37,7 +37,7 @@ export const questions = [
 
     {
         id: 6,
-        question: 'What are the accuracy of the models?',
+        question: 'What are the accuracies of the models?',
         answer: 'The accuracy of any model can be viewed directly at the bottom of its individual page. Here you will find the specific drawdown, win/loss metrics and general statistics that make up overall performance of a model.'
     },
 
@@ -99,6 +99,12 @@ export const questions = [
         id: 16,
         question: 'Why is there only Bitcoin forecasts?',
         answer: 'Zero theorem was developed to provide a forward valuation for Bitcoin. However, the governing equations can be used for a variety of Proof of Work digital assets. In the future Zero Theorem will release forecasts for a range of alternative cryptocurrencies.'
+    },
+
+    {
+        id: 17,
+        question: 'What does Long and Short mean?',
+        answer: 'Long means the price of an asset will increase in future, whereas short means it will decrease.'
     },
     
 ]

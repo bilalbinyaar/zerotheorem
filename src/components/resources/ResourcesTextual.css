@@ -1,5 +1,6 @@
 .res-textual-section .container {
-  padding: 1rem 3rem 2rem 3rem;
+  /* padding: 1rem 3rem 2rem 3rem; */
+  padding: 1rem 0rem 0rem 0rem;
 }
 
 .res-det-heading {

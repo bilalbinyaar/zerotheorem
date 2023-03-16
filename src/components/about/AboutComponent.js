@@ -267,7 +267,7 @@ const AboutComponent = () => {
                   <br/>
                   This would give us a purpose to go on... the courage to publish Zero Theorem... and the faith that it could be used for the greater good; 
                   <br/>
-                  ... to improve pricing certainty and market efficiency.”<strong>- SOREZ</strong>
+                  ... to improve pricing certainty and market efficiency.”<br/><br/><strong>- SOREZ</strong>
               </p>
             </div>
           </div>

@@ -143,6 +143,14 @@ p {
   color: var(--color-day-black);
 }
 
+.css-1j7qk7u {
+  font-size: 0.9rem !important;
+}
+
+/* .MuiDataGrid-columnHeaderTitleContainerContent:hover .MuiDataGrid-columnHeaderTitleContainerContent button{
+  display: none;
+} */
+
 .css-zylse7-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
   color: var(--color-day-black) !important;
 }
@@ -581,6 +589,10 @@ form .form-inner input[type="submit"]:hover {
 .apexcharts-legend-series {
   display: flex;
   align-items: center;
+}
+
+.resources-container {
+  padding: 0rem;
 }
 
 .resources {

@@ -56,18 +56,20 @@
   display: none;
 }
 
+
+
 @media screen and (min-width:1080px) {
-  .grid-for-tab {
+  .grid-div-tab {
     display: none;
   }
 }
 
 @media screen and (max-width:1080px) {
-  .grid-for-tab {
+  .grid-div-tab {
     display: block;
   }
 
-  .gird-for-web {
+  .grid-div-web {
     display: none;
   }
 }

@@ -393,7 +393,7 @@ const ModelDataGrid = () => {
   // To Link Grid Rows to Models Component
 
   const columns = [
-    { field: "id", headerName: "#", headerAlign: "center", width: 40 },
+    { field: "id", headerName: "#", headerAlign: "center", width: 20 },
     // {
     //   field: "modelName",
     //   headerName: "Model Name",
@@ -433,7 +433,7 @@ const ModelDataGrid = () => {
       width: 130,
       sortable: true,
       headerAlign: "center",
-      flex: 1.5,
+      flex: 1.65,
       renderHeader: (params) => (
         <strong>
           {"Start Date "}
@@ -454,7 +454,7 @@ const ModelDataGrid = () => {
       width: 180,
       sortable: true,
       headerAlign: "center",
-      flex: 1.4,
+      flex: 1.55,
 
       cellClassName: (params) => {
         if (params.value == null) {
@@ -487,7 +487,7 @@ const ModelDataGrid = () => {
       width: 140,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 2,
       renderHeader: (params) => (
         <strong>
           {"Forecast Time"}
@@ -509,7 +509,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: false,
       headerAlign: "center",
-      flex: 1.6,
+      flex: 1.67,
       renderCell: (cellValues) => {
         // console.log("Here is the model -->", cellValues.value);
         return <Timer time_horizon={cellValues.value} />;
@@ -535,7 +535,7 @@ const ModelDataGrid = () => {
       width: 100,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 2,
       renderHeader: (params) => (
         <strong>
           {"Avg Daily PNL"}
@@ -557,7 +557,7 @@ const ModelDataGrid = () => {
       width: 120,
       sortable: true,
       headerAlign: "center",
-      flex: 1.3,
+      flex: 1.4,
       renderHeader: (params) => (
         <strong>
           {"7d PNL "}
@@ -579,7 +579,7 @@ const ModelDataGrid = () => {
       width: 110,
       sortable: true,
       headerAlign: "center",
-      flex: 1.45,
+      flex: 1.63,
       renderHeader: (params) => (
         <strong>
           {"Total PNL "}
@@ -613,7 +613,7 @@ const ModelDataGrid = () => {
       sortable: false,
       width: 120,
       headerAlign: "center",
-      flex: 1.35,
+      flex: 1.5,
       renderCell: (cellValues) => {
         // console.log("I am called in dark mode -->", cellValues.value);
         return <DataGridGraph model_name={cellValues.value} />;
@@ -1796,7 +1796,7 @@ const ModelDataGrid = () => {
                 </div>
               </div>
             </div>
-            <div className="grid-div gird-for-web">
+            <div className="grid-div-web">
               <Box
                 sx={{
                   // height: "120vh",
@@ -1865,7 +1865,7 @@ const ModelDataGrid = () => {
                 />
               </Box>
             </div>
-            <div className="grid-div gird-for-tab">
+            <div className="grid-div-tab">
               <Box
                 sx={{
                   // height: "120vh",

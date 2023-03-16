@@ -5,6 +5,7 @@ import SideBar from '../../sidebar/SideBar';
 
 const ActionSpace = () => {
   return (
+    <div className="container resources-container">
     <div className='resources'>
       <div className='res-sidebar'>
         <SideBar />
@@ -21,6 +22,7 @@ const ActionSpace = () => {
                 </div> 
             </div>
       </div>
+    </div>
     </div>
   )
 }

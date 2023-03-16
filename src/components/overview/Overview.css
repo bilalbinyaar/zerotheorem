@@ -160,6 +160,17 @@
   border-radius: 6px;
 }
 
+@media screen and (max-width: 1188px) {
+  .overview-details {
+    flex-direction: column;
+  }
+
+  .time-stamp {
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
 @media screen and (max-width: 968px) {
   .time-stamp p {
     font-size: 10px;
@@ -220,6 +231,7 @@
 
   .overview-details {
     flex-direction: row;
+    align-items: baseline;
   }
 }
 
