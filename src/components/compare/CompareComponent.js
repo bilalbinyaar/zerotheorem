@@ -290,9 +290,9 @@ const CompareComponent = () => {
   }, [Flag]);
 
 
-  const [selectedItem, setSelectedItem] = useState("24h");
+  const [selectedItem, setSelectedItem] = useState("All");
   const handleChangeForTimeHorizonSelection = (id, timeH) => {
-    if (timeH == "24h") {
+    if (timeH == "All") {
       setRows(rows_cached);
     } else {
       // handleChangePage("", 1);
@@ -329,12 +329,171 @@ const CompareComponent = () => {
             <thead className="no-bl">
               <tr>
                 <th className="tg-0lax no-bl border-remove" visibility="hidden">
-                  {/* <ComparisonChartCanvas /> */}
                 </th>
                 <th className="tg-0lax border-remove">
                   {windowWidth.current <= 568 ? (<CompareComponentMobile model_name = {model_name_1}/>) : (
                   <div>
                     <div className="search-filter-wapper">
+                      {/* TIME HORIZON */}
+                      <h3 className="horizon-comparison-title">Time Horizon</h3>
+                      <div className="horizon-left-comparison">
+                        <div className="hours-list-comparison">
+                          <ul id="hours-list-div-comparison">
+                            <li
+                              id="hours-listings hours_filter_All"
+                              style={{
+                                background: selectedItem === "All" ? "#fddd4e" : "",
+                                color: selectedItem === "All" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_All",
+                                  "All"
+                                );
+                                setSelectedItem("All");
+                              }}
+                            >
+                              All
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_24"
+                              style={{
+                                background: selectedItem === "24h" ? "#fddd4e" : "",
+                                color: selectedItem === "24h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_24",
+                                  "24h"
+                                );
+                                setSelectedItem("24h");
+                              }}
+                            >
+                              24h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_12"
+                              style={{
+                                background: selectedItem === "12h" ? "#fddd4e" : "",
+                                color: selectedItem === "12h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_24",
+                                  "12h"
+                                );
+                                setSelectedItem("12h");
+                              }}
+                            >
+                              12h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_8"
+                              style={{
+                                background: selectedItem === "8h" ? "#fddd4e" : "",
+                                color: selectedItem === "8h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_8",
+                                  "8h"
+                                );
+                                setSelectedItem("8h");
+                              }}
+                            >
+                              8h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_3"
+                              style={{
+                                background: selectedItem === "6h" ? "#fddd4e" : "",
+                                color: selectedItem === "6h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_6",
+                                  "6h"
+                                );
+                                setSelectedItem("6h");
+                              }}
+                            >
+                              6h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_3"
+                              style={{
+                                background: selectedItem === "4h" ? "#fddd4e" : "",
+                                color: selectedItem === "4h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_4",
+                                  "4h"
+                                );
+                                setSelectedItem("4h");
+                              }}
+                            >
+                              4h
+                            </li>
+                            <li
+                              style={{
+                                background: selectedItem === "3h" ? "#fddd4e" : "",
+                                color: selectedItem === "3h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_3",
+                                  "3h"
+                                );
+                                setSelectedItem("3h");
+                              }}
+                            >
+                              3h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_2"
+                              style={{
+                                background: selectedItem === "2h" ? "#fddd4e" : "",
+                                color: selectedItem === "2h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_2",
+                                  "2h"
+                                );
+                                setSelectedItem("2h");
+                              }}
+                            >
+                              2h
+                            </li>
+                            <li
+                              id="hours-listings hour_filter_1"
+                              style={{
+                                background: selectedItem === "1h" ? "#fddd4e" : "",
+                                color: selectedItem === "1h" ? "black" : "",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                handleChangeForTimeHorizonSelection(
+                                  "hour_filter_1",
+                                  "1h"
+                                );
+                                setSelectedItem("1h");
+                              }}
+                            >
+                              1h
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                       <div className="compare-search-wrapper">
                         {/* MODEL SEARCH BAR */}
                         <Autocomplete
@@ -779,167 +938,8 @@ const CompareComponent = () => {
                             />
                           )}
                         />
-                        {/* TIME HORIZON */}
                       </div>
-                      {/* TIME HORIZON */}
-                      <div className="horizon-left-comparison">
-                        <div className="hours-list-comparison">
-                          <ul id="hours-list-div-comparison">
-                            {/* <li
-                              id="hours-listings hours_filter_All"
-                              style={{
-                                background: selectedItem === "All" ? "#fddd4e" : "",
-                                color: selectedItem === "All" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_All",
-                                  "All"
-                                );
-                                setSelectedItem("All");
-                              }}
-                            >
-                              All
-                            </li> */}
-                            <li
-                              id="hours-listings hour_filter_24"
-                              style={{
-                                background: selectedItem === "24h" ? "#fddd4e" : "",
-                                color: selectedItem === "24h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_24",
-                                  "24h"
-                                );
-                                setSelectedItem("24h");
-                              }}
-                            >
-                              24h
-                            </li>
-                            <li
-                              id="hours-listings hour_filter_12"
-                              style={{
-                                background: selectedItem === "12h" ? "#fddd4e" : "",
-                                color: selectedItem === "12h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_24",
-                                  "12h"
-                                );
-                                setSelectedItem("12h");
-                              }}
-                            >
-                              12h
-                            </li>
-                            <li
-                              id="hours-listings hour_filter_8"
-                              style={{
-                                background: selectedItem === "8h" ? "#fddd4e" : "",
-                                color: selectedItem === "8h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_8",
-                                  "8h"
-                                );
-                                setSelectedItem("8h");
-                              }}
-                            >
-                              8h
-                            </li>
-                            <li
-                              id="hours-listings hour_filter_3"
-                              style={{
-                                background: selectedItem === "6h" ? "#fddd4e" : "",
-                                color: selectedItem === "6h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_6",
-                                  "6h"
-                                );
-                                setSelectedItem("6h");
-                              }}
-                            >
-                              6h
-                            </li>
-                            <li
-                              id="hours-listings hour_filter_3"
-                              style={{
-                                background: selectedItem === "4h" ? "#fddd4e" : "",
-                                color: selectedItem === "4h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_4",
-                                  "4h"
-                                );
-                                setSelectedItem("4h");
-                              }}
-                            >
-                              4h
-                            </li>
-                            <li
-                              style={{
-                                background: selectedItem === "3h" ? "#fddd4e" : "",
-                                color: selectedItem === "3h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_3",
-                                  "3h"
-                                );
-                                setSelectedItem("3h");
-                              }}
-                            >
-                              3h
-                            </li>
-                            <li
-                              id="hours-listings hour_filter_2"
-                              style={{
-                                background: selectedItem === "2h" ? "#fddd4e" : "",
-                                color: selectedItem === "2h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_2",
-                                  "2h"
-                                );
-                                setSelectedItem("2h");
-                              }}
-                            >
-                              2h
-                            </li>
-                            <li
-                              id="hours-listings hour_filter_1"
-                              style={{
-                                background: selectedItem === "1h" ? "#fddd4e" : "",
-                                color: selectedItem === "1h" ? "black" : "",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                handleChangeForTimeHorizonSelection(
-                                  "hour_filter_1",
-                                  "1h"
-                                );
-                                setSelectedItem("1h");
-                              }}
-                            >
-                              1h
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+                      
                     </div>
                     <ComparisonChartCanvas
                       model_name={model_name_1.replace("-", "_")}
@@ -951,6 +951,166 @@ const CompareComponent = () => {
                   {windowWidth.current <= 568 ? (<CompareComponentMobile />) : (
                     <div>
                       <div className="search-filter-wapper">
+                        {/* TIME HORIZON */}
+                        <h3 className="horizon-comparison-title">Time Horizon</h3>
+                        <div className="horizon-left-comparison">
+                          <div className="hours-list-comparison">
+                            <ul id="hours-list-div-comparison">
+                              <li
+                                id="hours-listings hours_filter_All"
+                                style={{
+                                  background: selectedItem === "All" ? "#fddd4e" : "",
+                                  color: selectedItem === "All" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_All",
+                                    "All"
+                                  );
+                                  setSelectedItem("All");
+                                }}
+                              >
+                                All
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_24"
+                                style={{
+                                  background: selectedItem === "24h" ? "#fddd4e" : "",
+                                  color: selectedItem === "24h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_24",
+                                    "24h"
+                                  );
+                                  setSelectedItem("24h");
+                                }}
+                              >
+                                24h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_12"
+                                style={{
+                                  background: selectedItem === "12h" ? "#fddd4e" : "",
+                                  color: selectedItem === "12h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_24",
+                                    "12h"
+                                  );
+                                  setSelectedItem("12h");
+                                }}
+                              >
+                                12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_8"
+                                style={{
+                                  background: selectedItem === "8h" ? "#fddd4e" : "",
+                                  color: selectedItem === "8h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_8",
+                                    "8h"
+                                  );
+                                  setSelectedItem("8h");
+                                }}
+                              >
+                                8h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background: selectedItem === "6h" ? "#fddd4e" : "",
+                                  color: selectedItem === "6h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_6",
+                                    "6h"
+                                  );
+                                  setSelectedItem("6h");
+                                }}
+                              >
+                                6h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_3"
+                                style={{
+                                  background: selectedItem === "4h" ? "#fddd4e" : "",
+                                  color: selectedItem === "4h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_4",
+                                    "4h"
+                                  );
+                                  setSelectedItem("4h");
+                                }}
+                              >
+                                4h
+                              </li>
+                              <li
+                                style={{
+                                  background: selectedItem === "3h" ? "#fddd4e" : "",
+                                  color: selectedItem === "3h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_3",
+                                    "3h"
+                                  );
+                                  setSelectedItem("3h");
+                                }}
+                              >
+                                3h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_2"
+                                style={{
+                                  background: selectedItem === "2h" ? "#fddd4e" : "",
+                                  color: selectedItem === "2h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_2",
+                                    "2h"
+                                  );
+                                  setSelectedItem("2h");
+                                }}
+                              >
+                                2h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_1"
+                                style={{
+                                  background: selectedItem === "1h" ? "#fddd4e" : "",
+                                  color: selectedItem === "1h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_1",
+                                    "1h"
+                                  );
+                                  setSelectedItem("1h");
+                                }}
+                              >
+                                1h
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       <div className="compare-search-wrapper">
                         {/* MODEL SEARCH BAR */}
                         <Autocomplete
@@ -1395,12 +1555,23 @@ const CompareComponent = () => {
                           )}
                         />
                       </div>
-              
-                      {/* TIME HORIZON */}
-                      <div className="horizon-left-comparison">
+                    </div>
+                    <ComparisonChartCanvas
+                      model_name={model_name_2.replace("-", "_")}
+                    />        
+                    </div>    
+                  ) }             
+                </th>
+                <th className="tg-0lax to-hide border-remove">
+                  {windowWidth.current <= 568 ? (<CompareComponentMobile />) : (
+                    <div>
+                      <div className="search-filter-wapper">
+                        {/* TIME HORIZON */}
+                        <h3 className="horizon-comparison-title">Time Horizon</h3>
+                        <div className="horizon-left-comparison">
                           <div className="hours-list-comparison">
                             <ul id="hours-list-div-comparison">
-                              {/* <li
+                              <li
                                 id="hours-listings hours_filter_All"
                                 style={{
                                   background: selectedItem === "All" ? "#fddd4e" : "",
@@ -1416,7 +1587,7 @@ const CompareComponent = () => {
                                 }}
                               >
                                 All
-                              </li> */}
+                              </li>
                               <li
                                 id="hours-listings hour_filter_24"
                                 style={{
@@ -1554,18 +1725,7 @@ const CompareComponent = () => {
                               </li>
                             </ul>
                           </div>
-                      </div>
-                    </div>
-                    <ComparisonChartCanvas
-                      model_name={model_name_2.replace("-", "_")}
-                    />        
-                    </div>    
-                  ) }             
-                </th>
-                <th className="tg-0lax to-hide border-remove">
-                  {windowWidth.current <= 568 ? (<CompareComponentMobile />) : (
-                    <div>
-                      <div className="search-filter-wapper">
+                        </div>
                         <div className="compare-search-wrapper">
                           {/* MODEL SEARCH BAR */}
                           <Autocomplete
@@ -2010,165 +2170,6 @@ const CompareComponent = () => {
                             )}
                           />       
                         </div>
-                        {/* TIME HORIZON */}
-                        <div className="horizon-left-comparison">
-                            <div className="hours-list-comparison">
-                              <ul id="hours-list-div-comparison">
-                                {/* <li
-                                  id="hours-listings hours_filter_All"
-                                  style={{
-                                    background: selectedItem === "All" ? "#fddd4e" : "",
-                                    color: selectedItem === "All" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_All",
-                                      "All"
-                                    );
-                                    setSelectedItem("All");
-                                  }}
-                                >
-                                  All
-                                </li> */}
-                                <li
-                                  id="hours-listings hour_filter_24"
-                                  style={{
-                                    background: selectedItem === "24h" ? "#fddd4e" : "",
-                                    color: selectedItem === "24h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_24",
-                                      "24h"
-                                    );
-                                    setSelectedItem("24h");
-                                  }}
-                                >
-                                  24h
-                                </li>
-                                <li
-                                  id="hours-listings hour_filter_12"
-                                  style={{
-                                    background: selectedItem === "12h" ? "#fddd4e" : "",
-                                    color: selectedItem === "12h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_24",
-                                      "12h"
-                                    );
-                                    setSelectedItem("12h");
-                                  }}
-                                >
-                                  12h
-                                </li>
-                                <li
-                                  id="hours-listings hour_filter_8"
-                                  style={{
-                                    background: selectedItem === "8h" ? "#fddd4e" : "",
-                                    color: selectedItem === "8h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_8",
-                                      "8h"
-                                    );
-                                    setSelectedItem("8h");
-                                  }}
-                                >
-                                  8h
-                                </li>
-                                <li
-                                  id="hours-listings hour_filter_3"
-                                  style={{
-                                    background: selectedItem === "6h" ? "#fddd4e" : "",
-                                    color: selectedItem === "6h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_6",
-                                      "6h"
-                                    );
-                                    setSelectedItem("6h");
-                                  }}
-                                >
-                                  6h
-                                </li>
-                                <li
-                                  id="hours-listings hour_filter_3"
-                                  style={{
-                                    background: selectedItem === "4h" ? "#fddd4e" : "",
-                                    color: selectedItem === "4h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_4",
-                                      "4h"
-                                    );
-                                    setSelectedItem("4h");
-                                  }}
-                                >
-                                  4h
-                                </li>
-                                <li
-                                  style={{
-                                    background: selectedItem === "3h" ? "#fddd4e" : "",
-                                    color: selectedItem === "3h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_3",
-                                      "3h"
-                                    );
-                                    setSelectedItem("3h");
-                                  }}
-                                >
-                                  3h
-                                </li>
-                                <li
-                                  id="hours-listings hour_filter_2"
-                                  style={{
-                                    background: selectedItem === "2h" ? "#fddd4e" : "",
-                                    color: selectedItem === "2h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_2",
-                                      "2h"
-                                    );
-                                    setSelectedItem("2h");
-                                  }}
-                                >
-                                  2h
-                                </li>
-                                <li
-                                  id="hours-listings hour_filter_1"
-                                  style={{
-                                    background: selectedItem === "1h" ? "#fddd4e" : "",
-                                    color: selectedItem === "1h" ? "black" : "",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    handleChangeForTimeHorizonSelection(
-                                      "hour_filter_1",
-                                      "1h"
-                                    );
-                                    setSelectedItem("1h");
-                                  }}
-                                >
-                                  1h
-                                </li>
-                              </ul>
-                            </div>
-                        </div>
                       </div>
                       <ComparisonChartCanvas
                         model_name={model_name_3.replace("-", "_")}
@@ -2180,7 +2181,13 @@ const CompareComponent = () => {
             </thead>
             <tbody>
               <tr>
-                <td className="tg-0lax for-th">Time Horizon</td>
+                <td className="tg-0lax for-th">Time Horizon
+                    <Tooltip title="Time between predictions">
+                      <IconButton>
+                        <BsFillInfoCircleFill />
+                      </IconButton>
+                    </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].time_horizon
@@ -2198,7 +2205,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Currency</td>
+                <td className="tg-0lax for-th">Currency
+                    <Tooltip title="Forecasted currency">
+                      <IconButton>
+                        <BsFillInfoCircleFill />
+                      </IconButton>
+                    </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].currency
@@ -2216,7 +2229,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Start Date</td>
+                <td className="tg-0lax for-th">Start Date
+                    <Tooltip title="Forecasts start date">
+                      <IconButton>
+                        <BsFillInfoCircleFill />
+                      </IconButton>
+                    </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].date_started
@@ -2234,7 +2253,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Forecast</td>
+                <td className="tg-0lax for-th">Forecast
+                    <Tooltip title="Price/Directional prediction for current time">
+                      <IconButton>
+                        <BsFillInfoCircleFill />
+                      </IconButton>
+                    </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"position"}
@@ -2286,7 +2311,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Forecast Time</td>
+                <td className="tg-0lax for-th">Forecast Time
+                    <Tooltip title="Time in which the forecast is created (in local system time)">
+                      <IconButton>
+                        <BsFillInfoCircleFill />
+                      </IconButton>
+                    </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].forecast_time
@@ -2304,7 +2335,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">Next Forecast</td>
+                <td className="tg-0lax for-th">Next Forecast
+                    <Tooltip title="Countdown clock till time of next forecast">
+                      <IconButton>
+                        <BsFillInfoCircleFill />
+                      </IconButton>
+                    </Tooltip>
+                </td>
                 <td className="tg-0lax">
                   {strategies[model_name_1]
                     ? strategies[model_name_1].next_forecast
@@ -2322,7 +2359,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">1d PNL</td>
+                <td className="tg-0lax for-th">1d PNL
+                    <Tooltip title="PNL of last 1 day">
+                      <IconButton>
+                        <BsFillInfoCircleFill />
+                      </IconButton>
+                    </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl-bg"}
@@ -2358,7 +2401,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">7d PNL</td>
+                <td className="tg-0lax for-th">7d PNL
+                  <Tooltip title="PNL of last 7 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl4"}
@@ -2394,7 +2443,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">15d PNL</td>
+                <td className="tg-0lax for-th">15d PNL
+                  <Tooltip title="PNL of last 15 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl7"}
@@ -2430,7 +2485,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">30d PNL</td>
+                <td className="tg-0lax for-th">30d PNL
+                  <Tooltip title="PNL of last 30 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl10"}
@@ -2466,7 +2527,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">45d PNL</td>
+                <td className="tg-0lax for-th">45d PNL
+                  <Tooltip title="PNL of last 45 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl13"}
@@ -2502,7 +2569,13 @@ const CompareComponent = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax for-th">60d PNL</td>
+                <td className="tg-0lax for-th">60d PNL
+                  <Tooltip title="PNL of last 60 days">
+                    <IconButton>
+                      <BsFillInfoCircleFill />
+                    </IconButton>
+                  </Tooltip>
+                </td>
                 <td
                   className="tg-0lax"
                   id={"pnl16"}
@@ -2564,7 +2637,7 @@ const CompareComponent = () => {
               </tr>
               <tr>
                 <td className="tg-0lax for-th">
-                  Max Drawdown Day
+                  Max Drawdown Days
                   <Tooltip title="Maximum DrawDown Days – measurement of the maximum number of days the model was in a negative yield">
                     <IconButton>
                       <BsFillInfoCircleFill />

@@ -43,7 +43,7 @@ table{
   border-color:var(--color-grid-border);
   border-style:solid;
   border-width:1px;
-  font-size:14px;
+  font-size: 12px;
   overflow:hidden;
   padding:18px 4px 18px 12px;
   word-break:normal;
@@ -53,7 +53,7 @@ table{
 .tg th{
   border: 1px solid var(--color-grid-border);
   border-top: 0px;
-  font-size:14px;
+  font-size: 12px;
   font-weight: 600;
   overflow:hidden;
   padding:18px 6px;
@@ -87,7 +87,7 @@ table{
   border: 2px solid var(--color-forecasts-card);
   padding: 4px;
   border-radius: 5px;
-  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .horizon-row-comparison {
@@ -112,7 +112,7 @@ table{
 
 .hours-list-comparison li {
   border-radius: 3px;
-  padding: 1px 0.52rem;
+  padding: 1px 0.4rem;
   font-size: 11px;
   margin: 0 4px;
   color: var(--color-day-black);
@@ -202,6 +202,12 @@ table{
   width: 100%;
 }
 
+.horizon-comparison-title {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+
 @media screen and (min-width: 1330px) {
   .visibility-hidden {
     width: 15%;
@@ -250,15 +256,19 @@ table{
 
   .tg th {
     width: 120px;
-    font-size: 12px;
+    font-size: 11px;
+  }
+
+  .for-th button{
+    display: none;
   }
 
   .tg td {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .visibility-hidden {
-    width: 29%;
+    width: 10%;
   }
 
     .horizon-left-comparison {

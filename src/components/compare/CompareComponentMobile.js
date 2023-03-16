@@ -528,7 +528,7 @@ const CompareComponentMobile = () => {
                 renderInput={(params) => (
                 <TextField
                     {...params}
-                    label="Time"
+                    label="Horizons"
                     inputProps={{
                     ...params.inputProps,
                     style: { width: "70%" }, // set the width to auto
