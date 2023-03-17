@@ -64,6 +64,10 @@ const CompareComponent = () => {
     model_name = location.state.model_name;
   }
   const [default_value, set_default_value] = useState({ label: model_name });
+  console.log("Default value -->", default_value);
+  // if (model_name.length == 0) {
+  //   set_default_value(null);
+  // }
   // console.log("Model name -->", location.state.model_name);
   const {
     stats_cache,
@@ -80,7 +84,9 @@ const CompareComponent = () => {
 
   const [rows, setRows] = useState([]);
   const [strategies, setStrategies] = useState({});
-  const [time_horizon_selected, set_time_horizon_selected] = useState("All");
+  const [time_horizon_selected, set_time_horizon_selected] = useState({
+    label: "Horizon",
+  });
   const [rows_cached, set_rows_cached] = useState([]);
   const handleChangeForModelSelection1 = (event, values) => {
     // console.log("Search dropdown -->", values);
@@ -163,10 +169,10 @@ const CompareComponent = () => {
     if (values != null) {
       set_time_horizon_selected(values.label);
       if (values.label === "All") {
-        let output = model_selection_cache["model_names"].filter((obj) => {
-          return obj.value === values.label;
-        });
-        set_model_names(output);
+        // let output = model_selection_cache["model_names"].filter((obj) => {
+        //   return obj.value === values.label;
+        // });
+        set_model_names(model_selection_cache["model_names"]);
       } else {
         let output = model_selection_cache["model_names"].filter((obj) => {
           return obj.value === values.label;
@@ -795,7 +801,7 @@ const CompareComponent = () => {
                                   top: "-8px !important",
                                 },
                             }}
-                            // defaultValue={time_horizon_selected}
+                            defaultValue={time_horizon_selected}
                             onChange={handleChangeForTimeSelection1}
                             // value={time_horizon_selected}
                             options={time_horizons}
@@ -805,6 +811,7 @@ const CompareComponent = () => {
                               <TextField
                                 {...params}
                                 label="Time"
+                                defaultValue={time_horizon_selected}
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto

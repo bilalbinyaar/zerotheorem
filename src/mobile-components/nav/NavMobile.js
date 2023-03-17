@@ -7,10 +7,14 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
 import { AiFillCaretDown, AiFillHome, AiFillInfoCircle } from "react-icons/ai";
-import { BsFillLayersFill, BsInfoSquareFill, BsFillInfoCircleFill } from 'react-icons/bs';
-import { BiColumns } from 'react-icons/bi';
-import { FaQuestionCircle } from 'react-icons/fa';
-import '../../components/navbar/Navbar.css';
+import {
+  BsFillLayersFill,
+  BsInfoSquareFill,
+  BsFillInfoCircleFill,
+} from "react-icons/bs";
+import { BiColumns } from "react-icons/bi";
+import { FaQuestionCircle } from "react-icons/fa";
+import "../../components/navbar/Navbar.css";
 
 export default function NavMobile(props) {
   const [click, setClick] = useState(false);
@@ -55,9 +59,9 @@ export default function NavMobile(props) {
   const handleiamClick = () => setiamClick(!iamClick);
   // Dark Light Mode
 
-  function toCloseNav () {
-    setToggle(false)
-    setClick(false)
+  function toCloseNav() {
+    setToggle(false);
+    setClick(false);
   }
 
   return (
@@ -85,11 +89,18 @@ export default function NavMobile(props) {
 
         <ul id="mobile-nav" className={click ? "nav-menu active" : "nav-menu"}>
           <CustomLink to="/">Forecasts</CustomLink>
-          <CustomLink to="/compare" onClick={toCloseNav} state={{ model_name: `${props.model_name}` }}>Compare</CustomLink>
+          <CustomLink
+            to="/compare"
+            onClick={toCloseNav}
+            state={{ model_name: `${props.model_name}` }}
+          >
+            Compare
+          </CustomLink>
           <CustomLink to="/resources">Resources</CustomLink>
           <CustomLink to="/about">About</CustomLink>
-          <CustomLink to="/faqs" onClick={toCloseNav}>FAQs</CustomLink>
-          
+          <CustomLink to="/faqs" onClick={toCloseNav}>
+            FAQs
+          </CustomLink>
         </ul>
 
         {toggle && (
@@ -104,12 +115,26 @@ export default function NavMobile(props) {
               <div className="display-none"></div>
             )}
 
-            <CustomLink to="/" onClick={toCloseNav}><AiFillHome className="nav-icons"/>Forecasts</CustomLink>
-            <CustomLink to="/compare" onClick={toCloseNav} state={{ model_name: `${props.model_name}` }}><BiColumns className="nav-icons"/>Compare</CustomLink>
-            <CustomLink to="/resources" onClick={toCloseNav}><BsFillLayersFill className="nav-icons"/>Resources</CustomLink>
-            <CustomLink to="/about" onClick={toCloseNav}><BsFillInfoCircleFill className="nav-icons"/>About</CustomLink>
-            <CustomLink to="/faqs" onClick={toCloseNav}><FaQuestionCircle className="nav-icons"/>FAQs</CustomLink>
-
+            <CustomLink to="/" onClick={toCloseNav}>
+              <AiFillHome className="nav-icons" />
+              Forecasts
+            </CustomLink>
+            <CustomLink to="/compare" onClick={toCloseNav}>
+              <BiColumns className="nav-icons" />
+              Compare
+            </CustomLink>
+            <CustomLink to="/resources" onClick={toCloseNav}>
+              <BsFillLayersFill className="nav-icons" />
+              Resources
+            </CustomLink>
+            <CustomLink to="/about" onClick={toCloseNav}>
+              <BsFillInfoCircleFill className="nav-icons" />
+              About
+            </CustomLink>
+            <CustomLink to="/faqs" onClick={toCloseNav}>
+              <FaQuestionCircle className="nav-icons" />
+              FAQs
+            </CustomLink>
 
             {/* {authCheck === true ? (
               <CustomLink
