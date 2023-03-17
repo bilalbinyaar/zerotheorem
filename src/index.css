@@ -604,7 +604,7 @@ form .form-inner input[type="submit"]:hover {
 }
 
 .res-textual {
-  width: 90%;
+  width: 100%;
 }
 
 .apexcharts-legend-text {
@@ -708,6 +708,7 @@ a {
     justify-content: center !important;
     align-items: center !important;
   }
+
 }
 
 .apexcharts-yaxis-texts-g {

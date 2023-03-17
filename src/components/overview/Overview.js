@@ -4,7 +4,6 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Hidden, Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { RiCheckboxBlankFill } from "react-icons/ri";
-import texture from "../../assets/transparent.jpg";
 import { useStateContext } from "../../ContextProvider";
 
 const Overview = () => {

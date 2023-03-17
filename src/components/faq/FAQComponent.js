@@ -15,6 +15,8 @@ const FAQComponent = () => {
      <div className='faq'>
         <div className='container'>
             <h1 className='faq-head'>Frequently Asked Questions</h1>
+
+            
                 
             <h2 className='faq-sub-head'>General</h2>
             {
