@@ -6,6 +6,7 @@ import {
   AiOutlineFieldTime,
   AiOutlineCalendar,
   AiOutlineDollarCircle,
+  AiFillCaretDown,
 } from "react-icons/ai";
 import { BsCurrencyExchange } from "react-icons/bs";
 import { useState, useEffect } from "react";
@@ -200,6 +201,10 @@ const ModelDetailsLeft = (props) => {
               if (minutes.length == 1) {
                 minutes = "0" + minutes;
               }
+              var curr_time_version = dt.split(" ")[2];
+              if (curr_time_version == "PM") {
+                hours = parseInt(hours) + 12;
+              }
               var dt_str =
                 year + "-" + month + "-" + day + " " + hours + ":" + minutes;
               data_for_strategies[data["response"][i].strategy_name] = {
@@ -266,7 +271,13 @@ const ModelDetailsLeft = (props) => {
         <AiFillDollarCircle className="model-details-left-top-icon" />
         <h2>{props.model_name.replace("_", "-")}</h2>
         <div className="model-details-left-top-percentage " id="pnl-bg">
-          <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+          {stats[props.model_name] ? (
+            stats[props.model_name].total_pnl > 0 ? (
+              <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+            ) : (
+              <AiFillCaretDown className="model-details-left-top-percentage-icon " />
+            )
+          ) : null}
           <p
             onChange={
               stats[props.model_name]

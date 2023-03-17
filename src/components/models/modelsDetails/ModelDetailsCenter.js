@@ -88,7 +88,31 @@ const ModelDetailsCenter = (props) => {
       setStats(stats_cache["stats"]);
     }
   }, []);
+  const [current_position, set_current_position] = useState({});
+  useEffect(() => {
+    // console.log("Here is it ", strategies[props.model_name]);
+    fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get/current_position`)
+      .then((res) => res.json())
+      .then((data) => {
+        const temp_data = {};
+        // console.log(
+        //   "Finally btc data -->",
+        //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+        // );
 
+        for (let i = 0; i < data["response"].length; i++) {
+          temp_data[data["response"][i].strategy_name] = {
+            current_pnl: data["response"][i].current_pnl,
+            current_price: data["response"][i].current_price,
+          };
+        }
+
+        if (temp_data.length != 0) {
+          set_current_position(temp_data);
+          console.log("Here is the data for current position", temp_data);
+        }
+      });
+  }, []);
   useEffect(() => {
     if (!stats) {
       return;
@@ -137,6 +161,10 @@ const ModelDetailsCenter = (props) => {
               var minutes = dt.split(":")[1];
               if (minutes.length == 1) {
                 minutes = "0" + minutes;
+              }
+              var curr_time_version = dt.split(" ")[2];
+              if (curr_time_version == "PM") {
+                hours = parseInt(hours) + 12;
               }
               var dt_str =
                 year + "-" + month + "-" + day + " " + hours + ":" + minutes;
@@ -333,8 +361,8 @@ const ModelDetailsCenter = (props) => {
                 </Tooltip>
               </div>
               <h3>
-                {strategies[props.model_name]
-                  ? strategies[props.model_name].current_price
+                {current_position[props.model_name]
+                  ? current_position[props.model_name].current_price
                   : null}
               </h3>
             </div>
@@ -351,16 +379,16 @@ const ModelDetailsCenter = (props) => {
               <h3
                 id="curr-pnl"
                 onChange={
-                  strategies[props.model_name]
+                  current_position[props.model_name]
                     ? forPnlColor(
-                        strategies[props.model_name].current_pnl,
+                        current_position[props.model_name].current_pnl,
                         "curr-pnl"
                       )
                     : null
                 }
               >
-                {strategies[props.model_name]
-                  ? strategies[props.model_name].current_pnl
+                {current_position[props.model_name]
+                  ? current_position[props.model_name].current_pnl
                   : null}
                 {"%"}
               </h3>

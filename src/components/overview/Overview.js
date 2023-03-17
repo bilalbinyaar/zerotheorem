@@ -44,6 +44,10 @@ const Overview = () => {
             if (minutes.length == 1) {
               minutes = "0" + minutes;
             }
+            var curr_time_version = dt.split(" ")[2];
+            if (curr_time_version == "PM") {
+              hours = parseInt(hours) + 12;
+            }
             var dt_str =
               year + "-" + month + "-" + day + " " + hours + ":" + minutes;
             stats[data["response"][i].time_horizon] = {
@@ -696,7 +700,7 @@ const Overview = () => {
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
-                      <p>12h  Models</p>
+                      <p>12h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>

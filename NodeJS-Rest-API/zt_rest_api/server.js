@@ -203,6 +203,19 @@ app.get("/get/position_percentage", async function (req, res) {
   });
 });
 
+app.get("/get/current_position", async function (req, res) {
+  // console.log("I am here to print query", req.params.ledger);
+  // console.log(req.params.name);
+  var query = `select * from current_position`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.json({ response: err });
+    } else {
+      res.json({ response: result });
+    }
+  });
+});
+
 app.get("/", function (req, res) {
   res.send("<h4>Welcome to Rest API service for zero theorem</h4>");
 });

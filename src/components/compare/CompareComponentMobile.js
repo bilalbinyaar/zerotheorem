@@ -268,6 +268,10 @@ const CompareComponentMobile = () => {
             if (minutes.length == 1) {
               minutes = "0" + minutes;
             }
+            var curr_time_version = dt.split(" ")[2];
+            if (curr_time_version == "PM") {
+              hours = parseInt(hours) + 12;
+            }
             var dt_str =
               year + "-" + month + "-" + day + " " + hours + ":" + minutes;
             // console.log("DT", dt, dt_str);
@@ -1139,27 +1143,6 @@ const CompareComponentMobile = () => {
           />
         </div>
       </div>
-      {/* <ComparisonChartCanvas
-            model_name={model_name_1.replace("-", "_")}
-                defaultValue={default_value}
-                onChange={handleChangeForModelSelection1}
-                options={model_names}
-                autoHighlight
-                getOptionLabel={(option) => option.label}
-                renderInput={(params) => (
-                <TextField
-                    {...params}
-                    label="Horizons"
-                    inputProps={{
-                    ...params.inputProps,
-                    style: { width: "70%" }, // set the width to auto
-
-                    autoComplete: "new-password", // disable autocomplete and autofill
-                    }}
-                />
-                )}
-                />
-                {/* CURRENCIES SEARCH BAR */}
     </div>
   );
 };

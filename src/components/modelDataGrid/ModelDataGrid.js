@@ -285,7 +285,7 @@ const ModelDataGrid = () => {
               var dt = new Date(
                 parseInt(data["response"][i].forecast_time) * 1000
               ).toLocaleString();
-
+              console.log("Locale string -->", dt);
               var year = dt.split("/")[2].split(",")[0];
               var month = dt.split("/")[0];
               if (month.length == 1) {
@@ -302,6 +302,10 @@ const ModelDataGrid = () => {
               var minutes = dt.split(":")[1];
               if (minutes.length == 1) {
                 minutes = "0" + minutes;
+              }
+              var curr_time_version = dt.split(" ")[2];
+              if (curr_time_version == "PM") {
+                hours = parseInt(hours) + 12;
               }
               var dt_str =
                 year + "-" + month + "-" + day + " " + hours + ":" + minutes;
@@ -680,8 +684,7 @@ const ModelDataGrid = () => {
     },
   ];
 
-
-   const columnsTab = [
+  const columnsTab = [
     { field: "id", headerName: "#", headerAlign: "center", width: 30 },
 
     {
@@ -915,7 +918,6 @@ const ModelDataGrid = () => {
       ),
     },
   ];
-
 
   // To Link Grid Rows to Models Component
 
