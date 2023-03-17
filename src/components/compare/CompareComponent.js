@@ -57,14 +57,34 @@ const CompareComponent = () => {
     }
   };
   // const [Flag, setFlag] = useState(null);
+
   const [stats, set_stats] = useState({});
   const location = useLocation();
   var model_name = "";
+  var currency = "";
+  var time_horizon = "All";
   if (location.state) {
     model_name = location.state.model_name;
+    currency = location.state.currency;
+    time_horizon = location.state.time_horizon;
   }
   const [default_value, set_default_value] = useState({ label: model_name });
-  console.log("Default value -->", default_value);
+  const [strategies, setStrategies] = useState({});
+  const [time_horizon_selected, set_time_horizon_selected] = useState({
+    label: time_horizon,
+  });
+  const [time_horizon_selected2, set_time_horizon_selected2] = useState({
+    label: "Horizon",
+  });
+  const [currency_selected, set_currency_selected] = useState({
+    label: currency,
+  });
+  const [currency_selected2, set_currency_selected2] = useState({
+    label: "Currencies",
+  });
+  const [selectedItem, setSelectedItem] = useState(time_horizon);
+
+  // console.log("Default value -->", default_value);
   // if (model_name.length == 0) {
   //   set_default_value(null);
   // }
@@ -83,10 +103,7 @@ const CompareComponent = () => {
   } = useStateContext();
 
   const [rows, setRows] = useState([]);
-  const [strategies, setStrategies] = useState({});
-  const [time_horizon_selected, set_time_horizon_selected] = useState({
-    label: "Horizon",
-  });
+
   const [rows_cached, set_rows_cached] = useState([]);
   const handleChangeForModelSelection1 = (event, values) => {
     // console.log("Search dropdown -->", values);
@@ -139,10 +156,70 @@ const CompareComponent = () => {
       // setRows(rows_cached);
     }
   };
+  const handleChangeForCoinSelectionMobile1 = (event, values) => {
+    // console.log("Search dropdown -->", values.label);
+    if (values != null) {
+      set_currency_selected(values.label);
+      if (time_horizon_selected === "All") {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.currency === values.label;
+        });
+        set_model_names(output);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return (
+            obj.currency === values.label && obj.value === time_horizon_selected
+          );
+        });
+        set_model_names(output);
+      }
+    } else {
+      if (time_horizon_selected == "All") {
+        set_model_names(model_selection_cache["model_names"]);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === time_horizon_selected;
+        });
+        set_model_names(output);
+      }
+    }
+  };
+
+  const handleChangeForCoinSelectionMobile2 = (event, values) => {
+    // console.log("Search dropdown -->", values.label);
+    if (values != null) {
+      set_currency_selected(values.label);
+      if (time_horizon_selected2 === "All") {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.currency === values.label;
+        });
+        set_model_names2(output);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return (
+            obj.currency === values.label &&
+            obj.value === time_horizon_selected2
+          );
+        });
+        set_model_names2(output);
+      }
+    } else {
+      if (time_horizon_selected2 == "All") {
+        set_model_names2(model_selection_cache["model_names"]);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === time_horizon_selected2;
+        });
+        set_model_names2(output);
+      }
+    }
+  };
+
   const handleChangeForCoinSelection1 = (event, values) => {
     // console.log("Search dropdown -->", values.label);
     if (values != null) {
-      if (selectedItem == "All") {
+      set_currency_selected(values.label);
+      if (selectedItem === "All") {
         let output = model_selection_cache["model_names"].filter((obj) => {
           return obj.currency === values.label;
         });
@@ -164,7 +241,8 @@ const CompareComponent = () => {
       }
     }
   };
-  const handleChangeForTimeSelection1 = (event, values) => {
+
+  const handleChangeForTimeSelectionMobile1 = (event, values) => {
     // console.log("Search dropdown -->", values.label);
     if (values != null) {
       set_time_horizon_selected(values.label);
@@ -180,8 +258,38 @@ const CompareComponent = () => {
         set_model_names(output);
       }
     } else {
-      // set_time_horizon_selected("All");
+      set_time_horizon_selected("All");
+      set_model_names(model_selection_cache["model_names"]);
+    }
+  };
+  const handleChangeForTimeSelectionMobile2 = (event, values) => {
+    // console.log("Search dropdown -->", values.label);
+    if (values != null) {
+      set_time_horizon_selected2(values.label);
       if (values.label === "All") {
+        // let output = model_selection_cache["model_names"].filter((obj) => {
+        //   return obj.value === values.label;
+        // });
+        set_model_names2(model_selection_cache["model_names"]);
+      } else {
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === values.label;
+        });
+        set_model_names2(output);
+      }
+    } else {
+      set_time_horizon_selected2("All");
+      set_model_names2(model_selection_cache["model_names"]);
+    }
+  };
+  const handleChangeForTimeSelection1 = (event, values) => {
+    // console.log("Search dropdown -->", values.label);
+    if (values != null) {
+      setSelectedItem(values.label);
+      if (values.label === "All") {
+        // let output = model_selection_cache["model_names"].filter((obj) => {
+        //   return obj.value === values.label;
+        // });
         set_model_names(model_selection_cache["model_names"]);
       } else {
         let output = model_selection_cache["model_names"].filter((obj) => {
@@ -189,8 +297,12 @@ const CompareComponent = () => {
         });
         set_model_names(output);
       }
+    } else {
+      setSelectedItem("All");
+      set_model_names(model_selection_cache["model_names"]);
     }
   };
+
   const handleChangeForCoinSelection2 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
@@ -491,7 +603,6 @@ const CompareComponent = () => {
     }
   }, []);
 
-  const [selectedItem, setSelectedItem] = useState("All");
   const handleChangeForTimeHorizonSelection = (id, timeH) => {
     if (timeH == "All") {
       // setRows(rows_cached);
@@ -802,7 +913,7 @@ const CompareComponent = () => {
                                 },
                             }}
                             defaultValue={time_horizon_selected}
-                            onChange={handleChangeForTimeSelection1}
+                            onChange={handleChangeForTimeSelectionMobile1}
                             // value={time_horizon_selected}
                             options={time_horizons}
                             autoHighlight
@@ -810,7 +921,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Time"
+                                label="Horizon"
                                 defaultValue={time_horizon_selected}
                                 inputProps={{
                                   ...params.inputProps,
@@ -1046,8 +1157,8 @@ const CompareComponent = () => {
                                   top: "-8px !important",
                                 },
                             }}
-                            // defaultValue={default_value}
-                            onChange={handleChangeForCoinSelection1}
+                            defaultValue={currency_selected}
+                            onChange={handleChangeForCoinSelectionMobile1}
                             options={currencies}
                             autoHighlight
                             getOptionLabel={(option) => option.label}
@@ -1958,7 +2069,7 @@ const CompareComponent = () => {
                                   top: "-8px !important",
                                 },
                             }}
-                            // defaultValue={default_value}
+                            defaultValue={currency_selected}
                             onChange={handleChangeForCoinSelection1}
                             options={currencies}
                             autoHighlight
@@ -2217,14 +2328,14 @@ const CompareComponent = () => {
                                 },
                             }}
                             // defaultValue={default_value}
-                            onChange={handleChangeForModelSelection2}
+                            onChange={handleChangeForTimeSelectionMobile2}
                             options={time_horizons2}
                             autoHighlight
                             getOptionLabel={(option) => option.label}
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Time"
+                                label="Horizon"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -2460,7 +2571,7 @@ const CompareComponent = () => {
                                 },
                             }}
                             // defaultValue={default_value}
-                            onChange={handleChangeForCoinSelection2}
+                            onChange={handleChangeForCoinSelectionMobile2}
                             options={currencies2}
                             autoHighlight
                             getOptionLabel={(option) => option.label}
