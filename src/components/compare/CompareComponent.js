@@ -194,7 +194,7 @@ const CompareComponent = () => {
     label: time_horizon,
   });
   const [time_horizon_selected2, set_time_horizon_selected2] = useState({
-    label: "Horizon",
+    label: "Horizons",
   });
   const [currency_selected, set_currency_selected] = useState({
     label: currency,
@@ -1044,7 +1044,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Horizon"
+                                label="Horizons"
                                 defaultValue={time_horizon_selected}
                                 inputProps={{
                                   ...params.inputProps,
@@ -2458,7 +2458,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Horizon"
+                                label="Horizons"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -5372,7 +5372,7 @@ const CompareComponent = () => {
                     id={"pnl58"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].total_negative_pnl,
                               "pnl58",
@@ -5394,7 +5394,7 @@ const CompareComponent = () => {
                     id={"pnl59"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].total_negative_pnl,
                               "pnl58",

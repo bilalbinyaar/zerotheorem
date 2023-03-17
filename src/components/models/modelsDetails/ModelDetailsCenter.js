@@ -457,8 +457,8 @@ const ModelDetailsCenter = (props) => {
               </Tooltip> */}
               </div>
               <h3>
-                {strategies[props.model_name]
-                  ? strategies[props.model_name].current_price
+                {current_position[props.model_name]
+                  ? current_position[props.model_name].current_price
                   : null}
               </h3>
             </div>
@@ -494,16 +494,16 @@ const ModelDetailsCenter = (props) => {
               <h3
                 id="curr-pnl-m"
                 onChange={
-                  strategies[props.model_name]
+                  current_position[props.model_name]
                     ? forPnlMColor(
-                        strategies[props.model_name].current_pnl,
+                        current_position[props.model_name].current_pnl,
                         "curr-pnl-m"
                       )
                     : null
                 }
               >
-                {strategies[props.model_name]
-                  ? strategies[props.model_name].current_pnl
+                {current_position[props.model_name]
+                  ? current_position[props.model_name].current_pnl
                   : null}
                 {"%"}
               </h3>
