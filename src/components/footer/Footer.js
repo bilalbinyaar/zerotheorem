@@ -105,14 +105,13 @@ const Footer = () => {
                       </div>
                       <div className="news-body">
                         <p>
-                          ZT x Beta Release 2023 — Launching Soon.
+                           Take Off &#128640; — We're live.
                           <br />
-                          Zero Theorem Beta version is releasing on 19th March
-                          2023.
+                          ZeroTheorem Beta is now Live for intraday BTC forecasts!
                         </p>
                       </div>
                       <div className="news-footer">
-                        <span>March 09, 2023</span>
+                        <span>March 19, 2023</span>
                         {/* <BsDot />
                         <span>
                           <AiFillEye className="news-footer-icon" /> 1.7K

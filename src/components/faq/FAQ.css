@@ -9,8 +9,17 @@
     padding: 2rem 0rem 3rem 0rem;
 }
 
-.faq-head {
+/* .faq-head {
     margin-bottom: 2rem;
+} */
+
+.faq-sub-head {
+    text-align: left;
+    width: 100%;
+    color: var(--color-day-yellow);
+    font-size: 22px;
+    padding-top: 3rem;
+    padding-left: 1.5rem;
 }
 
 .question-heading {
@@ -32,8 +41,9 @@
     cursor: pointer;
 }
 
-.question-heading h2 {
+.question-heading h3 {
     padding-left: 1.5rem;
+    font-size: 16px;
 }
 
 .answers {
@@ -46,8 +56,28 @@
     display: contents;
 }
 
+.general {
+    display: flex;
+    align-items: center;
+}
+
+.general-sep {
+    height: 1px;
+    background-color: var(--color-day-yellow);
+    width: 100%;
+    margin-top: 3rem;
+}
+
 @media screen and (max-width: 568px) {
     .faq {
         padding: 0;
+    }
+
+    .faq-sub-head {
+        font-size: 18px;
+    }
+
+    .question-heading h3 {
+        font-size: 14px;
     }
 }

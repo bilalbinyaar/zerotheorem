@@ -106,7 +106,7 @@ export default function Navbar() {
             className={click ? "nav-menu active" : "nav-menu"}
           >
             <CustomLink to="/">Forecasts</CustomLink>
-            <CustomLink to="/resources">Resources</CustomLink>
+            <CustomLink to="/derivations">Derivations</CustomLink>
             <CustomLink to="/about">About</CustomLink>
           
           </ul>
@@ -124,7 +124,7 @@ export default function Navbar() {
               )}
 
               <CustomLink to="/">Forecasts</CustomLink>
-              <CustomLink to="/resources">Resources</CustomLink>
+              <CustomLink to="/derivations">Derivations</CustomLink>
               <CustomLink to="/about">About</CustomLink>
               {/* {authCheck === true ? (
                 <CustomLink

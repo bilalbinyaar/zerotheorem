@@ -342,12 +342,10 @@ const Forecasts = () => {
 
         <div className="forecasts-details">
           <p className="forcasts-description">
-            Zero Theorem is an economic framework for valuing Proof of Work
-            digital assets like Bitcoin. On the forecast page you will find a
-            variety of machine learning solutions to the Zero Theorem governing
-            equation. Each model attempts to estimate substitution parameter α
-            to solve the market sizing dilemma. Hence each model also produces a
-            forward valuation and pricing direction​.
+            Zero Theorem is an economic framework for valuing Bitcoin. On the forecast page you will find a
+            variety of machine learning solutions to the Zero Theorem governing equation. Each model attempts
+            to estimate substitution parameter 𝛼<sub>𝑘</sub> to solve the market sizing dilemma. Hence each model also
+            produces a forward valuation and pricing direction.
           </p>
           {theme === "dark-theme" ? (
             <div className="equation-img">

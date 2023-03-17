@@ -1,9 +1,9 @@
-import React, { useRef, memo } from "react";
+import React, { useRef, memo, useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import Models from "./pages/Models";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import LoginForm from "./components/loginPrompt/LoginForm";
 import { useStateContext } from "./ContextProvider";
 import Footer from "./components/footer/Footer";
@@ -53,6 +53,7 @@ import ProblemFormulataion from "./components/resources/resourcestextual/initial
 import DRL from "./components/resources/resourcestextual/initialSolution/DRL";
 import ExperimentalResults from "./components/resources/resourcestextual/initialSolution/ExperimentalResults";
 import Compare from "./pages/Compare";
+import ScrollToTop from "./components/scrollTop/ScrollToTop";
 
 // import sitemap from "./sitemap.xml";
 function Sitemap() {
@@ -91,6 +92,14 @@ function Sitemap() {
 function App() {
   const { Login, user, error, loading } = useStateContext();
 
+  // SCROLL TO TOP
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  // SCROLL TO TOP
+
+
   return (
     !loading && (
       <React.Fragment>
@@ -99,7 +108,7 @@ function App() {
             <Navbar />
             <Routes basename="/zero-theorem">
               <Route path="/" element={<Home />} />
-              <Route path="/resources" element={<Introduction />} />
+              <Route path="/derivations" element={<Introduction />} />
               <Route path="/:name" element={<Models />} />
               <Route path="/about" element={<About />} />
               <Route path="/faqs" element={<FAQ />} />
