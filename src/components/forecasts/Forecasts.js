@@ -109,7 +109,7 @@ const Forecasts = () => {
             };
           }
           if (JSON.stringify(model_names) !== "{}") {
-            console.log("Sortable -->", model_names);
+            // console.log("Sortable -->", model_names);
 
             const sorted = Object.keys(model_names)
               .map((key) => {
@@ -124,10 +124,10 @@ const Forecasts = () => {
         })
         .catch((err) => console.log(err));
     } else {
-      console.log(
-        "I am using cached values of sorted stats -->",
-        sorted_stats_cache
-      );
+      // console.log(
+      //   "I am using cached values of sorted stats -->",
+      //   sorted_stats_cache
+      // );
       setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
     }
   }, []);
@@ -341,10 +341,12 @@ const Forecasts = () => {
 
         <div className="forecasts-details">
           <p className="forcasts-description">
-            Zero Theorem is an economic framework for valuing Bitcoin. On the forecast page you will find a
-            variety of machine learning solutions to the Zero Theorem governing equation. Each model attempts
-            to estimate substitution parameter 𝛼<sub>𝑘</sub> to solve the market sizing dilemma. Hence each model also
-            produces a forward valuation and pricing direction.
+            Zero Theorem is an economic framework for valuing Bitcoin. On the
+            forecast page you will find a variety of machine learning solutions
+            to the Zero Theorem governing equation. Each model attempts to
+            estimate substitution parameter 𝛼<sub>𝑘</sub> to solve the market
+            sizing dilemma. Hence each model also produces a forward valuation
+            and pricing direction.
           </p>
           {theme === "dark-theme" ? (
             <div className="equation-img">
@@ -2740,7 +2742,6 @@ const Forecasts = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

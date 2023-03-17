@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const ModelDetailsTable = (props) => {
   const [strategy, setStrategy] = useState({});
   const [stats, setStats] = useState({});
-  console.log("Here I will get strategy for -->", props.model_name);
+  // console.log("Here I will get strategy for -->", props.model_name);
   useEffect(() => {
     fetch(
       `https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategy/${props.model_name}`,

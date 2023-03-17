@@ -285,7 +285,7 @@ const ModelDataGrid = () => {
               var dt = new Date(
                 parseInt(data["response"][i].forecast_time) * 1000
               ).toLocaleString();
-              console.log("Locale string -->", dt);
+              // console.log("Locale string -->", dt);
               var year = dt.split("/")[2].split(",")[0];
               var month = dt.split("/")[0];
               if (month.length == 1) {
@@ -1033,7 +1033,7 @@ const ModelDataGrid = () => {
   const [page, setPage] = useState(1);
 
   const handleChangePage = (event, value) => {
-    console.log("Value is -->", value);
+    // console.log("Value is -->", value);
     setPage(value);
     // setPageSize(value);
   };
