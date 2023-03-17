@@ -22,7 +22,7 @@ const AboutComponent = () => {
   const { theme } = useStateContext();
 
   var link = <Link to='/faqs'>zero proof protocol</Link>;
-  var link1 = <Link to='/resources'>resources</Link>;
+  var link1 = <Link to='/derivations'>derivations</Link>;
 
   return (
 

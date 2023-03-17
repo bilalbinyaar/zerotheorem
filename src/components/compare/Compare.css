@@ -313,4 +313,8 @@ table {
   .all-horizon-comparison {
     margin: 6px 0px !important;
   }
+
+  .for-mob-width {
+    width: 19% !important;
+  }
 }

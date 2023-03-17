@@ -5,7 +5,7 @@ const ResourcesTextual = () => {
   return (
     <div className='res-textual-section'>
         <div className='container'>
-            <h1>Resources</h1>
+            <h1>Derivations</h1>
         </div>
     </div>
   )

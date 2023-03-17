@@ -567,7 +567,7 @@ const CompareComponent = () => {
             <thead className="no-bl">
               <tr>
                 <th
-                  className="tg-0lax no-bl border-remove"
+                  className="tg-0lax no-bl border-remove for-mob-width"
                   visibility="hidden"
                 ></th>
                 <th className="tg-0lax border-remove">

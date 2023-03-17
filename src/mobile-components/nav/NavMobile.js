@@ -96,7 +96,7 @@ export default function NavMobile(props) {
           >
             Compare
           </CustomLink>
-          <CustomLink to="/resources">Resources</CustomLink>
+          <CustomLink to="/derivations">Derivations</CustomLink>
           <CustomLink to="/about">About</CustomLink>
           <CustomLink to="/faqs" onClick={toCloseNav}>
             FAQs
@@ -123,9 +123,9 @@ export default function NavMobile(props) {
               <BiColumns className="nav-icons" />
               Compare
             </CustomLink>
-            <CustomLink to="/resources" onClick={toCloseNav}>
+            <CustomLink to="/derivations" onClick={toCloseNav}>
               <BsFillLayersFill className="nav-icons" />
-              Resources
+              Derivations
             </CustomLink>
             <CustomLink to="/about" onClick={toCloseNav}>
               <BsFillInfoCircleFill className="nav-icons" />

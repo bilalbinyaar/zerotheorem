@@ -9,7 +9,7 @@ const Accordion = ({ question, answer }) => {
   return (
     <div>
         <div className='question-heading' onClick={ () => setShow(!show) }>
-            <h2>{ question }</h2>
+            <h3>{ question }</h3>
             <div className='icons'> {show? <AiFillCaretUp className='plus-icon' /> : <AiFillCaretDown className='plus-icon' />} </div>
         </div>
         {

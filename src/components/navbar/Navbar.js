@@ -96,8 +96,8 @@ export default function Navbar() {
             <CustomLink to="/compare" onClick={toCloseNav}>
               Compare
             </CustomLink>
-            <CustomLink to="/resources" onClick={toCloseNav}>
-              Resources
+            <CustomLink to="/derivations" onClick={toCloseNav}>
+              Derivations
             </CustomLink>
             <CustomLink to="/about" onClick={toCloseNav}>
               About
@@ -125,8 +125,8 @@ export default function Navbar() {
               <CustomLink to="/compare" onClick={toCloseNav}>
                 Compare
               </CustomLink>
-              <CustomLink to="/resources" onClick={toCloseNav}>
-                Resources
+              <CustomLink to="/derivations" onClick={toCloseNav}>
+                Derivations
               </CustomLink>
               <CustomLink to="/about" onClick={toCloseNav}>
                 About
