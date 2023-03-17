@@ -152,8 +152,6 @@
 
 .percentage-wapper-disable {
   width: 100%;
-  /* background-image: url(../../assets/transparent.jpg);
-    background-blend-mode: overlay; */
   background-color: rgba(128, 128, 128, 0.2);
   margin-top: 0.8rem;
   padding: 1.15rem;

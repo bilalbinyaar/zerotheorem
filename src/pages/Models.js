@@ -22,6 +22,9 @@ import CanvasjsSplineAreaChartWithRangeSelecetor from "../components/models/grap
 import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/CanvasjsDrawdownWithSliderRange";
 import TradingViewSplineAreaChart from "../components/models/graphs/TvSplineAreaChart";
 import TradingViewWidgetGraph from "../components/models/graphs/TradingViewWidgetGraph";
+import { Helmet } from 'react-helmet';
+
+
 const Models = () => {
   const location = useLocation();
   // console.log("Pathname -->", location.pathname.replace("/", ""));
@@ -32,6 +35,13 @@ const Models = () => {
   // console.log("This is name for cum pnl", location.state.model_name);
   return (
     <React.Fragment>
+      <Helmet>
+        <title>Zero Theorem | Prediction model details</title>
+        <meta
+          name="description"
+          content="Detailed information about this AI-based Bitcoin prediction model's current position and historical performance including several metrics like sharpe, r2, sortino, win/loss etc."
+        />
+      </Helmet>
       <ModelDetails model_name={name} />
       {/* <CurrentPosition /> */}
       {/* <CandleGraph /> */}

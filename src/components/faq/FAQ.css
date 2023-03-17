@@ -19,7 +19,7 @@
     color: var(--color-day-yellow);
     font-size: 22px;
     padding-top: 3rem;
-    padding-left: 1.5rem;
+    /* padding-left: 1.5rem; */
 }
 
 .question-heading {

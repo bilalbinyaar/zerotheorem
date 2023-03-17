@@ -23,7 +23,6 @@ import IconButton from "@mui/material/IconButton";
 import EquationBlack from "../../assets/equation-black.png";
 import EquationWhite from "../../assets/equation-white.png";
 import { Link } from "react-router-dom";
-import AdsensePlaceHolder from "../adsense/AdsensePlaceHolder";
 
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
@@ -2742,9 +2741,6 @@ const Forecasts = () => {
             </div>
           </div>
 
-          {/* <div>
-              <AdsensePlaceHolder />
-            </div> */}
         </div>
       </div>
     </div>

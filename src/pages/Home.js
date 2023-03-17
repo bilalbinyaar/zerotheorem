@@ -4,6 +4,8 @@ import ModelDataGrid from "../components/modelDataGrid/ModelDataGrid";
 import Overview from "../components/overview/Overview";
 import Horizon from "../components/timeHorizon/Horizon";
 import { useStateContext } from "../ContextProvider";
+import { Helmet } from 'react-helmet';
+
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -16,6 +18,14 @@ const Home = () => {
 
   return (
     <React.Fragment>
+        <Helmet>
+          <title>Zero Theorem | An AI-based bitcoin prediction framework</title>
+          <meta
+            name="description"
+            content="An economic framework for the prediction/forecast of Bitcoin and other cryptocurrencies using AI and ML models with a comprehensive evaluation of back and forward tests."
+          />
+        </Helmet>
+
       <Forecasts />
       <ModelDataGrid />
       <Overview />

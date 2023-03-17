@@ -14,7 +14,7 @@
 }
 
 .sidebar-navigator {
-  padding-top: 0.2rem;
+  padding-left: 0.6rem;
 }
 
 .main-item {
@@ -81,7 +81,7 @@
 }
 
 .img-doc img {
-  width: 110%;
+  width: 100%;
 }
 
 .max-width img {
