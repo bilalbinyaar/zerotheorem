@@ -298,7 +298,7 @@ const ModelDetailsCenter = (props) => {
             <div className="model-details-center-top-forecasts normal for-border">
               <div className="for-tooltip">
                 <p>Forecast Time</p>
-                <Tooltip title="Time in which the forecast is created">
+                <Tooltip title="Time when the forecast is created">
                   <IconButton>
                     <BsFillInfoCircleFill />
                   </IconButton>
@@ -338,7 +338,7 @@ const ModelDetailsCenter = (props) => {
             <div className="model-details-center-body-content">
               <div className="for-tooltip">
                 <p>Entry Price</p>
-                <Tooltip title="Price in which Forecast was acted on">
+                <Tooltip title="The price at which the model predicted the current position. Please note that this price might be different from the price at current forecast time because the model might have been in the same position from previous intervals. It does not close and re-opens the position if the forecast is the same.">
                   <IconButton>
                     <BsFillInfoCircleFill />
                   </IconButton>
@@ -420,6 +420,17 @@ const ModelDetailsCenter = (props) => {
               >
                 {strategies[props.model_name]
                   ? strategies[props.model_name].current_position
+                  : null}
+              </h3>
+            </div>
+
+            <div className="model-details-center-top-forecasts normals for-border">
+              <div className="for-tooltip">
+                <p>Forecast Time : </p>
+              </div>
+              <h3>
+                {strategies[props.model_name]
+                  ? strategies[props.model_name].forecast_time
                   : null}
               </h3>
             </div>

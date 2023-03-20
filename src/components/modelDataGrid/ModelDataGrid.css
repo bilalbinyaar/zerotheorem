@@ -56,6 +56,9 @@
   display: none;
 }
 
+.horizon-head{
+  margin-bottom: 0.8rem;
+}
 
 
 @media screen and (min-width:1080px) {

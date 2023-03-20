@@ -121,6 +121,11 @@
     margin-right: 0.5rem;
 }
 
+.link-model-names-div {
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1060px) {
     .model-details-right-cards {
         overflow-x: scroll;

@@ -471,7 +471,7 @@ const ModelDataGrid = () => {
           </Tooltip>
         </strong>
       ),
-      flex: 1.4,
+      flex: 1.5,
       renderCell: (cellValues) => {
         return <ModelNameCol value={cellValues.value} />;
       },
@@ -543,7 +543,7 @@ const ModelDataGrid = () => {
           {"Forecast Time"}
           <Tooltip
             className="performance-table-tooltip"
-            title="Time in which the forecast is created (in local system time)"
+            title="Time when the forecast is created (in local system time)"
           >
             <IconButton>
               <BsFillInfoCircleFill />
@@ -673,7 +673,7 @@ const ModelDataGrid = () => {
           {"PNL Graph "}
           <Tooltip
             className="performance-table-tooltip"
-            title="Cummulative PNL graph w.r.t time"
+            title="Cumulative PNL graph w.r.t time"
           >
             <IconButton>
               <BsFillInfoCircleFill />
@@ -778,7 +778,7 @@ const ModelDataGrid = () => {
           {"Forecast Time"}
           <Tooltip
             className="performance-table-tooltip"
-            title="Time in which the forecast is created (in local system time)"
+            title="Time when the forecast is created (in local system time)"
           >
             <IconButton>
               <BsFillInfoCircleFill />
@@ -908,7 +908,7 @@ const ModelDataGrid = () => {
           {"PNL Graph "}
           <Tooltip
             className="performance-table-tooltip"
-            title="Cummulative PNL graph w.r.t time"
+            title="Cumulative PNL graph w.r.t time"
           >
             <IconButton>
               <BsFillInfoCircleFill />
@@ -1051,6 +1051,7 @@ const ModelDataGrid = () => {
         {windowWidth.current <= 568 ? (
           <div className="model-grid-mob">
             <div className="horizon">
+              <h2 className="horizon-head">All Models</h2>
               <div className="horizon-row">
                 <div className="horizon-left">
                   {/* <h3>Time Horizon</h3> */}
@@ -1625,6 +1626,7 @@ const ModelDataGrid = () => {
         ) : (
           <div className="model-grid-web">
             <div className="horizon">
+              <h2 className="horizon-head">All Models</h2>
               <div className="horizon-row">
                 <div className="horizon-left">
                   <h3>Time Horizon</h3>
