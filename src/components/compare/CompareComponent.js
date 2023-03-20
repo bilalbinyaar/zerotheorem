@@ -4413,7 +4413,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Forecast Time
-                    <Tooltip title="Time in which the forecast is created (in local system time)">
+                    <Tooltip title="Time when the forecast is created (in local system time)">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5720,7 +5720,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Forecast Time
-                    <Tooltip title="Time in which the forecast is created (in local system time)">
+                    <Tooltip title="Time when the forecast is created (in local system time)">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>

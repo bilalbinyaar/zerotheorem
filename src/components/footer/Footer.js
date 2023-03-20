@@ -33,7 +33,7 @@ const Footer = () => {
             <p className="disclaimer-text">
               The information provided on this website does not constitute
               investment advice, financial advice, trading advice, or any other
-              sort of advice and you should not treat any of the website's
+              sort of advice and you should not treat any of this website's
               content as such. Zero Theorem Pty Ltd does not recommend that any
               cryptocurrency should be bought, sold, or held by you. Do conduct
               your own due diligence and consult your financial advisor before

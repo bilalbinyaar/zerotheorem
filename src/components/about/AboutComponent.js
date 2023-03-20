@@ -47,15 +47,15 @@ const AboutComponent = () => {
 
               <div className="about-text text-align-left justify-text">
                 <p className="mission-text for-line-height">
-                  Our aim is to provide pricing certainty for those utilising
+                  Our aim is to provide pricing certainty for those utilizing
                   Bitcoin for transactional activities, whether that may be the
                   commodity producer (miner) all the way to the point of service
                   provider (who is facilitating commerce). Having a valuation
                   model helps manage risk and inventory balances especially in
-                  time of high volatility or unfavourable market sentiment.
+                  a time of high volatility or unfavorable market sentiment.
                   <br />
                   <br />
-                  We provide a data driven valuation approach that is based on
+                  We provide a data driven valuation approach based on
                   economics, statistics and advances in machine learning.
                   <br />
                   <br />
@@ -83,11 +83,11 @@ const AboutComponent = () => {
                   solutions for Bitcoin at no financial cost to the public user.
                   <br />
                   <br />
-                  The models presented on the website form part of an empirical
+                  The models presented on this website form part of an empirical
                   proof for the Zero Theorem governing equation.
                   <br />
                   <br />
-                  We may use google AdSense and other onsite marketing to
+                  We may use Google AdSense and other onsite marketing to
                   finance the costs associated with the website, data collection
                   services, backend development and GPU usage, so that Zero
                   Theorem remains a free service to the community.
@@ -110,7 +110,7 @@ const AboutComponent = () => {
                 <p className="mission-text for-line-height">
                   For us any pricing proof should be validated based on the
                   output of its primary use case, trading (or {link}). If a
-                  model/theory was to have future insight and undeniable
+                  model/theory were to have future insight and undeniable
                   explanatory power its hypothetical trading outputs based on
                   its directional forecasts should demonstrate the following
                   characteristics:
@@ -154,12 +154,12 @@ const AboutComponent = () => {
         <div className="about-text text-align-left for-mb justify-text">
           <p className="equatinon-description for-line-height">
             Our equation is derived from the ZERO sum game assumption. We
-            hypothesise that monetary value is finite and in short time horizons
-            changes aggregate value for the total asset universe must equate to
-            ZERO. Hence for Bitcoin to have any kind of value they must be
+            hypothesize that monetary value is finite, and in short time horizon
+            changes, aggregate value for the total asset universe must equate to
+            ZERO. Hence, for Bitcoin to have any kind of value, it must be
             absorbing this value from multiple alternative asset classes (P
             <sub>k</sub> = price of k asset, R<sub>k</sub> = volume traded of k
-            asset) via a substitutional phenomena a<sub>k</sub>. In addition our
+            asset) via a substitutional phenomenon a<sub>k</sub>. In addition our
             equation includes the transactional utility (T<sub>j</sub>
             <sup>'</sup>= velocity of transactions) of the network itself and
             the cost of network maintenance via the mining variables (b = block
@@ -168,7 +168,7 @@ const AboutComponent = () => {
             sizing dilemma which we opt to solve via deep reinforcement learning
             (DRL).
             <br />
-            <br />A full derivation including more information can be located in
+            <br />A full derivation including more information can be found in
             our {link1} page.
           </p>
         </div>
@@ -210,7 +210,7 @@ const AboutComponent = () => {
             </span>
             <span>
               <p>
-                We will make clear the assumptions, oversights and accuracy of
+                We present make clear the assumptions, oversights and accuracy of
                 our models to those who intent to use them and never claim that
                 they have the full explanatory insights into real world market
                 dynamics.
@@ -224,7 +224,7 @@ const AboutComponent = () => {
             <span>
               <p>
                 We understand that our models can provoke past, current and
-                future economic theory and accept that our work may result in
+                future economic theories and accept that our work may result in
                 consequences on society that can be far beyond our own
                 comprehension.
               </p>
@@ -258,7 +258,7 @@ const AboutComponent = () => {
             </span>
             <span>
               <p>
-                We express specifically that our models or their outputs are not
+                We specifically express that our models or their outputs are not
                 intended to be used as financial advice.
               </p>
             </span>
@@ -286,7 +286,7 @@ const AboutComponent = () => {
                 the reason we were chosen, if chosen we were, to go on living
                 with this misfortune.
                 <br />
-                We came back to our childhood place... it seem to suit us... and
+                We came back to our childhood place... it seemed to suit us... and
                 in isolation... from the ashes... and from zero... a theory was
                 conceived.
                 <br />

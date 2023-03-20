@@ -3,6 +3,8 @@ import { AiOutlineDown, AiOutlineFieldTime } from "react-icons/ai";
 import { useStateContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
+import { BiLinkExternal } from 'react-icons/bi';
+
 
 const ModelNameCol = (props) => {
   // console.log("Testing data -->", props.value);
@@ -213,17 +215,21 @@ const ModelNameCol = (props) => {
 
   return (
     <div className="forecasts-model-name">
-      <h3
-        onClick={() => {
-          linkModels(`/${props.value[2].replace("_", "-")}`, {
-            state: {
-              model_name: props.value[2],
-            },
-          });
-        }}
-      >
+      <div className="forecasts-model-name-icon-div"> 
+        <h3
+          onClick={() => {
+            linkModels(`/${props.value[2].replace("_", "-")}`, {
+              state: {
+                model_name: props.value[2],
+              },
+            });
+          }}
+        >
+
         {props.value[2].replace("_", "-")}
-      </h3>
+        </h3>
+          <BiLinkExternal className="model-link-icon"/>
+      </div>
       <div className="model-details-left-body for-forecasts-card">
         <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
           <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
