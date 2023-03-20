@@ -489,7 +489,7 @@ const ModelDataGrid = () => {
           {"Start Date "}
           <Tooltip
             className="performance-table-tooltip"
-            title="Forecasts start date"
+            title="Start date of the model's forecasts"
           >
             <IconButton>
               <BsFillInfoCircleFill />

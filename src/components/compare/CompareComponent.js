@@ -4351,7 +4351,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Start Date
-                    <Tooltip title="Forecasts start date">
+                    <Tooltip title="Start date of this model's forecasts">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4371,7 +4371,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Forecast
-                    <Tooltip title="Price/Directional prediction for current time">
+                    <Tooltip title="Price/directional prediction for current time">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4413,7 +4413,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Forecast Time
-                    <Tooltip title="Time in which the forecast is created (in local system time)">
+                    <Tooltip title="Time when the forecast is created (in local system time)">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4707,7 +4707,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Max Drawdown
-                    <Tooltip title="Maximum DrawDown – measurement of maximum negative yield experienced in the past">
+                    <Tooltip title="Maximum Drawdown – Measurement of maximum negative yield experienced in the past">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4749,7 +4749,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Max Drawdown Days
-                    <Tooltip title="Maximum DrawDown Days – measurement of the maximum number of days the model was in a negative yield">
+                    <Tooltip title="Maximum Drawdown Days – Measurement of the maximum number of days the model was in a negative yield">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4803,7 +4803,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Average Drawdown
-                    <Tooltip title="Average DrawDown – the average negative yield experienced by the model">
+                    <Tooltip title="Average Drawdown – The average negative yield experienced by the model">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4857,7 +4857,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Average Drawdown Days
-                    <Tooltip title="Average DrawDown Days – the average number of days in a negative yield experienced by the model">
+                    <Tooltip title="Average Drawdown Days – The average number of days in a negative yield experienced by the model">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4911,7 +4911,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Current Drawdown
-                    <Tooltip title="Current DrawDown – the actual negative yield (if in a negative) that is currently being experienced by the model">
+                    <Tooltip title="Current Drawdown – The actual negative yield (if in a negative) that is currently being experienced by the model">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -4965,7 +4965,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Current Drawdown Days
-                    <Tooltip title="Current DrawDown Days – the actual number of days in a negative yield (if in a negative) that is currently being experienced by the model">
+                    <Tooltip title="Current Drawdown Days – The actual number of days in a negative yield (if in a negative) that is currently being experienced by the model">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5019,7 +5019,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Total Wins
-                    <Tooltip title="The total number of Wins the model has experienced">
+                    <Tooltip title="The total number of wins the model has experienced">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5103,7 +5103,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Consecutive Wins
-                    <Tooltip title="The maximum amount of sequential wins the model has experienced">
+                    <Tooltip title="The maximum number of sequential wins the model has experienced">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5157,7 +5157,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Consecutive Losses
-                    <Tooltip title="The maximum amount of sequential losses the model has experienced">
+                    <Tooltip title="The maximum number of sequential losses the model has experienced">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5211,7 +5211,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Win Percentage
-                    <Tooltip title="The percentage amount of wins the model has experienced">
+                    <Tooltip title="The percentage number of wins the model has experienced">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5265,7 +5265,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Win/Loss Ratio
-                    <Tooltip title="The ratio of the win size vs the loss size. Above 1 means the model wins more than it losses on average">
+                    <Tooltip title="The ratio of the win size vs the loss size. Above 1 means the model wins more than it loses on average">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5507,7 +5507,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Sharpe
-                    <Tooltip title="The ratio of annualised yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is">
+                    <Tooltip title="The ratio of annualized yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5545,7 +5545,7 @@ const CompareComponent = () => {
                 <tr>
                   <td className="tg-0lax for-th">
                     Sortino
-                    <Tooltip title="The ratio of annualised yield over the negative standard deviation of yield that the model has experienced. The higher the Sortino ratio the less risky the model performance is">
+                    <Tooltip title="The ratio of annualized yield over the negative standard deviation of yield that the model has experienced. The higher the Sortino ratio the less risky the model performance is">
                       <IconButton>
                         <BsFillInfoCircleFill />
                       </IconButton>
@@ -5803,10 +5803,27 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
                             value3: [stats[model_name_3].pnl_sum_1, "pnl3"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
+                            value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_1, "pnl2"],
+                            value2: [stats[model_name_3].pnl_sum_1, "pnl3"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
+                            value2: [stats[model_name_3].pnl_sum_1, "pnl3"],
+                          })
                         : null
                     }
                   >
-                    {stats[model_name_1] ? stats[model_name_1].pnl_sum_1 : null}
+                    {stats[model_name_1]
+                      ? stats[model_name_1].pnl_sum_1 + "%"
+                      : null}
                   </td>
                   <td
                     className="tg-0lax"
@@ -5820,10 +5837,27 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
                             value3: [stats[model_name_3].pnl_sum_1, "pnl3"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
+                            value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_1, "pnl2"],
+                            value2: [stats[model_name_3].pnl_sum_1, "pnl3"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
+                            value2: [stats[model_name_3].pnl_sum_1, "pnl3"],
+                          })
                         : null
                     }
                   >
-                    {stats[model_name_2] ? stats[model_name_2].pnl_sum_1 : null}
+                    {stats[model_name_2]
+                      ? stats[model_name_2].pnl_sum_1 + "%"
+                      : null}
                   </td>
                   <td
                     className="tg-0lax to-hide"
@@ -5837,10 +5871,27 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
                             value3: [stats[model_name_3].pnl_sum_1, "pnl3"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
+                            value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_1, "pnl2"],
+                            value2: [stats[model_name_3].pnl_sum_1, "pnl3"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
+                            value2: [stats[model_name_3].pnl_sum_1, "pnl3"],
+                          })
                         : null
                     }
                   >
-                    {stats[model_name_3] ? stats[model_name_3].pnl_sum_1 : null}
+                    {stats[model_name_3]
+                      ? stats[model_name_3].pnl_sum_1 + "%"
+                      : null}
                   </td>
                 </tr>
                 <tr>
@@ -5864,10 +5915,27 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
                             value3: [stats[model_name_3].pnl_sum_7, "pnl6"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
+                            value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_7, "pnl5"],
+                            value2: [stats[model_name_3].pnl_sum_7, "pnl6"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
+                            value2: [stats[model_name_3].pnl_sum_7, "pnl6"],
+                          })
                         : null
                     }
                   >
-                    {stats[model_name_1] ? stats[model_name_1].pnl_sum_7 : null}
+                    {stats[model_name_1]
+                      ? stats[model_name_1].pnl_sum_7 + "%"
+                      : null}
                   </td>
                   <td
                     className="tg-0lax"
@@ -5881,10 +5949,27 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
                             value3: [stats[model_name_3].pnl_sum_7, "pnl6"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
+                            value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_7, "pnl5"],
+                            value2: [stats[model_name_3].pnl_sum_7, "pnl6"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
+                            value2: [stats[model_name_3].pnl_sum_7, "pnl6"],
+                          })
                         : null
                     }
                   >
-                    {stats[model_name_2] ? stats[model_name_2].pnl_sum_7 : null}
+                    {stats[model_name_2]
+                      ? stats[model_name_2].pnl_sum_7 + "%"
+                      : null}
                   </td>
                   <td
                     className="tg-0lax to-hide"
@@ -5898,10 +5983,27 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
                             value3: [stats[model_name_3].pnl_sum_7, "pnl6"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
+                            value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_7, "pnl5"],
+                            value2: [stats[model_name_3].pnl_sum_7, "pnl6"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
+                            value2: [stats[model_name_3].pnl_sum_7, "pnl6"],
+                          })
                         : null
                     }
                   >
-                    {stats[model_name_3] ? stats[model_name_3].pnl_sum_7 : null}
+                    {stats[model_name_3]
+                      ? stats[model_name_3].pnl_sum_7 + "%"
+                      : null}
                   </td>
                 </tr>
                 <tr>
@@ -5925,11 +6027,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
                             value3: [stats[model_name_3].pnl_sum_15, "pnl9"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
+                            value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_15, "pnl8"],
+                            value2: [stats[model_name_3].pnl_sum_15, "pnl9"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
+                            value2: [stats[model_name_3].pnl_sum_15, "pnl9"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].pnl_sum_15
+                      ? stats[model_name_1].pnl_sum_15 + "%"
                       : null}
                   </td>
                   <td
@@ -5944,11 +6061,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
                             value3: [stats[model_name_3].pnl_sum_15, "pnl9"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
+                            value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_15, "pnl8"],
+                            value2: [stats[model_name_3].pnl_sum_15, "pnl9"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
+                            value2: [stats[model_name_3].pnl_sum_15, "pnl9"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].pnl_sum_15
+                      ? stats[model_name_2].pnl_sum_15 + "%"
                       : null}
                   </td>
                   <td
@@ -5963,11 +6095,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
                             value3: [stats[model_name_3].pnl_sum_15, "pnl9"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
+                            value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_15, "pnl8"],
+                            value2: [stats[model_name_3].pnl_sum_15, "pnl9"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
+                            value2: [stats[model_name_3].pnl_sum_15, "pnl9"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].pnl_sum_15
+                      ? stats[model_name_3].pnl_sum_15 + "%"
                       : null}
                   </td>
                 </tr>
@@ -5992,11 +6139,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
                             value3: [stats[model_name_3].pnl_sum_30, "pnl12"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
+                            value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_30, "pnl11"],
+                            value2: [stats[model_name_3].pnl_sum_30, "pnl12"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
+                            value2: [stats[model_name_3].pnl_sum_30, "pnl12"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].pnl_sum_30
+                      ? stats[model_name_1].pnl_sum_30 + "%"
                       : null}
                   </td>
                   <td
@@ -6011,11 +6173,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
                             value3: [stats[model_name_3].pnl_sum_30, "pnl12"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
+                            value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_30, "pnl11"],
+                            value2: [stats[model_name_3].pnl_sum_30, "pnl12"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
+                            value2: [stats[model_name_3].pnl_sum_30, "pnl12"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].pnl_sum_30
+                      ? stats[model_name_2].pnl_sum_30 + "%"
                       : null}
                   </td>
                   <td
@@ -6030,11 +6207,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
                             value3: [stats[model_name_3].pnl_sum_30, "pnl12"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
+                            value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_30, "pnl11"],
+                            value2: [stats[model_name_3].pnl_sum_30, "pnl12"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
+                            value2: [stats[model_name_3].pnl_sum_30, "pnl12"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].pnl_sum_30
+                      ? stats[model_name_3].pnl_sum_30 + "%"
                       : null}
                   </td>
                 </tr>
@@ -6059,11 +6251,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
                             value3: [stats[model_name_3].pnl_sum_45, "pnl15"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
+                            value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_45, "pnl14"],
+                            value2: [stats[model_name_3].pnl_sum_45, "pnl15"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
+                            value2: [stats[model_name_3].pnl_sum_45, "pnl15"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].pnl_sum_45
+                      ? stats[model_name_1].pnl_sum_45 + "%"
                       : null}
                   </td>
                   <td
@@ -6078,11 +6285,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
                             value3: [stats[model_name_3].pnl_sum_45, "pnl15"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
+                            value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_45, "pnl14"],
+                            value2: [stats[model_name_3].pnl_sum_45, "pnl15"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
+                            value2: [stats[model_name_3].pnl_sum_45, "pnl15"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].pnl_sum_45
+                      ? stats[model_name_2].pnl_sum_45 + "%"
                       : null}
                   </td>
                   <td
@@ -6097,11 +6319,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
                             value3: [stats[model_name_3].pnl_sum_45, "pnl15"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
+                            value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_45, "pnl14"],
+                            value2: [stats[model_name_3].pnl_sum_45, "pnl15"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
+                            value2: [stats[model_name_3].pnl_sum_45, "pnl15"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].pnl_sum_45
+                      ? stats[model_name_3].pnl_sum_45 + "%"
                       : null}
                   </td>
                 </tr>
@@ -6126,11 +6363,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
                             value3: [stats[model_name_3].pnl_sum_60, "pnl18"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
+                            value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_60, "pnl17"],
+                            value2: [stats[model_name_3].pnl_sum_60, "pnl18"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
+                            value2: [stats[model_name_3].pnl_sum_60, "pnl18"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].pnl_sum_60
+                      ? stats[model_name_1].pnl_sum_60 + "%"
                       : null}
                   </td>
                   <td
@@ -6145,11 +6397,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
                             value3: [stats[model_name_3].pnl_sum_60, "pnl18"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
+                            value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_60, "pnl17"],
+                            value2: [stats[model_name_3].pnl_sum_60, "pnl18"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
+                            value2: [stats[model_name_3].pnl_sum_60, "pnl18"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].pnl_sum_60
+                      ? stats[model_name_2].pnl_sum_60 + "%"
                       : null}
                   </td>
                   <td
@@ -6164,11 +6431,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
                             value3: [stats[model_name_3].pnl_sum_60, "pnl18"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
+                            value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].pnl_sum_60, "pnl17"],
+                            value2: [stats[model_name_3].pnl_sum_60, "pnl18"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
+                            value2: [stats[model_name_3].pnl_sum_60, "pnl18"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].pnl_sum_60
+                      ? stats[model_name_3].pnl_sum_60 + "%"
                       : null}
                   </td>
                 </tr>
@@ -6193,11 +6475,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                             value3: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].max_drawdown, "pnl19"],
+                            value2: [stats[model_name_2].max_drawdown, "pnl20"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_2].max_drawdown, "pnl20"],
+                            value2: [stats[model_name_3].max_drawdown, "pnl21"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].max_drawdown, "pnl19"],
+                            value2: [stats[model_name_3].max_drawdown, "pnl21"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].max_drawdown
+                      ? stats[model_name_1].max_drawdown + "%"
                       : null}
                   </td>
                   <td
@@ -6212,11 +6509,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                             value3: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].max_drawdown, "pnl19"],
+                            value2: [stats[model_name_2].max_drawdown, "pnl20"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_2].max_drawdown, "pnl20"],
+                            value2: [stats[model_name_3].max_drawdown, "pnl21"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].max_drawdown, "pnl19"],
+                            value2: [stats[model_name_3].max_drawdown, "pnl21"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].max_drawdown
+                      ? stats[model_name_2].max_drawdown + "%"
                       : null}
                   </td>
                   <td
@@ -6231,11 +6543,26 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                             value3: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].max_drawdown, "pnl19"],
+                            value2: [stats[model_name_2].max_drawdown, "pnl20"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_2].max_drawdown, "pnl20"],
+                            value2: [stats[model_name_3].max_drawdown, "pnl21"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].max_drawdown, "pnl19"],
+                            value2: [stats[model_name_3].max_drawdown, "pnl21"],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].max_drawdown
+                      ? stats[model_name_3].max_drawdown + "%"
                       : null}
                   </td>
                 </tr>
@@ -6269,6 +6596,39 @@ const CompareComponent = () => {
                               "pnl24",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].max_drawdown_duration,
+                              "pnl22",
+                            ],
+                            value2: [
+                              stats[model_name_2].max_drawdown_duration,
+                              "pnl23",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].max_drawdown_duration,
+                              "pnl23",
+                            ],
+                            value2: [
+                              stats[model_name_3].max_drawdown_duration,
+                              "pnl24",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].max_drawdown_duration,
+                              "pnl22",
+                            ],
+                            value2: [
+                              stats[model_name_3].max_drawdown_duration,
+                              "pnl24",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6297,6 +6657,39 @@ const CompareComponent = () => {
                               "pnl24",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].max_drawdown_duration,
+                              "pnl22",
+                            ],
+                            value2: [
+                              stats[model_name_2].max_drawdown_duration,
+                              "pnl23",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].max_drawdown_duration,
+                              "pnl23",
+                            ],
+                            value2: [
+                              stats[model_name_3].max_drawdown_duration,
+                              "pnl24",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].max_drawdown_duration,
+                              "pnl22",
+                            ],
+                            value2: [
+                              stats[model_name_3].max_drawdown_duration,
+                              "pnl24",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6321,6 +6714,39 @@ const CompareComponent = () => {
                               "pnl23",
                             ],
                             value3: [
+                              stats[model_name_3].max_drawdown_duration,
+                              "pnl24",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].max_drawdown_duration,
+                              "pnl22",
+                            ],
+                            value2: [
+                              stats[model_name_2].max_drawdown_duration,
+                              "pnl23",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].max_drawdown_duration,
+                              "pnl23",
+                            ],
+                            value2: [
+                              stats[model_name_3].max_drawdown_duration,
+                              "pnl24",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].max_drawdown_duration,
+                              "pnl22",
+                            ],
+                            value2: [
                               stats[model_name_3].max_drawdown_duration,
                               "pnl24",
                             ],
@@ -6363,11 +6789,44 @@ const CompareComponent = () => {
                               "pnl27",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown,
+                              "pnl25",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_drawdown,
+                              "pnl26",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].average_drawdown,
+                              "pnl26",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown,
+                              "pnl27",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown,
+                              "pnl25",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown,
+                              "pnl27",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].average_drawdown
+                      ? stats[model_name_1].average_drawdown + "%"
                       : null}
                   </td>
                   <td
@@ -6391,11 +6850,44 @@ const CompareComponent = () => {
                               "pnl27",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown,
+                              "pnl25",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_drawdown,
+                              "pnl26",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].average_drawdown,
+                              "pnl26",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown,
+                              "pnl27",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown,
+                              "pnl25",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown,
+                              "pnl27",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].average_drawdown
+                      ? stats[model_name_2].average_drawdown + "%"
                       : null}
                   </td>
                   <td
@@ -6419,11 +6911,44 @@ const CompareComponent = () => {
                               "pnl27",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown,
+                              "pnl25",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_drawdown,
+                              "pnl26",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].average_drawdown,
+                              "pnl26",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown,
+                              "pnl27",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown,
+                              "pnl25",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown,
+                              "pnl27",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].average_drawdown
+                      ? stats[model_name_3].average_drawdown + "%"
                       : null}
                   </td>
                 </tr>
@@ -6457,6 +6982,39 @@ const CompareComponent = () => {
                               "pnl30",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown_duration,
+                              "pnl28",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_drawdown_duration,
+                              "pnl29",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].average_drawdown_duration,
+                              "pnl29",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown_duration,
+                              "pnl30",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown_duration,
+                              "pnl28",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown_duration,
+                              "pnl30",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6485,6 +7043,39 @@ const CompareComponent = () => {
                               "pnl30",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown_duration,
+                              "pnl28",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_drawdown_duration,
+                              "pnl29",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].average_drawdown_duration,
+                              "pnl29",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown_duration,
+                              "pnl30",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown_duration,
+                              "pnl28",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown_duration,
+                              "pnl30",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6509,6 +7100,39 @@ const CompareComponent = () => {
                               "pnl29",
                             ],
                             value3: [
+                              stats[model_name_3].average_drawdown_duration,
+                              "pnl30",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown_duration,
+                              "pnl28",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_drawdown_duration,
+                              "pnl29",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].average_drawdown_duration,
+                              "pnl29",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_drawdown_duration,
+                              "pnl30",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].average_drawdown_duration,
+                              "pnl28",
+                            ],
+                            value2: [
                               stats[model_name_3].average_drawdown_duration,
                               "pnl30",
                             ],
@@ -6551,11 +7175,44 @@ const CompareComponent = () => {
                               "pnl33",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].current_drawdown,
+                              "pnl31",
+                            ],
+                            value2: [
+                              stats[model_name_2].current_drawdown,
+                              "pnl32",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].current_drawdown,
+                              "pnl32",
+                            ],
+                            value2: [
+                              stats[model_name_3].current_drawdown,
+                              "pnl33",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].current_drawdown,
+                              "pnl31",
+                            ],
+                            value2: [
+                              stats[model_name_3].current_drawdown,
+                              "pnl33",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].current_drawdown
+                      ? stats[model_name_1].current_drawdown + "%"
                       : null}
                   </td>
                   <td
@@ -6579,11 +7236,44 @@ const CompareComponent = () => {
                               "pnl33",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].current_drawdown,
+                              "pnl31",
+                            ],
+                            value2: [
+                              stats[model_name_2].current_drawdown,
+                              "pnl32",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].current_drawdown,
+                              "pnl32",
+                            ],
+                            value2: [
+                              stats[model_name_3].current_drawdown,
+                              "pnl33",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].current_drawdown,
+                              "pnl31",
+                            ],
+                            value2: [
+                              stats[model_name_3].current_drawdown,
+                              "pnl33",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].current_drawdown
+                      ? stats[model_name_2].current_drawdown + "%"
                       : null}
                   </td>
                   <td
@@ -6607,11 +7297,44 @@ const CompareComponent = () => {
                               "pnl33",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].current_drawdown,
+                              "pnl31",
+                            ],
+                            value2: [
+                              stats[model_name_2].current_drawdown,
+                              "pnl32",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].current_drawdown,
+                              "pnl32",
+                            ],
+                            value2: [
+                              stats[model_name_3].current_drawdown,
+                              "pnl33",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].current_drawdown,
+                              "pnl31",
+                            ],
+                            value2: [
+                              stats[model_name_3].current_drawdown,
+                              "pnl33",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].current_drawdown
+                      ? stats[model_name_3].current_drawdown + "%"
                       : null}
                   </td>
                 </tr>
@@ -6645,6 +7368,39 @@ const CompareComponent = () => {
                               "pnl36",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].curr_drawdown_duration,
+                              "pnl34",
+                            ],
+                            value2: [
+                              stats[model_name_2].curr_drawdown_duration,
+                              "pnl35",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].curr_drawdown_duration,
+                              "pnl35",
+                            ],
+                            value2: [
+                              stats[model_name_3].curr_drawdown_duration,
+                              "pnl36",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].curr_drawdown_duration,
+                              "pnl34",
+                            ],
+                            value2: [
+                              stats[model_name_3].curr_drawdown_duration,
+                              "pnl36",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6673,6 +7429,39 @@ const CompareComponent = () => {
                               "pnl36",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].curr_drawdown_duration,
+                              "pnl34",
+                            ],
+                            value2: [
+                              stats[model_name_2].curr_drawdown_duration,
+                              "pnl35",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].curr_drawdown_duration,
+                              "pnl35",
+                            ],
+                            value2: [
+                              stats[model_name_3].curr_drawdown_duration,
+                              "pnl36",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].curr_drawdown_duration,
+                              "pnl34",
+                            ],
+                            value2: [
+                              stats[model_name_3].curr_drawdown_duration,
+                              "pnl36",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6697,6 +7486,39 @@ const CompareComponent = () => {
                               "pnl35",
                             ],
                             value3: [
+                              stats[model_name_3].curr_drawdown_duration,
+                              "pnl36",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].curr_drawdown_duration,
+                              "pnl34",
+                            ],
+                            value2: [
+                              stats[model_name_2].curr_drawdown_duration,
+                              "pnl35",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].curr_drawdown_duration,
+                              "pnl35",
+                            ],
+                            value2: [
+                              stats[model_name_3].curr_drawdown_duration,
+                              "pnl36",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].curr_drawdown_duration,
+                              "pnl34",
+                            ],
+                            value2: [
                               stats[model_name_3].curr_drawdown_duration,
                               "pnl36",
                             ],
@@ -6730,6 +7552,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].total_wins, "pnl38"],
                             value3: [stats[model_name_3].total_wins, "pnl39"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].total_wins, "pnl37"],
+                            value2: [stats[model_name_2].total_wins, "pnl38"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].total_wins, "pnl38"],
+                            value2: [stats[model_name_3].total_wins, "pnl39"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].total_wins, "pnl37"],
+                            value2: [stats[model_name_3].total_wins, "pnl39"],
+                          })
                         : null
                     }
                   >
@@ -6749,6 +7586,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].total_wins, "pnl38"],
                             value3: [stats[model_name_3].total_wins, "pnl39"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].total_wins, "pnl37"],
+                            value2: [stats[model_name_2].total_wins, "pnl38"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].total_wins, "pnl38"],
+                            value2: [stats[model_name_3].total_wins, "pnl39"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].total_wins, "pnl37"],
+                            value2: [stats[model_name_3].total_wins, "pnl39"],
+                          })
                         : null
                     }
                   >
@@ -6767,6 +7619,21 @@ const CompareComponent = () => {
                             value1: [stats[model_name_1].total_wins, "pnl37"],
                             value2: [stats[model_name_2].total_wins, "pnl38"],
                             value3: [stats[model_name_3].total_wins, "pnl39"],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].total_wins, "pnl37"],
+                            value2: [stats[model_name_2].total_wins, "pnl38"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].total_wins, "pnl38"],
+                            value2: [stats[model_name_3].total_wins, "pnl39"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].total_wins, "pnl37"],
+                            value2: [stats[model_name_3].total_wins, "pnl39"],
                           })
                         : null
                     }
@@ -6797,6 +7664,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].total_losses, "pnl41"],
                             value3: [stats[model_name_3].total_losses, "pnl42"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].total_losses, "pnl40"],
+                            value2: [stats[model_name_2].total_losses, "pnl41"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_2].total_losses, "pnl41"],
+                            value2: [stats[model_name_3].total_losses, "pnl42"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].total_losses, "pnl40"],
+                            value2: [stats[model_name_3].total_losses, "pnl42"],
+                          })
                         : null
                     }
                   >
@@ -6816,6 +7698,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].total_losses, "pnl41"],
                             value3: [stats[model_name_3].total_losses, "pnl42"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].total_losses, "pnl40"],
+                            value2: [stats[model_name_2].total_losses, "pnl41"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_2].total_losses, "pnl41"],
+                            value2: [stats[model_name_3].total_losses, "pnl42"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].total_losses, "pnl40"],
+                            value2: [stats[model_name_3].total_losses, "pnl42"],
+                          })
                         : null
                     }
                   >
@@ -6834,6 +7731,21 @@ const CompareComponent = () => {
                             value1: [stats[model_name_1].total_losses, "pnl40"],
                             value2: [stats[model_name_2].total_losses, "pnl41"],
                             value3: [stats[model_name_3].total_losses, "pnl42"],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].total_losses, "pnl40"],
+                            value2: [stats[model_name_2].total_losses, "pnl41"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_2].total_losses, "pnl41"],
+                            value2: [stats[model_name_3].total_losses, "pnl42"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [stats[model_name_1].total_losses, "pnl40"],
+                            value2: [stats[model_name_3].total_losses, "pnl42"],
                           })
                         : null
                     }
@@ -6873,6 +7785,39 @@ const CompareComponent = () => {
                               "pnl45",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].consective_wins,
+                              "pnl43",
+                            ],
+                            value2: [
+                              stats[model_name_2].consective_wins,
+                              "pnl44",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].consective_wins,
+                              "pnl44",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_wins,
+                              "pnl45",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].consective_wins,
+                              "pnl43",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_wins,
+                              "pnl45",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6901,6 +7846,39 @@ const CompareComponent = () => {
                               "pnl45",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].consective_wins,
+                              "pnl43",
+                            ],
+                            value2: [
+                              stats[model_name_2].consective_wins,
+                              "pnl44",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].consective_wins,
+                              "pnl44",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_wins,
+                              "pnl45",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].consective_wins,
+                              "pnl43",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_wins,
+                              "pnl45",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6925,6 +7903,39 @@ const CompareComponent = () => {
                               "pnl44",
                             ],
                             value3: [
+                              stats[model_name_3].consective_wins,
+                              "pnl45",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].consective_wins,
+                              "pnl43",
+                            ],
+                            value2: [
+                              stats[model_name_2].consective_wins,
+                              "pnl44",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].consective_wins,
+                              "pnl44",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_wins,
+                              "pnl45",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].consective_wins,
+                              "pnl43",
+                            ],
+                            value2: [
                               stats[model_name_3].consective_wins,
                               "pnl45",
                             ],
@@ -6967,6 +7978,39 @@ const CompareComponent = () => {
                               "pnl48",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].consective_losses,
+                              "pnl46",
+                            ],
+                            value2: [
+                              stats[model_name_2].consective_losses,
+                              "pnl47",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].consective_losses,
+                              "pnl47",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_losses,
+                              "pnl48",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].consective_losses,
+                              "pnl46",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_losses,
+                              "pnl48",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -6995,6 +8039,39 @@ const CompareComponent = () => {
                               "pnl48",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].consective_losses,
+                              "pnl46",
+                            ],
+                            value2: [
+                              stats[model_name_2].consective_losses,
+                              "pnl47",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].consective_losses,
+                              "pnl47",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_losses,
+                              "pnl48",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].consective_losses,
+                              "pnl46",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_losses,
+                              "pnl48",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -7019,6 +8096,39 @@ const CompareComponent = () => {
                               "pnl47",
                             ],
                             value3: [
+                              stats[model_name_3].consective_losses,
+                              "pnl48",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].consective_losses,
+                              "pnl46",
+                            ],
+                            value2: [
+                              stats[model_name_2].consective_losses,
+                              "pnl47",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].consective_losses,
+                              "pnl47",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_losses,
+                              "pnl48",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].consective_losses,
+                              "pnl46",
+                            ],
+                            value2: [
                               stats[model_name_3].consective_losses,
                               "pnl48",
                             ],
@@ -7061,11 +8171,44 @@ const CompareComponent = () => {
                               "pnl51",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_percentage,
+                              "pnl49",
+                            ],
+                            value2: [
+                              stats[model_name_2].win_percentage,
+                              "pnl50",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].win_percentage,
+                              "pnl50",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_percentage,
+                              "pnl51",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_percentage,
+                              "pnl49",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_percentage,
+                              "pnl51",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].win_percentage
+                      ? stats[model_name_1].win_percentage + "%"
                       : null}
                   </td>
                   <td
@@ -7089,11 +8232,44 @@ const CompareComponent = () => {
                               "pnl51",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_percentage,
+                              "pnl49",
+                            ],
+                            value2: [
+                              stats[model_name_2].win_percentage,
+                              "pnl50",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].win_percentage,
+                              "pnl50",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_percentage,
+                              "pnl51",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].consective_wins,
+                              "pnl49",
+                            ],
+                            value2: [
+                              stats[model_name_3].consective_wins,
+                              "pnl51",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].win_percentage
+                      ? stats[model_name_2].win_percentage + "%"
                       : null}
                   </td>
                   <td
@@ -7117,11 +8293,44 @@ const CompareComponent = () => {
                               "pnl51",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_percentage,
+                              "pnl49",
+                            ],
+                            value2: [
+                              stats[model_name_2].win_percentage,
+                              "pnl50",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].win_percentage,
+                              "pnl50",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_percentage,
+                              "pnl51",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_percentage,
+                              "pnl49",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_percentage,
+                              "pnl51",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].win_percentage
+                      ? stats[model_name_3].win_percentage + "%"
                       : null}
                   </td>
                 </tr>
@@ -7155,6 +8364,39 @@ const CompareComponent = () => {
                               "pnl54",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_loss_ratio,
+                              "pnl52",
+                            ],
+                            value2: [
+                              stats[model_name_2].win_loss_ratio,
+                              "pnl53",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].win_loss_ratio,
+                              "pnl53",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_loss_ratio,
+                              "pnl54",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_loss_ratio,
+                              "pnl52",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_loss_ratio,
+                              "pnl54",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -7179,6 +8421,39 @@ const CompareComponent = () => {
                               "pnl53",
                             ],
                             value3: [
+                              stats[model_name_3].win_loss_ratio,
+                              "pnl54",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_loss_ratio,
+                              "pnl52",
+                            ],
+                            value2: [
+                              stats[model_name_2].win_loss_ratio,
+                              "pnl53",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].win_loss_ratio,
+                              "pnl53",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_loss_ratio,
+                              "pnl54",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_loss_ratio,
+                              "pnl52",
+                            ],
+                            value2: [
                               stats[model_name_3].win_loss_ratio,
                               "pnl54",
                             ],
@@ -7211,6 +8486,39 @@ const CompareComponent = () => {
                               "pnl54",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_loss_ratio,
+                              "pnl52",
+                            ],
+                            value2: [
+                              stats[model_name_2].win_loss_ratio,
+                              "pnl53",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].win_loss_ratio,
+                              "pnl53",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_loss_ratio,
+                              "pnl54",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].win_loss_ratio,
+                              "pnl52",
+                            ],
+                            value2: [
+                              stats[model_name_3].win_loss_ratio,
+                              "pnl54",
+                            ],
+                          })
                         : null
                     }
                   >
@@ -7236,15 +8544,57 @@ const CompareComponent = () => {
                       stats[model_name_2] &&
                       stats[model_name_3]
                         ? changeColorOnValueBasis({
-                            value1: [stats[model_name_1].max_drawdown, "pnl55"],
-                            value2: [stats[model_name_2].max_drawdown, "pnl56"],
-                            value3: [stats[model_name_3].max_drawdown, "pnl57"],
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                            value3: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
                           })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].total_positive_pnl
+                      ? stats[model_name_1].total_positive_pnl + "%"
                       : null}
                   </td>
                   <td
@@ -7255,15 +8605,57 @@ const CompareComponent = () => {
                       stats[model_name_2] &&
                       stats[model_name_3]
                         ? changeColorOnValueBasis({
-                            value1: [stats[model_name_1].max_drawdown, "pnl55"],
-                            value2: [stats[model_name_2].max_drawdown, "pnl56"],
-                            value3: [stats[model_name_3].max_drawdown, "pnl57"],
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                            value3: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
                           })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].total_positive_pnl
+                      ? stats[model_name_2].total_positive_pnl + "%"
                       : null}
                   </td>
                   <td
@@ -7274,15 +8666,57 @@ const CompareComponent = () => {
                       stats[model_name_2] &&
                       stats[model_name_3]
                         ? changeColorOnValueBasis({
-                            value1: [stats[model_name_1].max_drawdown, "pnl55"],
-                            value2: [stats[model_name_2].max_drawdown, "pnl56"],
-                            value3: [stats[model_name_3].max_drawdown, "pnl57"],
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                            value3: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].total_positive_pnl,
+                              "pnl56",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].total_positive_pnl,
+                              "pnl55",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_positive_pnl,
+                              "pnl57",
+                            ],
                           })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].total_positive_pnl
+                      ? stats[model_name_3].total_positive_pnl + "%"
                       : null}
                   </td>
                 </tr>
@@ -7316,11 +8750,44 @@ const CompareComponent = () => {
                               "pnl60",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].total_negative_pnl,
+                              "pnl58",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_negative_pnl,
+                              "pnl59",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].total_negative_pnl,
+                              "pnl59",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_negative_pnl,
+                              "pnl60",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].total_negative_pnl,
+                              "pnl58",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_negative_pnl,
+                              "pnl60",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].total_negative_pnl
+                      ? stats[model_name_1].total_negative_pnl + "%"
                       : null}
                   </td>
                   <td
@@ -7344,11 +8811,44 @@ const CompareComponent = () => {
                               "pnl60",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].total_negative_pnl,
+                              "pnl58",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_negative_pnl,
+                              "pnl59",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].total_negative_pnl,
+                              "pnl59",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_negative_pnl,
+                              "pnl60",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].total_negative_pnl,
+                              "pnl58",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_negative_pnl,
+                              "pnl60",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].total_negative_pnl
+                      ? stats[model_name_2].total_negative_pnl + "%"
                       : null}
                   </td>
                   <td
@@ -7372,11 +8872,44 @@ const CompareComponent = () => {
                               "pnl60",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].total_negative_pnl,
+                              "pnl58",
+                            ],
+                            value2: [
+                              stats[model_name_2].total_negative_pnl,
+                              "pnl59",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_2].total_negative_pnl,
+                              "pnl59",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_negative_pnl,
+                              "pnl60",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValuesMin({
+                            value1: [
+                              stats[model_name_1].total_negative_pnl,
+                              "pnl58",
+                            ],
+                            value2: [
+                              stats[model_name_3].total_negative_pnl,
+                              "pnl60",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].total_negative_pnl
+                      ? stats[model_name_3].total_negative_pnl + "%"
                       : null}
                   </td>
                 </tr>
@@ -7410,11 +8943,44 @@ const CompareComponent = () => {
                               "pnl63",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].average_daily_pnl,
+                              "pnl61",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_daily_pnl,
+                              "pnl62",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].average_daily_pnl,
+                              "pnl62",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_daily_pnl,
+                              "pnl63",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].average_daily_pnl,
+                              "pnl61",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_daily_pnl,
+                              "pnl63",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].average_daily_pnl
+                      ? stats[model_name_1].average_daily_pnl + "%"
                       : null}
                   </td>
                   <td
@@ -7438,11 +9004,44 @@ const CompareComponent = () => {
                               "pnl63",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].average_daily_pnl,
+                              "pnl61",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_daily_pnl,
+                              "pnl62",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].average_daily_pnl,
+                              "pnl62",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_daily_pnl,
+                              "pnl63",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].average_daily_pnl,
+                              "pnl61",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_daily_pnl,
+                              "pnl63",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].average_daily_pnl
+                      ? stats[model_name_2].average_daily_pnl + "%"
                       : null}
                   </td>
                   <td
@@ -7466,11 +9065,44 @@ const CompareComponent = () => {
                               "pnl63",
                             ],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].average_daily_pnl,
+                              "pnl61",
+                            ],
+                            value2: [
+                              stats[model_name_2].average_daily_pnl,
+                              "pnl62",
+                            ],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_2].average_daily_pnl,
+                              "pnl62",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_daily_pnl,
+                              "pnl63",
+                            ],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [
+                              stats[model_name_1].average_daily_pnl,
+                              "pnl61",
+                            ],
+                            value2: [
+                              stats[model_name_3].average_daily_pnl,
+                              "pnl63",
+                            ],
+                          })
                         : null
                     }
                   >
                     {stats[model_name_3]
-                      ? stats[model_name_3].average_daily_pnl
+                      ? stats[model_name_3].average_daily_pnl + "%"
                       : null}
                   </td>
                 </tr>
@@ -7495,6 +9127,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].r2_score, "pnl65"],
                             value3: [stats[model_name_3].r2_score, "pnl66"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].r2_score, "pnl64"],
+                            value2: [stats[model_name_2].r2_score, "pnl65"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].r2_score, "pnl65"],
+                            value2: [stats[model_name_3].r2_score, "pnl66"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].r2_score, "pnl64"],
+                            value2: [stats[model_name_3].r2_score, "pnl66"],
+                          })
                         : null
                     }
                   >
@@ -7511,6 +9158,21 @@ const CompareComponent = () => {
                             value1: [stats[model_name_1].r2_score, "pnl64"],
                             value2: [stats[model_name_2].r2_score, "pnl65"],
                             value3: [stats[model_name_3].r2_score, "pnl66"],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].r2_score, "pnl64"],
+                            value2: [stats[model_name_2].r2_score, "pnl65"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].r2_score, "pnl65"],
+                            value2: [stats[model_name_3].r2_score, "pnl66"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].r2_score, "pnl64"],
+                            value2: [stats[model_name_3].r2_score, "pnl66"],
                           })
                         : null
                     }
@@ -7529,6 +9191,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].r2_score, "pnl65"],
                             value3: [stats[model_name_3].r2_score, "pnl66"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].r2_score, "pnl64"],
+                            value2: [stats[model_name_2].r2_score, "pnl65"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].r2_score, "pnl65"],
+                            value2: [stats[model_name_3].r2_score, "pnl66"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].r2_score, "pnl64"],
+                            value2: [stats[model_name_3].r2_score, "pnl66"],
+                          })
                         : null
                     }
                   >
@@ -7537,7 +9214,7 @@ const CompareComponent = () => {
                 </tr>
                 <tr>
                   <td className="tg-0lax for-th">
-                    Sharpe
+                    SharpeZT1-0M24BTC4
                     <Tooltip title="The ratio of annualised yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is">
                       <IconButton>
                         <BsFillInfoCircleFill />
@@ -7556,6 +9233,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].sharpe, "pnl68"],
                             value3: [stats[model_name_3].sharpe, "pnl69"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sharpe, "pnl67"],
+                            value2: [stats[model_name_2].sharpe, "pnl68"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].sharpe, "pnl68"],
+                            value2: [stats[model_name_3].sharpe, "pnl69"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sharpe, "pnl67"],
+                            value2: [stats[model_name_3].sharpe, "pnl69"],
+                          })
                         : null
                     }
                   >
@@ -7573,6 +9265,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].sharpe, "pnl68"],
                             value3: [stats[model_name_3].sharpe, "pnl69"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sharpe, "pnl67"],
+                            value2: [stats[model_name_2].sharpe, "pnl68"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].sharpe, "pnl68"],
+                            value2: [stats[model_name_3].sharpe, "pnl69"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sharpe, "pnl67"],
+                            value2: [stats[model_name_3].sharpe, "pnl69"],
+                          })
                         : null
                     }
                   >
@@ -7589,6 +9296,21 @@ const CompareComponent = () => {
                             value1: [stats[model_name_1].sharpe, "pnl67"],
                             value2: [stats[model_name_2].sharpe, "pnl68"],
                             value3: [stats[model_name_3].sharpe, "pnl69"],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sharpe, "pnl67"],
+                            value2: [stats[model_name_2].sharpe, "pnl68"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].sharpe, "pnl68"],
+                            value2: [stats[model_name_3].sharpe, "pnl69"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sharpe, "pnl67"],
+                            value2: [stats[model_name_3].sharpe, "pnl69"],
                           })
                         : null
                     }
@@ -7617,6 +9339,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].sortino, "pnl72"],
                             value3: [stats[model_name_3].sortino, "pnl73"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sortino, "pnl71"],
+                            value2: [stats[model_name_2].sortino, "pnl72"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].sortino, "pnl72"],
+                            value2: [stats[model_name_3].sortino, "pnl73"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sortino, "pnl71"],
+                            value2: [stats[model_name_3].sortino, "pnl73"],
+                          })
                         : null
                     }
                   >
@@ -7633,6 +9370,21 @@ const CompareComponent = () => {
                             value1: [stats[model_name_1].sortino, "pnl71"],
                             value2: [stats[model_name_2].sortino, "pnl72"],
                             value3: [stats[model_name_3].sortino, "pnl73"],
+                          })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sortino, "pnl71"],
+                            value2: [stats[model_name_2].sortino, "pnl72"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].sortino, "pnl72"],
+                            value2: [stats[model_name_3].sortino, "pnl73"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sortino, "pnl71"],
+                            value2: [stats[model_name_3].sortino, "pnl73"],
                           })
                         : null
                     }
@@ -7651,6 +9403,21 @@ const CompareComponent = () => {
                             value2: [stats[model_name_2].sortino, "pnl72"],
                             value3: [stats[model_name_3].sortino, "pnl73"],
                           })
+                        : stats[model_name_1] && stats[model_name_2]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sortino, "pnl71"],
+                            value2: [stats[model_name_2].sortino, "pnl72"],
+                          })
+                        : stats[model_name_2] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_2].sortino, "pnl72"],
+                            value2: [stats[model_name_3].sortino, "pnl73"],
+                          })
+                        : stats[model_name_1] && stats[model_name_3]
+                        ? changeColorOnValueBasisTwoValues({
+                            value1: [stats[model_name_1].sortino, "pnl71"],
+                            value2: [stats[model_name_3].sortino, "pnl73"],
+                          })
                         : null
                     }
                   >
@@ -7659,1998 +9426,6 @@ const CompareComponent = () => {
                 </tr>
               </tbody>
             )}
-            {/* <tbody>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Time Horizon
-                  <Tooltip title="Time between predictions">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_1]
-                    ? strategies[model_name_1].time_horizon
-                    : null}
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_2]
-                    ? strategies[model_name_2].time_horizon
-                    : null}
-                </td>
-                <td className="tg-0lax to-hide">
-                  {strategies[model_name_3]
-                    ? strategies[model_name_3].time_horizon
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Currency
-                  <Tooltip title="Forecasted currency">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_1]
-                    ? strategies[model_name_1].currency
-                    : null}
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_2]
-                    ? strategies[model_name_2].currency
-                    : null}
-                </td>
-                <td className="tg-0lax to-hide">
-                  {strategies[model_name_3]
-                    ? strategies[model_name_3].currency
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Start Date
-                  <Tooltip title="Forecasts start date">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_1]
-                    ? strategies[model_name_1].date_started
-                    : null}
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_2]
-                    ? strategies[model_name_2].date_started
-                    : null}
-                </td>
-                <td className="tg-0lax to-hide">
-                  {strategies[model_name_3]
-                    ? strategies[model_name_3].date_started
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Forecast
-                  <Tooltip title="Price/Directional prediction for current time">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"position"}
-                  onChange={
-                    strategies[model_name_1]
-                      ? forBgColorPosition(
-                          strategies[model_name_1].current_position,
-                          "position"
-                        )
-                      : null
-                  }
-                >
-                  {strategies[model_name_1]
-                    ? strategies[model_name_1].current_position
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"position2"}
-                  onChange={
-                    strategies[model_name_2]
-                      ? forBgColorPosition(
-                          strategies[model_name_2].current_position,
-                          "position2"
-                        )
-                      : null
-                  }
-                >
-                  {strategies[model_name_2]
-                    ? strategies[model_name_2].current_position
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"position3"}
-                  onChange={
-                    strategies[model_name_3]
-                      ? forBgColorPosition(
-                          strategies[model_name_3].current_position,
-                          "position3"
-                        )
-                      : null
-                  }
-                >
-                  {" "}
-                  {strategies[model_name_3]
-                    ? strategies[model_name_3].current_position
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Forecast Time
-                  <Tooltip title="Time in which the forecast is created (in local system time)">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_1]
-                    ? strategies[model_name_1].forecast_time
-                    : null}
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_2]
-                    ? strategies[model_name_2].forecast_time
-                    : null}
-                </td>
-                <td className="tg-0lax to-hide">
-                  {strategies[model_name_3]
-                    ? strategies[model_name_3].forecast_time
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Next Forecast
-                  <Tooltip title="Countdown clock till time of next forecast">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_1] ? (
-                    <Timer
-                      time_horizon={[
-                        strategies[model_name_1].time_horizon,
-                        strategies[model_name_1].next_forecast,
-                      ]}
-                    />
-                  ) : null}
-                </td>
-                <td className="tg-0lax">
-                  {strategies[model_name_2] ? (
-                    <Timer
-                      time_horizon={[
-                        strategies[model_name_2].time_horizon,
-                        strategies[model_name_2].next_forecast,
-                      ]}
-                    />
-                  ) : null}
-                </td>
-                <td className="tg-0lax to-hide">
-                  {strategies[model_name_3] ? (
-                    <Timer
-                      time_horizon={[
-                        strategies[model_name_3].time_horizon,
-                        strategies[model_name_3].next_forecast,
-                      ]}
-                    />
-                  ) : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  1d PNL
-                  <Tooltip title="PNL of last 1 day">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl-bg"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
-                          value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
-                          value3: [stats[model_name_3].pnl_sum_1, "pnl3"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].pnl_sum_1 : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl2"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
-                          value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
-                          value3: [stats[model_name_3].pnl_sum_1, "pnl3"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].pnl_sum_1 : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl3"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_1, "pnl-bg"],
-                          value2: [stats[model_name_2].pnl_sum_1, "pnl2"],
-                          value3: [stats[model_name_3].pnl_sum_1, "pnl3"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].pnl_sum_1 : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  7d PNL
-                  <Tooltip title="PNL of last 7 days">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl4"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
-                          value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
-                          value3: [stats[model_name_3].pnl_sum_7, "pnl6"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].pnl_sum_7 : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl5"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
-                          value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
-                          value3: [stats[model_name_3].pnl_sum_7, "pnl6"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].pnl_sum_7 : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl6"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_7, "pnl4"],
-                          value2: [stats[model_name_2].pnl_sum_7, "pnl5"],
-                          value3: [stats[model_name_3].pnl_sum_7, "pnl6"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].pnl_sum_7 : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  15d PNL
-                  <Tooltip title="PNL of last 15 days">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl7"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
-                          value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
-                          value3: [stats[model_name_3].pnl_sum_15, "pnl9"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].pnl_sum_15 : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl8"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
-                          value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
-                          value3: [stats[model_name_3].pnl_sum_15, "pnl9"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].pnl_sum_15 : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl9"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_15, "pnl7"],
-                          value2: [stats[model_name_2].pnl_sum_15, "pnl8"],
-                          value3: [stats[model_name_3].pnl_sum_15, "pnl9"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].pnl_sum_15 : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  30d PNL
-                  <Tooltip title="PNL of last 30 days">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl10"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
-                          value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
-                          value3: [stats[model_name_3].pnl_sum_30, "pnl12"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].pnl_sum_30 : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl11"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
-                          value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
-                          value3: [stats[model_name_3].pnl_sum_30, "pnl12"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].pnl_sum_30 : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl12"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_30, "pnl10"],
-                          value2: [stats[model_name_2].pnl_sum_30, "pnl11"],
-                          value3: [stats[model_name_3].pnl_sum_30, "pnl12"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].pnl_sum_30 : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  45d PNL
-                  <Tooltip title="PNL of last 45 days">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl13"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
-                          value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
-                          value3: [stats[model_name_3].pnl_sum_45, "pnl15"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].pnl_sum_45 : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl14"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
-                          value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
-                          value3: [stats[model_name_3].pnl_sum_45, "pnl15"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].pnl_sum_45 : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl15"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_45, "pnl13"],
-                          value2: [stats[model_name_2].pnl_sum_45, "pnl14"],
-                          value3: [stats[model_name_3].pnl_sum_45, "pnl15"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].pnl_sum_45 : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  60d PNL
-                  <Tooltip title="PNL of last 60 days">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl16"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
-                          value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
-                          value3: [stats[model_name_3].pnl_sum_60, "pnl18"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].pnl_sum_60 : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl17"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
-                          value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
-                          value3: [stats[model_name_3].pnl_sum_60, "pnl18"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].pnl_sum_60 : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl18"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].pnl_sum_60, "pnl16"],
-                          value2: [stats[model_name_2].pnl_sum_60, "pnl17"],
-                          value3: [stats[model_name_3].pnl_sum_60, "pnl18"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].pnl_sum_60 : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Max Drawdown
-                  <Tooltip title="Maximum DrawDown – measurement of maximum negative yield experienced in the past">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl19"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [stats[model_name_1].max_drawdown, "pnl19"],
-                          value2: [stats[model_name_2].max_drawdown, "pnl20"],
-                          value3: [stats[model_name_3].max_drawdown, "pnl21"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].max_drawdown
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl20"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [stats[model_name_1].max_drawdown, "pnl19"],
-                          value2: [stats[model_name_2].max_drawdown, "pnl20"],
-                          value3: [stats[model_name_3].max_drawdown, "pnl21"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].max_drawdown
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl21"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [stats[model_name_1].max_drawdown, "pnl19"],
-                          value2: [stats[model_name_2].max_drawdown, "pnl20"],
-                          value3: [stats[model_name_3].max_drawdown, "pnl21"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].max_drawdown
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Max Drawdown Days
-                  <Tooltip title="Maximum DrawDown Days – measurement of the maximum number of days the model was in a negative yield">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl22"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].max_drawdown_duration,
-                            "pnl22",
-                          ],
-                          value2: [
-                            stats[model_name_2].max_drawdown_duration,
-                            "pnl23",
-                          ],
-                          value3: [
-                            stats[model_name_3].max_drawdown_duration,
-                            "pnl24",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].max_drawdown_duration
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl23"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].max_drawdown_duration,
-                            "pnl22",
-                          ],
-                          value2: [
-                            stats[model_name_2].max_drawdown_duration,
-                            "pnl23",
-                          ],
-                          value3: [
-                            stats[model_name_3].max_drawdown_duration,
-                            "pnl24",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].max_drawdown_duration
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl24"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].max_drawdown_duration,
-                            "pnl22",
-                          ],
-                          value2: [
-                            stats[model_name_2].max_drawdown_duration,
-                            "pnl23",
-                          ],
-                          value3: [
-                            stats[model_name_3].max_drawdown_duration,
-                            "pnl24",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].max_drawdown_duration
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Average Drawdown
-                  <Tooltip title="Average DrawDown – the average negative yield experienced by the model">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl25"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].average_drawdown,
-                            "pnl25",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_drawdown,
-                            "pnl26",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_drawdown,
-                            "pnl27",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].average_drawdown
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl26"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].average_drawdown,
-                            "pnl25",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_drawdown,
-                            "pnl26",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_drawdown,
-                            "pnl27",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].average_drawdown
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl27"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].average_drawdown,
-                            "pnl25",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_drawdown,
-                            "pnl26",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_drawdown,
-                            "pnl27",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].average_drawdown
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Average Drawdown Days
-                  <Tooltip title="Average DrawDown Days – the average number of days in a negative yield experienced by the model">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl28"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].average_drawdown_duration,
-                            "pnl28",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_drawdown_duration,
-                            "pnl29",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_drawdown_duration,
-                            "pnl30",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].average_drawdown_duration
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl29"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].average_drawdown_duration,
-                            "pnl28",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_drawdown_duration,
-                            "pnl29",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_drawdown_duration,
-                            "pnl30",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].average_drawdown_duration
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl30"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].average_drawdown_duration,
-                            "pnl28",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_drawdown_duration,
-                            "pnl29",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_drawdown_duration,
-                            "pnl30",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].average_drawdown_duration
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Current Drawdown
-                  <Tooltip title="Current DrawDown – the actual negative yield (if in a negative) that is currently being experienced by the model">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl31"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].current_drawdown,
-                            "pnl31",
-                          ],
-                          value2: [
-                            stats[model_name_2].current_drawdown,
-                            "pnl32",
-                          ],
-                          value3: [
-                            stats[model_name_3].current_drawdown,
-                            "pnl33",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].current_drawdown
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl32"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].current_drawdown,
-                            "pnl31",
-                          ],
-                          value2: [
-                            stats[model_name_2].current_drawdown,
-                            "pnl32",
-                          ],
-                          value3: [
-                            stats[model_name_3].current_drawdown,
-                            "pnl33",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].current_drawdown
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl33"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].current_drawdown,
-                            "pnl31",
-                          ],
-                          value2: [
-                            stats[model_name_2].current_drawdown,
-                            "pnl32",
-                          ],
-                          value3: [
-                            stats[model_name_3].current_drawdown,
-                            "pnl33",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].current_drawdown
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Current Drawdown Days
-                  <Tooltip title="Current DrawDown Days – the actual number of days in a negative yield (if in a negative) that is currently being experienced by the model">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl34"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].curr_drawdown_duration,
-                            "pnl34",
-                          ],
-                          value2: [
-                            stats[model_name_2].curr_drawdown_duration,
-                            "pnl35",
-                          ],
-                          value3: [
-                            stats[model_name_3].curr_drawdown_duration,
-                            "pnl36",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].curr_drawdown_duration
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl35"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].curr_drawdown_duration,
-                            "pnl34",
-                          ],
-                          value2: [
-                            stats[model_name_2].curr_drawdown_duration,
-                            "pnl35",
-                          ],
-                          value3: [
-                            stats[model_name_3].curr_drawdown_duration,
-                            "pnl36",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].curr_drawdown_duration
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl36"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].curr_drawdown_duration,
-                            "pnl34",
-                          ],
-                          value2: [
-                            stats[model_name_2].curr_drawdown_duration,
-                            "pnl35",
-                          ],
-                          value3: [
-                            stats[model_name_3].curr_drawdown_duration,
-                            "pnl36",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].curr_drawdown_duration
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Total Wins
-                  <Tooltip title="The total number of Wins the model has experienced">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl37"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].total_wins, "pnl37"],
-                          value2: [stats[model_name_2].total_wins, "pnl38"],
-                          value3: [stats[model_name_3].total_wins, "pnl39"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].total_wins : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl38"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].total_wins, "pnl37"],
-                          value2: [stats[model_name_2].total_wins, "pnl38"],
-                          value3: [stats[model_name_3].total_wins, "pnl39"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].total_wins : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl39"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].total_wins, "pnl37"],
-                          value2: [stats[model_name_2].total_wins, "pnl38"],
-                          value3: [stats[model_name_3].total_wins, "pnl39"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].total_wins : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Total Losses
-                  <Tooltip title="The total number of losses the model has experienced">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl40"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [stats[model_name_1].total_losses, "pnl40"],
-                          value2: [stats[model_name_2].total_losses, "pnl41"],
-                          value3: [stats[model_name_3].total_losses, "pnl42"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].total_losses
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl41"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [stats[model_name_1].total_losses, "pnl40"],
-                          value2: [stats[model_name_2].total_losses, "pnl41"],
-                          value3: [stats[model_name_3].total_losses, "pnl42"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].total_losses
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl42"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [stats[model_name_1].total_losses, "pnl40"],
-                          value2: [stats[model_name_2].total_losses, "pnl41"],
-                          value3: [stats[model_name_3].total_losses, "pnl42"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].total_losses
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Consecutive Wins
-                  <Tooltip title="The maximum amount of sequential wins the model has experienced">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl43"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].consective_wins,
-                            "pnl43",
-                          ],
-                          value2: [
-                            stats[model_name_2].consective_wins,
-                            "pnl44",
-                          ],
-                          value3: [
-                            stats[model_name_3].consective_wins,
-                            "pnl45",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].consective_wins
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl44"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].consective_wins,
-                            "pnl43",
-                          ],
-                          value2: [
-                            stats[model_name_2].consective_wins,
-                            "pnl44",
-                          ],
-                          value3: [
-                            stats[model_name_3].consective_wins,
-                            "pnl45",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].consective_wins
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl45"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].consective_wins,
-                            "pnl43",
-                          ],
-                          value2: [
-                            stats[model_name_2].consective_wins,
-                            "pnl44",
-                          ],
-                          value3: [
-                            stats[model_name_3].consective_wins,
-                            "pnl45",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].consective_wins
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Consecutive Losses
-                  <Tooltip title="The maximum amount of sequential losses the model has experienced">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl46"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].consective_losses,
-                            "pnl46",
-                          ],
-                          value2: [
-                            stats[model_name_2].consective_losses,
-                            "pnl47",
-                          ],
-                          value3: [
-                            stats[model_name_3].consective_losses,
-                            "pnl48",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].consective_losses
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl47"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].consective_losses,
-                            "pnl46",
-                          ],
-                          value2: [
-                            stats[model_name_2].consective_losses,
-                            "pnl47",
-                          ],
-                          value3: [
-                            stats[model_name_3].consective_losses,
-                            "pnl48",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].consective_losses
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl48"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasisMin({
-                          value1: [
-                            stats[model_name_1].consective_losses,
-                            "pnl46",
-                          ],
-                          value2: [
-                            stats[model_name_2].consective_losses,
-                            "pnl47",
-                          ],
-                          value3: [
-                            stats[model_name_3].consective_losses,
-                            "pnl48",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].consective_losses
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Win Percentage
-                  <Tooltip title="The percentage amount of wins the model has experienced">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl49"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].win_percentage, "pnl49"],
-                          value2: [stats[model_name_2].win_percentage, "pnl50"],
-                          value3: [stats[model_name_3].win_percentage, "pnl51"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].win_percentage
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl50"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].win_percentage, "pnl49"],
-                          value2: [stats[model_name_2].win_percentage, "pnl50"],
-                          value3: [stats[model_name_3].win_percentage, "pnl51"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].win_percentage
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl51"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].win_percentage, "pnl49"],
-                          value2: [stats[model_name_2].win_percentage, "pnl50"],
-                          value3: [stats[model_name_3].win_percentage, "pnl51"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].win_percentage
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Win/Loss Ratio
-                  <Tooltip title="The ratio of the win size vs the loss size. Above 1 means the model wins more than it losses on average">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl52"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].win_loss_ratio, "pnl52"],
-                          value2: [stats[model_name_2].win_loss_ratio, "pnl53"],
-                          value3: [stats[model_name_3].win_loss_ratio, "pnl54"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].win_loss_ratio
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl53"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].win_loss_ratio, "pnl52"],
-                          value2: [stats[model_name_2].win_loss_ratio, "pnl53"],
-                          value3: [stats[model_name_3].win_loss_ratio, "pnl54"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].win_loss_ratio
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl54"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].win_loss_ratio, "pnl52"],
-                          value2: [stats[model_name_2].win_loss_ratio, "pnl53"],
-                          value3: [stats[model_name_3].win_loss_ratio, "pnl54"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].win_loss_ratio
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Aggregate Profit
-                  <Tooltip title="The total amount of positive yield generated by the model">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl55"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].max_drawdown, "pnl55"],
-                          value2: [stats[model_name_2].max_drawdown, "pnl56"],
-                          value3: [stats[model_name_3].max_drawdown, "pnl57"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].total_positive_pnl
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl56"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].max_drawdown, "pnl55"],
-                          value2: [stats[model_name_2].max_drawdown, "pnl56"],
-                          value3: [stats[model_name_3].max_drawdown, "pnl57"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].total_positive_pnl
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl57"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].max_drawdown, "pnl55"],
-                          value2: [stats[model_name_2].max_drawdown, "pnl56"],
-                          value3: [stats[model_name_3].max_drawdown, "pnl57"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].total_positive_pnl
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Aggregate Loss
-                  <Tooltip title="The total amount of negative yield generated by the model">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl58"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].total_negative_pnl,
-                            "pnl58",
-                          ],
-                          value2: [
-                            stats[model_name_2].total_negative_pnl,
-                            "pnl59",
-                          ],
-                          value3: [
-                            stats[model_name_3].total_negative_pnl,
-                            "pnl60",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].total_negative_pnl
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl59"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].total_negative_pnl,
-                            "pnl58",
-                          ],
-                          value2: [
-                            stats[model_name_2].total_negative_pnl,
-                            "pnl59",
-                          ],
-                          value3: [
-                            stats[model_name_3].total_negative_pnl,
-                            "pnl60",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].total_negative_pnl
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl60"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].total_negative_pnl,
-                            "pnl58",
-                          ],
-                          value2: [
-                            stats[model_name_2].total_negative_pnl,
-                            "pnl59",
-                          ],
-                          value3: [
-                            stats[model_name_3].total_negative_pnl,
-                            "pnl60",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].total_negative_pnl
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Average Daily PNL
-                  <Tooltip title="Average daily PNL">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl61"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].average_daily_pnl,
-                            "pnl61",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_daily_pnl,
-                            "pnl62",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_daily_pnl,
-                            "pnl63",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1]
-                    ? stats[model_name_1].average_daily_pnl
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl62"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].average_daily_pnl,
-                            "pnl61",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_daily_pnl,
-                            "pnl62",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_daily_pnl,
-                            "pnl63",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2]
-                    ? stats[model_name_2].average_daily_pnl
-                    : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl63"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [
-                            stats[model_name_1].average_daily_pnl,
-                            "pnl61",
-                          ],
-                          value2: [
-                            stats[model_name_2].average_daily_pnl,
-                            "pnl62",
-                          ],
-                          value3: [
-                            stats[model_name_3].average_daily_pnl,
-                            "pnl63",
-                          ],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3]
-                    ? stats[model_name_3].average_daily_pnl
-                    : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  R2 Score
-                  <Tooltip title="A measurement representing the descriptive power of the model. The closer the R2 score is to 1 the better the model is">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl64"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].r2_score, "pnl64"],
-                          value2: [stats[model_name_2].r2_score, "pnl65"],
-                          value3: [stats[model_name_3].r2_score, "pnl66"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].r2_score : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl65"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].r2_score, "pnl64"],
-                          value2: [stats[model_name_2].r2_score, "pnl65"],
-                          value3: [stats[model_name_3].r2_score, "pnl66"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].r2_score : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl66"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].r2_score, "pnl64"],
-                          value2: [stats[model_name_2].r2_score, "pnl65"],
-                          value3: [stats[model_name_3].r2_score, "pnl66"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].r2_score : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Sharpe
-                  <Tooltip title="The ratio of annualised yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl67"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].sharpe, "pnl67"],
-                          value2: [stats[model_name_2].sharpe, "pnl68"],
-                          value3: [stats[model_name_3].sharpe, "pnl69"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].sharpe : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl68"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].sharpe, "pnl67"],
-                          value2: [stats[model_name_2].sharpe, "pnl68"],
-                          value3: [stats[model_name_3].sharpe, "pnl69"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].sharpe : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl69"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].sharpe, "pnl67"],
-                          value2: [stats[model_name_2].sharpe, "pnl68"],
-                          value3: [stats[model_name_3].sharpe, "pnl69"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].sharpe : null}
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax for-th">
-                  Sortino
-                  <Tooltip title="The ratio of annualised yield over the negative standard deviation of yield that the model has experienced. The higher the Sortino ratio the less risky the model performance is">
-                    <IconButton>
-                      <BsFillInfoCircleFill />
-                    </IconButton>
-                  </Tooltip>
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl71"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].sortino, "pnl71"],
-                          value2: [stats[model_name_2].sortino, "pnl72"],
-                          value3: [stats[model_name_3].sortino, "pnl73"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_1] ? stats[model_name_1].sortino : null}
-                </td>
-                <td
-                  className="tg-0lax"
-                  id={"pnl72"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].sortino, "pnl71"],
-                          value2: [stats[model_name_2].sortino, "pnl72"],
-                          value3: [stats[model_name_3].sortino, "pnl73"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_2] ? stats[model_name_2].sortino : null}
-                </td>
-                <td
-                  className="tg-0lax to-hide"
-                  id={"pnl73"}
-                  onChange={
-                    stats[model_name_1] &&
-                    stats[model_name_2] &&
-                    stats[model_name_3]
-                      ? changeColorOnValueBasis({
-                          value1: [stats[model_name_1].sortino, "pnl71"],
-                          value2: [stats[model_name_2].sortino, "pnl72"],
-                          value3: [stats[model_name_3].sortino, "pnl73"],
-                        })
-                      : null
-                  }
-                >
-                  {stats[model_name_3] ? stats[model_name_3].sortino : null}
-                </td>
-              </tr>
-            </tbody> */}
           </table>
         </div>
       </div>

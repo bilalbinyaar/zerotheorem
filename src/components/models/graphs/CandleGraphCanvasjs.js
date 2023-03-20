@@ -153,7 +153,31 @@ function CandleGraphCanvasjs(props) {
       setStrategies(strategies_cache["strategies"]);
     }
   }, [model_name]);
+  const [current_position, set_current_position] = useState({});
+  useEffect(() => {
+    // console.log("Here is it ", strategies[props.model_name]);
+    fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get/current_position`)
+      .then((res) => res.json())
+      .then((data) => {
+        const temp_data = {};
+        // console.log(
+        //   "Finally btc data -->",
+        //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+        // );
 
+        for (let i = 0; i < data["response"].length; i++) {
+          temp_data[data["response"][i].strategy_name] = {
+            current_pnl: data["response"][i].current_pnl,
+            current_price: data["response"][i].current_price,
+          };
+        }
+
+        if (temp_data.length != 0) {
+          set_current_position(temp_data);
+          // console.log("Here is the data for current position", temp_data);
+        }
+      });
+  }, []);
   const containerProps = {
     width: "100%",
     height: "550px",
@@ -242,6 +266,7 @@ function CandleGraphCanvasjs(props) {
     rangeSelector: {
       enabled: false, //change it to true
     },
+
     charts: [
       {
         rangeSelector: {
@@ -351,11 +376,15 @@ function CandleGraphCanvasjs(props) {
             dataPoints: [
               {
                 x: new Date(start * 1000),
-                y: current_price,
+                y: current_position[props.model_name]
+                  ? current_position[props.model_name].current_price
+                  : null,
               },
               {
                 x: new Date(end * 1000),
-                y: current_price,
+                y: current_position[props.model_name]
+                  ? current_position[props.model_name].current_price
+                  : null,
               },
             ],
           },
@@ -591,6 +620,7 @@ function CandleGraphCanvasjs(props) {
           <CanvasJSStockChart
             containerProps={containerProps}
             options={options}
+            className="hidden canvas"
           />
         )}
       </div>

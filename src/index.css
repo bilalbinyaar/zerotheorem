@@ -708,7 +708,6 @@ a {
     justify-content: center !important;
     align-items: center !important;
   }
-
 }
 
 .apexcharts-yaxis-texts-g {
@@ -1222,4 +1221,10 @@ a {
     margin-bottom: 7%;
     padding: 4rem 3.4rem;
   }
+}
+.hidden > div > div:last-child {
+  display: none;
+}
+canvas > div > div > div > div:first-child {
+  display: none;
 }

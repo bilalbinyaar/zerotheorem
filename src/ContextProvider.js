@@ -5,17 +5,29 @@ import React, {
   useState,
   memo,
 } from "react";
-
+import { createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { mySlice, store } from "./App";
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+  // const store = configureStore({
+  //   reducer: mySlice.reducer,
+  // });
+  // const myValue = useSelector((state) => state.mySlice.myValue);
+
   // Dark Light Mode
   const [theme, setTheme] = useState("light-theme");
   const toggleTheme = () => {
     if (theme === "dark-theme") {
+      store.dispatch(mySlice.actions.setValue("light-theme"));
+
       setTheme("light-theme");
       handleiamClick();
     } else {
+      store.dispatch(mySlice.actions.setValue("dark-theme"));
+
       setTheme("dark-theme");
       handleiamClick();
     }
