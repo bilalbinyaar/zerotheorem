@@ -25,59 +25,7 @@ import SenstitivityAnalysisMarketSpecificAlpha from "../src/components/resources
 import SenstitivityAnalysisSingleAlphaCas from "../src/components/resources/derivations/SenstitivityAnalysisSingleAlphaCas";
 import TheGoverningEquation from "../src/components/resources/derivations/TheGoverningEquation";
 import TheUnderlyingAssumptions from "../src/components/resources/derivations/TheUnderlyingAssumptions";
-import { Helmet } from "react-helmet";
-import { createSlice } from "@reduxjs/toolkit";
-import { configureStore } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { Provider } from "react-redux";
 
-// import sitemap from "./sitemap.xml";
-function Sitemap() {
-  return (
-    <div>
-      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <url>
-          <loc>https://zerotheorem.com/</loc>
-          <lastmod>2023-03-13</lastmod>
-          <changefreq>daily</changefreq>
-          <priority>1.0</priority>
-        </url>
-        <url>
-          <loc>https://zerotheorem.com/about</loc>
-          <lastmod>2023-03-13</lastmod>
-          <changefreq>weekly</changefreq>
-          <priority>0.8</priority>
-        </url>
-        <url>
-          <loc>https://zerotheorem.com/resources</loc>
-          <lastmod>2023-03-13</lastmod>
-          <changefreq>weekly</changefreq>
-          <priority>0.7</priority>
-        </url>
-        <url>
-          <loc>https://zerotheorem.com/faq</loc>
-          <lastmod>2023-03-13</lastmod>
-          <changefreq>daily</changefreq>
-          <priority>0.9</priority>
-        </url>
-      </urlset>{" "}
-    </div>
-  );
-}
-export const mySlice = createSlice({
-  name: "mySlice",
-  initialState: {
-    myValue: "",
-  },
-  reducers: {
-    setValue: (state, action) => {
-      state.myValue = action.payload;
-    },
-  },
-});
-export const store = configureStore({
-  reducer: mySlice.reducer,
-});
 function App() {
   const { Login, user, error, loading } = useStateContext();
 

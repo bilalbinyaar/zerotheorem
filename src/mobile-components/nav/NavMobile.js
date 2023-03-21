@@ -7,6 +7,9 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
 import { AiFillCaretDown, AiFillHome, AiFillInfoCircle } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
+import { set_day_mode, set_night_mode } from "../../store";
+
 import {
   BsFillLayersFill,
   BsInfoSquareFill,
@@ -19,6 +22,7 @@ import "../../components/navbar/Navbar.css";
 export default function NavMobile(props) {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+  const dispatch = useDispatch();
 
   // Login State
   const { authCheck, userEmail, setAuthCheck, theme, setTheme } =
@@ -44,11 +48,19 @@ export default function NavMobile(props) {
   const toggleTheme = () => {
     if (theme === "dark-theme") {
       setTheme("light-theme");
+      handleDayModeTheme();
       handleiamClick();
     } else {
       setTheme("dark-theme");
+      handleNightModeTheme();
       handleiamClick();
     }
+  };
+  const handleNightModeTheme = () => {
+    dispatch(set_night_mode());
+  };
+  const handleDayModeTheme = () => {
+    dispatch(set_day_mode());
   };
 
   useEffect(() => {
@@ -152,7 +164,7 @@ export default function NavMobile(props) {
         )}
 
         <div className="dark-lite" onClick={() => toggleTheme()}>
-          {iamClick ? (
+          {(iamClick && theme === "dark-theme") || theme == "dark-theme" ? (
             <BsFillSunFill size={16} style={{ color: "#fff" }} />
           ) : (
             <BsFillMoonFill size={16} style={{ color: "#000" }} />

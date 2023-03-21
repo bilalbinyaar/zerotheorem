@@ -4816,11 +4816,11 @@ const CompareComponent = () => {
                       stats[model_name_1] && stats[model_name_2]
                         ? changeColorOnValueBasisTwoValuesMin({
                             value1: [
-                              stats[model_name_1].average_drawdown,
+                              stats[model_name_1].max_drawdown_duration,
                               "pnl25",
                             ],
                             value2: [
-                              stats[model_name_2].average_drawdown,
+                              stats[model_name_2].max_drawdown_duration,
                               "pnl26",
                             ],
                           })
@@ -4828,7 +4828,7 @@ const CompareComponent = () => {
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].average_drawdown
+                      ? stats[model_name_1].max_drawdown_duration
                       : null}
                   </td>
                   <td
@@ -4838,11 +4838,11 @@ const CompareComponent = () => {
                       stats[model_name_1] && stats[model_name_2]
                         ? changeColorOnValueBasisTwoValuesMin({
                             value1: [
-                              stats[model_name_1].average_drawdown,
+                              stats[model_name_1].max_drawdown_duration,
                               "pnl25",
                             ],
                             value2: [
-                              stats[model_name_2].average_drawdown,
+                              stats[model_name_2].max_drawdown_duration,
                               "pnl26",
                             ],
                           })
@@ -4850,7 +4850,7 @@ const CompareComponent = () => {
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].average_drawdown
+                      ? stats[model_name_2].max_drawdown_duration
                       : null}
                   </td>
                 </tr>
@@ -9214,7 +9214,7 @@ const CompareComponent = () => {
                 </tr>
                 <tr>
                   <td className="tg-0lax for-th">
-                    SharpeZT1-0M24BTC4
+                    Sharpe
                     <Tooltip title="The ratio of annualised yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is">
                       <IconButton>
                         <BsFillInfoCircleFill />
