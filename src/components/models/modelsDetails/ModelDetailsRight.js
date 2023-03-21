@@ -12,7 +12,7 @@ const ModelDetailsRight = (props) => {
   const [drop, setDrop] = useState(false);
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())

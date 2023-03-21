@@ -70,5 +70,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 - `docker build -t zt_frontend .`
-- `docker tag zt_frontend gcr.io/zt-frontend/zt-frontend`
-- `docker push gcr.io/zt-frontend/zt-frontend`
+- `docker tag zt_frontend gcr.io/zt-frontend-381310/zt-frontend`
+- `docker push gcr.io/zt-frontend-381310/zt-frontend`

@@ -434,7 +434,6 @@ a {
     justify-content: center !important;
     align-items: center !important;
   }
-
 }
 
 .apexcharts-yaxis-texts-g {
@@ -954,4 +953,14 @@ a {
 /* MATH JAX */ 
 mjx-container[jax="SVG"] > svg {
   color: var(--color-day-black);
+}
+
+.hidden > div > div:last-child {
+  display: none;
+}
+.canvas > div > div > div > div:first-child {
+  display: none;
+}
+.canvasjs-chart-credit {
+  display: none !important;
 }

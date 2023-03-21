@@ -9,7 +9,7 @@ const DrawDownTable = (props) => {
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -85,7 +85,7 @@ const DrawDownTable = (props) => {
           <tr className="for-table-row">
             <th className="for-table-head">
               Max DD
-              <Tooltip title="Maximum DrawDown – measurement of maximum negative yield experienced in the past">
+              <Tooltip title="Maximum Drawdown – Measurement of maximum negative yield experienced in the past">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -99,7 +99,7 @@ const DrawDownTable = (props) => {
             </td>
             <th className="for-table-head">
               Max DD Days
-              <Tooltip title="Maximum DrawDown Days – measurement of the maximum number of days the model was in a negative yield">
+              <Tooltip title="Maximum Drawdown Days – Measurement of the maximum number of days the model was in a negative yield">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -115,7 +115,7 @@ const DrawDownTable = (props) => {
           <tr className="for-table-row">
             <th className="for-table-head">
               Avg DD
-              <Tooltip title="Average DrawDown – the average negative yield experienced by the model">
+              <Tooltip title="Average Drawdown – The average negative yield experienced by the model">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -129,7 +129,7 @@ const DrawDownTable = (props) => {
             </td>
             <th className="for-table-head">
               Average DD Days
-              <Tooltip title="Average DrawDown Days – the average number of days in a negative yield experienced by the model">
+              <Tooltip title="Average Drawdown Days – The average number of days in a negative yield experienced by the model">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -145,7 +145,7 @@ const DrawDownTable = (props) => {
           <tr className="for-table-row">
             <th className="for-table-head">
               Current DD
-              <Tooltip title="Current DrawDown – the actual negative yield (if in a negative) that is currently being experienced by the model">
+              <Tooltip title="Current Drawdown – The actual negative yield (if in a negative) that is currently being experienced by the model">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -159,7 +159,7 @@ const DrawDownTable = (props) => {
             </td>
             <th className="for-table-head">
               Current DD Days
-              <Tooltip title="Current DrawDown Days – the actual number of days in a negative yield (if in a negative) that is currently being experienced by the model">
+              <Tooltip title="Current Drawdown Days – The actual number of days in a negative yield (if in a negative) that is currently being experienced by the model">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>

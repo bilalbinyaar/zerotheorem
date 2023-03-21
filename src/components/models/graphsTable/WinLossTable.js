@@ -10,7 +10,7 @@ const WinLossTable = (props) => {
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -73,6 +73,39 @@ const WinLossTable = (props) => {
       setStats(stats_cache["stats"]);
     }
   }, []);
+  const forBgColor = (value, id) => {
+    if (id === "wins") {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    } else {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    }
+  };
+  const forBgColorWinLossPercentage = (value, id) => {
+    if (value >= 50) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    } else {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    }
+  };
+  const forBgColorWinLossRatio = (value, id) => {
+    if (value > 1) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    } else {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    }
+  };
   return (
     <div className="table-card for-margin">
       <div className="table-card-head">
@@ -83,13 +116,21 @@ const WinLossTable = (props) => {
           <tr className="for-table-row">
             <th className="for-table-head">
               Total Wins
-              <Tooltip title="The total number of Wins the model has experienced">
+              <Tooltip title="The total number of wins the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="wins"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColor(stats[props.model_name].total_wins, "wins")
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].total_wins
                 : null}
@@ -102,16 +143,24 @@ const WinLossTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="losses"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColor(stats[props.model_name].total_wins, "losses")
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].total_losses
-                : null}{" "}
+                : null}
             </td>
           </tr>
           <tr className="for-table-row">
             <th className="for-table-head">
               Consecutive Wins
-              <Tooltip title="The maximum amount of sequential wins the model has experienced">
+              <Tooltip title="The maximum number of sequential wins the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -120,11 +169,11 @@ const WinLossTable = (props) => {
             <td className="for-table-data">
               {stats[props.model_name]
                 ? stats[props.model_name].consective_wins
-                : null}{" "}
+                : null}
             </td>
             <th className="for-table-head">
               Consecutive Losses
-              <Tooltip title="The maximum amount of sequential losses the model has experienced">
+              <Tooltip title="The maximum number of sequential losses the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -139,13 +188,24 @@ const WinLossTable = (props) => {
           <tr className="for-table-row">
             <th className="for-table-head">
               Win Percentage
-              <Tooltip title="The percentage amount of wins the model has experienced">
+              <Tooltip title="The percentage number of wins the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="wins_percentage"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColorWinLossPercentage(
+                      stats[props.model_name].total_wins,
+                      "wins_percentage"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].win_percentage
                 : null}
@@ -153,13 +213,24 @@ const WinLossTable = (props) => {
             </td>
             <th className="for-table-head">
               Win/Loss Ratio
-              <Tooltip title="The ratio of the win size vs the loss size. Above 1 means the model wins more than it losses on average">
+              <Tooltip title="The ratio of the win size vs the loss size. Above 1 means the model wins more than it loses on average">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="wins_loss_ratio"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColorWinLossRatio(
+                      stats[props.model_name].total_wins,
+                      "wins_loss_ratio"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].win_loss_ratio
                 : null}

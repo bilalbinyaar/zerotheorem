@@ -3,8 +3,7 @@ import { AiOutlineDown, AiOutlineFieldTime } from "react-icons/ai";
 import { useStateContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
-import { BiLinkExternal } from 'react-icons/bi';
-
+import { BiLinkExternal } from "react-icons/bi";
 
 const ModelNameCol = (props) => {
   // console.log("Testing data -->", props.value);
@@ -44,7 +43,7 @@ const ModelNameCol = (props) => {
   const [topPerformerModels, setTopPerformersModels] = useState([]);
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -115,7 +114,7 @@ const ModelNameCol = (props) => {
 
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategies", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
         method: "get",
       })
         .then((response) => response.json())
@@ -215,7 +214,7 @@ const ModelNameCol = (props) => {
 
   return (
     <div className="forecasts-model-name">
-      <div className="forecasts-model-name-icon-div"> 
+      <div className="forecasts-model-name-icon-div">
         <h3
           onClick={() => {
             linkModels(`/${props.value[2].replace("_", "-")}`, {
@@ -225,10 +224,9 @@ const ModelNameCol = (props) => {
             });
           }}
         >
-
-        {props.value[2].replace("_", "-")}
+          {props.value[2].replace("_", "-")}
         </h3>
-          <BiLinkExternal className="model-link-icon"/>
+        <BiLinkExternal className="model-link-icon" />
       </div>
       <div className="model-details-left-body for-forecasts-card">
         <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">

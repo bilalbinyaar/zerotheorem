@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { useStateContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
 import SplineTradeViewCard from "../models/graphs/SplineTradeViewCard";
-import { BiLinkExternal } from 'react-icons/bi';
+import { BiLinkExternal } from "react-icons/bi";
 
 const RecentlyViewed = (props) => {
   const {
@@ -30,7 +30,7 @@ const RecentlyViewed = (props) => {
   const [topPerformerModels, setTopPerformersModels] = useState([]);
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -101,7 +101,7 @@ const RecentlyViewed = (props) => {
 
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategies", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
         method: "get",
       })
         .then((response) => response.json())
@@ -211,7 +211,8 @@ const RecentlyViewed = (props) => {
         <div className="model-details-right-cards">
           <div className="model-details-right-card for-recent-card-margin">
             <div className="model-details-right-card-inner-recent">
-              <div className="link-model-names-div" 
+              <div
+                className="link-model-names-div"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
@@ -219,18 +220,18 @@ const RecentlyViewed = (props) => {
                       topPerformerModels
                     )[0].strategy_name.replace("_", "-")}`
                   );
-                }}>
+                }}
+              >
                 <h3>
                   {Object.values(topPerformerModels)[0]
-                    ? Object.values(topPerformerModels)[0].strategy_name.replace(
-                        "_",
-                        "-"
-                      )
+                    ? Object.values(
+                        topPerformerModels
+                      )[0].strategy_name.replace("_", "-")
                     : "Model Name"}
                 </h3>
-                <BiLinkExternal className="model-link-icon"/>
+                <BiLinkExternal className="model-link-icon" />
               </div>
-              
+
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
                 <p>
@@ -297,7 +298,8 @@ const RecentlyViewed = (props) => {
 
           <div className="model-details-right-card for-recent-card-margin">
             <div className="model-details-right-card-inner-recent">
-              <div className="link-model-names-div" 
+              <div
+                className="link-model-names-div"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
@@ -305,16 +307,16 @@ const RecentlyViewed = (props) => {
                       topPerformerModels
                     )[1].strategy_name.replace("_", "-")}`
                   );
-                }}>
+                }}
+              >
                 <h3>
                   {Object.values(topPerformerModels)[1]
-                    ? Object.values(topPerformerModels)[1].strategy_name.replace(
-                        "_",
-                        "-"
-                      )
+                    ? Object.values(
+                        topPerformerModels
+                      )[1].strategy_name.replace("_", "-")
                     : "Model Name"}
                 </h3>
-                <BiLinkExternal className="model-link-icon"/>
+                <BiLinkExternal className="model-link-icon" />
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
@@ -382,7 +384,8 @@ const RecentlyViewed = (props) => {
 
           <div className="model-details-right-card for-recent-card-margin">
             <div className="model-details-right-card-inner-recent">
-              <div className="link-model-names-div" 
+              <div
+                className="link-model-names-div"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
@@ -390,16 +393,16 @@ const RecentlyViewed = (props) => {
                       topPerformerModels
                     )[2].strategy_name.replace("_", "-")}`
                   );
-                }}>
+                }}
+              >
                 <h3>
                   {Object.values(topPerformerModels)[2]
-                    ? Object.values(topPerformerModels)[2].strategy_name.replace(
-                        "_",
-                        "-"
-                      )
+                    ? Object.values(
+                        topPerformerModels
+                      )[2].strategy_name.replace("_", "-")
                     : "Model Name"}
                 </h3>
-                <BiLinkExternal className="model-link-icon"/>
+                <BiLinkExternal className="model-link-icon" />
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
@@ -467,7 +470,8 @@ const RecentlyViewed = (props) => {
 
           <div className="model-details-right-card for-recent-card-margin">
             <div className="model-details-right-card-inner-recent">
-              <div className="link-model-names-div" 
+              <div
+                className="link-model-names-div"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
@@ -475,16 +479,16 @@ const RecentlyViewed = (props) => {
                       topPerformerModels
                     )[3].strategy_name.replace("_", "-")}`
                   );
-                }}>
+                }}
+              >
                 <h3>
                   {Object.values(topPerformerModels)[3]
-                    ? Object.values(topPerformerModels)[3].strategy_name.replace(
-                        "_",
-                        "-"
-                      )
+                    ? Object.values(
+                        topPerformerModels
+                      )[3].strategy_name.replace("_", "-")
                     : "Model Name"}
                 </h3>
-                <BiLinkExternal className="model-link-icon"/>
+                <BiLinkExternal className="model-link-icon" />
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
@@ -552,7 +556,8 @@ const RecentlyViewed = (props) => {
 
           <div className="model-details-right-card for-recent-card-margin">
             <div className="model-details-right-card-inner-recent">
-              <div className="link-model-names-div" 
+              <div
+                className="link-model-names-div"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   linkModels(
@@ -560,16 +565,16 @@ const RecentlyViewed = (props) => {
                       topPerformerModels
                     )[4].strategy_name.replace("_", "-")}`
                   );
-                }}>
+                }}
+              >
                 <h3>
                   {Object.values(topPerformerModels)[4]
-                    ? Object.values(topPerformerModels)[4].strategy_name.replace(
-                        "_",
-                        "-"
-                      )
+                    ? Object.values(
+                        topPerformerModels
+                      )[4].strategy_name.replace("_", "-")
                     : "Model Name"}
                 </h3>
-                <BiLinkExternal className="model-link-icon"/>
+                <BiLinkExternal className="model-link-icon" />
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />

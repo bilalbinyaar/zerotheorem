@@ -5,20 +5,42 @@ import React, {
   useState,
   memo,
 } from "react";
+import { createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import { useSelector, useDispatch } from "react-redux";
+import { set_day_mode, set_night_mode } from "./store";
 
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+  // const store = configureStore({
+  //   reducer: mySlice.reducer,
+  // });
+  // const myValue = useSelector((state) => state.mySlice.myValue);
+
   // Dark Light Mode
-  const [theme, setTheme] = useState("light-theme");
+  const default_theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+
+  console.log("Value of redux state -->", default_theme.theme);
+  const [theme, setTheme] = useState(default_theme.theme);
   const toggleTheme = () => {
     if (theme === "dark-theme") {
       setTheme("light-theme");
+      handleDayModeTheme();
       handleiamClick();
     } else {
       setTheme("dark-theme");
+      handleNightModeTheme();
       handleiamClick();
     }
+  };
+
+  const handleNightModeTheme = () => {
+    dispatch(set_night_mode());
+  };
+  const handleDayModeTheme = () => {
+    dispatch(set_day_mode());
   };
 
   useEffect(() => {

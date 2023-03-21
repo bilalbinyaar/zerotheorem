@@ -1,3 +1,3 @@
 - `sudo docker build -t node-docker-project .`
-- `docker tag node-docker-project gcr.io/annular-arena-374409/zt-rest-api`
-- `docker push gcr.io/annular-arena-374409/zt-rest-api`
+- `docker tag node-docker-project gcr.io/zt-backend-381310/zt-rest-api`
+- `docker push gcr.io/zt-backend-381310/zt-rest-api`

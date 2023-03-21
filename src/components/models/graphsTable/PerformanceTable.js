@@ -10,7 +10,7 @@ const PerformanceTable = (props) => {
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -71,7 +71,17 @@ const PerformanceTable = (props) => {
       setStats(stats_cache["stats"]);
     }
   }, []);
-
+  const forBgColor = (value, id) => {
+    if (id === "agg_profit") {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    } else {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    }
+  };
   return (
     <div className="table-card">
       <div className="table-card-head">
@@ -91,7 +101,18 @@ const PerformanceTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="agg_profit"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColor(
+                      stats[props.model_name].total_positive_pnl,
+                      "agg_profit"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].total_positive_pnl
                 : null}
@@ -108,7 +129,18 @@ const PerformanceTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="agg_loss"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColor(
+                      stats[props.model_name].total_positive_pnl,
+                      "agg_loss"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].total_negative_pnl
                 : null}
@@ -118,7 +150,10 @@ const PerformanceTable = (props) => {
           <tr className="for-table-row">
             <th className="for-table-head">
               Avg Daily PNL
-              <Tooltip className="performance-table-tooltip" title="Average daily PNL">
+              <Tooltip
+                className="performance-table-tooltip"
+                title="Average daily PNL"
+              >
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -132,7 +167,10 @@ const PerformanceTable = (props) => {
             </td>
             <th className="for-table-head">
               R2 Score
-              <Tooltip className="performance-table-tooltip" title="A measurement representing the descriptive power of the model. The closer the R2 score is to 1 the better the model is">
+              <Tooltip
+                className="performance-table-tooltip"
+                title="A measurement representing the descriptive power of the model. The closer the R2 score is to 1 the better the model is"
+              >
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -147,7 +185,10 @@ const PerformanceTable = (props) => {
           <tr className="for-table-row">
             <th className="for-table-head">
               Sharpe
-              <Tooltip className="performance-table-tooltip" title="The ratio of annualised yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is">
+              <Tooltip
+                className="performance-table-tooltip"
+                title="The ratio of annualized yield over standard deviation of yield that the model has experienced. The higher the Sharpe ratio the more consistent a model performance is"
+              >
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -158,7 +199,10 @@ const PerformanceTable = (props) => {
             </td>
             <th className="for-table-head">
               Sortino
-              <Tooltip className="performance-table-tooltip" title="The ratio of annualised yield over the negative standard deviation of yield that the model has experienced. The higher the Sortino ratio the less risky the model performance is">
+              <Tooltip
+                className="performance-table-tooltip"
+                title="The ratio of annualized yield over the negative standard deviation of yield that the model has experienced. The higher the Sortino ratio the less risky the model performance is"
+              >
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>

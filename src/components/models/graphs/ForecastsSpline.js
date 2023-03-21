@@ -16,7 +16,7 @@ const ForecastsSpline = (props) => {
   const [pnl, setPnl] = useState([]);
   useEffect(() => {
     if (!forecast_spline_graph_cache[props.model_name]) {
-      fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/${props.model_name}`, {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
         method: "get",
       })
         .then((response) => response.json())

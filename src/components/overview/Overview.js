@@ -12,7 +12,7 @@ const Overview = () => {
   useEffect(() => {
     if (Object.keys(position_stats_cache).length == 0) {
       fetch(
-        "https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get/position_percentage",
+        "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/position_percentage",
         {
           method: "get",
         }
