@@ -7,7 +7,7 @@ const Compare = () => {
   return (
     <React.Fragment>
         <Helmet>
-          <title>Zero Theorem | Performance comparison of different AI models</title>
+          <title>Zero Theorem | Comparison between Models</title>
           <meta
             name="description"
             content="Compare the information and performance metrics of different AI and ML models used in forecasting by applying different filters on time horizons, cryptocurrencies, and model names."

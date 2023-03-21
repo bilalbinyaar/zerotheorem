@@ -1,10 +1,15 @@
 .res-textual-section .container {
   /* padding: 1rem 3rem 2rem 3rem; */
-  padding: 1rem 0rem 0rem 0rem;
+  padding: 1rem 0rem 3rem 0rem;
+}
+
+.res-textual-section .container p {
+  line-height: 2;
 }
 
 .res-det-heading {
-  text-align: center;
+  text-align: left;
+  margin-top: 1rem;
 }
 
 .para-div-res {
@@ -14,6 +19,18 @@
 .for-resources-page video {
   border-radius: 10px;
   margin-top: 0.5rem;
+}
+
+.for-mt-primary {
+  margin-top: 2rem;
+}
+
+.for-mt-secondary {
+  margin-top: 0.8rem;
+}
+
+.for-text-align {
+  text-align: center;
 }
 
 @media screen and (max-width: 568px) {

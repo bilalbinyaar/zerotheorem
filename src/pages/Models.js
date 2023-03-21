@@ -36,7 +36,7 @@ const Models = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>Zero Theorem | Prediction model details</title>
+        <title>Zero Theorem | Forecast Model Details</title>
         <meta
           name="description"
           content="Detailed information about this AI-based Bitcoin prediction model's current position and historical performance including several metrics like sharpe, r2, sortino, win/loss etc."
