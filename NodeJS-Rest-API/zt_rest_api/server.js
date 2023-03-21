@@ -19,10 +19,10 @@ const mysql = require("mysql");
 // var ledgers_listeners_objs = [];
 const db = mysql.createPool({
   connectionLimit: 100,
-  host: "35.224.209.204",
-  user: "root",
+  host: "34.134.161.148",
+  user: "sorez",
   waitForConnections: true,
-  password: "Pak123@@@",
+  password: "sorez",
   database: "zero_theorem_mysql",
 });
 

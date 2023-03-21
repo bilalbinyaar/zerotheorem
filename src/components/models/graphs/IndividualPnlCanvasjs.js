@@ -29,7 +29,7 @@ const IndividualPnlCanvasjs = (props) => {
     if (!individual_pnl_graph_cache[props.model_name]) {
       // console.log("I received model name for graph -->", props.model_name);
 
-      fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/${props.model_name}`, {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
         method: "get",
       })
         .then((response) => response.json())

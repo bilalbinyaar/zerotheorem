@@ -16,7 +16,7 @@ const AreaLineChart = (props) => {
     if (!negative_graph_cache[props.model_name]) {
       // console.log("I received model name for graph -->", props.model_name);
 
-      fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/${props.model_name}`, {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
         method: "get",
       })
         .then((response) => response.json())
@@ -102,10 +102,8 @@ const AreaLineChart = (props) => {
       //disable vertical lines
       categoryAxis.renderer.grid.template.strokeWidth = 0;
 
-
       // Enable ClassNames for CSS
       am4core.options.autoSetClassName = true;
-
 
       // Add cursor
       chart.cursor = new am4charts.XYCursor();
@@ -117,7 +115,13 @@ const AreaLineChart = (props) => {
     }
   }, [data_for_pnl_graph]);
 
-  return  (<div className="container" id="chartdiv" style={{ width: "100%", height: "600px" }}></div>);
+  return (
+    <div
+      className="container"
+      id="chartdiv"
+      style={{ width: "100%", height: "600px" }}
+    ></div>
+  );
 };
 
 export default AreaLineChart;

@@ -182,11 +182,14 @@ const CompareComponent = () => {
   const location = useLocation();
   var model_name = "";
   var currency = "";
-  var time_horizon = "All";
+  var time_horizon = "";
+  var time_horizon2 = "All";
+
   if (location.state) {
     model_name = location.state.model_name;
     currency = location.state.currency;
     time_horizon = location.state.time_horizon;
+    time_horizon2 = location.state.time_horizon;
   }
   const [default_value, set_default_value] = useState({ label: model_name });
   const [strategies, setStrategies] = useState({});
@@ -194,7 +197,7 @@ const CompareComponent = () => {
     label: time_horizon,
   });
   const [time_horizon_selected2, set_time_horizon_selected2] = useState({
-    label: "Horizons",
+    label: time_horizon2,
   });
   const [currency_selected, set_currency_selected] = useState({
     label: currency,
@@ -202,7 +205,7 @@ const CompareComponent = () => {
   const [currency_selected2, set_currency_selected2] = useState({
     label: "Currencies",
   });
-  const [selectedItem, setSelectedItem] = useState(time_horizon);
+  const [selectedItem, setSelectedItem] = useState(time_horizon2);
 
   // console.log("Default value -->", default_value);
   // if (model_name.length == 0) {
@@ -542,7 +545,7 @@ const CompareComponent = () => {
 
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategies", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
         method: "get",
       })
         .then((response) => response.json())
@@ -658,7 +661,7 @@ const CompareComponent = () => {
   }, []);
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -4718,7 +4721,7 @@ const CompareComponent = () => {
                     id={"pnl19"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                           })
@@ -4734,7 +4737,7 @@ const CompareComponent = () => {
                     id={"pnl20"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                           })
@@ -6470,23 +6473,23 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                             value3: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_2].max_drawdown, "pnl20"],
                             value2: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
@@ -6504,23 +6507,23 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                             value3: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_2].max_drawdown, "pnl20"],
                             value2: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
@@ -6538,23 +6541,23 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                             value3: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_2].max_drawdown, "pnl20"],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_2].max_drawdown, "pnl20"],
                             value2: [stats[model_name_3].max_drawdown, "pnl21"],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [stats[model_name_1].max_drawdown, "pnl19"],
                             value2: [stats[model_name_3].max_drawdown, "pnl21"],
                           })

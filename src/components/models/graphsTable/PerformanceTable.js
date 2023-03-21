@@ -10,7 +10,7 @@ const PerformanceTable = (props) => {
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())

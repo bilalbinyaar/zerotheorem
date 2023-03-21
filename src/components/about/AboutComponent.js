@@ -49,18 +49,19 @@ const AboutComponent = () => {
                 <p className="mission-text for-line-height">
                   Our aim is to provide pricing certainty for those utilizing
                   Bitcoin for transactional activities, whether that may be the
-                  commodity producer (miner) all the way to the point of service
-                  provider (who is facilitating commerce). Having a valuation
-                  model helps manage risk and inventory balances especially in
-                  a time of high volatility or unfavorable market sentiment.
+                  commodity producer (miner) or all the way to the point of
+                  service provider (who is facilitating commerce). Having a
+                  valuation model helps manage risk and inventory balances
+                  especially in a time of high volatility or unfavorable market
+                  sentiment.
                   <br />
                   <br />
                   We provide a data driven valuation approach based on
-                  economics, statistics and advances in machine learning.
+                  economics, statistics, and advances in machine learning.
                   <br />
                   <br />
                   We make our models transparent for public critique with all
-                  the corresponding theory, historical and live performance
+                  the corresponding theory, historical, and live performance
                   metrics.
                 </p>
               </div>
@@ -89,7 +90,7 @@ const AboutComponent = () => {
                   <br />
                   We may use Google AdSense and other onsite marketing to
                   finance the costs associated with the website, data collection
-                  services, backend development and GPU usage, so that Zero
+                  services, backend development, and GPU usage, so that Zero
                   Theorem remains a free service to the community.
                 </p>
               </div>
@@ -108,10 +109,10 @@ const AboutComponent = () => {
               )}
               <div className="about-text text-align-left justify-text">
                 <p className="mission-text for-line-height">
-                  For us any pricing proof should be validated based on the
+                  For us, any pricing proof should be validated based on the
                   output of its primary use case, trading (or {link}). If a
                   model/theory were to have future insight and undeniable
-                  explanatory power its hypothetical trading outputs based on
+                  explanatory power, its hypothetical trading outputs based on
                   its directional forecasts should demonstrate the following
                   characteristics:
                   <br />
@@ -159,8 +160,8 @@ const AboutComponent = () => {
             ZERO. Hence, for Bitcoin to have any kind of value, it must be
             absorbing this value from multiple alternative asset classes (P
             <sub>k</sub> = price of k asset, R<sub>k</sub> = volume traded of k
-            asset) via a substitutional phenomenon a<sub>k</sub>. In addition our
-            equation includes the transactional utility (T<sub>j</sub>
+            asset) via a substitutional phenomenon 𝛼<sub>k</sub>. In addition,
+            our equation includes the transactional utility (T<sub>j</sub>
             <sup>'</sup>= velocity of transactions) of the network itself and
             the cost of network maintenance via the mining variables (b = block
             reward, h = hash rate, d = difficulty). The only unknown variable in
@@ -197,8 +198,8 @@ const AboutComponent = () => {
             </span>
             <span>
               <p>
-                Even though we use a combination of statistical, econometric and
-                machine learning methods to estimate value, we will never
+                Even though we use a combination of statistical, econometric,
+                and machine learning methods to estimate value, we will never
                 overlook the stochastic properties of reality for the pristine
                 beauty of mathematical formulation.
               </p>
@@ -210,9 +211,9 @@ const AboutComponent = () => {
             </span>
             <span>
               <p>
-                We present make clear the assumptions, oversights and accuracy of
-                our models to those who intent to use them and never claim that
-                they have the full explanatory insights into real world market
+                We present clear assumptions, oversights, and accuracy of our
+                models to those who intend to use them and never claim that they
+                have the full explanatory insights into real world market
                 dynamics.
               </p>
             </span>
@@ -223,7 +224,7 @@ const AboutComponent = () => {
             </span>
             <span>
               <p>
-                We understand that our models can provoke past, current and
+                We understand that our models can provoke past, current, and
                 future economic theories and accept that our work may result in
                 consequences on society that can be far beyond our own
                 comprehension.
@@ -286,9 +287,9 @@ const AboutComponent = () => {
                 the reason we were chosen, if chosen we were, to go on living
                 with this misfortune.
                 <br />
-                We came back to our childhood place... it seemed to suit us... and
-                in isolation... from the ashes... and from zero... a theory was
-                conceived.
+                We came back to our childhood place... it seemed to suit us...
+                and in isolation... from the ashes... and from zero... a theory
+                was conceived.
                 <br />
                 For us it was something to occupy our mind... something to
                 cultivate... something to hold on to.

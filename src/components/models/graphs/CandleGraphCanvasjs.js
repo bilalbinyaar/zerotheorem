@@ -66,7 +66,7 @@ function CandleGraphCanvasjs(props) {
   } = useStateContext();
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategies", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
         method: "get",
       })
         .then((response) => response.json())
@@ -156,7 +156,7 @@ function CandleGraphCanvasjs(props) {
   const [current_position, set_current_position] = useState({});
   useEffect(() => {
     // console.log("Here is it ", strategies[props.model_name]);
-    fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get/current_position`)
+    fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
       .then((res) => res.json())
       .then((data) => {
         const temp_data = {};
@@ -189,7 +189,7 @@ function CandleGraphCanvasjs(props) {
     } else {
       // console.log("Here is it ", strategies[props.model_name]);
       fetch(
-        `https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_btc_minute_data/${parseInt(
+        `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${parseInt(
           strategies[props.model_name].position_start_time
         )}`
       )
@@ -471,7 +471,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans no-padding">
                   <span>Open : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).color ? (
                       <span
                         style={{
                           color:
@@ -494,7 +494,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>High : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).color ? (
                       <span
                         style={{
                           color:
@@ -517,7 +517,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>Low : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).color ? (
                       <span
                         style={{
                           color:
@@ -540,7 +540,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>Close : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).color ? (
                       <span
                         style={{
                           color:

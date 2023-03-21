@@ -1225,6 +1225,9 @@ a {
 .hidden > div > div:last-child {
   display: none;
 }
-canvas > div > div > div > div:first-child {
+.canvas > div > div > div > div:first-child {
   display: none;
+}
+.canvasjs-chart-credit {
+  display: none !important;
 }

@@ -32,7 +32,7 @@ const ForecastCards = () => {
   const [topPerformerModels, setTopPerformersModels] = useState([]);
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -103,7 +103,7 @@ const ForecastCards = () => {
 
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategies", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
         method: "get",
       })
         .then((response) => response.json())

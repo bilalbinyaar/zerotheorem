@@ -7,7 +7,7 @@ const ModelDetailsTable = (props) => {
   // console.log("Here I will get strategy for -->", props.model_name);
   useEffect(() => {
     fetch(
-      `https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategy/${props.model_name}`,
+      `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategy/${props.model_name}`,
       {
         method: "get",
       }
@@ -37,7 +37,7 @@ const ModelDetailsTable = (props) => {
 
   useEffect(() => {
     fetch(
-      `https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stat/${props.model_name}`,
+      `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stat/${props.model_name}`,
       {
         method: "get",
       }

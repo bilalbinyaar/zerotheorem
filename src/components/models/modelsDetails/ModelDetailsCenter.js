@@ -25,7 +25,7 @@ const ModelDetailsCenter = (props) => {
 
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
-      fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_stats", {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
         method: "get",
       })
         .then((response) => response.json())
@@ -91,7 +91,7 @@ const ModelDetailsCenter = (props) => {
   const [current_position, set_current_position] = useState({});
   useEffect(() => {
     // console.log("Here is it ", strategies[props.model_name]);
-    fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get/current_position`)
+    fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
       .then((res) => res.json())
       .then((data) => {
         const temp_data = {};
@@ -118,7 +118,7 @@ const ModelDetailsCenter = (props) => {
       return;
     } else {
       if (Object.keys(strategies_cache).length == 0) {
-        fetch("https://zt-rest-api-3hwk7v5hda-uc.a.run.app/get_strategies", {
+        fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
           method: "get",
         })
           .then((response) => response.json())

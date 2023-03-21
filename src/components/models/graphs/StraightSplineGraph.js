@@ -14,7 +14,7 @@ const StraightSplineGraph = React.memo(({ model_name }) => {
     if (!straight_spline_graph_cache[model_name]) {
       // console.log("I received model name for graph -->", model_name);
 
-      fetch(`https://zt-rest-api-3hwk7v5hda-uc.a.run.app/${model_name}`, {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${model_name}`, {
         method: "get",
       })
         .then((response) => response.json())
