@@ -74,9 +74,9 @@ const AlternativeGumbelModelforAlpha = () => {
 X=\sum_{k=1}^n P_k \cdot R_k \cdot p_k \cdot q_k \cdot t^{-p k-1} \cdot \exp \left[-q_k t^{-p_k}\right]
             \end{eqnarray}`} />
             <p className="for-mt-secondary">and</p>
-            <MathComponent tex={String.raw`\begin{eqnarray}
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 X^{\prime}=\frac{\partial X}{\partial t}
-            \end{eqnarray}`} />
+            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">we have</p>
             <MathComponent tex={String.raw`\begin{eqnarray}
 & X^{\prime}=\frac{\partial}{\partial t}\left(\sum_{k=1}^n P_k \cdot R_k \cdot p_k \cdot q_k \cdot t^{-p_k-1} \cdot \exp \left[-q_k t^{-p_k}\right]\right)= \\

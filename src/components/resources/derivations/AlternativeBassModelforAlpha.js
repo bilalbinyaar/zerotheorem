@@ -21,7 +21,7 @@ const AlternativeBassModelforAlpha = () => {
           <div className="container">
             <h1 className='res-det-heading'>Bass Model for Alpha</h1>
             <p className="for-mt-secondary">For the absorption rate α<sub>k</sub> we consider the following model based on the well-known Bass Diffusion</p>
-            <MathComponent tex={String.raw`\alpha_k=\frac{1-\exp \left[-\left(p_k+q_k\right) t\right]}{1+\frac{p_k}{q_k} \cdot \exp \left[-\left(p_k+q_k\right) t\right]}`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\alpha_k=\frac{1-\exp \left[-\left(p_k+q_k\right) t\right]}{1+\frac{p_k}{q_k} \cdot \exp \left[-\left(p_k+q_k\right) t\right]}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">where p<sub>k</sub> and q<sub>k</sub> are time-dependent coefficients to be estimated.
             <br/>
             Then, Π<sub>BTC</sub> will obtain the following form:
@@ -144,7 +144,6 @@ const AlternativeBassModelforAlpha = () => {
 
 
             \end{eqnarray}`} />
-            <MathComponent tex={String.raw`dummy`} />
             <p className="for-mt-secondary">in which</p>
             <MathComponent tex={String.raw`\begin{eqnarray}
 
@@ -227,10 +226,10 @@ const AlternativeBassModelforAlpha = () => {
             \end{eqnarray}`} />
 
             <p className="for-mt-secondary">Apparently,</p>
-            <MathComponent tex={String.raw`\begin{eqnarray}
+            <MathComponent tex={String.raw` \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 
 \frac{\partial X}{\partial p_k^{\prime}}=\frac{\partial X}{\partial q_k^{\prime}}=0,
-            \end{eqnarray}`} />
+            \end{eqnarray}  \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">and</p>
             <MathComponent tex={String.raw`\begin{eqnarray}
            \frac{\partial X^{\prime}}{\partial p_k^{\prime}} & =\frac{\partial}{\partial p_k^{\prime}}\left[\sum_{k=1}^n P_k \cdot R_k \cdot q_k \cdot \frac{\left(p_k+q_k+\left(p_k^{\prime}+q_k^{\prime}\right) \cdot t\right) \cdot \exp \left[-\left(p_k+q_k\right) t\right]}{q_k+p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]}\right]- \\
@@ -252,9 +251,9 @@ const AlternativeBassModelforAlpha = () => {
 & =\frac{P_k \cdot R_k \cdot q_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]}{\left(q_k+p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]\right)^2}\left[\left(q_k+p_k\right) \cdot t+p_k \cdot t \cdot \exp \left[-\left(p_k+q_k\right) t\right]-1\right],
             \end{eqnarray}`} />
             <p className="for-mt-secondary">i.e.,</p>
-            <MathComponent tex={String.raw`\begin{eqnarray}
+            <MathComponent tex={String.raw` \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
            \frac{\partial X^{\prime}}{\partial p_k^{\prime}}=\frac{\partial X^{\prime}}{\partial q_k^{\prime}} .
-            \end{eqnarray}`} />
+            \end{eqnarray} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
 
 
 

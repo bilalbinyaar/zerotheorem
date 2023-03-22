@@ -21,9 +21,9 @@ const FrechetDerivation = () => {
           <div className="container">
             <h1 className='res-det-heading'>Frechet Model for Alpha</h1>
             <p className="for-mt-secondary">For the absorption rate α<sub>k</sub> we consider the following model based on the well-known Frechet distribution:</p>
-            <MathComponent tex={String.raw`\begin{eqnarray}
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 \alpha_k=p_k \cdot q_k \cdot t^{-p_k-1}
-            \end{eqnarray}`} />
+            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">where p<sub>k</sub> and q<sub>k</sub> are to be estimated
             <br/>
             Then, Π<sub>BTC</sub> will obtain the following form:
@@ -63,9 +63,9 @@ const FrechetDerivation = () => {
             Taking into account that
             </p>
             
-            <MathComponent tex={String.raw`\begin{eqnarray}
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 \frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n P_k \cdot R_k \cdot p_k \cdot q_k \cdot t^{-p_k-1}\right)\right]=\frac{X^{\prime}}{X}
-            \end{eqnarray}`} />
+            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">where</p>
             
             <MathComponent tex={String.raw`\begin{eqnarray}

@@ -957,6 +957,7 @@ mjx-container[jax="SVG"] > svg {
 @media screen and (max-width: 568px) {
   mjx-container[jax="SVG"] > svg {
     width: 92%;
+    height: 100%;
   }
 }
 

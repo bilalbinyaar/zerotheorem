@@ -66,9 +66,9 @@ const AlternativeWeibulModelforAlpha = () => {
 X=\sum_{k=1}^n P_k \cdot R_k \cdot \frac{p_k}{q_k} \cdot\left(\frac{t}{q_k}\right)^{p_k-1} \cdot \exp \left[-\left(\frac{t}{q_k}\right)^{p_k}\right]
             \end{eqnarray}`} />
             <p className="for-mt-secondary">and</p>
-            <MathComponent tex={String.raw`\begin{eqnarray}
+            <MathComponent height='10px' tex={String.raw`\begin{eqnarray} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
 X^{\prime}=\frac{\partial X}{\partial t}
-            \end{eqnarray}`} />
+            \end{eqnarray} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">we have</p>
             <MathComponent tex={String.raw`\begin{eqnarray}
 X^{\prime} & =\frac{\partial}{\partial t}\left(\sum_{k=1}^n P_k \cdot R_k \cdot \frac{p_k}{q_k} \cdot\left(\frac{t}{q_k}\right)^{p_k-1} \cdot \exp \left[-\left(\frac{t}{q_k}\right)^{p_k}\right]\right)= \\

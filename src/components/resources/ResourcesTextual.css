@@ -33,6 +33,20 @@
   text-align: center;
 }
 
+.derivations-h1 {
+  font-size: 30px;
+}
+
+.derivations-h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.derivations-h3 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .margin-left {
   margin-left: 0.8rem;
 }
@@ -48,4 +62,21 @@
   .res-det-heading {
     font-size: 16px;
   }
+
+.derivations-h1 {
+  font-size: 20px;
+}
+
+.derivations-h2 {
+  font-size: 14px;
+}
+
+.derivations-h3 {
+  font-size: 11px;
+}
+
+.controlled-height .MathJax svg{
+  height: 10px !important;
+}
+
 }
