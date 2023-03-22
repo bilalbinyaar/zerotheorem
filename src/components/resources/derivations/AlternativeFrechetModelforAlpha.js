@@ -4,6 +4,8 @@ import P1Day from "../../../assets/resources/11.png";
 import P1Night from "../../../assets/resources/11-white.png";
 import SideBar from "../sidebar/SideBar";
 import { useStateContext } from "../../../ContextProvider";
+import { MathComponent } from "mathjax-react";
+
 
 const FrechetDerivation = () => {
   const { theme } = useStateContext();
@@ -17,8 +19,70 @@ const FrechetDerivation = () => {
       <div className="res-textual">
         <div className="res-textual-section">
           <div className="container">
-            {/* <h1 className='res-det-heading'>Introduction</h1> */}
-            <div className="document">
+            <h1 className='res-det-heading'>Frechet Model for Alpha</h1>
+            <p className="for-mt-secondary">For the absorption rate α<sub>k</sub> we consider the following model based on the well-known Frechet distribution:</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">where p<sub>k</sub> and q<sub>k</sub> are to be estimated
+            <br/>
+            Then, Π<sub>BTC</sub> will obtain the following form:
+            </p>
+            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`dummy`} />
+
+
+            <h2 className="for-mt-primary">Frechet Derivations</h2>
+            <p className="for-mt-secondary">Here we calculate the sensitivity derivatives of</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">and</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">with respect to p<sub>k</sub> and q<sub>k</sub>.
+            <br/>
+            Apparently,
+            </p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">and</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">since other terms do not depend on p<sub>k</sub> and q<sub>k</sub>.
+            <br/>
+            Taking into account that
+            </p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">where</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">we have</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Let us now calculate the sensitivity derivative</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Evidently,</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Applying the multiplication derivative rule, we get</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Thus,</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">On the other hand</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Substituting the above expressions into the sensitivity derivative, we finally obtain</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Let us now proceed with calculating the derivative of Π<sub>BTC</sub> with respect to qk. To that aim, notice that X and X′ are linear in qk leading to</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">and</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Similarly, in the case of q<sub>k</sub>, we have</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Let us now proceed to the sensitivity derivatives calculations for ln P<sub>BTC</sub>. Apparently</p>
+            <MathComponent tex={String.raw`dummy`} />
+            <p className="for-mt-secondary">Similarly,</p>
+            <MathComponent tex={String.raw`dummy`} />
+
+
+
+            
+            {/* <div className="document">
               {theme === "dark-theme" ? (
                 <div className="img-doc">
                   <img src={P1Night} alt="p1" />
@@ -28,7 +92,7 @@ const FrechetDerivation = () => {
                   <img src={P1Day} alt="p1" />
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

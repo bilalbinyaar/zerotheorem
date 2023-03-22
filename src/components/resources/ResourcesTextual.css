@@ -33,6 +33,9 @@
   text-align: center;
 }
 
+.margin-left {
+  margin-left: 0.8rem;
+}
 @media screen and (max-width: 568px) {
   .res-textual-section .container {
     padding: 1.5rem 0rem;

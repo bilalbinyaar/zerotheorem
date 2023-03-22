@@ -12,6 +12,8 @@ import { useStateContext } from "../../ContextProvider";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import EquationBlack from "../../assets/equation-black.png";
 import EquationWhite from "../../assets/equation-white.png";
+import { MathComponent } from "mathjax-react";
+
 
 const AboutComponent = () => {
   // FOR RESPONSIVENESS
@@ -142,15 +144,10 @@ const AboutComponent = () => {
             Our <span className="color-yellow">Equation</span>
           </h1>
         </div>
-        {theme === "dark-theme" ? (
-          <div className="equation-img equation-img-about">
-            <img src={EquationWhite} alt="p1" />
-          </div>
-        ) : (
-          <div className="equation-img equation-img-about">
-            <img src={EquationBlack} alt="p1" />
-          </div>
-        )}
+        <div className="equation-img equation-img-about">
+          <MathComponent tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`} />
+        </div>
+
 
         <div className="about-text text-align-left for-mb justify-text">
           <p className="equatinon-description for-line-height">

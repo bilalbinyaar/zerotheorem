@@ -954,6 +954,11 @@ a {
 mjx-container[jax="SVG"] > svg {
   color: var(--color-day-black);
 }
+@media screen and (max-width: 568px) {
+  mjx-container[jax="SVG"] > svg {
+    width: 92%;
+  }
+}
 
 .hidden > div > div:last-child {
   display: none;

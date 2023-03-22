@@ -22,7 +22,7 @@ const RepresentationofaNewAssetClassviaSubstitution = () => {
             <p className="for-mt-primary">First, consider the case of 2 assets. Then, the Wronskian of the functions M<sub>1</sub> and M<sub>2</sub> will be</p>
             <MathComponent tex={String.raw`W\left(M_1, M_2\right)=\left|\begin{array}{ll}M_1 & M_2 \\M_1^{\prime} & M_2^{\prime}\end{array}\right|=M_1 \cdot M_2^{\prime}-M_1^{\prime} \cdot M_2`} />
             <p className="for-mt-secondary">On the other hand, we know that</p>
-            <MathComponent tex={String.raw`\frac{\partial\left(M_1+M_2\right)}{\partial t}=M_1^{\prime}+M_2^{\prime}=0,`} />
+            <MathComponent tex={String.raw`\frac{\partial\left(M_1+M_2\right)}{\partial t}=M_1^{\prime}+M_2^{\prime}=0, \;\;\;\;\;\;(1)`} />
             <p className="for-mt-secondary">leading to</p>
             <MathComponent tex={String.raw`M_1^{\prime}=-M_2^{\prime}`} />
             <p className="for-mt-secondary">Substituting this into the expression for W (M<sub>1</sub>, M<sub>2</sub>), we obtain that</p>
@@ -41,11 +41,11 @@ const RepresentationofaNewAssetClassviaSubstitution = () => {
             basis for a new, higher-dimensional vector space, in which, any new asset M4 can be represented
             as
             </p>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`M_4=\omega_1 \cdot M_1+\omega_2 \cdot M_2+\omega_3 M_3 .`} />
             <p className="for-mt-secondary">In a similar fashion, one can show that in the n-dimensional space with basis functions M<sub>1</sub>,
             M<sub>2</sub>, . . ., M<sub>n</sub>, the new asset M<sub>BTC</sub> can be represented as
             </p>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`M_{\mathrm{BTC}}=\sum_{k=1}^n \omega_k \cdot M_k \;\;\;\;\;\;(2)`} />
             <p className="for-mt-secondary">with ω<sub>k</sub> ̸= −1 which is satisfied in our case since all ωk &gt; 0.
             <br/>
             Hereinafter, M<sub>k</sub> is regarded as the total capitalization of Market k, and ω<sub>k</sub>– as the substitution of Market k.
