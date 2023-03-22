@@ -471,7 +471,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans no-padding">
                   <span>Open : </span>
                   <span className="">
-                    {Object.values(dataPoints1).color ? (
+                    {Object.values(dataPoints1) ? (
                       <span
                         style={{
                           color:
@@ -494,7 +494,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>High : </span>
                   <span className="">
-                    {Object.values(dataPoints1).color ? (
+                    {Object.values(dataPoints1) ? (
                       <span
                         style={{
                           color:
@@ -517,7 +517,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>Low : </span>
                   <span className="">
-                    {Object.values(dataPoints1).color ? (
+                    {Object.values(dataPoints1) ? (
                       <span
                         style={{
                           color:
@@ -540,7 +540,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>Close : </span>
                   <span className="">
-                    {Object.values(dataPoints1).color ? (
+                    {Object.values(dataPoints1) ? (
                       <span
                         style={{
                           color:

@@ -22,8 +22,7 @@ import CanvasjsSplineAreaChartWithRangeSelecetor from "../components/models/grap
 import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/CanvasjsDrawdownWithSliderRange";
 import TradingViewSplineAreaChart from "../components/models/graphs/TvSplineAreaChart";
 import TradingViewWidgetGraph from "../components/models/graphs/TradingViewWidgetGraph";
-import { Helmet } from 'react-helmet';
-
+import { Helmet } from "react-helmet";
 
 const Models = () => {
   const location = useLocation();
@@ -36,7 +35,7 @@ const Models = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>Zero Theorem | Prediction model details</title>
+        <title>Zero Theorem | Forecast Model Details</title>
         <meta
           name="description"
           content="Detailed information about this AI-based Bitcoin prediction model's current position and historical performance including several metrics like sharpe, r2, sortino, win/loss etc."
