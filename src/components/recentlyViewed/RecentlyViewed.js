@@ -1,6 +1,5 @@
-import React from "react";
-
 import { Link } from "react-router-dom";
+import React, { useRef } from "react";
 import "./RecentlyViewed.css";
 import {
   AiFillCaretUp,
@@ -13,6 +12,8 @@ import { useStateContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
 import SplineTradeViewCard from "../models/graphs/SplineTradeViewCard";
 import { BiLinkExternal } from "react-icons/bi";
+import { BsArrowRightShort } from "react-icons/bs";
+import { Tooltip } from "@mui/material";
 
 const RecentlyViewed = (props) => {
   const {
@@ -196,8 +197,19 @@ const RecentlyViewed = (props) => {
   }, [topPerformerModels]);
   const linkModels = useNavigate();
 
+  const containerRef = useRef(null);
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (container.scrollLeft > 0) {
+      document.getElementById("toHidePopular").style.display = "none";
+    }
+  };
+
   return (
     <div className="container recently-viewd">
+      <div className="swipe-right-popular" id="toHidePopular">
+        <BsArrowRightShort className="swipe-right-icon" />
+      </div>
       <div>
         <h2>Popular Models</h2>
       </div>
@@ -210,7 +222,12 @@ const RecentlyViewed = (props) => {
                 </IconButton>
                 </Tooltip>
             </div> */}
-        <div className="model-details-right-cards">
+        <div
+          className="model-details-right-cards mobile-version"
+          ref={containerRef}
+          style={{ overflowX: "scroll" }}
+          onScroll={handleScroll}
+        >
           <div className="model-details-right-card for-recent-card-margin">
             <div className="model-details-right-card-inner-recent">
               <div
@@ -235,7 +252,7 @@ const RecentlyViewed = (props) => {
                         {Object.values(
                           topPerformerModels
                         )[0].strategy_name.replace("_", "-")}
-                        <BiLinkExternal className="model-link-icon" />
+                        {/* <BiLinkExternal className="model-link-icon" /> */}
                       </h3>
                     </Link>
                   </div>
@@ -678,6 +695,514 @@ const RecentlyViewed = (props) => {
                       </p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-graph">
+              {Object.values(topPerformerModels)[4] ? (
+                <ModelDetailsRightGraph
+                  model_name={
+                    Object.values(topPerformerModels)[4].strategy_name
+                  }
+                />
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <div className="model-details-right-cards web-version">
+          <div className="model-details-right-card for-recent-card-margin">
+            <div className="model-details-right-card-inner-recent">
+              <div
+                className="link-model-names-div"
+                style={{ cursor: "pointer" }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[0].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
+              >
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
+                        topPerformerModels
+                      )[0].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[0].strategy_name.replace("_", "-")}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
+              </div>
+
+              <div className="model-details-right-percentage">
+                <AiFillCaretUp className="model-details-right-percentage-icon" />
+                <p>
+                  {Object.values(topPerformerModels)[0] &&
+                  strategies[Object.values(topPerformerModels)[0].strategy_name]
+                    ? `${Object.values(topPerformerModels)[0].total_pnl}`
+                    : null}
+                  {"%"}
+                </p>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-body-recent">
+              {/* <h2>64%</h2> */}
+              <div className="model-details-right-percentage-recent">
+                <div className="model-details-left-body-recent">
+                  {/* TIME HORIZON */}
+                  <Tooltip title="Time Horizon">
+                    <div className="model-details-left-body-stats for-recent-margin hours">
+                      <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                      <p>
+                        {Object.values(topPerformerModels)[0] &&
+                        strategies[
+                          Object.values(topPerformerModels)[0].strategy_name
+                        ]
+                          ? `${
+                              strategies[
+                                Object.values(topPerformerModels)[0]
+                                  .strategy_name
+                              ].time_horizon
+                            }`
+                          : null}
+                      </p>
+                    </div>
+                  </Tooltip>
+                  {/* CURRENCY */}
+                  <Tooltip title="Currency">
+                    <div className="model-details-left-body">
+                      <div className="model-details-left-body-stats for-recent-margin hours">
+                        <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
+                        <p>
+                          {Object.values(topPerformerModels)[0] &&
+                          strategies[
+                            Object.values(topPerformerModels)[0].strategy_name
+                          ]
+                            ? `${
+                                strategies[
+                                  Object.values(topPerformerModels)[0]
+                                    .strategy_name
+                                ].currency
+                              }`
+                            : null}
+                        </p>
+                      </div>
+                    </div>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-graph">
+              {Object.values(topPerformerModels)[0] ? (
+                <ModelDetailsRightGraph
+                  model_name={
+                    Object.values(topPerformerModels)[0].strategy_name
+                  }
+                />
+              ) : null}
+            </div>
+          </div>
+
+          <div className="model-details-right-card for-recent-card-margin">
+            <div className="model-details-right-card-inner-recent">
+              <div
+                className="link-model-names-div"
+                style={{ cursor: "pointer" }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[1].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
+              >
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
+                        topPerformerModels
+                      )[1].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[1].strategy_name.replace("_", "-")}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
+              </div>
+              <div className="model-details-right-percentage">
+                <AiFillCaretUp className="model-details-right-percentage-icon" />
+                <p>
+                  {Object.values(topPerformerModels)[1] &&
+                  strategies[Object.values(topPerformerModels)[1].strategy_name]
+                    ? `${Object.values(topPerformerModels)[1].total_pnl}`
+                    : null}
+                  {"%"}
+                </p>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-body-recent">
+              {/* <h2>64%</h2> */}
+              <div className="model-details-right-percentage-recent">
+                <div className="model-details-left-body-recent">
+                  {/* TIME HORIZON */}
+                  <Tooltip title="Time Horizon">
+                    <div className="model-details-left-body-stats for-recent-margin hours">
+                      <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                      <p>
+                        {Object.values(topPerformerModels)[1] &&
+                        strategies[
+                          Object.values(topPerformerModels)[1].strategy_name
+                        ]
+                          ? `${
+                              strategies[
+                                Object.values(topPerformerModels)[1]
+                                  .strategy_name
+                              ].time_horizon
+                            }`
+                          : null}
+                      </p>
+                    </div>
+                  </Tooltip>
+                  {/* CURRENCY */}
+                  <Tooltip title="Currency">
+                    <div className="model-details-left-body">
+                      <div className="model-details-left-body-stats for-recent-margin hours">
+                        <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
+                        <p>
+                          {Object.values(topPerformerModels)[1] &&
+                          strategies[
+                            Object.values(topPerformerModels)[1].strategy_name
+                          ]
+                            ? `${
+                                strategies[
+                                  Object.values(topPerformerModels)[1]
+                                    .strategy_name
+                                ].currency
+                              }`
+                            : null}
+                        </p>
+                      </div>
+                    </div>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-graph">
+              {Object.values(topPerformerModels)[1] ? (
+                <ModelDetailsRightGraph
+                  model_name={
+                    Object.values(topPerformerModels)[1].strategy_name
+                  }
+                />
+              ) : null}
+            </div>
+          </div>
+
+          <div className="model-details-right-card for-recent-card-margin">
+            <div className="model-details-right-card-inner-recent">
+              <div
+                className="link-model-names-div"
+                style={{ cursor: "pointer" }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[2].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
+              >
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
+                        topPerformerModels
+                      )[2].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[2].strategy_name.replace("_", "-")}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
+              </div>
+              <div className="model-details-right-percentage">
+                <AiFillCaretUp className="model-details-right-percentage-icon" />
+                <p>
+                  {Object.values(topPerformerModels)[2] &&
+                  strategies[Object.values(topPerformerModels)[2].strategy_name]
+                    ? `${Object.values(topPerformerModels)[2].total_pnl}`
+                    : null}
+                  {"%"}
+                </p>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-body-recent">
+              {/* <h2>64%</h2> */}
+              <div className="model-details-right-percentage-recent">
+                <div className="model-details-left-body-recent">
+                  {/* TIME HORIZON */}
+                  <Tooltip title="Time Horizon">
+                    <div className="model-details-left-body-stats for-recent-margin hours">
+                      <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                      <p>
+                        {Object.values(topPerformerModels)[2] &&
+                        strategies[
+                          Object.values(topPerformerModels)[2].strategy_name
+                        ]
+                          ? `${
+                              strategies[
+                                Object.values(topPerformerModels)[2]
+                                  .strategy_name
+                              ].time_horizon
+                            }`
+                          : null}
+                      </p>
+                    </div>
+                  </Tooltip>
+                  {/* CURRENCY */}
+                  <Tooltip title="Currency">
+                    <div className="model-details-left-body">
+                      <div className="model-details-left-body-stats for-recent-margin hours">
+                        <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
+                        <p>
+                          {Object.values(topPerformerModels)[2] &&
+                          strategies[
+                            Object.values(topPerformerModels)[2].strategy_name
+                          ]
+                            ? `${
+                                strategies[
+                                  Object.values(topPerformerModels)[2]
+                                    .strategy_name
+                                ].currency
+                              }`
+                            : null}
+                        </p>
+                      </div>
+                    </div>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-graph">
+              {Object.values(topPerformerModels)[2] ? (
+                <ModelDetailsRightGraph
+                  model_name={
+                    Object.values(topPerformerModels)[2].strategy_name
+                  }
+                />
+              ) : null}
+            </div>
+          </div>
+
+          <div className="model-details-right-card for-recent-card-margin">
+            <div className="model-details-right-card-inner-recent">
+              <div
+                className="link-model-names-div"
+                style={{ cursor: "pointer" }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[3].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
+              >
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
+                        topPerformerModels
+                      )[3].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[3].strategy_name.replace("_", "-")}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
+              </div>
+              <div className="model-details-right-percentage">
+                <AiFillCaretUp className="model-details-right-percentage-icon" />
+                <p>
+                  {Object.values(topPerformerModels)[3] &&
+                  strategies[Object.values(topPerformerModels)[3].strategy_name]
+                    ? `${Object.values(topPerformerModels)[3].total_pnl}`
+                    : null}
+                  {"%"}
+                </p>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-body-recent">
+              {/* <h2>64%</h2> */}
+              <div className="model-details-right-percentage-recent">
+                <div className="model-details-left-body-recent">
+                  {/* TIME HORIZON */}
+                  <Tooltip title="Time Horizon">
+                    <div className="model-details-left-body-stats for-recent-margin hours">
+                      <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                      <p>
+                        {Object.values(topPerformerModels)[3] &&
+                        strategies[
+                          Object.values(topPerformerModels)[3].strategy_name
+                        ]
+                          ? `${
+                              strategies[
+                                Object.values(topPerformerModels)[3]
+                                  .strategy_name
+                              ].time_horizon
+                            }`
+                          : null}
+                      </p>
+                    </div>
+                  </Tooltip>
+                  {/* CURRENCY */}
+                  <Tooltip title="Currency">
+                    <div className="model-details-left-body">
+                      <div className="model-details-left-body-stats for-recent-margin hours">
+                        <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
+                        <p>
+                          {Object.values(topPerformerModels)[3] &&
+                          strategies[
+                            Object.values(topPerformerModels)[3].strategy_name
+                          ]
+                            ? `${
+                                strategies[
+                                  Object.values(topPerformerModels)[3]
+                                    .strategy_name
+                                ].currency
+                              }`
+                            : null}
+                        </p>
+                      </div>
+                    </div>
+                  </Tooltip>
+                </div>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-graph">
+              {Object.values(topPerformerModels)[3] ? (
+                <ModelDetailsRightGraph
+                  model_name={
+                    Object.values(topPerformerModels)[3].strategy_name
+                  }
+                />
+              ) : null}
+            </div>
+          </div>
+
+          <div className="model-details-right-card for-recent-card-margin">
+            <div className="model-details-right-card-inner-recent">
+              <div
+                className="link-model-names-div"
+                style={{ cursor: "pointer" }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[4].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
+              >
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
+                        topPerformerModels
+                      )[4].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[4].strategy_name.replace("_", "-")}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
+              </div>
+              <div className="model-details-right-percentage">
+                <AiFillCaretUp className="model-details-right-percentage-icon" />
+                <p>
+                  {Object.values(topPerformerModels)[4] &&
+                  strategies[Object.values(topPerformerModels)[4].strategy_name]
+                    ? `${Object.values(topPerformerModels)[4].total_pnl}`
+                    : null}
+                  {"%"}
+                </p>
+              </div>
+            </div>
+            <div className="model-details-right-card-inner-body-recent">
+              {/* <h2>64%</h2> */}
+              <div className="model-details-right-percentage-recent">
+                <div className="model-details-left-body-recent">
+                  {/* TIME HORIZON */}
+                  <Tooltip title="Time Horizon">
+                    <div className="model-details-left-body-stats for-recent-margin hours">
+                      <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                      <p>
+                        {Object.values(topPerformerModels)[4] &&
+                        strategies[
+                          Object.values(topPerformerModels)[4].strategy_name
+                        ]
+                          ? `${
+                              strategies[
+                                Object.values(topPerformerModels)[4]
+                                  .strategy_name
+                              ].time_horizon
+                            }`
+                          : null}
+                      </p>
+                    </div>
+                  </Tooltip>
+                  {/* CURRENCY */}
+                  <Tooltip title="Currency">
+                    <div className="model-details-left-body">
+                      <div className="model-details-left-body-stats for-recent-margin hours">
+                        <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
+                        <p>
+                          {Object.values(topPerformerModels)[4] &&
+                          strategies[
+                            Object.values(topPerformerModels)[4].strategy_name
+                          ]
+                            ? `${
+                                strategies[
+                                  Object.values(topPerformerModels)[4]
+                                    .strategy_name
+                                ].currency
+                              }`
+                            : null}
+                        </p>
+                      </div>
+                    </div>
+                  </Tooltip>
                 </div>
               </div>
             </div>
