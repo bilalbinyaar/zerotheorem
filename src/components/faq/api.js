@@ -32,7 +32,7 @@ export const questions = [
     question:
       "What are the different k markets used for the P and R variables?",
     answer:
-      "We use a range of financial metrics (predominately index futures) to represent all the different asset classes that make up the total asset universe. Here we use both individual assets and proxy instruments for currencies, equities, fixed income, real estate, commodities and alternative cryptocurrencies.",
+      "We use a range of financial metrics (predominately index futures) to represent all the different asset classes that make up the total asset universe. Here we use both individual assets and proxy instruments for currencies, equities, fixed income, real estate, commodities, and alternative cryptocurrencies.",
   },
 
   {
@@ -145,13 +145,13 @@ export const questions3 = [
     id: 16,
     question: "Who is SOREZ?",
     answer:
-      "SOREZ is a pseudonymous group of Quants responsible for the Zero Theorem infrastructure, the derivation of Zero Theorem governing equation and development of the Zero Theorem machine learning models and solutions.",
+      "SOREZ is a pseudonymous group of quants responsible for the Zero Theorem infrastructure, the derivation of Zero Theorem governing equation, and the development of the Zero Theorem machine learning models and solutions.",
   },
 
   {
     id: 17,
     question: "What is a quant and what do they do?",
     answer:
-      "The word Quant is slang for Quantitative Researcher/Developer who uses a scientific approach (economics, mathematics and statistics) with computer algorithms/programs to develop investment decisions, simulate asset behaviour, or determine asset risk.",
+      "The word quant is slang for quantitative researcher/developer who uses a scientific approach (economics, mathematics, and statistics) with computer algorithms/programs to develop investment decisions, simulate asset behaviour, or determine asset risk.",
   },
 ];

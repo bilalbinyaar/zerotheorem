@@ -1,4 +1,6 @@
 import React from "react";
+
+import { Link } from "react-router-dom";
 import "./RecentlyViewed.css";
 import {
   AiFillCaretUp,
@@ -214,22 +216,32 @@ const RecentlyViewed = (props) => {
               <div
                 className="link-model-names-div"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  linkModels(
-                    `/${Object.values(
-                      topPerformerModels
-                    )[0].strategy_name.replace("_", "-")}`
-                  );
-                }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[0].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
               >
-                <h3>
-                  {Object.values(topPerformerModels)[0]
-                    ? Object.values(
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
                         topPerformerModels
-                      )[0].strategy_name.replace("_", "-")
-                    : "Model Name"}
-                </h3>
-                <BiLinkExternal className="model-link-icon" />
+                      )[0].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[0].strategy_name.replace("_", "-")}
+                        {/* <BiLinkExternal className="model-link-icon" /> */}
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
               </div>
 
               <div className="model-details-right-percentage">
@@ -301,22 +313,32 @@ const RecentlyViewed = (props) => {
               <div
                 className="link-model-names-div"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  linkModels(
-                    `/${Object.values(
-                      topPerformerModels
-                    )[1].strategy_name.replace("_", "-")}`
-                  );
-                }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[1].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
               >
-                <h3>
-                  {Object.values(topPerformerModels)[1]
-                    ? Object.values(
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
                         topPerformerModels
-                      )[1].strategy_name.replace("_", "-")
-                    : "Model Name"}
-                </h3>
-                <BiLinkExternal className="model-link-icon" />
+                      )[1].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[1].strategy_name.replace("_", "-")}{" "}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
@@ -387,22 +409,32 @@ const RecentlyViewed = (props) => {
               <div
                 className="link-model-names-div"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  linkModels(
-                    `/${Object.values(
-                      topPerformerModels
-                    )[2].strategy_name.replace("_", "-")}`
-                  );
-                }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[2].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
               >
-                <h3>
-                  {Object.values(topPerformerModels)[2]
-                    ? Object.values(
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
                         topPerformerModels
-                      )[2].strategy_name.replace("_", "-")
-                    : "Model Name"}
-                </h3>
-                <BiLinkExternal className="model-link-icon" />
+                      )[2].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[2].strategy_name.replace("_", "-")}{" "}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
@@ -473,22 +505,32 @@ const RecentlyViewed = (props) => {
               <div
                 className="link-model-names-div"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  linkModels(
-                    `/${Object.values(
-                      topPerformerModels
-                    )[3].strategy_name.replace("_", "-")}`
-                  );
-                }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[3].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
               >
-                <h3>
-                  {Object.values(topPerformerModels)[3]
-                    ? Object.values(
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
                         topPerformerModels
-                      )[3].strategy_name.replace("_", "-")
-                    : "Model Name"}
-                </h3>
-                <BiLinkExternal className="model-link-icon" />
+                      )[3].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[3].strategy_name.replace("_", "-")}{" "}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
@@ -559,22 +601,32 @@ const RecentlyViewed = (props) => {
               <div
                 className="link-model-names-div"
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  linkModels(
-                    `/${Object.values(
-                      topPerformerModels
-                    )[4].strategy_name.replace("_", "-")}`
-                  );
-                }}
+                // onClick={() => {
+                //   linkModels(
+                //     `/${Object.values(
+                //       topPerformerModels
+                //     )[4].strategy_name.replace("_", "-")}`
+                //   );
+                // }}
               >
-                <h3>
-                  {Object.values(topPerformerModels)[4]
-                    ? Object.values(
+                {Object.keys(topPerformerModels).length > 0 ? (
+                  <div>
+                    <Link
+                      to={`/${Object.values(
                         topPerformerModels
-                      )[4].strategy_name.replace("_", "-")
-                    : "Model Name"}
-                </h3>
-                <BiLinkExternal className="model-link-icon" />
+                      )[4].strategy_name.replace("_", "-")}`}
+                    >
+                      <h3>
+                        {Object.values(
+                          topPerformerModels
+                        )[4].strategy_name.replace("_", "-")}{" "}
+                        <BiLinkExternal className="model-link-icon" />
+                      </h3>
+                    </Link>
+                  </div>
+                ) : (
+                  <h3>Loading model</h3>
+                )}
               </div>
               <div className="model-details-right-percentage">
                 <AiFillCaretUp className="model-details-right-percentage-icon" />
