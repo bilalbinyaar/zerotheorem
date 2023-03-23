@@ -12,6 +12,8 @@ import { BsCurrencyExchange } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useStateContext } from "../../../ContextProvider";
 import { Link } from "react-router-dom";
+import { Tooltip } from "@mui/material";
+
 
 const ModelDetailsLeft = (props) => {
   // const [strategy, setStrategy] = useState({});
@@ -294,12 +296,14 @@ const ModelDetailsLeft = (props) => {
       <div className="model-details-left-body-main">
         {/* Body # 1 */}
         <div className="model-details-left-body">
-          <div className="model-details-left-body-stats rank for-font-size">
-            <p>
-              Rank #
-              {stats[props.model_name] ? stats[props.model_name].rank : null}
-            </p>
-          </div>
+          <Tooltip title="Model Rank">
+            <div className="model-details-left-body-stats rank for-font-size">
+              <p>
+                Rank #
+                {stats[props.model_name] ? stats[props.model_name].rank : null}
+              </p>
+            </div>
+          </Tooltip>
           {/* <div className="model-details-left-body-stats visited">
             <p className="para-margin for-font-size">Visited by</p>
             <p className="for-font-size">3,655,820</p>
@@ -308,34 +312,41 @@ const ModelDetailsLeft = (props) => {
 
         {/* Body # 2 */}
         <div className="model-details-left-body">
-          <div className="model-details-left-body-stats hours">
-            <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-            <p className="for-font-size">
-              {strategies[props.model_name]
-                ? strategies[props.model_name].time_horizon
-                : null}
-            </p>
-          </div>
-          <div className="model-details-left-body-stats date">
-            <AiOutlineCalendar className="model-details-left-body-stats-icon para-margin" />
-            <p className="para-margin for-font-size">
-              {strategies[props.model_name]
-                ? strategies[props.model_name].date_started
-                : null}
-            </p>
-          </div>
+          <Tooltip title="Time Horizon">
+            <div className="model-details-left-body-stats hours">
+              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+              <p className="for-font-size">
+                {strategies[props.model_name]
+                  ? strategies[props.model_name].time_horizon
+                  : null}
+              </p>
+            </div>
+          </Tooltip>
+
+          <Tooltip title="Date">
+            <div className="model-details-left-body-stats date">
+              <AiOutlineCalendar className="model-details-left-body-stats-icon para-margin" />
+              <p className="para-margin for-font-size">
+                {strategies[props.model_name]
+                  ? strategies[props.model_name].date_started
+                  : null}
+              </p>
+            </div>
+          </Tooltip>
         </div>
 
         {/* Body # 3 */}
         <div className="model-details-left-body">
-          <div className="model-details-left-body-stats hours">
-            <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
-            <p className="for-font-size">
-              {strategies[props.model_name]
-                ? strategies[props.model_name].currency
-                : null}
-            </p>
-          </div>
+          <Tooltip title="Currency">
+            <div className="model-details-left-body-stats hours">
+              <AiOutlineDollarCircle className="model-details-left-body-stats-icon para-margin" />
+              <p className="for-font-size">
+                {strategies[props.model_name]
+                  ? strategies[props.model_name].currency
+                  : null}
+              </p>
+            </div>
+          </Tooltip>
         </div>
 
         {/* Body # 4 */}

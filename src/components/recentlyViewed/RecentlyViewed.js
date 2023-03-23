@@ -235,7 +235,7 @@ const RecentlyViewed = (props) => {
                         {Object.values(
                           topPerformerModels
                         )[0].strategy_name.replace("_", "-")}
-                        {/* <BiLinkExternal className="model-link-icon" /> */}
+                        <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
                   </div>

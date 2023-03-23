@@ -151,6 +151,10 @@ p {
   display: none;
 } */
 
+.css-h5074s .MuiDataGrid-columnHeader:focus-within, .css-h5074s .MuiDataGrid-cell:focus-within {
+  outline: 0 !important;
+}
+
 .css-zylse7-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
   color: var(--color-day-black) !important;
 }

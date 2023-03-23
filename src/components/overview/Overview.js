@@ -5,6 +5,8 @@ import { Hidden, Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { RiCheckboxBlankFill } from "react-icons/ri";
 import { useStateContext } from "../../ContextProvider";
+import { BsArrowRightShort } from "react-icons/bs";
+
 
 const Overview = () => {
   const { position_stats_cache, Set_position_stats_cache } = useStateContext();
@@ -68,10 +70,21 @@ const Overview = () => {
   }, []);
   const windowWidth = useRef(window.innerWidth);
 
+  const containerRef = useRef(null);
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (container.scrollLeft > 0) {
+      document.getElementById("toHideOverview").style.display = "none";
+    }
+  };
+
   return (
     <div>
       {windowWidth.current <= 568 ? (
         <div className="overview-mobile">
+          <div className="swipe-right-overview" id='toHideOverview'>
+            <BsArrowRightShort className="swipe-right-icon" />
+          </div>
           <div className="container">
             <div className="overview-text-indicator">
               <h2>Long vs Short Overview</h2>
@@ -86,7 +99,11 @@ const Overview = () => {
                 </div>
               </div>
             </div>
-            <div className="overview-wapper">
+            <div className="overview-wapper"
+              ref={containerRef}
+              style={{ overflowX: "scroll" }}
+              onScroll={handleScroll}
+            >
               <div className="overview-wapper-top">
                 <div className="overview-card">
                   <div className="overview-details">

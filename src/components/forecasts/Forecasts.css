@@ -355,11 +355,11 @@
   font-weight: 600 !important;
 }
 
-.model-details-left-body-stats:hover {
+/* .model-details-left-body-stats:hover {
   background-color: var(--color-day-yellow) !important;
   cursor: pointer;
   color: black !important;
-}
+} */
 
 #toggle-none {
   visibility: hidden;
@@ -541,6 +541,7 @@
 
   .forecast-mob {
     display: flex;
+    position: relative;
   }
 
   .forecast-web {
@@ -554,8 +555,8 @@
 
   .swipe-right {
     position: absolute;
-    right: 28px;
-    top: 80%;
+    right: 14px;
+    top: 45%;
     width: 35px;
     height: 35px;
     z-index: 1000;
