@@ -4,6 +4,8 @@ import { useStateContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
 import { BiLinkExternal } from "react-icons/bi";
+import { Tooltip } from "@mui/material";
+
 
 const ModelNameCol = (props) => {
   // console.log("Testing data -->", props.value);
@@ -229,13 +231,17 @@ const ModelNameCol = (props) => {
         <BiLinkExternal className="model-link-icon" />
       </div>
       <div className="model-details-left-body for-forecasts-card">
-        <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-          <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-          <p>{props.value[0]}</p>
-        </div>
-        <div className="model-details-left-body-stats date for-forecast-card-details">
-          <p className="para-margin">{props.value[1]}</p>
-        </div>
+        <Tooltip title="Time Horizon">
+          <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+            <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+            <p>{props.value[0]}</p>
+          </div>
+        </Tooltip>
+        <Tooltip title="Currency">
+          <div className="model-details-left-body-stats date for-forecast-card-details">
+            <p className="para-margin">{props.value[1]}</p>
+          </div>
+        </Tooltip>
         <div>
           {props.value[3] === "Short" ? (
             <div className="bg-short">

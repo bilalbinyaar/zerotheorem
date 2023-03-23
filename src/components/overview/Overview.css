@@ -237,6 +237,7 @@
 @media screen and (max-width: 568px) {
   .overview-mobile {
     display: flex;
+    position: relative;
   }
 
   .overview-wapper {
@@ -260,4 +261,19 @@
   .overview-details {
     flex-direction: row;
   }
+
+  .swipe-right-overview {
+    position: absolute;
+    right: 24px;
+    top: 45%;
+    width: 35px;
+    height: 35px;
+    z-index: 1000;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }

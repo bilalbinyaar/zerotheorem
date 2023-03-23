@@ -531,39 +531,43 @@ const Forecasts = () => {
                           </div>
 
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[0] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[0]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[0]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[0] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[0]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[0]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[0] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[0]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[0]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[0] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[0]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[0]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -648,39 +652,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[1] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[1]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[1]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[1] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[1]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[1]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[1] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[1]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[1]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[1] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[1]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[1]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -764,39 +772,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[2] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[2]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[2]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[2] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[2]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[2]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[2] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[2]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[2]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[2] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[2]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[2]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -877,39 +889,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[3] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[3]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[3]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[3] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[3]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[3]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[3] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[3]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[3]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[3] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[3]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[3]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -990,39 +1006,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[4] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[4]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[4]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[4] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[4]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[4]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[4] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[4]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[4]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[4] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[4]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[4]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -1104,39 +1124,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[5] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[5]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[5]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[5] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[5]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[5]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[5] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[5]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[5]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[5] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[5]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[5]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -1217,39 +1241,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[6] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[6]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[6]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[6] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[6]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[6]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[6] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[6]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[6]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[6] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[6]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[6]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -1330,39 +1358,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[7] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[7]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[7]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[7] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[7]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[7]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[7] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[7]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[7]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[7] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[7]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[7]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -1443,39 +1475,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[8] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[8]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[8]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[8] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[8]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[8]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[8] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[8]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[8]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[8] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[8]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[8]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -1556,39 +1592,43 @@ const Forecasts = () => {
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
-                            <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
-                              <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
-                              <p>
-                                {Object.values(topPerformerModels)[9] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[9]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[9]
-                                          .strategy_name
-                                      ].time_horizon
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
-                            <div className="model-details-left-body-stats date for-forecast-card-details">
-                              <p className="para-margin">
-                                {Object.values(topPerformerModels)[9] &&
-                                strategies[
-                                  Object.values(topPerformerModels)[9]
-                                    .strategy_name
-                                ]
-                                  ? `${
-                                      strategies[
-                                        Object.values(topPerformerModels)[9]
-                                          .strategy_name
-                                      ].currency
-                                    }`
-                                  : null}
-                              </p>
-                            </div>
+                            <Tooltip title="Time Horizon">
+                              <div className="model-details-left-body-stats hours for-forecast-card-details forecasts-details-margin">
+                                <AiOutlineFieldTime className="model-details-left-body-stats-icon para-margin" />
+                                <p>
+                                  {Object.values(topPerformerModels)[9] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[9]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[9]
+                                            .strategy_name
+                                        ].time_horizon
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
+                            <Tooltip title="Currency">
+                              <div className="model-details-left-body-stats date for-forecast-card-details">
+                                <p className="para-margin">
+                                  {Object.values(topPerformerModels)[9] &&
+                                  strategies[
+                                    Object.values(topPerformerModels)[9]
+                                      .strategy_name
+                                  ]
+                                    ? `${
+                                        strategies[
+                                          Object.values(topPerformerModels)[9]
+                                            .strategy_name
+                                        ].currency
+                                      }`
+                                    : null}
+                                </p>
+                              </div>
+                            </Tooltip>
                           </div>
                         </div>
                       </div>
@@ -1648,9 +1688,9 @@ const Forecasts = () => {
 
           {/* FOR MOBILE VIEW  */}
           <div className="forecast-mob">
-            {/* <div className="swipe-right" id='toHide'>
-                <BsArrowRightShort className="swipe-right-icon" />
-              </div>  */}
+            <div className="swipe-right" id='toHide'>
+              <BsArrowRightShort className="swipe-right-icon" />
+            </div> 
 
             <div
               className="forecasts-cards"
