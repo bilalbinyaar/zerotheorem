@@ -33,7 +33,7 @@ const AlternativeBassModelforAlpha = () => {
             <p className="for-mt-secondary">It is easy to see that</p>
             <MathComponent tex={String.raw`\frac{\partial \Pi_{\mathrm{BTC}}}{\partial p_k}=\frac{\partial}{\partial p_k}\left[\frac{X^{\prime}}{X}\right]=\frac{1}{X} \cdot \frac{\partial X^{\prime}}{\partial p_k}+X^{\prime} \cdot \frac{\partial}{\partial p_k}\left[\frac{1}{X}\right]=\frac{1}{X} \cdot \frac{\partial X^{\prime}}{\partial p_k}-\frac{X^{\prime}}{X^2} \cdot \frac{\partial X}{\partial p_k},`} />
             <p className="for-mt-secondary">and, similarly,</p>
-            <MathComponent tex={String.raw`\frac{\partial \Pi_{\mathrm{BTC}}}{\partial q_k}=\frac{1}{X} \cdot \frac{\partial X^{\prime}}{\partial q_k}-\frac{X^{\prime}}{X^2} \cdot \frac{\partial X}{\partial q_k}`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial q_k}=\frac{1}{X} \cdot \frac{\partial X^{\prime}}{\partial q_k}-\frac{X^{\prime}}{X^2} \cdot \frac{\partial X}{\partial q_k}\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">where</p>
             <MathComponent tex={String.raw`X=\sum_{k=1}^n P_k \cdot R_k \cdot q_k \cdot \frac{1-\exp \left[-\left(p_k+q_k\right) t\right]}{q_k+p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]}`} />
             <p className="for-mt-secondary">Therefore,</p>
@@ -49,7 +49,7 @@ const AlternativeBassModelforAlpha = () => {
             <p className="for-mt-secondary">and</p>
             <MathComponent tex={String.raw`\left(q_k+p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]\right)^{\prime}=q_k^{\prime}+p_k^{\prime} \cdot \exp \left[-\left(p_k+q_k\right) t\right]+`} />
             <MathComponent tex={String.raw`p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right] \cdot\left[-\left(p_k+q_k\right) \cdot t\right]^{\prime}=`} />
-            <MathComponent tex={String.raw`q_k^{\prime}+p_k^{\prime} \cdot \exp \left[-\left(p_k+q_k\right) t\right]+`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;q_k^{\prime}+p_k^{\prime} \cdot \exp \left[-\left(p_k+q_k\right) t\right]+\;\;\;\;\;\;\;\;`} />
             <MathComponent tex={String.raw`p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right] \cdot\left[p_k+q_k+\left(p_k^{\prime}+q_k^{\prime}\right) \cdot t\right]=`} />
             <MathComponent tex={String.raw`q_k^{\prime}+\left[p_k^{\prime}-p_k \cdot\left(p_k+q_k+\left(p_k^{\prime}+q_k^{\prime}\right) \cdot t\right]\right) \cdot \exp \left[-\left(p_k+q_k\right) t\right]`} />
             <p className="for-mt-secondary">Hence,</p>
@@ -226,10 +226,10 @@ const AlternativeBassModelforAlpha = () => {
             \end{eqnarray}`} />
 
             <p className="for-mt-secondary">Apparently,</p>
-            <MathComponent tex={String.raw` \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
+            <MathComponent tex={String.raw` \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 
 \frac{\partial X}{\partial p_k^{\prime}}=\frac{\partial X}{\partial q_k^{\prime}}=0,
-            \end{eqnarray}  \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            \end{eqnarray}  \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">and</p>
             <MathComponent tex={String.raw`\begin{eqnarray}
            \frac{\partial X^{\prime}}{\partial p_k^{\prime}} & =\frac{\partial}{\partial p_k^{\prime}}\left[\sum_{k=1}^n P_k \cdot R_k \cdot q_k \cdot \frac{\left(p_k+q_k+\left(p_k^{\prime}+q_k^{\prime}\right) \cdot t\right) \cdot \exp \left[-\left(p_k+q_k\right) t\right]}{q_k+p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]}\right]- \\
@@ -251,9 +251,9 @@ const AlternativeBassModelforAlpha = () => {
 & =\frac{P_k \cdot R_k \cdot q_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]}{\left(q_k+p_k \cdot \exp \left[-\left(p_k+q_k\right) t\right]\right)^2}\left[\left(q_k+p_k\right) \cdot t+p_k \cdot t \cdot \exp \left[-\left(p_k+q_k\right) t\right]-1\right],
             \end{eqnarray}`} />
             <p className="for-mt-secondary">i.e.,</p>
-            <MathComponent tex={String.raw` \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
+            <MathComponent tex={String.raw` \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
            \frac{\partial X^{\prime}}{\partial p_k^{\prime}}=\frac{\partial X^{\prime}}{\partial q_k^{\prime}} .
-            \end{eqnarray} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            \end{eqnarray} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
 
 
 

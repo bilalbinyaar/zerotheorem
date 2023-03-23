@@ -33,7 +33,7 @@ const SenstitivityAnalysisMarketSpecificAlpha = () => {
             <p className="for-mt-secondary">then, we straightforwardly conclude that when W<sub>k</sub>/R is an increasing (decreasing) function of t, then Π<sub>BTC</sub> is an increasing (decreasing) function of R<sub>k</sub>.
             <br/>
             On the other hand,</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial R_k^{\prime}}=\frac{W_k}{R}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial R_k^{\prime}}=\frac{W_k}{R}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">leading to the conclusion that Π<sub>BTC</sub> is an increasing function of R<sup>′</sup><sub>k</sub>.</p>
 
 
@@ -41,24 +41,24 @@ const SenstitivityAnalysisMarketSpecificAlpha = () => {
             <p className="for-mt-secondary">Taking into account that</p>
             <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial T_j^{\prime}}=-\frac{1}{\left(T_j^{\prime}\right)^2} \cdot \sum_{l=1}^m T_l^{\prime \prime}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">and taking into account that the denominator is positive for all t, then it is obvious that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\sum_{m=1}^n T_m^{\prime \prime}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\sum_{m=1}^n T_m^{\prime \prime}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">implies that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial T_j^{\prime}}>0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial T_j^{\prime}}>0,\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">i.e., Π<sub>BTC</sub> is an increasing function of T<sup>′</sup><sub>j</sub>.
             <br/>On the other hand,</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\sum_{m=1}^n T_m^{\prime \prime}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\sum_{m=1}^n T_m^{\prime \prime}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">implies that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial T_j^{\prime}}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial T_j^{\prime}}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">i.e., Π<sub>BTC</sub> is a decreasing function of T<sup>′</sup><sub>j</sub>.</p>
 
 
             <h2 className="for-mt-primary">Sensitivity with Respect to Output Parameters</h2>
             <p className="for-mt-secondary">Taking into account that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial b}=\frac{b^{\prime}}{b^2},\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial b}=\frac{b^{\prime}}{b^2},\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">the denominator of which is positive for all t, we conclude that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial b}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial b}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">when b′ &gt; 0. Similarly,</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial b}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial b}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">when b′ &lt; 0.
             <br/>
             Hence, when b is an increasing (decreasing) function of t, then ΠBTC is an increasing (decreasing) function of b.

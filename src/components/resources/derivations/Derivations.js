@@ -43,7 +43,7 @@ const Derivations = () => {
 
             <h3 className="for-mt-secondary">With Respect to Transactions</h3>
             <p className="for-mt-secondary">Due to linear dependence of ln PBTC on T<sup>′</sup><sub>j</sub>, we obtain</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \ln P_{\mathrm{BTC}}}{\partial P}=1\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \ln P_{\mathrm{BTC}}}{\partial P}=1\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
 
 
             <h3 className="for-mt-secondary">With Respect to Output Parameters</h3>
@@ -70,11 +70,11 @@ const Derivations = () => {
             <MathComponent tex={String.raw`\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k}=\frac{\partial}{\partial P_k}\left[\frac{\sum_{k=1}^n\left(P_k \cdot R_k\right)^{\prime}}{\sum_{k=1}^n P_k R_k}\right]=\frac{\partial}{\partial P_k}\left[\frac{\sum_{k=1}^n\left(P_k^{\prime} \cdot R_k+P_k \cdot R_k^{\prime}\right)}{\sum_{k=1}^n P_k R_k}\right]=`} />
             <MathComponent tex={String.raw`-\frac{1}{P^2} \cdot \frac{\partial P}{\partial P_k} \cdot \sum_{k=1}^n\left(P_k^{\prime} \cdot R_k+P_k \cdot R_k^{\prime}\right)+\frac{1}{P} \frac{\partial}{\partial P_k}\left[\sum_{k=1}^n\left(P_k^{\prime} \cdot R_k+P_k \cdot R_k^{\prime}\right)\right]=`} />
             <MathComponent tex={String.raw`-\frac{1}{P^2} \cdot R_k \cdot \sum_{m=1}^n\left(P_m^{\prime} \cdot R_m+P_m \cdot R_m^{\prime}\right)+\frac{1}{P} \cdot R_k=`} />
-            <MathComponent tex={String.raw`\frac{R_k}{P}\left[-\sum_{m=1}^n\left(P_m^{\prime} \cdot R_m+P_m \cdot R_m^{\prime}\right)+1\right]=\frac{R_k}{P}\left[1-P^{\prime}\right]`} />
+            <MathComponent tex={String.raw`\;\;\;\;\frac{R_k}{P}\left[-\sum_{m=1}^n\left(P_m^{\prime} \cdot R_m+P_m \cdot R_m^{\prime}\right)+1\right]=\frac{R_k}{P}\left[1-P^{\prime}\right]\;\;\;\;`} />
             <p className="for-mt-secondary">Here,</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;P=\sum_{k=1}^n P_k \cdot R_k \text {. }\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;P=\sum_{k=1}^n P_k \cdot R_k \text {. }\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">On the other hand, ΠBTC is a linear function with respect to P<sup>′</sup><sub>k</sub> with the linear coefficient</p>
-            <MathComponent tex={String.raw`\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k^{\prime}}=\frac{\partial}{\partial P_k^{\prime}}\left[\frac{1}{P} \sum_{k=1}^n\left(P_k^{\prime} \cdot R_k+P_k \cdot R_k^{\prime}\right)\right]=\frac{R_k}{P}`} />
+            <MathComponent tex={String.raw`\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k^{\prime}}=\frac{\partial}{\partial P_k^{\prime}}\left[\frac{1}{P} \sum_{k=1}^n\left(P_k^{\prime} \cdot R_k+P_k \cdot R_k^{\prime}\right)\right]=\frac{R_k}{P}\;\;\;`} />
 
 
             <h3 className="for-mt-secondary">With Respect to Volume</h3>

@@ -71,9 +71,9 @@ const AlternativeShiftedGompertzModelforAlpha = () => {
 X=\sum_{k=1}^n P_k \cdot p_k \cdot \exp \left[-p_k t-q_k \exp \left(-p_k t\right)\right] \cdot\left(1+q_k \cdot\left[1-\exp \left(-p_k t\right)\right]\right) \cdot R_k
             \end{eqnarray}`} />
             <p className="for-mt-secondary">and</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 X^{\prime}=\frac{\partial X}{\partial t}
-            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">we have</p>
             <MathComponent tex={String.raw`\begin{eqnarray}
 X^{\prime} & =\frac{\partial}{\partial t}\left[\sum_{k=1}^n P_k \cdot p_k \cdot \exp \left[-p_k t-q_k \exp \left(-p_k t\right)\right] \cdot\left(1+q_k \cdot\left[1-\exp \left(-p_k t\right)\right]\right) \cdot R_k\right]= \\

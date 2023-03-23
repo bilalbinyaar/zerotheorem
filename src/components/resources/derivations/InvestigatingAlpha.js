@@ -39,7 +39,7 @@ const InvestigatingAlpha = () => {
             <br/>
             In order to describe the algorithm of determination of α<sub>1</sub>, α<sub>2</sub>, . . ., α<sub>n</sub>, let us denote
             </p>
-            <MathComponent tex={String.raw`F\left(\alpha_1, \alpha_2, \ldots, \alpha_n ; t\right)=\sum_{k=1}^n P_k \cdot \alpha_k \cdot R_k`} />
+            <MathComponent tex={String.raw`\;\;\;\;F\left(\alpha_1, \alpha_2, \ldots, \alpha_n ; t\right)=\sum_{k=1}^n P_k \cdot \alpha_k \cdot R_k\;\;\;\;`} />
             <p className="for-mt-secondary">and</p>
             <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;S(t)=\frac{P_{\mathrm{BTC}} \cdot b \cdot h}{d \cdot \sum_{j=1}^m T_j^{\prime}}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">Then, (10) can be written as</p>
@@ -78,7 +78,7 @@ const InvestigatingAlpha = () => {
             rates. To this end, we are going to consider a specific database of 11 markets, i.e., n = 11.
             Based on the database structure, the time variable has the following form:
             </p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;t_i=7+\frac{i}{365}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;t_i=7+\frac{i}{365}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">with N = 1592 data points. In this particular case, m = 1, so that there is only T<sub>1</sub><sup>′</sup>
             <br/>
             In this case, we have a system of 1592 equations with respect to 11·1592 = 17512 unknowns, which are computed by minimizing the l<sup>1</sup>-norm of the residue:

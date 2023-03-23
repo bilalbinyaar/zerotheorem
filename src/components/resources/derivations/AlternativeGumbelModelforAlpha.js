@@ -21,11 +21,11 @@ const AlternativeGumbelModelforAlpha = () => {
           <div className="container">
             <h1 className='res-det-heading'>Gumbel Model for Alpha</h1>
             <p className="for-mt-secondary">For the absorption rate α<sub>k</sub> we consider the following model based on the well-known Gumbel distribution:</p>
-            <MathComponent tex={String.raw`\begin{eqnarray}
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 
 \alpha_k=p_k \cdot q_k \cdot t^{-p_k-1} \cdot \exp \left[-q_k t^{-p_k}\right]
 
-            \end{eqnarray}`} />
+            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">where p<sub>k</sub> and q<sub>k</sub> are to be estimated
             <br/>
             Then, Π<sub>BTC</sub> and ln P<sub>BTC</sub> will obtain the following form:
@@ -74,9 +74,9 @@ const AlternativeGumbelModelforAlpha = () => {
 X=\sum_{k=1}^n P_k \cdot R_k \cdot p_k \cdot q_k \cdot t^{-p k-1} \cdot \exp \left[-q_k t^{-p_k}\right]
             \end{eqnarray}`} />
             <p className="for-mt-secondary">and</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\begin{eqnarray}
 X^{\prime}=\frac{\partial X}{\partial t}
-            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            \end{eqnarray}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">we have</p>
             <MathComponent tex={String.raw`\begin{eqnarray}
 & X^{\prime}=\frac{\partial}{\partial t}\left(\sum_{k=1}^n P_k \cdot R_k \cdot p_k \cdot q_k \cdot t^{-p_k-1} \cdot \exp \left[-q_k t^{-p_k}\right]\right)= \\

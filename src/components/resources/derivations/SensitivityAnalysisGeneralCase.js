@@ -34,7 +34,7 @@ const SensitivityAnalysisGeneralCase = () => {
 
             <h3 className="for-mt-primary">Sensitivity with Respect to Velocity</h3>
             <p className="for-mt-secondary">In this section, we study the sensitivity of ΠBTC with respect to V<sub>BTC</sub> and V<sup>′</sup><sub>BTC</sub>. First note that since</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial V_{\mathrm{BTC}}}=-\frac{V_{\mathrm{BTC}}^{\prime}}{V_{\mathrm{BTC}}^2}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial V_{\mathrm{BTC}}}=-\frac{V_{\mathrm{BTC}}^{\prime}}{V_{\mathrm{BTC}}^2}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">Taking into account that the denominator is always positive, we come to the evident conclusion that</p>
             <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial V_{\mathrm{BTC}}}>0 \text { when } \quad V_{\mathrm{BTC}}^{\prime}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">and</p>
@@ -43,42 +43,42 @@ const SensitivityAnalysisGeneralCase = () => {
             <br/>
             On the other hand, since
             </p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial V_{\mathrm{BTC}}^{\prime}}=\frac{1}{V_{\mathrm{BTC}}}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial V_{\mathrm{BTC}}^{\prime}}=\frac{1}{V_{\mathrm{BTC}}}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">which is apparently always positive, we conclude that Π<sub>BTC</sub> is an increasing (linear) function of V<sup>′</sup><sub>BTC</sub> for all values of t.
             </p>
 
             <h3 className="for-mt-primary">Sensitivity with Respect to Output</h3>
             <p className="for-mt-secondary">According to the derivative expression derived at the end of this section,</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}}=\frac{Q_{\mathrm{BTC}}^{\prime}}{Q_{\mathrm{BTC}}^2}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}}=\frac{Q_{\mathrm{BTC}}^{\prime}}{Q_{\mathrm{BTC}}^2}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">Taking into account that Q<sub>BTC</sub> is an increasing function of t, implying that Q<sup>′</sup><sub>BTC</sub> &gt; 0, we conclude that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">for all t. In other words, ΠBTC is always an increasing function of Q<sup>′</sup><sub>BTC</sub>.
             <br/>
             Similarly, since
             </p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}^{\prime}}=-\frac{1}{Q_{\mathrm{BTC}}}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}^{\prime}}=-\frac{1}{Q_{\mathrm{BTC}}}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">we see that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}^{\prime}}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial Q_{\mathrm{BTC}}^{\prime}}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">for all t. Therefore, ΠBTC is a decreasing function of Q<sup>′</sup><sub>BTC</sub>.</p>
 
             <h3 className="for-mt-primary">Sensitivity with Respect to Asset Prices</h3>
             <p className="for-mt-secondary">Taking into account that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k^{\prime}}=\frac{U_{s_k}}{S}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k^{\prime}}=\frac{U_{s_k}}{S}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">in which</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;S=\sum_{k=1}^n P_k \cdot U_{s_k}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;S=\sum_{k=1}^n P_k \cdot U_{s_k}\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">it becomes evident that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k^{\prime}}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k^{\prime}}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">for all t. Thence, ΠBTC is an increasing function of P′k.
             <br/>
             On the other hand, since
             </p>
             <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k}=\frac{U_{s_k}}{S} \cdot \frac{\partial}{\partial t}\left[\ln \left(\frac{U_{s_k}}{S}\right)\right],\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">we observe that when U<sub>sk</sub>/S is an increasing function of t, then</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial}{\partial t}\left[\ln \left(\frac{U_{s_k}}{S}\right)\right]>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial}{\partial t}\left[\ln \left(\frac{U_{s_k}}{S}\right)\right]>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">implying that</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k}>0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">Similarly, when U<sub>sk</sub>/S is a decreasing function of t, then</p>
-            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
+            <MathComponent tex={String.raw`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\frac{\partial \Pi_{\mathrm{BTC}}}{\partial P_k}<0\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;`} />
             <p className="for-mt-secondary">Thence, when U<sub>sk</sub>/S is an increasing (decreasing) function of t, Π<sub>BTC</sub> is an increasing (decreasing) function of P<sub>k</sub>.</p>
 
             <h3 className="for-mt-primary">Sensitivity with Respect to Absorption (U<sub>sk</sub>)</h3>
