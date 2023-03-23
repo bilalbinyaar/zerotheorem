@@ -22,7 +22,6 @@ import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EquationBlack from "../../assets/equation-black.png";
 import EquationWhite from "../../assets/equation-white.png";
-import { Link } from "react-router-dom";
 import { BiLinkExternal } from "react-icons/bi";
 import { MathComponent } from "mathjax-react";
 
@@ -631,6 +630,7 @@ const Forecasts = () => {
                           <div
                             className="forecasts-model-name-icon-div"
                             onClick={() => {
+
                               linkModels(
                                 `/${Object.values(
                                   topPerformerModels

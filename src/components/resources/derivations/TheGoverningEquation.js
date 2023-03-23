@@ -56,13 +56,13 @@ const TheGoverningEquation = () => {
             <MathComponent tex={String.raw`\omega_k=\frac{U_{s_k}}{U_k} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;(6)`} />
             <p className="for-mt-secondary">for k = 1, 2, . . . , n and where Usk is the substitution unit of the kth asset. Substituting it into we derive</p>
             <MathComponent tex={String.raw`\Pi_{\mathrm{BTC}}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n P_k \cdot U_k \cdot \frac{U_{s_k}}{U_k}\right)+\ln V_{\mathrm{BTC}}-\ln Q_{\mathrm{BTC}}\right]=`} />
-            <MathComponent tex={String.raw`\\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n P_k \cdot U_{s_k}\right)+\ln V_{\mathrm{BTC}}-\ln Q_{\mathrm{BTC}}\right]`} />
+            <MathComponent tex={String.raw`=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n P_k \cdot U_{s_k}\right)+\ln V_{\mathrm{BTC}}-\ln Q_{\mathrm{BTC}}\right]`} />
 
 
             <h2 className="for-mt-primary">A Particular Model for Velocity</h2>
             <p className="for-mt-secondary">Consider the following model for V<sub>BTC</sub></p>
             <MathComponent tex={String.raw`V_{\mathrm{BTC}}=\frac{1}{m} \sum_{j=1}^m T_j^{\prime} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;(7)`} />
-            <p className="for-mt-secondary">where T<sub>j</sub> represents the transactions. Substituting it into the final expression of ΠBTC leads us to</p>
+            <p className="for-mt-secondary">where T<sub>j</sub> represents the transactions. Substituting it into the final expression of Π<sub>BTC</sub> leads us to</p>
             <MathComponent tex={String.raw`\Pi_{\mathrm{BTC}}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n P_k \cdot U_{s_k}\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln Q_{\mathrm{BTC}}\right]`} />
 
 

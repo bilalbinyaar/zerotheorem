@@ -32,7 +32,7 @@ export const questions = [
     question:
       "What are the different k markets used for the P and R variables?",
     answer:
-      "Australian Dollar Futures, British Pound Futures, Canadian Dollar Futures, Euro FX Futures, Japanese Yen Futures, Mexican Peso Futures, New Zealand Dollar Futures, Swiss Franc Futures, US dollar Futures, Lumber Futures, Gold Futures, Silver Futures, Natural Gas Futures, Brent Crude Oil Futures, Copper Futures, Heating Oil Futures, Palladium Futures, Platinum Futures, Gasoline Futures, Nikkei/Yen Futures, S&P 500 Futures, Nasdaq 100 Futures, Dow Jones Futures, and BTC Futures.",
+      "We use a range of financial metrics (predominately index futures) to represent all the different asset classes that make up the total asset universe. Here we use both individual assets and proxy instruments for currencies, equities, fixed income, real estate, commodities and alternative cryptocurrencies.",
   },
 
   {
@@ -136,7 +136,7 @@ export const questions2 = [
     id: 15,
     question: "How do we use the Zero Theorem models to make money?",
     answer:
-      "We do not provide financial or investment advice. Please treat the content of this entire website as an academic exercise to prove the existence of a robust pricing theory for Proof of Work digital currencies.",
+      "We do not provide financial or investment advice. Please treat the content of this entire website as an academic exercise to prove the existence of a robust pricing theory for Bitcoin.",
   },
 ];
 
@@ -145,13 +145,13 @@ export const questions3 = [
     id: 16,
     question: "Who is SOREZ?",
     answer:
-      "SOREZ is a pseudonymous group of misbehaving quants responsible for the Zero Theorem infrastructure, the derivation of Zero Theorem governing equations, and development of the Zero Theorem machine learning models and solutions. ",
+      "SOREZ is a pseudonymous group of Quants responsible for the Zero Theorem infrastructure, the derivation of Zero Theorem governing equation and development of the Zero Theorem machine learning models and solutions.",
   },
 
   {
     id: 17,
-    question: "What is quant and what does it do?",
+    question: "What is a quant and what do they do?",
     answer:
-      "A quant is someone who typically (but not always) holds a Ph.D. in some form of natural sciences, has gotten bored of not being paid properly in their respective discipline and therefore has decided to explore finance. Here a quant uses their huge brain power to model or simulate asset behavior and/or risk using a range of mathematical and statistical methods. The output of a quant's work is typically utilized in investment decisions either to manage risk or to extract market inefficiencies via trading.",
+      "The word Quant is slang for Quantitative Researcher/Developer who uses a scientific approach (economics, mathematics and statistics) with computer algorithms/programs to develop investment decisions, simulate asset behaviour, or determine asset risk.",
   },
 ];
