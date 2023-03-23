@@ -4,8 +4,8 @@ import { useStateContext } from "../../ContextProvider";
 import { useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
 import { BiLinkExternal } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
-
 
 const ModelNameCol = (props) => {
   // console.log("Testing data -->", props.value);
@@ -217,18 +217,12 @@ const ModelNameCol = (props) => {
   return (
     <div className="forecasts-model-name">
       <div className="forecasts-model-name-icon-div">
-        <h3
-          onClick={() => {
-            linkModels(`/${props.value[2].replace("_", "-")}`, {
-              state: {
-                model_name: props.value[2],
-              },
-            });
-          }}
-        >
-          {props.value[2].replace("_", "-")}
-        </h3>
-        <BiLinkExternal className="model-link-icon" />
+        {/* {props.value[2].replace("_", "-")} */}
+
+        <Link to={props.value[2].replace("_", "-")}>
+          <h3>{props.value[2].replace("_", "-")}</h3>
+          <BiLinkExternal className="model-link-icon" />
+        </Link>
       </div>
       <div className="model-details-left-body for-forecasts-card">
         <Tooltip title="Time Horizon">

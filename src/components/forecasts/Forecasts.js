@@ -6,6 +6,7 @@ import {
   AiOutlineFieldTime,
   AiOutlineArrowRight,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
 import { useStateContext } from "../../ContextProvider";
 // import ForecastsSpline from "../models/graphs/ForecastsSpline";
@@ -24,7 +25,6 @@ import EquationBlack from "../../assets/equation-black.png";
 import EquationWhite from "../../assets/equation-white.png";
 import { BiLinkExternal } from "react-icons/bi";
 import { MathComponent } from "mathjax-react";
-
 
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
@@ -350,7 +350,7 @@ const Forecasts = () => {
             sizing dilemma. Hence each model also produces a forward valuation
             and pricing direction.
           </p>
-          
+
           {theme === "dark-theme" ? (
             <div className="equation-img">
               <div className="equation-i-div">
@@ -363,7 +363,9 @@ const Forecasts = () => {
                   </IconButton>
                 </Tooltip>
               </div>
-              <MathComponent tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`} />
+              <MathComponent
+                tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`}
+              />
               <p className="equation-caption">
                 Zero Theorem Governing Equation ​
               </p>
@@ -384,7 +386,9 @@ const Forecasts = () => {
                   </IconButton>
                 </Tooltip>
               </div>
-              <MathComponent tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`} />
+              <MathComponent
+                tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`}
+              />
               <p className="equation-caption">
                 Zero Theorem Governing Equation ​
               </p>
@@ -520,13 +524,21 @@ const Forecasts = () => {
                               );
                             }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[0].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[0].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[0].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
 
@@ -633,22 +645,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[1].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[1].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[1].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[1].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[1].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -754,21 +773,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[2].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[2].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[2].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[2].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[2].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -871,21 +898,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[3].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[3].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[3].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[3].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[3].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -988,21 +1023,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[4].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[4].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[4].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[4].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[4].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -1106,21 +1149,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[5].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[5].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[5].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[5].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[5].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -1223,21 +1274,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[6].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[6].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[6].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[6].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[6].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -1340,21 +1399,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[7].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[7].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[7].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[7].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[7].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -1457,21 +1524,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[8].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[8].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[8].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[8].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[8].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -1574,21 +1649,29 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[9].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[9].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
-                            <h3>
-                              {Object.keys(topPerformerModels).length > 0
-                                ? Object.values(
+                            {Object.keys(topPerformerModels).length > 0 ? (
+                              <Link
+                                to={Object.values(
+                                  topPerformerModels
+                                )[9].strategy_name.replace("_", "-")}
+                              >
+                                <h3>
+                                  {Object.values(
                                     topPerformerModels
-                                  )[9].strategy_name.replace("_", "-")
-                                : "Model Name"}
-                            </h3>
+                                  )[9].strategy_name.replace("_", "-")}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3>Loading model</h3>
+                            )}
                             <BiLinkExternal className="model-link-icon" />
                           </div>
                           <div className="model-details-left-body for-forecasts-card">
@@ -1706,21 +1789,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[0].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[0].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[0].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[0].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[0].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -1811,21 +1902,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[1].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[1].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[1].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[1].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[1].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -1916,21 +2015,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[2].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[2].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[2].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[2].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[2].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -2021,21 +2128,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[3].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[3].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[3].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[3].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[3].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -2126,21 +2241,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[4].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[4].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[4].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[4].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[4].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -2231,21 +2354,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[5].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[5].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[5].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[5].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[5].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -2336,21 +2467,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[6].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[6].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[6].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[6].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[6].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -2441,21 +2580,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[7].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[7].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[7].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[7].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[7].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -2546,21 +2693,29 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[8].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[8].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[8].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[8].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[8].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
@@ -2659,13 +2814,21 @@ const Forecasts = () => {
                             );
                           }}
                         >
-                          <h3>
-                            {Object.keys(topPerformerModels).length > 0
-                              ? Object.values(
+                          {Object.keys(topPerformerModels).length > 0 ? (
+                            <Link
+                              to={Object.values(
+                                topPerformerModels
+                              )[9].strategy_name.replace("_", "-")}
+                            >
+                              <h3>
+                                {Object.values(
                                   topPerformerModels
-                                )[9].strategy_name.replace("_", "-")
-                              : "Model Name"}
-                          </h3>
+                                )[9].strategy_name.replace("_", "-")}
+                              </h3>
+                            </Link>
+                          ) : (
+                            <h3>Loading model</h3>
+                          )}
                           <BiLinkExternal className="model-link-icon" />
                         </div>
                         <div className="model-details-left-body for-forecasts-card">
