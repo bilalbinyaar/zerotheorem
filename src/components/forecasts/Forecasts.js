@@ -24,6 +24,8 @@ import EquationBlack from "../../assets/equation-black.png";
 import EquationWhite from "../../assets/equation-white.png";
 import { Link } from "react-router-dom";
 import { BiLinkExternal } from "react-icons/bi";
+import { MathComponent } from "mathjax-react";
+
 
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
@@ -349,6 +351,7 @@ const Forecasts = () => {
             sizing dilemma. Hence each model also produces a forward valuation
             and pricing direction.
           </p>
+          
           {theme === "dark-theme" ? (
             <div className="equation-img">
               <div className="equation-i-div">
@@ -361,7 +364,7 @@ const Forecasts = () => {
                   </IconButton>
                 </Tooltip>
               </div>
-              <img src={EquationWhite} alt="p1" />
+              <MathComponent tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`} />
               <p className="equation-caption">
                 Zero Theorem Governing Equation ​
               </p>
@@ -382,7 +385,7 @@ const Forecasts = () => {
                   </IconButton>
                 </Tooltip>
               </div>
-              <img src={EquationBlack} alt="p1" />
+              <MathComponent tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`} />
               <p className="equation-caption">
                 Zero Theorem Governing Equation ​
               </p>

@@ -94,6 +94,10 @@
 
 .res-main-for-height {
   height: 100%;
+
+  /* position: fixed;
+  z-index: -1;
+  width: 25%; */
 }
 
 .sub-breakdown-menu {

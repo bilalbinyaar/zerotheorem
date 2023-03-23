@@ -34,19 +34,27 @@ const Introduction = () => {
         <div className="res-textual">
           <div className="res-textual-section">
             <div className="container">
-              {/* <h1 className='res-det-heading'>Introduction</h1> */}
-              <div className="document">
-                {theme === "dark-theme" ? (
-                  <div className="img-doc">
-                    <img src={P1Night} alt="p1" />
-                  </div>
-                ) : (
-                  <div className="img-doc">
-                    <img src={P1Day} alt="p1" />
-                  </div>
-                )}
-              </div>
-              <div className="about-video for-mb for-resources-page">
+              <h1 className="res-det-heading for-text-align derivations-h1">
+                Zero Theorem
+              </h1>
+              <h2 className="for-mt-secondary for-text-align derivations-h2">
+                An Economic Framework for Valuing Bitcoin
+              </h2>
+              <h3 className="for-mt-secondary for-text-align derivations-h3">
+                &#8212; By SOREZ
+              </h3>
+              {/* <div className="document">
+              {theme === "dark-theme" ? (
+                <div className="img-doc">
+                  <img src={P1Night} alt="p1" />
+                </div>
+              ) : (
+                <div className="img-doc">
+                  <img src={P1Day} alt="p1" />
+                </div>
+              )}
+            </div> */}
+              <div className="about-video for-mb for-resources-page for-mt-primary">
                 {windowWidth.current <= 568 ? (
                   <div>
                     {theme == "dark-theme" ? (

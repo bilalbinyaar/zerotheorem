@@ -1,10 +1,15 @@
 .res-textual-section .container {
   /* padding: 1rem 3rem 2rem 3rem; */
-  padding: 1rem 0rem 0rem 0rem;
+  padding: 1rem 0rem 3rem 0rem;
+}
+
+.res-textual-section .container p {
+  line-height: 2;
 }
 
 .res-det-heading {
-  text-align: center;
+  text-align: left;
+  margin-top: 1rem;
 }
 
 .para-div-res {
@@ -16,6 +21,35 @@
   margin-top: 0.5rem;
 }
 
+.for-mt-primary {
+  margin-top: 2rem;
+}
+
+.for-mt-secondary {
+  margin-top: 0.8rem;
+}
+
+.for-text-align {
+  text-align: center;
+}
+
+.derivations-h1 {
+  font-size: 30px;
+}
+
+.derivations-h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.derivations-h3 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.margin-left {
+  margin-left: 0.8rem;
+}
 @media screen and (max-width: 568px) {
   .res-textual-section .container {
     padding: 1.5rem 0rem;
@@ -28,4 +62,21 @@
   .res-det-heading {
     font-size: 16px;
   }
+
+.derivations-h1 {
+  font-size: 20px;
+}
+
+.derivations-h2 {
+  font-size: 14px;
+}
+
+.derivations-h3 {
+  font-size: 11px;
+}
+
+.controlled-height .MathJax svg{
+  height: 10px !important;
+}
+
 }
