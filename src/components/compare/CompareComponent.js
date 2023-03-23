@@ -4817,13 +4817,13 @@ const CompareComponent = () => {
                     id={"pnl25"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
-                              stats[model_name_1].max_drawdown_duration,
+                              stats[model_name_1].average_drawdown,
                               "pnl25",
                             ],
                             value2: [
-                              stats[model_name_2].max_drawdown_duration,
+                              stats[model_name_2].average_drawdown,
                               "pnl26",
                             ],
                           })
@@ -4831,7 +4831,7 @@ const CompareComponent = () => {
                     }
                   >
                     {stats[model_name_1]
-                      ? stats[model_name_1].max_drawdown_duration
+                      ? stats[model_name_1].average_drawdown
                       : null}
                   </td>
                   <td
@@ -4839,13 +4839,13 @@ const CompareComponent = () => {
                     id={"pnl26"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
-                              stats[model_name_1].max_drawdown_duration,
+                              stats[model_name_1].average_drawdown,
                               "pnl25",
                             ],
                             value2: [
-                              stats[model_name_2].max_drawdown_duration,
+                              stats[model_name_2].average_drawdown,
                               "pnl26",
                             ],
                           })
@@ -4853,7 +4853,7 @@ const CompareComponent = () => {
                     }
                   >
                     {stats[model_name_2]
-                      ? stats[model_name_2].max_drawdown_duration
+                      ? stats[model_name_2].average_drawdown
                       : null}
                   </td>
                 </tr>
@@ -4925,7 +4925,7 @@ const CompareComponent = () => {
                     id={"pnl31"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -4947,7 +4947,7 @@ const CompareComponent = () => {
                     id={"pnl32"}
                     onChange={
                       stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -6778,7 +6778,7 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6793,7 +6793,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6804,7 +6804,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_2].average_drawdown,
                               "pnl26",
@@ -6815,7 +6815,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6839,7 +6839,7 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6854,7 +6854,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6865,7 +6865,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_2].average_drawdown,
                               "pnl26",
@@ -6876,7 +6876,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6900,7 +6900,7 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6915,7 +6915,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -6926,7 +6926,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_2].average_drawdown,
                               "pnl26",
@@ -6937,7 +6937,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].average_drawdown,
                               "pnl25",
@@ -7164,7 +7164,7 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7179,7 +7179,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7190,7 +7190,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_2].current_drawdown,
                               "pnl32",
@@ -7201,7 +7201,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7225,7 +7225,7 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7240,7 +7240,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7251,7 +7251,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_2].current_drawdown,
                               "pnl32",
@@ -7262,7 +7262,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7286,7 +7286,7 @@ const CompareComponent = () => {
                       stats[model_name_1] &&
                       stats[model_name_2] &&
                       stats[model_name_3]
-                        ? changeColorOnValueBasisMin({
+                        ? changeColorOnValueBasis({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7301,7 +7301,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_2]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",
@@ -7312,7 +7312,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_2] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_2].current_drawdown,
                               "pnl32",
@@ -7323,7 +7323,7 @@ const CompareComponent = () => {
                             ],
                           })
                         : stats[model_name_1] && stats[model_name_3]
-                        ? changeColorOnValueBasisTwoValuesMin({
+                        ? changeColorOnValueBasisTwoValues({
                             value1: [
                               stats[model_name_1].current_drawdown,
                               "pnl31",

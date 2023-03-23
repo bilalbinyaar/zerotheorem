@@ -22,8 +22,7 @@ import CanvasjsSplineAreaChartWithRangeSelecetor from "../components/models/grap
 import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/CanvasjsDrawdownWithSliderRange";
 import TradingViewSplineAreaChart from "../components/models/graphs/TvSplineAreaChart";
 import TradingViewWidgetGraph from "../components/models/graphs/TradingViewWidgetGraph";
-import { Helmet } from 'react-helmet';
-
+import { Helmet } from "react-helmet";
 
 const Models = () => {
   const location = useLocation();

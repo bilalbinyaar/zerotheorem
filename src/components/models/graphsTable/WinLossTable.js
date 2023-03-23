@@ -73,16 +73,15 @@ const WinLossTable = (props) => {
       setStats(stats_cache["stats"]);
     }
   }, []);
-  const forBgColor = (value, id) => {
-    if (id === "wins") {
-      document
-        .getElementById(`${id}`)
-        .setAttribute("style", "color: #16c784 !important");
-    } else {
-      document
-        .getElementById(`${id}`)
-        .setAttribute("style", "color: #ff2e2e !important");
-    }
+  const forBgColorRed = (value, id) => {
+    document
+      .getElementById(`${id}`)
+      .setAttribute("style", "color: #ff2e2e !important");
+  };
+  const forBgColorGreen = (value, id) => {
+    document
+      .getElementById(`${id}`)
+      .setAttribute("style", "color: #16c784 !important");
   };
   const forBgColorWinLossPercentage = (value, id) => {
     if (value >= 50) {
@@ -127,7 +126,7 @@ const WinLossTable = (props) => {
               id="wins"
               onChange={
                 stats[props.model_name]
-                  ? forBgColor(stats[props.model_name].total_wins, "wins")
+                  ? forBgColorGreen(stats[props.model_name].total_wins, "wins")
                   : null
               }
             >
@@ -148,7 +147,7 @@ const WinLossTable = (props) => {
               id="losses"
               onChange={
                 stats[props.model_name]
-                  ? forBgColor(stats[props.model_name].total_wins, "losses")
+                  ? forBgColorRed(stats[props.model_name].total_wins, "losses")
                   : null
               }
             >
@@ -166,7 +165,18 @@ const WinLossTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="wins3"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColorGreen(
+                      stats[props.model_name].consective_wins,
+                      "wins3"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].consective_wins
                 : null}
@@ -179,7 +189,18 @@ const WinLossTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="losses2"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColorRed(
+                      stats[props.model_name].consective_losses,
+                      "losses2"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].consective_losses
                 : null}{" "}

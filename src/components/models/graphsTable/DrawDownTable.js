@@ -72,7 +72,11 @@ const DrawDownTable = (props) => {
       setStats(stats_cache["stats"]);
     }
   }, []);
-
+  const forBgColor = (value, id) => {
+    document
+      .getElementById(`${id}`)
+      .setAttribute("style", "color: #ff2e2e !important");
+  };
   return (
     // TABLE NEW
 
@@ -91,7 +95,18 @@ const DrawDownTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="drawdown_color"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColor(
+                      stats[props.model_name].max_drawdown,
+                      "drawdown_color"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].max_drawdown
                 : "null"}
@@ -121,7 +136,18 @@ const DrawDownTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="drawdown_color2"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColor(
+                      stats[props.model_name].max_drawdown,
+                      "drawdown_color2"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].average_drawdown
                 : "null"}
@@ -151,7 +177,18 @@ const DrawDownTable = (props) => {
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="drawdown_color3"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColor(
+                      stats[props.model_name].max_drawdown,
+                      "drawdown_color3"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
                 ? stats[props.model_name].current_drawdown
                 : "null"}
