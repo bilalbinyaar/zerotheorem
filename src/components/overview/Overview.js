@@ -6,9 +6,13 @@ import IconButton from "@mui/material/IconButton";
 import { RiCheckboxBlankFill } from "react-icons/ri";
 import { useStateContext } from "../../ContextProvider";
 import { BsArrowRightShort } from "react-icons/bs";
-
+import { useSelector, useDispatch } from "react-redux";
+import { set_scroll_position } from "../../store";
 
 const Overview = () => {
+  const dispatch = useDispatch();
+  const persistant_states = useSelector((state) => state.scrollPosition);
+
   const { position_stats_cache, Set_position_stats_cache } = useStateContext();
   const [position_analysis_stats, set_position_analysis_stats] = useState([]);
   useEffect(() => {
@@ -74,7 +78,10 @@ const Overview = () => {
   const handleScroll = () => {
     const container = containerRef.current;
     if (container.scrollLeft > 0) {
-      document.getElementById("toHideOverview").style.display = "none";
+      if (persistant_states.scrollPosition == "True") {
+        dispatch(set_scroll_position());
+        document.getElementById("toHideOverview").style.display = "none";
+      }
     }
   };
 
@@ -82,9 +89,12 @@ const Overview = () => {
     <div>
       {windowWidth.current <= 568 ? (
         <div className="overview-mobile">
-          <div className="swipe-right-overview" id='toHideOverview'>
-            <BsArrowRightShort className="swipe-right-icon" />
-          </div>
+          {persistant_states.scrollPosition == "True" ? (
+            <div className="swipe-right-overview" id="toHideOverview">
+              <BsArrowRightShort className="swipe-right-icon" />
+            </div>
+          ) : null}
+
           <div className="container">
             <div className="overview-text-indicator">
               <h2>Long vs Short Overview</h2>
@@ -99,7 +109,8 @@ const Overview = () => {
                 </div>
               </div>
             </div>
-            <div className="overview-wapper"
+            <div
+              className="overview-wapper"
               ref={containerRef}
               style={{ overflowX: "scroll" }}
               onScroll={handleScroll}

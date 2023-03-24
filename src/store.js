@@ -11,6 +11,9 @@ const persistConfig = {
 
 const initialState = {
   theme: "light-theme",
+  scroll: "True",
+  scrollPosition: "True",
+  scrollRecently: "True",
 };
 
 const counterSlice = createSlice({
@@ -30,13 +33,61 @@ const counterSlice = createSlice({
   },
 });
 
+const scrollSlice = createSlice({
+  name: "scroll",
+  initialState,
+  reducers: {
+    set_scroll: (state) => {
+      return produce(state, (draftState) => {
+        draftState.scroll = "False";
+      });
+    },
+  },
+});
+const scrollSlicePosition = createSlice({
+  name: "scrollPosition",
+  initialState,
+  reducers: {
+    set_scroll_position: (state) => {
+      return produce(state, (draftState) => {
+        draftState.scrollPosition = "False";
+      });
+    },
+  },
+});
+const scrollSliceRecently = createSlice({
+  name: "scrollRecently",
+  initialState,
+  reducers: {
+    set_scroll_recently: (state) => {
+      return produce(state, (draftState) => {
+        draftState.scrollRecently = "False";
+      });
+    },
+  },
+});
 const persistedReducer = persistReducer(persistConfig, counterSlice.reducer);
+const persistedReducer2 = persistReducer(persistConfig, scrollSlice.reducer);
+const persistedReducer3 = persistReducer(
+  persistConfig,
+  scrollSlicePosition.reducer
+);
+const persistedReducer4 = persistReducer(
+  persistConfig,
+  scrollSliceRecently.reducer
+);
 
 export const { set_day_mode, set_night_mode } = counterSlice.actions;
+export const { set_scroll } = scrollSlice.actions;
+export const { set_scroll_position } = scrollSlicePosition.actions;
+export const { set_scroll_recently } = scrollSliceRecently.actions;
 
 export const store = configureStore({
   reducer: {
     theme: persistedReducer,
+    scroll: persistedReducer2,
+    scrollPosition: persistedReducer3,
+    scrollRecently: persistedReducer4,
   },
 });
 

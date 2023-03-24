@@ -14,8 +14,13 @@ import SplineTradeViewCard from "../models/graphs/SplineTradeViewCard";
 import { BiLinkExternal } from "react-icons/bi";
 import { BsArrowRightShort } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { set_scroll_recently } from "../../store";
 
 const RecentlyViewed = (props) => {
+  const dispatch = useDispatch();
+  const persistant_states = useSelector((state) => state.scrollRecently);
+  console.log("States --->", persistant_states.scrollRecently);
   const {
     stats_cache,
     strategies_cache,
@@ -201,15 +206,22 @@ const RecentlyViewed = (props) => {
   const handleScroll = () => {
     const container = containerRef.current;
     if (container.scrollLeft > 0) {
-      document.getElementById("toHidePopular").style.display = "none";
+      if (persistant_states.scrollRecently == "True") {
+        console.log("Here recently --->", persistant_states.scrollRecently);
+        document.getElementById("toHidePopular").style.display = "none";
+        dispatch(set_scroll_recently());
+      }
     }
   };
 
   return (
     <div className="container recently-viewd">
-      <div className="swipe-right-popular" id="toHidePopular">
-        <BsArrowRightShort className="swipe-right-icon" />
-      </div>
+      {persistant_states.scrollRecently == "True" ? (
+        <div className="swipe-right-popular" id="toHidePopular">
+          <BsArrowRightShort className="swipe-right-icon" />
+        </div>
+      ) : null}
+
       <div>
         <h2>Popular Models</h2>
       </div>
