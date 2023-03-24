@@ -57,11 +57,12 @@ export const questions1 = [
     question: "Why are there so many models for a singular equation?",
     answer: (
       <p className="answers-api">
-        The Zero Theorem governing equation can be analytically solved if one
-        has a solution to the time dependent value for 𝛼<sub>𝑘</sub> for k
-        quantity of markets. Since the substitution phenomena is unknown, we opt
-        to use deep reinforcement learning to forecast this variable for every k
-        market for every time interval.{" "}
+        There are many different machine learning methods that can be used to
+        predict 𝛼<sub>k</sub> for k quantity of markets in the Zero Theorem
+        governing equation. Even a single learner has multitude of hyper
+        paramteres that can be altered to produce a unique solution. Hence, on
+        this website, we provide the full range of potential solutions using
+        state-of-the-art machine learning methods.
       </p>
     ),
   },

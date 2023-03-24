@@ -1,3 +1,4 @@
+import { last } from "@amcharts/amcharts5/.internal/core/util/Array";
 import React, { useState, useEffect, memo, useRef } from "react";
 import CanvasJSReact from "../../../canvasjs.stock.react";
 import { useStateContext } from "../../../ContextProvider";
@@ -11,6 +12,7 @@ function CandleGraphCanvasjs(props) {
   //   set_flag_for_navigator(false);
   // }
   const [model_name, set_model_name] = useState(null);
+  const [last_minute, set_last_minute] = useState(null);
   // console.log("I am here with values -->", props.model_name, model_name);
 
   if (model_name != props.model_name) {
@@ -177,7 +179,7 @@ function CandleGraphCanvasjs(props) {
           // console.log("Here is the data for current position", temp_data);
         }
       });
-  }, []);
+  }, [last_minute]);
   const containerProps = {
     width: "100%",
     height: "550px",
@@ -248,6 +250,9 @@ function CandleGraphCanvasjs(props) {
           setStart(parseInt(strategies[props.model_name].position_start_time));
           setEnd(
             parseInt(data["response"][data["response"].length - 1].timestamp)
+          );
+          set_last_minute(
+            data["response"][data["response"].length - 1].timestamp
           );
           set_entry_price(parseInt(strategies[props.model_name].entry_price));
           set_current_price(
@@ -447,18 +452,110 @@ function CandleGraphCanvasjs(props) {
       data: [
         {
           color: "#16c784",
+          type: "splineArea",
           dataPoints: dataPoints3,
         },
       ],
       slider: {
         minimum: new Date(start_date * 1000),
-        maximum: new Date(end * 1000),
+        // maximum: new Date(end * 1000 + 10000),
         handleColor: "#fddd4e",
         handleBorderThickness: 1,
         handleBorderColor: "#fddd4e",
       },
     },
   };
+  useEffect(() => {
+    // console.log("I am called again bro");
+    if (last_minute == null) {
+      return;
+    } else {
+      setTimeout(() => {
+        // console.log("Here is it ", strategies[props.model_name]);
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${last_minute}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            const dps1 = [...dataPoints1];
+            const dps2 = [...dataPoints2];
+            const dps3 = [...dataPoints3];
+            // console.log("Data is found bro", dps1, dps2, dps3);
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
+
+            for (let i = 1; i < data["response"].length; i++) {
+              dps1.push({
+                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                y: [
+                  Number(data["response"][i].open),
+                  Number(data["response"][i].high),
+                  Number(data["response"][i].low),
+                  Number(data["response"][i].close),
+                ],
+                color:
+                  data["response"][i].open < data["response"][i].close
+                    ? "#16C784"
+                    : "#FF2E2E",
+              });
+              dps2.push({
+                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                y: Number(data["response"][i].volume),
+                color:
+                  data["response"][i].open < data["response"][i].close
+                    ? "#16C784"
+                    : "#FF2E2E",
+              });
+              dps3.push({
+                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                y: Number(data["response"][i].close),
+              });
+            }
+            // console.log("Data after setting is found bro", dps1, dps2, dps3);
+
+            // const newState = { ...dataPoints1, dps1 };
+            // const newState2 = { ...dataPoints1, dps1 };
+            // const newState3 = { ...dataPoints1, dps1 };
+
+            // console.log(
+            //   "Here is data received after setting values -->",
+            //   newState,
+            //   newState2,
+            //   newState3
+            // );
+            setDataPoints1(dps1);
+            setDataPoints2(dps2);
+            setDataPoints3(dps3);
+            // setIsLoaded(true);
+            // console.log("Console values -->", dps1, dps2, dps3);
+            // let start_time = parseInt(
+            //   strategies[props.model_name].position_start_time
+            // );
+            let end_time = parseInt(
+              data["response"][data["response"].length - 1].timestamp + 1000
+            );
+            let avg = (end_time - start) / 2;
+            let result = avg + start;
+            // console.log("Result -->", end_time, start_time, result, result2);
+            // set_start_date(result);
+            setStart(start);
+            setEnd(
+              parseInt(data["response"][data["response"].length - 1].timestamp)
+            );
+            set_last_minute(
+              data["response"][data["response"].length - 1].timestamp
+            );
+            // set_entry_price(parseInt(strategies[props.model_name].entry_price));
+            // set_current_price(
+            //   parseInt(strategies[props.model_name].current_price)
+            // );
+          });
+        // set_last_minute(new Date());
+      }, 60000);
+    }
+  }, [last_minute]);
   return (
     <div>
       {isLoaded ? (

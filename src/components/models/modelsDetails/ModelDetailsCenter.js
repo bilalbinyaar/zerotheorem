@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import { useState, useEffect } from "react";
 import TimerModelPage from "../../timer/TimerModelPage";
 import { useStateContext } from "../../../ContextProvider";
+import { time } from "@amcharts/amcharts5";
 
 const ModelDetailsCenter = (props) => {
   const {
@@ -16,13 +17,62 @@ const ModelDetailsCenter = (props) => {
     Set_coin_search_selection_cache,
     Set_model_search_selection_cache,
   } = useStateContext();
+  const [timer_for_current, set_timer_for_current_position] = useState(null);
   // All time Drop Down
   const [drop, setDrop] = useState(false);
   const dropDown = () => setDrop(!drop);
   // All time Drop Down End
   const [stats, setStats] = useState([]);
   const [strategies, setStrategies] = useState({});
+  useEffect(() => {
+    if (timer_for_current == null) {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
+        .then((res) => res.json())
+        .then((data) => {
+          const temp_data = {};
+          // console.log(
+          //   "Finally btc data -->",
+          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+          // );
 
+          for (let i = 0; i < data["response"].length; i++) {
+            temp_data[data["response"][i].strategy_name] = {
+              current_pnl: data["response"][i].current_pnl,
+              current_price: data["response"][i].current_price,
+            };
+          }
+
+          if (temp_data.length != 0) {
+            set_current_position(temp_data);
+            // console.log("Here is the data for current position", temp_data);
+          }
+        });
+    }
+    setTimeout(() => {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
+        .then((res) => res.json())
+        .then((data) => {
+          const temp_data = {};
+          // console.log(
+          //   "Finally btc data -->",
+          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+          // );
+
+          for (let i = 0; i < data["response"].length; i++) {
+            temp_data[data["response"][i].strategy_name] = {
+              current_pnl: data["response"][i].current_pnl,
+              current_price: data["response"][i].current_price,
+            };
+          }
+
+          if (temp_data.length != 0) {
+            set_current_position(temp_data);
+            // console.log("Here is the data for current position", temp_data);
+          }
+        });
+      set_timer_for_current_position(new Date());
+    }, 60000);
+  }, [timer_for_current]);
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
@@ -89,30 +139,30 @@ const ModelDetailsCenter = (props) => {
     }
   }, []);
   const [current_position, set_current_position] = useState({});
-  useEffect(() => {
-    // console.log("Here is it ", strategies[props.model_name]);
-    fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
-      .then((res) => res.json())
-      .then((data) => {
-        const temp_data = {};
-        // console.log(
-        //   "Finally btc data -->",
-        //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-        // );
+  // useEffect(() => {
+  //   // console.log("Here is it ", strategies[props.model_name]);
+  //   fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const temp_data = {};
+  //       // console.log(
+  //       //   "Finally btc data -->",
+  //       //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+  //       // );
 
-        for (let i = 0; i < data["response"].length; i++) {
-          temp_data[data["response"][i].strategy_name] = {
-            current_pnl: data["response"][i].current_pnl,
-            current_price: data["response"][i].current_price,
-          };
-        }
+  //       for (let i = 0; i < data["response"].length; i++) {
+  //         temp_data[data["response"][i].strategy_name] = {
+  //           current_pnl: data["response"][i].current_pnl,
+  //           current_price: data["response"][i].current_price,
+  //         };
+  //       }
 
-        if (temp_data.length != 0) {
-          set_current_position(temp_data);
-          // console.log("Here is the data for current position", temp_data);
-        }
-      });
-  }, []);
+  //       if (temp_data.length != 0) {
+  //         set_current_position(temp_data);
+  //         // console.log("Here is the data for current position", temp_data);
+  //       }
+  //     });
+  // }, []);
   useEffect(() => {
     if (!stats) {
       return;
