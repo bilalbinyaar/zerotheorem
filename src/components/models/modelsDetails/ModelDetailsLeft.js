@@ -296,7 +296,7 @@ const ModelDetailsLeft = (props) => {
       <div className="model-details-left-body-main">
         {/* Body # 1 */}
         <div className="model-details-left-body">
-          <Tooltip title="Model Rank">
+          <Tooltip title="Model rank based on its cumulative PNL">
             <div className="model-details-left-body-stats rank for-font-size">
               <p>
                 Rank #
@@ -323,7 +323,7 @@ const ModelDetailsLeft = (props) => {
             </div>
           </Tooltip>
 
-          <Tooltip title="Date">
+          <Tooltip title="Start date of the model's forecasts">
             <div className="model-details-left-body-stats date">
               <AiOutlineCalendar className="model-details-left-body-stats-icon para-margin" />
               <p className="para-margin for-font-size">

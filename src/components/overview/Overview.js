@@ -88,7 +88,10 @@ const Overview = () => {
           <div className="container">
             <div className="overview-text-indicator">
               <h2>Long vs Short Overview</h2>
-              <div className="overview-indicators">
+            </div>
+            <p className="over-view-description">Percentage of models currently predicting long and short for each
+            time horizon.</p>
+            <div className="overview-indicators">
                 <div className="indicator">
                   <RiCheckboxBlankFill className="indicator-long" />
                   <p>Long</p>
@@ -98,7 +101,6 @@ const Overview = () => {
                   <p>Short</p>
                 </div>
               </div>
-            </div>
             <div className="overview-wapper"
               ref={containerRef}
               style={{ overflowX: "scroll" }}
@@ -617,18 +619,20 @@ const Overview = () => {
       ) : (
         <div className="overview">
           <div className="container">
-            <div className="overview-text-indicator">
-              <h2>
+            <h2>
                 Long vs Short Overview
-                <Tooltip
+                {/* <Tooltip
                   title="Percentage of models currently predicting long and short for each
               time horizon."
                 >
                   <IconButton>
                     <BsFillInfoCircleFill />
                   </IconButton>
-                </Tooltip>
-              </h2>
+                </Tooltip> */}
+            </h2>
+            <div className="overview-text-indicator">              
+              <p className="over-view-description">Percentage of models currently predicting long and short for each
+              time horizon.</p>
               <div className="overview-indicators">
                 <div className="indicator">
                   <RiCheckboxBlankFill className="indicator-long" />
@@ -640,6 +644,7 @@ const Overview = () => {
                 </div>
               </div>
             </div>
+            
             <div className="overview-wapper">
               <div className="overview-wapper-top">
                 <div className="overview-card">

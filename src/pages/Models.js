@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { useEffect, memo } from "react";
 import { useLocation } from "react-router-dom";
 import CumulativePNL from "../components/models/cumulativePNL/CumulativePNL";
 import CurrentPosition from "../components/models/currentPosition/CurrentPosition";
@@ -32,6 +32,13 @@ const Models = () => {
   // console.log("Name -->", name);
   // name = name.replace("-", "_");
   // console.log("This is name for cum pnl", location.state.model_name);
+
+  // SCROLL TO TOP
+  const locationToTop = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [locationToTop.pathname]);
+  // SCROLL TO TOP
   return (
     <React.Fragment>
       <Helmet>
