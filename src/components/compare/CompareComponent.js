@@ -814,7 +814,7 @@ const CompareComponent = () => {
                   visibility="hidden"
                 ></th>
                 <th className="tg-0lax border-remove">
-                  {windowWidth.current <= 568 ? (
+                  {windowWidth.current <= 768 ? (
                     /* Mobile search bars*/
                     <div>
                       <div className="search-filter-wapper">
@@ -2230,7 +2230,7 @@ const CompareComponent = () => {
                   )}
                 </th>
                 <th className="tg-0lax border-remove">
-                  {windowWidth.current <= 568 ? (
+                  {windowWidth.current <= 768 ? (
                     <div>
                       <div className="search-filter-wapper">
                         <div className="compare-search-wrapper">
@@ -3641,7 +3641,7 @@ const CompareComponent = () => {
                   )}
                 </th>
                 <th className="tg-0lax to-hide border-remove">
-                  {windowWidth.current <= 568 ? (
+                  {windowWidth.current <= 768 ? (
                     <CompareComponentMobile />
                   ) : (
                     <div>
@@ -4315,7 +4315,7 @@ const CompareComponent = () => {
                 </th>
               </tr>
             </thead>
-            {windowWidth.current <= 568 ? (
+            {windowWidth.current <= 768 ? (
               <tbody>
                 <tr>
                   <td className="tg-0lax for-th">

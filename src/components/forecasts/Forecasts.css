@@ -462,6 +462,44 @@
   .equation-i-div {
     display: none;
   }
+
+  .swipe-right {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    width: 35px;
+    height: 35px;
+    z-index: 1000;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swipe-right-icon {
+    height: 27px;
+    width: 27px;
+    color: var(--color-day-yellow);
+    /* background-color: black; 
+    border: 1px solid var(--color-day-yellow); */
+  }
+}
+
+@media screen and (max-width: 678px) {
+  .swipe-right {
+    position: absolute;
+    right: 46px;
+    top: 55%;
+    width: 35px;
+    height: 35px;
+    z-index: 1000;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 568px) {
