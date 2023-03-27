@@ -2,10 +2,13 @@ import { last } from "@amcharts/amcharts5/.internal/core/util/Array";
 import React, { useState, useEffect, memo, useRef } from "react";
 import CanvasJSReact from "../../../canvasjs.stock.react";
 import { useStateContext } from "../../../ContextProvider";
-
+// import dotenv from "dotenv";
 const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 function CandleGraphCanvasjs(props) {
+  // dotenv.config();
+  // console.log("Here is the secrect key -->", process.env.REACT_APP_SECRET_KEY);
+  const api_key = process.env.REACT_APP_SECRET_KEY;
   const windowWidth = useRef(window.innerWidth);
   // const [flag_for_navigator, set_flag_for_navigator] = useState(true);
   // if (windowWidth.current <= 480) {
@@ -69,7 +72,10 @@ function CandleGraphCanvasjs(props) {
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -158,7 +164,12 @@ function CandleGraphCanvasjs(props) {
   const [current_position, set_current_position] = useState({});
   useEffect(() => {
     // console.log("Here is it ", strategies[props.model_name]);
-    fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
+    fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const temp_data = {};
@@ -193,7 +204,13 @@ function CandleGraphCanvasjs(props) {
       fetch(
         `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${parseInt(
           strategies[props.model_name].position_start_time
-        )}`
+        )}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        }
       )
         .then((res) => res.json())
         .then((data) => {
@@ -473,7 +490,13 @@ function CandleGraphCanvasjs(props) {
       setTimeout(() => {
         // console.log("Here is it ", strategies[props.model_name]);
         fetch(
-          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${last_minute}`
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${last_minute}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          }
         )
           .then((res) => res.json())
           .then((data) => {

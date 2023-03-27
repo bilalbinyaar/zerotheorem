@@ -74,7 +74,8 @@
 .for-table-head {
   font-size: 11px;
   color: var(--color-day-black);
-  padding: 0.8rem 0.2rem;
+  /* padding: 0.8rem 0.2rem; */
+  padding: 0.8rem 0rem;
   text-align: left;
 }
 
@@ -141,15 +142,17 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
+    width: 125%;
   }
 
   .for-table-data {
     text-align: left;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
+    width: 80%;
   }
 
   .table-card-head h3 {

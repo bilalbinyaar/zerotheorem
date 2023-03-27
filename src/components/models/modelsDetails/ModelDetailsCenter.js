@@ -24,9 +24,20 @@ const ModelDetailsCenter = (props) => {
   // All time Drop Down End
   const [stats, setStats] = useState([]);
   const [strategies, setStrategies] = useState({});
+
+  const api_key = process.env.REACT_APP_SECRET_KEY;
+
   useEffect(() => {
     if (timer_for_current == null) {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
+      fetch(
+        `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           const temp_data = {};
@@ -49,7 +60,15 @@ const ModelDetailsCenter = (props) => {
         });
     }
     setTimeout(() => {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`)
+      fetch(
+        `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           const temp_data = {};
@@ -76,7 +95,10 @@ const ModelDetailsCenter = (props) => {
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -169,7 +191,10 @@ const ModelDetailsCenter = (props) => {
     } else {
       if (Object.keys(strategies_cache).length == 0) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-          method: "get",
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
         })
           .then((response) => response.json())
           .then((data) => {

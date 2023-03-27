@@ -3,7 +3,7 @@
 }
 
 .overview-mobile .container {
-  padding: 1rem 0rem 2rem 0rem;
+  padding: 0rem 0rem 2rem 0rem;
 }
 
 .overview-wapper {
@@ -158,6 +158,10 @@
   border-radius: 6px;
 }
 
+.over-view-description {
+  text-align: justify;
+}
+
 @media screen and (max-width: 1188px) {
   .overview-details {
     flex-direction: column;
@@ -231,6 +235,15 @@
     flex-direction: row;
     align-items: baseline;
   }
+
+  .overview-indicators {
+    justify-content: end;
+    margin-top: 0.8rem;
+  }
+
+  .overview-wapper-top {
+    margin: 0rem 0rem 1rem 0rem;
+  }
 }
 
 
@@ -262,10 +275,14 @@
     flex-direction: row;
   }
 
+  .over-view-description {
+    margin-top: 0.4rem;
+  }
+
   .swipe-right-overview {
     position: absolute;
-    right: 24px;
-    top: 45%;
+    right: 28px;
+    top: 55%;
     width: 35px;
     height: 35px;
     z-index: 1000;

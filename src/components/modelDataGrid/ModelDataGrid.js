@@ -258,7 +258,10 @@ const ModelDataGrid = () => {
     } else {
       if (Object.keys(strategies_cache).length == 0) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-          method: "get",
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
         })
           .then((response) => response.json())
           .then((data) => {
@@ -364,7 +367,10 @@ const ModelDataGrid = () => {
     if (Flag == null) {
       if (Object.keys(stats_cache).length == 0) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-          method: "get",
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
         })
           .then((response) => response.json())
           .then((data) => {
@@ -1052,6 +1058,12 @@ const ModelDataGrid = () => {
           <div className="model-grid-mob">
             <div className="horizon">
               <h2 className="horizon-head">All Models</h2>
+              <p className="all-models-description">
+                Listed below are all the forecast models, which can be filtered
+                by their time horizon, currency, or name. Additionally, you can
+                sort selective columns in ascending or descending order by
+                clicking on the column header.
+              </p>
               <div className="horizon-row">
                 <div className="horizon-left">
                   {/* <h3>Time Horizon</h3> */}
@@ -1627,6 +1639,12 @@ const ModelDataGrid = () => {
           <div className="model-grid-web">
             <div className="horizon">
               <h2 className="horizon-head">All Models</h2>
+              <p className="all-models-description">
+                Listed below are all the forecast models, which can be filtered
+                by their time horizon, currency, or name. Additionally, you can
+                sort selective columns in ascending or descending order by
+                clicking on the column header.
+              </p>
               <div className="horizon-row">
                 <div className="horizon-left">
                   <h3>Time Horizon</h3>

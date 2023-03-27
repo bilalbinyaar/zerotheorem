@@ -34,7 +34,10 @@ const CanvasNegativeBar = (props) => {
   useEffect(() => {
     if (!individual_pnl_canvasjs_graph_cache[props.model_name]) {
       fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then(async (data) => {

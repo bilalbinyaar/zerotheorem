@@ -26,7 +26,12 @@ import SenstitivityAnalysisSingleAlphaCas from "../src/components/resources/deri
 import TheGoverningEquation from "../src/components/resources/derivations/TheGoverningEquation";
 import TheUnderlyingAssumptions from "../src/components/resources/derivations/TheUnderlyingAssumptions";
 
+// import dotenv from "dotenv";
 function App() {
+  // dotenv.config();
+  // const MY_VARIABLE = useEnv("REACT_APP_SECRET_KEY");
+  // console.log("Here finally secret key -->", process.env.REACT_APP_SECRET_KEY);
+
   const { Login, user, error, loading } = useStateContext();
 
   // SCROLL TO TOP

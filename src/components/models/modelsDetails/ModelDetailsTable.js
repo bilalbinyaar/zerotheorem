@@ -9,7 +9,10 @@ const ModelDetailsTable = (props) => {
     fetch(
       `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategy/${props.model_name}`,
       {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       }
     )
       .then((response) => response.json())
@@ -39,7 +42,10 @@ const ModelDetailsTable = (props) => {
     fetch(
       `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stat/${props.model_name}`,
       {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       }
     )
       .then((response) => response.json())

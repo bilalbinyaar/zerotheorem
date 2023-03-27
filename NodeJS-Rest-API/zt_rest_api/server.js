@@ -54,90 +54,158 @@ db.getConnection((err, con) => {
 // PORT = 80;
 
 //Crud operations by using express with mysql
-app.get("/getData", function (req, res) {
-  var query = "select * from Strategies;";
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ msg: err });
-    } else {
-      res.json({ msg: result });
-    }
-  });
-});
+// app.get("/getData", function (req, res) {
+//   var query = "select * from Strategies;";
+//   db.query(query, (err, result) => {
+//     if (err) {
+//       res.json({ msg: err });
+//     } else {
+//       res.json({ msg: result });
+//     }
+//   });
+// });
 
 app.get("/get_stats", function (req, res) {
-  var query = "select * from Stats";
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ msg: err });
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = "select * from Stats";
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ msg: err });
+        } else {
+          res.json({ msg: result });
+        }
+      });
     } else {
-      res.json({ msg: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
+});
+
+app.get("/get_twitter_stats", function (req, res) {
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = "select * from twitter_stats";
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ msg: err });
+        } else {
+          res.json({ msg: result });
+        }
+      });
+    } else {
+      res.json({ response: "Unauthorized access" });
+    }
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/get_strategies", async function (req, res) {
   // console.log("I am here to print query");
-  var query = "select * from Strategies";
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = "select * from Strategies";
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
-app.get("/get_ledger_names", async function (req, res) {
-  // console.log("I am here to print query");
-  var query = "select * from LedgerNames";
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
-    } else {
-      res.json({ response: result });
-    }
-  });
-});
+// app.get("/get_ledger_names", async function (req, res) {
+//   // console.log("I am here to print query");
+//   var query = "select * from LedgerNames";
+//   db.query(query, (err, result) => {
+//     if (err) {
+//       res.json({ response: err });
+//     } else {
+//       res.json({ response: result });
+//     }
+//   });
+// });
 
 app.get("/:ledger", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
-  var query = `SELECT * FROM ${req.params.ledger}  ORDER BY LPAD(lower(ledger_key), 6,0) asc;`;
 
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `SELECT * FROM ${req.params.ledger}  ORDER BY LPAD(lower(ledger_key), 6,0) asc;`;
+
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/get_7d_pnl/:ledger", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
   // console.log("Hello");
-  var query = `SELECT * FROM ${req.params.ledger}  ORDER BY LPAD(lower(ledger_key), 6,0) desc limit 1;`;
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `SELECT * FROM ${req.params.ledger}  ORDER BY LPAD(lower(ledger_key), 6,0) desc limit 1;`;
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/get_date_added_ledger/:ledger", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
-  var query = `SELECT * FROM ${req.params.ledger}  ORDER BY LPAD(lower(ledger_key), 6,0) asc limit 1;`;
-  // console.log("Hello", req.params.ledger);
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `SELECT * FROM ${req.params.ledger}  ORDER BY LPAD(lower(ledger_key), 6,0) asc limit 1;`;
+      // console.log("Hello", req.params.ledger);
 
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 // app.get("/get_btc_minute_data", function (req, res) {
@@ -154,66 +222,113 @@ app.get("/get_date_added_ledger/:ledger", async function (req, res) {
 app.get("/get_strategy/:name", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
   // console.log(req.params.name);
-  var query = `select * from Strategies where strategy_name = '${req.params.name}'`;
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `select * from Strategies where strategy_name = '${req.params.name}'`;
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/get_stat/:name", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
   // console.log(req.params.name);
-  var query = `select * from Stats where strategy_name = '${req.params.name}'`;
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `select * from Stats where strategy_name = '${req.params.name}'`;
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/get_btc_minute_data/:date", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
   // console.log(req.params.name);
-  var query = `select * from bitmex_minute_xbtusd where timestamp >= ${req.params.date}`;
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `select * from bitmex_minute_xbtusd where timestamp >= ${req.params.date}`;
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/get/position_percentage", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
   // console.log(req.params.name);
-  var query = `select * from position_percentage`;
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `select * from position_percentage`;
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/get/current_position", async function (req, res) {
   // console.log("I am here to print query", req.params.ledger);
   // console.log(req.params.name);
-  var query = `select * from current_position`;
-  db.query(query, (err, result) => {
-    if (err) {
-      res.json({ response: err });
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `select * from current_position`;
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
     } else {
-      res.json({ response: result });
+      res.json({ response: "Unauthorized access" });
     }
-  });
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
 });
 
 app.get("/", function (req, res) {

@@ -57,7 +57,12 @@
 }
 
 .horizon-head{
+  margin-bottom: 0.4rem;
+}
+
+.all-models-description {
   margin-bottom: 0.8rem;
+  text-align: justify;
 }
 
 

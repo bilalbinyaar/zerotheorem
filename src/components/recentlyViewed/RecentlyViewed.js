@@ -20,7 +20,7 @@ import { set_scroll_recently } from "../../store";
 const RecentlyViewed = (props) => {
   const dispatch = useDispatch();
   const persistant_states = useSelector((state) => state.scrollRecently);
-  console.log("States --->", persistant_states.scrollRecently);
+  // console.log("States --->", persistant_states.scrollRecently);
   const {
     stats_cache,
     strategies_cache,
@@ -39,7 +39,10 @@ const RecentlyViewed = (props) => {
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -110,7 +113,10 @@ const RecentlyViewed = (props) => {
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
