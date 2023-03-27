@@ -150,6 +150,28 @@
   }
 }
 
+@media screen and (max-width: 775px) {
+  .recently-viewd {
+    position: relative;
+  }
+  .swipe-right-popular {
+    position: absolute;
+    right: 14px;
+    top: 49%;
+    width: 35px;
+    height: 35px;
+    z-index: 1000;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+
 @media screen and (max-width: 568px) {
   .recently-viewd {
     position: relative;
