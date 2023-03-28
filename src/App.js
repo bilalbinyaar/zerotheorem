@@ -25,6 +25,7 @@ import SenstitivityAnalysisMarketSpecificAlpha from "../src/components/resources
 import SenstitivityAnalysisSingleAlphaCas from "../src/components/resources/derivations/SenstitivityAnalysisSingleAlphaCas";
 import TheGoverningEquation from "../src/components/resources/derivations/TheGoverningEquation";
 import TheUnderlyingAssumptions from "../src/components/resources/derivations/TheUnderlyingAssumptions";
+import Backtest from "./pages/Backtest";
 
 // import dotenv from "dotenv";
 function App() {
@@ -96,6 +97,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/faqs" element={<FAQ />} />
             <Route path="/compare" element={<Compare />} />
+            <Route path="/backtest" element={<Backtest />} />
+
 
             {/* RESOURCES ROUTING FOR SUB ITEMS */}
             <Route

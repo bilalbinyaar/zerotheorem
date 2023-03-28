@@ -376,6 +376,13 @@ const ModelDetailsLeft = (props) => {
               </Link>
             ) : null}
           </div>
+          <div className="model-details-left-body-stats backtest-btn-div">
+              <Link
+                to="/backtest"
+              >
+                <p className="compare-btn">Run Backtest</p>
+              </Link>
+          </div>
         </div>
       </div>
     </div>
