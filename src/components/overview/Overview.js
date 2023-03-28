@@ -6,9 +6,13 @@ import IconButton from "@mui/material/IconButton";
 import { RiCheckboxBlankFill } from "react-icons/ri";
 import { useStateContext } from "../../ContextProvider";
 import { BsArrowRightShort } from "react-icons/bs";
-
+import { useSelector, useDispatch } from "react-redux";
+import { set_scroll_position } from "../../store";
 
 const Overview = () => {
+  const dispatch = useDispatch();
+  const persistant_states = useSelector((state) => state.scrollPosition);
+
   const { position_stats_cache, Set_position_stats_cache } = useStateContext();
   const [position_analysis_stats, set_position_analysis_stats] = useState([]);
   useEffect(() => {
@@ -16,7 +20,10 @@ const Overview = () => {
       fetch(
         "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/position_percentage",
         {
-          method: "get",
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
         }
       )
         .then((response) => response.json())
@@ -74,7 +81,10 @@ const Overview = () => {
   const handleScroll = () => {
     const container = containerRef.current;
     if (container.scrollLeft > 0) {
-      document.getElementById("toHideOverview").style.display = "none";
+      if (persistant_states.scrollPosition == "True") {
+        dispatch(set_scroll_position());
+        document.getElementById("toHideOverview").style.display = "none";
+      }
     }
   };
 
@@ -82,26 +92,32 @@ const Overview = () => {
     <div>
       {windowWidth.current <= 568 ? (
         <div className="overview-mobile">
-          <div className="swipe-right-overview" id='toHideOverview'>
-            <BsArrowRightShort className="swipe-right-icon" />
-          </div>
+          {persistant_states.scrollPosition == "True" ? (
+            <div className="swipe-right-overview" id="toHideOverview">
+              <BsArrowRightShort className="swipe-right-icon" />
+            </div>
+          ) : null}
+
           <div className="container">
             <div className="overview-text-indicator">
               <h2>Long vs Short Overview</h2>
             </div>
-            <p className="over-view-description">Percentage of models currently predicting long and short for each
-            time horizon.</p>
+            <p className="over-view-description">
+              Percentage of models currently predicting long and short for each
+              time horizon.
+            </p>
             <div className="overview-indicators">
-                <div className="indicator">
-                  <RiCheckboxBlankFill className="indicator-long" />
-                  <p>Long</p>
-                </div>
-                <div className="indicator">
-                  <RiCheckboxBlankFill className="indicator-short" />
-                  <p>Short</p>
-                </div>
+              <div className="indicator">
+                <RiCheckboxBlankFill className="indicator-long" />
+                <p>Long</p>
               </div>
-            <div className="overview-wapper"
+              <div className="indicator">
+                <RiCheckboxBlankFill className="indicator-short" />
+                <p>Short</p>
+              </div>
+            </div>
+            <div
+              className="overview-wapper"
               ref={containerRef}
               style={{ overflowX: "scroll" }}
               onScroll={handleScroll}
@@ -620,8 +636,8 @@ const Overview = () => {
         <div className="overview">
           <div className="container">
             <h2>
-                Long vs Short Overview
-                {/* <Tooltip
+              Long vs Short Overview
+              {/* <Tooltip
                   title="Percentage of models currently predicting long and short for each
               time horizon."
                 >
@@ -630,9 +646,11 @@ const Overview = () => {
                   </IconButton>
                 </Tooltip> */}
             </h2>
-            <div className="overview-text-indicator">              
-              <p className="over-view-description">Percentage of models currently predicting long and short for each
-              time horizon.</p>
+            <div className="overview-text-indicator">
+              <p className="over-view-description">
+                Percentage of models currently predicting long and short for
+                each time horizon.
+              </p>
               <div className="overview-indicators">
                 <div className="indicator">
                   <RiCheckboxBlankFill className="indicator-long" />
@@ -644,7 +662,7 @@ const Overview = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="overview-wapper">
               <div className="overview-wapper-top">
                 <div className="overview-card">

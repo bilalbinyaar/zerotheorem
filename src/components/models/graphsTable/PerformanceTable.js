@@ -11,7 +11,10 @@ const PerformanceTable = (props) => {
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {

@@ -25,12 +25,16 @@ import EquationBlack from "../../assets/equation-black.png";
 import EquationWhite from "../../assets/equation-white.png";
 import { BiLinkExternal } from "react-icons/bi";
 import { MathComponent } from "mathjax-react";
+import { useSelector, useDispatch } from "react-redux";
+import { set_scroll } from "../../store";
 
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
 const Forecasts = () => {
   // console.log("Hello");
   // TOTAL PNL COLORS
+  const persistant_states = useSelector((state) => state.scroll);
+  // console.log("Scroll value -->", scroll);
   const forColor = (total_pnl, id) => {
     try {
       if (total_pnl < 0) {
@@ -68,7 +72,10 @@ const Forecasts = () => {
   useEffect(() => {
     if (Object.keys(stats_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -139,7 +146,10 @@ const Forecasts = () => {
   useEffect(() => {
     if (Object.keys(strategies_cache).length == 0) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-        method: "get",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -307,14 +317,19 @@ const Forecasts = () => {
   const label = "Best Models";
 
   const containerRef = useRef(null);
+  const dispatch = useDispatch();
 
   const handleScroll = () => {
     const container = containerRef.current;
     if (container.scrollLeft > 0) {
-      document.getElementById("toHide").style.display = "none";
+      // console.log("I am here to handle scroll bro");
+
+      if (persistant_states.scroll == "True") {
+        dispatch(set_scroll());
+        document.getElementById("toHide").style.display = "none";
+      }
     }
   };
-
   return (
     <div id="forecasts" className="forecasts">
       <div className="container">
@@ -1771,9 +1786,11 @@ const Forecasts = () => {
 
           {/* FOR MOBILE VIEW  */}
           <div className="forecast-mob">
-            <div className="swipe-right" id='toHide'>
-              <BsArrowRightShort className="swipe-right-icon" />
-            </div> 
+            {persistant_states.scroll == "True" ? (
+              <div className="swipe-right" id="toHide">
+                <BsArrowRightShort className="swipe-right-icon" />
+              </div>
+            ) : null}
 
             <div
               className="forecasts-cards"

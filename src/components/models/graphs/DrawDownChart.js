@@ -11,7 +11,10 @@ const DrawDownChart = (props) => {
   // const [pnl, setPnl] = useState([]);
   // useEffect(() => {
   //   fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-  //     method: "get",
+  //       method: "GET",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+      },
   //   })
   //     .then((response) => response.json())
   //     .then((data) => {
@@ -51,7 +54,10 @@ const DrawDownChart = (props) => {
       // console.log("I received model name for graph -->", props.model_name);
 
       fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-        method: "get",
+          method: "GET",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+      },
       })
         .then((response) => response.json())
         .then(async (data) => {

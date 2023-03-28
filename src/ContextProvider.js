@@ -22,7 +22,7 @@ export const ContextProvider = ({ children }) => {
   const default_theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
 
-  console.log("Value of redux state -->", default_theme.theme);
+  // console.log("Value of redux state -->", default_theme.theme);
   const [theme, setTheme] = useState(default_theme.theme);
   const toggleTheme = () => {
     if (theme === "dark-theme") {
