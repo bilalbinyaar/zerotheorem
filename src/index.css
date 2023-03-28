@@ -672,6 +672,18 @@ a {
   padding: 0px !important;
 }
 
+.css-1aumtv5 .MuiOutlinedInput-root .MuiAutocomplete-input {
+  font-size: 12px !important;
+}
+
+.css-1ald77x {
+  color: var(--color-day-yellow) !important;
+}
+
+.css-1ald77x.Mui-focused {
+  color: var(--color-day-yellow) !important;
+}
+
 .css-vubbuv {
   color: var(--color-day-black) !important;
   width: 0.8em !important;
