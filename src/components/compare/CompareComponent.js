@@ -804,7 +804,13 @@ const CompareComponent = () => {
     <div className="compare">
       <div className="container">
         <h1>Compare</h1>
-
+        {windowWidth.current <= 768 ? (
+        <p className="compare-description">Compare any two models by selecting them in the columns below, where you can review their details and performance metrics. To refine your search, use the time horizon and currency filters to locate a specific model, or type in the model name directly to select it. The best values are colored green with the exception of the Forecast where Long is always green and Short is always red.</p>
+        ) : (
+        <p className="compare-description">Compare up to three models by selecting them in the columns below, where you can review their details and performance metrics. To refine your search, use the time horizon and currency filters to locate a specific model, or type in the model name directly to select it. The best values are colored green with the exception of the Forecast where Long is always green and Short is always red.</p>
+        )
+        }
+        
         <div className="search-table">
           <table className="tg no-bl">
             <thead className="no-bl">
