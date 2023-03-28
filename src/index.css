@@ -650,6 +650,10 @@ a {
   top: -6px !important;
 }
 
+.css-oapmtd {
+  background-color: var(--color-dropdown-bg) !important;
+}
+
 @media screen and (max-width: 568px) {
   .css-1km1ehz {
     min-height: 38px !important;
