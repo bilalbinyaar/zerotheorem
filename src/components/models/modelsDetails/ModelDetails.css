@@ -370,6 +370,10 @@
   width: 90px;
 }
 
+.backtest-btn-div {
+  background-color: var(--color-day-yellow);
+}
+
 .compare-btn {
   font-size: 14px !important;
   font-weight: 500;

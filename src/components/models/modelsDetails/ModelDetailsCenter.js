@@ -533,25 +533,6 @@ const ModelDetailsCenter = (props) => {
               </h3>
             </div>
 
-            <div className="model-details-center-top-forecasts">
-              <div className="for-tooltip">
-                <p>Current Price :</p>
-                {/* <Tooltip title="Current Price">
-                <IconButton>
-                  <BsFillInfoCircleFill />
-                </IconButton>
-              </Tooltip> */}
-              </div>
-              <h3>
-                {current_position[props.model_name]
-                  ? current_position[props.model_name].current_price
-                  : null}
-              </h3>
-            </div>
-          </div>
-
-          {/* Body */}
-          <div className="model-details-center-body">
             <div className="model-details-center-body-content">
               <div className="for-tooltip">
                 <p>Entry Price :</p>
@@ -564,6 +545,27 @@ const ModelDetailsCenter = (props) => {
               <h3>
                 {strategies[props.model_name]
                   ? strategies[props.model_name].entry_price
+                  : null}
+              </h3>
+            </div>
+
+            
+          </div>
+
+          {/* Body */}
+          <div className="model-details-center-body">
+            <div className="model-details-center-top-forecasts">
+              <div className="for-tooltip">
+                <p>Current Price :</p>
+                {/* <Tooltip title="Current Price">
+                <IconButton>
+                  <BsFillInfoCircleFill />
+                </IconButton>
+              </Tooltip> */}
+              </div>
+              <h3>
+                {current_position[props.model_name]
+                  ? current_position[props.model_name].current_price
                   : null}
               </h3>
             </div>

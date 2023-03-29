@@ -153,6 +153,6 @@ export const questions3 = [
     id: 17,
     question: "What is a quant and what do they do?",
     answer:
-      "The word quant is slang for quantitative researcher/developer who uses a scientific approach (economics, mathematics, and statistics) with computer algorithms/programs to develop investment decisions, simulate asset behaviour, or determine asset risk.",
+      "The word quant is a slang for quantitative researcher/developer who uses a scientific approach (economics, mathematics, and statistics) with computer algorithms/programs to develop investment decisions, simulate asset behaviour, or determine asset risk.",
   },
 ];

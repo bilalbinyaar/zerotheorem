@@ -650,6 +650,10 @@ a {
   top: -6px !important;
 }
 
+.css-oapmtd {
+  background-color: var(--color-dropdown-bg) !important;
+}
+
 @media screen and (max-width: 568px) {
   .css-1km1ehz {
     min-height: 38px !important;
@@ -666,6 +670,18 @@ a {
 /* MUI CURRENCY AND MODEL DROPDOWNS */
 .MuiOutlinedInput-root {
   padding: 0px !important;
+}
+
+.css-1aumtv5 .MuiOutlinedInput-root .MuiAutocomplete-input {
+  font-size: 12px !important;
+}
+
+.css-1ald77x {
+  color: var(--color-day-yellow) !important;
+}
+
+.css-1ald77x.Mui-focused {
+  color: var(--color-day-yellow) !important;
 }
 
 .css-vubbuv {

@@ -28,6 +28,7 @@ import TheUnderlyingAssumptions from "../src/components/resources/derivations/Th
 // import { database } from "./firebase_config";
 // import { ref, onValue, set } from "firebase/database";
 // import cryptoRandomString from "crypto-random-string";
+import Backtest from "./pages/Backtest";
 
 // import dotenv from "dotenv";
 function App() {
@@ -118,6 +119,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/faqs" element={<FAQ />} />
             <Route path="/compare" element={<Compare />} />
+            <Route path="/backtest" element={<Backtest />} />
 
             {/* RESOURCES ROUTING FOR SUB ITEMS */}
             <Route

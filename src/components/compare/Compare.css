@@ -209,6 +209,10 @@ table {
   margin-bottom: 0.4rem;
 }
 
+.compare-description {
+  text-align: justify;
+}
+
 @media screen and (min-width: 1330px) {
   .visibility-hidden {
     width: 15%;
