@@ -40,3 +40,48 @@
     display: flex;
     justify-content: end;
 }
+
+.justify-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.backtest-for-mobile {
+    display: none;
+}
+
+.backtest-for-web {
+    display: flex;
+}
+
+.sec-2 {
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 668px) {
+    .date-picker {
+        margin-right: 0.8rem;
+    }
+
+    .loss-input {
+        margin-right: 0.8rem;
+    }
+
+    .flex-display h3 {
+        margin-right: 0.3rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .backtest-for-mobile {
+        display: block;
+    }
+
+    .backtest-for-web {
+        display: none;
+    }
+
+    .backtest-btn-page {
+        width: 30%;
+    }
+}

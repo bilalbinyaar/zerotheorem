@@ -727,7 +727,7 @@ const BacktestComponent = () => {
               </div>
             </div>
 
-            <div className='backtest-filters'>
+            <div className='backtest-filters backtest-for-web'>
               <div className='date-picker flex-display'>
                 <h3>Start Date:</h3>
                 {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -740,18 +740,47 @@ const BacktestComponent = () => {
               </div>
               <div className='profit-input flex-display'>
                 <h3>Take Profit:</h3>
-                <TextField id="outlined-basic" label="0-100" variant="outlined" />
+                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
               </div>
               <div className='loss-input flex-display'>
                 <h3>Stop Loss:</h3>
-                <TextField id="outlined-basic" label="0-100" variant="outlined" />
+                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
               </div>
               <div className='fee-input flex-display'>
                 <h3>Fee:</h3>
-                <TextField id="outlined-basic" label="0-100" variant="outlined" />
+                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
               </div>
             </div>
 
+            <div className='backtest-filters backtest-for-mobile'>
+              <div className='sec-1 flex-display justify-content'>
+                <div className='date-picker flex-display'>
+                  <h3>Start Date:</h3>
+                  {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker label="" />
+                  </LocalizationProvider> */}
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DateField label="" />
+                  </LocalizationProvider>
+
+                </div>
+                <div className='profit-input flex-display'>
+                  <h3>Take Profit:</h3>
+                  <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
+                </div>
+              </div>
+
+              <div className='sec-2 flex-display justify-content'>
+                <div className='loss-input flex-display'>
+                  <h3>Stop Loss:</h3>
+                  <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
+                </div>
+                <div className='fee-input flex-display'>
+                  <h3>Fee:</h3>
+                  <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
+                </div>
+              </div>
+            </div>
 
             <div className='for-flex-end'>
               <div className="backtest-btn-div backtest-btn-page">
