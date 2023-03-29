@@ -25,10 +25,32 @@ import SenstitivityAnalysisMarketSpecificAlpha from "../src/components/resources
 import SenstitivityAnalysisSingleAlphaCas from "../src/components/resources/derivations/SenstitivityAnalysisSingleAlphaCas";
 import TheGoverningEquation from "../src/components/resources/derivations/TheGoverningEquation";
 import TheUnderlyingAssumptions from "../src/components/resources/derivations/TheUnderlyingAssumptions";
+// import { database } from "./firebase_config";
+// import { ref, onValue, set } from "firebase/database";
+// import cryptoRandomString from "crypto-random-string";
 import Backtest from "./pages/Backtest";
 
 // import dotenv from "dotenv";
 function App() {
+  // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
+
+  // const starCountRef = ref(database, "tweets");
+  // set(ref(database, "backtest_queue/" + "user_" + id), {
+  //   id: "user_" + id,
+  //   modelName: "ZT1_0M24BTC26",
+  //   start_date: "1674876799",
+  //   end_date: "1677555199",
+  //   take_profit: 10,
+  //   stop_loss: 5,
+  //   transaction_fee: 0.07,
+  //   status: 0,
+  //   // profile_picture: imageUrl,
+  // });
+  // onValue(starCountRef, (snapshot) => {
+  //   const data = snapshot.val();
+  //   console.log("Data firebase", data);
+  //   // updateStarCount(postElement, data);
+  // });
   // dotenv.config();
   // const MY_VARIABLE = useEnv("REACT_APP_SECRET_KEY");
   // console.log("Here finally secret key -->", process.env.REACT_APP_SECRET_KEY);
@@ -98,7 +120,6 @@ function App() {
             <Route path="/faqs" element={<FAQ />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/backtest" element={<Backtest />} />
-
 
             {/* RESOURCES ROUTING FOR SUB ITEMS */}
             <Route

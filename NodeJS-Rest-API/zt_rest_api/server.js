@@ -86,23 +86,14 @@ app.get("/get_stats", function (req, res) {
 });
 
 app.get("/get_twitter_stats", function (req, res) {
-  if (req.headers.authorization) {
-    const secretKey = req.headers.authorization.replace("Bearer ", "");
-    if (secretKey == process.env.API_KEY) {
-      var query = "select * from twitter_stats";
-      db.query(query, (err, result) => {
-        if (err) {
-          res.json({ msg: err });
-        } else {
-          res.json({ msg: result });
-        }
-      });
+  var query = "select * from twitter_stats";
+  db.query(query, (err, result) => {
+    if (err) {
+      res.json({ msg: err });
     } else {
-      res.json({ response: "Unauthorized access" });
+      res.json({ msg: result });
     }
-  } else {
-    res.json({ response: "Unauthorized access" });
-  }
+  });
 });
 
 app.get("/get_strategies", async function (req, res) {
