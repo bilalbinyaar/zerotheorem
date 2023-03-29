@@ -726,7 +726,7 @@ const BacktestComponent = () => {
                 </div>
               </div>
             </div>
-
+                {/* THIS IS FOR WEB */}
             <div className='backtest-filters backtest-for-web'>
               <div className='date-picker flex-display'>
                 <h3>Start Date:</h3>
@@ -751,7 +751,7 @@ const BacktestComponent = () => {
                 <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
               </div>
             </div>
-
+                {/* THIS IS FOR MOBILE  */}
             <div className='backtest-filters backtest-for-mobile'>
               <div className='sec-1 flex-display justify-content'>
                 <div className='date-picker flex-display'>
