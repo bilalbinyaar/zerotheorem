@@ -88,4 +88,8 @@
     .for-flex-end {
         justify-content: start;
     }
+
+    .backtest-btn-page {
+        padding: 0.6rem;
+    }
 }
