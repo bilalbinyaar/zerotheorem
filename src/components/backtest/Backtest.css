@@ -84,4 +84,8 @@
     .backtest-btn-page {
         width: 30%;
     }
+
+    .for-flex-end {
+        justify-content: start;
+    }
 }
