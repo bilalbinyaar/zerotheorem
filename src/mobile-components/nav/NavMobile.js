@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
+import { BsFillMoonFill, BsFillSunFill, BsGraphUpArrow } from "react-icons/bs";
 import logoBlack from "../../assets/logo-black.svg";
 import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
@@ -130,6 +130,10 @@ export default function NavMobile(props) {
             <CustomLink to="/" onClick={toCloseNav}>
               <AiFillHome className="nav-icons" />
               Forecasts
+            </CustomLink>
+            <CustomLink to="/backtest" onClick={toCloseNav}>
+              <BsGraphUpArrow className="nav-icons" />
+              Backtest
             </CustomLink>
             <CustomLink to="/compare" onClick={toCloseNav}>
               <BiColumns className="nav-icons" />
