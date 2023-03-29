@@ -10,6 +10,18 @@ import ModelNameCol from "../../mobile-components/data-grid/ModelNameCol";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
+// import { DatePicker } from '@material-ui/pickers';
+// import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+// import DateFnsUtils from '@date-io/date-fns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateField } from '@mui/x-date-pickers/DateField';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 
 const BacktestComponent = () => {
@@ -710,6 +722,31 @@ const BacktestComponent = () => {
                     )}
                   />
                 </div>
+              </div>
+            </div>
+
+            <div className='backtest-filters'>
+              <div className='date-picker flex-display'>
+                <h3>Start Date:</h3>
+                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker label="" />
+                </LocalizationProvider> */}
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DateField label="" />
+                </LocalizationProvider>
+
+              </div>
+              <div className='profit-input flex-display'>
+                <h3>Take Profit:</h3>
+                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+              </div>
+              <div className='loss-input flex-display'>
+                <h3>Stop Loss:</h3>
+                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+              </div>
+              <div className='fee-input flex-display'>
+                <h3>Fee:</h3>
+                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
               </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import { useStateContext } from "../ContextProvider";
 import { Helmet } from "react-helmet";
 import BtcData from "../components/btc_api/BtcData";
 
+
 const Home = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
