@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.8rem;
+    margin-top: 0.4rem;
 }
 
 .flex-display {
@@ -16,4 +16,27 @@
 
 .flex-display h3 {
     margin-right: 0.6rem;
+}
+
+.backtest-btn-page {
+    margin-top: 1.4rem;
+    padding: 0.8rem;
+    border-radius: 4px;
+    width: 10%;
+}
+
+.backtest-btn-page a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backtest-btn-page p {
+    margin-top: 0;
+}
+
+.for-flex-end {
+    width: 100%;
+    display: flex;
+    justify-content: end;
 }

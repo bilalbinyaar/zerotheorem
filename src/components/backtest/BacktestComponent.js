@@ -752,13 +752,16 @@ const BacktestComponent = () => {
               </div>
             </div>
 
-            {/* <div className="backtest-btn-div">
-              <Link
-                to="#"
-              >
-                <p className="compare-btn">Run Backtest</p>
-              </Link>
-            </div> */}
+
+            <div className='for-flex-end'>
+              <div className="backtest-btn-div backtest-btn-page">
+                <Link
+                  to="#"
+                >
+                  <p className="compare-btn">Run Backtest</p>
+                </Link>
+              </div>
+            </div>
         </div>
     </div>
     
