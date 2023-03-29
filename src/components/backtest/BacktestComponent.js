@@ -22,6 +22,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Link } from "react-router-dom";
+
 
 
 const BacktestComponent = () => {
@@ -738,17 +740,25 @@ const BacktestComponent = () => {
               </div>
               <div className='profit-input flex-display'>
                 <h3>Take Profit:</h3>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                <TextField id="outlined-basic" label="0-100" variant="outlined" />
               </div>
               <div className='loss-input flex-display'>
                 <h3>Stop Loss:</h3>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                <TextField id="outlined-basic" label="0-100" variant="outlined" />
               </div>
               <div className='fee-input flex-display'>
                 <h3>Fee:</h3>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                <TextField id="outlined-basic" label="0-100" variant="outlined" />
               </div>
             </div>
+
+            {/* <div className="backtest-btn-div">
+              <Link
+                to="#"
+              >
+                <p className="compare-btn">Run Backtest</p>
+              </Link>
+            </div> */}
         </div>
     </div>
     
