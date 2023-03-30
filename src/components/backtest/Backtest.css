@@ -57,6 +57,10 @@
     margin-top: 1rem;
 }
 
+.backtest-description {
+    text-align: justify;
+}
+
 
 @media screen and (max-width: 668px) {
     .date-picker {

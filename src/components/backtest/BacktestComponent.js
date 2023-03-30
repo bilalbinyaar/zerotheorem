@@ -625,9 +625,8 @@ const BacktestComponent = () => {
     <div className="back-test">
       <div className="container">
         <h1>Backtest</h1>
-        <p>
-          Lorem dolore magna aliqua incididunt ut labore et dolore magna aliqua
-          magna.
+        <p className="backtest-description">
+          To conduct a personalized backtest, begin by choosing a model through either the time horizon and currencies filter or by selecting from the Models dropdown menu. Afterwards, adjust the backtest inputs to fit your preferences, including the start date, which must not be earlier than the model's Start date (default value). Additionally, set the take profit and stop loss values within a range of 0 to 100, and specify a fee for each transaction with a value between 0 and 1.
         </p>
 
         {windowWidth.current <= 768 ? (
@@ -1421,12 +1420,12 @@ const BacktestComponent = () => {
           <div className="sec-1 flex-display justify-content">
             <div className="date-picker flex-display">
               <h3>Start Date:</h3>
-              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker label="" />
-                  </LocalizationProvider> */}
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateField label="" />
+                <DatePicker label="" />
               </LocalizationProvider>
+              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateField label="" />
+              </LocalizationProvider> */}
             </div>
             <div className="profit-input flex-display">
               <h3>Take Profit:</h3>

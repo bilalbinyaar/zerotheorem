@@ -1010,3 +1010,62 @@ mjx-container[jax="SVG"] > svg {
   background-color: var(--color-forecasts-card) !important;
   border-radius: 5px !important;
 }
+
+.css-1v4ccyo {
+  background-color: var(--color-forecasts-card) !important;
+}
+
+.css-1uvydh2 {
+  padding: 7.5px 0px 7.5px 6px !important;
+  font-size: 12px !important;
+  color: var(--color-day-black) !important;
+}
+
+.css-slyssw {
+  margin: 0 !important;
+}
+
+.css-84ri5h.Mui-selected {
+  background-color: var(--color-day-yellow) !important;
+  color: #000000 !important;
+  font-size: 11px !important;
+}
+
+.css-bekps4 {
+  font-size: 11px !important;
+  color: var(--color-day-black) !important;
+}
+
+.css-10qkmc3 {
+  font-size: 12px !important;
+  color: var(--color-day-black) !important;
+
+}
+
+.css-1bqdsf2.Mui-selected {
+  background-color: var(--color-day-yellow) !important;
+  color: #000000 !important;
+  font-size: 12px !important;
+}
+
+.css-1bqdsf2 {
+  font-size: 12px !important;
+  color: var(--color-day-black) !important;
+
+}
+
+.css-1v994a0 {
+  font-size: 14px !important;
+  color: var(--color-day-black) !important;
+
+}
+
+.css-84ri5h.Mui-selected:hover {
+  background-color: var(--color-day-yellow) !important;
+  color: #000000 !important;
+}
+
+
+.css-1080di7 {
+  background-color: var(--color-day-greydark) !important;
+}
