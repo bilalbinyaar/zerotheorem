@@ -508,13 +508,6 @@ const BacktestComponent = () => {
             {windowWidth.current <= 768 ? (
 
               <div className="horizon">
-              <h2 className="horizon-head">All Models</h2>
-              <p className="all-models-description">
-                Listed below are all the forecast models, which can be filtered
-                by their time horizon, currency, or name. Additionally, you can
-                sort selective columns in ascending or descending order by
-                clicking on the column header.
-              </p>
               <div className="horizon-row">
                 <div className="horizon-left">
                   {/* <h3>Time Horizon</h3> */}
@@ -1260,15 +1253,24 @@ const BacktestComponent = () => {
               </div>
               <div className='profit-input flex-display'>
                 <h3>Take Profit:</h3>
-                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
+                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" 
+                sx={{
+                      width: 100
+                    }}/>
               </div>
               <div className='loss-input flex-display'>
                 <h3>Stop Loss:</h3>
-                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
+                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" 
+                sx={{
+                      width: 100
+                    }}/>
               </div>
               <div className='fee-input flex-display'>
                 <h3>Fee:</h3>
-                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
+                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" 
+                sx={{
+                      width: 100
+                    }}/>
               </div>
             </div>
                 {/* THIS IS FOR MOBILE  */}
