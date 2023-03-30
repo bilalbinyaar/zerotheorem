@@ -1243,34 +1243,41 @@ const BacktestComponent = () => {
             <div className='backtest-filters backtest-for-web'>
               <div className='date-picker flex-display'>
                 <h3>Start Date:</h3>
-                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker label="" />
-                </LocalizationProvider> */}
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DateField label="" />
+                  <DatePicker label="" />
                 </LocalizationProvider>
+                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DateField label="" />
+                </LocalizationProvider> */}
 
               </div>
               <div className='profit-input flex-display'>
                 <h3>Take Profit:</h3>
                 <TextField id="outlined-basic" placeholder="0-100" variant="outlined" 
                 sx={{
-                      width: 100
+                      width: 85
                     }}/>
               </div>
               <div className='loss-input flex-display'>
                 <h3>Stop Loss:</h3>
                 <TextField id="outlined-basic" placeholder="0-100" variant="outlined" 
                 sx={{
-                      width: 100
+                      width: 85
                     }}/>
               </div>
               <div className='fee-input flex-display'>
                 <h3>Fee:</h3>
                 <TextField id="outlined-basic" placeholder="0-100" variant="outlined" 
                 sx={{
-                      width: 100
+                      width: 85
                     }}/>
+              </div>
+              <div className="backtest-btn-div backtest-btn-page">
+                <Link
+                  to="#"
+                >
+                  <p className="compare-btn">Run Backtest</p>
+                </Link>
               </div>
             </div>
                 {/* THIS IS FOR MOBILE  */}
