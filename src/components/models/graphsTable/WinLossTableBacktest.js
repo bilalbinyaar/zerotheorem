@@ -72,7 +72,7 @@ const WinLossTableBacktest = (props) => {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [props.model_name]);
   const forBgColorRed = (value, id) => {
     document
       .getElementById(`${id}`)

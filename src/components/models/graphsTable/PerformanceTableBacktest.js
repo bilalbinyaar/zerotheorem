@@ -73,7 +73,7 @@ const PerformanceTableBacktest = (props) => {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [props.model_name]);
   const forBgColor = (value, id) => {
     if (id === "agg_profit") {
       document

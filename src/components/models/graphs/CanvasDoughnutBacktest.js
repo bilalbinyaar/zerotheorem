@@ -91,7 +91,7 @@ const CanvasDoughnutBacktest = (props) => {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [props.model_name]);
   // if (model_name != props.model_name) {
   //   set_model_name(props.model_name);
   // }

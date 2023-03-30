@@ -5,7 +5,8 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 
 const DrawDownTableBacktest = (props) => {
-  console.log("I received model name -->", props.model_name);
+  // console.log("I received model name -->", props.model_name);
+  // const [model_name, set_model_name] = useState(props.model_name);
   const [stats, setStats] = useState({});
   //   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
@@ -73,7 +74,7 @@ const DrawDownTableBacktest = (props) => {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [props.model_name]);
   const forBgColor = (value, id) => {
     document
       .getElementById(`${id}`)
