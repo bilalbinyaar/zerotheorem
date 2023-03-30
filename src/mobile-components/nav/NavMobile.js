@@ -132,7 +132,7 @@ export default function NavMobile(props) {
               Forecasts
             </CustomLink>
             <CustomLink to="/backtest" onClick={toCloseNav}>
-              <BsGraphUpArrow className="nav-icons" />
+              {/* <BsGraphUpArrow className="nav-icons" /> */}
               Backtest
             </CustomLink>
             <CustomLink to="/compare" onClick={toCloseNav}>

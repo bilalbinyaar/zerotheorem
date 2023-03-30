@@ -85,6 +85,29 @@ app.get("/get_stats", function (req, res) {
   }
 });
 
+app.get("/get_stats_backtest/:ledger", async function (req, res) {
+  // console.log("I am here to print query", req.params.ledger);
+
+  if (req.headers.authorization) {
+    const secretKey = req.headers.authorization.replace("Bearer ", "");
+    if (secretKey == process.env.API_KEY) {
+      var query = `SELECT * FROM ${req.params.ledger}`;
+
+      db.query(query, (err, result) => {
+        if (err) {
+          res.json({ response: err });
+        } else {
+          res.json({ response: result });
+        }
+      });
+    } else {
+      res.json({ response: "Unauthorized access" });
+    }
+  } else {
+    res.json({ response: "Unauthorized access" });
+  }
+});
+
 app.get("/get_twitter_stats", function (req, res) {
   var query = "select * from twitter_stats";
   db.query(query, (err, result) => {

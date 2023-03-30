@@ -1,11 +1,12 @@
 import React from "react";
-import DrawDownTable from "./DrawDownTable";
+// import DrawDownTable from "./DrawDownTable";
+// import DrawDownTableBacktest from "./DrawDownTableBacktest";
 import DrawDownTableBacktest from "./DrawDownTableBacktest";
 import "./GraphsTable.css";
 import PerformanceTable from "./PerformanceTable";
 import WinLossTable from "./WinLossTable";
 
-const GraphsTable = (props) => {
+const GraphsTableBacktest = (props) => {
   //console.log("Finally drawdown model name -->", props.model_name);
   const name = props.model_name;
   return (
@@ -21,13 +22,13 @@ const GraphsTable = (props) => {
       </div>
       <div className="container">
         <div className="graph-table-main">
-          <DrawDownTable model_name={name} />
-          <WinLossTable model_name={name} />
-          <PerformanceTable model_name={name} />
+          <DrawDownTableBacktest model_name={name} />
+          {/* <WinLossTable model_name={name} />
+          <PerformanceTable model_name={name} /> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default GraphsTable;
+export default GraphsTableBacktest;

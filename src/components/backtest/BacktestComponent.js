@@ -1,6 +1,8 @@
-import React, {useEffect, useState, memo, useRef} from 'react';
+import React, { useEffect, useState, memo, useRef } from "react";
 import "./Backtest.css";
 import clsx from "clsx";
+import dayjs from "dayjs";
+import inDepthBacktest from "../models/inDepth/inDepthBacktest";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -13,26 +15,52 @@ import IconButton from "@mui/material/IconButton";
 // import { DatePicker } from '@material-ui/pickers';
 // import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 // import DateFnsUtils from '@date-io/date-fns';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateField } from '@mui/x-date-pickers/DateField';
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateField } from "@mui/x-date-pickers/DateField";
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Link } from "react-router-dom";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 
+import { database } from "../../firebase_config";
+import { ref, onValue, set } from "firebase/database";
+import cryptoRandomString from "crypto-random-string";
+import GraphsTable from "../models/graphsTable/GraphsTable";
+import InDepth from "../models/inDepth/InDepth";
+import RecentlyViewed from "../recentlyViewed/RecentlyViewed";
+import CanvasjsSplineAreaChartWithRangeSelecetor from "../models/graphs/CanvasjsSplineAreaChartWithRangeSelecetor";
+import CanvasjsDrawdownWithSliderRange from "../models/graphs/CanvasjsDrawdownWithSliderRange";
+import CumulativePNL from "../models/cumulativePNL/CumulativePNL";
+// import dotenv from "dotenv";
+// const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
 
-
+// const starCountRef = ref(database, "tweets");
+// set(ref(database, "backtest_queue/" + "user_" + id), {
+//   id: "user_" + id,
+//   modelName: "ZT1_0M24BTC26",
+//   start_date: "1674876799",
+//   end_date: "1677555199",
+//   take_profit: 10,
+//   stop_loss: 5,
+//   transaction_fee: 0.07,
+//   status: 0,
+//   // profile_picture: imageUrl,
+// });
+// onValue(starCountRef, (snapshot) => {
+//   const data = snapshot.val();
+//   console.log("Data firebase", data);
+//   // updateStarCount(postElement, data);
+// });
 
 const BacktestComponent = () => {
-
-    const windowWidth = useRef(window.innerWidth);
+  const windowWidth = useRef(window.innerWidth);
 
   const [Flag, setFlag] = useState(null);
   const [timeH, setTimeH] = useState("All");
@@ -101,17 +129,21 @@ const BacktestComponent = () => {
   //     }
   //   }
   // };
+  const [model_selected_for_backted, set_model_selected_for_backtest] =
+    useState(null);
   const handleChangeForModelSelection = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
       // setRows({});
+      set_model_selected_for_backtest(values.label.replace("-", "_"));
       const res = rows_cached.filter((item) => {
         return item.modelName == values.label;
       });
-      handleChangePage("", 1);
-      setRows(res);
+      // handleChangePage("", 1);
+      // setRows(res);
     } else {
-      setRows(rows_cached);
+      set_model_selected_for_backtest(null);
+      // setRows(rows_cached);
     }
   };
 
@@ -412,12 +444,6 @@ const BacktestComponent = () => {
   }, [Flag]);
 
   // To Link Grid Rows to Models Component
-  const linkModels = useNavigate();
-  const handleRowClickEvent = (params) => {
-    linkModels(`/${params.row.modelName.replace("_", "-")}`);
-  };
-  // To Link Grid Rows to Models Component
-
 
   // To Link Grid Rows to Models Component
 
@@ -442,7 +468,6 @@ const BacktestComponent = () => {
       setRows(res);
     }
   };
-
 
   const handleChangeForCoinSelectionMob = async (selected) => {
     if (selected != null) {
@@ -473,7 +498,6 @@ const BacktestComponent = () => {
   // const activeList1 = () => {
   //   setActive1(!isActive1);
   // };
-  const [curr_active, set_curr_active] = useState("hours_filter_All");
 
   const [pageSize, setPageSize] = React.useState(20);
 
@@ -498,715 +522,807 @@ const BacktestComponent = () => {
   const gridRef = React.createRef();
   const start = (page - 1) * pageSize;
   const end = page * rows.length;
-
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [date_selected_for_backtest, set_date_selected_for_backtest] =
+    useState(null);
+  const [
+    take_profit_selected_for_backtest,
+    set_take_profit_selected_for_backtest,
+  ] = useState(null);
+  const [stop_loss_selected_for_backtest, set_stop_loss_selected_for_backtest] =
+    useState(null);
+  const [fee_selected_for_backtest, set_fee_selected_for_backtest] =
+    useState(null);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const parsedDate = dayjs(date).toDate();
+    const timestamp = parsedDate.getTime() / 1000;
+    set_date_selected_for_backtest(timestamp);
+    console.log(timestamp); // Here you can access the selected date
+  };
+  const handleFeeChange = (event) => {
+    set_fee_selected_for_backtest(event.target.value);
+  };
+  const handleProfitChange = (event) => {
+    set_take_profit_selected_for_backtest(event.target.value);
+  };
+  const handleLossChange = (event) => {
+    set_stop_loss_selected_for_backtest(event.target.value);
+  };
+  const [backtest_table_name, set_backtest_table_name] = useState(null);
+  const handleRunBacktestChange = () => {
+    if (
+      !date_selected_for_backtest ||
+      !take_profit_selected_for_backtest ||
+      !stop_loss_selected_for_backtest ||
+      !fee_selected_for_backtest ||
+      !model_selected_for_backted
+    ) {
+      alert("Kindly input all fields to run backtest");
+    } else {
+      console.log(
+        date_selected_for_backtest,
+        take_profit_selected_for_backtest,
+        stop_loss_selected_for_backtest,
+        fee_selected_for_backtest
+      );
+      const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
+      set_backtest_table_name(id);
+      set(ref(database, "backtest_queue/" + "user_" + id), {
+        id: "user_" + id,
+        modelName: model_selected_for_backted,
+        start_date: date_selected_for_backtest,
+        end_date: "1677555199",
+        take_profit: take_profit_selected_for_backtest,
+        stop_loss: stop_loss_selected_for_backtest,
+        transaction_fee: fee_selected_for_backtest,
+        status: 0,
+        // profile_picture: imageUrl,
+      });
+      set_flag_backtest_result(new Date());
+    }
+  };
+  const [flag_for_backtest_result, set_flag_backtest_result] = useState(null);
+  const [
+    model_name_for_result_backtest_result,
+    set_model_name_for_result_backtest_result,
+  ] = useState(null);
+  useEffect(() => {
+    // console.log("I am called again bro");
+    if (flag_for_backtest_result == null) {
+      return;
+    } else {
+      setTimeout(() => {
+        const starCountRef = ref(
+          database,
+          "backtest_queue/user_" + backtest_table_name
+        );
+        onValue(starCountRef, (snapshot) => {
+          const data = snapshot.val();
+          if (!data) {
+            set_flag_backtest_result(new Date());
+          } else {
+            if (data.status == 1) {
+              console.log(
+                "Data firebase for backtest ",
+                data,
+                backtest_table_name
+              );
+              set_model_name_for_result_backtest_result(
+                "user_" + backtest_table_name
+              );
+            } else {
+              set_flag_backtest_result(new Date());
+            }
+          }
+          // updateStarCount(postElement, data);
+        });
+      }, 1000);
+    }
+  }, [flag_for_backtest_result]);
+  console.log(model_name_for_result_backtest_result);
   return (
-    <div className='back-test'>
-        <div className='container'>
-            <h1>Backtest</h1>
-            <p>Lorem dolore magna aliqua incididunt ut labore et dolore magna aliqua magna.</p>
+    <div className="back-test">
+      <div className="container">
+        <h1>Backtest</h1>
+        <p>
+          Lorem dolore magna aliqua incididunt ut labore et dolore magna aliqua
+          magna.
+        </p>
 
-            {windowWidth.current <= 768 ? (
-
-              <div className="horizon">
-              <h2 className="horizon-head">All Models</h2>
-              <p className="all-models-description">
-                Listed below are all the forecast models, which can be filtered
-                by their time horizon, currency, or name. Additionally, you can
-                sort selective columns in ascending or descending order by
-                clicking on the column header.
-              </p>
-              <div className="horizon-row">
-                <div className="horizon-left">
-                  {/* <h3>Time Horizon</h3> */}
-                  {/* <div className="divider-icon">
+        {windowWidth.current <= 768 ? (
+          <div className="horizon">
+            <h2 className="horizon-head">All Models</h2>
+            <p className="all-models-description">
+              Listed below are all the forecast models, which can be filtered by
+              their time horizon, currency, or name. Additionally, you can sort
+              selective columns in ascending or descending order by clicking on
+              the column header.
+            </p>
+            <div className="horizon-row">
+              <div className="horizon-left">
+                {/* <h3>Time Horizon</h3> */}
+                {/* <div className="divider-icon">
                   <p>All</p>
                   <AiFillCaretDown className="dd-ico" />
                 </div> */}
-                  <FormControl
-                    variant="standard"
-                    className="all-horizon"
-                    sx={{ m: 1, minWidth: 60 }}
+                <FormControl
+                  variant="standard"
+                  className="all-horizon"
+                  sx={{ m: 1, minWidth: 60 }}
+                >
+                  {/* <InputLabel id="demo-simple-select-standard-label"></InputLabel> */}
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    sx={{
+                      backgroundColor: "var(--color-forecasts-card)",
+                      borderRadius: "5px",
+                      padding: "3.8px 8px 3.8px 11px",
+                      fontSize: "11px",
+                      marginRight: "0.4rem",
+                      borderBottom: "0 !important",
+                    }}
+                    select
+                    value={timeH}
+                    onChange={handleChangeForTimeHorizon}
+                    label="age"
                   >
-                    {/* <InputLabel id="demo-simple-select-standard-label"></InputLabel> */}
-                    <Select
-                      labelId="demo-simple-select-standard-label"
-                      id="demo-simple-select-standard"
-                      sx={{
-                        backgroundColor: "var(--color-forecasts-card)",
-                        borderRadius: "5px",
-                        padding: "3.8px 8px 3.8px 11px",
-                        fontSize: "11px",
-                        marginRight: "0.4rem",
-                        borderBottom: "0 !important",
+                    <MenuItem value="All">Horizons</MenuItem>
+                    <MenuItem value={"24h"}>24h</MenuItem>
+                    <MenuItem value={"12h"}>12h</MenuItem>
+                    <MenuItem value={"8h"}>8h</MenuItem>
+                    <MenuItem value={"6h"}>6h</MenuItem>
+                    <MenuItem value={"4h"}>4h</MenuItem>
+                    <MenuItem value={"3h"}>3h</MenuItem>
+                    <MenuItem value={"2h"}>2h</MenuItem>
+                    <MenuItem value={"1h"}>1h</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+
+              <div className="horizon-right">
+                <Autocomplete
+                  id="country-select-demo"
+                  className="currency-auto"
+                  sx={{
+                    backgroundColor: "var(--color-forecasts-card)",
+                    borderRadius: "5px",
+                    labelColor: "red",
+                    fontSize: "11px",
+                    "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                      color: "var(--color-day-black)",
+                    },
+
+                    "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                      {
+                        color: "var(--color-day-black)",
+                      },
+                    "& div  >.MuiAutocomplete-option.Mui-focused": {
+                      backgroundColor: "var(--color-day-yellow)",
+                      color: "#000000",
+                    },
+
+                    "& div >.MuiOutlinedInput-root": {
+                      padding: "4px",
+                    },
+
+                    "& div div >.MuiAutocomplete-input": {
+                      padding: "4.5px 4px 4.5px 6px",
+                    },
+
+                    "& div >.MuiAutocomplete-option": {
+                      fontSize: "12px",
+                      margin: "0",
+                      color: "var(--color-day-black)",
+                    },
+
+                    "& .MuiAutocomplete-noOptions": {
+                      color: "var(--color-day-black)",
+                      fontSize: "12px",
+                    },
+
+                    "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                      backgroundColor: "var(--color-dropdown-bg)",
+                    },
+
+                    "& div div >.MuiAutocomplete-input": {
+                      fontSize: "11px",
+                    },
+
+                    "& .css-1xc3v61-indicatorContainer": {
+                      backgroundColor: "var(--color-day-white)",
+                    },
+
+                    "& .css-13cymwt-control": {
+                      minHeight: "34px",
+                      height: "34px",
+                    },
+
+                    "& .css-i4bv87-MuiSvgIcon-root": {
+                      width: "0.8em !important",
+                      height: "0.8em !important",
+                      fill: "var(--color-black-opcaity) !important",
+                    },
+
+                    "& .css-i4bv87-MuiSvgIcon-root": {
+                      width: "0.8em !important",
+                      height: "0.8em !important",
+                      fill: "var(--color-black-opcaity) !important",
+                    },
+
+                    "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                      color: "var(--color-day-black) !important",
+                    },
+
+                    "& div div >.MuiOutlinedInput-root": {
+                      backgroundColor: "var(--color-forecasts-card) !important",
+                      color: "var(--color-day-black) !important",
+                    },
+
+                    "& div div >.MuiOutlinedInput-root:focus": {
+                      border: "0 !important",
+                    },
+
+                    "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                      borderColor: "var(--color-day-yellow) !important",
+                    },
+
+                    "& div >.MuiOutlinedInput-notchedOutline": {
+                      border: "0px solid var(--color-day-yellow) !important",
+                    },
+
+                    "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                      fontSize: "12px !important",
+                      color: "var(--color-day-black) !important",
+                      top: "-6px !important",
+                    },
+
+                    "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                      {
+                        backgroundColor: "var(--color-dropdown-bg) !important",
+                        color: "var(--color-day-black) !important",
+                      },
+
+                    "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                      {
+                        color: "var(--color-day-yellow) !important",
+                      },
+
+                    "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                      color: "var(--color-day-yellow) !important",
+                    },
+
+                    "& .css-ptiqhd-MuiSvgIcon-root": {
+                      height: "0.8em !important",
+                      width: "0.8em !important",
+                      fill: "var(--color-black-opcaity) !important",
+                    },
+
+                    "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                      padding: "3px 8px !important",
+                      backgroundColor: "var(--color-day-yellow) !important",
+                      borderRadius: "4px",
+                      display: "flex !important",
+                      justifyContent: "center !important",
+                      alignItems: "center !important",
+                      fontSize: "15px !important",
+                      textAlign: "center !important",
+                    },
+
+                    "& .optgroup": {
+                      padding: "2px !important",
+                    },
+
+                    "& div div >.optgroup": {
+                      backgroundColor: "var(--color-day-white) !important",
+                      color: "var(--color-day-black) !important",
+                    },
+
+                    "& .mui-options": {
+                      padding: "0px 15px",
+                    },
+
+                    "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                      borderBottom:
+                        "2px solid var(--color-day-black) !important",
+                    },
+
+                    "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                      color: "var(--color-day-black) !important",
+                      fontSize: "14px !important",
+                    },
+
+                    "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                      color: "var(--color-day-black) !important",
+                    },
+
+                    "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                      {
+                        borderBottom:
+                          "1px solid var(--color-day-yellow) !important",
+                      },
+
+                    "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                      {
+                        borderBottom:
+                          "2px solid var(--color-day-yellow) !important",
+                      },
+
+                    "& #demo-simple-select-standard-label": {
+                      color: "var(--color-day-yellow) !important",
+                    },
+
+                    "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                      color: "var(--color-day-black) !important",
+                    },
+
+                    "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                      {
+                        backgroundColor: "var(--color-day-yellow) !important",
+                        color: "black",
+                      },
+
+                    "& .css-1869usk-MuiFormControl-root": {
+                      height: "60px !important",
+                    },
+
+                    "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                      {
+                        color: "var(--color-day-black) !important",
+                        fontSize: "14px !important",
+                      },
+
+                    "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                      fontSize: "13px !important",
+                    },
+
+                    "& .css-nlvv43-MuiFormControl-root": {
+                      margin: "0px 8px !important",
+                      height: "30px !important",
+                    },
+
+                    "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                      fontSize: "12px !important",
+                      color: "var(--color-day-black) !important",
+                      top: "-8px !important",
+                    },
+                  }}
+                  onChange={handleChangeForCoinSelection}
+                  options={coin_search_selection}
+                  autoHighlight
+                  getOptionLabel={(option) => option.label}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Currencies"
+                      inputProps={{
+                        ...params.inputProps,
+                        style: { width: "30%" }, // set the width to auto
+
+                        autoComplete: "new-password", // disable autocomplete and autofill
                       }}
-                      select
-                      value={timeH}
-                      onChange={handleChangeForTimeHorizon}
-                      label="age"
-                    >
-                      <MenuItem value="All">Horizons</MenuItem>
-                      <MenuItem value={"24h"}>24h</MenuItem>
-                      <MenuItem value={"12h"}>12h</MenuItem>
-                      <MenuItem value={"8h"}>8h</MenuItem>
-                      <MenuItem value={"6h"}>6h</MenuItem>
-                      <MenuItem value={"4h"}>4h</MenuItem>
-                      <MenuItem value={"3h"}>3h</MenuItem>
-                      <MenuItem value={"2h"}>2h</MenuItem>
-                      <MenuItem value={"1h"}>1h</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
+                    />
+                  )}
+                />
+                <Autocomplete
+                  id="country-select-demo"
+                  className="model-auto"
+                  sx={{
+                    backgroundColor: "var(--color-forecasts-card)",
+                    borderRadius: "5px",
+                    labelColor: "red",
+                    fontSize: "11px",
+                    marginLeft: "0.4rem",
+                    "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                      color: "var(--color-day-black)",
+                    },
 
-                <div className="horizon-right">
-                  <Autocomplete
-                    id="country-select-demo"
-                    className="currency-auto"
-                    sx={{
-                      backgroundColor: "var(--color-forecasts-card)",
-                      borderRadius: "5px",
-                      labelColor: "red",
+                    "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
+                      {
+                        color: "var(--color-day-black)",
+                      },
+                    "& div  >.MuiAutocomplete-option.Mui-focused": {
+                      backgroundColor: "var(--color-day-yellow)",
+                      color: "#000000",
+                    },
+
+                    "& div >.MuiOutlinedInput-root": {
+                      padding: "4px",
+                    },
+
+                    "& div div >.MuiAutocomplete-input": {
+                      padding: "4.5px 4px 4.5px 6px",
+                    },
+
+                    "& div >.MuiAutocomplete-option": {
+                      fontSize: "12px",
+                      margin: "0",
+                      color: "var(--color-day-black)",
+                    },
+
+                    "& .MuiAutocomplete-noOptions": {
+                      color: "var(--color-day-black)",
+                      fontSize: "12px",
+                    },
+
+                    "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
+                      backgroundColor: "var(--color-dropdown-bg)",
+                    },
+
+                    "& div div >.MuiAutocomplete-input": {
                       fontSize: "11px",
-                      "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                        color: "var(--color-day-black)",
-                      },
+                    },
 
-                      "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
-                        {
-                          color: "var(--color-day-black)",
-                        },
-                      "& div  >.MuiAutocomplete-option.Mui-focused": {
-                        backgroundColor: "var(--color-day-yellow)",
-                        color: "#000000",
-                      },
+                    "& .css-1xc3v61-indicatorContainer": {
+                      backgroundColor: "var(--color-day-white)",
+                    },
 
-                      "& div >.MuiOutlinedInput-root": {
-                        padding: "4px",
-                      },
+                    "& .css-13cymwt-control": {
+                      minHeight: "34px",
+                      height: "34px",
+                    },
 
-                      "& div div >.MuiAutocomplete-input": {
-                        padding: "4.5px 4px 4.5px 6px",
-                      },
+                    "& .css-i4bv87-MuiSvgIcon-root": {
+                      width: "0.8em !important",
+                      height: "0.8em !important",
+                      fill: "var(--color-black-opcaity) !important",
+                    },
 
-                      "& div >.MuiAutocomplete-option": {
-                        fontSize: "12px",
-                        margin: "0",
-                        color: "var(--color-day-black)",
-                      },
+                    "& .css-i4bv87-MuiSvgIcon-root": {
+                      width: "0.8em !important",
+                      height: "0.8em !important",
+                      fill: "var(--color-black-opcaity) !important",
+                    },
 
-                      "& .MuiAutocomplete-noOptions": {
-                        color: "var(--color-day-black)",
-                        fontSize: "12px",
-                      },
+                    "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input": {
+                      color: "var(--color-day-black) !important",
+                    },
 
-                      "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
-                        backgroundColor: "var(--color-dropdown-bg)",
-                      },
+                    "& div div >.MuiOutlinedInput-root": {
+                      backgroundColor: "var(--color-forecasts-card) !important",
+                      color: "var(--color-day-black) !important",
+                    },
 
-                      "& div div >.MuiAutocomplete-input": {
-                        fontSize: "11px",
-                      },
+                    "& div div >.MuiOutlinedInput-root:focus": {
+                      border: "0 !important",
+                    },
 
-                      "& .css-1xc3v61-indicatorContainer": {
-                        backgroundColor: "var(--color-day-white)",
-                      },
+                    "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
+                      borderColor: "var(--color-day-yellow) !important",
+                    },
 
-                      "& .css-13cymwt-control": {
-                        minHeight: "34px",
-                        height: "34px",
-                      },
+                    "& div >.MuiOutlinedInput-notchedOutline": {
+                      border: "0px solid var(--color-day-yellow) !important",
+                    },
 
-                      "& .css-i4bv87-MuiSvgIcon-root": {
-                        width: "0.8em !important",
-                        height: "0.8em !important",
-                        fill: "var(--color-black-opcaity) !important",
-                      },
+                    "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                      fontSize: "12px !important",
+                      color: "var(--color-day-black) !important",
+                      top: "-6px !important",
+                    },
 
-                      "& .css-i4bv87-MuiSvgIcon-root": {
-                        width: "0.8em !important",
-                        height: "0.8em !important",
-                        fill: "var(--color-black-opcaity) !important",
-                      },
-
-                      "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
-                        {
-                          color: "var(--color-day-black) !important",
-                        },
-
-                      "& div div >.MuiOutlinedInput-root": {
-                        backgroundColor:
-                          "var(--color-forecasts-card) !important",
+                    "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
+                      {
+                        backgroundColor: "var(--color-dropdown-bg) !important",
                         color: "var(--color-day-black) !important",
                       },
 
-                      "& div div >.MuiOutlinedInput-root:focus": {
-                        border: "0 !important",
-                      },
-
-                      "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
-                        borderColor: "var(--color-day-yellow) !important",
-                      },
-
-                      "& div >.MuiOutlinedInput-notchedOutline": {
-                        border: "0px solid var(--color-day-yellow) !important",
-                      },
-
-                      "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                        fontSize: "12px !important",
-                        color: "var(--color-day-black) !important",
-                        top: "-6px !important",
-                      },
-
-                      "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
-                        {
-                          backgroundColor:
-                            "var(--color-dropdown-bg) !important",
-                          color: "var(--color-day-black) !important",
-                        },
-
-                      "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                        {
-                          color: "var(--color-day-yellow) !important",
-                        },
-
-                      "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                    "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
+                      {
                         color: "var(--color-day-yellow) !important",
                       },
 
-                      "& .css-ptiqhd-MuiSvgIcon-root": {
-                        height: "0.8em !important",
-                        width: "0.8em !important",
-                        fill: "var(--color-black-opcaity) !important",
-                      },
+                    "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
+                      color: "var(--color-day-yellow) !important",
+                    },
 
-                      "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
-                        padding: "3px 8px !important",
-                        backgroundColor: "var(--color-day-yellow) !important",
-                        borderRadius: "4px",
-                        display: "flex !important",
-                        justifyContent: "center !important",
-                        alignItems: "center !important",
-                        fontSize: "15px !important",
-                        textAlign: "center !important",
-                      },
+                    "& .css-ptiqhd-MuiSvgIcon-root": {
+                      height: "0.8em !important",
+                      width: "0.8em !important",
+                      fill: "var(--color-black-opcaity) !important",
+                    },
 
-                      "& .optgroup": {
-                        padding: "2px !important",
-                      },
+                    "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
+                      padding: "3px 8px !important",
+                      backgroundColor: "var(--color-day-yellow) !important",
+                      borderRadius: "4px",
+                      display: "flex !important",
+                      justifyContent: "center !important",
+                      alignItems: "center !important",
+                      fontSize: "15px !important",
+                      textAlign: "center !important",
+                    },
 
-                      "& div div >.optgroup": {
-                        backgroundColor: "var(--color-day-white) !important",
-                        color: "var(--color-day-black) !important",
-                      },
+                    "& .optgroup": {
+                      padding: "2px !important",
+                    },
 
-                      "& .mui-options": {
-                        padding: "0px 15px",
-                      },
+                    "& div div >.optgroup": {
+                      backgroundColor: "var(--color-day-white) !important",
+                      color: "var(--color-day-black) !important",
+                    },
 
-                      "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                    "& .mui-options": {
+                      padding: "0px 15px",
+                    },
+
+                    "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+                      borderBottom:
+                        "2px solid var(--color-day-black) !important",
+                    },
+
+                    "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                      color: "var(--color-day-black) !important",
+                      fontSize: "14px !important",
+                    },
+
+                    "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
+                      color: "var(--color-day-black) !important",
+                    },
+
+                    "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
+                      {
                         borderBottom:
-                          "2px solid var(--color-day-black) !important",
+                          "1px solid var(--color-day-yellow) !important",
                       },
 
-                      "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
+                    "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
+                      {
+                        borderBottom:
+                          "2px solid var(--color-day-yellow) !important",
+                      },
+
+                    "& #demo-simple-select-standard-label": {
+                      color: "var(--color-day-yellow) !important",
+                    },
+
+                    "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
+                      color: "var(--color-day-black) !important",
+                    },
+
+                    "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
+                      {
+                        backgroundColor: "var(--color-day-yellow) !important",
+                        color: "black",
+                      },
+
+                    "& .css-1869usk-MuiFormControl-root": {
+                      height: "60px !important",
+                    },
+
+                    "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
+                      {
                         color: "var(--color-day-black) !important",
                         fontSize: "14px !important",
                       },
 
-                      "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
-                        color: "var(--color-day-black) !important",
-                      },
+                    "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
+                      fontSize: "13px !important",
+                    },
 
-                      "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
-                        {
-                          borderBottom:
-                            "1px solid var(--color-day-yellow) !important",
-                        },
+                    "& .css-nlvv43-MuiFormControl-root": {
+                      margin: "0px 8px !important",
+                      height: "30px !important",
+                    },
 
-                      "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
-                        {
-                          borderBottom:
-                            "2px solid var(--color-day-yellow) !important",
-                        },
+                    "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
+                      fontSize: "12px !important",
+                      color: "var(--color-day-black) !important",
+                      top: "-8px !important",
+                    },
+                  }}
+                  onChange={handleChangeForModelSelection}
+                  options={model_search_selection}
+                  autoHighlight
+                  getOptionLabel={(option) => option.label}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Models"
+                      inputProps={{
+                        ...params.inputProps,
+                        style: { width: "70%" }, // set the width to auto
 
-                      "& #demo-simple-select-standard-label": {
-                        color: "var(--color-day-yellow) !important",
-                      },
-
-                      "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
-                        color: "var(--color-day-black) !important",
-                      },
-
-                      "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
-                        {
-                          backgroundColor: "var(--color-day-yellow) !important",
-                          color: "black",
-                        },
-
-                      "& .css-1869usk-MuiFormControl-root": {
-                        height: "60px !important",
-                      },
-
-                      "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
-                        {
-                          color: "var(--color-day-black) !important",
-                          fontSize: "14px !important",
-                        },
-
-                      "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
-                        fontSize: "13px !important",
-                      },
-
-                      "& .css-nlvv43-MuiFormControl-root": {
-                        margin: "0px 8px !important",
-                        height: "30px !important",
-                      },
-
-                      "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                        fontSize: "12px !important",
-                        color: "var(--color-day-black) !important",
-                        top: "-8px !important",
-                      },
-                    }}
-                    onChange={handleChangeForCoinSelection}
-                    options={coin_search_selection}
-                    autoHighlight
-                    getOptionLabel={(option) => option.label}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Currencies"
-                        inputProps={{
-                          ...params.inputProps,
-                          style: { width: "30%" }, // set the width to auto
-
-                          autoComplete: "new-password", // disable autocomplete and autofill
-                        }}
-                      />
-                    )}
-                  />
-                  <Autocomplete
-                    id="country-select-demo"
-                    className="model-auto"
-                    sx={{
-                      backgroundColor: "var(--color-forecasts-card)",
-                      borderRadius: "5px",
-                      labelColor: "red",
-                      fontSize: "11px",
-                      marginLeft: "0.4rem",
-                      "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                        color: "var(--color-day-black)",
-                      },
-
-                      "& div div >.css-194a1fa-MuiSelect-select-MuiInputBase-input":
-                        {
-                          color: "var(--color-day-black)",
-                        },
-                      "& div  >.MuiAutocomplete-option.Mui-focused": {
-                        backgroundColor: "var(--color-day-yellow)",
-                        color: "#000000",
-                      },
-
-                      "& div >.MuiOutlinedInput-root": {
-                        padding: "4px",
-                      },
-
-                      "& div div >.MuiAutocomplete-input": {
-                        padding: "4.5px 4px 4.5px 6px",
-                      },
-
-                      "& div >.MuiAutocomplete-option": {
-                        fontSize: "12px",
-                        margin: "0",
-                        color: "var(--color-day-black)",
-                      },
-
-                      "& .MuiAutocomplete-noOptions": {
-                        color: "var(--color-day-black)",
-                        fontSize: "12px",
-                      },
-
-                      "& .css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper": {
-                        backgroundColor: "var(--color-dropdown-bg)",
-                      },
-
-                      "& div div >.MuiAutocomplete-input": {
-                        fontSize: "11px",
-                      },
-
-                      "& .css-1xc3v61-indicatorContainer": {
-                        backgroundColor: "var(--color-day-white)",
-                      },
-
-                      "& .css-13cymwt-control": {
-                        minHeight: "34px",
-                        height: "34px",
-                      },
-
-                      "& .css-i4bv87-MuiSvgIcon-root": {
-                        width: "0.8em !important",
-                        height: "0.8em !important",
-                        fill: "var(--color-black-opcaity) !important",
-                      },
-
-                      "& .css-i4bv87-MuiSvgIcon-root": {
-                        width: "0.8em !important",
-                        height: "0.8em !important",
-                        fill: "var(--color-black-opcaity) !important",
-                      },
-
-                      "& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
-                        {
-                          color: "var(--color-day-black) !important",
-                        },
-
-                      "& div div >.MuiOutlinedInput-root": {
-                        backgroundColor:
-                          "var(--color-forecasts-card) !important",
-                        color: "var(--color-day-black) !important",
-                      },
-
-                      "& div div >.MuiOutlinedInput-root:focus": {
-                        border: "0 !important",
-                      },
-
-                      "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline:focus": {
-                        borderColor: "var(--color-day-yellow) !important",
-                      },
-
-                      "& div >.MuiOutlinedInput-notchedOutline": {
-                        border: "0px solid var(--color-day-yellow) !important",
-                      },
-
-                      "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                        fontSize: "12px !important",
-                        color: "var(--color-day-black) !important",
-                        top: "-6px !important",
-                      },
-
-                      "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":
-                        {
-                          backgroundColor:
-                            "var(--color-dropdown-bg) !important",
-                          color: "var(--color-day-black) !important",
-                        },
-
-                      "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                        {
-                          color: "var(--color-day-yellow) !important",
-                        },
-
-                      "& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root": {
-                        color: "var(--color-day-yellow) !important",
-                      },
-
-                      "& .css-ptiqhd-MuiSvgIcon-root": {
-                        height: "0.8em !important",
-                        width: "0.8em !important",
-                        fill: "var(--color-black-opcaity) !important",
-                      },
-
-                      "& .css-v4u5dn-MuiInputBase-root-MuiInput-root": {
-                        padding: "3px 8px !important",
-                        backgroundColor: "var(--color-day-yellow) !important",
-                        borderRadius: "4px",
-                        display: "flex !important",
-                        justifyContent: "center !important",
-                        alignItems: "center !important",
-                        fontSize: "15px !important",
-                        textAlign: "center !important",
-                      },
-
-                      "& .optgroup": {
-                        padding: "2px !important",
-                      },
-
-                      "& div div >.optgroup": {
-                        backgroundColor: "var(--color-day-white) !important",
-                        color: "var(--color-day-black) !important",
-                      },
-
-                      "& .mui-options": {
-                        padding: "0px 15px",
-                      },
-
-                      "& .css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
-                        borderBottom:
-                          "2px solid var(--color-day-black) !important",
-                      },
-
-                      "& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root": {
-                        color: "var(--color-day-black) !important",
-                        fontSize: "14px !important",
-                      },
-
-                      "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
-                        color: "var(--color-day-black) !important",
-                      },
-
-                      "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:before":
-                        {
-                          borderBottom:
-                            "1px solid var(--color-day-yellow) !important",
-                        },
-
-                      "& .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after":
-                        {
-                          borderBottom:
-                            "2px solid var(--color-day-yellow) !important",
-                        },
-
-                      "& #demo-simple-select-standard-label": {
-                        color: "var(--color-day-yellow) !important",
-                      },
-
-                      "& .css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon": {
-                        color: "var(--color-day-black) !important",
-                      },
-
-                      "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected":
-                        {
-                          backgroundColor: "var(--color-day-yellow) !important",
-                          color: "black",
-                        },
-
-                      "& .css-1869usk-MuiFormControl-root": {
-                        height: "60px !important",
-                      },
-
-                      "& div div >.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input":
-                        {
-                          color: "var(--color-day-black) !important",
-                          fontSize: "14px !important",
-                        },
-
-                      "& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root": {
-                        fontSize: "13px !important",
-                      },
-
-                      "& .css-nlvv43-MuiFormControl-root": {
-                        margin: "0px 8px !important",
-                        height: "30px !important",
-                      },
-
-                      "& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root": {
-                        fontSize: "12px !important",
-                        color: "var(--color-day-black) !important",
-                        top: "-8px !important",
-                      },
-                    }}
-                    onChange={handleChangeForModelSelection}
-                    options={model_search_selection}
-                    autoHighlight
-                    getOptionLabel={(option) => option.label}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Models"
-                        inputProps={{
-                          ...params.inputProps,
-                          style: { width: "70%" }, // set the width to auto
-
-                          autoComplete: "new-password", // disable autocomplete and autofill
-                        }}
-                      />
-                    )}
-                  />
-                </div>
+                        autoComplete: "new-password", // disable autocomplete and autofill
+                      }}
+                    />
+                  )}
+                />
               </div>
             </div>
-
-             ) : ( 
-
-              <div className="horizon">
-              <div className="horizon-row">
-                <div className="horizon-left">
-                  <h3>Time Horizon</h3>
-                  <p className="divider-icon"> | </p>
-                  <div className="hours-list">
-                    <ul id="hours-list-div">
-                      <li
-                        id="hours-listings hours_filter_All"
-                        style={{
-                          background: selectedItem === "All" ? "#fddd4e" : "",
-                          color: selectedItem === "All" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_All",
-                            "All"
-                          );
-                          setSelectedItem("All");
-                        }}
-                      >
-                        All
-                      </li>
-                      <li
-                        id="hours-listings hour_filter_24"
-                        style={{
-                          background: selectedItem === "24h" ? "#fddd4e" : "",
-                          color: selectedItem === "24h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_24",
-                            "24h"
-                          );
-                          setSelectedItem("24h");
-                        }}
-                      >
-                        24h
-                      </li>
-                      <li
-                        id="hours-listings hour_filter_12"
-                        style={{
-                          background: selectedItem === "12h" ? "#fddd4e" : "",
-                          color: selectedItem === "12h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_24",
-                            "12h"
-                          );
-                          setSelectedItem("12h");
-                        }}
-                      >
-                        12h
-                      </li>
-                      <li
-                        id="hours-listings hour_filter_8"
-                        style={{
-                          background: selectedItem === "8h" ? "#fddd4e" : "",
-                          color: selectedItem === "8h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_8",
-                            "8h"
-                          );
-                          setSelectedItem("8h");
-                        }}
-                      >
-                        8h
-                      </li>
-                      <li
-                        id="hours-listings hour_filter_3"
-                        style={{
-                          background: selectedItem === "6h" ? "#fddd4e" : "",
-                          color: selectedItem === "6h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_6",
-                            "6h"
-                          );
-                          setSelectedItem("6h");
-                        }}
-                      >
-                        6h
-                      </li>
-                      <li
-                        id="hours-listings hour_filter_3"
-                        style={{
-                          background: selectedItem === "4h" ? "#fddd4e" : "",
-                          color: selectedItem === "4h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_4",
-                            "4h"
-                          );
-                          setSelectedItem("4h");
-                        }}
-                      >
-                        4h
-                      </li>
-                      <li
-                        style={{
-                          background: selectedItem === "3h" ? "#fddd4e" : "",
-                          color: selectedItem === "3h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_3",
-                            "3h"
-                          );
-                          setSelectedItem("3h");
-                        }}
-                      >
-                        3h
-                      </li>
-                      <li
-                        id="hours-listings hour_filter_2"
-                        style={{
-                          background: selectedItem === "2h" ? "#fddd4e" : "",
-                          color: selectedItem === "2h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_2",
-                            "2h"
-                          );
-                          setSelectedItem("2h");
-                        }}
-                      >
-                        2h
-                      </li>
-                      <li
-                        id="hours-listings hour_filter_1"
-                        style={{
-                          background: selectedItem === "1h" ? "#fddd4e" : "",
-                          color: selectedItem === "1h" ? "black" : "",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          handleChangeForTimeHorizonSelection(
-                            "hour_filter_1",
-                            "1h"
-                          );
-                          setSelectedItem("1h");
-                        }}
-                      >
-                        1h
-                      </li>
-                    </ul>
-                  </div>
+          </div>
+        ) : (
+          <div className="horizon">
+            <div className="horizon-row">
+              <div className="horizon-left">
+                <h3>Time Horizon</h3>
+                <p className="divider-icon"> | </p>
+                <div className="hours-list">
+                  <ul id="hours-list-div">
+                    <li
+                      id="hours-listings hours_filter_All"
+                      style={{
+                        background: selectedItem === "All" ? "#fddd4e" : "",
+                        color: selectedItem === "All" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_All",
+                          "All"
+                        );
+                        setSelectedItem("All");
+                      }}
+                    >
+                      All
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_24"
+                      style={{
+                        background: selectedItem === "24h" ? "#fddd4e" : "",
+                        color: selectedItem === "24h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_24",
+                          "24h"
+                        );
+                        setSelectedItem("24h");
+                      }}
+                    >
+                      24h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_12"
+                      style={{
+                        background: selectedItem === "12h" ? "#fddd4e" : "",
+                        color: selectedItem === "12h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_24",
+                          "12h"
+                        );
+                        setSelectedItem("12h");
+                      }}
+                    >
+                      12h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_8"
+                      style={{
+                        background: selectedItem === "8h" ? "#fddd4e" : "",
+                        color: selectedItem === "8h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_8",
+                          "8h"
+                        );
+                        setSelectedItem("8h");
+                      }}
+                    >
+                      8h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_3"
+                      style={{
+                        background: selectedItem === "6h" ? "#fddd4e" : "",
+                        color: selectedItem === "6h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_6",
+                          "6h"
+                        );
+                        setSelectedItem("6h");
+                      }}
+                    >
+                      6h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_3"
+                      style={{
+                        background: selectedItem === "4h" ? "#fddd4e" : "",
+                        color: selectedItem === "4h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_4",
+                          "4h"
+                        );
+                        setSelectedItem("4h");
+                      }}
+                    >
+                      4h
+                    </li>
+                    <li
+                      style={{
+                        background: selectedItem === "3h" ? "#fddd4e" : "",
+                        color: selectedItem === "3h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_3",
+                          "3h"
+                        );
+                        setSelectedItem("3h");
+                      }}
+                    >
+                      3h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_2"
+                      style={{
+                        background: selectedItem === "2h" ? "#fddd4e" : "",
+                        color: selectedItem === "2h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_2",
+                          "2h"
+                        );
+                        setSelectedItem("2h");
+                      }}
+                    >
+                      2h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_1"
+                      style={{
+                        background: selectedItem === "1h" ? "#fddd4e" : "",
+                        color: selectedItem === "1h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_1",
+                          "1h"
+                        );
+                        setSelectedItem("1h");
+                      }}
+                    >
+                      1h
+                    </li>
+                  </ul>
                 </div>
+              </div>
 
-                <div className="horizon-right">
-                  <Autocomplete
-                    id="country-select-demo"
-                    sx={{
-                      width: 220,
-                      backgroundColor: "var(--color-forecasts-card)",
-                      borderRadius: "5px",
-                      labelColor: "red",
-                      fontSize: "11px",
-                      marginLeft: "0.8rem",
-                    }}
-                    onChange={handleChangeForCoinSelection}
-                    options={coin_search_selection}
-                    autoHighlight
-                    getOptionLabel={(option) => option.label}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Currencies"
-                        inputProps={{
-                          ...params.inputProps,
-                          autoComplete: "new-password", // disable autocomplete and autofill
-                        }}
-                      />
-                    )}
-                  />
-                  {/* <Select
+              <div className="horizon-right">
+                <Autocomplete
+                  id="country-select-demo"
+                  sx={{
+                    width: 220,
+                    backgroundColor: "var(--color-forecasts-card)",
+                    borderRadius: "5px",
+                    labelColor: "red",
+                    fontSize: "11px",
+                    marginLeft: "0.8rem",
+                  }}
+                  onChange={handleChangeForCoinSelection}
+                  options={coin_search_selection}
+                  autoHighlight
+                  getOptionLabel={(option) => option.label}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Currencies"
+                      inputProps={{
+                        ...params.inputProps,
+                        autoComplete: "new-password", // disable autocomplete and autofill
+                      }}
+                    />
+                  )}
+                />
+                {/* <Select
                   placeholder="Models"
                   options={model_search_selection}
                   components={{ DropdownIndicator }}
@@ -1214,107 +1330,161 @@ const BacktestComponent = () => {
                   isClearable={true}
                   onChange={handleChangeForModelSelection}
                 /> */}
-                  <Autocomplete
-                    id="country-select-demo"
-                    sx={{
-                      width: 220,
-                      backgroundColor: "var(--color-forecasts-card)",
-                      borderRadius: "5px",
-                      labelColor: "red",
-                      fontSize: "11px",
-                      marginLeft: "0.8rem",
-                    }}
-                    onChange={handleChangeForModelSelection}
-                    options={model_search_selection}
-                    autoHighlight
-                    getOptionLabel={(option) => option.label}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Models"
-                        inputProps={{
-                          ...params.inputProps,
-                          autoComplete: "new-password", // disable autocomplete and autofill
-                        }}
-                      />
-                    )}
-                  />
-                </div>
+                <Autocomplete
+                  id="country-select-demo"
+                  sx={{
+                    width: 220,
+                    backgroundColor: "var(--color-forecasts-card)",
+                    borderRadius: "5px",
+                    labelColor: "red",
+                    fontSize: "11px",
+                    marginLeft: "0.8rem",
+                  }}
+                  onChange={handleChangeForModelSelection}
+                  options={model_search_selection}
+                  autoHighlight
+                  getOptionLabel={(option) => option.label}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Models"
+                      inputProps={{
+                        ...params.inputProps,
+                        autoComplete: "new-password", // disable autocomplete and autofill
+                      }}
+                    />
+                  )}
+                />
               </div>
             </div>
+          </div>
+        )}
 
-             ) }
-
-            
-                {/* THIS IS FOR WEB */}
-            <div className='backtest-filters backtest-for-web'>
-              <div className='date-picker flex-display'>
-                <h3>Start Date:</h3>
-                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker label="" />
-                </LocalizationProvider> */}
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DateField label="" />
-                </LocalizationProvider>
-
-              </div>
-              <div className='profit-input flex-display'>
-                <h3>Take Profit:</h3>
-                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
-              </div>
-              <div className='loss-input flex-display'>
-                <h3>Stop Loss:</h3>
-                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
-              </div>
-              <div className='fee-input flex-display'>
-                <h3>Fee:</h3>
-                <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
-              </div>
-            </div>
-                {/* THIS IS FOR MOBILE  */}
-            <div className='backtest-filters backtest-for-mobile'>
-              <div className='sec-1 flex-display justify-content'>
-                <div className='date-picker flex-display'>
-                  <h3>Start Date:</h3>
-                  {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+        {/* THIS IS FOR WEB */}
+        <div className="backtest-filters backtest-for-web">
+          <div className="date-picker flex-display">
+            <h3>Start Date:</h3>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label=""
+                value={selectedDate}
+                onChange={handleDateChange}
+              />
+            </LocalizationProvider>
+            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateField label="" />
+            </LocalizationProvider> */}
+          </div>
+          <div className="profit-input flex-display">
+            <h3>Take Profit:</h3>
+            <TextField
+              id="profit"
+              placeholder="0-100"
+              variant="outlined"
+              value={take_profit_selected_for_backtest}
+              onChange={handleProfitChange}
+            />
+          </div>
+          <div className="loss-input flex-display">
+            <h3>Stop Loss:</h3>
+            <TextField
+              id="loss"
+              placeholder="0-100"
+              variant="outlined"
+              value={stop_loss_selected_for_backtest}
+              onChange={handleLossChange}
+            />
+          </div>
+          <div className="fee-input flex-display">
+            <h3>Fee:</h3>
+            <TextField
+              id="fee"
+              placeholder="0-100"
+              variant="outlined"
+              value={fee_selected_for_backtest}
+              onChange={handleFeeChange}
+            />
+          </div>
+        </div>
+        {/* THIS IS FOR MOBILE  */}
+        <div className="backtest-filters backtest-for-mobile">
+          <div className="sec-1 flex-display justify-content">
+            <div className="date-picker flex-display">
+              <h3>Start Date:</h3>
+              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker label="" />
                   </LocalizationProvider> */}
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateField label="" />
-                  </LocalizationProvider>
-
-                </div>
-                <div className='profit-input flex-display'>
-                  <h3>Take Profit:</h3>
-                  <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
-                </div>
-              </div>
-
-              <div className='sec-2 flex-display justify-content'>
-                <div className='loss-input flex-display'>
-                  <h3>Stop Loss:</h3>
-                  <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
-                </div>
-                <div className='fee-input flex-display'>
-                  <h3>Fee:</h3>
-                  <TextField id="outlined-basic" placeholder="0-100" variant="outlined" />
-                </div>
-              </div>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateField label="" />
+              </LocalizationProvider>
             </div>
-
-            <div className='for-flex-end'>
-              <div className="backtest-btn-div backtest-btn-page">
-                <Link
-                  to="#"
-                >
-                  <p className="compare-btn">Run Backtest</p>
-                </Link>
-              </div>
+            <div className="profit-input flex-display">
+              <h3>Take Profit:</h3>
+              <TextField
+                id="outlined-basic"
+                placeholder="0-100"
+                variant="outlined"
+              />
             </div>
+          </div>
+
+          <div className="sec-2 flex-display justify-content">
+            <div className="loss-input flex-display">
+              <h3>Stop Loss:</h3>
+              <TextField
+                id="outlined-basic"
+                placeholder="0-100"
+                variant="outlined"
+              />
+            </div>
+            <div className="fee-input flex-display">
+              <h3>Fee:</h3>
+              <TextField
+                id="outlined-basic"
+                placeholder="0-100"
+                variant="outlined"
+              />
+            </div>
+          </div>
         </div>
-    </div>
-    
-  )
-}
 
-export default BacktestComponent
+        <div className="for-flex-end">
+          <div className="backtest-btn-div backtest-btn-page">
+            <Link to="#">
+              <p className="compare-btn" onClick={handleRunBacktestChange}>
+                Run Backtest
+              </p>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div>
+        {model_name_for_result_backtest_result ? (
+          <CumulativePNL model_name={model_name_for_result_backtest_result} />
+        ) : null}
+        {model_name_for_result_backtest_result ? (
+          <CanvasjsSplineAreaChartWithRangeSelecetor
+            model_name={model_name_for_result_backtest_result}
+          />
+        ) : null}
+        {model_name_for_result_backtest_result ? (
+          <inDepthBacktest model_name={model_name_for_result_backtest_result} />
+        ) : null}
+        {model_name_for_result_backtest_result ? (
+          <CanvasjsDrawdownWithSliderRange
+            model_name={model_name_for_result_backtest_result}
+          />
+        ) : null}
+        {/* {model_name_for_result_backtest_result ? (
+          <GraphsTable
+            model_name={model_name_for_result_backtest_result + "_stats"}
+          />
+        ) : null} */}
+
+        <RecentlyViewed />
+      </div>
+    </div>
+  );
+};
+
+export default BacktestComponent;
