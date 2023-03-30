@@ -2,7 +2,7 @@ import React, { useEffect, useState, memo, useRef } from "react";
 import "./Backtest.css";
 import clsx from "clsx";
 import dayjs from "dayjs";
-import inDepthBacktest from "../models/inDepth/inDepthBacktest";
+import InDepthBacktest from "../models/inDepth/InDepthBacktest";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -38,6 +38,7 @@ import RecentlyViewed from "../recentlyViewed/RecentlyViewed";
 import CanvasjsSplineAreaChartWithRangeSelecetor from "../models/graphs/CanvasjsSplineAreaChartWithRangeSelecetor";
 import CanvasjsDrawdownWithSliderRange from "../models/graphs/CanvasjsDrawdownWithSliderRange";
 import CumulativePNL from "../models/cumulativePNL/CumulativePNL";
+import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
 // import dotenv from "dotenv";
 // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
 
@@ -1478,7 +1479,7 @@ const BacktestComponent = () => {
           />
         ) : null}
         {model_name_for_result_backtest_result ? (
-          <inDepthBacktest model_name={model_name_for_result_backtest_result} />
+          <InDepthBacktest model_name={model_name_for_result_backtest_result} />
         ) : null}
         {model_name_for_result_backtest_result ? (
           <CanvasjsDrawdownWithSliderRange
@@ -1486,7 +1487,7 @@ const BacktestComponent = () => {
           />
         ) : null}
         {model_name_for_result_backtest_result ? (
-          <GraphsTable
+          <GraphsTableBacktest
             model_name={model_name_for_result_backtest_result + "_stats"}
           />
         ) : null}

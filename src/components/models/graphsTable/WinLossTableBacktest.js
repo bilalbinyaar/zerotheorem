@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { useStateContext } from "../../../ContextProvider";
 import IconButton from "@mui/material/IconButton";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 
-const DrawDownTableBacktest = (props) => {
-  console.log("I received model name -->", props.model_name);
+const WinLossTableBacktest = (props) => {
   const [stats, setStats] = useState({});
-  //   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
     fetch(
       "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats_backtest/" +
@@ -74,24 +73,49 @@ const DrawDownTableBacktest = (props) => {
       })
       .catch((err) => console.log(err));
   }, []);
-  const forBgColor = (value, id) => {
+  const forBgColorRed = (value, id) => {
     document
       .getElementById(`${id}`)
       .setAttribute("style", "color: #ff2e2e !important");
   };
+  const forBgColorGreen = (value, id) => {
+    document
+      .getElementById(`${id}`)
+      .setAttribute("style", "color: #16c784 !important");
+  };
+  const forBgColorWinLossPercentage = (value, id) => {
+    if (value >= 50) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    } else {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    }
+  };
+  const forBgColorWinLossRatio = (value, id) => {
+    if (value > 1) {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #16c784 !important");
+    } else {
+      document
+        .getElementById(`${id}`)
+        .setAttribute("style", "color: #ff2e2e !important");
+    }
+  };
   return (
-    // TABLE NEW
-
-    <div className="table-card">
+    <div className="table-card for-margin">
       <div className="table-card-head">
-        <h3>Drawdown (DD)</h3>
+        <h3>Win/Loss</h3>
       </div>
       <div className="table-card-body">
         <table className="for-table">
           <tr className="for-table-row">
             <th className="for-table-head">
-              Max DD
-              <Tooltip title="Maximum Drawdown – Measurement of maximum negative yield experienced in the past">
+              Total Wins
+              <Tooltip title="The total number of wins the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -99,40 +123,43 @@ const DrawDownTableBacktest = (props) => {
             </th>
             <td
               className="for-table-data"
-              id="drawdown_color"
+              id="wins"
               onChange={
                 stats[props.model_name]
-                  ? forBgColor(
-                      stats[props.model_name].max_drawdown,
-                      "drawdown_color"
-                    )
+                  ? forBgColorGreen(stats[props.model_name].total_wins, "wins")
                   : null
               }
             >
               {stats[props.model_name]
-                ? stats[props.model_name].max_drawdown
-                : "null"}
-              {"%"}
+                ? stats[props.model_name].total_wins
+                : null}
             </td>
             <th className="for-table-head">
-              Max DD Days
-              <Tooltip title="Maximum Drawdown Days – Measurement of the maximum number of days the model was in a negative yield">
+              Total Losses
+              <Tooltip title="The total number of losses the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="losses"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColorRed(stats[props.model_name].total_wins, "losses")
+                  : null
+              }
+            >
               {stats[props.model_name]
-                ? stats[props.model_name].max_drawdown_duration
-                : "null"}
-              {/* {"d"} */}
+                ? stats[props.model_name].total_losses
+                : null}
             </td>
           </tr>
           <tr className="for-table-row">
             <th className="for-table-head">
-              Avg DD
-              <Tooltip title="Average Drawdown – The average negative yield experienced by the model">
+              Consecutive Wins
+              <Tooltip title="The maximum number of sequential wins the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -140,40 +167,49 @@ const DrawDownTableBacktest = (props) => {
             </th>
             <td
               className="for-table-data"
-              id="drawdown_color2"
+              id="wins3"
               onChange={
                 stats[props.model_name]
-                  ? forBgColor(
-                      stats[props.model_name].max_drawdown,
-                      "drawdown_color2"
+                  ? forBgColorGreen(
+                      stats[props.model_name].consective_wins,
+                      "wins3"
                     )
                   : null
               }
             >
               {stats[props.model_name]
-                ? stats[props.model_name].average_drawdown
-                : "null"}
-              {"%"}
+                ? stats[props.model_name].consective_wins
+                : null}
             </td>
             <th className="for-table-head">
-              Average DD Days
-              <Tooltip title="Average Drawdown Days – The average number of days in a negative yield experienced by the model">
+              Consecutive Losses
+              <Tooltip title="The maximum number of sequential losses the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="losses2"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColorRed(
+                      stats[props.model_name].consective_losses,
+                      "losses2"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
-                ? stats[props.model_name].average_drawdown_duration
-                : "null"}
-              {/* {"d"} */}
+                ? stats[props.model_name].consective_losses
+                : null}{" "}
             </td>
           </tr>
           <tr className="for-table-row">
             <th className="for-table-head">
-              Current DD
-              <Tooltip title="Current Drawdown – The actual negative yield (if in a negative) that is currently being experienced by the model">
+              Win Percentage
+              <Tooltip title="The percentage number of wins the model has experienced">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
@@ -181,34 +217,44 @@ const DrawDownTableBacktest = (props) => {
             </th>
             <td
               className="for-table-data"
-              id="drawdown_color3"
+              id="wins_percentage"
               onChange={
                 stats[props.model_name]
-                  ? forBgColor(
-                      stats[props.model_name].max_drawdown,
-                      "drawdown_color3"
+                  ? forBgColorWinLossPercentage(
+                      stats[props.model_name].total_wins,
+                      "wins_percentage"
                     )
                   : null
               }
             >
               {stats[props.model_name]
-                ? stats[props.model_name].current_drawdown
-                : "null"}
+                ? stats[props.model_name].win_percentage
+                : null}
               {"%"}
             </td>
             <th className="for-table-head">
-              Current DD Days
-              <Tooltip title="Current Drawdown Days – The actual number of days in a negative yield (if in a negative) that is currently being experienced by the model">
+              Win/Loss Ratio
+              <Tooltip title="The ratio of the win size vs the loss size. Above 1 means the model wins more than it loses on average">
                 <IconButton>
                   <BsFillInfoCircleFill />
                 </IconButton>
               </Tooltip>
             </th>
-            <td className="for-table-data">
+            <td
+              className="for-table-data"
+              id="wins_loss_ratio"
+              onChange={
+                stats[props.model_name]
+                  ? forBgColorWinLossRatio(
+                      stats[props.model_name].total_wins,
+                      "wins_loss_ratio"
+                    )
+                  : null
+              }
+            >
               {stats[props.model_name]
-                ? stats[props.model_name].curr_drawdown_duration
-                : "null"}
-              {/* {"d"} */}
+                ? stats[props.model_name].win_loss_ratio
+                : null}
             </td>
           </tr>
         </table>
@@ -217,4 +263,4 @@ const DrawDownTableBacktest = (props) => {
   );
 };
 
-export default DrawDownTableBacktest;
+export default WinLossTableBacktest;

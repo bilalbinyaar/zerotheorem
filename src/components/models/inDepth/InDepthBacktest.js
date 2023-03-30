@@ -5,7 +5,8 @@ import "./InDepth.css";
 import CanvasDoughnut from "../graphs/CanvasDoughnut";
 import CanvasNegativeBar from "../graphs/CanvasNegativeBar";
 import IndividualPnlCanvasjs from "../graphs/IndividualPnlCanvasjs";
-const inDepthBacktest = (props) => {
+import CanvasDoughnutBacktest from "../graphs/CanvasDoughnutBacktest";
+const InDepthBacktest = (props) => {
   return (
     <div className="in-depth">
       <div className="container">
@@ -24,7 +25,7 @@ const inDepthBacktest = (props) => {
             <h3>Win/Loss</h3>
             <div className="for-hr"></div>
             {/* <GradientDonut model_name={props.model_name} /> */}
-            {/* <CanvasDoughnut model_name={props.model_name} /> */}
+            <CanvasDoughnutBacktest model_name={props.model_name + "_stats"} />
           </div>
         </div>
       </div>
@@ -32,4 +33,4 @@ const inDepthBacktest = (props) => {
   );
 };
 
-export default inDepthBacktest;
+export default InDepthBacktest;
