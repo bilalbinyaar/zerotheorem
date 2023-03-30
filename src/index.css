@@ -621,6 +621,7 @@ a {
 
 .css-1km1ehz {
   font-size: 12px !important;
+  color: var(--color-day-black) !important;
 }
 
 .css-1km1ehz.Mui-selected {
@@ -652,6 +653,10 @@ a {
 
 .css-oapmtd {
   background-color: var(--color-dropdown-bg) !important;
+}
+
+.css-gbhmnp::after {
+  border-bottom: none !important;
 }
 
 @media screen and (max-width: 568px) {
