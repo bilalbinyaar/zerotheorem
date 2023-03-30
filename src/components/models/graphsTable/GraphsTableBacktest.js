@@ -5,7 +5,8 @@ import DrawDownTableBacktest from "./DrawDownTableBacktest";
 import "./GraphsTable.css";
 import PerformanceTable from "./PerformanceTable";
 import WinLossTable from "./WinLossTable";
-
+import WinLossTableBacktest from "./WinLossTableBacktest";
+import PerformanceTableBacktest from "./PerformanceTableBacktest";
 const GraphsTableBacktest = (props) => {
   //console.log("Finally drawdown model name -->", props.model_name);
   const name = props.model_name;
@@ -23,8 +24,8 @@ const GraphsTableBacktest = (props) => {
       <div className="container">
         <div className="graph-table-main">
           <DrawDownTableBacktest model_name={name} />
-          {/* <WinLossTable model_name={name} />
-          <PerformanceTable model_name={name} /> */}
+          <WinLossTableBacktest model_name={name} />
+          <WinLossTableBacktest model_name={name} />
         </div>
       </div>
     </div>
