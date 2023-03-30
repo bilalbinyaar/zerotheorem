@@ -1422,7 +1422,10 @@ const BacktestComponent = () => {
             <div className="date-picker flex-display">
               <h3>Start Date:</h3>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker label="" />
+                <DatePicker label="" 
+                sx={{
+                width: 140,
+              }}/>
               </LocalizationProvider>
               {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateField label="" />
@@ -1434,6 +1437,9 @@ const BacktestComponent = () => {
                 id="outlined-basic"
                 placeholder="0-100"
                 variant="outlined"
+                sx={{
+                width: 85,
+              }}
               />
             </div>
           </div>
@@ -1445,6 +1451,9 @@ const BacktestComponent = () => {
                 id="outlined-basic"
                 placeholder="0-100"
                 variant="outlined"
+                sx={{
+                width: 85,
+              }}
               />
             </div>
             <div className="fee-input flex-display">
@@ -1453,6 +1462,9 @@ const BacktestComponent = () => {
                 id="outlined-basic"
                 placeholder="0-100"
                 variant="outlined"
+                sx={{
+                width: 85,
+              }}
               />
             </div>
           </div>

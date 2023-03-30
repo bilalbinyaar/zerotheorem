@@ -380,7 +380,7 @@ const ModelDetailsLeft = (props) => {
               <Link
                 to="/backtest"
               >
-                <p className="compare-btn">Run Backtest</p>
+                <p className="compare-btn">Backtest</p>
               </Link>
           </div>
         </div>
