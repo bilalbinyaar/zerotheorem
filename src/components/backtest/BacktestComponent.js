@@ -1657,6 +1657,9 @@ const BacktestComponent = () => {
                   onChange={handleDateChangeCalender}
                   minDate={disableBefore}
                   maxDate={now}
+                  sx={{
+                    width: 140,
+                  }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -1686,6 +1689,9 @@ const BacktestComponent = () => {
                 variant="outlined"
                 value={take_profit_selected_for_backtest_mobile}
                 onChange={handleProfitChangeMobile}
+                sx={{
+                  width: 85,
+                }}
               />
             </div>
           </div>
@@ -1699,6 +1705,9 @@ const BacktestComponent = () => {
                 variant="outlined"
                 value={stop_loss_selected_for_backtest_mobile}
                 onChange={handleLossChangeMobile}
+                sx={{
+                  width: 85,
+                }}
               />
             </div>
             <div className="fee-input flex-display">
@@ -1709,6 +1718,9 @@ const BacktestComponent = () => {
                 variant="outlined"
                 value={fee_selected_for_backtest_mobile}
                 onChange={handleFeeChangeMobile}
+                sx={{
+                  width: 85,
+                }}
               />
             </div>
           </div>
