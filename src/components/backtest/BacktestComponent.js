@@ -1,4 +1,6 @@
 import React, { useEffect, useState, memo, useRef } from "react";
+import { useBeforeUnload, useLocation } from "react-router-dom";
+
 import "./Backtest.css";
 import clsx from "clsx";
 import dayjs from "dayjs";
@@ -39,6 +41,7 @@ import CanvasjsSplineAreaChartWithRangeSelecetor from "../models/graphs/Canvasjs
 import CanvasjsDrawdownWithSliderRange from "../models/graphs/CanvasjsDrawdownWithSliderRange";
 import CumulativePNL from "../models/cumulativePNL/CumulativePNL";
 import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
+import { faListAlt } from "@fortawesome/free-solid-svg-icons";
 // import dotenv from "dotenv";
 // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
 
@@ -62,11 +65,25 @@ import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
 
 const BacktestComponent = () => {
   const windowWidth = useRef(window.innerWidth);
-
+  const now = dayjs(); // current time
+  const disableBeforeUnixTimestamp = 1648780800; // Unix timestamp for April 30, 2022, 12:00:00 AM UTC
+  const [disableBefore, setDisableBefore] = useState(
+    dayjs.unix(disableBeforeUnixTimestamp)
+  );
   const [Flag, setFlag] = useState(null);
-  const [timeH, setTimeH] = useState("All");
-  const [selectedItem, setSelectedItem] = useState("All");
-
+  const [selectedDateCalender, setSelectedDateCalender] = useState(null);
+  // const minYear = 2021; // minimum year allowed
+  // const maxYear = 2023; // maximum year allowed
+  const handleDateChangeCalender = (date) => {
+    if (date > now || date < disableBefore) {
+      setSelectedDate(null); // reset selectedDate to null if date is invalid
+    } else {
+      setSelectedDate(date);
+      const parsedDate = dayjs(date).toDate();
+      const timestamp = parsedDate.getTime() / 1000;
+      set_date_selected_for_backtest(timestamp);
+    }
+  };
   // console.log("I am called here to due to dark mode");
   const [rows_cached, set_rows_cached] = useState([]);
   const [coin_search_selection, set_coin_search_selection] = useState([]);
@@ -130,8 +147,11 @@ const BacktestComponent = () => {
   //     }
   //   }
   // };
-  const [model_selected_for_backted, set_model_selected_for_backtest] =
-    useState(null);
+
+  const [
+    model_selected_for_backted_mobile,
+    set_model_selected_for_backtest_mobile,
+  ] = useState(null);
   const handleChangeForModelSelection = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
@@ -143,31 +163,49 @@ const BacktestComponent = () => {
       // handleChangePage("", 1);
       // setRows(res);
     } else {
-      set_model_selected_for_backtest(null);
+      set_model_selected_for_backtest("");
       // setRows(rows_cached);
     }
   };
 
   const handleChangeForTimeHorizon = (event, values) => {
-    // console.log("Search dropdown -->", values.props.value);
+    // // console.log("Search dropdown -->", values.props.value);
+    // if (values != null) {
+    //   // setRows({});
+    //   setTimeH(values.props.value);
+
+    //   if (values.props.value == "All") {
+    //     set_model_search_selection(model_selection_cache["model_names"]);
+    //   } else {
+    //     handleChangePage("", 1);
+    //     const res = model.filter((item) => {
+    //       return item.timeHorizon == values.props.value;
+    //     });
+
+    //     set_model_search_selection(res);
+    //   }
+    // } else {
+    //   setTimeH("All");
+
+    //   set_model_search_selection(rows_cached);
+    // }
+
     if (values != null) {
-      // setRows({});
       setTimeH(values.props.value);
-
-      if (values.props.value == "All") {
-        setRows(rows_cached);
+      if (values.props.value === "All") {
+        // let output = model_selection_cache["model_names"].filter((obj) => {
+        //   return obj.value === values.label;
+        // });
+        set_model_search_selection(model_selection_cache["model_names"]);
       } else {
-        handleChangePage("", 1);
-        const res = rows_cached.filter((item) => {
-          return item.timeHorizon == values.props.value;
+        let output = model_selection_cache["model_names"].filter((obj) => {
+          return obj.value === values.props.value;
         });
-
-        setRows(res);
+        set_model_search_selection(output);
       }
     } else {
       setTimeH("All");
-
-      setRows(rows_cached);
+      set_model_search_selection(model_selection_cache["model_names"]);
     }
   };
 
@@ -523,6 +561,31 @@ const BacktestComponent = () => {
   const gridRef = React.createRef();
   const start = (page - 1) * pageSize;
   const end = page * rows.length;
+  const location = useLocation();
+
+  var model_name = "";
+  var currency = "";
+  var time_horizon = "";
+  var time_horizon2 = "All";
+
+  if (location.state) {
+    model_name = location.state.model_name.replace("_", "-");
+    currency = location.state.currency;
+    time_horizon = location.state.time_horizon;
+    time_horizon2 = location.state.time_horizon;
+  }
+  const [selectedItem, setSelectedItem] = useState(time_horizon2);
+
+  const [default_value_model, set_default_value_model] = useState({
+    label: model_name,
+  });
+  const [timeH, setTimeH] = useState(time_horizon2);
+
+  const [default_value_currency, set_default_value_currency] = useState({
+    label: currency,
+  });
+  const [model_selected_for_backted, set_model_selected_for_backtest] =
+    useState(model_name.replace("-", "_"));
   const [selectedDate, setSelectedDate] = useState(null);
   const [date_selected_for_backtest, set_date_selected_for_backtest] =
     useState(null);
@@ -534,21 +597,55 @@ const BacktestComponent = () => {
     useState(null);
   const [fee_selected_for_backtest, set_fee_selected_for_backtest] =
     useState(null);
+
+  const [selectedDateMobile, setSelectedDateMobile] = useState(null);
+  const [
+    date_selected_for_backtest_mobile,
+    set_date_selected_for_backtest_mobile,
+  ] = useState(null);
+  const [
+    take_profit_selected_for_backtest_mobile,
+    set_take_profit_selected_for_backtest_mobile,
+  ] = useState(null);
+  const [
+    stop_loss_selected_for_backtest_mobile,
+    set_stop_loss_selected_for_backtest_mobile,
+  ] = useState(null);
+  const [
+    fee_selected_for_backtest_mobile,
+    set_fee_selected_for_backtest_mobile,
+  ] = useState(null);
   const handleDateChange = (date) => {
     setSelectedDate(date);
     const parsedDate = dayjs(date).toDate();
     const timestamp = parsedDate.getTime() / 1000;
     set_date_selected_for_backtest(timestamp);
-    console.log(timestamp); // Here you can access the selected date
+    // console.log(timestamp); // Here you can access the selected date
+  };
+  const handleDateChangeMobile = (date) => {
+    setSelectedDateMobile(date);
+    const parsedDate = dayjs(date).toDate();
+    const timestamp = parsedDate.getTime() / 1000;
+    set_date_selected_for_backtest_mobile(timestamp);
+    // console.log(timestamp); // Here you can access the selected date
   };
   const handleFeeChange = (event) => {
     set_fee_selected_for_backtest(event.target.value);
   };
+  const handleFeeChangeMobile = (event) => {
+    set_fee_selected_for_backtest_mobile(event.target.value);
+  };
   const handleProfitChange = (event) => {
     set_take_profit_selected_for_backtest(event.target.value);
   };
+  const handleProfitChangeMobile = (event) => {
+    set_take_profit_selected_for_backtest_mobile(event.target.value);
+  };
   const handleLossChange = (event) => {
     set_stop_loss_selected_for_backtest(event.target.value);
+  };
+  const handleLossChangeMobile = (event) => {
+    set_stop_loss_selected_for_backtest_mobile(event.target.value);
   };
   const [backtest_table_name, set_backtest_table_name] = useState(null);
   const handleRunBacktestChange = () => {
@@ -561,26 +658,110 @@ const BacktestComponent = () => {
     ) {
       alert("Kindly input all fields to run backtest");
     } else {
-      console.log(
-        date_selected_for_backtest,
-        take_profit_selected_for_backtest,
-        stop_loss_selected_for_backtest,
-        fee_selected_for_backtest
-      );
       const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
       set_backtest_table_name(id);
-      set(ref(database, "backtest_queue/" + "user_" + id), {
-        id: "user_" + id,
-        modelName: model_selected_for_backted,
-        start_date: date_selected_for_backtest,
-        end_date: "1677555199",
-        take_profit: take_profit_selected_for_backtest,
-        stop_loss: stop_loss_selected_for_backtest,
-        transaction_fee: fee_selected_for_backtest,
-        status: 0,
-        // profile_picture: imageUrl,
-      });
-      set_flag_backtest_result(new Date());
+      var current_time = new Date();
+      const timestamp = current_time.getTime();
+      var check = true;
+      if (
+        take_profit_selected_for_backtest < 0 ||
+        take_profit_selected_for_backtest > 100
+      ) {
+        check = false;
+        alert("Take profit should be in range 0-100%");
+      }
+      if (
+        stop_loss_selected_for_backtest < 0 ||
+        stop_loss_selected_for_backtest > 100
+      ) {
+        check = false;
+
+        alert("Stop loss should be in range 0-100%");
+      }
+      if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
+        check = false;
+
+        alert("Fee should be in range 0-1%");
+      }
+      if (check == true) {
+        set(ref(database, "backtest_queue/" + "user_" + id), {
+          id: "user_" + id,
+          modelName: model_selected_for_backted,
+          start_date: date_selected_for_backtest,
+          end_date: "1677555199",
+          take_profit: take_profit_selected_for_backtest,
+          stop_loss: stop_loss_selected_for_backtest,
+          transaction_fee: fee_selected_for_backtest,
+          status: 0,
+          current_time: timestamp,
+
+          // profile_picture: imageUrl,
+        });
+        set_flag_backtest_result(new Date());
+      }
+    }
+  };
+
+  const handleRunBacktestChangeMobile = () => {
+    if (
+      !date_selected_for_backtest_mobile ||
+      !take_profit_selected_for_backtest_mobile ||
+      !stop_loss_selected_for_backtest_mobile ||
+      !fee_selected_for_backtest_mobile ||
+      !model_selected_for_backted
+    ) {
+      alert("Kindly input all fields to run backtest");
+    } else {
+      // console.log(
+      //   date_selected_for_backtest,
+      //   take_profit_selected_for_backtest,
+      //   stop_loss_selected_for_backtest,
+      //   fee_selected_for_backtest
+      // );
+      const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
+      set_backtest_table_name(id);
+      var current_time = new Date();
+      const timestamp = current_time.getTime();
+      var check = true;
+      if (
+        take_profit_selected_for_backtest_mobile < 0 ||
+        take_profit_selected_for_backtest_mobile > 100
+      ) {
+        check = false;
+        alert("Take profit should be in range 0-100%");
+      }
+      if (
+        stop_loss_selected_for_backtest_mobile < 0 ||
+        stop_loss_selected_for_backtest_mobile > 100
+      ) {
+        check = false;
+
+        alert("Stop loss should be in range 0-100%");
+      }
+      if (
+        fee_selected_for_backtest_mobile < 0 ||
+        fee_selected_for_backtest_mobile > 1
+      ) {
+        check = false;
+
+        alert("Fee should be in range 0-1%");
+      }
+      if (check == true) {
+        set(ref(database, "backtest_queue/" + "user_" + id), {
+          id: "user_" + id,
+          modelName: model_selected_for_backted,
+          start_date: date_selected_for_backtest_mobile,
+          end_date: "1677555199",
+          take_profit: take_profit_selected_for_backtest_mobile,
+          stop_loss: stop_loss_selected_for_backtest_mobile,
+          transaction_fee: fee_selected_for_backtest_mobile,
+          status: 0,
+          current_time: timestamp,
+
+          // profile_picture: imageUrl,
+        });
+        set_flag_backtest_result(new Date());
+      }
     }
   };
   const [flag_for_backtest_result, set_flag_backtest_result] = useState(null);
@@ -604,11 +785,11 @@ const BacktestComponent = () => {
             set_flag_backtest_result(new Date());
           } else {
             if (data.status == 1) {
-              console.log(
-                "Data firebase for backtest ",
-                data,
-                backtest_table_name
-              );
+              // console.log(
+              //   "Data firebase for backtest ",
+              //   data,
+              //   backtest_table_name
+              // );
               set_model_name_for_result_backtest_result(
                 "user_" + backtest_table_name
               );
@@ -621,13 +802,40 @@ const BacktestComponent = () => {
       }, 1000);
     }
   }, [flag_for_backtest_result]);
-  console.log(model_name_for_result_backtest_result);
+
+  useEffect(() => {
+    if (strategies == null) {
+      return;
+    } else {
+      // console.log("Here is strategies for date picker -->", strategies);
+      if (model_selected_for_backted != "") {
+        const model = model_selected_for_backted;
+        const dateStr = strategies[model].date_started;
+        const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
+        console.log(
+          "Debugg model -->",
+          model_selected_for_backted,
+          dateStr,
+          dayjs.unix(unixTimestamp)
+        );
+
+        setDisableBefore(dayjs.unix(unixTimestamp));
+      }
+    }
+  }, [strategies, model_selected_for_backted]);
+  // console.log(model_name_for_result_backtest_result);
   return (
     <div className="back-test">
       <div className="container">
         <h1>Backtest</h1>
         <p className="backtest-description">
-          To conduct a personalized backtest, begin by choosing a model through either the time horizon and currencies filter or by selecting from the Models dropdown menu. Afterwards, adjust the backtest inputs to fit your preferences, including the start date, which must not be earlier than the model's Start date (default value). Additionally, set the take profit and stop loss values within a range of 0 to 100, and specify a fee for each transaction with a value between 0 and 1.
+          To conduct a personalized backtest, begin by choosing a model through
+          either the time horizon and currencies filter or by selecting from the
+          Models dropdown menu. Afterwards, adjust the backtest inputs to fit
+          your preferences, including the start date, which must not be earlier
+          than the model's Start date (default value). Additionally, set the
+          take profit and stop loss values within a range of 0 to 100, and
+          specify a fee for each transaction with a value between 0 and 1.
         </p>
 
         {windowWidth.current <= 768 ? (
@@ -884,6 +1092,7 @@ const BacktestComponent = () => {
                   onChange={handleChangeForCoinSelection}
                   options={coin_search_selection}
                   autoHighlight
+                  defaultValue={default_value_currency}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1106,6 +1315,7 @@ const BacktestComponent = () => {
                     },
                   }}
                   onChange={handleChangeForModelSelection}
+                  defaultValue={default_value_model}
                   options={model_search_selection}
                   autoHighlight
                   getOptionLabel={(option) => option.label}
@@ -1303,6 +1513,7 @@ const BacktestComponent = () => {
                   onChange={handleChangeForCoinSelection}
                   options={coin_search_selection}
                   autoHighlight
+                  defaultValue={default_value_currency}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1336,6 +1547,7 @@ const BacktestComponent = () => {
                   onChange={handleChangeForModelSelection}
                   options={model_search_selection}
                   autoHighlight
+                  defaultValue={default_value_model}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1361,7 +1573,24 @@ const BacktestComponent = () => {
               <DatePicker
                 label=""
                 value={selectedDate}
-                onChange={handleDateChange}
+                onChange={handleDateChangeCalender}
+                minDate={disableBefore}
+                maxDate={now}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    error={
+                      selectedDate !== null &&
+                      (selectedDate < now || selectedDate > disableBefore)
+                    }
+                    helperText={
+                      selectedDate !== null &&
+                      (selectedDate < now || selectedDate > disableBefore)
+                        ? "Invalid date"
+                        : ""
+                    }
+                  />
+                )}
               />
             </LocalizationProvider>
             {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -1372,7 +1601,7 @@ const BacktestComponent = () => {
             <h3>Take Profit:</h3>
             <TextField
               id="profit"
-              placeholder="0-100"
+              placeholder="0-100%"
               variant="outlined"
               value={take_profit_selected_for_backtest}
               onChange={handleProfitChange}
@@ -1385,7 +1614,7 @@ const BacktestComponent = () => {
             <h3>Stop Loss:</h3>
             <TextField
               id="loss"
-              placeholder="0-100"
+              placeholder="0-100%"
               variant="outlined"
               value={stop_loss_selected_for_backtest}
               onChange={handleLossChange}
@@ -1398,7 +1627,7 @@ const BacktestComponent = () => {
             <h3>Fee:</h3>
             <TextField
               id="fee"
-              placeholder="0-100"
+              placeholder="0-1%"
               variant="outlined"
               value={fee_selected_for_backtest}
               onChange={handleFeeChange}
@@ -1422,7 +1651,28 @@ const BacktestComponent = () => {
             <div className="date-picker flex-display">
               <h3>Start Date:</h3>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker label="" />
+                <DatePicker
+                  label=""
+                  value={selectedDate}
+                  onChange={handleDateChangeCalender}
+                  minDate={disableBefore}
+                  maxDate={now}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      error={
+                        selectedDate !== null &&
+                        (selectedDate < now || selectedDate > disableBefore)
+                      }
+                      helperText={
+                        selectedDate !== null &&
+                        (selectedDate < now || selectedDate > disableBefore)
+                          ? "Invalid date"
+                          : ""
+                      }
+                    />
+                  )}
+                />
               </LocalizationProvider>
               {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateField label="" />
@@ -1431,9 +1681,11 @@ const BacktestComponent = () => {
             <div className="profit-input flex-display">
               <h3>Take Profit:</h3>
               <TextField
-                id="outlined-basic"
-                placeholder="0-100"
+                id="profit_mobile"
+                placeholder="0-100%"
                 variant="outlined"
+                value={take_profit_selected_for_backtest_mobile}
+                onChange={handleProfitChangeMobile}
               />
             </div>
           </div>
@@ -1442,17 +1694,21 @@ const BacktestComponent = () => {
             <div className="loss-input flex-display">
               <h3>Stop Loss:</h3>
               <TextField
-                id="outlined-basic"
-                placeholder="0-100"
+                id="profit_loss"
+                placeholder="0-100%"
                 variant="outlined"
+                value={stop_loss_selected_for_backtest_mobile}
+                onChange={handleLossChangeMobile}
               />
             </div>
             <div className="fee-input flex-display">
               <h3>Fee:</h3>
               <TextField
                 id="outlined-basic"
-                placeholder="0-100"
+                placeholder="0-1%"
                 variant="outlined"
+                value={fee_selected_for_backtest_mobile}
+                onChange={handleFeeChangeMobile}
               />
             </div>
           </div>
@@ -1461,7 +1717,10 @@ const BacktestComponent = () => {
         <div className="for-flex-end">
           <div className="backtest-btn-div backtest-btn-page">
             <Link to="#">
-              <p className="compare-btn" onClick={handleRunBacktestChange}>
+              <p
+                className="compare-btn"
+                onClick={handleRunBacktestChangeMobile}
+              >
                 Run Backtest
               </p>
             </Link>

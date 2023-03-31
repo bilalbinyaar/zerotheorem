@@ -41,9 +41,9 @@ const CanvasDoughnutBacktest = (props) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data["response"][0]);
+        // console.log(data["response"][0]);
         var model_names = {};
-        console.log("Data for --->", data["response"]);
+        // console.log("Data for --->", data["response"]);
         model_names[props.model_name] = {
           strategy_name: data["response"][0].strategy_name,
           current_drawdown: data["response"][0].current_drawdown,
@@ -99,7 +99,7 @@ const CanvasDoughnutBacktest = (props) => {
     if (model_name == null) {
       return;
     } else {
-      console.log("Here is the doughnut data --->", stats);
+      //   console.log("Here is the doughnut data --->", stats);
       var data_for_stat = [];
       data_for_stat.push(stats[props.model_name].win_percentage);
       data_for_stat.push(stats[props.model_name].loss_percentage);

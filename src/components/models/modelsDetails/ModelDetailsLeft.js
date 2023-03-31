@@ -377,11 +377,18 @@ const ModelDetailsLeft = (props) => {
             ) : null}
           </div>
           <div className="model-details-left-body-stats backtest-btn-div">
+            {strategies[props.model_name] ? (
               <Link
                 to="/backtest"
+                state={{
+                  model_name: `${props.model_name}`,
+                  currency: `${strategies[props.model_name].currency}`,
+                  time_horizon: `${strategies[props.model_name].time_horizon}`,
+                }}
               >
-                <p className="compare-btn">Run Backtest</p>
+                <p className="compare-btn">Backtest</p>
               </Link>
+            ) : null}
           </div>
         </div>
       </div>
