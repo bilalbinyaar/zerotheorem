@@ -84,6 +84,16 @@ const BacktestComponent = () => {
       set_date_selected_for_backtest(timestamp);
     }
   };
+  const handleDateChangeCalenderMobile = (date) => {
+    if (date > now || date < disableBefore) {
+      setSelectedDate(null); // reset selectedDate to null if date is invalid
+    } else {
+      setSelectedDate(date);
+      const parsedDate = dayjs(date).toDate();
+      const timestamp = parsedDate.getTime() / 1000;
+      set_date_selected_for_backtest_mobile(timestamp);
+    }
+  };
   // console.log("I am called here to due to dark mode");
   const [rows_cached, set_rows_cached] = useState([]);
   const [coin_search_selection, set_coin_search_selection] = useState([]);
@@ -1654,7 +1664,7 @@ const BacktestComponent = () => {
                 <DatePicker
                   label=""
                   value={selectedDate}
-                  onChange={handleDateChangeCalender}
+                  onChange={handleDateChangeCalenderMobile}
                   minDate={disableBefore}
                   maxDate={now}
                   sx={{
