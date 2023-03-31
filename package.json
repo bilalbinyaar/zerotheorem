@@ -44,6 +44,7 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.7.1",
     "react-is-visible": "^1.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-meta-tags": "^1.0.1",
     "react-pdf": "^6.2.2",
     "react-redux": "^8.0.5",

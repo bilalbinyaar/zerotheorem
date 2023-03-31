@@ -1,101 +1,113 @@
 .back-test .container {
-    padding: 4rem 0rem 0rem 0rem;
+  padding: 4rem 0rem 0rem 0rem;
 }
 
 .backtest-filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
 }
 
 .flex-display {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .flex-display h3 {
-    margin-right: 0.6rem;
+  margin-right: 0.6rem;
 }
 
 .backtest-btn-page {
-    padding: 0.5rem 0.7rem;
-    border-radius: 4px;
-    width: 10%;
+  padding: 0.5rem 0.7rem;
+  border-radius: 4px;
+  width: 10%;
 }
 
 .backtest-btn-page a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .backtest-btn-page p {
-    margin-top: 0;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .for-flex-end {
-    width: 100%;
-    display: none;
-    justify-content: end;
+  width: 100%;
+  display: none;
+  justify-content: end;
 }
 
 .justify-content {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .backtest-for-mobile {
-    display: none;
+  display: none;
 }
 
 .backtest-for-web {
-    display: flex;
+  display: flex;
 }
 
 .sec-2 {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .backtest-description {
-    text-align: justify;
+  text-align: justify;
 }
 
+.loader-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media screen and (max-width: 668px) {
-    .date-picker {
-        margin-right: 0.8rem;
-    }
+  .date-picker {
+    margin-right: 0.8rem;
+  }
 
-    .loss-input {
-        margin-right: 0.8rem;
-    }
+  .loss-input {
+    margin-right: 0.8rem;
+  }
 
-    .flex-display h3 {
-        margin-right: 0.3rem;
-    }
+  .flex-display h3 {
+    margin-right: 0.3rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .backtest-for-mobile {
-        display: block;
-    }
+  .back-test .container {
+    padding: 2.2rem 0rem 2.5rem 0rem;
+  }
 
-    .backtest-for-web {
-        display: none;
-    }
+  .backtest-for-mobile {
+    display: block;
+  }
 
-    .backtest-btn-page {
-        width: 35%;
-        margin-top: 1.4rem;
-    }
+  .backtest-for-web {
+    display: none;
+  }
 
-    .for-flex-end {
-        justify-content: start;
-        display: flex;
-    }
+  .backtest-btn-page {
+    width: 35%;
+    margin-top: 1.4rem;
+  }
 
-    .backtest-btn-page {
-        padding: 0.6rem;
-    }
+  .for-flex-end {
+    justify-content: start;
+    display: flex;
+  }
+
+  .backtest-btn-page {
+    padding: 0.6rem;
+  }
 }

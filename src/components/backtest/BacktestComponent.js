@@ -41,7 +41,8 @@ import CanvasjsSplineAreaChartWithRangeSelecetor from "../models/graphs/Canvasjs
 import CanvasjsDrawdownWithSliderRange from "../models/graphs/CanvasjsDrawdownWithSliderRange";
 import CumulativePNL from "../models/cumulativePNL/CumulativePNL";
 import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
-import { faListAlt } from "@fortawesome/free-solid-svg-icons";
+import { faLariSign, faListAlt } from "@fortawesome/free-solid-svg-icons";
+import { ThreeDots } from "react-loader-spinner";
 // import dotenv from "dotenv";
 // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
 
@@ -64,6 +65,17 @@ import { faListAlt } from "@fortawesome/free-solid-svg-icons";
 // });
 
 const BacktestComponent = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    setIsLoading(true);
+    handleRunBacktestChange();
+
+    // Perform any async operation here
+    // Once the operation is complete, set isLoading to false
+  };
   const windowWidth = useRef(window.innerWidth);
   const now = dayjs(); // current time
   const disableBeforeUnixTimestamp = 1648780800; // Unix timestamp for April 30, 2022, 12:00:00 AM UTC
@@ -694,6 +706,7 @@ const BacktestComponent = () => {
         alert("Fee should be in range 0-1%");
       }
       if (check == true) {
+        setIsLoading(true);
         set(ref(database, "backtest_queue/" + "user_" + id), {
           id: "user_" + id,
           modelName: model_selected_for_backted,
@@ -757,6 +770,8 @@ const BacktestComponent = () => {
         alert("Fee should be in range 0-1%");
       }
       if (check == true) {
+        setIsLoading(true);
+
         set(ref(database, "backtest_queue/" + "user_" + id), {
           id: "user_" + id,
           modelName: model_selected_for_backted,
@@ -803,6 +818,7 @@ const BacktestComponent = () => {
               set_model_name_for_result_backtest_result(
                 "user_" + backtest_table_name
               );
+              setIsLoading(false);
             } else {
               set_flag_backtest_result(new Date());
             }
@@ -1668,7 +1684,7 @@ const BacktestComponent = () => {
                   minDate={disableBefore}
                   maxDate={now}
                   sx={{
-                    width: 140,
+                    width: 130,
                   }}
                   renderInput={(params) => (
                     <TextField
@@ -1700,7 +1716,7 @@ const BacktestComponent = () => {
                 value={take_profit_selected_for_backtest_mobile}
                 onChange={handleProfitChangeMobile}
                 sx={{
-                  width: 85,
+                  width: 75,
                 }}
               />
             </div>
@@ -1716,7 +1732,7 @@ const BacktestComponent = () => {
                 value={stop_loss_selected_for_backtest_mobile}
                 onChange={handleLossChangeMobile}
                 sx={{
-                  width: 85,
+                  width: 75,
                 }}
               />
             </div>
@@ -1729,7 +1745,7 @@ const BacktestComponent = () => {
                 value={fee_selected_for_backtest_mobile}
                 onChange={handleFeeChangeMobile}
                 sx={{
-                  width: 85,
+                  width: 75,
                 }}
               />
             </div>
@@ -1749,31 +1765,44 @@ const BacktestComponent = () => {
           </div>
         </div>
       </div>
-      <div>
-        {model_name_for_result_backtest_result ? (
-          <CumulativePNL model_name={model_name_for_result_backtest_result} />
-        ) : null}
-        {model_name_for_result_backtest_result ? (
-          <CanvasjsSplineAreaChartWithRangeSelecetor
-            model_name={model_name_for_result_backtest_result}
+      {isLoading ? (
+        <div className="container loader-container">
+          <ThreeDots
+            className="backtest-loader"
+            color="#fddd4e"
+            height={80}
+            width={80}
           />
-        ) : null}
-        {model_name_for_result_backtest_result ? (
-          <InDepthBacktest model_name={model_name_for_result_backtest_result} />
-        ) : null}
-        {model_name_for_result_backtest_result ? (
-          <CanvasjsDrawdownWithSliderRange
-            model_name={model_name_for_result_backtest_result}
-          />
-        ) : null}
-        {model_name_for_result_backtest_result ? (
-          <GraphsTableBacktest
-            model_name={model_name_for_result_backtest_result + "_stats"}
-          />
-        ) : null}
+        </div>
+      ) : (
+        <div>
+          {model_name_for_result_backtest_result ? (
+            <CumulativePNL model_name={model_name_for_result_backtest_result} />
+          ) : null}
+          {model_name_for_result_backtest_result ? (
+            <CanvasjsSplineAreaChartWithRangeSelecetor
+              model_name={model_name_for_result_backtest_result}
+            />
+          ) : null}
+          {model_name_for_result_backtest_result ? (
+            <InDepthBacktest
+              model_name={model_name_for_result_backtest_result}
+            />
+          ) : null}
+          {model_name_for_result_backtest_result ? (
+            <CanvasjsDrawdownWithSliderRange
+              model_name={model_name_for_result_backtest_result}
+            />
+          ) : null}
+          {model_name_for_result_backtest_result ? (
+            <GraphsTableBacktest
+              model_name={model_name_for_result_backtest_result + "_stats"}
+            />
+          ) : null}
 
-        <RecentlyViewed />
-      </div>
+          <RecentlyViewed />
+        </div>
+      )}
     </div>
   );
 };

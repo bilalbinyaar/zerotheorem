@@ -250,6 +250,9 @@ table {
 }
 
 @media screen and (max-width: 768px) {
+  .compare .container {
+    padding: 2.2rem 0rem 4rem 0rem;
+  }
   .compare-search-wrapper {
     flex-direction: column;
   }
