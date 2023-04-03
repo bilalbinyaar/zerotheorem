@@ -151,7 +151,8 @@ p {
   display: none;
 } */
 
-.css-h5074s .MuiDataGrid-columnHeader:focus-within, .css-h5074s .MuiDataGrid-cell:focus-within {
+.css-h5074s .MuiDataGrid-columnHeader:focus-within,
+.css-h5074s .MuiDataGrid-cell:focus-within {
   outline: 0 !important;
 }
 
@@ -198,7 +199,6 @@ p {
   padding: 0 !important;
   margin-left: 4px !important;
 }
-
 
 /* Login css */
 .login-form {
@@ -974,8 +974,7 @@ a {
   }
 }
 
-
-/* MATH JAX */ 
+/* MATH JAX */
 mjx-container[jax="SVG"] > svg {
   color: var(--color-day-black);
 }
@@ -995,9 +994,6 @@ mjx-container[jax="SVG"] > svg {
 .canvasjs-chart-credit {
   display: none !important;
 }
-
-
-
 
 /* MUI BACKTEST PAGE FILTERS */
 .css-1x5jdmq {
@@ -1039,7 +1035,6 @@ mjx-container[jax="SVG"] > svg {
 .css-10qkmc3 {
   font-size: 12px !important;
   color: var(--color-day-black) !important;
-
 }
 
 .css-1bqdsf2.Mui-selected {
@@ -1051,13 +1046,11 @@ mjx-container[jax="SVG"] > svg {
 .css-1bqdsf2 {
   font-size: 12px !important;
   color: var(--color-day-black) !important;
-
 }
 
 .css-1v994a0 {
   font-size: 14px !important;
   color: var(--color-day-black) !important;
-
 }
 
 .css-84ri5h.Mui-selected:hover {
@@ -1065,11 +1058,9 @@ mjx-container[jax="SVG"] > svg {
   color: #000000 !important;
 }
 
-
 .css-1080di7 {
   background-color: var(--color-day-greydark) !important;
 }
-
 
 .css-sldnni {
   color: var(--color-day-black) !important;
@@ -1102,3 +1093,132 @@ mjx-container[jax="SVG"] > svg {
 .css-1d2g9rv {
   color: var(--color-day-black) !important;
 }
+
+.documentation-container {
+  display: flex;
+  /* flex-direction: row; */
+  /* height: 100vh; */
+  width: 75%;
+  margin: 0 auto;
+  padding: 4rem 3.4rem;
+}
+
+.documentation-sidebar {
+  width: 20%;
+  background-color: var(--color-day-white);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.documentation-sidebar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.documentation-sidebar li {
+  margin-bottom: 0.5rem;
+  color: var(--color-day-black);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.documentation-sidebar li.active {
+  background-color: var(--color-day-yellow);
+  color: black;
+  border-radius: 10px;
+}
+
+.content {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.code-container {
+  background-color: var(--color-day-white) !important;
+  /* padding: 1em; */
+  width: auto;
+  border-radius: 10px;
+}
+
+.code-title {
+  color: #00ffff;
+  margin-top: 0;
+}
+
+pre.language-python {
+  background-color: var(--color-day-white) !important;
+  font-size: 14px;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 1em;
+  margin: 0;
+  border-radius: 4px;
+}
+
+pre.language-python code {
+  font-family: inherit;
+}
+
+/* Dark mode pre.language-python {
+  color: #f8f8f2;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6272a4;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff79c6;
+}
+
+.token.boolean,
+.token.number {
+  color: #bd93f9;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #50fa7b;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #f1fa8c;
+}
+
+.token.keyword {
+  color: #8be9fd;
+}
+
+.token.regex,
+.token.important {
+  color: #ffb86c;
+} */

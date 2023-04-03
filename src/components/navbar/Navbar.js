@@ -103,13 +103,16 @@ export default function Navbar() {
               Forecasts
             </CustomLink>
             <CustomLink to="/backtest" onClick={toCloseNav}>
-                Backtest
-              </CustomLink>
+              Backtest
+            </CustomLink>
             <CustomLink to="/compare" onClick={toCloseNav}>
               Compare
             </CustomLink>
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
+            </CustomLink>
+            <CustomLink to="/API" onClick={toCloseNav}>
+              API
             </CustomLink>
             <CustomLink to="/about" onClick={toCloseNav}>
               About
@@ -142,6 +145,9 @@ export default function Navbar() {
               </CustomLink>
               <CustomLink to="/derivations" onClick={toCloseNav}>
                 Derivations
+              </CustomLink>
+              <CustomLink to="/documentation" onClick={toCloseNav}>
+                API
               </CustomLink>
               <CustomLink to="/about" onClick={toCloseNav}>
                 About

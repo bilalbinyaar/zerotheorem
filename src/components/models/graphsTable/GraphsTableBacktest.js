@@ -25,7 +25,7 @@ const GraphsTableBacktest = (props) => {
         <div className="graph-table-main">
           <DrawDownTableBacktest model_name={name} />
           <WinLossTableBacktest model_name={name} />
-          <WinLossTableBacktest model_name={name} />
+          <PerformanceTableBacktest model_name={name} />
         </div>
       </div>
     </div>

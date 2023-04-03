@@ -25,6 +25,7 @@ import SenstitivityAnalysisMarketSpecificAlpha from "../src/components/resources
 import SenstitivityAnalysisSingleAlphaCas from "../src/components/resources/derivations/SenstitivityAnalysisSingleAlphaCas";
 import TheGoverningEquation from "../src/components/resources/derivations/TheGoverningEquation";
 import TheUnderlyingAssumptions from "../src/components/resources/derivations/TheUnderlyingAssumptions";
+import Documentation from "./pages/Documentation";
 // import { database } from "./firebase_config";
 // import { ref, onValue, set } from "firebase/database";
 // import cryptoRandomString from "crypto-random-string";
@@ -120,6 +121,7 @@ function App() {
             <Route path="/faqs" element={<FAQ />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/backtest" element={<Backtest />} />
+            <Route path="/API" element={<Documentation />} />
 
             {/* RESOURCES ROUTING FOR SUB ITEMS */}
             <Route

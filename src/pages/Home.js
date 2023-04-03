@@ -6,7 +6,7 @@ import Horizon from "../components/timeHorizon/Horizon";
 import { useStateContext } from "../ContextProvider";
 import { Helmet } from "react-helmet";
 import BtcData from "../components/btc_api/BtcData";
-
+import Documentation from "./Documentation";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -30,6 +30,7 @@ const Home = () => {
         />
       </Helmet>
       {/* <BtcData /> */}
+      {/* <Documentation /> */}
       <Forecasts />
       <ModelDataGrid />
       <Overview />
