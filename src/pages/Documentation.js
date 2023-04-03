@@ -16,29 +16,159 @@ function Documentation() {
     setSelectedHeadingIndex(index);
   };
 
-  const headings = [
-    "Installation guide",
-    "Public API access",
-    "Advanced Techniques",
-  ];
+  const headings = ["Installation guide", "API authentication", "Get forecast"];
 
   const contents = [
     "Zerotheorem is a package that exists on PyPI \nand can be installed using pip cammand in python",
     <div>
-      This function is used to authenticate with the Zero Theorem API using an
-      auth token. <br />
-      The auth token is a string that you obtain from Zero Theorem when you sign
-      up for their service. <br />
-      The function takes the auth token as a parameter and sets it as the
-      default auth token for all subsequent API requests.
+      For api authentication, user should import zerotheorem module in python.
+      <br />
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Function:</b> authenticate()
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Input parameters:</b> authenticate() require authurization token in
+        string
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Output:</b> authenticate() will return nothing
+      </p>
     </div>,
-    "Duis aute irure dolor in reprehenderit in \nvoluptate velit esse cillum dolore eu fugiat\n nulla pariatur.",
+    <div>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Function:</b> get_forecast()
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Input parameters:</b> get_forecast() you can pass model name no
+        arguments
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Output:</b> get_forecast() will return forecasts for all models if
+        you make
+        <br />
+        input parameter empty or will return forecast of specific model if input
+        model name. <br />
+        Output format will be in dictionary.
+      </p>
+    </div>,
+    <div>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Function:</b> get_stats()
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Input parameters:</b> get_stats() you can pass model name or no
+        arguments
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Output:</b> get_stats() will return stats for all models if you make{" "}
+        <br />
+        input parameter empty or will return stats of specific model if input
+        model name. <br /> Output format will dictionary.
+      </p>
+    </div>,
+
+    <div>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Function:</b> get_ledger()
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Input parameters:</b> get_ledger() you should pass model name in
+        string
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Output:</b> get_ledger() will return leger of specific input model
+        name.
+        <br />
+        Output format will be in dictionary.
+      </p>
+    </div>,
+
+    <div>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Function:</b> get_historical_forecasts()
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Input parameters:</b> get_historical_forecasts() you can pass model
+        name or no arguments
+      </p>
+      <p
+        style={{
+          color: "--color-day-white",
+        }}
+      >
+        <b>Output:</b> get_historical_forecasts() will return historical
+        forecasts for all models if you pass. <br /> Output format will
+        dictionary
+        <br />
+        no arguments or will return historical forecast of specific model if
+        input model name
+      </p>
+    </div>,
   ];
 
   const pythonCode = [
     `pip install zerotheorem-python`,
-    "import zerotheorem as zt \n# Set the auth token for subsequent API requests\nauth_token = 230304034\nzt.authenticate(auth_token)\n# Get the forecast for a particular model\nforecast = zt.get_forecast('ZT1_0M24BTC39')",
-    "x = 2\ny = 'Hello, world!'\nprint(y)",
+    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\n",
+    "import zerotheorem as zt \nzt.get_forecast('Model name')\n",
+    "import zerotheorem as zt \nzt.get_stats('Model name')\n",
+    "import zerotheorem as zt \nzt.get_ledger('Model name')\n",
+    "import zerotheorem as zt \nzt.get_historical_forecasts('Model name')\n",
   ];
 
   const handleCopy = () => {
@@ -69,13 +199,32 @@ function Documentation() {
             className={selectedHeadingIndex === 1 ? "active" : ""}
             onClick={() => handleClick(1)}
           >
-            Public API Access
+            API authentication
           </li>
           <li
             className={selectedHeadingIndex === 2 ? "active" : ""}
             onClick={() => handleClick(2)}
           >
-            Advanced Techniques
+            Get forecasts
+          </li>
+          <li
+            className={selectedHeadingIndex === 3 ? "active" : ""}
+            onClick={() => handleClick(3)}
+          >
+            Get statistics
+          </li>
+
+          <li
+            className={selectedHeadingIndex === 4 ? "active" : ""}
+            onClick={() => handleClick(4)}
+          >
+            Get ledger
+          </li>
+          <li
+            className={selectedHeadingIndex === 5 ? "active" : ""}
+            onClick={() => handleClick(5)}
+          >
+            Get historical forecasts
           </li>
         </ul>
       </div>

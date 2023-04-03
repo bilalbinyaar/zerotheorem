@@ -111,9 +111,9 @@ export default function Navbar() {
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
             </CustomLink>
-            <CustomLink to="/API" onClick={toCloseNav}>
+            {/* <CustomLink to="/API" onClick={toCloseNav}>
               API
-            </CustomLink>
+            </CustomLink> */}
             <CustomLink to="/about" onClick={toCloseNav}>
               About
             </CustomLink>
