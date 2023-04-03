@@ -61,6 +61,7 @@
     "recharts": "^2.4.1",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
+    "sweetalert2": "^11.7.3",
     "web-vitals": "^2.1.4",
     "webpack": "^5.76.3"
   },

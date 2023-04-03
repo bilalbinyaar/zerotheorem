@@ -1087,7 +1087,7 @@ mjx-container[jax="SVG"] > svg {
 }
 
 .css-xzqsgo {
-  background-color: var(--color-day-greydark) !important; 
+  background-color: var(--color-day-greydark) !important;
 }
 
 .css-1bzq5ag {
@@ -1224,3 +1224,15 @@ pre.language-python code {
 .token.important {
   color: #ffb86c;
 } */
+.copy {
+  position: fixed;
+  right: 16%;
+  top: 14%;
+  /* top: 20px;
+  right: 20px; */
+  cursor: pointer;
+}
+
+.copy-icon {
+  font-size: 1rem;
+}
