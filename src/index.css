@@ -1096,8 +1096,6 @@ mjx-container[jax="SVG"] > svg {
 
 .documentation-container {
   display: flex;
-  /* flex-direction: row; */
-  /* height: 100vh; */
   width: 75%;
   margin: 0 auto;
   padding: 4rem 3.4rem;
@@ -1130,7 +1128,7 @@ mjx-container[jax="SVG"] > svg {
 }
 
 .content {
-  flex-grow: 1;
+  flex-grow: 2;
   text-align: center;
 }
 

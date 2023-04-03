@@ -2,15 +2,6 @@ import React, { useState } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-python";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import {
-  atomOneDark,
-  darcula,
-  monokai,
-  github,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { monokaiSublime } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import Highlight from "react-highlight";
 import "highlight.js/styles/default.css";
 import { PrismCode } from "react-prism";
 import "prismjs/themes/prism.css";
@@ -28,9 +19,16 @@ function Documentation() {
   ];
 
   const contents = [
-    "Zerotheorem is a package that exists on PyPI and can be installed using pip cammand in python",
-    "This function is used to authenticate with the Zero Theorem API using an auth token. The auth token is a string that you obtain from Zero Theorem when you sign up for their service. The function takes the auth token as a parameter and sets it as the default auth token for all subsequent API requests.",
-    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "Zerotheorem is a package that exists on PyPI \nand can be installed using pip cammand in python",
+    <div>
+      This function is used to authenticate with the Zero Theorem API using an
+      auth token. <br />
+      The auth token is a string that you obtain from Zero Theorem when you sign
+      up for their service. <br />
+      The function takes the auth token as a parameter and sets it as the
+      default auth token for all subsequent API requests.
+    </div>,
+    "Duis aute irure dolor in reprehenderit in \nvoluptate velit esse cillum dolore eu fugiat\n nulla pariatur.",
   ];
 
   const pythonCode = [
