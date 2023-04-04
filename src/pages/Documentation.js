@@ -41,7 +41,7 @@ function Documentation() {
         Once you have pip installed, you can install the zerotheorem-python
         package by running the following command in your terminal:
       </p>
-      <pre className="lineheight-docs">pip install zerotheorem-python</pre>
+      <pre className="lineheight-docs prism-style">pip install zerotheorem-python</pre>
       <p className="lineheight-docs">
         This will download and install the latest version of the
         zerotheorem-python package and its dependencies.

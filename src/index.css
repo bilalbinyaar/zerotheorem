@@ -39,6 +39,7 @@ body {
   --color-dropdown-bg: #fff;
   --color-toggle-border: #fff;
   --color-box-shadow-day: rgba(0, 0, 0, 0.5);
+  --color-code-snippet: #cfcfcf;
 }
 
 .dark-theme {
@@ -64,6 +65,7 @@ body {
   --color-dropdown-bg: #03132c;
   --color-toggle-border: #43577577;
   --color-box-shadow-day: rgba(255, 255, 255, 0.2);
+  --color-code-snippet: rgba(67, 87, 117, 0.4);
 }
 
 .btn {
@@ -1222,5 +1224,30 @@ pre.language-python code {
   list-style: none;
   line-height: 2;
   margin-left: 1rem;
+}
+
+pre[class*="language-"] {
+  background: var(--color-code-snippet) !important;
+}
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  background: none !important;
+  color: var(--color-day-black) !important;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  text-shadow: none !important;
+  color: var(--color-day-black) !important;
+  line-height: 2 !important;
+}
+
+.copy {
+  position: relative;
+  left: 95%;
+  top: 51%;
+}
+
+.copy svg {
+  color: var(--color-day-black);
 }
 /* API PAGE CSS END */
