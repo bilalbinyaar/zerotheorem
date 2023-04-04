@@ -64,7 +64,7 @@ import { ThreeDots } from "react-loader-spinner";
 //   // updateStarCount(postElement, data);
 // });
 
-const BacktestComponent = () => {
+const BacktestComponent = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -182,7 +182,7 @@ const BacktestComponent = () => {
       const res = rows_cached.filter((item) => {
         return item.modelName == values.label;
       });
-      // handleChangePage("", 1);
+      // handleChangePage("", 1);AV
       // setRows(res);
     } else {
       set_model_selected_for_backtest("");
@@ -794,6 +794,20 @@ const BacktestComponent = () => {
     model_name_for_result_backtest_result,
     set_model_name_for_result_backtest_result,
   ] = useState(null);
+  const [
+    model_name_for_result_backtest_result_stats,
+    set_model_name_for_result_backtest_result_stats,
+  ] = useState(null);
+
+  useEffect(() => {
+    if (props.model_name) {
+      set_model_name_for_result_backtest_result(props.model_name);
+      set_model_name_for_result_backtest_result_stats(props.model_name);
+    }
+  }, []);
+  // if (props.model_name) {
+  //   set_model_name_for_result_backtest_result(props.model_name);
+  // }
   useEffect(() => {
     // console.log("I am called again bro");
     if (flag_for_backtest_result == null) {
@@ -818,6 +832,9 @@ const BacktestComponent = () => {
               set_model_name_for_result_backtest_result(
                 "user_" + backtest_table_name
               );
+              set_model_name_for_result_backtest_result_stats(
+                "user_" + backtest_table_name + "_stats"
+              );
               setIsLoading(false);
             } else {
               set_flag_backtest_result(new Date());
@@ -834,22 +851,46 @@ const BacktestComponent = () => {
       return;
     } else {
       // console.log("Here is strategies for date picker -->", strategies);
-      if (model_selected_for_backted != "") {
+      if (model_selected_for_backted) {
         const model = model_selected_for_backted;
         const dateStr = strategies[model].date_started;
         const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
-        console.log(
-          "Debugg model -->",
-          model_selected_for_backted,
-          dateStr,
-          dayjs.unix(unixTimestamp)
-        );
+        // console.log(
+        //   "Debugg model -->",
+        //   model_selected_for_backted,
+        //   dateStr,
+        //   dayjs.unix(unixTimestamp)
+        // );
 
         setDisableBefore(dayjs.unix(unixTimestamp));
+        setSelectedDate(dayjs.unix(unixTimestamp));
+        set_date_selected_for_backtest(unixTimestamp);
+        set_date_selected_for_backtest_mobile(unixTimestamp);
       }
     }
   }, [strategies, model_selected_for_backted]);
   // console.log(model_name_for_result_backtest_result);
+
+  useEffect(() => {
+    if (strategies == null) {
+      return;
+    } else {
+      var name = location.pathname.split("/")[1];
+      if (!name.includes("backtest")) {
+        set_default_value_model({ label: name });
+        set_default_value_currency({
+          label: strategies[name.replace("-", "_")].currency,
+        });
+        setSelectedItem(strategies[name.replace("-", "_")].time_horizon);
+        setTimeH(strategies[name.replace("-", "_")].time_horizon);
+
+        // setSelectedDate(strategies[name.replace("-", "_")].start_date);
+        // console.log("Pathname -->", name, default_value_model);
+      }
+
+      // set_model_selected_for_backtest(name);
+    }
+  }, [strategies]);
   return (
     <div className="back-test">
       <div className="container">
@@ -1118,7 +1159,7 @@ const BacktestComponent = () => {
                   onChange={handleChangeForCoinSelection}
                   options={coin_search_selection}
                   autoHighlight
-                  defaultValue={default_value_currency}
+                  value={default_value_currency}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1341,7 +1382,7 @@ const BacktestComponent = () => {
                     },
                   }}
                   onChange={handleChangeForModelSelection}
-                  defaultValue={default_value_model}
+                  value={default_value_model}
                   options={model_search_selection}
                   autoHighlight
                   getOptionLabel={(option) => option.label}
@@ -1539,7 +1580,7 @@ const BacktestComponent = () => {
                   onChange={handleChangeForCoinSelection}
                   options={coin_search_selection}
                   autoHighlight
-                  defaultValue={default_value_currency}
+                  value={default_value_currency}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1573,7 +1614,7 @@ const BacktestComponent = () => {
                   onChange={handleChangeForModelSelection}
                   options={model_search_selection}
                   autoHighlight
-                  defaultValue={default_value_model}
+                  value={default_value_model}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1787,6 +1828,7 @@ const BacktestComponent = () => {
           {model_name_for_result_backtest_result ? (
             <InDepthBacktest
               model_name={model_name_for_result_backtest_result}
+              model_name_stats={model_name_for_result_backtest_result_stats}
             />
           ) : null}
           {model_name_for_result_backtest_result ? (
@@ -1796,7 +1838,7 @@ const BacktestComponent = () => {
           ) : null}
           {model_name_for_result_backtest_result ? (
             <GraphsTableBacktest
-              model_name={model_name_for_result_backtest_result + "_stats"}
+              model_name={model_name_for_result_backtest_result_stats}
             />
           ) : null}
 

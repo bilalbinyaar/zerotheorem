@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from "react";
+import React, { useEffect, memo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import CumulativePNL from "../components/models/cumulativePNL/CumulativePNL";
 import CurrentPosition from "../components/models/currentPosition/CurrentPosition";
@@ -23,12 +23,13 @@ import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/Canvasj
 import TradingViewSplineAreaChart from "../components/models/graphs/TvSplineAreaChart";
 import TradingViewWidgetGraph from "../components/models/graphs/TradingViewWidgetGraph";
 import { Helmet } from "react-helmet";
-
+import Backtest from "./Backtest";
 const Models = () => {
   const location = useLocation();
   // console.log("Pathname -->", location.pathname.replace("/", ""));
   const name = location.pathname.replace("/", "").replace("-", "_");
-
+  const [model_name, set_model_name] = useState(name);
+  console.log("name is ", name);
   // console.log("Name -->", name);
   // name = name.replace("-", "_");
   // console.log("This is name for cum pnl", location.state.model_name);
@@ -48,28 +49,22 @@ const Models = () => {
           content="Detailed information about this AI-based Bitcoin prediction model's current position and historical performance including several metrics like sharpe, r2, sortino, win/loss etc."
         />
       </Helmet>
-      <ModelDetails model_name={name} />
+      <ModelDetails model_name={model_name} />
       {/* <CurrentPosition /> */}
       {/* <CandleGraph /> */}
       {/* <TradingViewWidgetGraph /> */}
-      <CandleGraphCanvasjs model_name={name} />
+      <CandleGraphCanvasjs model_name={model_name} />
+      <Backtest model_name={model_name} />
       {/* <TradingViewSplineAreaChart model_name={name} /> */}
       {/* <TradingViewWidgetGraph /> */}
 
-      <CumulativePNL />
+      {/* <CumulativePNL />
       <CanvasjsSplineAreaChartWithRangeSelecetor model_name={name} />
-
-      {/* <CanvasjsSplineAreaChart model_name={name} /> */}
-      {/* <CanvasSplineForcasteCard model_name={name} /> */}
-      {/* <AreaLineChart model_name={name} /> */}
-      {/* <LineRecharts model_name={name} /> */}
-      {/* <NegativeChart model_name={name} /> */}
       <InDepth model_name={name} />
       <DrawDown />
-      {/* <DrawdownCanvasjs model_name={name} /> */}
       <CanvasjsDrawdownWithSliderRange model_name={name} />
       <GraphsTable model_name={name} />
-      <RecentlyViewed model_name={name} />
+      <RecentlyViewed model_name={name} /> */}
     </React.Fragment>
   );
 };

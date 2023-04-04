@@ -131,10 +131,10 @@ export default function NavMobile(props) {
               <AiFillHome className="nav-icons" />
               Forecasts
             </CustomLink>
-            <CustomLink to="/backtest" onClick={toCloseNav}>
+            {/* <CustomLink to="/backtest" onClick={toCloseNav}>
               <BsGraphUp className="nav-icons" />
               Backtest
-            </CustomLink>
+            </CustomLink> */}
             <CustomLink to="/compare" onClick={toCloseNav}>
               <BiColumns className="nav-icons" />
               Compare

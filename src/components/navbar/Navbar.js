@@ -102,9 +102,9 @@ export default function Navbar() {
             <CustomLink to="/" onClick={toCloseNav}>
               Forecasts
             </CustomLink>
-            <CustomLink to="/backtest" onClick={toCloseNav}>
+            {/* <CustomLink to="/backtest" onClick={toCloseNav}>
               Backtest
-            </CustomLink>
+            </CustomLink> */}
             <CustomLink to="/compare" onClick={toCloseNav}>
               Compare
             </CustomLink>

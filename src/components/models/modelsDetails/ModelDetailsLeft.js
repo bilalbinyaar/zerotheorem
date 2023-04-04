@@ -376,7 +376,7 @@ const ModelDetailsLeft = (props) => {
               </Link>
             ) : null}
           </div>
-          <div className="model-details-left-body-stats backtest-btn-div">
+          {/* <div className="model-details-left-body-stats backtest-btn-div">
             {strategies[props.model_name] ? (
               <Link
                 to="/backtest"
@@ -389,7 +389,7 @@ const ModelDetailsLeft = (props) => {
                 <p className="compare-btn">Backtest</p>
               </Link>
             ) : null}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
