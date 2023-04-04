@@ -28,6 +28,8 @@ const Home = () => {
           name="description"
           content="An economic framework for the prediction/forecast of Bitcoin and other cryptocurrencies using AI and ML models with a comprehensive evaluation of back and forward tests."
         />
+        {/* CANONICAL TAG */}
+        <link rel="canonical" href="https://zerotheorem.com/"/>
       </Helmet>
       {/* <BtcData /> */}
       {/* <Documentation /> */}
