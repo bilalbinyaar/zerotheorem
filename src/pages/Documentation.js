@@ -27,8 +27,8 @@ function Documentation() {
 
   const contents = [
     <div>
-      <h1>Installing the zerotheorem-python Package</h1>
-      <p>
+      <h1 className="lineheight-docs">Installing the zerotheorem-python Package</h1>
+      <p className="lineheight-docs">
         To install the zerotheorem-python package, you can use pip, which is a
         package manager for Python. If you don't have pip installed already, you
         can install it by following the instructions in the official
@@ -36,122 +36,116 @@ function Documentation() {
         <a href="https://pip.pypa.io/en/stable/installation/">
           https://pip.pypa.io/en/stable/installation/
         </a>
-        .
       </p>
-      <p>
+      <p className="lineheight-docs">
         Once you have pip installed, you can install the zerotheorem-python
         package by running the following command in your terminal:
       </p>
-      <pre>pip install zerotheorem-python</pre>
-      <p>
+      <pre className="lineheight-docs">pip install zerotheorem-python</pre>
+      <p className="lineheight-docs">
         This will download and install the latest version of the
         zerotheorem-python package and its dependencies.
       </p>
-      <p>
+      <p className="lineheight-docs">
         After installation, you can import the package into your Python script
         or interactive shell using the following command:
       </p>
-      <pre>import zerotheorem as zt</pre>
-      <p>
+      <pre className="lineheight-docs">import zerotheorem as zt</pre>
+      <p className="lineheight-docs">
         This will allow you to use the functions and classes provided by the
         zerotheorem package in your code.
       </p>
     </div>,
 
     <div>
-      <h1>Function Name: zt.authenticate(auth_token)</h1>
-      <h2>Description:</h2>
-      <p>
+      <h1 className="lineheight-docs">Function Name: zt.authenticate(auth_token)</h1>
+      <h2 className="lineheight-docs">Description:</h2>
+      <p className="lineheight-docs">
         This function does not return anything, but it sets the authentication
         credentials for the user session.
       </p>
-      <h2>Parameters:</h2>
-      <ul>
+      <h2 className="lineheight-docs">Parameters:</h2>
+      <ul className="lineheight-docs-list">
         <li>
           <code>auth_token</code> (string): The authentication token obtained
           from the API key or OAuth flow.
         </li>
       </ul>
-      <h2>Return Value:</h2>
-      <p>
+      <h2 className="lineheight-docs">Return Value:</h2>
+      <p className="lineheight-docs">
         This function does not return anything, but it sets the authentication
         credentials for the user session.{" "}
       </p>
-      <ul></ul>
     </div>,
 
     <div>
-      <h1>Function Name: zt.get_ledger()</h1>
-      <h2>Description:</h2>
-      <p>
+      <h1 className="lineheight-docs">Function Name: zt.get_ledger()</h1>
+      <h2 className="lineheight-docs">Description:</h2>
+      <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
         information on the ledger for that model. The ledger includes data such
         as the timestamp of the last transaction, the action taken (long or
         short), the buy and sell prices, the profit and loss (PNL), the current
         balance, the total PNL, the ledger key, and the drawdown.
-      </p>
-      <h2>Parameters:</h2>
-      <ul>
-        <li>
-          <strong>model_name</strong> (string): The name of the model for which
-          the ledger information is requested. This is a required parameter.
-        </li>
-      </ul>
-      <h2>Return Value:</h2>
-      <p>
+      </p >
+      <h2 className="lineheight-docs">Parameters:</h2>
+      <p className="lineheight-docs">
+        <strong>model_name</strong> (string): The name of the model for which
+        the ledger information is requested. This is a required parameter.
+      </p >
+      <h2 className="lineheight-docs">Return Value:</h2>
+      <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
       </p>
-      <ul>
+      <ul className="lineheight-docs-list">
         <li>
           <strong>response</strong> (list): A list containing a dictionary with
           information on the model's ledger.
         </li>
-        <ul>
-          <li>
-            <strong>ledger_timestamp</strong> (int): The timestamp of the last
-            transaction in the ledger, in Unix time.
-          </li>
-          <li>
-            <strong>action</strong> (string): The action taken in the last
-            transaction, either "long" or "short".
-          </li>
-          <li>
-            <strong>buy_price</strong> (int): The buy price of the last
-            transaction.
-          </li>
-          <li>
-            <strong>sell_price</strong> (int): The sell price of the last
-            transaction. If no sell transaction has been made yet, this value
-            will be 0.
-          </li>
-          <li>
-            <strong>pnl</strong> (float): The profit or loss from the last
-            transaction, as a percentage.
-          </li>
-          <li>
-            <strong>balance</strong> (float): The current balance of the model.
-          </li>
-          <li>
-            <strong>pnl_sum</strong> (float): The total profit or loss for all
-            transactions made by the model, as a percentage.
-          </li>
-          <li>
-            <strong>ledger_key</strong> (int): A unique identifier for the
-            ledger entry.
-          </li>
-          <li>
-            <strong>drawdown</strong> (float): The current drawdown for the
-            model, as a percentage.
-          </li>
-        </ul>
+        <li>
+          <strong>ledger_timestamp</strong> (int): The timestamp of the last
+          transaction in the ledger, in Unix time.
+        </li>
+        <li>
+          <strong>action</strong> (string): The action taken in the last
+          transaction, either "long" or "short".
+        </li>
+        <li>
+          <strong>buy_price</strong> (int): The buy price of the last
+          transaction.
+        </li>
+        <li>
+          <strong>sell_price</strong> (int): The sell price of the last
+          transaction. If no sell transaction has been made yet, this value
+          will be 0.
+        </li>
+        <li>
+          <strong>pnl</strong> (float): The profit or loss from the last
+          transaction, as a percentage.
+        </li>
+        <li>
+          <strong>balance</strong> (float): The current balance of the model.
+        </li>
+        <li>
+          <strong>pnl_sum</strong> (float): The total profit or loss for all
+          transactions made by the model, as a percentage.
+        </li>
+        <li>
+          <strong>ledger_key</strong> (int): A unique identifier for the
+          ledger entry.
+        </li>
+        <li>
+          <strong>drawdown</strong> (float): The current drawdown for the
+          model, as a percentage.
+        </li>
       </ul>
-      <h2>Example Usage:</h2>
-      <p>
+      <h2 className="lineheight-docs">Example Usage:</h2>
+      <p className="lineheight-docs">
         To get the ledger information for a model named "user_3AsdCcBYvs", you
         can call the function like this:
       </p>
-      <pre>zt.get_ledger("user_3AsdCcBYvs")</pre>
-      <p>
+      <pre className="lineheight-docs">zt.get_ledger("user_3AsdCcBYvs")</pre>
+      <p className="lineheight-docs">
         This will return a dictionary with information on the ledger for the
         specified model.
       </p>
@@ -162,9 +156,9 @@ function Documentation() {
       </pre> */}
     </div>,
     <div>
-      <h1>Function Name: zt.get_stats()</h1>
-      <h2>Description:</h2>
-      <p>
+      <h1 className="lineheight-docs">Function Name: zt.get_stats()</h1>
+      <h2 className="lineheight-docs">Description:</h2>
+      <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
         statistics for that model. <br />
         The statistics include data such as the current drawdown, average
@@ -174,23 +168,23 @@ function Documentation() {
         loss percentage, consecutive wins and losses, and profit and loss sums
         over different time periods.
       </p>
-      <h2>Parameters:</h2>
-      <ul>
+      <h2 className="lineheight-docs">Parameters:</h2>
+      <ul className="lineheight-docs-list">
         <li>
           <strong>model_name</strong> (string): The name of the model for which
           statistics are requested. This is a required parameter.
         </li>
       </ul>
-      <h2>Return Value:</h2>
-      <p>
+      <h2 className="lineheight-docs">Return Value:</h2>
+      <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
       </p>
-      <ul>
+      <ul className="lineheight-docs-list">
         <li>
           <strong>response</strong> (list): A list containing a dictionary with
           statistics on the model.
         </li>
-        <ul>
+        <ul className="lineheight-docs-list">
           <li>
             <strong>rank</strong> (int): The rank of the model based on its
             performance.
@@ -303,13 +297,13 @@ function Documentation() {
           </li>
         </ul>
       </ul>
-      <h2>Example Usage:</h2>
-      <p>
+      <h2 className="lineheight-docs">Example Usage:</h2>
+      <p className="lineheight-docs">
         To get statistics for a model named "Model Name", you can call the
         function like this:
       </p>
-      <pre>zt.get_stats("Model Name")</pre>
-      <p>
+      <pre className="lineheight-docs">zt.get_stats("Model Name")</pre>
+      <p className="lineheight-docs">
         This will return a dictionary with information on the model statistics.
       </p>
       {/* <pre>
@@ -320,108 +314,105 @@ function Documentation() {
     </div>,
 
     <div>
-      <h1>Function Name: zt.get_ledger()</h1>
-      <h2>Description:</h2>
-      <p>
+      <h1 className="lineheight-docs">Function Name: zt.get_ledger()</h1>
+      <h2 className="lineheight-docs">Description:</h2>
+      <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
         information on the ledger for that model. The ledger includes data such
         as the timestamp of the last transaction, the action taken (long or
         short), the buy and sell prices, the profit and loss (PNL), the current
         balance, the total PNL, the ledger key, and the drawdown.
       </p>
-      <h2>Parameters:</h2>
-      <ul>
+      <h2 className="lineheight-docs">Parameters:</h2>
+      <ul className="lineheight-docs-list">
         <li>
           <strong>model_name</strong> (string): The name of the model for which
           the ledger information is requested. This is a required parameter.
         </li>
       </ul>
-      <h2>Return Value:</h2>
-      <p>
+      <h2 className="lineheight-docs">Return Value:</h2>
+      <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
       </p>
-      <ul>
+      <ul className="lineheight-docs-list">
         <li>
           <strong>response</strong> (list): A list containing a dictionary with
           information on the model's ledger.
         </li>
-        <ul>
-          <li>
-            <strong>ledger_timestamp</strong> (int): The timestamp of the last
-            transaction in the ledger, in Unix time.
-          </li>
-          <li>
-            <strong>action</strong> (string): The action taken in the last
-            transaction, either "long" or "short".
-          </li>
-          <li>
-            <strong>buy_price</strong> (int): The buy price of the last
-            transaction.
-          </li>
-          <li>
-            <strong>sell_price</strong> (int): The sell price of the last
-            transaction. If no sell transaction has been made yet, this value
-            will be 0.
-          </li>
-          <li>
-            <strong>pnl</strong> (float): The profit or loss from the last
-            transaction, as a percentage.
-          </li>
-          <li>
-            <strong>balance</strong> (float): The current balance of the model.
-          </li>
-          <li>
-            <strong>pnl_sum</strong> (float): The total profit or loss for all
-            transactions made by the model, as a percentage.
-          </li>
-          <li>
-            <strong>ledger_key</strong> (int): A unique identifier for the
-            ledger entry.
-          </li>
-          <li>
-            <strong>drawdown</strong> (float): The current drawdown for the
-            model, as a percentage.
-          </li>
-        </ul>
+        <li>
+          <strong>ledger_timestamp</strong> (int): The timestamp of the last
+          transaction in the ledger, in Unix time.
+        </li>
+        <li>
+          <strong>action</strong> (string): The action taken in the last
+          transaction, either "long" or "short".
+        </li>
+        <li>
+          <strong>buy_price</strong> (int): The buy price of the last
+          transaction.
+        </li>
+        <li>
+          <strong>sell_price</strong> (int): The sell price of the last
+          transaction. If no sell transaction has been made yet, this value
+          will be 0.
+        </li>
+        <li>
+          <strong>pnl</strong> (float): The profit or loss from the last
+          transaction, as a percentage.
+        </li>
+        <li>
+          <strong>balance</strong> (float): The current balance of the model.
+        </li>
+        <li>
+          <strong>pnl_sum</strong> (float): The total profit or loss for all
+          transactions made by the model, as a percentage.
+        </li>
+        <li>
+          <strong>ledger_key</strong> (int): A unique identifier for the
+          ledger entry.
+        </li>
+        <li>
+          <strong>drawdown</strong> (float): The current drawdown for the
+          model, as a percentage.
+        </li>
       </ul>
-      <h2>Example Usage:</h2>
-      <p>
+      <h2 className="lineheight-docs">Example Usage:</h2>
+      <p className="lineheight-docs">
         To get the ledger information for a model named "user_3AsdCcBYvs", you
         can call the function like this:
       </p>
-      <pre>zt.get_ledger("user_3AsdCcBYvs")</pre>
-      <p>
+      <pre className="lineheight-docs">zt.get_ledger("user_3AsdCcBYvs")</pre>
+      <p className="lineheight-docs">
         This will return a dictionary with information on the ledger for the
         specified model.
       </p>
     </div>,
     <div>
-      <h1>Function Name: zt.get_historical_forecasts()</h1>
-      <h2>Description:</h2>
-      <p>
+      <h1 className="lineheight-docs">Function Name: zt.get_historical_forecasts()</h1>
+      <h2 className="lineheight-docs">Description:</h2>
+      <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
         information on the historical forecasts for that model. The historical
         forecasts include data such as the timestamp of the forecast, and the
         prediction made by the model (long or short).
       </p>
-      <h2>Parameters:</h2>
-      <ul>
+      <h2 className="lineheight-docs">Parameters:</h2>
+      <ul className="lineheight-docs-list">
         <li>
           <strong>model_name</strong> (string): The name of the model for which
           the historical forecasts are requested. This is a required parameter.
         </li>
       </ul>
-      <h2>Return Value:</h2>
-      <p>
+      <h2 className="lineheight-docs">Return Value:</h2>
+      <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
       </p>
-      <ul>
+      <ul className="lineheight-docs-list">
         <li>
           <strong>response</strong> (list): A list containing a dictionary with
           information on the model's historical forecasts.
         </li>
-        <ul>
-          <li>
+        <li>
             <strong>forecast_timestamp</strong> (int): The timestamp of the
             forecast in Unix time.
           </li>
@@ -429,15 +420,14 @@ function Documentation() {
             <strong>prediction</strong> (string): The prediction made by the
             model for this forecast, either "long" or "short".
           </li>
-        </ul>
       </ul>
-      <h2>Example Usage:</h2>
-      <p>
+      <h2 className="lineheight-docs">Example Usage:</h2>
+      <p className="lineheight-docs">
         To get the historical forecasts for a model named "user_3AsdCcBYvs", you
         can call the function like this:
       </p>
-      <pre>zt.get_historical_forecasts("user_3AsdCcBYvs")</pre>
-      <p>
+      <pre className="lineheight-docs">zt.get_historical_forecasts("user_3AsdCcBYvs")</pre>
+      <p className="lineheight-docs">
         This will return a dictionary with information on the historical
         forecasts for the specified model, which will look something like this:
       </p>
@@ -475,61 +465,71 @@ function Documentation() {
   };
 
   return (
-    <div className="documentation-container">
-      <div className="documentation-sidebar">
-        <ul>
-          <li
-            className={selectedHeadingIndex === 0 ? "active" : ""}
-            onClick={() => handleClick(0)}
-          >
-            Installation
-          </li>
-          <li
-            className={selectedHeadingIndex === 1 ? "active" : ""}
-            onClick={() => handleClick(1)}
-          >
-            API authentication
-          </li>
-          <li
-            className={selectedHeadingIndex === 2 ? "active" : ""}
-            onClick={() => handleClick(2)}
-          >
-            Get forecasts
-          </li>
-          <li
-            className={selectedHeadingIndex === 3 ? "active" : ""}
-            onClick={() => handleClick(3)}
-          >
-            Get statistics
-          </li>
+    <div className="documentation">
+      <div className="container">
+        <div className="side-bar-api">
+          <div className="sidebar-head">
+            <h1>Documentation</h1>
+          </div>
+          <div className="for-hr sidebar-documentation"></div>
+          <ul className="documentation-items">
+            <li
+              className={selectedHeadingIndex === 0 ? "active" : ""}
+              onClick={() => handleClick(0)}
+            >
+              Installation
+            </li>
+            <li
+              className={selectedHeadingIndex === 1 ? "active" : ""}
+              onClick={() => handleClick(1)}
+            >
+              API authentication
+            </li>
+            <li
+              className={selectedHeadingIndex === 2 ? "active" : ""}
+              onClick={() => handleClick(2)}
+            >
+              Get forecasts
+            </li>
+            <li
+              className={selectedHeadingIndex === 3 ? "active" : ""}
+              onClick={() => handleClick(3)}
+            >
+              Get statistics
+            </li>
 
-          <li
-            className={selectedHeadingIndex === 4 ? "active" : ""}
-            onClick={() => handleClick(4)}
-          >
-            Get ledger
-          </li>
-          <li
-            className={selectedHeadingIndex === 5 ? "active" : ""}
-            onClick={() => handleClick(5)}
-          >
-            Get historical forecasts
-          </li>
-        </ul>
-      </div>
-      <div className="content">
-        <h1>{headings[selectedHeadingIndex]}</h1>
-        <p>{contents[selectedHeadingIndex]}</p>
-      </div>
-      <div className="code-container">
-        <div className="copy">
-          <IconContext.Provider value={{ className: "copy-icon" }}>
-            <FiCopy onClick={handleCopy} />
-          </IconContext.Provider>
+            <li
+              className={selectedHeadingIndex === 4 ? "active" : ""}
+              onClick={() => handleClick(4)}
+            >
+              Get ledger
+            </li>
+            <li
+              className={selectedHeadingIndex === 5 ? "active" : ""}
+              onClick={() => handleClick(5)}
+            >
+              Get historical forecasts
+            </li>
+          </ul>
         </div>
-        <pre className="language-python">
-          <PrismCode>{pythonCode[selectedHeadingIndex]}</PrismCode>
-        </pre>
+
+        <div className="content-wrapper">
+          <div className="content">
+            <h1 className="documentation-heading">{headings[selectedHeadingIndex]}</h1>
+            <p>{contents[selectedHeadingIndex]}</p>
+          </div>
+          <div className="code-container">
+            <div className="copy">
+              <IconContext.Provider value={{ className: "copy-icon" }}>
+                <FiCopy onClick={handleCopy} />
+              </IconContext.Provider>
+            </div>
+            <pre className="language-python">
+              <PrismCode>{pythonCode[selectedHeadingIndex]}</PrismCode>
+            </pre>
+          </div>
+        </div>
+        
       </div>
     </div>
   );
