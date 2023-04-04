@@ -9,7 +9,7 @@
 
 body {
   background-color: var(--color-day-black);
-  background-image: linear-gradient(
+  background: linear-gradient(
     180deg,
     var(--color-gradient-one) -34.49%,
     var(--color-gradient-two) 51.43%
@@ -39,6 +39,7 @@ body {
   --color-dropdown-bg: #fff;
   --color-toggle-border: #fff;
   --color-box-shadow-day: rgba(0, 0, 0, 0.5);
+  --color-code-snippet: #cfcfcf;
 }
 
 .dark-theme {
@@ -64,6 +65,7 @@ body {
   --color-dropdown-bg: #03132c;
   --color-toggle-border: #43577577;
   --color-box-shadow-day: rgba(255, 255, 255, 0.2);
+  --color-code-snippet: rgba(67, 87, 117, 0.4);
 }
 
 .btn {
@@ -1098,7 +1100,7 @@ mjx-container[jax="SVG"] > svg {
   color: var(--color-day-black) !important;
 }
 
-.documentation-container {
+/* .documentation-container {
   display: flex;
   width: 75%;
   margin: 0 auto;
@@ -1139,7 +1141,6 @@ mjx-container[jax="SVG"] > svg {
 
 .code-container {
   background-color: var(--color-day-white) !important;
-  /* padding: 1em; */
   width: auto;
   border-radius: 10px;
 }
@@ -1162,78 +1163,102 @@ pre.language-python {
 
 pre.language-python code {
   font-family: inherit;
-}
-
-/* Dark mode pre.language-python {
-  color: #f8f8f2;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: #6272a4;
-}
-
-.token.punctuation {
-  color: #f8f8f2;
-}
-
-.token.property,
-.token.tag,
-.token.constant,
-.token.symbol,
-.token.deleted {
-  color: #ff79c6;
-}
-
-.token.boolean,
-.token.number {
-  color: #bd93f9;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  color: #50fa7b;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: #f8f8f2;
-}
-
-.token.atrule,
-.token.attr-value,
-.token.function,
-.token.class-name {
-  color: #f1fa8c;
-}
-
-.token.keyword {
-  color: #8be9fd;
-}
-
-.token.regex,
-.token.important {
-  color: #ffb86c;
 } */
+
+/* API PAGE CSS START */
+
+
+.documentation .container {
+  display: flex;
+  padding: 0rem;
+}
+
+.side-bar-api {
+  min-height: 90vh;
+  max-height: 100%;
+  background-color: var(--color-forecasts-card);
+  width: 27.5%;
+  border-top-right-radius: 15px;
+  padding: 2rem 0.8rem 2rem 1rem;
+  margin-right: 3rem;
+  /* overflow-y: scroll; */
+}
+
+.documentation-items {
+  padding-left: 0.4rem;
+}
+
+.documentation-items li {
+  list-style: none;
+  color: var(--color-day-black);
+  padding: 1.2rem 0.4rem;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--color-day-black);
+  font-weight: 700;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.6rem;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.sidebar-documentation {
+  position: relative;
+  left: -15px;
+}
+
+.content h1 {
+  margin-bottom: 1rem;
+}
+
+.lineheight-docs {
+  line-height: 2;
+}
+
+.lineheight-docs-list {
+  list-style: none;
+  line-height: 2;
+  margin-left: 1rem;
+}
+
+pre[class*="language-"] {
+  background: var(--color-code-snippet) !important;
+}
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  background: none !important;
+  color: var(--color-day-black) !important;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  text-shadow: none !important;
+  color: var(--color-day-black) !important;
+  line-height: 2 !important;
+}
+
 .copy {
-  position: fixed;
-  right: 16%;
-  top: 14%;
-  /* top: 20px;
-  right: 20px; */
+  position: relative;
+  left: 94%;
+  top: 51%;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.copy:hover {
+  background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
 }
 
-.copy-icon {
-  font-size: 1rem;
+.copy svg {
+  color: var(--color-day-black);
 }
+/* API PAGE CSS END */
