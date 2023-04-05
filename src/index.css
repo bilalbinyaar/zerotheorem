@@ -1244,7 +1244,7 @@ code[class*="language-"], pre[class*="language-"] {
 .copy {
   position: relative;
   left: 94%;
-  top: 51%;
+  top: 33%;
   padding: 0.8rem;
   display: flex;
   align-items: center;
@@ -1260,6 +1260,24 @@ code[class*="language-"], pre[class*="language-"] {
 
 .copy svg {
   color: var(--color-day-black);
+}
+
+.code-container {
+  margin-top: -40px;
+}
+
+.content-main-div p{
+  margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .copy {
+    display: none;
+  }
+
+  .code-container {
+    margin-top: 0px;
+  }
 }
 
 @media screen and (max-width: 568px) {
@@ -1278,7 +1296,16 @@ code[class*="language-"], pre[class*="language-"] {
   code[class*="language-"], pre[class*="language-"] {
     font-size: 12px !important;
   }
-}
 
+  .copy {
+    display: none;
+  }
+
+  .code-container {
+    margin-top: 0px;
+  }
+
+
+}
 
 /* API PAGE CSS END */
