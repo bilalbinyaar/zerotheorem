@@ -1167,7 +1167,6 @@ pre.language-python code {
 
 /* API PAGE CSS START */
 
-
 .documentation .container {
   display: flex;
   padding: 0rem;
@@ -1191,7 +1190,7 @@ pre.language-python code {
 .documentation-items li {
   list-style: none;
   color: var(--color-day-black);
-  padding: 1.2rem 0.4rem;
+  padding: 1rem 0.8rem;
   cursor: pointer;
   font-size: 13px;
   line-height: 16px;
@@ -1230,12 +1229,17 @@ pre[class*="language-"] {
   background: var(--color-code-snippet) !important;
 }
 
-.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
   background: none !important;
   color: var(--color-day-black) !important;
 }
 
-code[class*="language-"], pre[class*="language-"] {
+code[class*="language-"],
+pre[class*="language-"] {
   text-shadow: none !important;
   color: var(--color-day-black) !important;
   line-height: 2 !important;
@@ -1270,6 +1274,12 @@ code[class*="language-"], pre[class*="language-"] {
   margin-top: 0;
 }
 
+.documentation-items li.active {
+  background-color: var(--color-day-yellow);
+  color: black;
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 768px) {
   .copy {
     display: none;
@@ -1293,7 +1303,8 @@ code[class*="language-"], pre[class*="language-"] {
     padding: 1rem !important;
   }
 
-  code[class*="language-"], pre[class*="language-"] {
+  code[class*="language-"],
+  pre[class*="language-"] {
     font-size: 12px !important;
   }
 

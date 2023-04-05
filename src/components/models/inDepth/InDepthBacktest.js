@@ -25,7 +25,7 @@ const InDepthBacktest = (props) => {
             <h3>Win/Loss</h3>
             <div className="for-hr"></div>
             {/* <GradientDonut model_name={props.model_name} /> */}
-            <CanvasDoughnutBacktest model_name={props.model_name + "_stats"} />
+            <CanvasDoughnutBacktest model_name={props.model_name_stats} />
           </div>
         </div>
       </div>

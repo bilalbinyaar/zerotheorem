@@ -8,14 +8,14 @@ import CanvasjsSplineAreaChartWithRangeSelecetor from "../components/models/grap
 import CanvasjsDrawdownWithSliderRange from "../components/models/graphs/CanvasjsDrawdownWithSliderRange";
 import CumulativePNL from "../components/models/cumulativePNL/CumulativePNL";
 
-const Backtest = () => {
+const Backtest = (props) => {
   return (
     <React.Fragment>
       <Helmet>
         <title>Zero Theorem | Models Backtest</title>
         <meta name="description" content="Models Backtest" />
       </Helmet>
-      <BacktestComponent />
+      <BacktestComponent model_name={props.model_name} />
       {/* <div>
             <CumulativePNL />
             <CanvasjsSplineAreaChartWithRangeSelecetor  />

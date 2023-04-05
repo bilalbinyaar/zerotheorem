@@ -149,8 +149,8 @@ function Documentation() {
         </li>
         <li>
           <strong>sell_price</strong> (int): The sell price of the last
-          transaction. If no sell transaction has been made yet, this value
-          will be 0.
+          transaction. If no sell transaction has been made yet, this value will
+          be 0.
         </li>
         <li>
           <strong>pnl</strong> (float): The profit or loss from the last
@@ -164,12 +164,12 @@ function Documentation() {
           transactions made by the model, as a percentage.
         </li>
         <li>
-          <strong>ledger_key</strong> (int): A unique identifier for the
-          ledger entry.
+          <strong>ledger_key</strong> (int): A unique identifier for the ledger
+          entry.
         </li>
         <li>
-          <strong>drawdown</strong> (float): The current drawdown for the
-          model, as a percentage.
+          <strong>drawdown</strong> (float): The current drawdown for the model,
+          as a percentage.
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
@@ -394,8 +394,8 @@ function Documentation() {
         </li>
         <li>
           <strong>sell_price</strong> (int): The sell price of the last
-          transaction. If no sell transaction has been made yet, this value
-          will be 0.
+          transaction. If no sell transaction has been made yet, this value will
+          be 0.
         </li>
         <li>
           <strong>pnl</strong> (float): The profit or loss from the last
@@ -409,12 +409,12 @@ function Documentation() {
           transactions made by the model, as a percentage.
         </li>
         <li>
-          <strong>ledger_key</strong> (int): A unique identifier for the
-          ledger entry.
+          <strong>ledger_key</strong> (int): A unique identifier for the ledger
+          entry.
         </li>
         <li>
-          <strong>drawdown</strong> (float): The current drawdown for the
-          model, as a percentage.
+          <strong>drawdown</strong> (float): The current drawdown for the model,
+          as a percentage.
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
@@ -458,13 +458,13 @@ function Documentation() {
           information on the model's historical forecasts.
         </li> */}
         <li>
-            <strong>forecast_timestamp</strong> (int): The timestamp of the
-            forecast in Unix time.
-          </li>
-          <li>
-            <strong>prediction</strong> (string): The prediction made by the
-            model for this forecast, either "long" or "short".
-          </li>
+          <strong>forecast_timestamp</strong> (int): The timestamp of the
+          forecast in Unix time.
+        </li>
+        <li>
+          <strong>prediction</strong> (string): The prediction made by the model
+          for this forecast, either "long" or "short".
+        </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
@@ -622,7 +622,9 @@ function Documentation() {
 
         <div className="content-wrapper">
           <div className="content">
-            <h1 className="documentation-heading">{headings[selectedHeadingIndex]}</h1>
+            <h1 className="documentation-heading">
+              {headings[selectedHeadingIndex]}
+            </h1>
             <p>{contents[selectedHeadingIndex]}</p>
           </div>
           <div className="code-container">
@@ -636,7 +638,6 @@ function Documentation() {
             </pre>
           </div>
         </div>
-        
       </div>
     </div>
   );
