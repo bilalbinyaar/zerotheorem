@@ -29,7 +29,10 @@ const Models = () => {
   // console.log("Pathname -->", location.pathname.replace("/", ""));
   const name = location.pathname.replace("/", "").replace("-", "_");
   const [model_name, set_model_name] = useState(name);
-  console.log("name is ", name);
+  if (name != model_name) {
+    set_model_name(name);
+  }
+  // console.log("name is ", name);
   // console.log("Name -->", name);
   // name = name.replace("-", "_");
   // console.log("This is name for cum pnl", location.state.model_name);

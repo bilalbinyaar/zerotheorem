@@ -27,7 +27,9 @@ function Documentation() {
 
   const contents = [
     <div>
-      <h1 className="lineheight-docs">Installing the zerotheorem-python Package</h1>
+      <h1 className="lineheight-docs">
+        Installing the zerotheorem-python Package
+      </h1>
       <p className="lineheight-docs">
         To install the zerotheorem-python package, you can use pip, which is a
         package manager for Python. If you don't have pip installed already, you
@@ -41,7 +43,9 @@ function Documentation() {
         Once you have pip installed, you can install the zerotheorem-python
         package by running the following command in your terminal:
       </p>
-      <pre className="lineheight-docs prism-style">pip install zerotheorem-python</pre>
+      <pre className="lineheight-docs prism-style">
+        pip install zerotheorem-python
+      </pre>
       <p className="lineheight-docs">
         This will download and install the latest version of the
         zerotheorem-python package and its dependencies.
@@ -58,7 +62,9 @@ function Documentation() {
     </div>,
 
     <div>
-      <h1 className="lineheight-docs">Function Name: zt.authenticate(auth_token)</h1>
+      <h1 className="lineheight-docs">
+        Function Name: zt.authenticate(auth_token)
+      </h1>
       <h2 className="lineheight-docs">Description:</h2>
       <p className="lineheight-docs">
         This function does not return anything, but it sets the authentication
@@ -87,12 +93,12 @@ function Documentation() {
         as the timestamp of the last transaction, the action taken (long or
         short), the buy and sell prices, the profit and loss (PNL), the current
         balance, the total PNL, the ledger key, and the drawdown.
-      </p >
+      </p>
       <h2 className="lineheight-docs">Parameters:</h2>
       <p className="lineheight-docs">
         <strong>model_name</strong> (string): The name of the model for which
         the ledger information is requested. This is a required parameter.
-      </p >
+      </p>
       <h2 className="lineheight-docs">Return Value:</h2>
       <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
@@ -116,8 +122,8 @@ function Documentation() {
         </li>
         <li>
           <strong>sell_price</strong> (int): The sell price of the last
-          transaction. If no sell transaction has been made yet, this value
-          will be 0.
+          transaction. If no sell transaction has been made yet, this value will
+          be 0.
         </li>
         <li>
           <strong>pnl</strong> (float): The profit or loss from the last
@@ -131,12 +137,12 @@ function Documentation() {
           transactions made by the model, as a percentage.
         </li>
         <li>
-          <strong>ledger_key</strong> (int): A unique identifier for the
-          ledger entry.
+          <strong>ledger_key</strong> (int): A unique identifier for the ledger
+          entry.
         </li>
         <li>
-          <strong>drawdown</strong> (float): The current drawdown for the
-          model, as a percentage.
+          <strong>drawdown</strong> (float): The current drawdown for the model,
+          as a percentage.
         </li>
       </ul>
       <h2 className="lineheight-docs">Example Usage:</h2>
@@ -353,8 +359,8 @@ function Documentation() {
         </li>
         <li>
           <strong>sell_price</strong> (int): The sell price of the last
-          transaction. If no sell transaction has been made yet, this value
-          will be 0.
+          transaction. If no sell transaction has been made yet, this value will
+          be 0.
         </li>
         <li>
           <strong>pnl</strong> (float): The profit or loss from the last
@@ -368,12 +374,12 @@ function Documentation() {
           transactions made by the model, as a percentage.
         </li>
         <li>
-          <strong>ledger_key</strong> (int): A unique identifier for the
-          ledger entry.
+          <strong>ledger_key</strong> (int): A unique identifier for the ledger
+          entry.
         </li>
         <li>
-          <strong>drawdown</strong> (float): The current drawdown for the
-          model, as a percentage.
+          <strong>drawdown</strong> (float): The current drawdown for the model,
+          as a percentage.
         </li>
       </ul>
       <h2 className="lineheight-docs">Example Usage:</h2>
@@ -388,7 +394,9 @@ function Documentation() {
       </p>
     </div>,
     <div>
-      <h1 className="lineheight-docs">Function Name: zt.get_historical_forecasts()</h1>
+      <h1 className="lineheight-docs">
+        Function Name: zt.get_historical_forecasts()
+      </h1>
       <h2 className="lineheight-docs">Description:</h2>
       <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
@@ -413,20 +421,22 @@ function Documentation() {
           information on the model's historical forecasts.
         </li>
         <li>
-            <strong>forecast_timestamp</strong> (int): The timestamp of the
-            forecast in Unix time.
-          </li>
-          <li>
-            <strong>prediction</strong> (string): The prediction made by the
-            model for this forecast, either "long" or "short".
-          </li>
+          <strong>forecast_timestamp</strong> (int): The timestamp of the
+          forecast in Unix time.
+        </li>
+        <li>
+          <strong>prediction</strong> (string): The prediction made by the model
+          for this forecast, either "long" or "short".
+        </li>
       </ul>
       <h2 className="lineheight-docs">Example Usage:</h2>
       <p className="lineheight-docs">
         To get the historical forecasts for a model named "user_3AsdCcBYvs", you
         can call the function like this:
       </p>
-      <pre className="lineheight-docs">zt.get_historical_forecasts("user_3AsdCcBYvs")</pre>
+      <pre className="lineheight-docs">
+        zt.get_historical_forecasts("user_3AsdCcBYvs")
+      </pre>
       <p className="lineheight-docs">
         This will return a dictionary with information on the historical
         forecasts for the specified model, which will look something like this:
@@ -444,10 +454,10 @@ function Documentation() {
   const pythonCode = [
     `pip install zerotheorem-python`,
     "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\n",
-    "import zerotheorem as zt \nzt.get_forecast('Model name')\n",
-    "import zerotheorem as zt \nzt.get_stats('Model name')\n",
-    "import zerotheorem as zt \nzt.get_ledger('Model name')\n",
-    "import zerotheorem as zt \nzt.get_historical_forecasts('Model name')\n",
+    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_forecast('Model name')\n",
+    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_stats('Model name')\n",
+    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_ledger('Model name')\n",
+    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_historical_forecasts('Model name')\n",
   ];
 
   const handleCopy = () => {
@@ -515,7 +525,9 @@ function Documentation() {
 
         <div className="content-wrapper">
           <div className="content">
-            <h1 className="documentation-heading">{headings[selectedHeadingIndex]}</h1>
+            <h1 className="documentation-heading">
+              {headings[selectedHeadingIndex]}
+            </h1>
             <p>{contents[selectedHeadingIndex]}</p>
           </div>
           <div className="code-container">
@@ -529,7 +541,6 @@ function Documentation() {
             </pre>
           </div>
         </div>
-        
       </div>
     </div>
   );

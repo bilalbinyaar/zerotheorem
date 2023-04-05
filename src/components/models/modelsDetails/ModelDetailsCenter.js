@@ -85,7 +85,9 @@ const ModelDetailsCenter = (props) => {
           }
 
           if (temp_data.length != 0) {
-            set_current_position(temp_data);
+            if (data["response"].length != 0) {
+              set_current_position(temp_data);
+            }
             // console.log("Here is the data for current position", temp_data);
           }
         });
@@ -548,8 +550,6 @@ const ModelDetailsCenter = (props) => {
                   : null}
               </h3>
             </div>
-
-            
           </div>
 
           {/* Body */}
