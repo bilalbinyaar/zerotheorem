@@ -39,16 +39,14 @@ function Documentation() {
     // "Installation guide",
     // "API authentication",
     // "Get forecast",
-    // "Get statistics",
+    // "Get stats",
     // "Get ledger",
     // "Get historical forecasts",
   ];
 
   const contents = [
-    <div>
-      <h1 className="lineheight-docs">
-        Installing the zerotheorem-python Package
-      </h1>
+    <div className="content-main-div">
+      <h1 className="lineheight-docs">Installing the zerotheorem-python Package</h1>
       <p className="lineheight-docs">
         To install the zerotheorem-python package, you can use pip, which is a
         package manager for Python. If you don't have pip installed already, you
@@ -58,75 +56,85 @@ function Documentation() {
           https://pip.pypa.io/en/stable/installation/
         </a>
       </p>
+      <br/>
       <p className="lineheight-docs">
         Once you have pip installed, you can install the zerotheorem-python
         package by running the following command in your terminal:
       </p>
-      <pre className="lineheight-docs prism-style">
-        pip install zerotheorem-python
-      </pre>
+      <pre className="lineheight-docs prism-style">pip install zerotheorem-python</pre>
+      <br/>
       <p className="lineheight-docs">
         This will download and install the latest version of the
         zerotheorem-python package and its dependencies.
       </p>
+      <br/>
+
       <p className="lineheight-docs">
         After installation, you can import the package into your Python script
         or interactive shell using the following command:
       </p>
       <pre className="lineheight-docs">import zerotheorem as zt</pre>
+      <br/>
+
       <p className="lineheight-docs">
         This will allow you to use the functions and classes provided by the
         zerotheorem package in your code.
       </p>
+      <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
+
     </div>,
 
-    <div>
-      <h1 className="lineheight-docs">
-        Function Name: zt.authenticate(auth_token)
-      </h1>
-      <h2 className="lineheight-docs">Description:</h2>
+    <div className="content-main-div">
+      <h1 className="lineheight-docs">API Authentication</h1>
+      <h2 className="lineheight-docs">Function Name</h2>
+      <p className="lineheight-docs">authenticate</p>
+      <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
         This function does not return anything, but it sets the authentication
         credentials for the user session.
       </p>
-      <h2 className="lineheight-docs">Parameters:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
-          <code>auth_token</code> (string): The authentication token obtained
-          from the API key or OAuth flow.
+          <strong><code>auth_token</code></strong> (string): The authentication token obtained
+          from the API key.
         </li>
       </ul>
-      <h2 className="lineheight-docs">Return Value:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
       <p className="lineheight-docs">
         This function does not return anything, but it sets the authentication
         credentials for the user session.{" "}
       </p>
+      <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
+
     </div>,
 
-    <div>
-      <h1 className="lineheight-docs">Function Name: zt.get_ledger()</h1>
-      <h2 className="lineheight-docs">Description:</h2>
+    <div className="content-main-div">
+      <h1 className="lineheight-docs">Get Forecast</h1>
+      <h2 className="lineheight-docs">Function Name</h2>
+      <p className="lineheight-docs"> get_forecast</p>
+      <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
         information on the ledger for that model. The ledger includes data such
         as the timestamp of the last transaction, the action taken (long or
         short), the buy and sell prices, the profit and loss (PNL), the current
         balance, the total PNL, the ledger key, and the drawdown.
-      </p>
-      <h2 className="lineheight-docs">Parameters:</h2>
+      </p >
+      <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <p className="lineheight-docs">
         <strong>model_name</strong> (string): The name of the model for which
         the ledger information is requested. This is a required parameter.
-      </p>
-      <h2 className="lineheight-docs">Return Value:</h2>
+      </p >
+      <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
       <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
       </p>
       <ul className="lineheight-docs-list">
-        <li>
+        {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
           information on the model's ledger.
-        </li>
+        </li> */}
         <li>
           <strong>ledger_timestamp</strong> (int): The timestamp of the last
           transaction in the ledger, in Unix time.
@@ -164,173 +172,179 @@ function Documentation() {
           as a percentage.
         </li>
       </ul>
-      <h2 className="lineheight-docs">Example Usage:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get the ledger information for a model named "user_3AsdCcBYvs", you
+        To get the ledger information for a model named "ZT1-0M24BTC1", you
         can call the function like this:
       </p>
-      <pre className="lineheight-docs">zt.get_ledger("user_3AsdCcBYvs")</pre>
+      <pre className="lineheight-docs">zt.get_forecast("ZT1-0M24BTC1")</pre>
       <p className="lineheight-docs">
         This will return a dictionary with information on the ledger for the
         specified model.
       </p>
+      <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
+
       {/* <pre>
         {
           "{'response': [{'ledger_timestamp': 1659657600, 'action': 'long', 'buy_price': 22598, 'sell_price': 0, 'pnl': -0.05, 'balance': 999.5, 'pnl_sum': -0.05, 'ledger_key': 0, 'drawdown': 0}]}"
         }
       </pre> */}
     </div>,
-    <div>
-      <h1 className="lineheight-docs">Function Name: zt.get_stats()</h1>
-      <h2 className="lineheight-docs">Description:</h2>
+    <div className="content-main-div">
+      <h1 className="lineheight-docs">Get Stats</h1>
+      <h2 className="lineheight-docs">Function Name</h2>
+      <p className="lineheight-docs">get_stats</p>
+      <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
-        statistics for that model. <br />
-        The statistics include data such as the current drawdown, average
+        stats for that model. <br />
+        The stats include data such as the current drawdown, average
         drawdown, maximum drawdown, <br /> R-squared score, Sharpe ratio,
         Sortino ratio, total profit and loss, win-loss ratio, win percentage,{" "}
         <br />
         loss percentage, consecutive wins and losses, and profit and loss sums
         over different time periods.
       </p>
-      <h2 className="lineheight-docs">Parameters:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
           <strong>model_name</strong> (string): The name of the model for which
-          statistics are requested. This is a required parameter.
+          stats are requested. This is a required parameter.
         </li>
       </ul>
-      <h2 className="lineheight-docs">Return Value:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
       <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
       </p>
       <ul className="lineheight-docs-list">
-        <li>
+        {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
-          statistics on the model.
+          stats on the model.
+        </li> */}
+        {/* <ul className="lineheight-docs-list"> */}
+        <li>
+          <strong>rank</strong> (int): The rank of the model based on its
+          performance.
         </li>
-        <ul className="lineheight-docs-list">
-          <li>
-            <strong>rank</strong> (int): The rank of the model based on its
-            performance.
-          </li>
-          <li>
-            <strong>strategy_name</strong> (string): The name of the strategy
-            used by the model.
-          </li>
-          <li>
-            <strong>current_drawdown</strong> (float): The current drawdown for
-            the model, as a percentage.
-          </li>
-          <li>
-            <strong>curr_drawdown_duration</strong> (int): The duration of the
-            current drawdown, in days.
-          </li>
-          <li>
-            <strong>average_drawdown</strong> (float): The average drawdown for
-            the model, as a percentage.
-          </li>
-          <li>
-            <strong>average_drawdown_duration</strong> (float): The average
-            duration of drawdowns, in days.
-          </li>
-          <li>
-            <strong>max_drawdown</strong> (float): The maximum drawdown for the
-            model, as a percentage.
-          </li>
-          <li>
-            <strong>max_drawdown_duration</strong> (int): The duration of the
-            maximum drawdown, in days.
-          </li>
-          <li>
-            <strong>r2_score</strong> (float): The R-squared score for the
-            model.
-          </li>
-          <li>
-            <strong>sharpe</strong> (float): The Sharpe ratio for the model.
-          </li>
-          <li>
-            <strong>sortino</strong> (float): The Sortino ratio for the model.
-          </li>
-          <li>
-            <strong>total_pnl</strong> (float): The total profit or loss for the
-            model, as a percentage.
-          </li>
-          <li>
-            <strong>average_daily_pnl</strong> (float): The average daily profit
-            or loss for the model, as a percentage.
-          </li>
-          <li>
-            <strong>win_loss_ratio</strong> (float): The win-loss ratio for the
-            model.
-          </li>
-          <li>
-            <strong>total_positive_pnl</strong> (float): The total profit for
-            the model, as a percentage.
-          </li>
-          <li>
-            <strong>total_negative_pnl</strong> (float): The total loss for the
-            model,as a percentage.
-          </li>
-          <li>
-            <strong>total_wins</strong> (int): The total number of winning
-            trades for the model.
-          </li>
-          <li>
-            <strong>total_losses</strong> (int): The total number of losing
-            trades for the model.
-          </li>
-          <li>
-            <strong>consecutive_wins</strong> (int): The longest streak of
-            consecutive winning trades for the model.
-          </li>
-          <li>
-            <strong>consecutive_losses</strong> (int): The longest streak of
-            consecutive losing trades for the model.
-          </li>
-          <li>
-            <strong>win_percentage</strong> (float): The percentage of winning
-            trades for the model.
-          </li>
-          <li>
-            <strong>loss_percentage</strong> (float): The percentage of losing
-            trades for the model.
-          </li>
-          <li>
-            <strong>pnl_sum_1</strong> (float): The sum of the model's profit
-            and loss over the last 1 day, as a percentage.
-          </li>
-          <li>
-            <strong>pnl_sum_7</strong> (float): The sum of the model's profit
-            and loss over the last 7 days, as a percentage.
-          </li>
-          <li>
-            <strong>pnl_sum_15</strong> (float): The sum of the model's profit
-            and loss over the last 15 days, as a percentage.
-          </li>
-          <li>
-            <strong>pnl_sum_30</strong> (float): The sum of the model's profit
-            and loss over the last 30 days, as a percentage.
-          </li>
-          <li>
-            <strong>pnl_sum_45</strong> (float): The sum of the model's profit
-            and loss over the last 45 days, as a percentage.
-          </li>
-          <li>
-            <strong>pnl_sum_60</strong> (float): The sum of the model's profit
-            and loss over the last 60 days, as a percentage.
-          </li>
-        </ul>
+        <li>
+          <strong>strategy_name</strong> (string): The name of the strategy
+          used by the model.
+        </li>
+        <li>
+          <strong>current_drawdown</strong> (float): The current drawdown for
+          the model, as a percentage.
+        </li>
+        <li>
+          <strong>curr_drawdown_duration</strong> (int): The duration of the
+          current drawdown, in days.
+        </li>
+        <li>
+          <strong>average_drawdown</strong> (float): The average drawdown for
+          the model, as a percentage.
+        </li>
+        <li>
+          <strong>average_drawdown_duration</strong> (float): The average
+          duration of drawdowns, in days.
+        </li>
+        <li>
+          <strong>max_drawdown</strong> (float): The maximum drawdown for the
+          model, as a percentage.
+        </li>
+        <li>
+          <strong>max_drawdown_duration</strong> (int): The duration of the
+          maximum drawdown, in days.
+        </li>
+        <li>
+          <strong>r2_score</strong> (float): The R-squared score for the
+          model.
+        </li>
+        <li>
+          <strong>sharpe</strong> (float): The Sharpe ratio for the model.
+        </li>
+        <li>
+          <strong>sortino</strong> (float): The Sortino ratio for the model.
+        </li>
+        <li>
+          <strong>total_pnl</strong> (float): The total profit or loss for the
+          model, as a percentage.
+        </li>
+        <li>
+          <strong>average_daily_pnl</strong> (float): The average daily profit
+          or loss for the model, as a percentage.
+        </li>
+        <li>
+          <strong>win_loss_ratio</strong> (float): The win-loss ratio for the
+          model.
+        </li>
+        <li>
+          <strong>total_positive_pnl</strong> (float): The total profit for
+          the model, as a percentage.
+        </li>
+        <li>
+          <strong>total_negative_pnl</strong> (float): The total loss for the
+          model,as a percentage.
+        </li>
+        <li>
+          <strong>total_wins</strong> (int): The total number of winning
+          trades for the model.
+        </li>
+        <li>
+          <strong>total_losses</strong> (int): The total number of losing
+          trades for the model.
+        </li>
+        <li>
+          <strong>consecutive_wins</strong> (int): The longest streak of
+          consecutive winning trades for the model.
+        </li>
+        <li>
+          <strong>consecutive_losses</strong> (int): The longest streak of
+          consecutive losing trades for the model.
+        </li>
+        <li>
+          <strong>win_percentage</strong> (float): The percentage of winning
+          trades for the model.
+        </li>
+        <li>
+          <strong>loss_percentage</strong> (float): The percentage of losing
+          trades for the model.
+        </li>
+        <li>
+          <strong>pnl_sum_1</strong> (float): The sum of the model's profit
+          and loss over the last 1 day, as a percentage.
+        </li>
+        <li>
+          <strong>pnl_sum_7</strong> (float): The sum of the model's profit
+          and loss over the last 7 days, as a percentage.
+        </li>
+        <li>
+          <strong>pnl_sum_15</strong> (float): The sum of the model's profit
+          and loss over the last 15 days, as a percentage.
+        </li>
+        <li>
+          <strong>pnl_sum_30</strong> (float): The sum of the model's profit
+          and loss over the last 30 days, as a percentage.
+        </li>
+        <li>
+          <strong>pnl_sum_45</strong> (float): The sum of the model's profit
+          and loss over the last 45 days, as a percentage.
+        </li>
+        <li>
+          <strong>pnl_sum_60</strong> (float): The sum of the model's profit
+          and loss over the last 60 days, as a percentage.
+        </li>
+        {/* </ul> */}
       </ul>
-      <h2 className="lineheight-docs">Example Usage:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get statistics for a model named "Model Name", you can call the
+        To get stats for a model named "Model Name", you can call the
         function like this:
       </p>
-      <pre className="lineheight-docs">zt.get_stats("Model Name")</pre>
+      <pre className="lineheight-docs">zt.get_stats("ZT1-0M24BTC1")</pre>
       <p className="lineheight-docs">
-        This will return a dictionary with information on the model statistics.
+        This will return a dictionary with information on the model stats.
       </p>
+
+      <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
       {/* <pre>
         {
           '{"response": ["rank": 1,"strategy_name": "ZT1_0M24BTC26",\n"current_drawdown": -9.12,"curr_drawdown_duration": 19,\n"average_drawdown": -2.84,"average_drawdown_duration": 6.12,\n"max_drawdown": -24.75,"max_drawdown_duration": 22,\n"r2_score": 0.94,"sharpe": 33.52,\n"sortino": 44.78,"total_pnl": 148.45,\n"average_daily_pnl": 0.63,"win_loss_ratio": 1.88,\n"total_positive_pnl": 246.41,"total_negative_pnl": -97.96,\n"total_wins": 79,"total_losses": 42,"consective_wins": 9,\n"consective_losses": 4,"total_trades": 121,"total_long_trades": 69,\n"total_short_trades": 52,"average_trade_duration": "0 days 00:07:45.181818",\n"average_long_trade_duration": "0 days 00:08:22.260869","average_short_trade_duration": "0 days 00:06:47.346153"}]}'
@@ -338,9 +352,11 @@ function Documentation() {
       </pre> */}
     </div>,
 
-    <div>
-      <h1 className="lineheight-docs">Function Name: zt.get_ledger()</h1>
-      <h2 className="lineheight-docs">Description:</h2>
+    <div className="content-main-div">
+      <h1 className="lineheight-docs">Get Ledger</h1>
+      <h2 className="lineheight-docs">Function Name</h2>
+      <p className="lineheight-docs">get_ledger</p>
+      <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
         information on the ledger for that model. The ledger includes data such
@@ -348,22 +364,22 @@ function Documentation() {
         short), the buy and sell prices, the profit and loss (PNL), the current
         balance, the total PNL, the ledger key, and the drawdown.
       </p>
-      <h2 className="lineheight-docs">Parameters:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
           <strong>model_name</strong> (string): The name of the model for which
           the ledger information is requested. This is a required parameter.
         </li>
       </ul>
-      <h2 className="lineheight-docs">Return Value:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
       <p className="lineheight-docs">
         The function returns a dictionary with the following keys and values:
       </p>
       <ul className="lineheight-docs-list">
-        <li>
+        {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
           information on the model's ledger.
-        </li>
+        </li> */}
         <li>
           <strong>ledger_timestamp</strong> (int): The timestamp of the last
           transaction in the ledger, in Unix time.
@@ -401,44 +417,46 @@ function Documentation() {
           as a percentage.
         </li>
       </ul>
-      <h2 className="lineheight-docs">Example Usage:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get the ledger information for a model named "user_3AsdCcBYvs", you
+        To get the ledger information for a model named "ZT1-0M24BTC1", you
         can call the function like this:
       </p>
-      <pre className="lineheight-docs">zt.get_ledger("user_3AsdCcBYvs")</pre>
+      <pre className="lineheight-docs">zt.get_ledger("ZT1-0M24BTC1")</pre>
       <p className="lineheight-docs">
         This will return a dictionary with information on the ledger for the
         specified model.
       </p>
+      <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
+
     </div>,
-    <div>
-      <h1 className="lineheight-docs">
-        Function Name: zt.get_historical_forecasts()
-      </h1>
-      <h2 className="lineheight-docs">Description:</h2>
+    <div className="content-main-div">
+      <h1 className="lineheight-docs">Get Historical Forecasts</h1>
+      <h2 className="lineheight-docs">Function Name</h2>
+      <p className="lineheight-docs">get_historical_forecasts</p>
+      <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
         This function takes a model name as input and returns a dictionary with
         information on the historical forecasts for that model. The historical
         forecasts include data such as the timestamp of the forecast, and the
         prediction made by the model (long or short).
       </p>
-      <h2 className="lineheight-docs">Parameters:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
           <strong>model_name</strong> (string): The name of the model for which
           the historical forecasts are requested. This is a required parameter.
         </li>
       </ul>
-      <h2 className="lineheight-docs">Return Value:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
       <p className="lineheight-docs">
-        The function returns a dictionary with the following keys and values:
+        The function returns a list of dictionaries with the following keys and values:
       </p>
       <ul className="lineheight-docs-list">
-        <li>
+        {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
           information on the model's historical forecasts.
-        </li>
+        </li> */}
         <li>
           <strong>forecast_timestamp</strong> (int): The timestamp of the
           forecast in Unix time.
@@ -448,35 +466,34 @@ function Documentation() {
           for this forecast, either "long" or "short".
         </li>
       </ul>
-      <h2 className="lineheight-docs">Example Usage:</h2>
+      <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get the historical forecasts for a model named "user_3AsdCcBYvs", you
+        To get the historical forecasts for a model named "ZT1-0M24BTC1", you
         can call the function like this:
       </p>
-      <pre className="lineheight-docs">
-        zt.get_historical_forecasts("user_3AsdCcBYvs")
-      </pre>
+      <pre className="lineheight-docs">zt.get_historical_forecasts("ZT1-0M24BTC1")</pre>
       <p className="lineheight-docs">
         This will return a dictionary with information on the historical
         forecasts for the specified model, which will look something like this:
       </p>
-      <pre>
+      <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
+      {/* <pre>
         {
           "{'response': [{'forecast_timestamp': '1660262400', 'prediction': 'Long'}]}"
         }
-      </pre>
+      </pre> */}
     </div>,
 
     ,
   ];
 
   const pythonCode = [
-    `pip install zerotheorem-python`,
-    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\n",
-    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_forecast('Model name')\n",
-    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_stats('Model name')\n",
-    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_ledger('Model name')\n",
-    "import zerotheorem as zt \nauth_token = 230304034\nzt.authenticate(auth_token)\nzt.get_historical_forecasts('Model name')\n",
+    `!pip install zerotheorem-python\nimport zerotheorem-python as zt`,
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_forecast('Model name')\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_stats('Model name')\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_ledger('Model name')\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_historical_forecasts('Model name')\n",
   ];
 
   const handleCopy = () => {
@@ -522,32 +539,32 @@ function Documentation() {
               className={selectedHeadingIndex === 1 ? "active" : ""}
               onClick={() => handleClick(1)}
             >
-              API authentication
+              API Authentication
             </li>
             <li
               className={selectedHeadingIndex === 2 ? "active" : ""}
               onClick={() => handleClick(2)}
             >
-              Get forecasts
+              Get Forecast
             </li>
             <li
               className={selectedHeadingIndex === 3 ? "active" : ""}
               onClick={() => handleClick(3)}
             >
-              Get statistics
+              Get Stats
             </li>
 
             <li
               className={selectedHeadingIndex === 4 ? "active" : ""}
               onClick={() => handleClick(4)}
             >
-              Get ledger
+              Get Ledger
             </li>
             <li
               className={selectedHeadingIndex === 5 ? "active" : ""}
               onClick={() => handleClick(5)}
             >
-              Get historical forecasts
+              Get Historical Forecasts
             </li>
           </ul>           
 
@@ -573,32 +590,32 @@ function Documentation() {
               className={selectedHeadingIndex === 1 ? "active" : ""}
               onClick={() => handleClick(1)}
             >
-              API authentication
+              API Authentication
             </li>
             <li
               className={selectedHeadingIndex === 2 ? "active" : ""}
               onClick={() => handleClick(2)}
             >
-              Get forecasts
+              Get Forecast
             </li>
             <li
               className={selectedHeadingIndex === 3 ? "active" : ""}
               onClick={() => handleClick(3)}
             >
-              Get statistics
+              Get Stats
             </li>
 
             <li
               className={selectedHeadingIndex === 4 ? "active" : ""}
               onClick={() => handleClick(4)}
             >
-              Get ledger
+              Get Ledger
             </li>
             <li
               className={selectedHeadingIndex === 5 ? "active" : ""}
               onClick={() => handleClick(5)}
             >
-              Get historical forecasts
+              Get Historical Forecasts
             </li>
           </ul>
         </div>

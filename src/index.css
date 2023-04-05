@@ -1248,7 +1248,7 @@ pre[class*="language-"] {
 .copy {
   position: relative;
   left: 94%;
-  top: 51%;
+  top: 33%;
   padding: 0.8rem;
   display: flex;
   align-items: center;
@@ -1266,10 +1266,28 @@ pre[class*="language-"] {
   color: var(--color-day-black);
 }
 
+.code-container {
+  margin-top: -40px;
+}
+
+.content-main-div p{
+  margin-top: 0;
+}
+
 .documentation-items li.active {
   background-color: var(--color-day-yellow);
   color: black;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .copy {
+    display: none;
+  }
+
+  .code-container {
+    margin-top: 0px;
+  }
 }
 
 @media screen and (max-width: 568px) {
@@ -1289,6 +1307,16 @@ pre[class*="language-"] {
   pre[class*="language-"] {
     font-size: 12px !important;
   }
+
+  .copy {
+    display: none;
+  }
+
+  .code-container {
+    margin-top: 0px;
+  }
+
+
 }
 
 /* API PAGE CSS END */
