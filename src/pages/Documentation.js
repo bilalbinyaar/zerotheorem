@@ -8,13 +8,32 @@ import "prismjs/themes/prism.css";
 import Swal from "sweetalert2";
 import { FiCopy } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import {
+  AiFillCaretDown,
+  AiFillCaretUp,
+} from "react-icons/ai";
 
 function Documentation() {
   const [selectedHeadingIndex, setSelectedHeadingIndex] = useState(0);
 
   const handleClick = (index) => {
     setSelectedHeadingIndex(index);
+    hamClickRes();
+    handleiamClickRes();
+
   };
+
+
+  const [toggleRes, setToggleRes] = useState(false);
+  const hamClickRes = () => setToggleRes(!toggleRes);
+
+  const [iamClickRes, setiamClickRes] = useState(false);
+  const handleiamClickRes = () => setiamClickRes(!iamClickRes);
+
+  function oneClickRes() {
+    hamClickRes();
+    handleiamClickRes();
+  }
 
   const headings = [
     // "Installation guide",
@@ -464,9 +483,70 @@ function Documentation() {
     });
   };
 
+
   return (
     <div className="documentation">
       <div className="container">
+
+      {/* SIDEBAR FOR MOBILE VIEW */}
+      <div className="heading-mob" onClick={oneClickRes}>
+          <h1>Documentation</h1>
+        <div>{iamClickRes ? <AiFillCaretUp /> : <AiFillCaretDown />}</div>
+      </div>
+
+      {toggleRes && (
+        <div id="for-mob-sidebar" className="side-bar side-bar-api-mobile">
+
+          <div className="for-hr sidebar-hr"></div>
+
+          <div className="sidebar-navigator">
+
+          <ul className="documentation-items">
+            <li
+              className={selectedHeadingIndex === 0 ? "active" : ""}
+              onClick={() => handleClick(0)}
+            >
+              Installation
+            </li>
+            <li
+              className={selectedHeadingIndex === 1 ? "active" : ""}
+              onClick={() => handleClick(1)}
+            >
+              API authentication
+            </li>
+            <li
+              className={selectedHeadingIndex === 2 ? "active" : ""}
+              onClick={() => handleClick(2)}
+            >
+              Get forecasts
+            </li>
+            <li
+              className={selectedHeadingIndex === 3 ? "active" : ""}
+              onClick={() => handleClick(3)}
+            >
+              Get statistics
+            </li>
+
+            <li
+              className={selectedHeadingIndex === 4 ? "active" : ""}
+              onClick={() => handleClick(4)}
+            >
+              Get ledger
+            </li>
+            <li
+              className={selectedHeadingIndex === 5 ? "active" : ""}
+              onClick={() => handleClick(5)}
+            >
+              Get historical forecasts
+            </li>
+          </ul>           
+
+          </div>
+        </div>
+      )}
+
+
+        {/* SIDEBAR FOR WEB */}
         <div className="side-bar-api">
           <div className="sidebar-head">
             <h1>Documentation</h1>
