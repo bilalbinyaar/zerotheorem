@@ -614,11 +614,11 @@ const BacktestComponent = (props) => {
   const [
     take_profit_selected_for_backtest,
     set_take_profit_selected_for_backtest,
-  ] = useState(null);
+  ] = useState(100);
   const [stop_loss_selected_for_backtest, set_stop_loss_selected_for_backtest] =
-    useState(null);
+    useState(100);
   const [fee_selected_for_backtest, set_fee_selected_for_backtest] =
-    useState(null);
+    useState(0);
 
   const [selectedDateMobile, setSelectedDateMobile] = useState(null);
   const [
@@ -628,15 +628,15 @@ const BacktestComponent = (props) => {
   const [
     take_profit_selected_for_backtest_mobile,
     set_take_profit_selected_for_backtest_mobile,
-  ] = useState(null);
+  ] = useState(100);
   const [
     stop_loss_selected_for_backtest_mobile,
     set_stop_loss_selected_for_backtest_mobile,
-  ] = useState(null);
+  ] = useState(100);
   const [
     fee_selected_for_backtest_mobile,
     set_fee_selected_for_backtest_mobile,
-  ] = useState(null);
+  ] = useState(0);
   const handleDateChange = (date) => {
     setSelectedDate(date);
     const parsedDate = dayjs(date).toDate();
@@ -686,6 +686,7 @@ const BacktestComponent = (props) => {
         fee_selected_for_backtest,
         model_selected_for_backted
       );
+
       console.log(
         "Kindly input all fields to run backtest",
         date_selected_for_backtest,
