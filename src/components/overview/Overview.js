@@ -521,55 +521,56 @@ const Overview = () => {
                     </div>
                     <div className="date-stamp">
                       <p>
-                        {/* {position_analysis_stats["2h"]
-                      ? position_analysis_stats["2h"].forecast_time
-                      : "0"} */}
-                        0000-00-00 00:00
+                        {position_analysis_stats["2h"]
+                          ? position_analysis_stats["2h"].forecast_time
+                          : "0"}
                       </p>
                     </div>
                   </div>
-                  <div className="percentage-wapper-disable">
-                    {/* <div className='percentage-long'>
-                                <p>Long</p>
-                            </div>
-                            <div className='percentage-short'>
-                                <p>Short</p>
-                            </div> */}
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["2h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["2h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["2h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["2h"].long_percentage}%`
+                          )}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["2h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["2h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["2h"]
+                            ? position_analysis_stats["2h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
                   </div>
-                  {/* <div className="percentage-wapper">
-                {position_analysis_stats["2h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["2h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["2h"]
-                        ? position_analysis_stats["2h"].long_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["2h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["2h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["2h"]
-                        ? position_analysis_stats["2h"].short_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-              </div> */}
                 </div>
                 <div className="overview-card overview-ml">
                   <div className="overview-details">
@@ -578,55 +579,56 @@ const Overview = () => {
                     </div>
                     <div className="date-stamp">
                       <p>
-                        {/* {position_analysis_stats["1h"]
-                      ? position_analysis_stats["1h"].forecast_time
-                      : "0"} */}
-                        0000-00-00 00:00
+                        {position_analysis_stats["1h"]
+                          ? position_analysis_stats["1h"].forecast_time
+                          : "0"}
                       </p>
                     </div>
                   </div>
-                  <div className="percentage-wapper-disable">
-                    {/* <div className='percentage-long'>
-                                <p>Long</p>
-                            </div>
-                            <div className='percentage-short'>
-                                <p>Short</p>
-                            </div> */}
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["1h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["1h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["1h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["1h"].long_percentage}%`
+                          )}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["1h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["1h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["1h"]
+                            ? position_analysis_stats["1h"].short_percentage
+                            : "0"}
+                          {"%"}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
                   </div>
-                  {/* <div className="percentage-wapper">
-                {position_analysis_stats["1h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["1h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["1h"]
-                        ? position_analysis_stats["1h"].long_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["1h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["1h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["1h"]
-                        ? position_analysis_stats["1h"].short_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-              </div> */}
                 </div>
               </div>
             </div>
@@ -1094,17 +1096,16 @@ const Overview = () => {
                     )}
                   </div>
                 </div>
-                <div className="overview-card overview-ml">
+                <div className="overview-card">
                   <div className="overview-details">
                     <div className="time-stamp">
                       <p>2h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
-                        {/* {position_analysis_stats["2h"]
-                      ? position_analysis_stats["2h"].forecast_time
-                      : "0"} */}
-                        0000-00-00 00:00
+                        {position_analysis_stats["2h"]
+                          ? position_analysis_stats["2h"].forecast_time
+                          : "0"}
                       </p>
                       <Tooltip title="Forecast time">
                         <IconButton>
@@ -1113,60 +1114,69 @@ const Overview = () => {
                       </Tooltip>
                     </div>
                   </div>
-                  <div className="percentage-wapper-disable">
-                    {/* <div className='percentage-long'>
-                                <p>Long</p>
-                            </div>
-                            <div className='percentage-short'>
-                                <p>Short</p>
-                            </div> */}
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["2h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["2h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["2h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["2h"].long_percentage}%`
+                          )}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["2h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["2h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["2h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["2h"].short_percentage}%`
+                          )}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
                   </div>
-                  {/* <div className="percentage-wapper">
-                {position_analysis_stats["2h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["2h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["2h"]
-                        ? position_analysis_stats["2h"].long_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["2h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["2h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["2h"]
-                        ? position_analysis_stats["2h"].short_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-              </div> */}
                 </div>
-                <div className="overview-card overview-ml">
+                <div className="overview-card">
                   <div className="overview-details">
                     <div className="time-stamp">
                       <p>1h Models</p>
                     </div>
                     <div className="date-stamp">
                       <p>
-                        {/* {position_analysis_stats["1h"]
-                      ? position_analysis_stats["1h"].forecast_time
-                      : "0"} */}
-                        0000-00-00 00:00
+                        {position_analysis_stats["1h"]
+                          ? position_analysis_stats["1h"].forecast_time
+                          : "0"}
                       </p>
                       <Tooltip title="Forecast time">
                         <IconButton>
@@ -1175,48 +1185,58 @@ const Overview = () => {
                       </Tooltip>
                     </div>
                   </div>
-                  <div className="percentage-wapper-disable">
-                    {/* <div className='percentage-long'>
-                                <p>Long</p>
-                            </div>
-                            <div className='percentage-short'>
-                                <p>Short</p>
-                            </div> */}
+                  <div className="percentage-wapper">
+                    {position_analysis_stats["1h"] ? (
+                      <div
+                        className="percentage-long"
+                        style={{
+                          width: `${position_analysis_stats["1h"].long_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["1h"].long_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["1h"].long_percentage}%`
+                          )}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
+                    {position_analysis_stats["1h"] ? (
+                      <div
+                        className="percentage-short"
+                        style={{
+                          width: `${position_analysis_stats["1h"].short_percentage}%`,
+                        }}
+                      >
+                        <p>
+                          {position_analysis_stats["1h"].short_percentage <
+                          20 ? (
+                            <p
+                              style={{
+                                visibility: "hidden",
+                              }}
+                            >
+                              0
+                            </p>
+                          ) : (
+                            `${position_analysis_stats["1h"].short_percentage}%`
+                          )}
+                        </p>
+                      </div>
+                    ) : (
+                      "0"
+                    )}
                   </div>
-                  {/* <div className="percentage-wapper">
-                {position_analysis_stats["1h"] ? (
-                  <div
-                    className="percentage-long"
-                    style={{
-                      width: `${position_analysis_stats["1h"].long_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["1h"]
-                        ? position_analysis_stats["1h"].long_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-                {position_analysis_stats["1h"] ? (
-                  <div
-                    className="percentage-short"
-                    style={{
-                      width: `${position_analysis_stats["1h"].short_percentage}%`,
-                    }}
-                  >
-                    <p>
-                      {position_analysis_stats["1h"]
-                        ? position_analysis_stats["1h"].short_percentage
-                        : "0"}
-                    </p>
-                  </div>
-                ) : (
-                  "0"
-                )}
-              </div> */}
                 </div>
               </div>
             </div>

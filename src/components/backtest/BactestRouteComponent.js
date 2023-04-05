@@ -41,30 +41,9 @@ import CanvasjsSplineAreaChartWithRangeSelecetor from "../models/graphs/Canvasjs
 import CanvasjsDrawdownWithSliderRange from "../models/graphs/CanvasjsDrawdownWithSliderRange";
 import CumulativePNL from "../models/cumulativePNL/CumulativePNL";
 import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
-import { faL, faLariSign, faListAlt } from "@fortawesome/free-solid-svg-icons";
+import { faLariSign, faListAlt } from "@fortawesome/free-solid-svg-icons";
 import { ThreeDots } from "react-loader-spinner";
-// import dotenv from "dotenv";
-// const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
-
-// const starCountRef = ref(database, "tweets");
-// set(ref(database, "backtest_queue/" + "user_" + id), {
-//   id: "user_" + id,
-//   modelName: "ZT1_0M24BTC26",
-//   start_date: "1674876799",
-//   end_date: "1677555199",
-//   take_profit: 10,
-//   stop_loss: 5,
-//   transaction_fee: 0.07,
-//   status: 0,
-//   // profile_picture: imageUrl,
-// });
-// onValue(starCountRef, (snapshot) => {
-//   const data = snapshot.val();
-//   console.log("Data firebase", data);
-//   // updateStarCount(postElement, data);
-// });
-
-const BacktestComponent = (props) => {
+const BactestRouteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -182,7 +161,7 @@ const BacktestComponent = (props) => {
       const res = rows_cached.filter((item) => {
         return item.modelName == values.label;
       });
-      // handleChangePage("", 1);AV
+      // handleChangePage("", 1);
       // setRows(res);
     } else {
       set_model_selected_for_backtest("");
@@ -614,11 +593,11 @@ const BacktestComponent = (props) => {
   const [
     take_profit_selected_for_backtest,
     set_take_profit_selected_for_backtest,
-  ] = useState(100);
+  ] = useState(null);
   const [stop_loss_selected_for_backtest, set_stop_loss_selected_for_backtest] =
-    useState(100);
+    useState(null);
   const [fee_selected_for_backtest, set_fee_selected_for_backtest] =
-    useState(0);
+    useState(null);
 
   const [selectedDateMobile, setSelectedDateMobile] = useState(null);
   const [
@@ -628,15 +607,15 @@ const BacktestComponent = (props) => {
   const [
     take_profit_selected_for_backtest_mobile,
     set_take_profit_selected_for_backtest_mobile,
-  ] = useState(100);
+  ] = useState(null);
   const [
     stop_loss_selected_for_backtest_mobile,
     set_stop_loss_selected_for_backtest_mobile,
-  ] = useState(100);
+  ] = useState(null);
   const [
     fee_selected_for_backtest_mobile,
     set_fee_selected_for_backtest_mobile,
-  ] = useState(0);
+  ] = useState(null);
   const handleDateChange = (date) => {
     setSelectedDate(date);
     const parsedDate = dayjs(date).toDate();
@@ -678,23 +657,7 @@ const BacktestComponent = (props) => {
       !fee_selected_for_backtest ||
       !model_selected_for_backted
     ) {
-      alert(
-        "Kindly input all fields to run backtest",
-        date_selected_for_backtest,
-        take_profit_selected_for_backtest,
-        stop_loss_selected_for_backtest,
-        fee_selected_for_backtest,
-        model_selected_for_backted
-      );
-
-      // console.log(
-      //   "Kindly input all fields to run backtest",
-      //   date_selected_for_backtest,
-      //   take_profit_selected_for_backtest,
-      //   stop_loss_selected_for_backtest,
-      //   fee_selected_for_backtest,
-      //   model_selected_for_backted
-      // );
+      alert("Kindly input all fields to run backtest");
     } else {
       const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
       set_backtest_table_name(id);
@@ -742,6 +705,7 @@ const BacktestComponent = (props) => {
         check = false;
         alert("Kindly input value in numbers for fee");
       }
+
       if (check == true) {
         setIsLoading(true);
         set(ref(database, "backtest_queue/" + "user_" + id), {
@@ -772,12 +736,6 @@ const BacktestComponent = (props) => {
     ) {
       alert("Kindly input all fields to run backtest");
     } else {
-      // console.log(
-      //   date_selected_for_backtest,
-      //   take_profit_selected_for_backtest,
-      //   stop_loss_selected_for_backtest,
-      //   fee_selected_for_backtest
-      // );
       const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
       set_backtest_table_name(id);
       var current_time = new Date();
@@ -852,20 +810,6 @@ const BacktestComponent = (props) => {
     model_name_for_result_backtest_result,
     set_model_name_for_result_backtest_result,
   ] = useState(null);
-  const [
-    model_name_for_result_backtest_result_stats,
-    set_model_name_for_result_backtest_result_stats,
-  ] = useState(null);
-
-  useEffect(() => {
-    if (props.model_name) {
-      set_model_name_for_result_backtest_result(props.model_name);
-      set_model_name_for_result_backtest_result_stats(props.model_name);
-    }
-  }, []);
-  // if (props.model_name) {
-  //   set_model_name_for_result_backtest_result(props.model_name);
-  // }
   useEffect(() => {
     // console.log("I am called again bro");
     if (flag_for_backtest_result == null) {
@@ -890,9 +834,6 @@ const BacktestComponent = (props) => {
               set_model_name_for_result_backtest_result(
                 "user_" + backtest_table_name
               );
-              set_model_name_for_result_backtest_result_stats(
-                "user_" + backtest_table_name + "_stats"
-              );
               setIsLoading(false);
             } else {
               set_flag_backtest_result(new Date());
@@ -909,96 +850,28 @@ const BacktestComponent = (props) => {
       return;
     } else {
       // console.log("Here is strategies for date picker -->", strategies);
-      if (model_selected_for_backted) {
+      if (model_selected_for_backted != "") {
         const model = model_selected_for_backted;
         const dateStr = strategies[model].date_started;
         const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
-        // console.log(
-        //   "Debugg model -->",
-        //   model_selected_for_backted,
-        //   dateStr,
-        //   dayjs.unix(unixTimestamp)
-        // );
-
-        setDisableBefore(dayjs.unix(unixTimestamp));
         setSelectedDate(dayjs.unix(unixTimestamp));
+        setDisableBefore(dayjs.unix(unixTimestamp));
+
+        set_model_selected_for_backtest(model.replace("-", "_"));
+        setDisableBefore(dayjs.unix(unixTimestamp));
         set_date_selected_for_backtest(unixTimestamp);
+        // set_model_name_for_result_backtest_result(name.replace("-", "_"));
+        // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
+
         set_date_selected_for_backtest_mobile(unixTimestamp);
+        // set_model_name_for_result_backtest_result(model.replace("-", "_"));
+        // set_model_name_for_result_backtest_result_stats(
+        //   model.replace("-", "_")
+        // );
       }
     }
   }, [strategies, model_selected_for_backted]);
   // console.log(model_name_for_result_backtest_result);
-  const [model_name_check, set_model_name_check] = useState(null);
-  var name = location.pathname.split("/")[1];
-  if (name != model_name_check) {
-    set_model_name_check(name);
-  }
-  useEffect(() => {
-    if (strategies == null) {
-      return;
-    } else {
-      var name = location.pathname.split("/")[1];
-      if (!name.includes("backtest")) {
-        set_default_value_model({ label: name });
-        set_default_value_currency({
-          label: strategies[name.replace("-", "_")].currency,
-        });
-        // set_model_name_for_result_backtest_result
-        setSelectedItem(strategies[name.replace("-", "_")].time_horizon);
-        setTimeH(strategies[name.replace("-", "_")].time_horizon);
-
-        const dateStr = strategies[name.replace("-", "_")].date_started;
-        const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
-        // console.log(
-        //   "Debugg model -->",
-        //   model_selected_for_backted,
-        //   dateStr,
-        //   dayjs.unix(unixTimestamp)
-        // );
-        set_model_selected_for_backtest(name.replace("-", "_"));
-        setDisableBefore(dayjs.unix(unixTimestamp));
-        setSelectedDate(dayjs.unix(unixTimestamp));
-        set_date_selected_for_backtest(unixTimestamp);
-        // set_model_name_for_result_backtest_result(name.replace("-", "_"));
-        // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
-
-        set_date_selected_for_backtest_mobile(unixTimestamp);
-        set_model_name_for_result_backtest_result(name.replace("-", "_"));
-        set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
-
-        // setSelectedDate(strategies[name.replace("-", "_")].start_date);
-        // console.log("Pathname -->", name, default_value_model);
-      } else {
-        // set_default_value_model(nul);
-        // set_default_value_currency({
-        //   label: strategies[name.replace("-", "_")].currency,
-        // });
-        // set_model_name_for_result_backtest_result
-        // setSelectedItem(strategies[name.replace("-", "_")].time_horizon);
-        // setTimeH(strategies[name.replace("-", "_")].time_horizon);
-        // const dateStr = strategies[name.replace("-", "_")].date_started;
-        // const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
-        // console.log(
-        //   "Debugg model -->",
-        //   model_selected_for_backted,
-        //   dateStr,
-        //   dayjs.unix(unixTimestamp)
-        // );
-        // set_model_selected_for_backtest(name.replace("-", "_"));
-        // setDisableBefore(dayjs.unix(unixTimestamp));
-        // setSelectedDate(dayjs.unix(unixTimestamp));
-        // set_date_selected_for_backtest(unixTimestamp);
-        // set_model_name_for_result_backtest_result(name.replace("-", "_"));
-        // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
-        // set_date_selected_for_backtest_mobile(unixTimestamp);
-        // set_model_name_for_result_backtest_result(name.replace("-", "_"));
-        // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
-      }
-
-      // set_model_selected_for_backtest(name);
-    }
-  }, [strategies, model_name_check]);
-
   return (
     <div className="back-test">
       <div className="container">
@@ -1267,7 +1140,7 @@ const BacktestComponent = (props) => {
                   onChange={handleChangeForCoinSelection}
                   options={coin_search_selection}
                   autoHighlight
-                  value={default_value_currency}
+                  defaultValue={default_value_currency}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1490,7 +1363,7 @@ const BacktestComponent = (props) => {
                     },
                   }}
                   onChange={handleChangeForModelSelection}
-                  value={default_value_model}
+                  defaultValue={default_value_model}
                   options={model_search_selection}
                   autoHighlight
                   getOptionLabel={(option) => option.label}
@@ -1688,7 +1561,7 @@ const BacktestComponent = (props) => {
                   onChange={handleChangeForCoinSelection}
                   options={coin_search_selection}
                   autoHighlight
-                  value={default_value_currency}
+                  defaultValue={default_value_currency}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1722,7 +1595,7 @@ const BacktestComponent = (props) => {
                   onChange={handleChangeForModelSelection}
                   options={model_search_selection}
                   autoHighlight
-                  value={default_value_model}
+                  defaultValue={default_value_model}
                   getOptionLabel={(option) => option.label}
                   renderInput={(params) => (
                     <TextField
@@ -1936,7 +1809,9 @@ const BacktestComponent = (props) => {
           {model_name_for_result_backtest_result ? (
             <InDepthBacktest
               model_name={model_name_for_result_backtest_result}
-              model_name_stats={model_name_for_result_backtest_result_stats}
+              model_name_stats={
+                model_name_for_result_backtest_result + "_stats"
+              }
             />
           ) : null}
           {model_name_for_result_backtest_result ? (
@@ -1946,7 +1821,7 @@ const BacktestComponent = (props) => {
           ) : null}
           {model_name_for_result_backtest_result ? (
             <GraphsTableBacktest
-              model_name={model_name_for_result_backtest_result_stats}
+              model_name={model_name_for_result_backtest_result + "_stats"}
             />
           ) : null}
 
@@ -1957,4 +1832,4 @@ const BacktestComponent = (props) => {
   );
 };
 
-export default BacktestComponent;
+export default BactestRouteComponent;

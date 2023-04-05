@@ -25,6 +25,7 @@ import SenstitivityAnalysisMarketSpecificAlpha from "../src/components/resources
 import SenstitivityAnalysisSingleAlphaCas from "../src/components/resources/derivations/SenstitivityAnalysisSingleAlphaCas";
 import TheGoverningEquation from "../src/components/resources/derivations/TheGoverningEquation";
 import TheUnderlyingAssumptions from "../src/components/resources/derivations/TheUnderlyingAssumptions";
+import BactestRouteComponent from "./components/backtest/BactestRouteComponent";
 import Documentation from "./pages/Documentation";
 // import { database } from "./firebase_config";
 // import { ref, onValue, set } from "firebase/database";
@@ -120,7 +121,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/faqs" element={<FAQ />} />
             <Route path="/compare" element={<Compare />} />
-            <Route path="/backtest" element={<Backtest />} />
+            <Route path="/backtest" element={<BactestRouteComponent />} />
             <Route path="/API" element={<Documentation />} />
 
             {/* RESOURCES ROUTING FOR SUB ITEMS */}

@@ -6,7 +6,12 @@ import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
-import { AiFillCaretDown, AiFillHome, AiFillInfoCircle, AiOutlineApi } from "react-icons/ai";
+import {
+  AiFillCaretDown,
+  AiFillHome,
+  AiFillInfoCircle,
+  AiOutlineApi,
+} from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
 
@@ -131,10 +136,10 @@ export default function NavMobile(props) {
               <AiFillHome className="nav-icons" />
               Forecasts
             </CustomLink>
-            {/* <CustomLink to="/backtest" onClick={toCloseNav}>
+            <CustomLink to="/backtest" onClick={toCloseNav}>
               <BsGraphUp className="nav-icons" />
               Backtest
-            </CustomLink> */}
+            </CustomLink>
             <CustomLink to="/compare" onClick={toCloseNav}>
               <BiColumns className="nav-icons" />
               Compare
