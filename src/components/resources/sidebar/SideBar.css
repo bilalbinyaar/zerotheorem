@@ -180,4 +180,8 @@
   .sub-brokendown-item p {
     font-weight: 400;
   }
+
+  .main-item h3 {
+    font-size: 13px;
+  }
 }
