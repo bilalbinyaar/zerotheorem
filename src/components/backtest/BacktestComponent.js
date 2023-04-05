@@ -43,6 +43,7 @@ import CumulativePNL from "../models/cumulativePNL/CumulativePNL";
 import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
 import { faL, faLariSign, faListAlt } from "@fortawesome/free-solid-svg-icons";
 import { ThreeDots } from "react-loader-spinner";
+import Swal from "sweetalert2";
 // import dotenv from "dotenv";
 // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
 
@@ -552,13 +553,6 @@ const BacktestComponent = (props) => {
   };
 
   const [isActive, setActive] = useState("true");
-  // const [isActive1, setActive1] = useState('false');
-  // const activeList = () => {
-  //   setActive(!isActive);
-  // };
-  // const activeList1 = () => {
-  //   setActive1(!isActive1);
-  // };
 
   const [pageSize, setPageSize] = React.useState(20);
 
@@ -675,18 +669,23 @@ const BacktestComponent = (props) => {
       !date_selected_for_backtest ||
       !take_profit_selected_for_backtest ||
       !stop_loss_selected_for_backtest ||
-      !fee_selected_for_backtest ||
+      fee_selected_for_backtest.length == 0 ||
       !model_selected_for_backted
     ) {
-      alert(
-        "Kindly input all fields to run backtest",
+      Swal.fire({
+        title: "Kindly input all fields to run backtest",
+        icon: "error",
+        timer: 2000,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
         date_selected_for_backtest,
         take_profit_selected_for_backtest,
         stop_loss_selected_for_backtest,
         fee_selected_for_backtest,
-        model_selected_for_backted
-      );
-
+        model_selected_for_backted,
+      });
       // console.log(
       //   "Kindly input all fields to run backtest",
       //   date_selected_for_backtest,
@@ -706,14 +705,32 @@ const BacktestComponent = (props) => {
         take_profit_selected_for_backtest > 100
       ) {
         check = false;
-        alert("Take profit should be in range 0-100%");
+        // alert("Take profit should be in range 0-100%");
+        Swal.fire({
+          title: "Take profit should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         !Number.isInteger(parseInt(take_profit_selected_for_backtest)) ||
         !Number.isFinite(parseFloat(take_profit_selected_for_backtest))
       ) {
         check = false;
-        alert("Kindly input value in numbers for take profit");
+        // alert("Kindly input value in numbers for take profit");
+        Swal.fire({
+          title: "Kindly input value in numbers for take profit",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         stop_loss_selected_for_backtest < 0 ||
@@ -721,26 +738,62 @@ const BacktestComponent = (props) => {
       ) {
         check = false;
 
-        alert("Stop loss should be in range 0-100%");
+        // alert("Stop loss should be in range 0-100%");
+        Swal.fire({
+          title: "Stop loss should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         !Number.isInteger(parseInt(stop_loss_selected_for_backtest)) ||
         !Number.isFinite(parseFloat(stop_loss_selected_for_backtest))
       ) {
         check = false;
-        alert("Kindly input value in numbers for stop loss");
+        // alert("Kindly input value in numbers for stop loss");
+        Swal.fire({
+          title: "Kindly input value in numbers for stop profit",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
         check = false;
 
-        alert("Fee should be in range 0-1%");
+        // alert("Fee should be in range 0-1%");
+        Swal.fire({
+          title: "Fee should be in range 0-1%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         !Number.isInteger(parseInt(fee_selected_for_backtest)) ||
         !Number.isFinite(parseFloat(fee_selected_for_backtest))
       ) {
         check = false;
-        alert("Kindly input value in numbers for fee");
+        // alert("Kindly input value in numbers for fee");
+        Swal.fire({
+          title: "Kindly input value in numbers for fee",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (check == true) {
         setIsLoading(true);
@@ -767,10 +820,19 @@ const BacktestComponent = (props) => {
       !date_selected_for_backtest_mobile ||
       !take_profit_selected_for_backtest_mobile ||
       !stop_loss_selected_for_backtest_mobile ||
-      !fee_selected_for_backtest_mobile ||
+      fee_selected_for_backtest.length == 0 ||
       !model_selected_for_backted
     ) {
-      alert("Kindly input all fields to run backtest");
+      // alert("Kindly input all fields to run backtest");
+      Swal.fire({
+        title: "Kindly input all fields to run backtest",
+        icon: "error",
+        timer: 2000,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+      });
     } else {
       // console.log(
       //   date_selected_for_backtest,
@@ -788,14 +850,32 @@ const BacktestComponent = (props) => {
         take_profit_selected_for_backtest_mobile > 100
       ) {
         check = false;
-        alert("Take profit should be in range 0-100%");
+        // alert("Take profit should be in range 0-100%");
+        Swal.fire({
+          title: "Take profit should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         !Number.isInteger(parseInt(take_profit_selected_for_backtest_mobile)) ||
         !Number.isFinite(parseFloat(take_profit_selected_for_backtest_mobile))
       ) {
         check = false;
-        alert("Kindly input value in numbers for take profit");
+        // alert("Kindly input value in numbers for take profit");
+        Swal.fire({
+          title: "Kindly input value in numbers for take profit",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         stop_loss_selected_for_backtest_mobile < 0 ||
@@ -803,14 +883,32 @@ const BacktestComponent = (props) => {
       ) {
         check = false;
 
-        alert("Stop loss should be in range 0-100%");
+        // alert("Stop loss should be in range 0-100%");
+        Swal.fire({
+          title: "Stop loss should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         !Number.isInteger(parseInt(stop_loss_selected_for_backtest_mobile)) ||
         !Number.isFinite(parseFloat(stop_loss_selected_for_backtest_mobile))
       ) {
         check = false;
-        alert("Kindly input value in numbers for stop loss");
+        // alert("Kindly input value in numbers for stop loss");
+        Swal.fire({
+          title: "Kindly input value in numbers for stop loss",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         fee_selected_for_backtest_mobile < 0 ||
@@ -818,14 +916,32 @@ const BacktestComponent = (props) => {
       ) {
         check = false;
 
-        alert("Fee should be in range 0-1%");
+        // alert("Fee should be in range 0-1%");
+        Swal.fire({
+          title: "Fee should be in range 0-1%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         !Number.isInteger(parseInt(fee_selected_for_backtest_mobile)) ||
         !Number.isFinite(parseFloat(fee_selected_for_backtest_mobile))
       ) {
         check = false;
-        alert("Kindly input value in numbers for fee");
+        // alert("Kindly input value in numbers for fee");
+        Swal.fire({
+          title: "Kindly input value in numbers for fee",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (check == true) {
         setIsLoading(true);
