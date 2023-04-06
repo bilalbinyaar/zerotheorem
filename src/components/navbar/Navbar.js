@@ -159,7 +159,7 @@ export default function Navbar() {
                 FAQs
               </CustomLink>
 
-              {authCheck === true ? (
+              {/* {authCheck === true ? (
                 <CustomLink
                   to="/"
                   onClick={() => {
@@ -170,7 +170,7 @@ export default function Navbar() {
                 </CustomLink>
               ) : (
                 <CustomLink to="/login">Login</CustomLink>
-              )}
+              )} */}
             </ul>
           )}
 

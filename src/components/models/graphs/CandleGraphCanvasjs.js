@@ -252,6 +252,7 @@ function CandleGraphCanvasjs(props) {
           setDataPoints1(dps1);
           setDataPoints2(dps2);
           setDataPoints3(dps3);
+          console.log(dps1);
           setIsLoaded(true);
           // console.log("Console values -->", dps1, dps2, dps3);
           let start_time = parseInt(
@@ -579,6 +580,7 @@ function CandleGraphCanvasjs(props) {
       }, 60000);
     }
   }, [last_minute]);
+
   return (
     <div>
       {isLoaded ? (
@@ -591,7 +593,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans no-padding">
                   <span>Open : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).length > 0 ? (
                       <span
                         style={{
                           color:
@@ -614,7 +616,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>High : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).length > 0 ? (
                       <span
                         style={{
                           color:
@@ -637,7 +639,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>Low : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).length > 0 ? (
                       <span
                         style={{
                           color:
@@ -660,7 +662,7 @@ function CandleGraphCanvasjs(props) {
                 <div className="current-position-spans">
                   <span>Close : </span>
                   <span className="">
-                    {Object.values(dataPoints1) ? (
+                    {Object.values(dataPoints1).length > 0 ? (
                       <span
                         style={{
                           color:
