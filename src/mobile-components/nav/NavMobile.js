@@ -148,7 +148,7 @@ export default function NavMobile(props) {
               <BsFillLayersFill className="nav-icons" />
               Derivations
             </CustomLink>
-            <CustomLink to="/API" onClick={toCloseNav}>
+            <CustomLink to="/api" onClick={toCloseNav}>
               <AiOutlineApi className="nav-icons" />
               API
             </CustomLink>
