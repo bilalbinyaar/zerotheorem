@@ -693,7 +693,7 @@ const BacktestComponent = (props) => {
       const timestamp = current_time.getTime();
       var check = true;
       if (
-        take_profit_selected_for_backtest < 0 ||
+        take_profit_selected_for_backtest <= 0 ||
         take_profit_selected_for_backtest > 100
       ) {
         check = false;
@@ -722,7 +722,7 @@ const BacktestComponent = (props) => {
         });
       }
       if (
-        stop_loss_selected_for_backtest < 0 ||
+        stop_loss_selected_for_backtest <= 0 ||
         stop_loss_selected_for_backtest > 100
       ) {
         check = false;
@@ -1000,6 +1000,16 @@ const BacktestComponent = (props) => {
                 showConfirmButton: false,
               });
               setIsLoading(false);
+            } else if (data.status == 2) {
+              Swal.fire({
+                title: "Backtest is not successful",
+                icon: "error",
+                timer: 2000,
+                timerProgressBar: true,
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+              });
             } else {
               set_flag_backtest_result(new Date());
             }
@@ -1134,7 +1144,7 @@ const BacktestComponent = (props) => {
                   sx={{ m: 1, minWidth: 60 }}
                 >
                   {/* <InputLabel id="demo-simple-select-standard-label"></InputLabel> */}
-                  <Select
+                  {/* <Select
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
                     sx={{
@@ -1159,11 +1169,11 @@ const BacktestComponent = (props) => {
                     <MenuItem value={"3h"}>3h</MenuItem>
                     <MenuItem value={"2h"}>2h</MenuItem>
                     <MenuItem value={"1h"}>1h</MenuItem>
-                  </Select>
+                  </Select> */}
                 </FormControl>
               </div>
 
-              <div className="horizon-right">
+              {/* <div className="horizon-right">
                 <Autocomplete
                   id="country-select-demo"
                   className="currency-auto"
@@ -1613,13 +1623,13 @@ const BacktestComponent = (props) => {
                     />
                   )}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         ) : (
-          <div className="horizon">
-            <div className="horizon-row">
-              <div className="horizon-left">
+          // <div className="horizon">
+          <div className="">
+            {/* <div className="horizon-left">
                 <h3>Time Horizon</h3>
                 <p className="divider-icon"> | </p>
                 <div className="hours-list">
@@ -1778,10 +1788,10 @@ const BacktestComponent = (props) => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="horizon-right">
-                <Autocomplete
+            {/* <div className="horizon-right"> */}
+            {/* <Autocomplete
                   id="country-select-demo"
                   sx={{
                     width: 220,
@@ -1806,8 +1816,8 @@ const BacktestComponent = (props) => {
                       }}
                     />
                   )}
-                />
-                {/* <Select
+                /> */}
+            {/* <Select
                   placeholder="Models"
                   options={model_search_selection}
                   components={{ DropdownIndicator }}
@@ -1815,7 +1825,7 @@ const BacktestComponent = (props) => {
                   isClearable={true}
                   onChange={handleChangeForModelSelection}
                 /> */}
-                <Autocomplete
+            {/* <Autocomplete
                   id="country-select-demo"
                   sx={{
                     width: 220,
@@ -1840,10 +1850,10 @@ const BacktestComponent = (props) => {
                       }}
                     />
                   )}
-                />
-              </div>
-            </div>
+                /> */}
+            {/* </div> */}
           </div>
+          // </div>
         )}
 
         {/* THIS IS FOR WEB */}

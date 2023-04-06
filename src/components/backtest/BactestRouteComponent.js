@@ -682,7 +682,7 @@ const BactestRouteComponent = () => {
       const timestamp = current_time.getTime();
       var check = true;
       if (
-        take_profit_selected_for_backtest < 0 ||
+        take_profit_selected_for_backtest <= 0 ||
         take_profit_selected_for_backtest > 100
       ) {
         check = false;
@@ -713,7 +713,7 @@ const BactestRouteComponent = () => {
         });
       }
       if (
-        stop_loss_selected_for_backtest < 0 ||
+        stop_loss_selected_for_backtest <= 0 ||
         stop_loss_selected_for_backtest > 100
       ) {
         check = false;
@@ -815,7 +815,7 @@ const BactestRouteComponent = () => {
       const timestamp = current_time.getTime();
       var check = true;
       if (
-        take_profit_selected_for_backtest_mobile < 0 ||
+        take_profit_selected_for_backtest_mobile <= 0 ||
         take_profit_selected_for_backtest_mobile > 100
       ) {
         check = false;
@@ -844,7 +844,7 @@ const BactestRouteComponent = () => {
         });
       }
       if (
-        stop_loss_selected_for_backtest_mobile < 0 ||
+        stop_loss_selected_for_backtest_mobile <= 0 ||
         stop_loss_selected_for_backtest_mobile > 100
       ) {
         check = false;
@@ -955,6 +955,17 @@ const BactestRouteComponent = () => {
               Swal.fire({
                 title: "Backtest is successful",
                 icon: "success",
+                timer: 2000,
+                timerProgressBar: true,
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+              });
+              setIsLoading(false);
+            } else if (data.status == 2) {
+              Swal.fire({
+                title: "Backtest is not successful",
+                icon: "error",
                 timer: 2000,
                 timerProgressBar: true,
                 toast: true,
