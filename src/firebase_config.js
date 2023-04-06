@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
+import { getFirestore } from "firebase/firestore";
+
+import { getAuth } from "firebase/auth";
+
+import { getStorage } from "firebase/storage";
+
+import { GoogleAuthProvider } from "firebase/auth";
+
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
@@ -21,5 +29,10 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app);
+// Initialize Firebase
+const firestore = getFirestore(app);
+const storage = getStorage(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
-export { database };
+export { firestore, storage, auth, provider, database };

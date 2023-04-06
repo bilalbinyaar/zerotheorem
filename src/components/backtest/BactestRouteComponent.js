@@ -1,5 +1,7 @@
 import React, { useEffect, useState, memo, useRef } from "react";
 import { useBeforeUnload, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
+import validator from "validator";
 
 import "./Backtest.css";
 import clsx from "clsx";
@@ -43,6 +45,7 @@ import CumulativePNL from "../models/cumulativePNL/CumulativePNL";
 import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
 import { faLariSign, faListAlt } from "@fortawesome/free-solid-svg-icons";
 import { ThreeDots } from "react-loader-spinner";
+import { isNumber } from "@amcharts/amcharts5/.internal/core/util/Type";
 const BactestRouteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -657,7 +660,21 @@ const BactestRouteComponent = () => {
       !fee_selected_for_backtest ||
       !model_selected_for_backted
     ) {
-      alert("Kindly input all fields to run backtest");
+      //   alert("Kindly input all fields to run backtest");
+      Swal.fire({
+        title: "Kindly input all fields to run backtest",
+        icon: "error",
+        timer: 2000,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+        date_selected_for_backtest,
+        take_profit_selected_for_backtest,
+        stop_loss_selected_for_backtest,
+        fee_selected_for_backtest,
+        model_selected_for_backted,
+      });
     } else {
       const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
       set_backtest_table_name(id);
@@ -669,14 +686,31 @@ const BactestRouteComponent = () => {
         take_profit_selected_for_backtest > 100
       ) {
         check = false;
-        alert("Take profit should be in range 0-100%");
+        // alert("Take profit should be in range 0-100%");
+        Swal.fire({
+          title: "Take profit should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
-      if (
-        !Number.isInteger(parseInt(take_profit_selected_for_backtest)) ||
-        !Number.isFinite(parseFloat(take_profit_selected_for_backtest))
-      ) {
+
+      if (!validator.isNumeric(take_profit_selected_for_backtest)) {
         check = false;
-        alert("Kindly input value in numbers for take profit");
+        // alert("Kindly input value in numbers for take profit");
+
+        Swal.fire({
+          title: "Kindly input value in numbers for take profit",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         stop_loss_selected_for_backtest < 0 ||
@@ -684,26 +718,56 @@ const BactestRouteComponent = () => {
       ) {
         check = false;
 
-        alert("Stop loss should be in range 0-100%");
+        // alert("Stop loss should be in range 0-100%");
+        Swal.fire({
+          title: "Stop loss should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
-      if (
-        !Number.isInteger(parseInt(stop_loss_selected_for_backtest)) ||
-        !Number.isFinite(parseFloat(stop_loss_selected_for_backtest))
-      ) {
+      if (!validator.isNumeric(stop_loss_selected_for_backtest)) {
         check = false;
-        alert("Kindly input value in numbers for stop loss");
+        // alert("Kindly input value in numbers for stop loss");
+        Swal.fire({
+          title: "Kindly input value in numbers for stop profit",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
         check = false;
 
-        alert("Fee should be in range 0-1%");
+        // alert("Fee should be in range 0-1%");
+        Swal.fire({
+          title: "Fee should be in range 0-1%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
-      if (
-        !Number.isInteger(parseInt(fee_selected_for_backtest)) ||
-        !Number.isFinite(parseFloat(fee_selected_for_backtest))
-      ) {
+      if (!validator.isNumeric(fee_selected_for_backtest)) {
         check = false;
-        alert("Kindly input value in numbers for fee");
+        // alert("Kindly input value in numbers for fee");
+        Swal.fire({
+          title: "Kindly input value in numbers for fee",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
 
       if (check == true) {
@@ -734,7 +798,16 @@ const BactestRouteComponent = () => {
       !fee_selected_for_backtest_mobile ||
       !model_selected_for_backted
     ) {
-      alert("Kindly input all fields to run backtest");
+      //   alert("Kindly input all fields to run backtest");
+      Swal.fire({
+        title: "Kindly input all fields to run backtest",
+        icon: "error",
+        timer: 2000,
+        timerProgressBar: true,
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+      });
     } else {
       const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
       set_backtest_table_name(id);
@@ -746,14 +819,29 @@ const BactestRouteComponent = () => {
         take_profit_selected_for_backtest_mobile > 100
       ) {
         check = false;
-        alert("Take profit should be in range 0-100%");
+        // alert("Take profit should be in range 0-100%");
+        Swal.fire({
+          title: "Take profit should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
-      if (
-        !Number.isInteger(parseInt(take_profit_selected_for_backtest_mobile)) ||
-        !Number.isFinite(parseFloat(take_profit_selected_for_backtest_mobile))
-      ) {
+      if (!validator.isNumeric(take_profit_selected_for_backtest_mobile)) {
         check = false;
-        alert("Kindly input value in numbers for take profit");
+        // alert("Kindly input value in numbers for take profit");
+        Swal.fire({
+          title: "Kindly input value in numbers for take profit",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         stop_loss_selected_for_backtest_mobile < 0 ||
@@ -761,14 +849,29 @@ const BactestRouteComponent = () => {
       ) {
         check = false;
 
-        alert("Stop loss should be in range 0-100%");
+        // alert("Stop loss should be in range 0-100%");
+        Swal.fire({
+          title: "Stop loss should be in range 0-100%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
-      if (
-        !Number.isInteger(parseInt(stop_loss_selected_for_backtest_mobile)) ||
-        !Number.isFinite(parseFloat(stop_loss_selected_for_backtest_mobile))
-      ) {
+      if (!validator.isNumeric(stop_loss_selected_for_backtest_mobile)) {
         check = false;
-        alert("Kindly input value in numbers for stop loss");
+        // alert("Kindly input value in numbers for stop loss");
+        Swal.fire({
+          title: "Kindly input value in numbers for stop profit",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (
         fee_selected_for_backtest_mobile < 0 ||
@@ -776,14 +879,29 @@ const BactestRouteComponent = () => {
       ) {
         check = false;
 
-        alert("Fee should be in range 0-1%");
+        // alert("Fee should be in range 0-1%");
+        Swal.fire({
+          title: "Fee should be in range 0-1%",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
-      if (
-        !Number.isInteger(parseInt(fee_selected_for_backtest_mobile)) ||
-        !Number.isFinite(parseFloat(fee_selected_for_backtest_mobile))
-      ) {
+      if (!validator.isNumeric(fee_selected_for_backtest_mobile)) {
         check = false;
-        alert("Kindly input value in numbers for fee");
+        // alert("Kindly input value in numbers for fee");
+        Swal.fire({
+          title: "Kindly input value in numbers for fee",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
       }
       if (check == true) {
         setIsLoading(true);
@@ -834,6 +952,15 @@ const BactestRouteComponent = () => {
               set_model_name_for_result_backtest_result(
                 "user_" + backtest_table_name
               );
+              Swal.fire({
+                title: "Backtest is successful",
+                icon: "success",
+                timer: 2000,
+                timerProgressBar: true,
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+              });
               setIsLoading(false);
             } else {
               set_flag_backtest_result(new Date());

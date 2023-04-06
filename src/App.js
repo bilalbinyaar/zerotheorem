@@ -31,7 +31,8 @@ import Documentation from "./pages/Documentation";
 // import { ref, onValue, set } from "firebase/database";
 // import cryptoRandomString from "crypto-random-string";
 import Backtest from "./pages/Backtest";
-
+import Login from "./components/Authentication/Login";
+import Signup from "./components/Authentication/Signup";
 // import dotenv from "dotenv";
 function App() {
   // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
@@ -57,7 +58,7 @@ function App() {
   // const MY_VARIABLE = useEnv("REACT_APP_SECRET_KEY");
   // console.log("Here finally secret key -->", process.env.REACT_APP_SECRET_KEY);
 
-  const { Login, user, error, loading } = useStateContext();
+  const { user, error, loading } = useStateContext();
 
   // SCROLL TO TOP
   const location = useLocation();
@@ -120,6 +121,9 @@ function App() {
             <Route path="/:name" element={<Models />} />
             <Route path="/about" element={<About />} />
             <Route path="/faqs" element={<FAQ />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
             <Route path="/compare" element={<Compare />} />
             <Route path="/backtest" element={<BactestRouteComponent />} />
             <Route path="/api" element={<Documentation />} />

@@ -114,6 +114,9 @@ export default function Navbar() {
             <CustomLink to="/api" onClick={toCloseNav}>
               API
             </CustomLink>
+            <CustomLink to="/login" onClick={toCloseNav}>
+              Login
+            </CustomLink>
             <CustomLink to="/about" onClick={toCloseNav}>
               About
             </CustomLink>
@@ -156,7 +159,7 @@ export default function Navbar() {
                 FAQs
               </CustomLink>
 
-              {/* {authCheck === true ? (
+              {authCheck === true ? (
                 <CustomLink
                   to="/"
                   onClick={() => {
@@ -167,7 +170,7 @@ export default function Navbar() {
                 </CustomLink>
               ) : (
                 <CustomLink to="/login">Login</CustomLink>
-              )} */}
+              )}
             </ul>
           )}
 
