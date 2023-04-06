@@ -7,7 +7,7 @@ import { useStateContext } from "../ContextProvider";
 import { Helmet } from "react-helmet";
 import BtcData from "../components/btc_api/BtcData";
 import Documentation from "./Documentation";
-
+import Login from "../components/Authentication/Login";
 const Home = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -29,7 +29,7 @@ const Home = () => {
           content="An economic framework for the prediction/forecast of Bitcoin and other cryptocurrencies using AI and ML models with a comprehensive evaluation of back and forward tests."
         />
         {/* CANONICAL TAG */}
-        <link rel="canonical" href="https://zerotheorem.com/"/>
+        <link rel="canonical" href="https://zerotheorem.com/" />
       </Helmet>
       {/* <BtcData /> */}
       {/* <Documentation /> */}
