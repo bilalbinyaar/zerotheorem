@@ -126,7 +126,7 @@ function App() {
 
             <Route path="/compare" element={<Compare />} />
             <Route path="/backtest" element={<BactestRouteComponent />} />
-            <Route path="/API" element={<Documentation />} />
+            <Route path="/api" element={<Documentation />} />
 
             {/* RESOURCES ROUTING FOR SUB ITEMS */}
             <Route

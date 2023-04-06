@@ -382,6 +382,7 @@ a:hover {
 
 a {
   display: flex;
+  align-items: center;
 }
 
 /* Timer CSS */

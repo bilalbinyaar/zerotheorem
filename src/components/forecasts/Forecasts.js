@@ -531,13 +531,13 @@ const Forecasts = () => {
                         <div className="forecasts-model-name">
                           <div
                             className="forecasts-model-name-icon-div"
-                            onClick={() => {
-                              linkModels(
-                                `/${Object.values(
-                                  topPerformerModels
-                                )[0].strategy_name.replace("_", "-")}`
-                              );
-                            }}
+                            // onClick={() => {
+                            //   linkModels(
+                            //     `/${Object.values(
+                            //       topPerformerModels
+                            //     )[0].strategy_name.replace("_", "-")}`
+                            //   );
+                            // }}
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
@@ -2823,13 +2823,13 @@ const Forecasts = () => {
                       <div className="forecasts-model-name">
                         <div
                           className="forecasts-model-name-icon-div"
-                          onClick={() => {
-                            linkModels(
-                              `/${Object.values(
-                                topPerformerModels
-                              )[9].strategy_name.replace("_", "-")}`
-                            );
-                          }}
+                          // onClick={() => {
+                          //   linkModels(
+                          //     `/${Object.values(
+                          //       topPerformerModels
+                          //     )[9].strategy_name.replace("_", "-")}`
+                          //   );
+                          // }}
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
