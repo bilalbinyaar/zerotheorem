@@ -242,7 +242,11 @@
   }
 
   .overview-wapper-top {
-    margin: 0rem 0rem 1rem 0rem;
+    margin: 1rem 0rem 1rem 0rem;
+  }
+
+  .overview-ml-for-web {
+    margin-left: 0.8rem;
   }
 }
 

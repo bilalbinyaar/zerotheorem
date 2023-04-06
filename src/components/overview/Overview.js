@@ -954,7 +954,7 @@ const Overview = () => {
               </div>
 
               <div className="overview-wapper-bottom">
-                <div className="overview-card">
+                <div className="overview-card overview-ml-for-web">
                   <div className="overview-details">
                     <div className="time-stamp">
                       <p>4h Models</p>
@@ -1096,7 +1096,7 @@ const Overview = () => {
                     )}
                   </div>
                 </div>
-                <div className="overview-card">
+                <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
                       <p>2h Models</p>
@@ -1167,7 +1167,7 @@ const Overview = () => {
                     )}
                   </div>
                 </div>
-                <div className="overview-card">
+                <div className="overview-card overview-ml">
                   <div className="overview-details">
                     <div className="time-stamp">
                       <p>1h Models</p>
