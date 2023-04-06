@@ -1275,11 +1275,11 @@ pre[class*="language-"] {
   margin-top: 0;
 }
 
-.documentation-items li.active {
+/* .documentation-items li.active {
   background-color: var(--color-day-yellow);
   color: black;
   border-radius: 10px;
-}
+} */
 
 @media screen and (max-width: 768px) {
   .copy {

@@ -111,9 +111,20 @@ export default function Navbar() {
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
             </CustomLink>
+            {/* <CustomLink className="menu-item">
+              API
+              <div className="sub-menu-items">
+                <CustomLink className="sub-menu-item" to="/api" onClick={toCloseNav}>
+                  Registration
+                </CustomLink>
+                <CustomLink className="sub-menu-item" to="/api" onClick={toCloseNav}>
+                  Documentation
+                </CustomLink>
+              </div> 
+            </CustomLink>*/}
             <CustomLink to="/api" onClick={toCloseNav}>
               API
-            </CustomLink>
+            </CustomLink> 
             <CustomLink to="/login" onClick={toCloseNav}>
               Login
             </CustomLink>
@@ -124,6 +135,7 @@ export default function Navbar() {
               FAQs
             </CustomLink>
           </ul>
+          
 
           {toggle && (
             <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -174,11 +186,11 @@ export default function Navbar() {
             </ul>
           )}
 
-          <div className="dark-lite" onClick={() => toggleTheme()}>
+          <div className="dark-lite">
             {(iamClick && theme === "dark-theme") || theme == "dark-theme" ? (
-              <BsFillSunFill size={20} style={{ color: "#fff" }} />
+              <BsFillSunFill className="dark-lite-icon" onClick={() => toggleTheme()} size={20} style={{ color: "#fff" }} />
             ) : (
-              <BsFillMoonFill size={20} style={{ color: "#000" }} />
+              <BsFillMoonFill className="dark-lite-icon" onClick={() => toggleTheme()} size={20} style={{ color: "#000" }} />
             )}
           </div>
 
@@ -211,6 +223,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+          
     </div>
   );
 }
