@@ -34,6 +34,7 @@ import Backtest from "./pages/Backtest";
 import Login from "./components/Authentication/Login";
 import Signup from "./components/Authentication/Signup";
 import RegistrationForm from "./components/apiRegistrationForm/RegistrationForm";
+import Contact from "./components/contact/Contact";
 // import dotenv from "dotenv";
 function App() {
   // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
@@ -125,6 +126,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/api-registraion" element={<RegistrationForm />} />
+            <Route path="/contact" element={<Contact />} />
 
             <Route path="/compare" element={<Compare />} />
             <Route path="/backtest" element={<BactestRouteComponent />} />

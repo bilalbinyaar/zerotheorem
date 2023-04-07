@@ -172,14 +172,20 @@ export default function Navbar() {
             <CustomLink to="/compare" onClick={toCloseNav}>
               Compare
             </CustomLink>
+            <CustomLink to="/contact" onClick={toCloseNav}>
+              Contact
+            </CustomLink>
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
+            </CustomLink>
+            <CustomLink to="/api" onClick={toCloseNav}>
+              API
             </CustomLink>
             {/* <CustomLink to="/api" onClick={toCloseNav}>
               API
             </CustomLink> */}
             <CustomLink to="/api-registraion" onClick={toCloseNav}>
-              API Registration
+              Registration
             </CustomLink>
             {/* <CustomLink to="/login" onClick={toCloseNav}>
             {/* <CustomLink className="menu-item">
@@ -289,120 +295,136 @@ export default function Navbar() {
           ) : (
             <div className="btn-group nav-btn">
               {/* LOGIN POPUP FOR WEB */}
-                <button className="btn btn-nav" onClick={handleShowPopup}>Login</button>
-                {showPopup && (
-                  <div className="popup">
-                    <div className="popup__content">
-                      
-                      <div className="login">
-                        <div className="containers">
-                          
-                          <form className="login-form" onSubmit={submitHandler}>
-                            <button className="popup__close" onClick={handleClosePopup}>
-                              <AiOutlineCloseCircle />
-                            </button>
-                            <div className="form-inner">
-                              {error !== "" ? <div className="error"> {error} </div> : ""}
-                              <h2>Login</h2>
-                              <div className="form-group">
-                                <label htmlFor="email">Email Address</label>
-                                <input
-                                  type="email"
-                                  placeholder="Email"
-                                  name="email"
-                                  id="email"
-                                  onChange={(e) =>
-                                    setDetails({ ...details, email: e.target.value })
-                                  }
-                                  value={details.email}
-                                />
-                              </div>
-                              <div className="form-group no-margin-bottom">
-                                <label htmlFor="password">Password</label>
-                                <input
-                                  type="password"
-                                  placeholder="Password"
-                                  name="password"
-                                  id="password"
-                                  onChange={(e) =>
-                                    setDetails({ ...details, password: e.target.value })
-                                  }
-                                  value={details.password}
-                                />
-                              </div>
-                              <div className="forget-pwd">
-                                <p>Forget password?</p>
-                              </div>
+              <button className="btn btn-nav" onClick={handleShowPopup}>
+                Login
+              </button>
+              {showPopup && (
+                <div className="popup">
+                  <div className="popup__content">
+                    <div className="login">
+                      <div className="containers">
+                        <form className="login-form" onSubmit={submitHandler}>
+                          <button
+                            className="popup__close"
+                            onClick={handleClosePopup}
+                          >
+                            <AiOutlineCloseCircle />
+                          </button>
+                          <div className="form-inner">
+                            {error !== "" ? (
+                              <div className="error"> {error} </div>
+                            ) : (
+                              ""
+                            )}
+                            <h2>Login</h2>
+                            <div className="form-group">
+                              <label htmlFor="email">Email Address</label>
                               <input
-                                className="login-form-btn"
-                                type="auth"
-                                value="LOGIN"
-                                onClick={() => {
-                                  console.log("Submit button is clicked");
-                                  const email = document.getElementById("email").value;
-                                  const password = document.getElementById("password").value;
-                                  if (!email || !password) {
-                                    alert("Kindly enter input details for signup");
-                                  } else {
-                                    console.log(email, password);
-                                    signInWithEmailAndPassword(auth, email, password)
-                                      .then((userCredential) => {
-                                        // Signed in
-                                        const user = userCredential.user;
-                                        alert("User is successfully login :)");
-                                        // ...
-                                      })
-                                      .catch((error) => {
-                                        const errorCode = error.code;
-                                        const errorMessage = error.message;
-                                        alert("Email or password is incorrect");
-                                      });
-                                  }
-                                }}
+                                type="email"
+                                placeholder="Email"
+                                name="email"
+                                id="email"
+                                onChange={(e) =>
+                                  setDetails({
+                                    ...details,
+                                    email: e.target.value,
+                                  })
+                                }
+                                value={details.email}
                               />
+                            </div>
+                            <div className="form-group no-margin-bottom">
+                              <label htmlFor="password">Password</label>
+                              <input
+                                type="password"
+                                placeholder="Password"
+                                name="password"
+                                id="password"
+                                onChange={(e) =>
+                                  setDetails({
+                                    ...details,
+                                    password: e.target.value,
+                                  })
+                                }
+                                value={details.password}
+                              />
+                            </div>
+                            <div className="forget-pwd">
+                              <p>Forget password?</p>
+                            </div>
+                            <input
+                              className="login-form-btn"
+                              type="auth"
+                              value="LOGIN"
+                              onClick={() => {
+                                console.log("Submit button is clicked");
+                                const email =
+                                  document.getElementById("email").value;
+                                const password =
+                                  document.getElementById("password").value;
+                                if (!email || !password) {
+                                  alert(
+                                    "Kindly enter input details for signup"
+                                  );
+                                } else {
+                                  console.log(email, password);
+                                  signInWithEmailAndPassword(
+                                    auth,
+                                    email,
+                                    password
+                                  )
+                                    .then((userCredential) => {
+                                      // Signed in
+                                      const user = userCredential.user;
+                                      alert("User is successfully login :)");
+                                      // ...
+                                    })
+                                    .catch((error) => {
+                                      const errorCode = error.code;
+                                      const errorMessage = error.message;
+                                      alert("Email or password is incorrect");
+                                    });
+                                }
+                              }}
+                            />
 
-                              
-
-                              <div className="or-div">
-                                {/* <span className="hr-div">
+                            <div className="or-div">
+                              {/* <span className="hr-div">
                                   <hr />
                                 </span> */}
-                                <span>
-                                  <p>OR</p>
-                                </span>
-                                {/* <span className="hr-div">
+                              <span>
+                                <p>OR</p>
+                              </span>
+                              {/* <span className="hr-div">
                                   <hr />
                                 </span> */}
-                              </div>
+                            </div>
 
-                              <div className="google-login-div">
-                                <button
-                                  className="google-login-btn"
-                                  onClick={() => {
-                                    signInWithRedirect(auth, provider);
-                                  }}
-                                >
-                                  <AiFillGoogleCircle className="google-login-icon" />
-                                  Sign in with Google
-                                </button>
-                              </div>
+                            <div className="google-login-div">
+                              <button
+                                className="google-login-btn"
+                                onClick={() => {
+                                  signInWithRedirect(auth, provider);
+                                }}
+                              >
+                                <AiFillGoogleCircle className="google-login-icon" />
+                                Sign in with Google
+                              </button>
+                            </div>
 
-                              <div className="register-text">
-                                {/* <p>
+                            <div className="register-text">
+                              {/* <p>
                                   <Link to="/signup">New to Zero Theorem? Join now!</Link>
                                 </p> */}
-                                <p>
-                                  Don’t have account? <strong>Sign up</strong>
-                                </p>
-                              </div>
+                              <p>Don’t have account? <strong>Sign up</strong></p>
                             </div>
-                          </form>
-                          
-                        </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
-                )}
+                </div>
+              )}
             </div>
           )}
 
