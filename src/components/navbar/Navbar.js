@@ -7,11 +7,23 @@ import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineCloseCircle } from "react-icons/ai";
 import { width } from "@mui/system";
 import NavMobile from "../../mobile-components/nav/NavMobile";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
+import LoginPopup from "../login-popup/LoginPopup";
+import { auth, provider } from "../../firebase_config";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  getRedirectResult,
+  signInWithRedirect,
+} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+import { AiFillGoogleCircle } from "react-icons/ai";
 
 export default function Navbar() {
   const [click, setClick] = useState(false);
@@ -77,6 +89,57 @@ export default function Navbar() {
     setClick(false);
   }
 
+  // const [showPopup, setShowPopup] = useState(false);
+
+  // const handleShowPopup = () => {
+  //   setShowPopup(true);
+  // };
+
+  // const handleClosePopup = () => {
+  //   setShowPopup(false);
+  // };
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleShowPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
+  const [details, setDetails] = useState({ name: "", email: "", password: "" });
+  const [error, setError] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access Google APIs.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user.email;
+        console.log(user);
+        alert("Successfully login with email " + user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        console.log("Error occured");
+
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  }, []);
   return (
     <div className="header">
       {windowWidth.current <= 1240 ? (
@@ -177,7 +240,7 @@ export default function Navbar() {
                 FAQs
               </CustomLink>
 
-              {/* {authCheck === true ? (
+              {authCheck === true ? (
                 <CustomLink
                   to="/"
                   onClick={() => {
@@ -188,7 +251,7 @@ export default function Navbar() {
                 </CustomLink>
               ) : (
                 <CustomLink to="/login">Login</CustomLink>
-              )} */}
+              )}
             </ul>
           )}
 
@@ -210,25 +273,137 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* {authCheck === true ? (
+          {authCheck === true ? (
             <div>
               <div className="welcome-user-div">
                 <p className="welcome-user">Welcome, {userEmail}</p>
                 <AiFillCaretDown className="hoverThis" onClick={dropDown} />
               </div>
               {/* <div>
-                    {
-                      drop && <UserOptions className='showThis' />
-                    } 
-                  </div> 
+                {
+                  drop && <UserOptions className='showThis' />
+                } 
+              </div>  */}
             </div>
           ) : (
             <div className="btn-group nav-btn">
-              <Link to="/login">
-                <button className="btn btn-nav">Login</button>
-              </Link>
+              {/* LOGIN POPUP FOR WEB */}
+                <button className="btn btn-nav" onClick={handleShowPopup}>Login</button>
+                {showPopup && (
+                  <div className="popup">
+                    <div className="popup__content">
+                      
+                      <div className="login">
+                        <div className="containers">
+                          
+                          <form className="login-form" onSubmit={submitHandler}>
+                            <button className="popup__close" onClick={handleClosePopup}>
+                              <AiOutlineCloseCircle />
+                            </button>
+                            <div className="form-inner">
+                              {error !== "" ? <div className="error"> {error} </div> : ""}
+                              <h2>Login</h2>
+                              <div className="form-group">
+                                <label htmlFor="email">Email Address</label>
+                                <input
+                                  type="email"
+                                  placeholder="Email"
+                                  name="email"
+                                  id="email"
+                                  onChange={(e) =>
+                                    setDetails({ ...details, email: e.target.value })
+                                  }
+                                  value={details.email}
+                                />
+                              </div>
+                              <div className="form-group no-margin-bottom">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                  type="password"
+                                  placeholder="Password"
+                                  name="password"
+                                  id="password"
+                                  onChange={(e) =>
+                                    setDetails({ ...details, password: e.target.value })
+                                  }
+                                  value={details.password}
+                                />
+                              </div>
+                              <div className="forget-pwd">
+                                <p>Forget password?</p>
+                              </div>
+                              <input
+                                className="login-form-btn"
+                                type="auth"
+                                value="LOGIN"
+                                onClick={() => {
+                                  console.log("Submit button is clicked");
+                                  const email = document.getElementById("email").value;
+                                  const password = document.getElementById("password").value;
+                                  if (!email || !password) {
+                                    alert("Kindly enter input details for signup");
+                                  } else {
+                                    console.log(email, password);
+                                    signInWithEmailAndPassword(auth, email, password)
+                                      .then((userCredential) => {
+                                        // Signed in
+                                        const user = userCredential.user;
+                                        alert("User is successfully login :)");
+                                        // ...
+                                      })
+                                      .catch((error) => {
+                                        const errorCode = error.code;
+                                        const errorMessage = error.message;
+                                        alert("Email or password is incorrect");
+                                      });
+                                  }
+                                }}
+                              />
+
+                              
+
+                              <div className="or-div">
+                                {/* <span className="hr-div">
+                                  <hr />
+                                </span> */}
+                                <span>
+                                  <p>OR</p>
+                                </span>
+                                {/* <span className="hr-div">
+                                  <hr />
+                                </span> */}
+                              </div>
+
+                              <div className="google-login-div">
+                                <button
+                                  className="google-login-btn"
+                                  onClick={() => {
+                                    signInWithRedirect(auth, provider);
+                                  }}
+                                >
+                                  <AiFillGoogleCircle className="google-login-icon" />
+                                  Sign in with Google
+                                </button>
+                              </div>
+
+                              <div className="register-text">
+                                {/* <p>
+                                  <Link to="/signup">New to Zero Theorem? Join now!</Link>
+                                </p> */}
+                                <p>
+                                  New to Zero Theorem? Join now!
+                                </p>
+                              </div>
+                            </div>
+                          </form>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
             </div>
-          )} */}
+          )}
 
           <div className="hamburger" onClick={oneClick}>
             {click ? (

@@ -21,28 +21,6 @@ function Login({ Login, error }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log("Submit button is clicked");
-    // const email = document.getElementById("email").value;
-    // const password = document.getElementById("password").value;
-    // if (!email || !password) {
-    //   alert("Kindly enter input details for signup");
-    // } else {
-    //   console.log(email, password);
-    //   signInWithEmailAndPassword(auth, email, password)
-    //     .then((userCredential) => {
-    //       // Signed in
-    //       const user = userCredential.user;
-    //       alert("User is successfully login :)");
-    //       // ...
-    //     })
-    //     .catch((error) => {
-    //       const errorCode = error.code;
-    //       const errorMessage = error.message;
-    //       alert("Email or password is incorrect");
-    //     });
-    // }
-
-    // Login(details);
   };
   useEffect(() => {
     getRedirectResult(auth)

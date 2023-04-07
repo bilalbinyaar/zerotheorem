@@ -2,19 +2,6 @@
   padding: 7rem 1rem;
 }
 
-.login-form {
-  /* display: block; */
-  position: relative;
-  width: 40%;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  /* top: 50%; */
-  top: 50%;
-  /* -ms-transform: translateY(-50%);
-    transform: translateY(-50%); */
-}
-
 form:after {
   content: "";
   display: block;
@@ -29,7 +16,7 @@ form:after {
   display: none;
 }
 
-form .form-inner {
+/* form .form-inner {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -41,39 +28,22 @@ form .form-inner {
   z-index: 2;
   align-items: center;
   border-radius: 22px;
-}
+} */
 
-form .form-inner h2 {
-  color: #888;
-  font-size: 28px;
-  font-weight: 500;
-  margin-bottom: 30px;
-}
 
 form .form-inner .form-group {
   width: 300px;
   margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.form-inner .form-group label {
-  display: block;
-  color: #666;
-  font-size: 12px;
-  margin-bottom: 5px;
-  transition: 0.5s;
-}
+
 .form-control {
   background-color: var(--color-day-white);
   color: black !important;
 }
-.form-inner .form-group:focus-within label {
-  color: #fe4880;
-}
 
-form .form-inner .form-group input {
+
+/* form .form-inner .form-group input {
   display: block;
   width: 100%;
   padding: 10px 15px;
@@ -82,7 +52,7 @@ form .form-inner .form-group input {
   color: var(--primary);
   border-radius: 0px;
   transition: 0.4s;
-}
+} */
 
 form .form-inner .form-group input:focus {
   box-shadow: 0px 0px 3px var(--primary);
@@ -98,29 +68,24 @@ form .form-inner .form-group textarea {
 
 form .form-inner input[type="auth"] {
   display: block;
-  padding: 10px 15px;
-  border-radius: 8px;
-  background-color: var(--color-day-white);
+  padding: 12px 15px;
+  border-radius: 6px;
+  background-color: var(--color-day-yellow);
   background-size: 200%;
   text-align: center !important;
-  width: 30% !important;
+  width: 100% !important;
   background-position: 0%;
   transition: 0.4s;
-  color: var(--primary);
   font-weight: 700;
   cursor: pointer;
-}
-
-form .form-inner input[type="auth"]:hover {
-  background-position: 100% 0%;
-  background-color: var(--color-day-white);
-  color: white;
+  border: none;
 }
 
 .iconSpace {
   margin-right: 8px;
   font-size: 20px;
-  color: var(--primary);
+  display: flex;
+  color: var(--color-day-yellow);
 }
 
 .error {
@@ -135,32 +100,32 @@ form .form-inner input[type="auth"]:hover {
 }
 
 .register-text {
-  margin-top: 4rem !important;
-  text-align: center;
+  margin-top: 0.6rem !important;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.register-text {
-  color: white !important;
-}
 
 .or-div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 0.4rem;
 }
 
-.or-div p {
+/* .or-div p {
   margin-bottom: 8px !important;
   padding: 0rem 1rem;
   color: white;
-}
+} */
 
-.or-div .hr-div {
+/* .or-div .hr-div {
   width: 105px;
   color: var(--primary) !important;
-}
+} */
 
 .hr-div hr {
   height: 5px;
@@ -173,27 +138,25 @@ form .form-inner input[type="auth"]:hover {
 }
 
 .google-login-btn {
-  margin-top: 20px;
-  width: 80%;
-  padding: 6px 4px;
+  margin-top: 0.8rem;
+  width: 100%;
+  padding: 12px 15px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 25px;
-  background-color: var(--color-day-white);
-  border: 1px solid var(--primary);
-  color: var(--primary);
+  border-radius: 6px;
+  background-color: transparent;
+  border: 1px solid var(--color-day-yellow);
+  color: var(--color-day-black);
+  cursor: pointer;
 }
 
-.google-login-btn:hover {
-  background-color: var(--color-day-white);
-  color: black;
-}
 
 .google-login-icon {
   margin-right: 10px;
   font-size: 20px;
+  color: var(--color-day-yellow);
 }
 
 option:nth-child(0) {
