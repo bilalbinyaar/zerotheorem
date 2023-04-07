@@ -921,6 +921,10 @@ a {
   align-items: center;
 }
 
+.css-1gs62wq {
+  color: var(--color-day-black) !important;
+}
+
 @media screen and (max-width: 568px) {
   .css-1yy0dv2 {
     justify-content: center !important;
