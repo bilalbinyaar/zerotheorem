@@ -118,6 +118,21 @@ export default function Navbar() {
               API Registration
             </CustomLink>
             {/* <CustomLink to="/login" onClick={toCloseNav}>
+            {/* <CustomLink className="menu-item">
+              API
+              <div className="sub-menu-items">
+                <CustomLink className="sub-menu-item" to="/api" onClick={toCloseNav}>
+                  Registration
+                </CustomLink>
+                <CustomLink className="sub-menu-item" to="/api" onClick={toCloseNav}>
+                  Documentation
+                </CustomLink>
+              </div> 
+            </CustomLink>*/}
+            {/* <CustomLink to="/api" onClick={toCloseNav}>
+              API
+            </CustomLink> */}
+            {/* <CustomLink to="/login" onClick={toCloseNav}>
               Login
             </CustomLink> */}
             <CustomLink to="/about" onClick={toCloseNav}>
@@ -177,11 +192,21 @@ export default function Navbar() {
             </ul>
           )}
 
-          <div className="dark-lite" onClick={() => toggleTheme()}>
+          <div className="dark-lite">
             {(iamClick && theme === "dark-theme") || theme == "dark-theme" ? (
-              <BsFillSunFill size={20} style={{ color: "#fff" }} />
+              <BsFillSunFill
+                className="dark-lite-icon"
+                onClick={() => toggleTheme()}
+                size={20}
+                style={{ color: "#fff" }}
+              />
             ) : (
-              <BsFillMoonFill size={20} style={{ color: "#000" }} />
+              <BsFillMoonFill
+                className="dark-lite-icon"
+                onClick={() => toggleTheme()}
+                size={20}
+                style={{ color: "#000" }}
+              />
             )}
           </div>
 

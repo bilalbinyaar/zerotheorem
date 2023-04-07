@@ -921,6 +921,10 @@ a {
   align-items: center;
 }
 
+.css-1gs62wq {
+  color: var(--color-day-black) !important;
+}
+
 @media screen and (max-width: 568px) {
   .css-1yy0dv2 {
     justify-content: center !important;
@@ -1275,11 +1279,11 @@ pre[class*="language-"] {
   margin-top: 0;
 }
 
-.documentation-items li.active {
+/* .documentation-items li.active {
   background-color: var(--color-day-yellow);
   color: black;
   border-radius: 10px;
-}
+} */
 
 @media screen and (max-width: 768px) {
   .copy {
