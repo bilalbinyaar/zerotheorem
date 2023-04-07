@@ -108,6 +108,9 @@ export default function Navbar() {
             <CustomLink to="/compare" onClick={toCloseNav}>
               Compare
             </CustomLink>
+            <CustomLink to="/contact" onClick={toCloseNav}>
+              Contact
+            </CustomLink>
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
             </CustomLink>
@@ -115,7 +118,7 @@ export default function Navbar() {
               API
             </CustomLink> */}
             <CustomLink to="/api-registraion" onClick={toCloseNav}>
-              API Registration
+              Registration
             </CustomLink>
             {/* <CustomLink to="/login" onClick={toCloseNav}>
             {/* <CustomLink className="menu-item">

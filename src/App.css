@@ -6,6 +6,7 @@
   --color-day-green: #16c784;
   --color-day-greydark: #d9d9d9;
   --color-day-black: #000000;
+  --color-api-div: #d9d9d9;
 }
 
 .dark-theme {
@@ -16,4 +17,5 @@
   --color-day-green: #16c784;
   --color-day-greydark: #d9d9d9;
   --color-day-black: #000000;
+  --color-api-div: rgba(67, 87, 117, 0.4);
 }
