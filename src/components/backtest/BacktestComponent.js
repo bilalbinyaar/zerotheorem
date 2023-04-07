@@ -1857,7 +1857,7 @@ const BacktestComponent = (props) => {
         )}
 
         {/* THIS IS FOR WEB */}
-        <div className="backtest-filters backtest-for-web">
+        <div className="backtest-filters backtest-for-web this-is-for-models-page">
           <div className="date-picker flex-display">
             <h3>Start Date:</h3>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
