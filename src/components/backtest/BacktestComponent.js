@@ -1116,35 +1116,37 @@ const BacktestComponent = (props) => {
   }, [strategies, model_name_check]);
 
   return (
-    <div className="back-test">
-      <div className="container">
-        <h1>Backtest</h1>
-        <p className="backtest-description">
-          To conduct a personalized backtest, begin by choosing a model through
-          either the time horizon and currencies filter or by selecting from the
-          Models dropdown menu. Afterwards, adjust the backtest inputs to fit
-          your preferences, including the start date, which must not be earlier
-          than the model's Start date (default value). Additionally, set the
-          take profit and stop loss values within a range of 0 to 100, and
-          specify a fee for each transaction with a value between 0 and 1.
-        </p>
+    <div>
+      <div className="back-test">
+        <div className="container">
+          <h1>Backtest</h1>
+          <p className="backtest-description">
+            To conduct a personalized backtest, begin by choosing a model
+            through either the time horizon and currencies filter or by
+            selecting from the Models dropdown menu. Afterwards, adjust the
+            backtest inputs to fit your preferences, including the start date,
+            which must not be earlier than the model's Start date (default
+            value). Additionally, set the take profit and stop loss values
+            within a range of 0 to 100, and specify a fee for each transaction
+            with a value between 0 and 1.
+          </p>
 
-        {windowWidth.current <= 768 ? (
-          <div className="horizon">
-            <div className="horizon-row">
-              <div className="horizon-left">
-                {/* <h3>Time Horizon</h3> */}
-                {/* <div className="divider-icon">
+          {windowWidth.current <= 768 ? (
+            <div className="horizon">
+              <div className="horizon-row">
+                <div className="horizon-left">
+                  {/* <h3>Time Horizon</h3> */}
+                  {/* <div className="divider-icon">
                   <p>All</p>
                   <AiFillCaretDown className="dd-ico" />
                 </div> */}
-                <FormControl
-                  variant="standard"
-                  className="all-horizon"
-                  sx={{ m: 1, minWidth: 60 }}
-                >
-                  {/* <InputLabel id="demo-simple-select-standard-label"></InputLabel> */}
-                  {/* <Select
+                  <FormControl
+                    variant="standard"
+                    className="all-horizon"
+                    sx={{ m: 1, minWidth: 60 }}
+                  >
+                    {/* <InputLabel id="demo-simple-select-standard-label"></InputLabel> */}
+                    {/* <Select
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
                     sx={{
@@ -1170,10 +1172,10 @@ const BacktestComponent = (props) => {
                     <MenuItem value={"2h"}>2h</MenuItem>
                     <MenuItem value={"1h"}>1h</MenuItem>
                   </Select> */}
-                </FormControl>
-              </div>
+                  </FormControl>
+                </div>
 
-              {/* <div className="horizon-right">
+                {/* <div className="horizon-right">
                 <Autocomplete
                   id="country-select-demo"
                   className="currency-auto"
@@ -1624,12 +1626,12 @@ const BacktestComponent = (props) => {
                   )}
                 />
               </div> */}
+              </div>
             </div>
-          </div>
-        ) : (
-          // <div className="horizon">
-          <div className="">
-            {/* <div className="horizon-left">
+          ) : (
+            // <div className="horizon">
+            <div className="">
+              {/* <div className="horizon-left">
                 <h3>Time Horizon</h3>
                 <p className="divider-icon"> | </p>
                 <div className="hours-list">
@@ -1790,8 +1792,8 @@ const BacktestComponent = (props) => {
                 </div>
               </div> */}
 
-            {/* <div className="horizon-right"> */}
-            {/* <Autocomplete
+              {/* <div className="horizon-right"> */}
+              {/* <Autocomplete
                   id="country-select-demo"
                   sx={{
                     width: 220,
@@ -1817,7 +1819,7 @@ const BacktestComponent = (props) => {
                     />
                   )}
                 /> */}
-            {/* <Select
+              {/* <Select
                   placeholder="Models"
                   options={model_search_selection}
                   components={{ DropdownIndicator }}
@@ -1825,7 +1827,7 @@ const BacktestComponent = (props) => {
                   isClearable={true}
                   onChange={handleChangeForModelSelection}
                 /> */}
-            {/* <Autocomplete
+              {/* <Autocomplete
                   id="country-select-demo"
                   sx={{
                     width: 220,
@@ -1851,106 +1853,22 @@ const BacktestComponent = (props) => {
                     />
                   )}
                 /> */}
-            {/* </div> */}
-          </div>
-          // </div>
-        )}
+              {/* </div> */}
+            </div>
+            // </div>
+          )}
 
-        {/* THIS IS FOR WEB */}
-        <div className="backtest-filters backtest-for-web">
-          <div className="date-picker flex-display">
-            <h3>Start Date:</h3>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label=""
-                value={selectedDate}
-                onChange={handleDateChangeCalender}
-                minDate={disableBefore}
-                maxDate={now}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    error={
-                      selectedDate !== null &&
-                      (selectedDate < now || selectedDate > disableBefore)
-                    }
-                    helperText={
-                      selectedDate !== null &&
-                      (selectedDate < now || selectedDate > disableBefore)
-                        ? "Invalid date"
-                        : ""
-                    }
-                  />
-                )}
-              />
-            </LocalizationProvider>
-            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateField label="" />
-            </LocalizationProvider> */}
-          </div>
-          <div className="profit-input flex-display">
-            <h3>Take Profit:</h3>
-            <TextField
-              id="profit"
-              placeholder="0-100%"
-              variant="outlined"
-              value={take_profit_selected_for_backtest}
-              onChange={handleProfitChange}
-              sx={{
-                width: 85,
-              }}
-            />
-          </div>
-          <div className="loss-input flex-display">
-            <h3>Stop Loss:</h3>
-            <TextField
-              id="loss"
-              placeholder="0-100%"
-              variant="outlined"
-              value={stop_loss_selected_for_backtest}
-              onChange={handleLossChange}
-              sx={{
-                width: 85,
-              }}
-            />
-          </div>
-          <div className="fee-input flex-display">
-            <h3>Fee:</h3>
-            <TextField
-              id="fee"
-              placeholder="0-1%"
-              variant="outlined"
-              value={fee_selected_for_backtest}
-              onChange={handleFeeChange}
-              sx={{
-                width: 85,
-              }}
-            />
-          </div>
-          <div className="backtest-btn-div backtest-btn-page">
-            <Link to="#">
-              <p className="compare-btn" onClick={handleRunBacktestChange}>
-                Run Backtest
-              </p>
-            </Link>
-          </div>
-        </div>
-
-        {/* THIS IS FOR MOBILE  */}
-        <div className="backtest-filters backtest-for-mobile">
-          <div className="sec-1 flex-display justify-content">
+          {/* THIS IS FOR WEB */}
+          <div className="backtest-filters backtest-for-web">
             <div className="date-picker flex-display">
               <h3>Start Date:</h3>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   label=""
                   value={selectedDate}
-                  onChange={handleDateChangeCalenderMobile}
+                  onChange={handleDateChangeCalender}
                   minDate={disableBefore}
                   maxDate={now}
-                  sx={{
-                    width: 130,
-                  }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -1969,64 +1887,149 @@ const BacktestComponent = (props) => {
                 />
               </LocalizationProvider>
               {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateField label="" />
-              </LocalizationProvider> */}
+              <DateField label="" />
+            </LocalizationProvider> */}
             </div>
             <div className="profit-input flex-display">
               <h3>Take Profit:</h3>
               <TextField
-                id="profit_mobile"
+                id="profit"
                 placeholder="0-100%"
                 variant="outlined"
-                value={take_profit_selected_for_backtest_mobile}
-                onChange={handleProfitChangeMobile}
+                value={take_profit_selected_for_backtest}
+                onChange={handleProfitChange}
                 sx={{
-                  width: 75,
+                  width: 85,
                 }}
               />
             </div>
-          </div>
-
-          <div className="sec-2 flex-display justify-content">
             <div className="loss-input flex-display">
               <h3>Stop Loss:</h3>
               <TextField
-                id="profit_loss"
+                id="loss"
                 placeholder="0-100%"
                 variant="outlined"
-                value={stop_loss_selected_for_backtest_mobile}
-                onChange={handleLossChangeMobile}
+                value={stop_loss_selected_for_backtest}
+                onChange={handleLossChange}
                 sx={{
-                  width: 75,
+                  width: 85,
                 }}
               />
             </div>
             <div className="fee-input flex-display">
               <h3>Fee:</h3>
               <TextField
-                id="outlined-basic"
+                id="fee"
                 placeholder="0-1%"
                 variant="outlined"
-                value={fee_selected_for_backtest_mobile}
-                onChange={handleFeeChangeMobile}
+                value={fee_selected_for_backtest}
+                onChange={handleFeeChange}
                 sx={{
-                  width: 75,
+                  width: 85,
                 }}
               />
             </div>
+            <div className="backtest-btn-div backtest-btn-page">
+              <Link to="#">
+                <p className="compare-btn" onClick={handleRunBacktestChange}>
+                  Run Backtest
+                </p>
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <div className="for-flex-end">
-          <div className="backtest-btn-div backtest-btn-page">
-            <Link to="#">
-              <p
-                className="compare-btn"
-                onClick={handleRunBacktestChangeMobile}
-              >
-                Run Backtest
-              </p>
-            </Link>
+          {/* THIS IS FOR MOBILE  */}
+          <div className="backtest-filters backtest-for-mobile">
+            <div className="sec-1 flex-display justify-content">
+              <div className="date-picker flex-display">
+                <h3>Start Date:</h3>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    label=""
+                    value={selectedDate}
+                    onChange={handleDateChangeCalenderMobile}
+                    minDate={disableBefore}
+                    maxDate={now}
+                    sx={{
+                      width: 130,
+                    }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        error={
+                          selectedDate !== null &&
+                          (selectedDate < now || selectedDate > disableBefore)
+                        }
+                        helperText={
+                          selectedDate !== null &&
+                          (selectedDate < now || selectedDate > disableBefore)
+                            ? "Invalid date"
+                            : ""
+                        }
+                      />
+                    )}
+                  />
+                </LocalizationProvider>
+                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateField label="" />
+              </LocalizationProvider> */}
+              </div>
+              <div className="profit-input flex-display">
+                <h3>Take Profit:</h3>
+                <TextField
+                  id="profit_mobile"
+                  placeholder="0-100%"
+                  variant="outlined"
+                  value={take_profit_selected_for_backtest_mobile}
+                  onChange={handleProfitChangeMobile}
+                  sx={{
+                    width: 75,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="sec-2 flex-display justify-content">
+              <div className="loss-input flex-display">
+                <h3>Stop Loss:</h3>
+                <TextField
+                  id="profit_loss"
+                  placeholder="0-100%"
+                  variant="outlined"
+                  value={stop_loss_selected_for_backtest_mobile}
+                  onChange={handleLossChangeMobile}
+                  sx={{
+                    width: 75,
+                  }}
+                />
+              </div>
+              <div className="fee-input flex-display">
+                <h3>Fee:</h3>
+                <TextField
+                  id="outlined-basic"
+                  placeholder="0-1%"
+                  variant="outlined"
+                  value={fee_selected_for_backtest_mobile}
+                  onChange={handleFeeChangeMobile}
+                  sx={{
+                    width: 75,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="for-flex-end">
+            <div className="backtest-btn-div backtest-btn-page">
+              <Link to="#">
+                <p
+                  className="compare-btn"
+                  onClick={handleRunBacktestChangeMobile}
+                >
+                  Run Backtest
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
