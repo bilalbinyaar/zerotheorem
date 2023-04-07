@@ -2,6 +2,7 @@ import React, { useEffect, useState, memo, useRef } from "react";
 import { useBeforeUnload, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import validator from "validator";
+import DrawDown from "../models/drawDown/DrawDown";
 
 import "./Backtest.css";
 import clsx from "clsx";
@@ -1952,6 +1953,11 @@ const BactestRouteComponent = () => {
               }
             />
           ) : null}
+
+          {model_name_for_result_backtest_result ? (
+            <DrawDown model_name={model_name_for_result_backtest_result}/>  
+          ) : null}
+
           {model_name_for_result_backtest_result ? (
             <CanvasjsDrawdownWithSliderRange
               model_name={model_name_for_result_backtest_result}

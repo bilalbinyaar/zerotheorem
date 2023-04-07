@@ -25,11 +25,13 @@
 }
 
 .nav-menu li {
-    padding: 0.5rem 1rem;
+    /* padding: 0.5rem 1rem; */
+    padding: 0.5rem 0rem;
     border-radius: 5px;
     list-style: none !important;
     display: flex;
     align-items: center;
+    margin: 0 0.7rem;
 }
 
 .nav-menu li.active {
@@ -155,6 +157,9 @@
     display: block !important;
 }
 
+.nav-btn {
+    margin-left: 1.4rem;
+}
 
 
 @media screen and (min-width:568px) {
