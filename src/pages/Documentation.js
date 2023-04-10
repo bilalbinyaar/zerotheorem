@@ -20,7 +20,6 @@ function Documentation() {
     setSelectedHeadingIndex(index);
     hamClickRes();
     handleiamClickRes();
-
   };
 
 
