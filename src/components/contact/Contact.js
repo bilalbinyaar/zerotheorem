@@ -136,13 +136,12 @@ function Contact() {
                   marginBottom: "1rem"
                 }}
               />
-              <TextField
+              <TextareaAutosize
                 placeholder="Your Message*"
                 // variant="outlined"
                 value={message}
                 onChange={handleMessageChange}
                 sx={{
-                  minHeight: 100,  
                   width: 300,
                 }}
               />
@@ -196,13 +195,12 @@ function Contact() {
                   marginBottom: "1rem"
                 }}
               />
-              <TextField
+              <TextareaAutosize
                 placeholder="Your Message*"
                 // variant="outlined"
                 value={message}
                 onChange={handleMessageChange}
                 sx={{
-                  minHeight: 100,  
                   width: 550,
                 }}
               />
