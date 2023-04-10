@@ -608,9 +608,6 @@ export default function Navbar() {
                               />
                             </div> */}
                             <div>{contents[selectedHeadingIndex]}</div>
-                            
-
-                            
                           </div>
                         </form>
                       </div>

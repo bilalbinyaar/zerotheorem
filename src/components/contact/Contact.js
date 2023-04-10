@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { ref, onValue, set } from "firebase/database";
 import { useStateContext } from "../../ContextProvider";
 import TextField from "@mui/material/TextField";
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 import "./Contact.css";
 function Contact() {
   const { theme } = useStateContext();
@@ -128,16 +129,16 @@ function Contact() {
                 sx={{
                   width: 550,
                   marginTop: "1rem",
+                  marginBottom: "1rem"
                 }}
               />
-              <TextField
+              <TextareaAutosize
                 placeholder="Your Message*"
                 // variant="outlined"
                 value={message}
                 onChange={handleMessageChange}
                 sx={{
                   width: 550,
-                  marginTop: "1rem",
                 }}
               />
             </div>
