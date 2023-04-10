@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import cryptoRandomString from "crypto-random-string";
 import { database } from "../../firebase_config";
 import Swal from "sweetalert2";
@@ -80,13 +80,77 @@ function Contact() {
       event.preventDefault(); // Prevent the default form submission behavior
     }
   };
+
+  const windowWidth = useRef(window.innerWidth);
   return (
     <div className="contact">
       <div className="container">
         <div className="contact-form-div">
           <h1 className="contact-heading">Contact Us</h1>
           <form onSubmit={handleJoinList}>
-            <div className="inputDiv">
+            {windowWidth.current <= 768 ? (
+              // Mobile View
+              <div className="inputDiv">
+              <TextField
+                id="firstName"
+                placeholder="First Name*"
+                variant="outlined"
+                value={firstName}
+                onChange={handleFirstNameChange}
+                sx={{
+                  width: 300,
+                  marginTop: "1rem",
+                }}
+              />
+              <TextField
+                id="firstName4"
+                placeholder="Last Name*"
+                variant="outlined"
+                value={LastName}
+                onChange={handleLastNameChange}
+                sx={{
+                  width: 300,
+                  marginTop: "1rem",
+                }}
+              />
+              <TextField
+                id="firstName2"
+                placeholder="Industry*"
+                variant="outlined"
+                value={IndustryName}
+                onChange={handleIndustryNameChange}
+                sx={{
+                  width: 300,
+                  marginTop: "1rem",
+                }}
+              />
+              <TextField
+                id="firstName3"
+                placeholder="Email*"
+                variant="outlined"
+                value={email}
+                onChange={handleEmailChange}
+                sx={{
+                  width: 300,
+                  marginTop: "1rem",
+                  marginBottom: "1rem"
+                }}
+              />
+              <TextField
+                placeholder="Your Message*"
+                // variant="outlined"
+                value={message}
+                onChange={handleMessageChange}
+                sx={{
+                  minHeight: 100,  
+                  width: 300,
+                }}
+              />
+            </div>
+            ) : (
+
+              // Web View
+              <div className="inputDiv">
               <TextField
                 id="firstName"
                 placeholder="First Name*"
@@ -132,16 +196,19 @@ function Contact() {
                   marginBottom: "1rem"
                 }}
               />
-              <TextareaAutosize
+              <TextField
                 placeholder="Your Message*"
                 // variant="outlined"
                 value={message}
                 onChange={handleMessageChange}
                 sx={{
+                  minHeight: 100,  
                   width: 550,
                 }}
               />
             </div>
+            )}
+            
             <div className="btn-div">
               <button className="btn-contact" type="submit">
                 SEND MESSAGE

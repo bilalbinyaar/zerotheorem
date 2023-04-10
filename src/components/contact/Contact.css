@@ -1,5 +1,5 @@
 .contact .container {
-  padding: 4rem 0rem 3rem 0rem;
+  padding: 4rem 0rem;
 }
 
 .contact-heading {
@@ -15,7 +15,7 @@
   /* margin-left: 2rem; */
 }
 .btn-contact {
-  margin-top: 1.6rem;
+  margin-top: 1.4rem;
   width: 174px;
   height: 41px;
   background: var(--color-day-yellow);
