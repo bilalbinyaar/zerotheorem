@@ -71,7 +71,7 @@ body {
 .btn {
   border: none;
   background-color: var(--color-day-yellow);
-  color: var(--color-day-white);
+  color: black;
   border-radius: 10px !important;
   font-size: 15px !important;
   font-weight: 500 !important;
@@ -1285,7 +1285,7 @@ pre[class*="language-"] {
   margin-top: -40px;
 }
 
-.content-main-div p{
+.content-main-div p {
   margin-top: 0;
 }
 
@@ -1330,14 +1330,9 @@ pre[class*="language-"] {
   .code-container {
     margin-top: 0px;
   }
-
-
 }
 
 /* API PAGE CSS END */
-
-
-
 
 .popup {
   position: fixed;

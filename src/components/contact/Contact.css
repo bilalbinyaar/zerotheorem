@@ -8,7 +8,7 @@
   margin-bottom: 2rem;
   margin-top: 4rem;
 
-  color: #000000;
+  color: var(--color-day-black);
 }
 .contact-form-div {
   display: flex;
