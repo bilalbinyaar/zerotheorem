@@ -14,18 +14,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
 import LoginPopup from "../login-popup/LoginPopup";
 import { auth, provider } from "../../firebase_config";
+import Swal from "sweetalert2";
 import {
   signInWithPopup,
   GoogleAuthProvider,
   getRedirectResult,
   signInWithRedirect,
 } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 import { AiFillGoogleCircle } from "react-icons/ai";
 
 export default function Navbar() {
+  const [isChecked, setIsChecked] = useState(false);
+
+  function handleCheckboxClick() {
+    setIsChecked(!isChecked);
+  }
+
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const dispatch = useDispatch();
@@ -109,7 +119,6 @@ export default function Navbar() {
     setShowPopup(false);
   };
 
-
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -126,7 +135,17 @@ export default function Navbar() {
         // The signed-in user info.
         const user = result.user.email;
         console.log(user);
-        alert("Successfully login with email " + user);
+        // alert("Successfully login with email " + user);
+        Swal.fire({
+          title: "Login successful",
+          icon: "success",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
+        // setShowPopup(false);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -134,7 +153,16 @@ export default function Navbar() {
         const errorMessage = error.message;
         // The email of the user's account used.
         const email = error.customData.email;
-        console.log("Error occured");
+        // console.log("Error occured");
+        Swal.fire({
+          title: "Login not successful",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
 
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
@@ -142,17 +170,16 @@ export default function Navbar() {
       });
   }, []);
 
-
   // FOR LOGIN AND SIGNUP POPUP FILTERS
   const [selectedHeadingIndex, setSelectedHeadingIndex] = useState(0);
   const handleClickForPopups = (index) => {
-      setSelectedHeadingIndex(index);
-    };
+    setSelectedHeadingIndex(index);
+  };
 
-    const contents = [
-      // LOGIN POPUP CONTENT
+  const contents = [
+    // LOGIN POPUP CONTENT
     <div className="popup-inner">
-        <div className="form-group">
+      <div className="form-group">
         <label htmlFor="email">Email Address</label>
         <input
           type="email"
@@ -167,62 +194,81 @@ export default function Navbar() {
           }
           value={details.email}
         />
-        </div>
-        <div className="form-group no-margin-bottom">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            id="password"
-            onChange={(e) =>
-              setDetails({
-                ...details,
-                password: e.target.value,
-              })
-            }
-            value={details.password}
-          />
-        </div>
-        <div className="forget-pwd">
-          <p>Forget password?</p>
-        </div>
+      </div>
+      <div className="form-group no-margin-bottom">
+        <label htmlFor="password">Password</label>
         <input
-          className="login-form-btn"
-          type="auth"
-          value="Log In"
-          onClick={() => {
-            console.log("Submit button is clicked");
-            const email =
-              document.getElementById("email").value;
-            const password =
-              document.getElementById("password").value;
-            if (!email || !password) {
-              alert(
-                "Kindly enter input details for signup"
-              );
-            } else {
-              console.log(email, password);
-              signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-              )
-                .then((userCredential) => {
-                  // Signed in
-                  const user = userCredential.user;
-                  alert("User is successfully login :)");
-                  // ...
-                })
-                .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  alert("Email or password is incorrect");
-                });
-            }
-          }}
+          type="password"
+          placeholder="Password"
+          name="password"
+          id="password"
+          onChange={(e) =>
+            setDetails({
+              ...details,
+              password: e.target.value,
+            })
+          }
+          value={details.password}
         />
-        <div className="or-div">
+      </div>
+      <div className="forget-pwd">
+        <p>Forget password?</p>
+      </div>
+      <input
+        className="login-form-btn"
+        type="auth"
+        value="Log In"
+        onClick={() => {
+          // console.log("Submit button is clicked");
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          if (!email || !password) {
+            // alert("Kindly enter input details for signup");
+            Swal.fire({
+              title: "Kindly enter input details",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else {
+            console.log(email, password);
+            signInWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                Swal.fire({
+                  title: "Login successful",
+                  icon: "success",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                // alert("User is successfully login :)");
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // alert("Email or password is incorrect");
+                Swal.fire({
+                  title: "Login not successful",
+                  icon: "error",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+              });
+          }
+        }}
+      />
+      <div className="or-div">
         {/* <span className="hr-div">
             <hr />
           </span> */}
@@ -250,14 +296,21 @@ export default function Navbar() {
         {/* <p>
             <Link to="/signup">New to Zero Theorem? Join now!</Link>
           </p> */}
-        <p>Don’t have an account? <strong className={selectedHeadingIndex === 1 ? "active" : "color-yellow"}
-          onClick={() => handleClickForPopups(1)}>Sign Up</strong></p>
+        <p>
+          Don’t have an account?{" "}
+          <strong
+            className={selectedHeadingIndex === 1 ? "active" : "color-yellow"}
+            onClick={() => handleClickForPopups(1)}
+          >
+            Sign Up
+          </strong>
+        </p>
       </div>
     </div>,
 
     // SIGN UP POPUP CONTENT
     <div className="popup-inner">
-        <div className="form-group">
+      <div className="form-group">
         <label htmlFor="email">Email Address</label>
         <input
           type="email"
@@ -272,63 +325,99 @@ export default function Navbar() {
           }
           value={details.email}
         />
-        </div>
-        <div className="form-group no-margin-bottom">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            id="password"
-            onChange={(e) =>
-              setDetails({
-                ...details,
-                password: e.target.value,
-              })
-            }
-            value={details.password}
-          />
-        </div>
-        <div className="checkbox-div">
-          <input type="checkbox" id="tandc" name="tandc" value="" />
-          <label for="tandc"> I agree the Term and Conditions</label>
-        </div>
+      </div>
+      <div className="form-group no-margin-bottom">
+        <label htmlFor="password">Password</label>
         <input
-          className="login-form-btn"
-          type="auth"
-          value="Sign Up"
-          onClick={() => {
-            console.log("Submit button is clicked");
-            const email =
-              document.getElementById("email").value;
-            const password =
-              document.getElementById("password").value;
-            if (!email || !password) {
-              alert(
-                "Kindly enter input details for signup"
-              );
-            } else {
-              console.log(email, password);
-              signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-              )
-                .then((userCredential) => {
-                  // Signed in
-                  const user = userCredential.user;
-                  alert("User is successfully login :)");
-                  // ...
-                })
-                .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  alert("Email or password is incorrect");
-                });
-            }
-          }}
+          type="password"
+          placeholder="Password"
+          name="password"
+          id="password"
+          onChange={(e) =>
+            setDetails({
+              ...details,
+              password: e.target.value,
+            })
+          }
+          value={details.password}
         />
-        <div className="or-div">
+      </div>
+      <div className="checkbox-div">
+        <input
+          type="checkbox"
+          id="tandc"
+          name="tandc"
+          value=""
+          onClick={handleCheckboxClick}
+        />
+        <label for="tandc"> I agree the Term and Conditions</label>
+      </div>
+      <input
+        className="login-form-btn"
+        type="auth"
+        value="Sign Up"
+        onClick={() => {
+          console.log("Submit button is clicked");
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          if (!email || !password) {
+            console.log();
+            // alert("Kindly enter input details for signup");
+            Swal.fire({
+              title: "Kindly enter input details",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else if (isChecked == false) {
+            Swal.fire({
+              title: "Kindly agree to our term and conditions",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else {
+            console.log(email, password);
+            createUserWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                Swal.fire({
+                  title: "User account is created successfully",
+                  icon: "success",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                // alert("User account is created successfully");
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                Swal.fire({
+                  title: "Unable to create account with your credentials",
+                  icon: "error",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                // alert("Unable to create account with your credentials");
+              });
+          }
+        }}
+      />
+      <div className="or-div">
         <span>
           <p>OR</p>
         </span>
@@ -347,8 +436,14 @@ export default function Navbar() {
       </div>
 
       <div className="register-text">
-        <p>Already have an account? <strong className={selectedHeadingIndex === 0 ? "active" : "color-yellow"}
-          onClick={() => handleClickForPopups(0)}>Log In</strong>
+        <p>
+          Already have an account?{" "}
+          <strong
+            className={selectedHeadingIndex === 0 ? "active" : "color-yellow"}
+            onClick={() => handleClickForPopups(0)}
+          >
+            Log In
+          </strong>
         </p>
       </div>
     </div>,
@@ -529,11 +624,23 @@ export default function Navbar() {
                               ""
                             )}
                             <div className="form-headings">
-                              <h2 className={selectedHeadingIndex === 0 ? "active" : ""}
-                                  onClick={() => handleClickForPopups(0)}>Log In</h2>
-                                  
-                              <h2 className={selectedHeadingIndex === 1 ? "active" : ""}
-                                  onClick={() => handleClickForPopups(1)}>Sign Up</h2>
+                              <h2
+                                className={
+                                  selectedHeadingIndex === 0 ? "active" : ""
+                                }
+                                onClick={() => handleClickForPopups(0)}
+                              >
+                                Log In
+                              </h2>
+
+                              <h2
+                                className={
+                                  selectedHeadingIndex === 1 ? "active" : ""
+                                }
+                                onClick={() => handleClickForPopups(1)}
+                              >
+                                Sign Up
+                              </h2>
                             </div>
                             {/* <div className="popup-inner">
                               <div className="form-group">

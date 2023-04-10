@@ -685,11 +685,6 @@ const BacktestComponent = (props) => {
           toast: true,
           position: "top-right",
           showConfirmButton: false,
-          date_selected_for_backtest,
-          take_profit_selected_for_backtest,
-          stop_loss_selected_for_backtest,
-          fee_selected_for_backtest,
-          model_selected_for_backted,
         });
       } else {
         setIsButtonDisabled(true);
