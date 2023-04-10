@@ -18,6 +18,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BsFillInfoCircleFill } from "react-icons/bs";
+import { AiFillStar } from 'react-icons/ai';
 import { Tooltip } from "@mui/material";
 import TradingViewSplineAreaChart from "../models/graphs/TvSplineAreaChart";
 import IconButton from "@mui/material/IconButton";
@@ -449,7 +450,15 @@ const ModelDataGrid = () => {
   // To Link Grid Rows to Models Component
 
   const columns = [
-    { field: "id", headerName: "#", headerAlign: "center", width: 20 },
+
+    { field: "favs", headerName: "", headerAlign: "center", width: 10, sortable: false,
+    renderCell: (cellValues) => {
+        return <AiFillStar className="star-icons"/>;
+      },
+  },
+
+
+    { field: "id", headerName: "#", headerAlign: "center", width: 15 },
     // {
     //   field: "modelName",
     //   headerName: "Model Name",

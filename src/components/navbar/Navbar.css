@@ -203,7 +203,7 @@
         top: 75px;
         left: 0;
         width: 50%;
-        height: 90vh;
+        height: 126vh;
         transition: 0.4s;
         z-index: 2;
         background: #fff;
@@ -219,7 +219,7 @@
     }
 
     .nav-menu li {
-        padding: 2rem;
+        padding: 1.6rem 2rem;
         width: 100%;
     }
 
