@@ -145,7 +145,7 @@ export default function Navbar() {
           position: "top-right",
           showConfirmButton: false,
         });
-        setAuthCheck(true);
+        // setAuthCheck(true);
 
         // setShowPopup(false);
       })
@@ -251,7 +251,7 @@ export default function Navbar() {
                   showConfirmButton: false,
                 });
                 handleClosePopup();
-                setAuthCheck(true);
+                // setAuthCheck(true);
                 // alert("User is successfully login :)");
                 // ...
               })
@@ -402,7 +402,7 @@ export default function Navbar() {
                   showConfirmButton: false,
                 });
                 handleClosePopup();
-                setAuthCheck(true);
+                // setAuthCheck(true);
                 // alert("User account is created successfully");
                 // ...
               })
