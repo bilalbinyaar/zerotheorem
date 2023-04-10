@@ -8,7 +8,7 @@
 
 .left {
   flex: 1;
-  background: var(--color-forecasts-card);
+  background: var(--forecasts-model-index);
   width: 453px;
   height: 580px;
   border-radius: 19px;
@@ -97,23 +97,14 @@
   color: var(--color-day-black);
 }
 .api-info {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 30px;
-  margin-top: 3%;
-  text-align: center;
-  letter-spacing: -0.025em;
-  text-transform: capitalize;
-
-  color: #fdd835;
+margin-top: 1.2rem;
+color: var(--color-day-yellow);
 }
 .img_div {
   width: 75%;
   height: 50%;
   /* height: 100%; */
-  background: var(--forecasts-model-index);
+  background: var(--color-forecasts-card);
   border-radius: 10px;
   margin-top: 10%;
   display: flex;

@@ -107,7 +107,7 @@ function RegistrationForm() {
               metrics strategy development infrastructure with automated back
               testing portfolio optimization & much more quant stuff
             </p>
-            <h1 className="api-info">Enter your Information</h1>
+            <h2 className="api-info">Enter Your Information</h2>
             <form onSubmit={handleJoinList}>
               <div className="inputDiv">
                 <TextField
@@ -117,7 +117,7 @@ function RegistrationForm() {
                   value={firstName}
                   onChange={handleFirstNameChange}
                   sx={{
-                    width: 350,
+                    width: 300,
                     marginTop: "1rem",
                   }}
                 />
@@ -128,7 +128,7 @@ function RegistrationForm() {
                   value={LastName}
                   onChange={handleLastNameChange}
                   sx={{
-                    width: 350,
+                    width: 300,
                     marginTop: "1rem",
                   }}
                 />
@@ -139,7 +139,7 @@ function RegistrationForm() {
                   value={IndustryName}
                   onChange={handleIndustryNameChange}
                   sx={{
-                    width: 350,
+                    width: 300,
                     marginTop: "1rem",
                   }}
                 />
@@ -150,7 +150,7 @@ function RegistrationForm() {
                   value={email}
                   onChange={handleEmailChange}
                   sx={{
-                    width: 350,
+                    width: 300,
                     marginTop: "1rem",
                   }}
                 />
