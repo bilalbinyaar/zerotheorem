@@ -57,7 +57,6 @@
 
 
 .btn-nav:hover {
-    background-color: var(--color-day-black);
     cursor: pointer;
 }
 

@@ -107,6 +107,10 @@ form .form-inner input[type="auth"] {
   justify-content: flex-end;
 }
 
+.register-text strong {
+  cursor: pointer;
+}
+
 
 .or-div {
   display: flex;
@@ -165,7 +169,7 @@ option:nth-child(0) {
 
 .form-headings {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 80%;
   margin-bottom: 0.8rem;
@@ -184,9 +188,10 @@ option:nth-child(0) {
 }
 
 .checkbox-div {
-  padding: 1rem 0rem;
+  margin-top: 12px;
   display: flex;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .checkbox-div label {

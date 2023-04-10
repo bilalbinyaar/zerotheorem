@@ -7,7 +7,7 @@ import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
-import { AiFillCaretDown, AiOutlineCloseCircle } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineClose } from "react-icons/ai";
 import { width } from "@mui/system";
 import NavMobile from "../../mobile-components/nav/NavMobile";
 import { useSelector, useDispatch } from "react-redux";
@@ -190,7 +190,7 @@ export default function Navbar() {
         <input
           className="login-form-btn"
           type="auth"
-          value="LOGIN"
+          value="Log In"
           onClick={() => {
             console.log("Submit button is clicked");
             const email =
@@ -242,7 +242,7 @@ export default function Navbar() {
           }}
         >
           <AiFillGoogleCircle className="google-login-icon" />
-          Sign in with Google
+          Continue with Google
         </button>
       </div>
 
@@ -250,7 +250,8 @@ export default function Navbar() {
         {/* <p>
             <Link to="/signup">New to Zero Theorem? Join now!</Link>
           </p> */}
-        <p>Don’t have account? <strong>Sign up</strong></p>
+        <p>Don’t have an account? <strong className={selectedHeadingIndex === 1 ? "active" : "color-yellow"}
+          onClick={() => handleClickForPopups(1)}>Sign Up</strong></p>
       </div>
     </div>,
 
@@ -345,8 +346,10 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className="register-text tandc-text">
-        <p>By proceeding, you agree to Zero Theorem <span className="color-yellow">Terms <br/>of Use & Privacy Policy</span>.</p>
+      <div className="register-text">
+        <p>Already have an account? <strong className={selectedHeadingIndex === 0 ? "active" : "color-yellow"}
+          onClick={() => handleClickForPopups(0)}>Log In</strong>
+        </p>
       </div>
     </div>,
   ];
@@ -517,7 +520,7 @@ export default function Navbar() {
                             className="popup__close"
                             onClick={handleClosePopup}
                           >
-                            <AiOutlineCloseCircle />
+                            <AiOutlineClose />
                           </button>
                           <div className="form-inner">
                             {error !== "" ? (
@@ -527,7 +530,7 @@ export default function Navbar() {
                             )}
                             <div className="form-headings">
                               <h2 className={selectedHeadingIndex === 0 ? "active" : ""}
-                                  onClick={() => handleClickForPopups(0)}>Login</h2>
+                                  onClick={() => handleClickForPopups(0)}>Log In</h2>
                                   
                               <h2 className={selectedHeadingIndex === 1 ? "active" : ""}
                                   onClick={() => handleClickForPopups(1)}>Sign Up</h2>

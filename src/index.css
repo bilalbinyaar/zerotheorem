@@ -244,11 +244,6 @@ form .form-inner h2 {
   margin-bottom: 30px;
 }
 
-form .form-inner .form-group {
-  width: 300px;
-  margin-bottom: 25px;
-}
-
 .form-inner .form-group label {
   display: block;
   font-size: 14px;
@@ -312,6 +307,10 @@ form .form-inner input[type="submit"]:hover {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.forget-pwd p{
+  margin-top: 12px;
 }
 
 .iconSpace {
