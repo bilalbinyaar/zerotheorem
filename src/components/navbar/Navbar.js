@@ -109,6 +109,7 @@ export default function Navbar() {
     setShowPopup(false);
   };
 
+
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -415,7 +416,7 @@ export default function Navbar() {
                               {/* <p>
                                   <Link to="/signup">New to Zero Theorem? Join now!</Link>
                                 </p> */}
-                              <p>New to Zero Theorem? Join now!</p>
+                              <p>Don’t have account? <strong>Sign up</strong></p>
                             </div>
                           </div>
                         </form>
