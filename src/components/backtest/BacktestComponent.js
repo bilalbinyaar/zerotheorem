@@ -69,6 +69,7 @@ import DrawDown from "../models/drawDown/DrawDown";
 const BacktestComponent = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleClick = () => {
     setIsClicked(true);
@@ -666,136 +667,142 @@ const BacktestComponent = (props) => {
   };
   const [backtest_table_name, set_backtest_table_name] = useState(null);
   const handleRunBacktestChange = () => {
-    if (
-      !date_selected_for_backtest ||
-      !take_profit_selected_for_backtest ||
-      !stop_loss_selected_for_backtest ||
-      fee_selected_for_backtest.length == 0 ||
-      !model_selected_for_backted
-    ) {
-      Swal.fire({
-        title: "Kindly input all fields to run backtest",
-        icon: "error",
-        timer: 2000,
-        timerProgressBar: true,
-        toast: true,
-        position: "top-right",
-        showConfirmButton: false,
-        date_selected_for_backtest,
-        take_profit_selected_for_backtest,
-        stop_loss_selected_for_backtest,
-        fee_selected_for_backtest,
-        model_selected_for_backted,
-      });
-    } else {
-      const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
-      set_backtest_table_name(id);
-      var current_time = new Date();
-      const timestamp = current_time.getTime();
-      var check = true;
+    if (isButtonDisabled == false) {
       if (
-        take_profit_selected_for_backtest <= 0 ||
-        take_profit_selected_for_backtest > 100
+        !date_selected_for_backtest ||
+        !take_profit_selected_for_backtest ||
+        !stop_loss_selected_for_backtest ||
+        fee_selected_for_backtest.length == 0 ||
+        !model_selected_for_backted
       ) {
-        check = false;
-        // alert("Take profit should be in range 0-100%");
         Swal.fire({
-          title: "Take profit should be in range 0-100%",
+          title: "Kindly input all fields to run backtest",
           icon: "error",
           timer: 2000,
           timerProgressBar: true,
           toast: true,
           position: "top-right",
           showConfirmButton: false,
+          date_selected_for_backtest,
+          take_profit_selected_for_backtest,
+          stop_loss_selected_for_backtest,
+          fee_selected_for_backtest,
+          model_selected_for_backted,
         });
-      }
-      if (!validator.isNumeric(take_profit_selected_for_backtest.toString())) {
-        check = false;
-        // alert("Kindly input value in numbers for take profit");
-        Swal.fire({
-          title: "Kindly input value in numbers for take profit",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (
-        stop_loss_selected_for_backtest <= 0 ||
-        stop_loss_selected_for_backtest > 100
-      ) {
-        check = false;
+      } else {
+        setIsButtonDisabled(true);
 
-        // alert("Stop loss should be in range 0-100%");
-        Swal.fire({
-          title: "Stop loss should be in range 0-100%",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (!validator.isNumeric(stop_loss_selected_for_backtest.toString())) {
-        check = false;
-        // alert("Kindly input value in numbers for stop loss");
-        Swal.fire({
-          title: "Kindly input value in numbers for stop profit",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
-        check = false;
+        const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
+        set_backtest_table_name(id);
+        var current_time = new Date();
+        const timestamp = current_time.getTime();
+        var check = true;
+        if (
+          take_profit_selected_for_backtest <= 0 ||
+          take_profit_selected_for_backtest > 100
+        ) {
+          check = false;
+          // alert("Take profit should be in range 0-100%");
+          Swal.fire({
+            title: "Take profit should be in range 0-100%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (
+          !validator.isNumeric(take_profit_selected_for_backtest.toString())
+        ) {
+          check = false;
+          // alert("Kindly input value in numbers for take profit");
+          Swal.fire({
+            title: "Kindly input value in numbers for take profit",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (
+          stop_loss_selected_for_backtest <= 0 ||
+          stop_loss_selected_for_backtest > 100
+        ) {
+          check = false;
 
-        // alert("Fee should be in range 0-1%");
-        Swal.fire({
-          title: "Fee should be in range 0-1%",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (!validator.isNumeric(fee_selected_for_backtest.toString())) {
-        check = false;
-        // alert("Kindly input value in numbers for fee");
-        Swal.fire({
-          title: "Kindly input value in numbers for fee",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (check == true) {
-        setIsLoading(true);
-        set(ref(database, "backtest_queue/" + "user_" + id), {
-          id: "user_" + id,
-          modelName: model_selected_for_backted,
-          start_date: date_selected_for_backtest,
-          end_date: "1677555199",
-          take_profit: take_profit_selected_for_backtest,
-          stop_loss: stop_loss_selected_for_backtest,
-          transaction_fee: fee_selected_for_backtest,
-          status: 0,
-          current_time: timestamp,
+          // alert("Stop loss should be in range 0-100%");
+          Swal.fire({
+            title: "Stop loss should be in range 0-100%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (!validator.isNumeric(stop_loss_selected_for_backtest.toString())) {
+          check = false;
+          // alert("Kindly input value in numbers for stop loss");
+          Swal.fire({
+            title: "Kindly input value in numbers for stop profit",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
+          check = false;
 
-          // profile_picture: imageUrl,
-        });
+          // alert("Fee should be in range 0-1%");
+          Swal.fire({
+            title: "Fee should be in range 0-1%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (!validator.isNumeric(fee_selected_for_backtest.toString())) {
+          check = false;
+          // alert("Kindly input value in numbers for fee");
+          Swal.fire({
+            title: "Kindly input value in numbers for fee",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (check == true) {
+          setIsLoading(true);
+          set(ref(database, "backtest_queue/" + "user_" + id), {
+            id: "user_" + id,
+            modelName: model_selected_for_backted,
+            start_date: date_selected_for_backtest,
+            end_date: "1677555199",
+            take_profit: take_profit_selected_for_backtest,
+            stop_loss: stop_loss_selected_for_backtest,
+            transaction_fee: fee_selected_for_backtest,
+            status: 0,
+            current_time: timestamp,
 
-        set_flag_backtest_result(new Date());
+            // profile_picture: imageUrl,
+          });
+
+          set_flag_backtest_result(new Date());
+        }
       }
     }
   };
@@ -819,6 +826,8 @@ const BacktestComponent = (props) => {
         showConfirmButton: false,
       });
     } else {
+      setIsButtonDisabled(true);
+
       // console.log(
       //   date_selected_for_backtest,
       //   take_profit_selected_for_backtest,
@@ -1001,6 +1010,7 @@ const BacktestComponent = (props) => {
                 showConfirmButton: false,
               });
               setIsLoading(false);
+              setIsButtonDisabled(false);
             } else if (data.status == 2) {
               Swal.fire({
                 title: "Backtest is not successful",
@@ -1011,6 +1021,8 @@ const BacktestComponent = (props) => {
                 position: "top-right",
                 showConfirmButton: false,
               });
+              setIsLoading(false);
+              setIsButtonDisabled(false);
             } else {
               set_flag_backtest_result(new Date());
             }
@@ -1111,7 +1123,6 @@ const BacktestComponent = (props) => {
         // set_model_name_for_result_backtest_result(name.replace("-", "_"));
         // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
       }
-
     }
   }, [strategies, model_name_check]);
 
@@ -1131,7 +1142,6 @@ const BacktestComponent = (props) => {
             with a value between 0 and 1.
           </p>
 
-          
           {/* THIS IS FOR WEB */}
           <div className="backtest-filters backtest-for-web this-is-for-models-page">
             <div className="date-picker flex-display">
@@ -1203,12 +1213,21 @@ const BacktestComponent = (props) => {
                 }}
               />
             </div>
-            <div className="backtest-btn-div backtest-btn-page">
+            {/* <div className="backtest-btn-div backtest-btn-page">
               <Link to="#">
                 <p className="compare-btn" onClick={handleRunBacktestChange}>
                   Run Backtest
                 </p>
               </Link>
+            </div> */}
+            <div className="btn-div-backtest" onClick={handleRunBacktestChange}>
+              <button
+                className="btn-contact-backtest"
+                disabled={isButtonDisabled}
+                style={{ pointerEvents: isButtonDisabled ? "none" : "auto" }}
+              >
+                Run Backtest
+              </button>
             </div>
           </div>
 
@@ -1293,17 +1312,17 @@ const BacktestComponent = (props) => {
             </div>
           </div>
 
-          <div className="for-flex-end">
-            <div className="backtest-btn-div backtest-btn-page">
-              <Link to="#">
-                <p
-                  className="compare-btn"
-                  onClick={handleRunBacktestChangeMobile}
-                >
-                  Run Backtest
-                </p>
-              </Link>
-            </div>
+          <div
+            className="backtest-btn-for-mobile"
+            onClick={handleRunBacktestChange}
+          >
+            <button
+              className="btn-contact-backtest-mobile"
+              disabled={isButtonDisabled}
+              style={{ pointerEvents: isButtonDisabled ? "none" : "auto" }}
+            >
+              Run Backtest
+            </button>
           </div>
         </div>
       </div>
@@ -1332,10 +1351,9 @@ const BacktestComponent = (props) => {
               model_name_stats={model_name_for_result_backtest_result_stats}
             />
           ) : null}
-          
+
           {model_name_for_result_backtest_result ? (
-            <DrawDown model_name={model_name_for_result_backtest_result}/>
-            
+            <DrawDown model_name={model_name_for_result_backtest_result} />
           ) : null}
 
           {model_name_for_result_backtest_result ? (

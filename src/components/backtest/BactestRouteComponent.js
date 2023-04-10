@@ -50,6 +50,7 @@ import { isNumber } from "@amcharts/amcharts5/.internal/core/util/Type";
 const BactestRouteComponent = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleClick = () => {
     setIsClicked(true);
@@ -654,175 +655,158 @@ const BactestRouteComponent = () => {
   };
   const [backtest_table_name, set_backtest_table_name] = useState(null);
   const handleRunBacktestChange = () => {
-    if (
-      !date_selected_for_backtest ||
-      !take_profit_selected_for_backtest ||
-      !stop_loss_selected_for_backtest ||
-      !fee_selected_for_backtest ||
-      !model_selected_for_backted
-    ) {
-      //   alert("Kindly input all fields to run backtest");
-      Swal.fire({
-        title: "Kindly input all fields to run backtest",
-        icon: "error",
-        timer: 2000,
-        timerProgressBar: true,
-        toast: true,
-        position: "top-right",
-        showConfirmButton: false,
-        date_selected_for_backtest,
-        take_profit_selected_for_backtest,
-        stop_loss_selected_for_backtest,
-        fee_selected_for_backtest,
-        model_selected_for_backted,
-      });
-    } else {
-      const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
-      set_backtest_table_name(id);
-      var current_time = new Date();
-      const timestamp = current_time.getTime();
-      var check = true;
+    if (isButtonDisabled == false) {
       if (
-        take_profit_selected_for_backtest <= 0 ||
-        take_profit_selected_for_backtest > 100
+        !date_selected_for_backtest ||
+        !take_profit_selected_for_backtest ||
+        !stop_loss_selected_for_backtest ||
+        !fee_selected_for_backtest ||
+        !model_selected_for_backted
       ) {
-        check = false;
-        // alert("Take profit should be in range 0-100%");
+        //   alert("Kindly input all fields to run backtest");
         Swal.fire({
-          title: "Take profit should be in range 0-100%",
+          title: "Kindly input all fields to run backtest",
           icon: "error",
           timer: 2000,
           timerProgressBar: true,
           toast: true,
           position: "top-right",
           showConfirmButton: false,
+          date_selected_for_backtest,
+          take_profit_selected_for_backtest,
+          stop_loss_selected_for_backtest,
+          fee_selected_for_backtest,
+          model_selected_for_backted,
         });
-      }
+      } else {
+        setIsButtonDisabled(true);
+        const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
+        set_backtest_table_name(id);
+        var current_time = new Date();
+        const timestamp = current_time.getTime();
+        var check = true;
+        if (
+          take_profit_selected_for_backtest <= 0 ||
+          take_profit_selected_for_backtest > 100
+        ) {
+          check = false;
+          // alert("Take profit should be in range 0-100%");
+          Swal.fire({
+            title: "Take profit should be in range 0-100%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
 
-      if (!validator.isNumeric(take_profit_selected_for_backtest)) {
-        check = false;
-        // alert("Kindly input value in numbers for take profit");
+        if (!validator.isNumeric(take_profit_selected_for_backtest)) {
+          check = false;
+          // alert("Kindly input value in numbers for take profit");
 
-        Swal.fire({
-          title: "Kindly input value in numbers for take profit",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (
-        stop_loss_selected_for_backtest <= 0 ||
-        stop_loss_selected_for_backtest > 100
-      ) {
-        check = false;
+          Swal.fire({
+            title: "Kindly input value in numbers for take profit",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (
+          stop_loss_selected_for_backtest <= 0 ||
+          stop_loss_selected_for_backtest > 100
+        ) {
+          check = false;
 
-        // alert("Stop loss should be in range 0-100%");
-        Swal.fire({
-          title: "Stop loss should be in range 0-100%",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (!validator.isNumeric(stop_loss_selected_for_backtest)) {
-        check = false;
-        // alert("Kindly input value in numbers for stop loss");
-        Swal.fire({
-          title: "Kindly input value in numbers for stop profit",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
-        check = false;
+          // alert("Stop loss should be in range 0-100%");
+          Swal.fire({
+            title: "Stop loss should be in range 0-100%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (!validator.isNumeric(stop_loss_selected_for_backtest)) {
+          check = false;
+          // alert("Kindly input value in numbers for stop loss");
+          Swal.fire({
+            title: "Kindly input value in numbers for stop profit",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
+          check = false;
 
-        // alert("Fee should be in range 0-1%");
-        Swal.fire({
-          title: "Fee should be in range 0-1%",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (!validator.isNumeric(fee_selected_for_backtest)) {
-        check = false;
-        // alert("Kindly input value in numbers for fee");
-        Swal.fire({
-          title: "Kindly input value in numbers for fee",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
+          // alert("Fee should be in range 0-1%");
+          Swal.fire({
+            title: "Fee should be in range 0-1%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (!validator.isNumeric(fee_selected_for_backtest)) {
+          check = false;
+          // alert("Kindly input value in numbers for fee");
+          Swal.fire({
+            title: "Kindly input value in numbers for fee",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
 
-      if (check == true) {
-        setIsLoading(true);
-        set(ref(database, "backtest_queue/" + "user_" + id), {
-          id: "user_" + id,
-          modelName: model_selected_for_backted,
-          start_date: date_selected_for_backtest,
-          end_date: "1677555199",
-          take_profit: take_profit_selected_for_backtest,
-          stop_loss: stop_loss_selected_for_backtest,
-          transaction_fee: fee_selected_for_backtest,
-          status: 0,
-          current_time: timestamp,
+        if (check == true) {
+          setIsLoading(true);
+          set(ref(database, "backtest_queue/" + "user_" + id), {
+            id: "user_" + id,
+            modelName: model_selected_for_backted,
+            start_date: date_selected_for_backtest,
+            end_date: "1677555199",
+            take_profit: take_profit_selected_for_backtest,
+            stop_loss: stop_loss_selected_for_backtest,
+            transaction_fee: fee_selected_for_backtest,
+            status: 0,
+            current_time: timestamp,
 
-          // profile_picture: imageUrl,
-        });
-        set_flag_backtest_result(new Date());
+            // profile_picture: imageUrl,
+          });
+          set_flag_backtest_result(new Date());
+        }
       }
     }
   };
 
   const handleRunBacktestChangeMobile = () => {
-    if (
-      !date_selected_for_backtest_mobile ||
-      !take_profit_selected_for_backtest_mobile ||
-      !stop_loss_selected_for_backtest_mobile ||
-      !fee_selected_for_backtest_mobile ||
-      !model_selected_for_backted
-    ) {
-      //   alert("Kindly input all fields to run backtest");
-      Swal.fire({
-        title: "Kindly input all fields to run backtest",
-        icon: "error",
-        timer: 2000,
-        timerProgressBar: true,
-        toast: true,
-        position: "top-right",
-        showConfirmButton: false,
-      });
-    } else {
-      const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
-      set_backtest_table_name(id);
-      var current_time = new Date();
-      const timestamp = current_time.getTime();
-      var check = true;
+    if (isButtonDisabled == false) {
       if (
-        take_profit_selected_for_backtest_mobile <= 0 ||
-        take_profit_selected_for_backtest_mobile > 100
+        !date_selected_for_backtest_mobile ||
+        !take_profit_selected_for_backtest_mobile ||
+        !stop_loss_selected_for_backtest_mobile ||
+        !fee_selected_for_backtest_mobile ||
+        !model_selected_for_backted
       ) {
-        check = false;
-        // alert("Take profit should be in range 0-100%");
+        //   alert("Kindly input all fields to run backtest");
         Swal.fire({
-          title: "Take profit should be in range 0-100%",
+          title: "Kindly input all fields to run backtest",
           icon: "error",
           timer: 2000,
           timerProgressBar: true,
@@ -830,97 +814,120 @@ const BactestRouteComponent = () => {
           position: "top-right",
           showConfirmButton: false,
         });
-      }
-      if (!validator.isNumeric(take_profit_selected_for_backtest_mobile)) {
-        check = false;
-        // alert("Kindly input value in numbers for take profit");
-        Swal.fire({
-          title: "Kindly input value in numbers for take profit",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (
-        stop_loss_selected_for_backtest_mobile <= 0 ||
-        stop_loss_selected_for_backtest_mobile > 100
-      ) {
-        check = false;
+      } else {
+        setIsButtonDisabled(true);
+        const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
+        set_backtest_table_name(id);
+        var current_time = new Date();
+        const timestamp = current_time.getTime();
+        var check = true;
+        if (
+          take_profit_selected_for_backtest_mobile <= 0 ||
+          take_profit_selected_for_backtest_mobile > 100
+        ) {
+          check = false;
+          // alert("Take profit should be in range 0-100%");
+          Swal.fire({
+            title: "Take profit should be in range 0-100%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (!validator.isNumeric(take_profit_selected_for_backtest_mobile)) {
+          check = false;
+          // alert("Kindly input value in numbers for take profit");
+          Swal.fire({
+            title: "Kindly input value in numbers for take profit",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (
+          stop_loss_selected_for_backtest_mobile <= 0 ||
+          stop_loss_selected_for_backtest_mobile > 100
+        ) {
+          check = false;
 
-        // alert("Stop loss should be in range 0-100%");
-        Swal.fire({
-          title: "Stop loss should be in range 0-100%",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (!validator.isNumeric(stop_loss_selected_for_backtest_mobile)) {
-        check = false;
-        // alert("Kindly input value in numbers for stop loss");
-        Swal.fire({
-          title: "Kindly input value in numbers for stop profit",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (
-        fee_selected_for_backtest_mobile < 0 ||
-        fee_selected_for_backtest_mobile > 1
-      ) {
-        check = false;
+          // alert("Stop loss should be in range 0-100%");
+          Swal.fire({
+            title: "Stop loss should be in range 0-100%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (!validator.isNumeric(stop_loss_selected_for_backtest_mobile)) {
+          check = false;
+          // alert("Kindly input value in numbers for stop loss");
+          Swal.fire({
+            title: "Kindly input value in numbers for stop profit",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (
+          fee_selected_for_backtest_mobile < 0 ||
+          fee_selected_for_backtest_mobile > 1
+        ) {
+          check = false;
 
-        // alert("Fee should be in range 0-1%");
-        Swal.fire({
-          title: "Fee should be in range 0-1%",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (!validator.isNumeric(fee_selected_for_backtest_mobile)) {
-        check = false;
-        // alert("Kindly input value in numbers for fee");
-        Swal.fire({
-          title: "Kindly input value in numbers for fee",
-          icon: "error",
-          timer: 2000,
-          timerProgressBar: true,
-          toast: true,
-          position: "top-right",
-          showConfirmButton: false,
-        });
-      }
-      if (check == true) {
-        setIsLoading(true);
+          // alert("Fee should be in range 0-1%");
+          Swal.fire({
+            title: "Fee should be in range 0-1%",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (!validator.isNumeric(fee_selected_for_backtest_mobile)) {
+          check = false;
+          // alert("Kindly input value in numbers for fee");
+          Swal.fire({
+            title: "Kindly input value in numbers for fee",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
+        if (check == true) {
+          setIsLoading(true);
 
-        set(ref(database, "backtest_queue/" + "user_" + id), {
-          id: "user_" + id,
-          modelName: model_selected_for_backted,
-          start_date: date_selected_for_backtest_mobile,
-          end_date: "1677555199",
-          take_profit: take_profit_selected_for_backtest_mobile,
-          stop_loss: stop_loss_selected_for_backtest_mobile,
-          transaction_fee: fee_selected_for_backtest_mobile,
-          status: 0,
-          current_time: timestamp,
+          set(ref(database, "backtest_queue/" + "user_" + id), {
+            id: "user_" + id,
+            modelName: model_selected_for_backted,
+            start_date: date_selected_for_backtest_mobile,
+            end_date: "1677555199",
+            take_profit: take_profit_selected_for_backtest_mobile,
+            stop_loss: stop_loss_selected_for_backtest_mobile,
+            transaction_fee: fee_selected_for_backtest_mobile,
+            status: 0,
+            current_time: timestamp,
 
-          // profile_picture: imageUrl,
-        });
-        set_flag_backtest_result(new Date());
+            // profile_picture: imageUrl,
+          });
+          set_flag_backtest_result(new Date());
+        }
       }
     }
   };
@@ -963,6 +970,7 @@ const BactestRouteComponent = () => {
                 showConfirmButton: false,
               });
               setIsLoading(false);
+              setIsButtonDisabled(false);
             } else if (data.status == 2) {
               Swal.fire({
                 title: "Backtest is not successful",
@@ -974,6 +982,7 @@ const BactestRouteComponent = () => {
                 showConfirmButton: false,
               });
               setIsLoading(false);
+              setIsButtonDisabled(false);
             } else {
               set_flag_backtest_result(new Date());
             }
@@ -1823,12 +1832,15 @@ const BactestRouteComponent = () => {
               }}
             />
           </div>
-          <div className="backtest-btn-div backtest-btn-page">
-            <Link to="#">
-              <p className="compare-btn" onClick={handleRunBacktestChange}>
-                Run Backtest
-              </p>
-            </Link>
+
+          <div className="btn-div-backtest" onClick={handleRunBacktestChange}>
+            <button
+              className="btn-contact-backtest"
+              disabled={isButtonDisabled}
+              style={{ pointerEvents: isButtonDisabled ? "none" : "auto" }}
+            >
+              Run Backtest
+            </button>
           </div>
         </div>
 
@@ -1914,15 +1926,17 @@ const BactestRouteComponent = () => {
         </div>
 
         <div className="for-flex-end">
-          <div className="backtest-btn-div backtest-btn-page">
-            <Link to="#">
-              <p
-                className="compare-btn"
-                onClick={handleRunBacktestChangeMobile}
-              >
-                Run Backtest
-              </p>
-            </Link>
+          <div
+            className="btn-div-backtest"
+            onClick={handleRunBacktestChangeMobile}
+          >
+            <button
+              className="btn-contact-backtest"
+              disabled={isButtonDisabled}
+              style={{ pointerEvents: isButtonDisabled ? "none" : "auto" }}
+            >
+              Run Backtest
+            </button>
           </div>
         </div>
       </div>
@@ -1955,7 +1969,7 @@ const BactestRouteComponent = () => {
           ) : null}
 
           {model_name_for_result_backtest_result ? (
-            <DrawDown model_name={model_name_for_result_backtest_result}/>  
+            <DrawDown model_name={model_name_for_result_backtest_result} />
           ) : null}
 
           {model_name_for_result_backtest_result ? (
