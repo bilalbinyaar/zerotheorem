@@ -690,6 +690,8 @@ const BactestRouteComponent = () => {
           take_profit_selected_for_backtest > 100
         ) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Take profit should be in range 0-100%");
           Swal.fire({
             title: "Take profit should be in range 0-100%",
@@ -705,6 +707,7 @@ const BactestRouteComponent = () => {
         if (!validator.isNumeric(take_profit_selected_for_backtest)) {
           check = false;
           // alert("Kindly input value in numbers for take profit");
+          setIsButtonDisabled(false);
 
           Swal.fire({
             title: "Kindly input value in numbers for take profit",
@@ -721,6 +724,7 @@ const BactestRouteComponent = () => {
           stop_loss_selected_for_backtest > 100
         ) {
           check = false;
+          setIsButtonDisabled(false);
 
           // alert("Stop loss should be in range 0-100%");
           Swal.fire({
@@ -735,6 +739,8 @@ const BactestRouteComponent = () => {
         }
         if (!validator.isNumeric(stop_loss_selected_for_backtest)) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for stop loss");
           Swal.fire({
             title: "Kindly input value in numbers for stop profit",
@@ -748,6 +754,7 @@ const BactestRouteComponent = () => {
         }
         if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
           check = false;
+          setIsButtonDisabled(false);
 
           // alert("Fee should be in range 0-1%");
           Swal.fire({
@@ -762,6 +769,8 @@ const BactestRouteComponent = () => {
         }
         if (!validator.isNumeric(fee_selected_for_backtest)) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for fee");
           Swal.fire({
             title: "Kindly input value in numbers for fee",
@@ -805,6 +814,8 @@ const BactestRouteComponent = () => {
         !model_selected_for_backted
       ) {
         //   alert("Kindly input all fields to run backtest");
+        setIsButtonDisabled(false);
+
         Swal.fire({
           title: "Kindly input all fields to run backtest",
           icon: "error",
@@ -826,6 +837,7 @@ const BactestRouteComponent = () => {
           take_profit_selected_for_backtest_mobile > 100
         ) {
           check = false;
+          setIsButtonDisabled(false);
           // alert("Take profit should be in range 0-100%");
           Swal.fire({
             title: "Take profit should be in range 0-100%",
@@ -839,6 +851,8 @@ const BactestRouteComponent = () => {
         }
         if (!validator.isNumeric(take_profit_selected_for_backtest_mobile)) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for take profit");
           Swal.fire({
             title: "Kindly input value in numbers for take profit",
@@ -855,6 +869,7 @@ const BactestRouteComponent = () => {
           stop_loss_selected_for_backtest_mobile > 100
         ) {
           check = false;
+          setIsButtonDisabled(false);
 
           // alert("Stop loss should be in range 0-100%");
           Swal.fire({
@@ -869,6 +884,8 @@ const BactestRouteComponent = () => {
         }
         if (!validator.isNumeric(stop_loss_selected_for_backtest_mobile)) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for stop loss");
           Swal.fire({
             title: "Kindly input value in numbers for stop profit",
@@ -885,6 +902,7 @@ const BactestRouteComponent = () => {
           fee_selected_for_backtest_mobile > 1
         ) {
           check = false;
+          setIsButtonDisabled(false);
 
           // alert("Fee should be in range 0-1%");
           Swal.fire({
@@ -899,6 +917,8 @@ const BactestRouteComponent = () => {
         }
         if (!validator.isNumeric(fee_selected_for_backtest_mobile)) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for fee");
           Swal.fire({
             title: "Kindly input value in numbers for fee",

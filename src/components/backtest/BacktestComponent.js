@@ -675,6 +675,8 @@ const BacktestComponent = (props) => {
         fee_selected_for_backtest.length == 0 ||
         !model_selected_for_backted
       ) {
+        setIsButtonDisabled(false);
+
         Swal.fire({
           title: "Kindly input all fields to run backtest",
           icon: "error",
@@ -701,6 +703,8 @@ const BacktestComponent = (props) => {
           take_profit_selected_for_backtest <= 0 ||
           take_profit_selected_for_backtest > 100
         ) {
+          setIsButtonDisabled(false);
+
           check = false;
           // alert("Take profit should be in range 0-100%");
           Swal.fire({
@@ -717,6 +721,8 @@ const BacktestComponent = (props) => {
           !validator.isNumeric(take_profit_selected_for_backtest.toString())
         ) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for take profit");
           Swal.fire({
             title: "Kindly input value in numbers for take profit",
@@ -733,6 +739,7 @@ const BacktestComponent = (props) => {
           stop_loss_selected_for_backtest > 100
         ) {
           check = false;
+          setIsButtonDisabled(false);
 
           // alert("Stop loss should be in range 0-100%");
           Swal.fire({
@@ -747,6 +754,8 @@ const BacktestComponent = (props) => {
         }
         if (!validator.isNumeric(stop_loss_selected_for_backtest.toString())) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for stop loss");
           Swal.fire({
             title: "Kindly input value in numbers for stop profit",
@@ -760,6 +769,7 @@ const BacktestComponent = (props) => {
         }
         if (fee_selected_for_backtest < 0 || fee_selected_for_backtest > 1) {
           check = false;
+          setIsButtonDisabled(false);
 
           // alert("Fee should be in range 0-1%");
           Swal.fire({
@@ -774,6 +784,8 @@ const BacktestComponent = (props) => {
         }
         if (!validator.isNumeric(fee_selected_for_backtest.toString())) {
           check = false;
+          setIsButtonDisabled(false);
+
           // alert("Kindly input value in numbers for fee");
           Swal.fire({
             title: "Kindly input value in numbers for fee",
@@ -787,6 +799,7 @@ const BacktestComponent = (props) => {
         }
         if (check == true) {
           setIsLoading(true);
+
           set(ref(database, "backtest_queue/" + "user_" + id), {
             id: "user_" + id,
             modelName: model_selected_for_backted,
@@ -1314,7 +1327,7 @@ const BacktestComponent = (props) => {
 
           <div
             className="backtest-btn-for-mobile"
-            onClick={handleRunBacktestChange}
+            onClick={handleRunBacktestChangeMobile}
           >
             <button
               className="btn-contact-backtest-mobile"
