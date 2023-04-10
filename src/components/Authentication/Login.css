@@ -163,6 +163,49 @@ option:nth-child(0) {
   color: #ffc600 !important;
 }
 
+.form-headings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 0.8rem;
+}
+
+.form-headings h2 {
+  cursor: pointer;
+  padding-bottom: 0.8rem;
+  opacity: 0.6;
+}
+
+.form-headings .active {
+  border-bottom: 2px solid var(--color-day-yellow);
+  padding-bottom: 0.8rem;
+  opacity: 1;
+}
+
+.checkbox-div {
+  padding: 1rem 0rem;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-div label {
+  margin-left: 0.4rem;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--color-day-black);
+}
+
+.tandc-text {
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+}
+
+.tanc-text p {
+  text-align: center !important;  
+}
+
 @media screen and (max-width: 1168px) {
   .login-form {
     width: 60%;
