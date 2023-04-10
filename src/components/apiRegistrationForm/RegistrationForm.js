@@ -86,11 +86,11 @@ function RegistrationForm() {
       <div className="container">
         <div className="registration-wrapper">
           <div className="left">
-            <p className="api-heading">
+            <h1>
               Registration Interest For Early Access To Our Wholesale /
               Institutional API
-            </p>
-            <p className="api-heading2">*For Sophisticated investors only*</p>
+            </h1>
+            <h2>*For Sophisticated investors only*</h2>
             <div className="img_div">
               {theme === "dark-theme" ? (
                 <img src={soon_dark} alt="vehcain logo" className="api-img" />
