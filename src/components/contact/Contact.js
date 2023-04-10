@@ -80,71 +80,75 @@ function Contact() {
     }
   };
   return (
-    <div className="contact-form-div">
-      <h3 className="contact-heading">Contact Us</h3>
-      <form onSubmit={handleJoinList}>
-        <div className="inputDiv">
-          <TextField
-            id="firstName"
-            placeholder="First Name*"
-            variant="outlined"
-            value={firstName}
-            onChange={handleFirstNameChange}
-            sx={{
-              width: 550,
-              marginTop: "1rem",
-            }}
-          />
-          <TextField
-            id="firstName4"
-            placeholder="Last Name*"
-            variant="outlined"
-            value={LastName}
-            onChange={handleLastNameChange}
-            sx={{
-              width: 550,
-              marginTop: "1rem",
-            }}
-          />
-          <TextField
-            id="firstName2"
-            placeholder="Industry*"
-            variant="outlined"
-            value={IndustryName}
-            onChange={handleIndustryNameChange}
-            sx={{
-              width: 550,
-              marginTop: "1rem",
-            }}
-          />
-          <TextField
-            id="firstName3"
-            placeholder="Email*"
-            variant="outlined"
-            value={email}
-            onChange={handleEmailChange}
-            sx={{
-              width: 550,
-              marginTop: "1rem",
-            }}
-          />
-          <TextField
-            placeholder="Your Message*"
-            // variant="outlined"
-            value={message}
-            onChange={handleMessageChange}
-            sx={{
-              width: 550,
-              marginTop: "1rem",
-            }}
-          />
+    <div className="contact">
+      <div className="container">
+        <div className="contact-form-div">
+          <h1 className="contact-heading">Contact Us</h1>
+          <form onSubmit={handleJoinList}>
+            <div className="inputDiv">
+              <TextField
+                id="firstName"
+                placeholder="First Name*"
+                variant="outlined"
+                value={firstName}
+                onChange={handleFirstNameChange}
+                sx={{
+                  width: 550,
+                  marginTop: "1rem",
+                }}
+              />
+              <TextField
+                id="firstName4"
+                placeholder="Last Name*"
+                variant="outlined"
+                value={LastName}
+                onChange={handleLastNameChange}
+                sx={{
+                  width: 550,
+                  marginTop: "1rem",
+                }}
+              />
+              <TextField
+                id="firstName2"
+                placeholder="Industry*"
+                variant="outlined"
+                value={IndustryName}
+                onChange={handleIndustryNameChange}
+                sx={{
+                  width: 550,
+                  marginTop: "1rem",
+                }}
+              />
+              <TextField
+                id="firstName3"
+                placeholder="Email*"
+                variant="outlined"
+                value={email}
+                onChange={handleEmailChange}
+                sx={{
+                  width: 550,
+                  marginTop: "1rem",
+                }}
+              />
+              <TextField
+                placeholder="Your Message*"
+                // variant="outlined"
+                value={message}
+                onChange={handleMessageChange}
+                sx={{
+                  width: 550,
+                  marginTop: "1rem",
+                }}
+              />
+            </div>
+            <div className="btn-div">
+              <button className="btn-contact" type="submit">
+                SEND MESSAGE
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="btn-div">
-          <button className="btn-contact" type="submit">
-            SEND MESSAGE
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

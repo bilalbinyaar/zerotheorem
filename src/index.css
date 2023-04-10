@@ -238,7 +238,7 @@ form .form-inner {
 }
 
 form .form-inner h2 {
-  color: var(--color-day-yellow);
+  /* color: var(--color-day-yellow); */
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 30px;

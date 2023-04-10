@@ -122,7 +122,6 @@
 }
 .inputDiv {
   display: flex;
-  margin-top: 3%;
   border-radius: 20;
   /* align-items: center; */
   justify-content: center;
@@ -140,5 +139,4 @@
 .btn-div {
   display: flex;
   justify-content: center;
-  margin-top: 3%;
 }

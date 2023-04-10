@@ -178,13 +178,13 @@ option:nth-child(0) {
 .form-headings h2 {
   cursor: pointer;
   padding-bottom: 0.8rem;
-  opacity: 0.6;
+  color: var(--color-day-black);
 }
 
 .form-headings .active {
   border-bottom: 2px solid var(--color-day-yellow);
   padding-bottom: 0.8rem;
-  opacity: 1;
+  /* color: var(--color-day-yellow); */
 }
 
 .checkbox-div {
