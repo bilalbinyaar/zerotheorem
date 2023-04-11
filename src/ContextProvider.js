@@ -373,8 +373,8 @@ export const ContextProvider = ({ children }) => {
         Set_spline_graph_cum_cache,
         tv_drawdown_cache,
         Set_tv_drawdown_cache,
-        // authCheck, 
-        // setAuthCheck
+        authCheck, 
+        setAuthCheck
       }}
     >
       {children}
