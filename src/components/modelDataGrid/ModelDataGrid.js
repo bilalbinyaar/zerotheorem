@@ -3,7 +3,7 @@ import "./ModelDataGrid.css";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { DataGridPro } from "@mui/x-data-grid-pro";
-
+import Swal from "sweetalert2";
 import DataGridGraph from "./GridGraph";
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
@@ -207,6 +207,7 @@ const ModelDataGrid = () => {
     Set_coin_search_selection_cache,
     model_selection_cache,
     Set_model_search_selection_cache,
+    authCheckLogin,
   } = useStateContext();
   const [pnl_for_each_strategy, setPnlForEachStrategy] = useState(null);
   const [rows, setRows] = useState([]);
@@ -462,10 +463,10 @@ const ModelDataGrid = () => {
       type: Boolean,
       sortable: false,
       renderCell: (cellValues) => {
-        return (
-
-          cellValues.value == true ? <AiFillStar className="star-filled-icons"/> : <AiOutlineStar className="star-icons"/>
-
+        return cellValues.value == true ? (
+          <AiFillStar className="star-filled-icons" />
+        ) : (
+          <AiOutlineStar className="star-icons" />
         );
       },
     },
@@ -1075,15 +1076,27 @@ const ModelDataGrid = () => {
   function handleCellClick(params, event) {
     // console.log(`Cell clicked: row ${params.row.id}, column ${params.value}`);
     if (params.field == "favs") {
-      const updatedRows = rows.map((row) =>
-        row.id === params.row.id
-          ? row.favs == true
-            ? { ...row, ["favs"]: false }
-            : { ...row, ["favs"]: true }
-          : row
-      );
-      setRows(updatedRows);
-      set_rows_cached(updatedRows);
+      if (authCheckLogin == true) {
+        const updatedRows = rows.map((row) =>
+          row.id === params.row.id
+            ? row.favs == true
+              ? { ...row, ["favs"]: false }
+              : { ...row, ["favs"]: true }
+            : row
+        );
+        setRows(updatedRows);
+        set_rows_cached(updatedRows);
+      } else {
+        Swal.fire({
+          title: "Kindly login for making model favourite",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
+      }
     } else {
       linkModels(`/${params.row.modelName.replace("_", "-")}`);
     }

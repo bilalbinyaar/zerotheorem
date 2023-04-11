@@ -40,8 +40,15 @@ export default function Navbar() {
   const handleClick = () => setClick(!click);
   const dispatch = useDispatch();
   // Login State
-  const { authCheck, userEmail, setAuthCheck, theme, setTheme } =
-    useStateContext();
+  const {
+    authCheckLogin,
+    userEmail,
+    setAuthCheckLogin,
+    authCheck,
+    setAuthCheck,
+    theme,
+    setTheme,
+  } = useStateContext();
   // Login State
   // const [theme, setTheme] = useState("light-theme");
 
@@ -145,7 +152,7 @@ export default function Navbar() {
           position: "top-right",
           showConfirmButton: false,
         });
-        // setAuthCheck(true);
+        setAuthCheckLogin(true);
 
         // setShowPopup(false);
       })
@@ -251,7 +258,7 @@ export default function Navbar() {
                   showConfirmButton: false,
                 });
                 handleClosePopup();
-                // setAuthCheck(true);
+                setAuthCheckLogin(true);
                 // alert("User is successfully login :)");
                 // ...
               })
@@ -402,6 +409,7 @@ export default function Navbar() {
                   showConfirmButton: false,
                 });
                 handleClosePopup();
+                setAuthCheckLogin(true);
                 // setAuthCheck(true);
                 // alert("User account is created successfully");
                 // ...
@@ -593,17 +601,31 @@ export default function Navbar() {
             )}
           </div>
 
-          {authCheck === true ? (
-            <div>
-              <div className="welcome-user-div">
+          {authCheckLogin === true ? (
+            <div className="btn-group nav-btn">
+              {/* <div className="welcome-user-div">
                 <p className="welcome-user">Welcome, {userEmail}</p>
                 <AiFillCaretDown className="hoverThis" onClick={dropDown} />
               </div>
-              {/* <div>
+              <div>
                 {
                   drop && <UserOptions className='showThis' />
                 } 
               </div>  */}
+              <button className="btn btn-nav" onClick={ () => {
+                Swal.fire({
+                  title: "Logout successful",
+                  icon: "success",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                setAuthCheckLogin(false);
+              }}>
+                Logout
+              </button>
             </div>
           ) : (
             <div className="btn-group nav-btn">

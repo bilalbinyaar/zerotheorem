@@ -11,6 +11,7 @@ import {
   AiFillHome,
   AiFillInfoCircle,
   AiOutlineApi,
+  AiOutlineUserAdd
 } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
@@ -21,8 +22,9 @@ import {
   BsFillInfoCircleFill,
 } from "react-icons/bs";
 import { BiColumns } from "react-icons/bi";
-import { FaQuestionCircle } from "react-icons/fa";
+import { FaQuestionCircle, FaRegEdit } from "react-icons/fa";
 import "../../components/navbar/Navbar.css";
+import { AiOutlineContacts } from "react-icons/ai";
 
 export default function NavMobile(props) {
   const [click, setClick] = useState(false);
@@ -159,6 +161,18 @@ export default function NavMobile(props) {
             <CustomLink to="/faqs" onClick={toCloseNav}>
               <FaQuestionCircle className="nav-icons" />
               FAQs
+            </CustomLink>
+            <CustomLink to="/api-registraion" onClick={toCloseNav}>
+              <FaRegEdit className="nav-icons" />
+              Registration
+            </CustomLink>
+            <CustomLink to="/contact" onClick={toCloseNav}>
+              <AiOutlineContacts className="nav-icons" />
+              Contact
+            </CustomLink>
+            <CustomLink to="" onClick={toCloseNav}>
+              <AiOutlineUserAdd className="nav-icons" />
+              Login
             </CustomLink>
 
             {/* {authCheck === true ? (
