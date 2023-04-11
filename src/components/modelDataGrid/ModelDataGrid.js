@@ -20,7 +20,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Tooltip } from "@mui/material";
 import TradingViewSplineAreaChart from "../models/graphs/TvSplineAreaChart";
 import IconButton from "@mui/material/IconButton";
@@ -460,12 +460,12 @@ const ModelDataGrid = () => {
       headerAlign: "center",
       width: 10,
       type: Boolean,
-      sortable: true,
+      sortable: false,
       renderCell: (cellValues) => {
         return (
-          <AiFillStar
-            style={{ color: cellValues.value == true ? "#fddd4e" : "black" }}
-          />
+
+          cellValues.value == true ? <AiFillStar className="star-filled-icons"/> : <AiOutlineStar className="star-icons"/>
+
         );
       },
     },

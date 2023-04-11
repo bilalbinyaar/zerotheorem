@@ -66,10 +66,15 @@
 }
 
 .star-icons {
-  height: 16px;
+  height: 18px;
   width: auto;
 }
 
+.star-filled-icons {
+  height: 18px;
+  width: auto;
+  color: var(--color-day-yellow);
+}
 
 @media screen and (min-width:1080px) {
   .grid-div-tab {
