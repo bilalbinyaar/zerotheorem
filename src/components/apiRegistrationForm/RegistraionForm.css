@@ -148,4 +148,12 @@ color: var(--color-day-yellow);
   .registration-wrapper {
     flex-direction: column;
   }
+
+  .left {
+    padding: 3rem 2rem;
+  }
+
+  .right {
+    margin-left: 0;
+  } 
 }
