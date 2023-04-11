@@ -2,6 +2,8 @@ import React, { useEffect, useState, memo, useRef } from "react";
 import "./ModelDataGrid.css";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import { DataGridPro } from "@mui/x-data-grid-pro";
+
 import DataGridGraph from "./GridGraph";
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +20,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar } from "react-icons/ai";
 import { Tooltip } from "@mui/material";
 import TradingViewSplineAreaChart from "../models/graphs/TvSplineAreaChart";
 import IconButton from "@mui/material/IconButton";
@@ -64,7 +66,7 @@ function CustomFooter() {
 
 const ModelDataGrid = () => {
   const windowWidth = useRef(window.innerWidth);
-
+  const [pinnedRows, setPinnedRows] = useState([]);
   const [Flag, setFlag] = useState(null);
   const [timeH, setTimeH] = useState("All");
   const [selectedItem, setSelectedItem] = useState("All");
@@ -219,6 +221,7 @@ const ModelDataGrid = () => {
 
       for (var key in strategies) {
         data_for_rows.push({
+          favs: false,
           id: index,
           modelNameMob: [
             strategies[key].time_horizon,
@@ -247,6 +250,7 @@ const ModelDataGrid = () => {
       }
       if (data_for_rows.length != 0) {
         setRows(data_for_rows);
+        setPinnedRows([data_for_rows[2]]);
         set_rows_cached(data_for_rows);
         //  console.log("Here are data grid--->", data_for_rows);
       }
@@ -445,18 +449,26 @@ const ModelDataGrid = () => {
   // To Link Grid Rows to Models Component
   const linkModels = useNavigate();
   const handleRowClickEvent = (params) => {
-    linkModels(`/${params.row.modelName.replace("_", "-")}`);
+    // linkModels(`/${params.row.modelName.replace("_", "-")}`);
   };
   // To Link Grid Rows to Models Component
 
   const columns = [
-
-    { field: "favs", headerName: "", headerAlign: "center", width: 10, sortable: false,
-    renderCell: (cellValues) => {
-        return <AiFillStar className="star-icons"/>;
+    {
+      field: "favs",
+      headerName: "",
+      headerAlign: "center",
+      width: 10,
+      type: Boolean,
+      sortable: true,
+      renderCell: (cellValues) => {
+        return (
+          <AiFillStar
+            style={{ color: cellValues.value == true ? "#fddd4e" : "black" }}
+          />
+        );
       },
-  },
-
+    },
 
     { field: "id", headerName: "#", headerAlign: "center", width: 15 },
     // {
@@ -1060,6 +1072,22 @@ const ModelDataGrid = () => {
   const gridRef = React.createRef();
   const start = (page - 1) * pageSize;
   const end = page * rows.length;
+  function handleCellClick(params, event) {
+    // console.log(`Cell clicked: row ${params.row.id}, column ${params.value}`);
+    if (params.field == "favs") {
+      const updatedRows = rows.map((row) =>
+        row.id === params.row.id
+          ? row.favs == true
+            ? { ...row, ["favs"]: false }
+            : { ...row, ["favs"]: true }
+          : row
+      );
+      setRows(updatedRows);
+      set_rows_cached(updatedRows);
+    } else {
+      linkModels(`/${params.row.modelName.replace("_", "-")}`);
+    }
+  }
   return (
     <div className="model-grid">
       <div className="container">
@@ -1890,6 +1918,7 @@ const ModelDataGrid = () => {
               >
                 <DataGrid
                   onRowClick={handleRowClickEvent}
+                  onCellClick={handleCellClick}
                   // onCellClick={handleOnCellClick}
                   sx={{
                     borderColor: "var(--color-grid-border)",
@@ -1930,6 +1959,7 @@ const ModelDataGrid = () => {
                   columns={columns}
                   pageSize={pageSize}
                   autoHeight={true}
+                  pinnedRows={pinnedRows}
                   rowsPerPageOptions={[10, 20, 50]}
                   onPageSizeChange={(newPage) => {
                     // handleChangePage("", 1);
