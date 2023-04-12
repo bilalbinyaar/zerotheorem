@@ -2,12 +2,7 @@ import React, { useState, useEffect, memo } from "react";
 import Forecasts from "../components/forecasts/Forecasts";
 import ModelDataGrid from "../components/modelDataGrid/ModelDataGrid";
 import Overview from "../components/overview/Overview";
-import Horizon from "../components/timeHorizon/Horizon";
-import { useStateContext } from "../ContextProvider";
 import { Helmet } from "react-helmet";
-import BtcData from "../components/btc_api/BtcData";
-import Documentation from "./Documentation";
-import Login from "../components/Authentication/Login";
 const Home = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -31,8 +26,7 @@ const Home = () => {
         {/* CANONICAL TAG */}
         <link rel="canonical" href="https://zerotheorem.com/" />
       </Helmet>
-      {/* <BtcData /> */}
-      {/* <Documentation /> */}
+      
       <Forecasts />
       <ModelDataGrid />
       <Overview />

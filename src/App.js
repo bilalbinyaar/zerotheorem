@@ -35,6 +35,7 @@ import Login from "./components/Authentication/Login";
 import Signup from "./components/Authentication/Signup";
 import RegistrationForm from "./components/apiRegistrationForm/RegistrationForm";
 import Contact from "./components/contact/Contact";
+import Performance from "./pages/Performance";
 // import dotenv from "dotenv";
 function App() {
   // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
@@ -131,6 +132,8 @@ function App() {
             <Route path="/compare" element={<Compare />} />
             <Route path="/backtest" element={<BactestRouteComponent />} />
             <Route path="/api" element={<Documentation />} />
+            <Route path="/performance" element={<Performance />} />
+
 
             {/* RESOURCES ROUTING FOR SUB ITEMS */}
             <Route

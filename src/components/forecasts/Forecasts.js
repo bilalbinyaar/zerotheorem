@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Forecasts.css";
+import "../timeHorizon/Horizon.css";
 import ToggleSwitch from "../toggleSwitch/ToggleSwitch";
 import {
   AiOutlineDown,
