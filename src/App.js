@@ -125,7 +125,7 @@ function App() {
             <Route path="/faqs" element={<FAQ />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/api-registraion" element={<RegistrationForm />} />
+            <Route path="/api-registration" element={<RegistrationForm />} />
             <Route path="/contact" element={<Contact />} />
 
             <Route path="/compare" element={<Compare />} />

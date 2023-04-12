@@ -462,6 +462,9 @@ export default function Navbar() {
       </div>
     </div>,
   ];
+
+
+
   return (
     <div className="header">
       {windowWidth.current <= 1240 ? (
@@ -499,27 +502,35 @@ export default function Navbar() {
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
             </CustomLink>
-            <CustomLink to="/api" onClick={toCloseNav}>
+            {/* <CustomLink className="menu-item" to="/api" onClick={toCloseNav}>
               API
             </CustomLink>
+            <ul className="sub-menu">
+                <CustomLink className="sub-menu-item" to="/submenu-1" onClick={toCloseNav}>
+                  Submenu 1
+                </CustomLink>
+                <CustomLink className="sub-menu-item" to="/submenu-2" onClick={toCloseNav}>
+                  Submenu 2
+                </CustomLink>
+            </ul> */}
             {/* <CustomLink to="/api" onClick={toCloseNav}>
               API
             </CustomLink> */}
-            <CustomLink to="/api-registraion" onClick={toCloseNav}>
+            {/* <CustomLink to="/api-registration" onClick={toCloseNav}>
               Registration
-            </CustomLink>
-            {/* <CustomLink to="/login" onClick={toCloseNav}>
-            {/* <CustomLink className="menu-item">
+            </CustomLink> */}
+            {/* <CustomLink to="/login" onClick={toCloseNav}>*/}
+            <CustomLink className="menu-item">
               API
-              <div className="sub-menu-items">
-                <CustomLink className="sub-menu-item" to="/api" onClick={toCloseNav}>
+              <ul className="sub-menu-items">
+                <CustomLink className="sub-menu-item" to="/api-registration" onClick={toCloseNav}>
                   Registration
                 </CustomLink>
                 <CustomLink className="sub-menu-item" to="/api" onClick={toCloseNav}>
                   Documentation
                 </CustomLink>
-              </div> 
-            </CustomLink>*/}
+              </ul> 
+            </CustomLink>
             {/* <CustomLink to="/api" onClick={toCloseNav}>
               API
             </CustomLink> */}

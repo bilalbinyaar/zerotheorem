@@ -11,20 +11,22 @@ import {
   AiFillHome,
   AiFillInfoCircle,
   AiOutlineApi,
-  AiOutlineUserAdd
+  AiOutlineUserAdd,
+  AiOutlineFileDone
 } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
 
 import {
   BsFillLayersFill,
-  BsInfoSquareFill,
   BsFillInfoCircleFill,
+  BsFiletypeDoc,
 } from "react-icons/bs";
 import { BiColumns } from "react-icons/bi";
 import { FaQuestionCircle, FaRegEdit } from "react-icons/fa";
 import "../../components/navbar/Navbar.css";
 import { AiOutlineContacts } from "react-icons/ai";
+
 
 export default function NavMobile(props) {
   const [click, setClick] = useState(false);
@@ -150,10 +152,20 @@ export default function NavMobile(props) {
               <BsFillLayersFill className="nav-icons" />
               Derivations
             </CustomLink>
-            <CustomLink to="/api" onClick={toCloseNav}>
+            <CustomLink to="" onClick={toCloseNav}>
               <AiOutlineApi className="nav-icons" />
               API
             </CustomLink>
+              {/* Sub Menu */}
+              <CustomLink className="mobile-submenu" to="/api-registration" onClick={toCloseNav}>
+                <FaRegEdit className="nav-icons nav-icons-mobile" />
+                Registration
+              </CustomLink>
+              <CustomLink className="mobile-submenu" to="/api" onClick={toCloseNav}>
+                <AiOutlineFileDone className="nav-icons nav-icons-mobile" />
+                Documentation
+              </CustomLink>
+            
             <CustomLink to="/about" onClick={toCloseNav}>
               <BsFillInfoCircleFill className="nav-icons" />
               About
@@ -161,10 +173,6 @@ export default function NavMobile(props) {
             <CustomLink to="/faqs" onClick={toCloseNav}>
               <FaQuestionCircle className="nav-icons" />
               FAQs
-            </CustomLink>
-            <CustomLink to="/api-registraion" onClick={toCloseNav}>
-              <FaRegEdit className="nav-icons" />
-              Registration
             </CustomLink>
             <CustomLink to="/contact" onClick={toCloseNav}>
               <AiOutlineContacts className="nav-icons" />
