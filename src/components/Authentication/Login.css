@@ -211,21 +211,34 @@ option:nth-child(0) {
   text-align: center !important;  
 }
 
-@media screen and (max-width: 1168px) {
-  .login-form {
-    width: 60%;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .login-form-btn {
     width: auto !important;
   }
-}
 
-@media screen and (max-width: 670px) {
-  .login-form {
-    width: 90%;
+  .form-headings {
+    margin-bottom: 0;
+  }
+
+  form .form-inner h2 {
+    font-size: 18px;
+  }
+
+  form .form-inner .form-group {
+    margin-bottom: 20px;
+    width: 290px;
+  }
+
+  .forget-pwd {
+    margin-bottom: 20px;
+  }
+
+  .checkbox-div {
+    margin-bottom: 20px;
+  }
+
+  .checkbox-div label {
+    font-size: 12px;
   }
 }
 

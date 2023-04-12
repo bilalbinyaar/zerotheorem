@@ -7,8 +7,7 @@ import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
 // import UserOptions from './components/UserOptions';
-import { AiFillCaretDown, AiOutlineClose } from "react-icons/ai";
-import { width } from "@mui/system";
+import { AiOutlineClose, AiFillGoogleCircle } from "react-icons/ai";
 import NavMobile from "../../mobile-components/nav/NavMobile";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
@@ -25,9 +24,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { RiLockPasswordFill } from "react-icons/ri";
-import { MdEmail } from "react-icons/md";
-import { AiFillGoogleCircle } from "react-icons/ai";
+
+
 
 export default function Navbar() {
   const [isChecked, setIsChecked] = useState(false);
@@ -106,15 +104,6 @@ export default function Navbar() {
     setClick(false);
   }
 
-  // const [showPopup, setShowPopup] = useState(false);
-
-  // const handleShowPopup = () => {
-  //   setShowPopup(true);
-  // };
-
-  // const handleClosePopup = () => {
-  //   setShowPopup(false);
-  // };
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -502,24 +491,6 @@ export default function Navbar() {
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
             </CustomLink>
-            {/* <CustomLink className="menu-item" to="/api" onClick={toCloseNav}>
-              API
-            </CustomLink>
-            <ul className="sub-menu">
-                <CustomLink className="sub-menu-item" to="/submenu-1" onClick={toCloseNav}>
-                  Submenu 1
-                </CustomLink>
-                <CustomLink className="sub-menu-item" to="/submenu-2" onClick={toCloseNav}>
-                  Submenu 2
-                </CustomLink>
-            </ul> */}
-            {/* <CustomLink to="/api" onClick={toCloseNav}>
-              API
-            </CustomLink> */}
-            {/* <CustomLink to="/api-registration" onClick={toCloseNav}>
-              Registration
-            </CustomLink> */}
-            {/* <CustomLink to="/login" onClick={toCloseNav}>*/}
             <CustomLink className="menu-item">
               API
               <ul className="sub-menu-items">
@@ -531,12 +502,6 @@ export default function Navbar() {
                 </CustomLink>
               </ul> 
             </CustomLink>
-            {/* <CustomLink to="/api" onClick={toCloseNav}>
-              API
-            </CustomLink> */}
-            {/* <CustomLink to="/login" onClick={toCloseNav}>
-              Login
-            </CustomLink> */}
             <CustomLink to="/about" onClick={toCloseNav}>
               About
             </CustomLink>
@@ -614,15 +579,6 @@ export default function Navbar() {
 
           {authCheckLogin === true ? (
             <div className="btn-group nav-btn">
-              {/* <div className="welcome-user-div">
-                <p className="welcome-user">Welcome, {userEmail}</p>
-                <AiFillCaretDown className="hoverThis" onClick={dropDown} />
-              </div>
-              <div>
-                {
-                  drop && <UserOptions className='showThis' />
-                } 
-              </div>  */}
               <button className="btn btn-nav" onClick={ () => {
                 Swal.fire({
                   title: "Logout successful",
@@ -681,78 +637,6 @@ export default function Navbar() {
                                 Sign Up
                               </h2>
                             </div>
-                            {/* <div className="popup-inner">
-                              <div className="form-group">
-                              <label htmlFor="email">Email Address</label>
-                              <input
-                                type="email"
-                                placeholder="Email"
-                                name="email"
-                                id="email"
-                                onChange={(e) =>
-                                  setDetails({
-                                    ...details,
-                                    email: e.target.value,
-                                  })
-                                }
-                                value={details.email}
-                              />
-                              </div>
-                              <div className="form-group no-margin-bottom">
-                                <label htmlFor="password">Password</label>
-                                <input
-                                  type="password"
-                                  placeholder="Password"
-                                  name="password"
-                                  id="password"
-                                  onChange={(e) =>
-                                    setDetails({
-                                      ...details,
-                                      password: e.target.value,
-                                    })
-                                  }
-                                  value={details.password}
-                                />
-                              </div>
-                              <div className="forget-pwd">
-                                <p>Forget password?</p>
-                              </div>
-                              <input
-                                className="login-form-btn"
-                                type="auth"
-                                value="LOGIN"
-                                onClick={() => {
-                                  console.log("Submit button is clicked");
-                                  const email =
-                                    document.getElementById("email").value;
-                                  const password =
-                                    document.getElementById("password").value;
-                                  if (!email || !password) {
-                                    alert(
-                                      "Kindly enter input details for signup"
-                                    );
-                                  } else {
-                                    console.log(email, password);
-                                    signInWithEmailAndPassword(
-                                      auth,
-                                      email,
-                                      password
-                                    )
-                                      .then((userCredential) => {
-                                        // Signed in
-                                        const user = userCredential.user;
-                                        alert("User is successfully login :)");
-                                        // ...
-                                      })
-                                      .catch((error) => {
-                                        const errorCode = error.code;
-                                        const errorMessage = error.message;
-                                        alert("Email or password is incorrect");
-                                      });
-                                  }
-                                }}
-                              />
-                            </div> */}
                             <div>{contents[selectedHeadingIndex]}</div>
                           </div>
                         </form>

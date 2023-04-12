@@ -5,14 +5,15 @@ import logoBlack from "../../assets/logo-black.svg";
 import logoWhite from "../../assets/logo-white.svg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { useStateContext } from "../../ContextProvider";
-// import UserOptions from './components/UserOptions';
+import Swal from "sweetalert2";
 import {
-  AiFillCaretDown,
   AiFillHome,
-  AiFillInfoCircle,
   AiOutlineApi,
   AiOutlineUserAdd,
-  AiOutlineFileDone
+  AiOutlineFileDone,
+  AiFillGoogleCircle,
+  AiOutlineClose,
+  AiOutlineLogout
 } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
@@ -20,12 +21,20 @@ import { set_day_mode, set_night_mode } from "../../store";
 import {
   BsFillLayersFill,
   BsFillInfoCircleFill,
-  BsFiletypeDoc,
 } from "react-icons/bs";
 import { BiColumns } from "react-icons/bi";
 import { FaQuestionCircle, FaRegEdit } from "react-icons/fa";
 import "../../components/navbar/Navbar.css";
 import { AiOutlineContacts } from "react-icons/ai";
+import { auth, provider } from "../../firebase_config";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  getRedirectResult,
+  signInWithRedirect,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 
 export default function NavMobile(props) {
@@ -34,7 +43,7 @@ export default function NavMobile(props) {
   const dispatch = useDispatch();
 
   // Login State
-  const { authCheck, userEmail, setAuthCheck, theme, setTheme } =
+  const { authCheckLogin, setAuthCheckLogin, authCheck, userEmail, setAuthCheck, theme, setTheme } =
     useStateContext();
   // Login State
 
@@ -84,6 +93,367 @@ export default function NavMobile(props) {
     setToggle(false);
     setClick(false);
   }
+
+  const [isChecked, setIsChecked] = useState(false);
+  function handleCheckboxClick() {
+    setIsChecked(!isChecked);
+  }
+
+
+
+  // FOR MOBILE POPUP
+    const [showPopup, setShowPopup] = useState(false);
+
+  const handleShowPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
+  const [details, setDetails] = useState({ name: "", email: "", password: "" });
+  const [error, setError] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access Google APIs.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user.email;
+        console.log(user);
+        // alert("Successfully login with email " + user);
+        Swal.fire({
+          title: "Login successful",
+          icon: "success",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
+        setAuthCheckLogin(true);
+
+        // setShowPopup(false);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // console.log("Error occured");
+        Swal.fire({
+          title: "Login not successful",
+          icon: "error",
+          timer: 2000,
+          timerProgressBar: true,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
+
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  }, []);
+
+  // FOR LOGIN AND SIGNUP POPUP FILTERS
+  const [selectedHeadingIndex, setSelectedHeadingIndex] = useState(0);
+  const handleClickForPopups = (index) => {
+    setSelectedHeadingIndex(index);
+  };
+
+  const contents = [
+    // LOGIN POPUP CONTENT
+    <div className="popup-inner">
+      <div className="form-group">
+        <label htmlFor="email">Email Address</label>
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          id="email"
+          onChange={(e) =>
+            setDetails({
+              ...details,
+              email: e.target.value,
+            })
+          }
+          value={details.email}
+        />
+      </div>
+      <div className="form-group no-margin-bottom">
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          id="password"
+          onChange={(e) =>
+            setDetails({
+              ...details,
+              password: e.target.value,
+            })
+          }
+          value={details.password}
+        />
+      </div>
+      <div className="forget-pwd">
+        <p>Forget password?</p>
+      </div>
+      <input
+        className="login-form-btn"
+        type="auth"
+        value="Log In"
+        onClick={() => {
+          // console.log("Submit button is clicked");
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          if (!email || !password) {
+            // alert("Kindly enter input details for signup");
+            Swal.fire({
+              title: "Kindly enter input details",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else {
+            console.log(email, password);
+            signInWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                Swal.fire({
+                  title: "Login successful",
+                  icon: "success",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                handleClosePopup();
+                setAuthCheckLogin(true);
+                // alert("User is successfully login :)");
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // alert("Email or password is incorrect");
+                Swal.fire({
+                  title: "Login not successful",
+                  icon: "error",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+              });
+          }
+        }}
+      />
+      <div className="or-div">
+        {/* <span className="hr-div">
+            <hr />
+          </span> */}
+        <span>
+          <p>OR</p>
+        </span>
+        {/* <span className="hr-div">
+            <hr />
+          </span> */}
+      </div>
+
+      <div className="google-login-div">
+        <button
+          className="google-login-btn"
+          onClick={() => {
+            signInWithRedirect(auth, provider);
+          }}
+        >
+          <AiFillGoogleCircle className="google-login-icon" />
+          Continue with Google
+        </button>
+      </div>
+
+      <div className="register-text">
+        {/* <p>
+            <Link to="/signup">New to Zero Theorem? Join now!</Link>
+          </p> */}
+        <p>
+          Don’t have an account?{" "}
+          <strong
+            className={selectedHeadingIndex === 1 ? "active" : "color-yellow"}
+            onClick={() => handleClickForPopups(1)}
+          >
+            Sign Up
+          </strong>
+        </p>
+      </div>
+    </div>,
+
+    // SIGN UP POPUP CONTENT
+    <div className="popup-inner">
+      <div className="form-group">
+        <label htmlFor="email">Email Address</label>
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          id="email"
+          onChange={(e) =>
+            setDetails({
+              ...details,
+              email: e.target.value,
+            })
+          }
+          value={details.email}
+        />
+      </div>
+      <div className="form-group no-margin-bottom">
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          id="password"
+          onChange={(e) =>
+            setDetails({
+              ...details,
+              password: e.target.value,
+            })
+          }
+          value={details.password}
+        />
+      </div>
+      <div className="checkbox-div">
+        <input
+          type="checkbox"
+          id="tandc"
+          name="tandc"
+          value=""
+          onClick={handleCheckboxClick}
+        />
+        <label for="tandc"> I agree the Term and Conditions</label>
+      </div>
+      <input
+        className="login-form-btn"
+        type="auth"
+        value="Sign Up"
+        onClick={() => {
+          console.log("Submit button is clicked");
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          if (!email || !password) {
+            console.log();
+            // alert("Kindly enter input details for signup");
+            Swal.fire({
+              title: "Kindly enter input details",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else if (isChecked == false) {
+            Swal.fire({
+              title: "Kindly agree to our term and conditions",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else {
+            console.log(email, password);
+            createUserWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                Swal.fire({
+                  title: "User account is created successfully",
+                  icon: "success",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                handleClosePopup();
+                setAuthCheckLogin(true);
+                // setAuthCheck(true);
+                // alert("User account is created successfully");
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                Swal.fire({
+                  title: "Unable to create account with your credentials",
+                  icon: "error",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                // alert("Unable to create account with your credentials");
+              });
+          }
+        }}
+      />
+      <div className="or-div">
+        <span>
+          <p>OR</p>
+        </span>
+      </div>
+
+      <div className="google-login-div">
+        <button
+          className="google-login-btn"
+          onClick={() => {
+            signInWithRedirect(auth, provider);
+          }}
+        >
+          <AiFillGoogleCircle className="google-login-icon" />
+          Continue with Google
+        </button>
+      </div>
+
+      <div className="register-text">
+        <p>
+          Already have an account?{" "}
+          <strong
+            className={selectedHeadingIndex === 0 ? "active" : "color-yellow"}
+            onClick={() => handleClickForPopups(0)}
+          >
+            Log In
+          </strong>
+        </p>
+      </div>
+    </div>,
+  ];
+
+
+  function toCloseNavandShowPopup() {
+    toCloseNav();
+    handleShowPopup();
+  };
 
   return (
     <div className="header">
@@ -178,24 +548,75 @@ export default function NavMobile(props) {
               <AiOutlineContacts className="nav-icons" />
               Contact
             </CustomLink>
-            <CustomLink to="" onClick={toCloseNav}>
-              <AiOutlineUserAdd className="nav-icons" />
-              Login
-            </CustomLink>
-
-            {/* {authCheck === true ? (
-              <CustomLink
-                to="/"
-                onClick={() => {
-                  setAuthCheck(false);
-                }}
-              >
+            {authCheckLogin === true ? (
+              <CustomLink to="" onClick={ () => {
+                Swal.fire({
+                  title: "Logout successful",
+                  icon: "success",
+                  timer: 2000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
+                toCloseNav();
+              }}>
+                <AiOutlineLogout className="nav-icons" />
                 Logout
               </CustomLink>
             ) : (
-              <CustomLink to="/login">Login</CustomLink>
-            )} */}
+            <CustomLink to="" onClick={toCloseNavandShowPopup}>
+              <AiOutlineUserAdd className="nav-icons" />
+              Login
+            </CustomLink>)}
           </ul>
+          
+        )}
+
+        {showPopup && (
+          <div className="popup">
+            <div className="popup__content">
+              <div className="login">
+                <div className="containers">
+                  <form className="login-form" onSubmit={submitHandler}>
+                    <button
+                      className="popup__close"
+                      onClick={handleClosePopup}
+                    >
+                      <AiOutlineClose />
+                    </button>
+                    <div className="form-inner">
+                      {error !== "" ? (
+                        <div className="error"> {error} </div>
+                      ) : (
+                        ""
+                      )}
+                      <div className="form-headings">
+                        <h2
+                          className={
+                            selectedHeadingIndex === 0 ? "active" : ""
+                          }
+                          onClick={() => handleClickForPopups(0)}
+                        >
+                          Log In
+                        </h2>
+
+                        <h2
+                          className={
+                            selectedHeadingIndex === 1 ? "active" : ""
+                          }
+                          onClick={() => handleClickForPopups(1)}
+                        >
+                          Sign Up
+                        </h2>
+                      </div>
+                      <div>{contents[selectedHeadingIndex]}</div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
 
         <div className="dark-lite" onClick={() => toggleTheme()}>

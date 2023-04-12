@@ -459,7 +459,7 @@ const ModelDataGrid = () => {
       field: "favs",
       headerName: "",
       headerAlign: "center",
-      width: 10,
+      width: 8,
       type: Boolean,
       sortable: false,
       renderCell: (cellValues) => {
@@ -471,7 +471,7 @@ const ModelDataGrid = () => {
       },
     },
 
-    { field: "id", headerName: "#", headerAlign: "center", width: 15 },
+    { field: "id", headerName: "#", headerAlign: "center", width: 18 },
     // {
     //   field: "modelName",
     //   headerName: "Model Name",
@@ -713,7 +713,24 @@ const ModelDataGrid = () => {
   ];
 
   const columnsTab = [
-    { field: "id", headerName: "#", headerAlign: "center", width: 30 },
+    {
+      field: "favs",
+      headerName: "",
+      headerAlign: "center",
+      width: 7,
+      type: Boolean,
+      sortable: false,
+      renderCell: (cellValues) => {
+        return cellValues.value == true ? (
+          <AiFillStar className="star-filled-icons" />
+        ) : (
+          <AiOutlineStar className="star-icons" />
+        );
+      },
+    },
+
+
+    { field: "id", headerName: "#", headerAlign: "center", width: 23 },
 
     {
       field: "modelNameMob",
@@ -973,13 +990,31 @@ const ModelDataGrid = () => {
 
   // COLUMNS FOR MOBILE VIEW
   const columnsMobile = [
+
+    {
+      field: "favs",
+      with: 10,
+      flex: 0.09,
+      headerName: "",
+      headerAlign: "center",
+      type: Boolean,
+      sortable: false,
+      renderCell: (cellValues) => {
+        return cellValues.value == true ? (
+          <AiFillStar className="star-filled-icons" />
+        ) : (
+          <AiOutlineStar className="star-icons" />
+        );
+      },
+    },
+
     {
       field: "modelNameMob",
       headerName: "Model",
       width: 120,
       sortable: false,
       headerAlign: "center",
-      flex: 1.4,
+      flex: 1.5,
       renderCell: (cellValues) => {
         // console.log("I am mobile component bro");
         return <ModelNameCol value={cellValues.value} />;
@@ -992,7 +1027,7 @@ const ModelDataGrid = () => {
       width: 100,
       sortable: true,
       headerAlign: "center",
-      flex: 1,
+      flex: 0.9,
       cellClassName: (params) => {
         if (params.value == null) {
           return "";
@@ -1625,6 +1660,8 @@ const ModelDataGrid = () => {
               >
                 <DataGrid
                   onRowClick={handleRowClickEvent}
+                  onCellClick={handleCellClick}
+
                   sx={{
                     borderColor: "var(--color-grid-border)",
                     color: "var(--color-day-black)",
@@ -2002,7 +2039,7 @@ const ModelDataGrid = () => {
               >
                 <DataGrid
                   onRowClick={handleRowClickEvent}
-                  // onCellClick={handleOnCellClick}
+                  onCellClick={handleCellClick}
                   sx={{
                     borderColor: "var(--color-grid-border)",
                     color: "var(--color-day-black)",

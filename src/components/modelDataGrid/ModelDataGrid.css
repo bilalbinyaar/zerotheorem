@@ -93,6 +93,7 @@
 }
 
 @media screen and (max-width: 568px) {
+
   .grid-for-tab {
     display: none;
   }
@@ -151,6 +152,14 @@
 
   .model-auto {
     width: 60% !important;
+  }
+
+  .star-icons {
+    height: 16px;
+  }
+
+  .star-filled-icons {
+    height: 16px;
   }
 }
 

@@ -273,11 +273,11 @@
     }
 
     .nav-menu {
-        width: 45%;
+        width: 54%;
         background-color: var(--color-day-black);
         background-image: linear-gradient(180deg , var(--color-gradient-one) -34.49%, var(--color-gradient-two) 51.43%);
         padding-top: 1.5rem;
-        top: 66px;
+        top: 65px;
     }
 
     .nav-menu li {

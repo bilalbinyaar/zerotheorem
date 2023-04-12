@@ -202,17 +202,6 @@ p {
   margin-left: 4px !important;
 }
 
-/* Login css */
-/* .login-form {
-  position: relative;
-  width: 30%;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  height: 100vh;
-} */
-
 form:after {
   content: "";
   display: block;
@@ -1333,6 +1322,10 @@ pre[class*="language-"] {
 
 /* API PAGE CSS END */
 
+
+
+/* LOGIN/SIGN UP POPUP STYLES */
+
 .popup {
   position: fixed;
   top: 0;
@@ -1366,4 +1359,17 @@ pre[class*="language-"] {
   cursor: pointer;
   z-index: 10;
   color: var(--color-day-black);
+}
+
+@media screen and (max-width: 768px) {
+  .popup__content {
+    max-height: 100%;
+    padding: 16px;
+  }
+
+  .popup__close {
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+  }
 }
