@@ -327,7 +327,13 @@ const ModelDataGrid = () => {
     //   setTopPerformersModels(topPerformerModels)
     //   // setStrategies([...strategies, strategies])
     // }
-
+    const updatedRows = rows.map((row) =>
+    row.favs == true
+        ? { ...row, ["favs"]: false }
+        : row
+  );
+  setRows(updatedRows);
+  set_rows_cached(updatedRows);
   }, [authCheckLogin]);
 
 
