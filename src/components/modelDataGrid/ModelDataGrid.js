@@ -274,7 +274,9 @@ const ModelDataGrid = () => {
         for (let name in data){
           favs_models_list.push(name);
         }
-        set_favs_list(favs_models_list);
+        if(favs_models_list.length > 0){
+          set_favs_list(favs_models_list);
+        }
 
       }
       )
@@ -306,18 +308,21 @@ const ModelDataGrid = () => {
   }, [favs_list])
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        // console.log("User auth token -->", user.uid);
-        setUid(user.uid);
-        // setRows(rows);
-      } else {
-        setUid(null);
-      }
-    });
+    if(authCheckLogin == true){
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          // console.log("User auth token -->", user.uid);
+          setUid(user.uid);
+          // setRows(rows);
+        } else {
+          setUid(null);
+        }
+      });
+  
+      return unsubscribe;
+    }
 
-    return unsubscribe;
-  }, [auth]);
+  }, [authCheckLogin]);
 
 
   useEffect(() => {
