@@ -25,6 +25,7 @@ export const ContextProvider = ({ children }) => {
   // console.log("Value of redux state -->", default_theme.theme);
   const [theme, setTheme] = useState(default_theme.theme);
   const [authCheckLogin, setAuthCheckLogin] = useState(false);
+  const [uid, setUid] = useState(null)
   const toggleTheme = () => {
     if (theme === "dark-theme") {
       setTheme("light-theme");
@@ -377,6 +378,8 @@ export const ContextProvider = ({ children }) => {
         // setAuthCheck,
         authCheckLogin,
         setAuthCheckLogin,
+        uid, setUid
+        
       }}
     >
       {children}

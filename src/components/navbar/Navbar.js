@@ -48,6 +48,7 @@ export default function Navbar() {
     authCheck,
     setAuthCheck,
     theme,
+    uid, setUid,
     setTheme,
   } = useStateContext();
   // Login State
@@ -169,6 +170,23 @@ export default function Navbar() {
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
+  }, []);
+
+  useEffect(() => {
+    // Listen for changes in the authentication state
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, get the UID
+        console.log("User token -->", user.uid)
+        setUid(user.uid);
+      } else {
+        // User is signed out
+        setUid('');
+      }
+    });
+
+    // Unsubscribe from the listener when the component unmounts
+    return () => unsubscribe();
   }, []);
 
   // FOR LOGIN AND SIGNUP POPUP FILTERS
@@ -593,7 +611,8 @@ export default function Navbar() {
                   showConfirmButton: false,
                 });
                 setAuthCheckLogin(false);
-                  linkModels(`/`);
+                auth.signOut();
+                linkModels(`/`);
               }}>
                 Logout
               </button>
