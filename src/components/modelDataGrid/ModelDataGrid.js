@@ -269,7 +269,7 @@ const ModelDataGrid = () => {
       );
       onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
-        console.log("Here is the data -->", data, uid);
+        // console.log("Here is the data -->", data, uid);
         var favs_models_list = []
         for (let name in data){
           favs_models_list.push(name);
@@ -321,6 +321,12 @@ const ModelDataGrid = () => {
   
       return unsubscribe;
     }
+    // else{
+    //   setRows([])
+    //   set_rows_cached([])
+    //   setTopPerformersModels(topPerformerModels)
+    //   // setStrategies([...strategies, strategies])
+    // }
 
   }, [authCheckLogin]);
 
