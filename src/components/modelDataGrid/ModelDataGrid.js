@@ -209,6 +209,7 @@ const ModelDataGrid = () => {
     Set_coin_search_selection_cache,
     model_selection_cache,
     Set_model_search_selection_cache,
+    uid, setUid,
     authCheckLogin,
   } = useStateContext();
   const [pnl_for_each_strategy, setPnlForEachStrategy] = useState(null);
@@ -259,28 +260,43 @@ const ModelDataGrid = () => {
       }
     }
   }, [strategies]);
-  const [uid, setUid] = useState(null);
   const [favs_list, set_favs_list] = useState([]);
   useEffect(()=>{
-    if(rows.length > 0 && uid != null){
-      const starCountRef = ref(
-        database,
-        "user_favs/"+ uid
+    if(authCheckLogin == true){
+      console.log("UID is --->", uid);
+      if(rows.length > 0 && uid != null){
+        const starCountRef = ref(
+          database,
+          "user_favs/"+ uid
+        );
+        onValue(starCountRef, (snapshot) => {
+          const data = snapshot.val();
+          // console.log("Here is the data -->", data, uid);
+          var favs_models_list = []
+          for (let name in data){
+            favs_models_list.push(name);
+          }
+          if(favs_models_list.length > 0){
+            set_favs_list(favs_models_list);
+          }
+  
+        }
+        )
+    }
+    }
+    else{
+      if(rows.length > 0){
+        const updatedRows = rows.map((row) =>
+        row.favs == true
+            ? { ...row, ["favs"]: false }
+            : row
       );
-      onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        // console.log("Here is the data -->", data, uid);
-        var favs_models_list = []
-        for (let name in data){
-          favs_models_list.push(name);
-        }
-        if(favs_models_list.length > 0){
-          set_favs_list(favs_models_list);
-        }
-
+      setRows(updatedRows);
+      set_rows_cached(updatedRows); 
       }
-      )
-  } },[uid])
+      
+    }
+    },[authCheckLogin, rows])
 
   useEffect(()=>{
     if(favs_list.length > 0){
@@ -306,35 +322,6 @@ const ModelDataGrid = () => {
    
     }
   }, [favs_list])
-
-  useEffect(() => {
-    if(authCheckLogin == true){
-      const unsubscribe = auth.onAuthStateChanged((user) => {
-        if (user) {
-          // console.log("User auth token -->", user.uid);
-          setUid(user.uid);
-          // setRows(rows);
-        } else {
-          setUid(null);
-        }
-      });
-  
-      return unsubscribe;
-    }
-    // else{
-    //   setRows([])
-    //   set_rows_cached([])
-    //   setTopPerformersModels(topPerformerModels)
-    //   // setStrategies([...strategies, strategies])
-    // }
-    const updatedRows = rows.map((row) =>
-    row.favs == true
-        ? { ...row, ["favs"]: false }
-        : row
-  );
-  setRows(updatedRows);
-  set_rows_cached(updatedRows);
-  }, [authCheckLogin]);
 
 
   useEffect(() => {
