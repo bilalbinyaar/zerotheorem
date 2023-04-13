@@ -278,7 +278,7 @@ const ModelDataGrid = () => {
 
       }
       )
-  } },[rows])
+  } },[uid])
 
   useEffect(()=>{
     if(favs_list.length > 0){
@@ -287,12 +287,17 @@ const ModelDataGrid = () => {
           ? { ...row, ["favs"]: true }
           : row
       );
-      const sorted = Object.keys(updatedRows)
-                .map((key) => {
-                  return { ...updatedRows[key], key };
-                })
-                .sort((a, b) => b.favs - a.favs);
-      if(sorted){
+      var sorted = {}
+      if(Object.keys(updatedRows).length > 10){
+        sorted = Object.keys(updatedRows)
+        .map((key) => {
+          return { ...updatedRows[key], key };
+        })
+        .sort((a, b) => b.favs - a.favs);
+      }
+
+      if(Object.keys(sorted).length > 10){
+
         setRows(sorted);
         set_rows_cached(sorted);
       }
@@ -305,7 +310,7 @@ const ModelDataGrid = () => {
       if (user) {
         // console.log("User auth token -->", user.uid);
         setUid(user.uid);
-        setRows(rows);
+        // setRows(rows);
       } else {
         setUid(null);
       }
