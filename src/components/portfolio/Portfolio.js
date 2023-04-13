@@ -343,12 +343,12 @@ const Portfolio = () => {
         </div>
 
         <div className="portfolio-stats">
-            <div className="today-stats">
+            <div className="today-stats for-space-between">
                 <h3>Today</h3>
                 <h3>Stats</h3>
             </div>
 
-            <div className="overall-stats">
+            <div className="overall-stats for-space-between">
                 <h3>Overall Return</h3>
                 <h3>Stats</h3>
             </div>
