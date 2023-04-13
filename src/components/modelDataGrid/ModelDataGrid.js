@@ -34,6 +34,8 @@ import {
   useGridApiContext,
   useGridSelector,
 } from "@mui/x-data-grid";
+import { database, auth } from "../../firebase_config";
+import { ref, onValue, set, update } from "firebase/database";
 
 export function CustomPagination() {
   const apiRef = useGridApiContext();
@@ -257,6 +259,71 @@ const ModelDataGrid = () => {
       }
     }
   }, [strategies]);
+  const [uid, setUid] = useState(null);
+  const [favs_list, set_favs_list] = useState([]);
+  useEffect(()=>{
+    if(rows.length > 0 && uid != null){
+      const starCountRef = ref(
+        database,
+        "user_favs/"+ uid
+      );
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log("Here is the data -->", data, uid);
+        var favs_models_list = []
+        for (let name in data){
+          favs_models_list.push(name);
+        }
+        if(favs_models_list.length > 0){
+          set_favs_list(favs_models_list);
+        }
+
+      }
+      )
+  } },[uid])
+
+  useEffect(()=>{
+    if(favs_list.length > 0){
+      const updatedRows = rows.map((row) =>
+        favs_list.includes(row.modelName)
+          ? { ...row, ["favs"]: true }
+          : row
+      );
+      var sorted = {}
+      if(Object.keys(updatedRows).length > 10){
+        sorted = Object.keys(updatedRows)
+        .map((key) => {
+          return { ...updatedRows[key], key };
+        })
+        .sort((a, b) => b.favs - a.favs);
+      }
+
+      if(Object.keys(sorted).length > 10){
+
+        setRows(sorted);
+        set_rows_cached(sorted);
+      }
+   
+    }
+  }, [favs_list])
+
+  useEffect(() => {
+    if(authCheckLogin == true){
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          // console.log("User auth token -->", user.uid);
+          setUid(user.uid);
+          // setRows(rows);
+        } else {
+          setUid(null);
+        }
+      });
+  
+      return unsubscribe;
+    }
+
+  }, [authCheckLogin]);
+
 
   useEffect(() => {
     if (topPerformerModels == null) {
@@ -1121,6 +1188,21 @@ const ModelDataGrid = () => {
         );
         setRows(updatedRows);
         set_rows_cached(updatedRows);
+        if(params.row.favs == false){
+          const updateObj = {};
+          updateObj[params.row.modelName] = true;
+          update(ref(database, "user_favs/" + uid), updateObj);
+        // const userFavsRef = database.ref(`user_favs/${uid}`);
+        // const model_name_for_favs = params.row.modelName;
+        // userFavsRef.update(model_name_for_favs);
+        }
+        else{
+          const updateObj = {};
+          updateObj[params.row.modelName] = null;
+          update(ref(database, "user_favs/" + uid), updateObj);
+        }
+
+
       } else {
         Swal.fire({
           title: "Kindly login for making model favourite",

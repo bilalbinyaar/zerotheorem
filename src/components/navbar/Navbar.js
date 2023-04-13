@@ -20,6 +20,7 @@ import {
   getRedirectResult,
   signInWithRedirect,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -28,6 +29,8 @@ import {
 
 
 export default function Navbar() {
+  const linkModels = useNavigate();
+
   const [isChecked, setIsChecked] = useState(false);
 
   function handleCheckboxClick() {
@@ -590,6 +593,7 @@ export default function Navbar() {
                   showConfirmButton: false,
                 });
                 setAuthCheckLogin(false);
+                  linkModels(`/`);
               }}>
                 Logout
               </button>
