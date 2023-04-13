@@ -6,6 +6,9 @@ import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { MathComponent } from "mathjax-react";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  AiFillCaretUp,
+} from "react-icons/ai";
 
 
 const Portfolio = () => {
@@ -345,13 +348,55 @@ const Portfolio = () => {
         <div className="portfolio-stats">
             <div className="today-stats for-space-between">
                 <h3>Today</h3>
-                <h3>Stats</h3>
+                <div className="portfolio-stats-percentage" id="pnl-bg">
+                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                  <p>
+                    2.12%
+                  </p>
+                </div>
             </div>
 
-            <div className="overall-stats for-space-between">
+            <div className="overall-stats for-space-between portfolio-ml">
                 <h3>Overall Return</h3>
-                <h3>Stats</h3>
+                <div className="portfolio-stats-percentage" id="pnl-bg">
+                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                  <p>
+                    2.12%
+                  </p>
+                </div>
             </div>
+
+           <div className="pnl-stats-bar for-space-between portfolio-ml">
+                <div className="pnl-day-stats for-space-between ">
+                  <h3>7-Day</h3>
+                  <div className="portfolio-stats-percentage" id="pnl-bg">
+                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                    <p>
+                      2.12%
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pnl-day-stats for-space-between portfolio-ml">
+                  <h3>30-Day</h3>
+                  <div className="portfolio-stats-percentage" id="pnl-bg">
+                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                    <p>
+                      2.12%
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pnl-day-stats for-space-between portfolio-ml">
+                  <h3>90-Day</h3>
+                  <div className="portfolio-stats-percentage" id="pnl-bg">
+                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                    <p>
+                      2.12%
+                    </p>
+                  </div>
+                </div>
+            </div> 
         </div>
 
       </div>

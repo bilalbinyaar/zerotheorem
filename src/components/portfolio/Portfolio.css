@@ -8,4 +8,58 @@
 .for-space-between {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-ml {
+    margin-left: 0.8rem;
+}
+
+.today-stats {
+    background-color: var(--color-forecasts-card);
+    padding: 0.8rem;
+    border-radius: 4px;
+    width: 25%;
+}
+
+.overall-stats {
+    background-color: var(--color-forecasts-card);
+    padding: 0.8rem;
+    border-radius: 4px;
+    width: 25%;
+}
+
+.pnl-stats-bar {
+    background-color: var(--color-forecasts-card);
+    padding: 0.6rem;
+    border-radius: 4px;
+    width: 70%;
+}
+
+.pnl-day-stats {
+    background-color: var(--forecasts-model-index);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.portfolio-stats-percentage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.8rem;
+  border-radius: 4.5px;
+  background: linear-gradient(
+    180.98deg,
+    #16c784 0.84%,
+    rgba(255, 255, 255, 0) 289.41%
+  );
+  padding: 2px 5px;
+}
+
+.portfolio-stats-percentage p {
+  margin-top: 0px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white !important;
 }
