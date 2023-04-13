@@ -560,6 +560,9 @@ export default function NavMobile(props) {
                   showConfirmButton: false,
                 });
                 toCloseNav();
+                setAuthCheckLogin(false);
+                auth.signOut();
+                // linkModels(`/`);
               }}>
                 <AiOutlineLogout className="nav-icons" />
                 Logout
