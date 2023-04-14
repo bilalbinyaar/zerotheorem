@@ -69,29 +69,29 @@ export const ContextProvider = ({ children }) => {
   // Model Search Bar Filter
 
   // Login
-  const adminUser = {
-    password: "sorez",
+  const adminUserMain = {
+    passwordMain: "sorez",
   };
-  const [user, setUser] = useState({ name: "", password: "" });
-  const [error, setError] = useState("");
+  const [userMain, setUserMain] = useState({ name: "", password: "" });
+  const [errorMain, setErrorMain] = useState("");
 
-  const Login = (details) => {
+  const LoginMain = (detailsMain) => {
     // console.log(details);
 
-    if (details.password === adminUser.password) {
+    if (detailsMain.passwordMain === adminUserMain.passwordMain) {
       // console.log("Logged In");
-      setUser({
-        name: details.name,
-        email: details.email,
+      setUserMain({
+        name: detailsMain.name,
+        email: detailsMain.email,
       });
     } else {
       // console.log("Invalid Details");
-      setError("Invalid Details!");
+      setErrorMain("Invalid Details!");
     }
   };
 
-  const Logout = () => {
-    setUser({ password: "" });
+  const LogoutMain = () => {
+    setUserMain({ passwordMain: "" });
   };
   // Login End
 
@@ -302,13 +302,13 @@ export const ContextProvider = ({ children }) => {
         setFilteredDataModel,
         wordEnteredModel,
         setWordEnteredModel,
-        adminUser,
-        Login,
-        user,
-        setUser,
-        error,
-        setError,
-        Logout,
+        adminUserMain,
+        LoginMain,
+        userMain,
+        setUserMain,
+        errorMain,
+        setErrorMain,
+        LogoutMain,
         showOne,
         setShowOne,
         showTwo,
@@ -378,7 +378,8 @@ export const ContextProvider = ({ children }) => {
         // setAuthCheck,
         authCheckLogin,
         setAuthCheckLogin,
-        uid, setUid
+        uid, setUid, 
+        
         
       }}
     >
