@@ -61,7 +61,7 @@ function App() {
   // const MY_VARIABLE = useEnv("REACT_APP_SECRET_KEY");
   // console.log("Here finally secret key -->", process.env.REACT_APP_SECRET_KEY);
 
-  const { userMain, errorMain, loading } = useStateContext();
+  const { userMain, errorMain, loading, checkLoginMain } = useStateContext();
 
   // SCROLL TO TOP
   const location = useLocation();
@@ -73,7 +73,8 @@ function App() {
   return (
     !loading && (
       <React.Fragment>
-        {userMain.passwordMain !== "" ? (
+        {checkLoginMain == true
+         ? (
           <div>
             <Navbar />
             <Routes basename="/zero-theorem">
@@ -152,7 +153,7 @@ function App() {
             </div>
           ) : (
           <div>
-              <LoginForm LoginMain={Login} error={errorMain} />
+              <LoginForm  />
               <Routes basename="/zero-theorem">
                 <Route path="/sitemap.xml" />
               </Routes>
