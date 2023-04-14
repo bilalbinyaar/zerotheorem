@@ -383,6 +383,10 @@ a {
   align-items: center;
 }
 
+a:-webkit-any-link {
+  text-decoration: none !important;
+}
+
 /* Timer CSS */
 .timer {
   display: flex;

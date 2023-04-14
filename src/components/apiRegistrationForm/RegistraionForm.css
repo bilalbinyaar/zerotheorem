@@ -145,6 +145,11 @@ color: var(--color-day-yellow);
 }
 
 @media screen and (max-width: 768px) {
+
+  .registraion .container {
+    padding: 2.2rem 0rem 4rem 0rem;
+  }
+
   .registration-wrapper {
     flex-direction: column;
   }

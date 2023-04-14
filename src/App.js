@@ -73,7 +73,7 @@ function App() {
   return (
     !loading && (
       <React.Fragment>
-        {userMain.password !== "" ? (
+        {userMain.passwordMain !== "" ? (
           <div>
             <Navbar />
             <Routes basename="/zero-theorem">
