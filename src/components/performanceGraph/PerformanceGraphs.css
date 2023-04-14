@@ -1,0 +1,11 @@
+.performance-graphs-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.performance-graph-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
