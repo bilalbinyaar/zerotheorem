@@ -1373,3 +1373,20 @@ pre[class*="language-"] {
     font-size: 20px;
   }
 }
+
+
+
+/* MAIN WEB LOGIN PAGE */
+
+.main-web-form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.main-web-form-inner {
+  justify-content: center;
+  height: 100vh;
+  margin-top: 0 !important;
+}

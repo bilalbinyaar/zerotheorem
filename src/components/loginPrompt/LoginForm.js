@@ -11,10 +11,12 @@ function LoginForm({ Login, error }) {
     }
 
   return (
-    <form className='login-form' onSubmit={ submitHandler }>
-        <div className='form-inner'>
+    <form className='login-form main-web-login' onSubmit={ submitHandler }>
+        <div className='form-inner main-web-form-inner'>
             {(error !== '') ? ( <div className='error'> {error} </div> ) : ''}
-            <div className='form-group'>
+            <h2>Ongoing Maintainance!</h2>
+            <h3>Please enter the password to access the website.</h3>
+            <div className='form-group main-web-form-group'>
                 <label htmlFor='password'></label>
                 <span className='iconSpace'><RiLockPasswordFill /></span><input type='password' placeholder='Password' name='password' id='password' onChange={ e => setDetails({ ...details, password: e.target.value }) } value={ details.password } />
             </div>
