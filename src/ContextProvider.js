@@ -283,11 +283,14 @@ export const ContextProvider = ({ children }) => {
       setLoading(false);
     }, 1000);
   }
+  const [checkLoginMain, setCheckLoginMain] = useState(false);
   // PRELOADER
 
   return (
     <StateContext.Provider
       value={{
+        checkLoginMain,
+        setCheckLoginMain,
         toggleTheme,
         iamClick,
         theme,
