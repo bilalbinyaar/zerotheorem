@@ -206,8 +206,8 @@ const IndividualPnlCanvasjs = (props) => {
   };
 
   const containerProps = {
-    width: "100%",
-    height: "450px",
+    // width: "100%",
+    // height: "450px",
     margin: "auto",
   };
 

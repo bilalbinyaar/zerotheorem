@@ -143,7 +143,6 @@ const PerformanceDataGrid = () => {
     indicatorSeparator: () => ({ display: "none" }),
   };
 
-
   const [topPerformerModels, setTopPerformersModels] = useState(null);
   const [strategies, setStrategies] = useState(null);
 
@@ -158,7 +157,8 @@ const PerformanceDataGrid = () => {
     Set_coin_search_selection_cache,
     model_selection_cache,
     Set_model_search_selection_cache,
-    uid, setUid,
+    uid,
+    setUid,
     authCheckLogin,
   } = useStateContext();
   const [pnl_for_each_strategy, setPnlForEachStrategy] = useState(null);
@@ -208,67 +208,53 @@ const PerformanceDataGrid = () => {
     }
   }, [strategies]);
   const [favs_list, set_favs_list] = useState([]);
-  useEffect(()=>{
-    if(authCheckLogin == true){
+  useEffect(() => {
+    if (authCheckLogin == true) {
       console.log("UID is --->", uid);
-      if(rows.length > 0 && uid != null){
-        const starCountRef = ref(
-          database,
-          "user_favs/"+ uid
-        );
+      if (rows.length > 0 && uid != null) {
+        const starCountRef = ref(database, "user_favs/" + uid);
         onValue(starCountRef, (snapshot) => {
           const data = snapshot.val();
-          var favs_models_list = []
-          for (let name in data){
+          var favs_models_list = [];
+          for (let name in data) {
             favs_models_list.push(name);
           }
-          if(favs_models_list.length > 0){
+          if (favs_models_list.length > 0) {
             set_favs_list(favs_models_list);
           }
-  
-        }
-        )
-    }
-    }
-    else{
-      if(rows.length > 0){
+        });
+      }
+    } else {
+      if (rows.length > 0) {
         const updatedRows = rows.map((row) =>
-        row.favs == true
-            ? { ...row, ["favs"]: false }
-            : row
-      );
-      setRows(updatedRows);
-      set_rows_cached(updatedRows); 
+          row.favs == true ? { ...row, ["favs"]: false } : row
+        );
+        setRows(updatedRows);
+        set_rows_cached(updatedRows);
       }
-      
     }
-    },[authCheckLogin, rows])
+  }, [authCheckLogin, rows]);
 
-  useEffect(()=>{
-    if(favs_list.length > 0){
+  useEffect(() => {
+    if (favs_list.length > 0) {
       const updatedRows = rows.map((row) =>
-        favs_list.includes(row.modelName)
-          ? { ...row, ["favs"]: true }
-          : row
+        favs_list.includes(row.modelName) ? { ...row, ["favs"]: true } : row
       );
-      var sorted = {}
-      if(Object.keys(updatedRows).length > 10){
+      var sorted = {};
+      if (Object.keys(updatedRows).length > 10) {
         sorted = Object.keys(updatedRows)
-        .map((key) => {
-          return { ...updatedRows[key], key };
-        })
-        .sort((a, b) => b.favs - a.favs);
+          .map((key) => {
+            return { ...updatedRows[key], key };
+          })
+          .sort((a, b) => b.favs - a.favs);
       }
 
-      if(Object.keys(sorted).length > 10){
-
+      if (Object.keys(sorted).length > 10) {
         setRows(sorted);
         set_rows_cached(sorted);
       }
-   
     }
-  }, [favs_list])
-
+  }, [favs_list]);
 
   useEffect(() => {
     if (topPerformerModels == null) {
@@ -356,9 +342,7 @@ const PerformanceDataGrid = () => {
           })
           .catch((err) => console.log(err));
       } else {
-
         setStrategies(strategies_cache["strategies"]);
-
 
         set_coin_search_selection(coin_selection_cache["coin_names"]);
         set_model_search_selection(model_selection_cache["model_names"]);
@@ -379,7 +363,6 @@ const PerformanceDataGrid = () => {
           .then((data) => {
             var model_names = {};
             for (var i = 0; i < data["msg"].length; i++) {
-
               model_names[data["msg"][i].strategy_name] = {
                 strategy_name: data["msg"][i].strategy_name,
                 current_drawdown: data["msg"][i].current_drawdown,
@@ -414,7 +397,6 @@ const PerformanceDataGrid = () => {
               };
             }
             if (JSON.stringify(model_names) !== "{}") {
-
               const sorted = Object.keys(model_names)
                 .map((key) => {
                   return { ...model_names[key], key };
@@ -430,7 +412,6 @@ const PerformanceDataGrid = () => {
           })
           .catch((err) => console.log(err));
       } else {
-
         setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
         setPnlForEachStrategy(stats_cache["stats"]);
         setFlag(true);
@@ -440,8 +421,7 @@ const PerformanceDataGrid = () => {
 
   // To Link Grid Rows to Models Component
   const linkModels = useNavigate();
-  const handleRowClickEvent = (params) => {
-  };
+  const handleRowClickEvent = (params) => {};
   // To Link Grid Rows to Models Component
 
   const columns = [
@@ -454,10 +434,10 @@ const PerformanceDataGrid = () => {
       sortable: false,
       renderCell: (cellValues) => {
         return (
-        <div>
+          <div>
             <p>1</p>
-        </div>
-        )
+          </div>
+        );
       },
     },
 
@@ -483,10 +463,10 @@ const PerformanceDataGrid = () => {
       ),
       renderCell: (cellValues) => {
         return (
-        <div>
+          <div>
             <p>Name</p>
-        </div>
-        )
+          </div>
+        );
       },
     },
     {
@@ -510,10 +490,10 @@ const PerformanceDataGrid = () => {
       ),
       renderCell: (cellValues) => {
         return (
-        <div>
+          <div>
             <p>$</p>
-        </div>
-        )
+          </div>
+        );
       },
     },
     {
@@ -531,19 +511,14 @@ const PerformanceDataGrid = () => {
           positive: params.value === "Long",
         });
       },
-      renderHeader: (params) => (
-        <strong>
-          {"Current PNL"}
-       
-        </strong>
-      ),
+      renderHeader: (params) => <strong>{"Current PNL"}</strong>,
 
       renderCell: (cellValues) => {
         return (
-        <div>
+          <div>
             <p>$</p>
-        </div>
-        )
+          </div>
+        );
       },
     },
 
@@ -567,10 +542,10 @@ const PerformanceDataGrid = () => {
       ),
       renderCell: (cellValues) => {
         return (
-        <div>
+          <div>
             <p>$</p>
-        </div>
-        )
+          </div>
+        );
       },
     },
 
@@ -598,10 +573,10 @@ const PerformanceDataGrid = () => {
 
       renderCell: (cellValues) => {
         return (
-        <div>
+          <div>
             <p>$</p>
-        </div>
-        )
+          </div>
+        );
       },
     },
 
@@ -626,68 +601,68 @@ const PerformanceDataGrid = () => {
 
       renderCell: (cellValues) => {
         return (
-        <div>
+          <div>
             <p>$</p>
-        </div>
-        )
+          </div>
+        );
       },
     },
 
-//     {
-//       field: "pnl_sum_7",
-//       headerName: "7d PNL",
-//       width: 120,
-//       sortable: true,
-//       headerAlign: "center",
-//       flex: 1.4,
-//       renderHeader: (params) => (
-//         <strong>
-//           {"7d PNL "}
-//           <Tooltip
-//             className="performance-table-tooltip"
-//             title="PNL of last 7 days"
-//           >
-//             <IconButton>
-//               <BsFillInfoCircleFill />
-//             </IconButton>
-//           </Tooltip>
-//         </strong>
-//       ),
-//     },
+    //     {
+    //       field: "pnl_sum_7",
+    //       headerName: "7d PNL",
+    //       width: 120,
+    //       sortable: true,
+    //       headerAlign: "center",
+    //       flex: 1.4,
+    //       renderHeader: (params) => (
+    //         <strong>
+    //           {"7d PNL "}
+    //           <Tooltip
+    //             className="performance-table-tooltip"
+    //             title="PNL of last 7 days"
+    //           >
+    //             <IconButton>
+    //               <BsFillInfoCircleFill />
+    //             </IconButton>
+    //           </Tooltip>
+    //         </strong>
+    //       ),
+    //     },
 
-//     {
-//       field: "totalpnl",
-//       headerName: "Total PNL",
-//       width: 110,
-//       sortable: true,
-//       headerAlign: "center",
-//       flex: 1.63,
-//       renderHeader: (params) => (
-//         <strong>
-//           {"Total PNL "}
-//           <Tooltip
-//             className="performance-table-tooltip"
-//             title="The total profit (or loss) generated by the model (aggregate profit minus aggregate loss)
-// "
-//           >
-//             <IconButton>
-//               <BsFillInfoCircleFill />
-//             </IconButton>
-//           </Tooltip>
-//         </strong>
-//       ),
+    //     {
+    //       field: "totalpnl",
+    //       headerName: "Total PNL",
+    //       width: 110,
+    //       sortable: true,
+    //       headerAlign: "center",
+    //       flex: 1.63,
+    //       renderHeader: (params) => (
+    //         <strong>
+    //           {"Total PNL "}
+    //           <Tooltip
+    //             className="performance-table-tooltip"
+    //             title="The total profit (or loss) generated by the model (aggregate profit minus aggregate loss)
+    // "
+    //           >
+    //             <IconButton>
+    //               <BsFillInfoCircleFill />
+    //             </IconButton>
+    //           </Tooltip>
+    //         </strong>
+    //       ),
 
-//       cellClassName: (params) => {
-//         if (params.value == null) {
-//           return "";
-//         }
+    //       cellClassName: (params) => {
+    //         if (params.value == null) {
+    //           return "";
+    //         }
 
-//         return clsx("super-app", {
-//           negative: params.value < 0,
-//           positive: params.value > 0,
-//         });
-//       },
-//     },
+    //         return clsx("super-app", {
+    //           negative: params.value < 0,
+    //           positive: params.value > 0,
+    //         });
+    //       },
+    //     },
 
     {
       field: "pnlGraph",
@@ -695,7 +670,7 @@ const PerformanceDataGrid = () => {
       sortable: false,
       headerAlign: "center",
       flex: 1,
-      
+
       renderHeader: (params) => (
         <strong>
           {" "}
@@ -711,18 +686,14 @@ const PerformanceDataGrid = () => {
       ),
 
       renderCell: (cellValues) => {
-        return ( <p>Transaction</p> );
+        return <p>Transaction</p>;
       },
     },
   ];
 
-
-
   // To Link Grid Rows to Models Component
 
   const handleChangeForTimeHorizonSelection = (id, timeH) => {
-
-
     if (timeH == "All") {
       setRows(rows_cached);
       set_model_search_selection(model_selection_cache["model_names"]);
@@ -739,8 +710,6 @@ const PerformanceDataGrid = () => {
       setRows(res);
     }
   };
-
-
 
   const handleChangeForCoinSelectionMob = async (selected) => {
     if (selected != null) {
@@ -802,19 +771,15 @@ const PerformanceDataGrid = () => {
         );
         setRows(updatedRows);
         set_rows_cached(updatedRows);
-        if(params.row.favs == false){
+        if (params.row.favs == false) {
           const updateObj = {};
           updateObj[params.row.modelName] = true;
           update(ref(database, "user_favs/" + uid), updateObj);
-
-        }
-        else{
+        } else {
           const updateObj = {};
           updateObj[params.row.modelName] = null;
           update(ref(database, "user_favs/" + uid), updateObj);
         }
-
-
       } else {
         Swal.fire({
           title: "Kindly login for making model favourite",
@@ -833,77 +798,73 @@ const PerformanceDataGrid = () => {
   return (
     <div className="model-grid">
       <div className="container">
-
-          <div className="model-grid-web">
-
-            <div className="grid-div-web">
-              <Box
+        <div className="model-grid-web">
+          <div className="grid-div-web">
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <DataGrid
+                onRowClick={handleRowClickEvent}
+                onCellClick={handleCellClick}
                 sx={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  borderColor: "var(--color-grid-border)",
+                  color: "var(--color-day-black)",
+                  "& .MuiDataGrid-cell:hover": {
+                    color: "var(--color-day-yellow)",
+                  },
+                  "& .MuiDataGrid-cell": {
+                    justifyContent: "center",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                  },
+                  backgroundColor: "var(--color-day-white)",
+                  "& .MuiDataGrid-columnHeaders": {
+                    borderBottomColor: "var(--color-grid-border)",
+                  },
+                  "& .MuiDataGrid-row": {
+                    borderBottomColor: "var(--color-grid-border)",
+                  },
+                  "& div div div div >.MuiDataGrid-cell": {
+                    borderBottom: "none",
+                  },
+
+                  "& .MuiDataGrid-footerContainer": {
+                    borderTopColor: "var(--color-grid-border)",
+                  },
+                  "& .super-app.negative": {
+                    color: "#FF2E2E",
+                    fontWeight: "600",
+                  },
+                  "& .super-app.positive": {
+                    color: " #16C784",
+                    fontWeight: "600",
+                  },
                 }}
-              >
-                <DataGrid
-                  onRowClick={handleRowClickEvent}
-                  onCellClick={handleCellClick}
-                  sx={{
-                    borderColor: "var(--color-grid-border)",
-                    color: "var(--color-day-black)",
-                    "& .MuiDataGrid-cell:hover": {
-                      color: "var(--color-day-yellow)",
-                    },
-                    "& .MuiDataGrid-cell": {
-                      justifyContent: "center",
-                      textAlign: "center",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                    },
-                    backgroundColor: "var(--color-day-white)",
-                    "& .MuiDataGrid-columnHeaders": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& .MuiDataGrid-row": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& div div div div >.MuiDataGrid-cell": {
-                      borderBottom: "none",
-                    },
-
-                    "& .MuiDataGrid-footerContainer": {
-                      borderTopColor: "var(--color-grid-border)",
-                    },
-                    "& .super-app.negative": {
-                      color: "#FF2E2E",
-                      fontWeight: "600",
-                    },
-                    "& .super-app.positive": {
-                      color: " #16C784",
-                      fontWeight: "600",
-                    },
-                  }}
-                  rows={rows}
-                  columns={columns}
-                  pageSize={pageSize}
-                  autoHeight={true}
-                  pinnedRows={pinnedRows}
-                  rowsPerPageOptions={[10, 20, 50]}
-                  onPageSizeChange={(newPage) => {
-
-                    setPageSize(newPage);
-                  }}
-
-                  localeText={{
-                    footerRowSelected: CustomPagination,
-                  }}
-                  components={{
-                    Footer: CustomFooter,
-                  }}
-                />
-              </Box>
-            </div>
+                rows={rows}
+                columns={columns}
+                pageSize={pageSize}
+                autoHeight={true}
+                pinnedRows={pinnedRows}
+                rowsPerPageOptions={[10, 20, 50]}
+                onPageSizeChange={(newPage) => {
+                  setPageSize(newPage);
+                }}
+                localeText={{
+                  footerRowSelected: CustomPagination,
+                }}
+                components={{
+                  Footer: CustomFooter,
+                }}
+              />
+            </Box>
           </div>
+        </div>
       </div>
     </div>
   );
