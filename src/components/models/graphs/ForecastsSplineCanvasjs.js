@@ -17,12 +17,17 @@ function ForecastsSplineCanvasjs(props) {
   var CanvasJSChart = CanvasJSReact.CanvasJSChart;
   useEffect(() => {
     if (!negative_canvasjs_graph_cache[props.model_name]) {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
+      fetch(
+        `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${
+          props.model_name + "_PNL"
+        }`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then(async (data) => {
           var main_series = [];

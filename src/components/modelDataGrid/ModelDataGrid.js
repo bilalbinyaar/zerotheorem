@@ -209,7 +209,8 @@ const ModelDataGrid = () => {
     Set_coin_search_selection_cache,
     model_selection_cache,
     Set_model_search_selection_cache,
-    uid, setUid,
+    uid,
+    setUid,
     authCheckLogin,
   } = useStateContext();
   const [pnl_for_each_strategy, setPnlForEachStrategy] = useState(null);
@@ -261,68 +262,54 @@ const ModelDataGrid = () => {
     }
   }, [strategies]);
   const [favs_list, set_favs_list] = useState([]);
-  useEffect(()=>{
-    if(authCheckLogin == true){
+  useEffect(() => {
+    if (authCheckLogin == true) {
       console.log("UID is --->", uid);
-      if(rows.length > 0 && uid != null){
-        const starCountRef = ref(
-          database,
-          "user_favs/"+ uid
-        );
+      if (rows.length > 0 && uid != null) {
+        const starCountRef = ref(database, "user_favs/" + uid);
         onValue(starCountRef, (snapshot) => {
           const data = snapshot.val();
           // console.log("Here is the data -->", data, uid);
-          var favs_models_list = []
-          for (let name in data){
+          var favs_models_list = [];
+          for (let name in data) {
             favs_models_list.push(name);
           }
-          if(favs_models_list.length > 0){
+          if (favs_models_list.length > 0) {
             set_favs_list(favs_models_list);
           }
-  
-        }
-        )
-    }
-    }
-    else{
-      if(rows.length > 0){
+        });
+      }
+    } else {
+      if (rows.length > 0) {
         const updatedRows = rows.map((row) =>
-        row.favs == true
-            ? { ...row, ["favs"]: false }
-            : row
-      );
-      setRows(updatedRows);
-      set_rows_cached(updatedRows); 
+          row.favs == true ? { ...row, ["favs"]: false } : row
+        );
+        setRows(updatedRows);
+        // set_rows_cached(rows);
       }
-      
     }
-    },[authCheckLogin, rows])
+  }, [authCheckLogin, rows]);
 
-  useEffect(()=>{
-    if(favs_list.length > 0){
+  useEffect(() => {
+    if (favs_list.length > 0) {
       const updatedRows = rows.map((row) =>
-        favs_list.includes(row.modelName)
-          ? { ...row, ["favs"]: true }
-          : row
+        favs_list.includes(row.modelName) ? { ...row, ["favs"]: true } : row
       );
-      var sorted = {}
-      if(Object.keys(updatedRows).length > 10){
+      var sorted = {};
+      if (Object.keys(updatedRows).length > 10) {
         sorted = Object.keys(updatedRows)
-        .map((key) => {
-          return { ...updatedRows[key], key };
-        })
-        .sort((a, b) => b.favs - a.favs);
+          .map((key) => {
+            return { ...updatedRows[key], key };
+          })
+          .sort((a, b) => b.favs - a.favs);
       }
 
-      if(Object.keys(sorted).length > 10){
-
+      if (Object.keys(sorted).length > 10) {
         setRows(sorted);
-        set_rows_cached(sorted);
+        // set_rows_cached(rows);
       }
-   
     }
-  }, [favs_list])
-
+  }, [favs_list]);
 
   useEffect(() => {
     if (topPerformerModels == null) {
@@ -795,7 +782,6 @@ const ModelDataGrid = () => {
       },
     },
 
-
     { field: "id", headerName: "#", headerAlign: "center", width: 23 },
 
     {
@@ -838,7 +824,7 @@ const ModelDataGrid = () => {
     //         title="Forecasts start date"
     //       >
     //         <IconButton>
-    //           <BsFillInfoCircleFill />
+    //           <BsFillInfoCircleFill />Time Horizon
     //         </IconButton>
     //       </Tooltip>
     //     </strong>
@@ -1056,7 +1042,6 @@ const ModelDataGrid = () => {
 
   // COLUMNS FOR MOBILE VIEW
   const columnsMobile = [
-
     {
       field: "favs",
       with: 10,
@@ -1186,22 +1171,19 @@ const ModelDataGrid = () => {
             : row
         );
         setRows(updatedRows);
-        set_rows_cached(updatedRows);
-        if(params.row.favs == false){
+        // set_rows_cached(rows);
+        if (params.row.favs == false) {
           const updateObj = {};
           updateObj[params.row.modelName] = true;
           update(ref(database, "user_favs/" + uid), updateObj);
-        // const userFavsRef = database.ref(`user_favs/${uid}`);
-        // const model_name_for_favs = params.row.modelName;
-        // userFavsRef.update(model_name_for_favs);
-        }
-        else{
+          // const userFavsRef = database.ref(`user_favs/${uid}`);
+          // const model_name_for_favs = params.row.modelName;
+          // userFavsRef.update(model_name_for_favs);
+        } else {
           const updateObj = {};
           updateObj[params.row.modelName] = null;
           update(ref(database, "user_favs/" + uid), updateObj);
         }
-
-
       } else {
         Swal.fire({
           title: "Kindly login for making model favourite",
@@ -1742,7 +1724,6 @@ const ModelDataGrid = () => {
                 <DataGrid
                   onRowClick={handleRowClickEvent}
                   onCellClick={handleCellClick}
-
                   sx={{
                     borderColor: "var(--color-grid-border)",
                     color: "var(--color-day-black)",
