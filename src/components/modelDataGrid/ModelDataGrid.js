@@ -212,6 +212,7 @@ const ModelDataGrid = () => {
     uid,
     setUid,
     authCheckLogin,
+    setAuthCheckLogin,
   } = useStateContext();
   const [pnl_for_each_strategy, setPnlForEachStrategy] = useState(null);
   const [rows, setRows] = useState([]);
@@ -264,7 +265,10 @@ const ModelDataGrid = () => {
   const [favs_list, set_favs_list] = useState([]);
   useEffect(() => {
     if (authCheckLogin == true) {
-      console.log("UID is --->", uid);
+      // console.log("UID is --->", uid);
+      if (rows.length == 0 && authCheckLogin == true) {
+        setAuthCheckLogin(true);
+      }
       if (rows.length > 0 && uid != null) {
         const starCountRef = ref(database, "user_favs/" + uid);
         onValue(starCountRef, (snapshot) => {

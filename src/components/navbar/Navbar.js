@@ -26,8 +26,6 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 
-
-
 export default function Navbar() {
   const linkModels = useNavigate();
 
@@ -48,7 +46,8 @@ export default function Navbar() {
     authCheck,
     setAuthCheck,
     theme,
-    uid, setUid,
+    uid,
+    setUid,
     setTheme,
   } = useStateContext();
   // Login State
@@ -107,7 +106,6 @@ export default function Navbar() {
     setToggle(false);
     setClick(false);
   }
-
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -177,11 +175,12 @@ export default function Navbar() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in, get the UID
-        console.log("User token -->", user.uid)
+        // console.log("User token -->", user.uid)
         setUid(user.uid);
+        setAuthCheckLogin(true);
       } else {
         // User is signed out
-        setUid('');
+        setUid("");
       }
     });
 
@@ -473,8 +472,6 @@ export default function Navbar() {
     </div>,
   ];
 
-
-
   return (
     <div className="header">
       {windowWidth.current <= 1240 ? (
@@ -515,13 +512,21 @@ export default function Navbar() {
             <CustomLink className="menu-item">
               API
               <ul className="sub-menu-items">
-                <CustomLink className="sub-menu-item" to="/api-registration" onClick={toCloseNav}>
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/api-registration"
+                  onClick={toCloseNav}
+                >
                   Registration
                 </CustomLink>
-                <CustomLink className="sub-menu-item" to="/api" onClick={toCloseNav}>
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/api"
+                  onClick={toCloseNav}
+                >
                   Documentation
                 </CustomLink>
-              </ul> 
+              </ul>
             </CustomLink>
             <CustomLink to="/about" onClick={toCloseNav}>
               About
@@ -600,20 +605,23 @@ export default function Navbar() {
 
           {authCheckLogin === true ? (
             <div className="btn-group nav-btn">
-              <button className="btn btn-nav" onClick={ () => {
-                Swal.fire({
-                  title: "Logout successful",
-                  icon: "success",
-                  timer: 2000,
-                  timerProgressBar: true,
-                  toast: true,
-                  position: "top-right",
-                  showConfirmButton: false,
-                });
-                setAuthCheckLogin(false);
-                auth.signOut();
-                linkModels(`/`);
-              }}>
+              <button
+                className="btn btn-nav"
+                onClick={() => {
+                  Swal.fire({
+                    title: "Logout successful",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    toast: true,
+                    position: "top-right",
+                    showConfirmButton: false,
+                  });
+                  setAuthCheckLogin(false);
+                  auth.signOut();
+                  linkModels(`/`);
+                }}
+              >
                 Logout
               </button>
             </div>
