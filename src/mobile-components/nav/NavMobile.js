@@ -13,8 +13,12 @@ import {
   AiOutlineFileDone,
   AiFillGoogleCircle,
   AiOutlineClose,
-  AiOutlineLogout
+  AiOutlineLogout,
+  AiFillWallet,
+  AiOutlineAppstore
 } from "react-icons/ai";
+
+import { MdOutlineSource } from 'react-icons/md';
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
 
@@ -508,8 +512,46 @@ export default function NavMobile(props) {
 
             <CustomLink to="/" onClick={toCloseNav}>
               <AiFillHome className="nav-icons" />
-              Forecasts
+              Performance
             </CustomLink>
+
+            <CustomLink to="" onClick={toCloseNav}>
+              <AiFillWallet className="nav-icons" />
+              Models
+            </CustomLink>
+              {/* Sub Menu */}
+              <CustomLink className="mobile-submenu" to="/" onClick={toCloseNav}>
+                <AiOutlineAppstore className="nav-icons nav-icons-mobile" />
+                All Models
+              </CustomLink>
+              <CustomLink className="mobile-submenu" to="/backtest" onClick={toCloseNav}>
+                <BsGraphUp className="nav-icons nav-icons-mobile" />
+                Backtest
+              </CustomLink>
+              <CustomLink className="mobile-submenu" to="/compare" onClick={toCloseNav}>
+                <BiColumns className="nav-icons nav-icons-mobile" />
+                Compare
+              </CustomLink>
+
+
+            <CustomLink to="" onClick={toCloseNav}>
+              <MdOutlineSource className="nav-icons" />
+              Resources
+            </CustomLink>
+              {/* Sub Menu */}
+              <CustomLink className="mobile-submenu" to="/derivations" onClick={toCloseNav}>
+                <BsFillLayersFill className="nav-icons nav-icons-mobile" />
+                Derivations
+              </CustomLink>
+              <CustomLink className="mobile-submenu" to="/faqs" onClick={toCloseNav}>
+                <FaQuestionCircle className="nav-icons nav-icons-mobile" />
+                FAQs
+              </CustomLink>
+
+            {/* <CustomLink to="/" onClick={toCloseNav}>
+              <AiFillHome className="nav-icons" />
+              Forecasts
+            </CustomLink> 
             <CustomLink to="/backtest" onClick={toCloseNav}>
               <BsGraphUp className="nav-icons" />
               Backtest
@@ -517,11 +559,12 @@ export default function NavMobile(props) {
             <CustomLink to="/compare" onClick={toCloseNav}>
               <BiColumns className="nav-icons" />
               Compare
-            </CustomLink>
+            </CustomLink> 
             <CustomLink to="/derivations" onClick={toCloseNav}>
               <BsFillLayersFill className="nav-icons" />
               Derivations
-            </CustomLink>
+            </CustomLink> */}
+
             <CustomLink to="" onClick={toCloseNav}>
               <AiOutlineApi className="nav-icons" />
               API
@@ -540,10 +583,10 @@ export default function NavMobile(props) {
               <BsFillInfoCircleFill className="nav-icons" />
               About
             </CustomLink>
-            <CustomLink to="/faqs" onClick={toCloseNav}>
+            {/* <CustomLink to="/faqs" onClick={toCloseNav}>
               <FaQuestionCircle className="nav-icons" />
               FAQs
-            </CustomLink>
+            </CustomLink> */}
             <CustomLink to="/contact" onClick={toCloseNav}>
               <AiOutlineContacts className="nav-icons" />
               Contact

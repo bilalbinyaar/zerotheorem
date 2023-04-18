@@ -2,6 +2,7 @@ import React, { useState, useEffect, memo } from "react";
 import Forecasts from "../components/forecasts/Forecasts";
 import ModelDataGrid from "../components/modelDataGrid/ModelDataGrid";
 import Overview from "../components/overview/Overview";
+import Performance from "./Performance";
 import { Helmet } from "react-helmet";
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ const Home = () => {
         {/* CANONICAL TAG */}
         <link rel="canonical" href="https://zerotheorem.com/" />
       </Helmet>
-      
+      {/* <Performance /> */}
       <Forecasts />
       <ModelDataGrid />
       <Overview />

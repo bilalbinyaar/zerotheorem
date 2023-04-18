@@ -494,21 +494,69 @@ export default function Navbar() {
             id="mobile-nav"
             className={click ? "nav-menu active" : "nav-menu"}
           >
+
             <CustomLink to="/" onClick={toCloseNav}>
-              Forecasts
+              Performance
             </CustomLink>
+            <CustomLink className="menu-item">
+              Models
+              <ul className="sub-menu-items">
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/"
+                  onClick={toCloseNav}
+                >
+                  All Models
+                </CustomLink>
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/backtest"
+                  onClick={toCloseNav}
+                >
+                  Backtest
+                </CustomLink>
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/compare"
+                  onClick={toCloseNav}
+                >
+                  Compare
+                </CustomLink>
+              </ul>
+            </CustomLink>
+            <CustomLink className="menu-item">
+              Resources
+              <ul className="sub-menu-items">
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/derivations"
+                  onClick={toCloseNav}
+                >
+                  Derivations
+                </CustomLink>
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/faqs"
+                  onClick={toCloseNav}
+                >
+                  FAQs
+                </CustomLink>
+              </ul>
+            </CustomLink>
+
+            {/* <CustomLink to="/" onClick={toCloseNav}>
+              Forecasts
+            </CustomLink> 
             <CustomLink to="/backtest" onClick={toCloseNav}>
               Backtest
             </CustomLink>
             <CustomLink to="/compare" onClick={toCloseNav}>
               Compare
-            </CustomLink>
-            <CustomLink to="/contact" onClick={toCloseNav}>
-              Contact
-            </CustomLink>
+            </CustomLink> 
+            
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
-            </CustomLink>
+            </CustomLink> */}
             <CustomLink className="menu-item">
               API
               <ul className="sub-menu-items">
@@ -531,9 +579,12 @@ export default function Navbar() {
             <CustomLink to="/about" onClick={toCloseNav}>
               About
             </CustomLink>
-            <CustomLink to="/faqs" onClick={toCloseNav}>
-              FAQs
+            <CustomLink to="/contact" onClick={toCloseNav}>
+              Contact
             </CustomLink>
+            {/* <CustomLink to="/faqs" onClick={toCloseNav}>
+              FAQs
+            </CustomLink> */}
           </ul>
 
           {toggle && (
