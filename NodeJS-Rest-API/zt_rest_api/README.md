@@ -1,3 +1,4 @@
 - `docker build -t node-docker-project .`
 - `docker tag node-docker-project gcr.io/zt-backend-381310/zt-rest-api`
 - `docker push gcr.io/zt-backend-381310/zt-rest-api`
+- `gcloud beta run deploy my-service   --image gcr.io/zt-backend-381310/zt-rest-api   --platform managed   --region us-central1   --allow-unauthenticated   --vpc-connector zt-vpc-connector   --set-env-vars REDIS_HOST=10.77.102.35,REDIS_PORT=6379   --project zt-backend-381310`
