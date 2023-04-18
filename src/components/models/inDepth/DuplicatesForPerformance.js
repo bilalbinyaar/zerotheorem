@@ -5,26 +5,22 @@ import "./InDepth.css";
 import CanvasDoughnut from "../graphs/CanvasDoughnut";
 import CanvasNegativeBar from "../graphs/CanvasNegativeBar";
 import IndividualPnlCanvasjs from "../graphs/IndividualPnlCanvasjs";
+import PerformancePieChart from "../../../graphs/PerformancePieChart";
+import PerformanceMultiLine from "../../../graphs/PerformanceMultiLine";
+import PerformanceBarChart from "../../../graphs/PerformanceBarChart";
 const DuplicatesForPerformance = (props) => {
   return (
     <div className="in-depth">
-      <div className="container">
         <div className="in-depth-charts">
-          <div className="in-depth-nc">
+          <div className="in-depth-nc for-performance-mb">
             <h3>PNL Sum</h3>
-            <div className="for-hr"></div>
-            {/* <NegativeColumns model_name={props.model_name} /> */}
-            {/* <CanvasNegativeBar model_name={props.model_name} /> */}
-            <IndividualPnlCanvasjs model_name={props.model_name} />
+            <PerformanceBarChart />
           </div>
-          <div className="in-depth-gd">
+          <div className="in-depth-gd for-performance-mb">
             <h3>Current Portfolio Allocation</h3>
-            <div className="for-hr"></div>
-            {/* <GradientDonut model_name={props.model_name} /> */}
-            <CanvasDoughnut model_name={props.model_name} />
+            <PerformancePieChart />
           </div>
         </div>
-      </div>
     </div>
   );
 };
