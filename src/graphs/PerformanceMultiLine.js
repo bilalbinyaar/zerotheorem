@@ -21,6 +21,7 @@ function PerformanceMultiLine(props) {
         `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${
           props.model_name + "_PNL"
         }`,
+        
         {
           method: "GET",
           headers: {
