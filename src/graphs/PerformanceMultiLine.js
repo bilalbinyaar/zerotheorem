@@ -1,6 +1,6 @@
-import React, { Component, useState, useEffect, useRef } from "react";
+import React from "react";
 import CanvasJSReact from "../canvasjs.react";
-import { useStateContext } from "../ContextProvider";
+
 
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -30,12 +30,12 @@ function PerformanceMultiLine() {
 
     },
 
-    // axisY2: {
-    //   includeZero: false,
-    //   gridColor: "#B5E5F5",
-    //   tickColor: "#B5E5F5",
-    //   labelFontSize: 10,
-    // },
+    axisY2: {
+      includeZero: true,
+      gridColor: "#B5E5F5",
+      tickColor: "#B5E5F5",
+      labelFontSize: 10,
+    },
 
     data: [{
       type: "line",
@@ -58,25 +58,26 @@ function PerformanceMultiLine() {
         { x: 100, y: 45 }
       ]
     },
-    // {
-    //   type: "line",
-    //   color: "#16c784",
-    //   axisYType: "secondary",
-    //   labelFontSize: 10,
+    
+    {
+      type: "line",
+      color: "#ff2e2e",
+      axisYType: "secondary",
+      labelFontSize: 10,
 
-    //   dataPoints: [
-    //     { x: 10, y: 101 },
-    //     { x: 20, y: 85 },
-    //     { x: 30, y: 80 },
-    //     { x: 40, y: 95 },
-    //     { x: 50, y: 125 },
-    //     { x: 60, y: 98 },
-    //     { x: 70, y: 58 },
-    //     { x: 80, y: 64 },
-    //     { x: 90, y: 44 },
-    //     { x: 100, y: 75 }
-    //   ]
-    // }
+      dataPoints: [
+        { x: 10, y: 101 },
+        { x: 20, y: 85 },
+        { x: 30, y: 80 },
+        { x: 40, y: 95 },
+        { x: 50, y: 125 },
+        { x: 60, y: 98 },
+        { x: 70, y: 58 },
+        { x: 80, y: 64 },
+        { x: 90, y: 44 },
+        { x: 100, y: 75 }
+      ]
+    }
   ]
   };
 

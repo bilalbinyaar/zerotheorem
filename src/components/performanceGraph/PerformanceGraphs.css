@@ -2,6 +2,11 @@
     padding: 2rem 0rem 3rem 0rem;
 }
 
+.for-performance-legends {
+    justify-content: flex-end !important;
+    margin-bottom: 0.8rem;
+}
+
 /* .performance-graphs-main {
     display: flex;
     justify-content: space-between;
