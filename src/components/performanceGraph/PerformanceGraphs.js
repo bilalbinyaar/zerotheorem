@@ -12,7 +12,7 @@ const PerformanceGraphs = () => {
             
 
             <PerformanceMultiLine model_name={"ZT1_0M24BTC1"}/>
-            <IndividualPnlCanvasjs model_name={"ZT1_0M24BTC1"} />
+            {/* <IndividualPnlCanvasjs model_name={"ZT1_0M24BTC1"} /> */}
 
         </div>
       </div>
