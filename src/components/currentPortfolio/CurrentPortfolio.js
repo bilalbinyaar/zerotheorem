@@ -13,8 +13,8 @@ const CurrentPortfolio = (props) => {
         <div className='container'>
             <h2>Current Portfolio Allocation</h2>
             {/*  <CanvasDoughnut /> */}
-            {/* <DuplicatesForPerformance /> */}
-          <PerformancePieChart />
+            <DuplicatesForPerformance />
+          {/* <PerformancePieChart /> */}
         </div>
     </div>
   )
