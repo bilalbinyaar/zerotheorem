@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo, useRef } from "react";
-// import "./ModelDataGrid.css";
+import "./PerformanceDataGrid.css";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Swal from "sweetalert2";
@@ -798,6 +798,7 @@ const PerformanceDataGrid = () => {
   return (
     <div className="model-grid">
       <div className="container">
+        <h2 className="strategies-heading">All Strategies</h2>
         <div className="model-grid-web">
           <div className="grid-div-web">
             <Box

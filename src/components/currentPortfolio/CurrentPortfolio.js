@@ -11,7 +11,6 @@ const CurrentPortfolio = (props) => {
   return (
     <div className='current-portfolio'>
         <div className='container'>
-            <h2>Current Portfolio Allocation</h2>
             {/*  <CanvasDoughnut /> */}
             <DuplicatesForPerformance />
           {/* <PerformancePieChart /> */}
