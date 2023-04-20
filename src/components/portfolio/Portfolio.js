@@ -287,7 +287,7 @@ const Portfolio = () => {
     <div id="forecasts" className="forecasts">
       <div className="container">
         <div className="top-div">
-          <h1>Portfolio</h1>
+          <h1>Performance</h1>
         </div>
 
         <div className="forecasts-details">

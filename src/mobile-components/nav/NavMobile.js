@@ -510,14 +510,14 @@ export default function NavMobile(props) {
               <div className="display-none"></div>
             )}
 
-            <CustomLink to="/" onClick={toCloseNav}>
+            <CustomLink to="/performance" onClick={toCloseNav}>
               <AiFillHome className="nav-icons" />
               Performance
             </CustomLink>
 
             <CustomLink to="" onClick={toCloseNav}>
               <AiFillWallet className="nav-icons" />
-              Models
+              Forecasts
             </CustomLink>
               {/* Sub Menu */}
               <CustomLink className="mobile-submenu" to="/" onClick={toCloseNav}>

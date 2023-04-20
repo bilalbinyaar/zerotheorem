@@ -495,11 +495,11 @@ export default function Navbar() {
             className={click ? "nav-menu active" : "nav-menu"}
           >
 
-            <CustomLink to="/" onClick={toCloseNav}>
+            <CustomLink to="/performance" onClick={toCloseNav}>
               Performance
             </CustomLink>
             <CustomLink className="menu-item">
-              Models
+              Forecasts
               <ul className="sub-menu-items">
                 <CustomLink
                   className="sub-menu-item"
