@@ -346,7 +346,8 @@ const Portfolio = () => {
         </div>
 
         <div className="portfolio-stats">
-            <div className="today-stats for-space-between">
+            {/* <div className="today-stats for-space-between"> */}
+            <div className="overall-stats for-space-between">
                 <h3>Today</h3>
                 <div className="portfolio-stats-percentage" id="pnl-bg">
                   <AiFillCaretUp className="model-details-left-top-percentage-icon " />
@@ -366,7 +367,41 @@ const Portfolio = () => {
                 </div>
             </div>
 
-           <div className="pnl-stats-bar for-space-between portfolio-ml">
+
+            <div className="overall-stats for-space-between portfolio-ml">
+                <h3>7-Days</h3>
+                <div className="portfolio-stats-percentage" id="pnl-bg">
+                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                  <p>
+                    2.12%
+                  </p>
+                </div>
+            </div>
+
+            <div className="overall-stats for-space-between portfolio-ml">
+                <h3>30-Days</h3>
+                <div className="portfolio-stats-percentage" id="pnl-bg">
+                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                  <p>
+                    2.12%
+                  </p>
+                </div>
+            </div>
+
+            <div className="overall-stats for-space-between portfolio-ml">
+                <h3>90-Days</h3>
+                <div className="portfolio-stats-percentage" id="pnl-bg">
+                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                  <p>
+                    2.12%
+                  </p>
+                </div>
+            </div>
+
+
+            
+
+           {/* <div className="pnl-stats-bar for-space-between portfolio-ml">
                 <div className="pnl-day-stats for-space-between ">
                   <h3>7-Day</h3>
                   <div className="portfolio-stats-percentage" id="pnl-bg">
@@ -396,7 +431,7 @@ const Portfolio = () => {
                     </p>
                   </div>
                 </div>
-            </div> 
+            </div>  */}
         </div>
 
       </div>

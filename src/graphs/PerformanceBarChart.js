@@ -65,8 +65,8 @@ function PerformanceBarChart() {
     data: [{
 				type: "waterfall",
 				yValueFormatString: "$#,##0,.00K",
-        risingColor: "#16c784",
-        fallingColor: "#ff2e2e",
+				risingColor: "#16c784",
+				fallingColor: "#ff2e2e",
 				indexLabelOrientation: "vertical",
 				dataPoints: [
 					{ label: "Initial", y: 7655 },
