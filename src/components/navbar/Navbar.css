@@ -130,20 +130,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.6rem 0rem;    
+    -webkit-box-align: center;
+    align-items: center;
+    /* padding: 0.6rem 0rem;     */
+    padding: 2rem 0rem;
+    min-height: 50px;
 }
 
 .sub-menu-items {
     display: none;
-    background-color: var(--color-forecasts-card);
-    margin-top: 1.3rem;
+    background-color: var(--color-nav-submenu);
+    /* margin-top: 1.3rem; */
     padding: 0.6rem 0rem;
     position: absolute;
     border-radius: 4px;
     opacity: 0;
     transition: opacity 3s ease-in-out, display 3s 3s;
     transition-delay: 2s;
-    
+    white-space: nowrap;
+    transform: translate(0%, 2rem);
+    box-shadow: var(--color-box-shadow-day) 0px 0px 0px, var(--color-box-shadow-day) 0px 3px 14px;
 }
 
 .sub-menu-item {

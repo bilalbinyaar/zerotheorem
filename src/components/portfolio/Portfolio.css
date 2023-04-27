@@ -1,5 +1,5 @@
 .portfolio-stats {
-    padding: 1.6rem 0rem 0rem 0rem;
+    padding: 3rem 0rem 0rem 0rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -19,25 +19,25 @@
     background-color: var(--color-forecasts-card);
     padding: 0.8rem;
     border-radius: 4px;
-    width: 25%;
+    width: 29%;
 }
 
 .overall-stats {
     background-color: var(--color-forecasts-card);
     padding: 0.8rem;
     border-radius: 4px;
-    width: 25%;
+    /* width: 25%; */
 }
 
 .pnl-stats-bar {
     background-color: var(--color-forecasts-card);
-    padding: 0.6rem;
+    padding: 0.6rem 0.8rem;
     border-radius: 4px;
     width: 70%;
 }
 
 .pnl-day-stats {
-    background-color: var(--forecasts-model-index);
+    /* background-color: var(--forecasts-model-index); */
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
     width: 100%;
@@ -62,4 +62,88 @@
   font-size: 12px;
   font-weight: 600;
   color: white !important;
+}
+
+
+
+/* NEW */
+.overall-stats {
+    width: 100%;
+} 
+
+.for-flex-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.portfolio-stats-percentage {
+    margin-left: 0;
+    margin-top: 0.4rem;
+    background: transparent;
+}
+
+.portfolio-stats-percentage svg {
+    color: var(--color-day-green) !important;
+}
+
+.portfolio-stats-percentage p {
+    color: var(--color-day-green) !important;
+}
+
+.for-overall-stat p {
+    font-size: 14px;
+}
+
+.for-overall-stat-icon {
+    font-size: 14px !important;
+    margin-top: 5px !important;
+}
+
+.divider-div-pnl-stats {
+    width: 3px;
+    height: 30px;
+    background-color: var(--forecasts-model-index);
+}
+
+@media screen and (max-width: 568px) {
+    .for-overall-stat p {
+        font-size: 12px;
+    }
+
+    .for-overall-stat-icon {
+        font-size: 12px !important;
+        margin-top: 3px !important;
+    }
+    .portfolio-stats {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pnl-stats-bar {
+        margin-top: 0.8rem;
+    }
+
+    .today-stats {
+        width: 100%;
+    }
+
+    .pnl-stats-bar {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .for-space-between {
+        flex-direction: column;
+    }
+
+    .divider-div-pnl-stats {
+        width: 60px;
+        height: 1px;
+        margin: 0.4rem 0;
+    }
 }

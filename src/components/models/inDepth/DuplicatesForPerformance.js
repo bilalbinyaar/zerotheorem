@@ -16,7 +16,7 @@ const DuplicatesForPerformance = (props) => {
             <h3>Individual Returns</h3>
             <PerformanceBarChart />
           </div>
-          <div className="in-depth-gd for-performance-mb">
+          <div className="in-depth-gd for-performance-mb portfolio-allocation-div">
             <h3>Portfolio Allocation</h3>
             <PerformancePieChart />
           </div>

@@ -342,24 +342,40 @@ const Portfolio = () => {
         </div>
 
         <div className="portfolio-stats">
-          <div className="today-stats for-space-between">
-            <h3>Today</h3>
-            <div className="portfolio-stats-percentage" id="pnl-bg">
-              <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+          <div className="today-stats for-flex-col">
+            <h2>Overall Return</h2>
+            <div
+              className="portfolio-stats-percentage for-overall-stat"
+              id="pnl-bg"
+            >
+              <AiFillCaretUp className="model-details-left-top-percentage-icon for-overall-stat-icon" />
               <p>2.12%</p>
             </div>
           </div>
 
-          <div className="overall-stats for-space-between portfolio-ml">
-            <h3>Overall Return</h3>
-            <div className="portfolio-stats-percentage" id="pnl-bg">
-              <AiFillCaretUp className="model-details-left-top-percentage-icon " />
-              <p>2.12%</p>
-            </div>
-          </div>
+          {/* <div className="today-stats for-space-between"> */}
+          {/* <div className="overall-stats for-space-between portfolio-ml">
+                <h3>Today</h3>
+                <div className="portfolio-stats-percentage" id="pnl-bg">
+                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                  <p>
+                    2.12%
+                  </p>
+                </div>
+            </div> */}
 
           <div className="pnl-stats-bar for-space-between portfolio-ml">
-            <div className="pnl-day-stats for-space-between ">
+            <div className="pnl-day-stats for-flex-col">
+              <h3>Today</h3>
+              <div className="portfolio-stats-percentage" id="pnl-bg">
+                <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                <p>2.12%</p>
+              </div>
+            </div>
+
+            <div className="divider-div-pnl-stats"></div>
+
+            <div className="pnl-day-stats for-flex-col">
               <h3>7-Day</h3>
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 <AiFillCaretUp className="model-details-left-top-percentage-icon " />
@@ -367,7 +383,9 @@ const Portfolio = () => {
               </div>
             </div>
 
-            <div className="pnl-day-stats for-space-between portfolio-ml">
+            <div className="divider-div-pnl-stats"></div>
+
+            <div className="pnl-day-stats for-flex-col">
               <h3>30-Day</h3>
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 <AiFillCaretUp className="model-details-left-top-percentage-icon " />
@@ -375,7 +393,9 @@ const Portfolio = () => {
               </div>
             </div>
 
-            <div className="pnl-day-stats for-space-between portfolio-ml">
+            <div className="divider-div-pnl-stats"></div>
+
+            <div className="pnl-day-stats for-flex-col">
               <h3>90-Day</h3>
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 <AiFillCaretUp className="model-details-left-top-percentage-icon " />
