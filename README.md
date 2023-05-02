@@ -72,3 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - `docker build -t zt_frontend .`
 - `docker tag zt_frontend gcr.io/zt-frontend-381310/zt-frontend`
 - `docker push gcr.io/zt-frontend-381310/zt-frontend`
+- `gcloud sql connect mysql-zt --user=root`
+- `use zero_theorem_mysql`
