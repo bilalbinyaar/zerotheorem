@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import CanvasJSReact from "../../../canvasjs.stock.react";
 import { useStateContext } from "../../../ContextProvider";
+import { ThreeDots } from "react-loader-spinner";
 
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
@@ -213,8 +214,17 @@ const IndividualPnlCanvasjs = (props) => {
 
   return (
     <div>
-      {isLoaded && (
+      {isLoaded ? (
         <CanvasJSStockChart containerProps={containerProps} options={options} />
+      ) : (
+        <div className="container loader-container">
+          <ThreeDots
+            className="backtest-loader"
+            color="#fddd4e"
+            height={80}
+            width={80}
+          />
+        </div>
       )}
     </div>
   );

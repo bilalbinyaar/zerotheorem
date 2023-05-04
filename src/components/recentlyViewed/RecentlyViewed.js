@@ -16,6 +16,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { set_scroll_recently } from "../../store";
+import { ThreeDots } from "react-loader-spinner";
 
 const RecentlyViewed = (props) => {
   const dispatch = useDispatch();
@@ -31,6 +32,8 @@ const RecentlyViewed = (props) => {
     Set_coin_search_selection_cache,
     Set_model_search_selection_cache,
   } = useStateContext();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   // All time Drop Down
   const [drop, setDrop] = useState(false);
   const dropDown = () => setDrop(!drop);
@@ -285,9 +288,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[0] &&
                   strategies[Object.values(topPerformerModels)[0].strategy_name]
-                    ? `${Object.values(topPerformerModels)[0].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[0].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -340,7 +342,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[0].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -381,9 +394,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[1] &&
                   strategies[Object.values(topPerformerModels)[1].strategy_name]
-                    ? `${Object.values(topPerformerModels)[1].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[1].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -436,7 +448,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[1].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -477,9 +500,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[2] &&
                   strategies[Object.values(topPerformerModels)[2].strategy_name]
-                    ? `${Object.values(topPerformerModels)[2].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[2].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -532,7 +554,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[2].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -573,9 +606,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[3] &&
                   strategies[Object.values(topPerformerModels)[3].strategy_name]
-                    ? `${Object.values(topPerformerModels)[3].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[3].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -628,7 +660,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[3].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -669,9 +712,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[4] &&
                   strategies[Object.values(topPerformerModels)[4].strategy_name]
-                    ? `${Object.values(topPerformerModels)[4].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[4].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -724,7 +766,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[4].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -768,9 +821,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[0] &&
                   strategies[Object.values(topPerformerModels)[0].strategy_name]
-                    ? `${Object.values(topPerformerModels)[0].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[0].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -828,7 +880,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[0].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -869,9 +932,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[1] &&
                   strategies[Object.values(topPerformerModels)[1].strategy_name]
-                    ? `${Object.values(topPerformerModels)[1].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[1].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -929,7 +991,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[1].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -970,9 +1043,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[2] &&
                   strategies[Object.values(topPerformerModels)[2].strategy_name]
-                    ? `${Object.values(topPerformerModels)[2].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[2].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -1030,7 +1102,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[2].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -1071,9 +1154,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[3] &&
                   strategies[Object.values(topPerformerModels)[3].strategy_name]
-                    ? `${Object.values(topPerformerModels)[3].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[3].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -1131,7 +1213,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[3].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -1172,9 +1265,8 @@ const RecentlyViewed = (props) => {
                 <p>
                   {Object.values(topPerformerModels)[4] &&
                   strategies[Object.values(topPerformerModels)[4].strategy_name]
-                    ? `${Object.values(topPerformerModels)[4].total_pnl}`
+                    ? `${Object.values(topPerformerModels)[4].total_pnl}%`
                     : null}
-                  {"%"}
                 </p>
               </div>
             </div>
@@ -1232,7 +1324,18 @@ const RecentlyViewed = (props) => {
                     Object.values(topPerformerModels)[4].strategy_name
                   }
                 />
-              ) : null}
+              ) : (
+                <div className="best-performing-spline">
+                  <div className="container loader-container">
+                    <ThreeDots
+                      className="backtest-loader"
+                      color="#fddd4e"
+                      height={80}
+                      width={80}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

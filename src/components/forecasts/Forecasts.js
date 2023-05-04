@@ -28,6 +28,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import { MathComponent } from "mathjax-react";
 import { useSelector, useDispatch } from "react-redux";
 import { set_scroll } from "../../store";
+import { ThreeDots } from "react-loader-spinner";
 
 // import ForecastCards from "../../mobile-components/forecast-cards/ForecastCards";
 
@@ -633,9 +634,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[0].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -648,7 +648,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[0].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -761,9 +772,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[1].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -776,7 +786,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[1].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -886,9 +907,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[2].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -901,7 +921,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[2].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -1011,9 +1042,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[3].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -1026,7 +1056,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[3].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1136,9 +1177,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[4].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -1151,7 +1191,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[4].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -1262,9 +1313,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[5].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -1277,7 +1327,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[5].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -1387,9 +1448,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[6].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -1402,7 +1462,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[6].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -1512,9 +1583,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[7].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -1527,7 +1597,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[7].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1637,9 +1718,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[8].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -1652,7 +1732,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[8].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}{" "}
                       </div>
                     </div>
                   </div>
@@ -1762,9 +1853,8 @@ const Forecasts = () => {
                           ]
                             ? `${
                                 Object.values(topPerformerModels)[9].total_pnl
-                              }`
+                              }%`
                             : null}
-                          {"%"}
                         </h3>
                       </div>
                     </div>
@@ -1777,7 +1867,18 @@ const Forecasts = () => {
                               Object.values(topPerformerModels)[9].strategy_name
                             }
                           />
-                        ) : null}{" "}
+                        ) : (
+                          <div className="best-performing-spline">
+                            <div className="container loader-container">
+                              <ThreeDots
+                                className="backtest-loader"
+                                color="#fddd4e"
+                                height={80}
+                                width={80}
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1892,9 +1993,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[0].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[0].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[0].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -1907,7 +2007,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[0].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2005,9 +2116,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[1].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[1].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[1].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2020,7 +2130,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[1].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}{" "}
                     </div>
                   </div>
                 </div>
@@ -2118,9 +2239,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[2].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[2].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[2].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2133,7 +2253,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[2].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}{" "}
                     </div>
                   </div>
                 </div>
@@ -2231,9 +2362,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[3].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[3].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[3].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2246,7 +2376,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[3].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2344,9 +2485,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[4].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[4].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[4].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2359,7 +2499,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[4].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2472,7 +2623,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[5].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2570,9 +2732,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[6].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[6].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[6].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2585,7 +2746,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[6].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2683,9 +2855,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[7].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[7].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[7].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2698,7 +2869,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[7].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2796,9 +2978,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[8].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[8].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[8].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2811,7 +2992,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[8].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2909,9 +3101,8 @@ const Forecasts = () => {
                         strategies[
                           Object.values(topPerformerModels)[9].strategy_name
                         ]
-                          ? `${Object.values(topPerformerModels)[9].total_pnl}`
+                          ? `${Object.values(topPerformerModels)[9].total_pnl}%`
                           : null}
-                        {"%"}
                       </h3>
                     </div>
                   </div>
@@ -2924,7 +3115,18 @@ const Forecasts = () => {
                             Object.values(topPerformerModels)[9].strategy_name
                           }
                         />
-                      ) : null}{" "}
+                      ) : (
+                        <div className="best-performing-spline">
+                          <div className="container loader-container">
+                            <ThreeDots
+                              className="backtest-loader"
+                              color="#fddd4e"
+                              height={80}
+                              width={80}
+                            />
+                          </div>
+                        </div>
+                      )}{" "}
                     </div>
                   </div>
                 </div>

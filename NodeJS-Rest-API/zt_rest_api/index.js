@@ -1,9 +1,9 @@
-// PORT=80
-// HOST=35.224.209.204
-// USERDB=root
-// DATABASE=zero_theorem_mysql
-// PASSWORD=Pak123@@@
-// INST_CONN_NAME=annular-arena-374409:us-central1:mysql-zt
+// // PORT=80
+// // HOST=35.224.209.204
+// // USERDB=root
+// // DATABASE=zero_theorem_mysql
+// // PASSWORD=Pak123@@@
+// // INST_CONN_NAME=annular-arena-374409:us-central1:mysql-zt
 
 // var admin = require("firebase-admin");
 
@@ -534,10 +534,10 @@
 
 // new Listener_on_child_value("LedgerNames");
 
-// const db = mysql.createPool({
-//   connectionLimit: 10,
-//   host: "35.224.209.204",
-//   user: "root",
-//   password: "Pak123@@@",
-//   database: "zero_theorem_mysql",
-// });
+// // const db = mysql.createPool({
+// //   connectionLimit: 10,
+// //   host: "35.224.209.204",
+// //   user: "root",
+// //   password: "Pak123@@@",
+// //   database: "zero_theorem_mysql",
+// // });

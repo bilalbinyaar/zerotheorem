@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import CanvasJSReact from "../../../canvasjs.stock.react";
 import { useStateContext } from "../../../ContextProvider";
+import { ThreeDots } from "react-loader-spinner";
 
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
@@ -137,12 +138,14 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
             Set_drawdown_negative_canvasjs_graph_cache({
               [props.model_name]: main_series,
             });
+            setIsLoaded(true);
           }
           // console.log("Cum pnl -->", cum_pnl);
         })
         .catch((err) => console.log(err));
     } else {
       set_cum_pnl(drawdown_negative_canvasjs_graph_cache[props.model_name]);
+      setIsLoaded(true);
 
       // console.log(
       //   "I am using cached value for straight spline graph -->",
@@ -240,7 +243,6 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
         },
       });
     }
-    setIsLoaded(true);
   }, [cummulative_pnl]);
 
   //   useEffect(() => {
@@ -279,9 +281,23 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
     //   )}
     //   </div>
     <div className="canvas-main-div">
-      <div className="container">
-        <CanvasJSStockChart containerProps={containerProps} options={options} />
-      </div>
+      {isLoaded ? (
+        <div className="container">
+          <CanvasJSStockChart
+            containerProps={containerProps}
+            options={options}
+          />
+        </div>
+      ) : (
+        <div className="container loader-container">
+          <ThreeDots
+            className="backtest-loader"
+            color="#fddd4e"
+            height={80}
+            width={80}
+          />
+        </div>
+      )}
     </div>
   );
 };

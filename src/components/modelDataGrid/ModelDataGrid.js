@@ -24,6 +24,8 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Tooltip } from "@mui/material";
 import TradingViewSplineAreaChart from "../models/graphs/TvSplineAreaChart";
 import IconButton from "@mui/material/IconButton";
+import { ThreeDots } from "react-loader-spinner";
+
 import {
   GridColDef,
   GridFooterContainer,
@@ -71,6 +73,8 @@ const ModelDataGrid = () => {
   const [pinnedRows, setPinnedRows] = useState([]);
   const [Flag, setFlag] = useState(null);
   const [timeH, setTimeH] = useState("All");
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const [selectedItem, setSelectedItem] = useState("All");
 
   // console.log("I am called here to due to dark mode");
@@ -258,6 +262,7 @@ const ModelDataGrid = () => {
         setRows(data_for_rows);
         setPinnedRows([data_for_rows[2]]);
         set_rows_cached(data_for_rows);
+        setIsLoaded(true);
         //  console.log("Here are data grid--->", data_for_rows);
       }
     }
@@ -1717,78 +1722,89 @@ const ModelDataGrid = () => {
                 </div>
               </div>
             </div>
-            <div className="model-grid">
-              <Box
-                sx={{
-                  // height: "650px",
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <DataGrid
-                  onRowClick={handleRowClickEvent}
-                  onCellClick={handleCellClick}
+            {isLoaded ? (
+              <div className="model-grid">
+                <Box
                   sx={{
-                    borderColor: "var(--color-grid-border)",
-                    color: "var(--color-day-black)",
-                    "& .MuiDataGrid-cell:hover": {
-                      color: "var(--color-day-yellow)",
-                    },
-                    "& .MuiDataGrid-cell": {
-                      justifyContent: "center",
-                      textAlign: "center",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                    },
-                    backgroundColor: "var(--color-day-white)",
-                    "& .MuiDataGrid-columnHeaders": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& .MuiDataGrid-row": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& div div div div >.MuiDataGrid-cell": {
-                      borderBottom: "none",
-                    },
+                    // height: "650px",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <DataGrid
+                    onRowClick={handleRowClickEvent}
+                    onCellClick={handleCellClick}
+                    sx={{
+                      borderColor: "var(--color-grid-border)",
+                      color: "var(--color-day-black)",
+                      "& .MuiDataGrid-cell:hover": {
+                        color: "var(--color-day-yellow)",
+                      },
+                      "& .MuiDataGrid-cell": {
+                        justifyContent: "center",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        fontSize: "12px",
+                      },
+                      backgroundColor: "var(--color-day-white)",
+                      "& .MuiDataGrid-columnHeaders": {
+                        borderBottomColor: "var(--color-grid-border)",
+                      },
+                      "& .MuiDataGrid-row": {
+                        borderBottomColor: "var(--color-grid-border)",
+                      },
+                      "& div div div div >.MuiDataGrid-cell": {
+                        borderBottom: "none",
+                      },
 
-                    "& .MuiDataGrid-footerContainer": {
-                      borderTopColor: "var(--color-grid-border)",
-                    },
-                    "& .super-app.negative": {
-                      color: "#FF2E2E",
-                      fontWeight: "600",
-                    },
-                    "& .super-app.positive": {
-                      color: " #16C784",
-                      fontWeight: "600",
-                    },
-                  }}
-                  rows={rows}
-                  columns={columnsMobile}
-                  pageSize={pageSize}
-                  autoHeight={true}
-                  rowsPerPageOptions={[10, 20, 50]}
-                  onPageSizeChange={(newPage) => {
-                    // handleChangePage("", 1);
+                      "& .MuiDataGrid-footerContainer": {
+                        borderTopColor: "var(--color-grid-border)",
+                      },
+                      "& .super-app.negative": {
+                        color: "#FF2E2E",
+                        fontWeight: "600",
+                      },
+                      "& .super-app.positive": {
+                        color: " #16C784",
+                        fontWeight: "600",
+                      },
+                    }}
+                    rows={rows}
+                    columns={columnsMobile}
+                    pageSize={pageSize}
+                    autoHeight={true}
+                    rowsPerPageOptions={[10, 20, 50]}
+                    onPageSizeChange={(newPage) => {
+                      // handleChangePage("", 1);
 
-                    setPageSize(newPage);
-                  }}
-                  // checkboxSelection
-                  // disableSelectionOnClick
-                  localeText={{
-                    footerRowSelected: CustomPagination,
-                  }}
-                  components={{
-                    Footer: CustomFooter,
-                  }}
+                      setPageSize(newPage);
+                    }}
+                    // checkboxSelection
+                    // disableSelectionOnClick
+                    localeText={{
+                      footerRowSelected: CustomPagination,
+                    }}
+                    components={{
+                      Footer: CustomFooter,
+                    }}
 
-                  // {...data}
-                  // experimentalFeatures={{ newEditingApi: true }}
+                    // {...data}
+                    // experimentalFeatures={{ newEditingApi: true }}
+                  />
+                </Box>
+              </div>
+            ) : (
+              <div className="container loader-container">
+                <ThreeDots
+                  className="backtest-loader"
+                  color="#fddd4e"
+                  height={80}
+                  width={80}
                 />
-              </Box>
-            </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="model-grid-web">
@@ -2024,146 +2040,159 @@ const ModelDataGrid = () => {
                 </div>
               </div>
             </div>
-            <div className="grid-div-web">
-              <Box
-                sx={{
-                  // height: "120vh",
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <DataGrid
-                  onRowClick={handleRowClickEvent}
-                  onCellClick={handleCellClick}
-                  // onCellClick={handleOnCellClick}
+            {isLoaded ? (
+              <div className="grid-div-web">
+                <Box
                   sx={{
-                    borderColor: "var(--color-grid-border)",
-                    color: "var(--color-day-black)",
-                    "& .MuiDataGrid-cell:hover": {
-                      color: "var(--color-day-yellow)",
-                    },
-                    "& .MuiDataGrid-cell": {
-                      justifyContent: "center",
-                      textAlign: "center",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                    },
-                    backgroundColor: "var(--color-day-white)",
-                    "& .MuiDataGrid-columnHeaders": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& .MuiDataGrid-row": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& div div div div >.MuiDataGrid-cell": {
-                      borderBottom: "none",
-                    },
+                    // height: "120vh",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <DataGrid
+                    onRowClick={handleRowClickEvent}
+                    onCellClick={handleCellClick}
+                    // onCellClick={handleOnCellClick}
+                    sx={{
+                      borderColor: "var(--color-grid-border)",
+                      color: "var(--color-day-black)",
+                      "& .MuiDataGrid-cell:hover": {
+                        color: "var(--color-day-yellow)",
+                      },
+                      "& .MuiDataGrid-cell": {
+                        justifyContent: "center",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        fontSize: "12px",
+                      },
+                      backgroundColor: "var(--color-day-white)",
+                      "& .MuiDataGrid-columnHeaders": {
+                        borderBottomColor: "var(--color-grid-border)",
+                      },
+                      "& .MuiDataGrid-row": {
+                        borderBottomColor: "var(--color-grid-border)",
+                      },
+                      "& div div div div >.MuiDataGrid-cell": {
+                        borderBottom: "none",
+                      },
 
-                    "& .MuiDataGrid-footerContainer": {
-                      borderTopColor: "var(--color-grid-border)",
-                    },
-                    "& .super-app.negative": {
-                      color: "#FF2E2E",
-                      fontWeight: "600",
-                    },
-                    "& .super-app.positive": {
-                      color: " #16C784",
-                      fontWeight: "600",
-                    },
-                  }}
-                  rows={rows}
-                  columns={columns}
-                  pageSize={pageSize}
-                  autoHeight={true}
-                  pinnedRows={pinnedRows}
-                  rowsPerPageOptions={[10, 20, 50]}
-                  onPageSizeChange={(newPage) => {
-                    // handleChangePage("", 1);
+                      "& .MuiDataGrid-footerContainer": {
+                        borderTopColor: "var(--color-grid-border)",
+                      },
+                      "& .super-app.negative": {
+                        color: "#FF2E2E",
+                        fontWeight: "600",
+                      },
+                      "& .super-app.positive": {
+                        color: " #16C784",
+                        fontWeight: "600",
+                      },
+                    }}
+                    rows={rows}
+                    columns={columns}
+                    pageSize={pageSize}
+                    autoHeight={true}
+                    pinnedRows={pinnedRows}
+                    rowsPerPageOptions={[10, 20, 50]}
+                    onPageSizeChange={(newPage) => {
+                      // handleChangePage("", 1);
 
-                    setPageSize(newPage);
-                  }}
-                  // checkboxSelection
-                  // disableSelectionOnClick
-                  localeText={{
-                    footerRowSelected: CustomPagination,
-                  }}
-                  components={{
-                    Footer: CustomFooter,
-                  }}
+                      setPageSize(newPage);
+                    }}
+                    // checkboxSelection
+                    // disableSelectionOnClick
+                    localeText={{
+                      footerRowSelected: CustomPagination,
+                    }}
+                    components={{
+                      Footer: CustomFooter,
+                    }}
+                  />
+                </Box>
+              </div>
+            ) : (
+              <div className="container loader-container">
+                <ThreeDots
+                  className="backtest-loader"
+                  color="#fddd4e"
+                  height={80}
+                  width={80}
                 />
-              </Box>
-            </div>
-            <div className="grid-div-tab">
-              <Box
-                sx={{
-                  // height: "120vh",
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <DataGrid
-                  onRowClick={handleRowClickEvent}
-                  onCellClick={handleCellClick}
+              </div>
+            )}
+            {isLoaded ? (
+              <div className="grid-div-tab">
+                <Box
                   sx={{
-                    borderColor: "var(--color-grid-border)",
-                    color: "var(--color-day-black)",
-                    "& .MuiDataGrid-cell:hover": {
-                      color: "var(--color-day-yellow)",
-                    },
-                    "& .MuiDataGrid-cell": {
-                      justifyContent: "center",
-                      textAlign: "center",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                    },
-                    backgroundColor: "var(--color-day-white)",
-                    "& .MuiDataGrid-columnHeaders": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& .MuiDataGrid-row": {
-                      borderBottomColor: "var(--color-grid-border)",
-                    },
-                    "& div div div div >.MuiDataGrid-cell": {
-                      borderBottom: "none",
-                    },
+                    // height: "120vh",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <DataGrid
+                    onRowClick={handleRowClickEvent}
+                    onCellClick={handleCellClick}
+                    sx={{
+                      borderColor: "var(--color-grid-border)",
+                      color: "var(--color-day-black)",
+                      "& .MuiDataGrid-cell:hover": {
+                        color: "var(--color-day-yellow)",
+                      },
+                      "& .MuiDataGrid-cell": {
+                        justifyContent: "center",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        fontSize: "12px",
+                      },
+                      backgroundColor: "var(--color-day-white)",
+                      "& .MuiDataGrid-columnHeaders": {
+                        borderBottomColor: "var(--color-grid-border)",
+                      },
+                      "& .MuiDataGrid-row": {
+                        borderBottomColor: "var(--color-grid-border)",
+                      },
+                      "& div div div div >.MuiDataGrid-cell": {
+                        borderBottom: "none",
+                      },
 
-                    "& .MuiDataGrid-footerContainer": {
-                      borderTopColor: "var(--color-grid-border)",
-                    },
-                    "& .super-app.negative": {
-                      color: "#FF2E2E",
-                      fontWeight: "600",
-                    },
-                    "& .super-app.positive": {
-                      color: " #16C784",
-                      fontWeight: "600",
-                    },
-                  }}
-                  rows={rows}
-                  columns={columnsTab}
-                  pageSize={pageSize}
-                  autoHeight={true}
-                  rowsPerPageOptions={[10, 20, 50]}
-                  onPageSizeChange={(newPage) => {
-                    // handleChangePage("", 1);
+                      "& .MuiDataGrid-footerContainer": {
+                        borderTopColor: "var(--color-grid-border)",
+                      },
+                      "& .super-app.negative": {
+                        color: "#FF2E2E",
+                        fontWeight: "600",
+                      },
+                      "& .super-app.positive": {
+                        color: " #16C784",
+                        fontWeight: "600",
+                      },
+                    }}
+                    rows={rows}
+                    columns={columnsTab}
+                    pageSize={pageSize}
+                    autoHeight={true}
+                    rowsPerPageOptions={[10, 20, 50]}
+                    onPageSizeChange={(newPage) => {
+                      // handleChangePage("", 1);
 
-                    setPageSize(newPage);
-                  }}
-                  // checkboxSelection
-                  // disableSelectionOnClick
-                  localeText={{
-                    footerRowSelected: CustomPagination,
-                  }}
-                  components={{
-                    Footer: CustomFooter,
-                  }}
-                />
-              </Box>
-            </div>
+                      setPageSize(newPage);
+                    }}
+                    // checkboxSelection
+                    // disableSelectionOnClick
+                    localeText={{
+                      footerRowSelected: CustomPagination,
+                    }}
+                    components={{
+                      Footer: CustomFooter,
+                    }}
+                  />
+                </Box>
+              </div>
+            ) : null}
           </div>
         )}
       </div>

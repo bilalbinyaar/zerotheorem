@@ -1,10 +1,13 @@
 import React, { Component, useState, useEffect } from "react";
 import CanvasJSReact from "../../../canvasjs.react";
 import { useStateContext } from "../../../ContextProvider";
+import { ThreeDots } from "react-loader-spinner";
 
 function SplineGraphCanvasjs(props) {
   const [minValue, setMinValue] = useState(null);
   const [maxValue, setMaxValue] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { negative_canvasjs_graph_cache, Set_negative_canvasjs_graph_cache } =
     useStateContext();
   const [cummulative_pnl, set_cum_pnl] = useState([]);
@@ -109,11 +112,13 @@ function SplineGraphCanvasjs(props) {
             Set_negative_canvasjs_graph_cache({
               [props.model_name]: main_series,
             });
+            setIsLoaded(true);
           }
         })
         .catch((err) => console.log(err));
     } else {
       set_cum_pnl(negative_canvasjs_graph_cache[props.model_name]);
+      setIsLoaded(true);
     }
   }, []);
 
@@ -157,9 +162,20 @@ function SplineGraphCanvasjs(props) {
 
   return (
     <div className="best-performing-spline">
-      <div>
-        <CanvasJSChart options={options} />
-      </div>
+      {isLoaded ? (
+        <div>
+          <CanvasJSChart options={options} />
+        </div>
+      ) : (
+        <div className="container loader-container">
+          <ThreeDots
+            className="backtest-loader"
+            color="#fddd4e"
+            height={80}
+            width={80}
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -2,6 +2,8 @@ import { last } from "@amcharts/amcharts5/.internal/core/util/Array";
 import React, { useState, useEffect, memo, useRef } from "react";
 import CanvasJSReact from "../../../canvasjs.stock.react";
 import { useStateContext } from "../../../ContextProvider";
+import { ThreeDots } from "react-loader-spinner";
+
 // import dotenv from "dotenv";
 const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
@@ -735,15 +737,30 @@ function CandleGraphCanvasjs(props) {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className="current-position">
+          <div className="container">
+            <h2 className="current-position-heading">Current Position</h2>
+          </div>
+        </div>
+      )}
 
       <div className="container candle-canvas">
-        {isLoaded && (
+        {isLoaded ? (
           <CanvasJSStockChart
             containerProps={containerProps}
             options={options}
             className="hidden canvas"
           />
+        ) : (
+          <div className="container loader-container">
+            <ThreeDots
+              className="backtest-loader"
+              color="#fddd4e"
+              height={80}
+              width={80}
+            />
+          </div>
         )}
       </div>
     </div>
