@@ -47,7 +47,6 @@ const cacheDataStrategies = async () => {
       "strategies",
       resultStr,
       "NX",
-      "XX",
       "EX",
       timeToLive,
       (errorMessage, redisResult) => {
@@ -57,7 +56,7 @@ const cacheDataStrategies = async () => {
           );
         } else {
           console.log(
-            `Data cached successfully at ${new Date()} for strategies`
+            `Data cached successfully at ${new Date()} for strategies redis message ${redisResult}`
           );
         }
       }
@@ -82,7 +81,6 @@ const cacheDataStats = async () => {
       "get_stats",
       resultStr,
       "NX",
-      "XX",
       "EX",
       timeToLive,
       (errorMessage, redisResult) => {
@@ -97,7 +95,9 @@ const cacheDataStats = async () => {
         }
       }
     );
-    console.log(`Data cached successfully at ${new Date()} for stats`);
+    console.log(
+      `Data cached successfully at ${new Date()} for stats redis message ${redisResult}`
+    );
   });
 };
 
@@ -127,83 +127,75 @@ const cacheDataLedger = async (timeH) => {
                     return;
                   } else {
                     const resultStr = JSON.stringify(queryResult);
-                    const timeHorizon = timeH; // Set the horizon time in hours
-                    const now = new Date();
-                    const utcNow = new Date(
-                      now.getTime() + now.getTimezoneOffset() * 60000
-                    ); // Convert to UTC time
+                    const utcNow = new Date();
+                    const hours = utcNow.getUTCHours();
+                    const minutes = utcNow.getUTCMinutes();
+                    const seconds = utcNow.getUTCSeconds();
+                    if (timeH == 1) {
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 + remaining_seconds;
+                      const timeToLive = total_seconds;
 
-                    let hoursUntilHorizon;
-                    switch (timeHorizon) {
-                      case 1:
-                        hoursUntilHorizon = 1 - (utcNow.getUTCHours() % 1);
-                        break;
-                      case 2:
-                        hoursUntilHorizon = 2 - (utcNow.getUTCHours() % 2);
-                        break;
-                      case 3:
-                        hoursUntilHorizon = 3 - (utcNow.getUTCHours() % 3);
-                        break;
-                      case 4:
-                        hoursUntilHorizon = 4 - (utcNow.getUTCHours() % 4);
-                        break;
-                      case 6:
-                        hoursUntilHorizon = 6 - (utcNow.getUTCHours() % 6);
-                        break;
-                      case 8:
-                        hoursUntilHorizon = 8 - (utcNow.getUTCHours() % 8);
-                        break;
-                      case 12:
-                        hoursUntilHorizon = 12 - (utcNow.getUTCHours() % 12);
-                        break;
-                      case 24:
-                        hoursUntilHorizon = 24 - utcNow.getUTCHours();
-                        break;
-                      default:
-                        throw new Error("Invalid time horizon");
-                    }
-
-                    const minutesUntilNextHorizon =
-                      hoursUntilHorizon * 60 - utcNow.getUTCMinutes();
-                    const secondsUntilNextHorizon = 60 - utcNow.getUTCSeconds();
-                    const millisecondsUntilNextHorizon =
-                      1000 - utcNow.getUTCMilliseconds();
-
-                    const expiry = new Date(
-                      utcNow.getTime() +
-                        hoursUntilHorizon * 60 * 60 * 1000 +
-                        minutesUntilNextHorizon * 60 * 1000 +
-                        secondsUntilNextHorizon * 1000 +
-                        millisecondsUntilNextHorizon
-                    );
-
-                    const timeToLive = Math.floor(
-                      (expiry.getTime() - utcNow.getTime()) / 1000
-                    ); // Convert to seconds
-
-                    redisClient.set(
-                      ledger_name,
-                      resultStr,
-                      "NX",
-                      "XX",
-                      "EX",
-                      timeToLive,
-                      (errorMessage, redisResult) => {
-                        if (err) {
-                          console.log(
-                            `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
-                              queryResult.length
-                            } number ${i} time horizon ${timeH} error ${errorMessage}`
-                          );
-                        } else {
-                          console.log(
-                            `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
-                              queryResult.length
-                            } number ${i} time horizon ${timeH} time to live ${timeToLive}`
-                          );
+                      redisClient.set(
+                        ledger_name,
+                        resultStr,
+                        "NX",
+                        "EX",
+                        timeToLive,
+                        (errorMessage, redisResult) => {
+                          if (err) {
+                            console.log(
+                              `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} error ${errorMessage}`
+                            );
+                          } else {
+                            console.log(
+                              `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult}`
+                            );
+                          }
                         }
-                      }
-                    );
+                      );
+                    } else {
+                      const nextOccurrenceHours =
+                        Math.floor(hours / timeH) * timeH + timeH;
+                      const remainingHours = nextOccurrenceHours - hours - 1;
+
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 +
+                        remaining_seconds +
+                        remainingHours * 60 * 60;
+                      const timeToLive = total_seconds;
+
+                      redisClient.set(
+                        ledger_name,
+                        resultStr,
+                        "NX",
+                        "EX",
+                        timeToLive,
+                        (errorMessage, redisResult) => {
+                          if (err) {
+                            console.log(
+                              `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} error ${errorMessage}`
+                            );
+                          } else {
+                            console.log(
+                              `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult}`
+                            );
+                          }
+                        }
+                      );
+                    }
                   }
                 });
               }
@@ -225,83 +217,76 @@ const cacheDataLedger = async (timeH) => {
                     return;
                   } else {
                     const resultStr = JSON.stringify(queryResult);
-                    const timeHorizon = timeH; // Set the horizon time in hours
-                    const now = new Date();
-                    const utcNow = new Date(
-                      now.getTime() + now.getTimezoneOffset() * 60000
-                    ); // Convert to UTC time
+                    const utcNow = new Date();
+                    const hours = utcNow.getUTCHours();
+                    const minutes = utcNow.getUTCMinutes();
+                    const seconds = utcNow.getUTCSeconds();
+                    if (timeH == 1) {
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 + remaining_seconds;
+                      const timeToLive = total_seconds;
 
-                    let hoursUntilHorizon;
-                    switch (timeHorizon) {
-                      case 1:
-                        hoursUntilHorizon = 1 - (utcNow.getUTCHours() % 1);
-                        break;
-                      case 2:
-                        hoursUntilHorizon = 2 - (utcNow.getUTCHours() % 2);
-                        break;
-                      case 3:
-                        hoursUntilHorizon = 3 - (utcNow.getUTCHours() % 3);
-                        break;
-                      case 4:
-                        hoursUntilHorizon = 4 - (utcNow.getUTCHours() % 4);
-                        break;
-                      case 6:
-                        hoursUntilHorizon = 6 - (utcNow.getUTCHours() % 6);
-                        break;
-                      case 8:
-                        hoursUntilHorizon = 8 - (utcNow.getUTCHours() % 8);
-                        break;
-                      case 12:
-                        hoursUntilHorizon = 12 - (utcNow.getUTCHours() % 12);
-                        break;
-                      case 24:
-                        hoursUntilHorizon = 24 - utcNow.getUTCHours();
-                        break;
-                      default:
-                        throw new Error("Invalid time horizon");
+                      redisClient.set(
+                        ledger_name,
+                        resultStr,
+                        "NX",
+                        "EX",
+                        timeToLive,
+                        (errorMessage, redisResult) => {
+                          if (err) {
+                            console.log(
+                              `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} error ${errorMessage}`
+                            );
+                          } else {
+                            console.log(
+                              `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult}`
+                            );
+                          }
+                        }
+                      );
+                    } else {
+                      const nextOccurrenceHours =
+                        Math.floor(hours / timeH) * timeH + timeH;
+                      const remainingHours = nextOccurrenceHours - hours - 1;
+
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 +
+                        remaining_seconds +
+                        remainingHours * 60 * 60;
+                      const timeToLive = total_seconds;
+
+                      redisClient.set(
+                        ledger_name,
+                        resultStr,
+                        "NX",
+                        "EX",
+                        timeToLive,
+                        (errorMessage, redisResult) => {
+                          if (err) {
+                            console.log(
+                              `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} error ${errorMessage}`
+                            );
+                          } else {
+                            console.log(
+                              `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult}`
+                            );
+                          }
+                        }
+                      );
                     }
 
-                    const minutesUntilNextHorizon =
-                      hoursUntilHorizon * 60 - utcNow.getUTCMinutes();
-                    const secondsUntilNextHorizon = 60 - utcNow.getUTCSeconds();
-                    const millisecondsUntilNextHorizon =
-                      1000 - utcNow.getUTCMilliseconds();
-
-                    const expiry = new Date(
-                      utcNow.getTime() +
-                        hoursUntilHorizon * 60 * 60 * 1000 +
-                        minutesUntilNextHorizon * 60 * 1000 +
-                        secondsUntilNextHorizon * 1000 +
-                        millisecondsUntilNextHorizon
-                    );
-
-                    const timeToLive = Math.floor(
-                      (expiry.getTime() - utcNow.getTime()) / 1000
-                    ); // Convert to seconds
-
-                    redisClient.set(
-                      ledger_name,
-                      resultStr,
-                      "NX",
-                      "XX",
-                      "EX",
-                      timeToLive,
-                      (errorMessage, redisResult) => {
-                        if (err) {
-                          console.log(
-                            `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
-                              queryResult.length
-                            } number ${i} time horizon ${timeH} error ${errorMessage}`
-                          );
-                        } else {
-                          console.log(
-                            `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
-                              queryResult.length
-                            } number ${i} time horizon ${timeH} time to live ${timeToLive}`
-                          );
-                        }
-                      }
-                    );
                     // console.log(
                     //   `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
                     //     queryResult.length
@@ -345,83 +330,75 @@ const cacheDataCompressedLedger = async (timeH) => {
                     return;
                   } else {
                     const resultStr = JSON.stringify(queryResult);
-                    const timeHorizon = timeH; // Set the horizon time in hours
-                    const now = new Date();
-                    const utcNow = new Date(
-                      now.getTime() + now.getTimezoneOffset() * 60000
-                    ); // Convert to UTC time
+                    const utcNow = new Date();
+                    const hours = utcNow.getUTCHours();
+                    const minutes = utcNow.getUTCMinutes();
+                    const seconds = utcNow.getUTCSeconds();
+                    if (timeH == 1) {
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 + remaining_seconds;
+                      const timeToLive = total_seconds;
 
-                    let hoursUntilHorizon;
-                    switch (timeHorizon) {
-                      case 1:
-                        hoursUntilHorizon = 1 - (utcNow.getUTCHours() % 1);
-                        break;
-                      case 2:
-                        hoursUntilHorizon = 2 - (utcNow.getUTCHours() % 2);
-                        break;
-                      case 3:
-                        hoursUntilHorizon = 3 - (utcNow.getUTCHours() % 3);
-                        break;
-                      case 4:
-                        hoursUntilHorizon = 4 - (utcNow.getUTCHours() % 4);
-                        break;
-                      case 6:
-                        hoursUntilHorizon = 6 - (utcNow.getUTCHours() % 6);
-                        break;
-                      case 8:
-                        hoursUntilHorizon = 8 - (utcNow.getUTCHours() % 8);
-                        break;
-                      case 12:
-                        hoursUntilHorizon = 12 - (utcNow.getUTCHours() % 12);
-                        break;
-                      case 24:
-                        hoursUntilHorizon = 24 - utcNow.getUTCHours();
-                        break;
-                      default:
-                        throw new Error("Invalid time horizon");
-                    }
-
-                    const minutesUntilNextHorizon =
-                      hoursUntilHorizon * 60 - utcNow.getUTCMinutes();
-                    const secondsUntilNextHorizon = 60 - utcNow.getUTCSeconds();
-                    const millisecondsUntilNextHorizon =
-                      1000 - utcNow.getUTCMilliseconds();
-
-                    const expiry = new Date(
-                      utcNow.getTime() +
-                        hoursUntilHorizon * 60 * 60 * 1000 +
-                        minutesUntilNextHorizon * 60 * 1000 +
-                        secondsUntilNextHorizon * 1000 +
-                        millisecondsUntilNextHorizon
-                    );
-
-                    const timeToLive = Math.floor(
-                      (expiry.getTime() - utcNow.getTime()) / 1000
-                    ); // Convert to seconds
-
-                    redisClient.set(
-                      ledger_name,
-                      resultStr,
-                      "NX",
-                      "XX",
-                      "EX",
-                      timeToLive,
-                      (errorMessage, redisResult) => {
-                        if (err) {
-                          console.log(
-                            `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
-                              queryResult.length
-                            } number ${i} time horizon ${timeH} error ${errorMessage}`
-                          );
-                        } else {
-                          console.log(
-                            `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
-                              queryResult.length
-                            } number ${i} time horizon ${timeH} time to live ${timeToLive}`
-                          );
+                      redisClient.set(
+                        ledger_name,
+                        resultStr,
+                        "NX",
+                        "EX",
+                        timeToLive,
+                        (errorMessage, redisResult) => {
+                          if (err) {
+                            console.log(
+                              `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} error ${errorMessage}`
+                            );
+                          } else {
+                            console.log(
+                              `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive}`
+                            );
+                          }
                         }
-                      }
-                    );
+                      );
+                    } else {
+                      const nextOccurrenceHours =
+                        Math.floor(hours / timeH) * timeH + timeH;
+                      const remainingHours = nextOccurrenceHours - hours - 1;
+
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 +
+                        remaining_seconds +
+                        remainingHours * 60 * 60;
+                      const timeToLive = total_seconds;
+
+                      redisClient.set(
+                        ledger_name,
+                        resultStr,
+                        "NX",
+                        "EX",
+                        timeToLive,
+                        (errorMessage, redisResult) => {
+                          if (err) {
+                            console.log(
+                              `Data caching is not successful at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} error ${errorMessage}`
+                            );
+                          } else {
+                            console.log(
+                              `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
+                                queryResult.length
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive}`
+                            );
+                          }
+                        }
+                      );
+                    }
                   }
                 });
               }
@@ -443,65 +420,33 @@ const cacheDataCompressedLedger = async (timeH) => {
                     return;
                   } else {
                     const resultStr = JSON.stringify(queryResult);
-                    const timeHorizon = timeH; // Set the horizon time in hours
-                    const now = new Date();
-                    const utcNow = new Date(
-                      now.getTime() + now.getTimezoneOffset() * 60000
-                    ); // Convert to UTC time
+                    const utcNow = new Date();
+                    const hours = utcNow.getUTCHours();
+                    const minutes = utcNow.getUTCMinutes();
+                    const seconds = utcNow.getUTCSeconds();
+                    if (timeH == 1) {
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 + remaining_seconds;
+                    } else {
+                      const nextOccurrenceHours =
+                        Math.floor(hours / timeH) * timeH + timeH;
+                      const remainingHours = nextOccurrenceHours - hours - 1;
 
-                    let hoursUntilHorizon;
-                    switch (timeHorizon) {
-                      case 1:
-                        hoursUntilHorizon = 1 - (utcNow.getUTCHours() % 1);
-                        break;
-                      case 2:
-                        hoursUntilHorizon = 2 - (utcNow.getUTCHours() % 2);
-                        break;
-                      case 3:
-                        hoursUntilHorizon = 3 - (utcNow.getUTCHours() % 3);
-                        break;
-                      case 4:
-                        hoursUntilHorizon = 4 - (utcNow.getUTCHours() % 4);
-                        break;
-                      case 6:
-                        hoursUntilHorizon = 6 - (utcNow.getUTCHours() % 6);
-                        break;
-                      case 8:
-                        hoursUntilHorizon = 8 - (utcNow.getUTCHours() % 8);
-                        break;
-                      case 12:
-                        hoursUntilHorizon = 12 - (utcNow.getUTCHours() % 12);
-                        break;
-                      case 24:
-                        hoursUntilHorizon = 24 - utcNow.getUTCHours();
-                        break;
-                      default:
-                        throw new Error("Invalid time horizon");
+                      remaining_minutes = 60 - minutes;
+                      remaining_seconds = 60 - seconds;
+                      total_seconds =
+                        remaining_minutes * 60 +
+                        remaining_seconds +
+                        remainingHours * 60 * 60;
                     }
-
-                    const minutesUntilNextHorizon =
-                      hoursUntilHorizon * 60 - utcNow.getUTCMinutes();
-                    const secondsUntilNextHorizon = 60 - utcNow.getUTCSeconds();
-                    const millisecondsUntilNextHorizon =
-                      1000 - utcNow.getUTCMilliseconds();
-
-                    const expiry = new Date(
-                      utcNow.getTime() +
-                        hoursUntilHorizon * 60 * 60 * 1000 +
-                        minutesUntilNextHorizon * 60 * 1000 +
-                        secondsUntilNextHorizon * 1000 +
-                        millisecondsUntilNextHorizon
-                    );
-
-                    const timeToLive = Math.floor(
-                      (expiry.getTime() - utcNow.getTime()) / 1000
-                    ); // Convert to seconds
+                    const timeToLive = total_seconds;
 
                     redisClient.set(
                       ledger_name,
                       resultStr,
                       "NX",
-                      "XX",
                       "EX",
                       timeToLive,
                       (errorMessage, redisResult) => {
