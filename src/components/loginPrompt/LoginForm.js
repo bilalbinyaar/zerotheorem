@@ -172,7 +172,7 @@ function LoginForm() {
             <div className='form-inner main-web-form-inner'>
                 {/* {(error !== '') ? ( <div className='error'> {error} </div> ) : ''} */}
                 <h2>Investor Login</h2>
-                <h3>Please enter email and password to access</h3>
+                <h3>Please enter email and password to access the website</h3>
 
                 <div className='form-group main-web-form-group'>
                     <label htmlFor='email'></label>
