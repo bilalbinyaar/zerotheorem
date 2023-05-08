@@ -4,6 +4,8 @@ import { useStateContext } from "../../ContextProvider";
 import { AiOutlineMail, AiOutlineClose, AiFillGoogleCircle } from "react-icons/ai";
 // import videoBackground from '../../assets/investor-bg.mp4';
 import videoBackground from '../../assets/2x-bg.mp4';
+import logoWhite from "../../assets/logo-white.svg";
+
 
 
 function LoginForm() {
@@ -161,8 +163,12 @@ function LoginForm() {
             <div className="video-overlay"></div>
         </div>
 
+        
 
         <form className='login-form main-web-login'>
+            <div className="investor-zt-logo">
+                <img className="investor-zt-logo-img" src={logoWhite} alt="logo" />
+            </div>
             <div className='form-inner main-web-form-inner'>
                 {/* {(error !== '') ? ( <div className='error'> {error} </div> ) : ''} */}
                 <h2>Investor Login</h2>
