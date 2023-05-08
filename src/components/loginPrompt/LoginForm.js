@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { useStateContext } from "../../ContextProvider";
 import { AiOutlineMail, AiOutlineClose, AiFillGoogleCircle } from "react-icons/ai";
-import videoBackground from '../../assets/investor-bg.mp4';
+// import videoBackground from '../../assets/investor-bg.mp4';
+import videoBackground from '../../assets/2x-bg.mp4';
+
 
 function LoginForm() {
     const {  adminUserMain, checkLoginMain, setCheckLoginMain} = useStateContext();
@@ -152,7 +154,7 @@ function LoginForm() {
   return (
     <div>
         <div className="video-background">
-            <video autoPlay loop muted>
+            <video autoPlay muted>
                 <source src={videoBackground} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
@@ -188,7 +190,7 @@ function LoginForm() {
                     }
                 }}/>
 
-                <button className='reg-interest' onClick={handleShowPopup}>Register your interest</button>
+                {/* <button className='reg-interest' onClick={handleShowPopup}>Register your interest</button>
 
                 {showPopup && (
                     <div className="popup">
@@ -215,7 +217,7 @@ function LoginForm() {
                         </div>
                     </div>
                     </div>
-                )}
+                )} */}
             </div>
         </form>
     </div>
