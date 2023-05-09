@@ -308,7 +308,10 @@ option:nth-child(0) {
 }
 
 .investor-zt-logo {
-  padding: 2rem 0rem 0rem 3rem;
+  padding: 2rem 0rem 0rem 0rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 
