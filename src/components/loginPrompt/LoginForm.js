@@ -11,6 +11,7 @@ import logoWhite from "../../assets/logo-white.svg";
 function LoginForm() {
     const {  adminUserMain, checkLoginMain, setCheckLoginMain} = useStateContext();
     const [input, setInput] = useState("")
+    const [email, setEmail] = useState("")
 
     // const submitHandlerMain = 
 
@@ -178,7 +179,7 @@ function LoginForm() {
                     <label htmlFor='email'></label>
                     <span className='iconSpace'><AiOutlineMail /></span><input type='email' placeholder='Email' name='email' id='email' 
                     onChange={(e)=>{
-                        setInput(e.target.value);
+                        setEmail(e.target.value);
                     }} />
                 </div>
 
@@ -191,8 +192,11 @@ function LoginForm() {
                 </div>
                 
                 <input type='submit' value='Login' onClick={()=>{
-                    if(adminUserMain.passwordMain == input){
+                    if(adminUserMain.passwordMain == input && adminUserMain.userMain == email){
                         setCheckLoginMain(true);
+                    }
+                    else{
+                      alert("Kindly input valid credentials")
                     }
                 }}/>
 
