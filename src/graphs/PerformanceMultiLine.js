@@ -1,33 +1,113 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CanvasJSReact from "../canvasjs.react";
-
-
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-
 function PerformanceMultiLine() {
-  
+  const [timer_for_current, set_timer_for_current_position] = useState(null);
+  const [data_for_graph_historical, set_data_for_graph_historical] = useState(
+    []
+  );
+  const [data_for_graph_historical2, set_data_for_graph_historical2] = useState(
+    []
+  );
+  const forColor = (total_pnl, id) => {
+    try {
+      if (total_pnl < 0) {
+        document
+          .getElementById(`${id}`)
+          .setAttribute("style", "color:#FF2E2E !important");
+      } else if (total_pnl >= 0) {
+        document
+          .getElementById(`${id}`)
+          .setAttribute("style", "color:#16C784 !important");
+      }
+    } catch {}
+  };
+  useEffect(() => {
+    if (timer_for_current == null) {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const temp_data = [];
+          // console.log(
+          //   "Finally btc data -->",
+          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+          // );
+
+          for (let i = 0; i < data["response"].length; i++) {
+            temp_data.push({
+              x: new Date(
+                parseInt(data["response"][i].ledger_timestamp) * 1000
+              ),
+              y: data["response"][i].pnl_sum,
+            });
+          }
+
+          if (temp_data.length != 0) {
+            set_data_for_graph_historical(temp_data);
+            console.log("Here is stats -->", temp_data);
+            // console.log("Here is the data for current position", temp_data);
+          }
+        });
+    }
+    setTimeout(() => {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const temp_data = [];
+          // console.log(
+          //   "Finally btc data -->",
+          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+          // );
+
+          for (let i = 0; i < data["response"].length; i++) {
+            temp_data.push({
+              x: new Date(
+                parseInt(data["response"][i].ledger_timestamp) * 1000
+              ),
+              y: data["response"][i].pnl_sum,
+            });
+          }
+
+          if (temp_data.length != 0) {
+            set_data_for_graph_historical(temp_data);
+            console.log("Here is stats -->", temp_data);
+            // console.log("Here is the data for current position", temp_data);
+          }
+        });
+      set_timer_for_current_position(new Date());
+    }, 60000);
+  }, [timer_for_current]);
+  const [datapoint1, setDatapoint1] = useState([]);
+
   const options = {
     theme: "light2",
     backgroundColor: "transparent",
-
 
     axisX: {
       includeZero: false,
       labelFontSize: 10,
       gridColor: "#43577533",
       tickColor: "#43577533",
-      lineColor: "#43577533",   
+      lineColor: "#43577533",
     },
-
 
     axisY: {
       includeZero: false,
       labelFontSize: 10,
       gridColor: "#43577533",
       tickColor: "#43577533",
-
     },
 
     axisY2: {
@@ -37,48 +117,27 @@ function PerformanceMultiLine() {
       labelFontSize: 10,
     },
 
-    data: [{
-      type: "line",
-      color: "#16c784",
-      axisYType: "primary",
-      labelFontSize: 10,
-      gridColor: "#43577533",
-      tickColor: "#43577533",
+    data: [
+      {
+        type: "line",
+        color: "#16c784",
+        axisYType: "primary",
+        labelFontSize: 10,
+        gridColor: "#43577533",
+        tickColor: "#43577533",
 
-      dataPoints: [
-        { x: 10, y: 71 },
-        { x: 20, y: 55 },
-        { x: 30, y: 50 },
-        { x: 40, y: 65 },
-        { x: 50, y: 95 },
-        { x: 60, y: 68 },
-        { x: 70, y: 28 },
-        { x: 80, y: 34 },
-        { x: 90, y: 14 },
-        { x: 100, y: 45 }
-      ]
-    },
-    
-    {
-      type: "line",
-      color: "#ff2e2e",
-      axisYType: "secondary",
-      labelFontSize: 10,
+        dataPoints: data_for_graph_historical,
+      },
 
-      dataPoints: [
-        { x: 10, y: 101 },
-        { x: 20, y: 85 },
-        { x: 30, y: 80 },
-        { x: 40, y: 95 },
-        { x: 50, y: 125 },
-        { x: 60, y: 98 },
-        { x: 70, y: 58 },
-        { x: 80, y: 64 },
-        { x: 90, y: 44 },
-        { x: 100, y: 75 }
-      ]
-    }
-  ]
+      {
+        type: "line",
+        color: "#ff2e2e",
+        axisYType: "secondary",
+        labelFontSize: 10,
+
+        dataPoints: data_for_graph_historical2,
+      },
+    ],
   };
 
   return (

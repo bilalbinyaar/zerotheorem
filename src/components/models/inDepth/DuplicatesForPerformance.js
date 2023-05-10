@@ -11,16 +11,16 @@ import PerformanceBarChart from "../../../graphs/PerformanceBarChart";
 const DuplicatesForPerformance = (props) => {
   return (
     <div className="in-depth">
-        <div className="in-depth-charts">
-          <div className="in-depth-nc for-performance-mb">
-            <h3>Individual Returns</h3>
-            <PerformanceBarChart />
-          </div>
-          <div className="in-depth-gd for-performance-mb portfolio-allocation-div">
-            <h3>Portfolio Allocation</h3>
-            <PerformancePieChart />
-          </div>
+      <div className="in-depth-charts">
+        <div className="in-depth-nc for-performance-mb">
+          <h3>Individual Returns</h3>
+          <PerformanceBarChart model_name={"live_pnls"} />
         </div>
+        <div className="in-depth-gd for-performance-mb portfolio-allocation-div">
+          <h3>Portfolio Allocation</h3>
+          <PerformancePieChart />
+        </div>
+      </div>
     </div>
   );
 };

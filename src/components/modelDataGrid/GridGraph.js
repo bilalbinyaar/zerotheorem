@@ -4,7 +4,7 @@ import "./ModelDataGrid.css";
 
 const GridGraph = (props) => {
   const Name = useMemo(() => props.model_name, []);
-  return <CanvasSplineForcasteCard key={Name} model_name={Name + "_PNL"} />;
+  return <CanvasSplineForcasteCard key={Name} model_name={Name} />;
 };
 
 export default GridGraph;

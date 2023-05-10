@@ -1,99 +1,233 @@
-import React from "react";
-import CanvasJSReact from "../canvasjs.react";
+import React, { useState, useEffect, useRef } from "react";
+import CanvasJSReact from "../canvasjs.stock.react";
+import { useStateContext } from "../ContextProvider";
+import { ThreeDots } from "react-loader-spinner";
 
+const CanvasJS = CanvasJSReact.CanvasJS;
+const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
+const PerformanceBarChart = (props) => {
+  const windowWidth = useRef(window.innerWidth);
 
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+  var flag = true;
+  if (windowWidth.current <= 480) {
+    flag = false;
+  }
+  const [model_name, set_model_name] = useState(props.model_name);
+  if (model_name != props.model_name) {
+    set_model_name(props.model_name);
+  }
+  const [dataPoints, setDataPoints] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
+  const { individual_pnl_graph_cache, Set_individual_pnl_graph_cache } =
+    useStateContext();
+  const [data_for_pnl_graph, set_data_for_pnl_graph] = useState([]);
+  const [cummulative_pnl, set_cum_pnl] = useState([]);
 
+  useEffect(() => {
+    if (!individual_pnl_graph_cache[props.model_name]) {
+      // console.log("I received model name for graph -->", props.model_name);
 
-function PerformanceBarChart() {
-  
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then(async (data) => {
+          // console.log("I received data for each series -->", data["response"]);
+          var cum_pnl = [];
+          for (var index = 0; index < data["response"].length; index++) {
+            if (
+              parseFloat(data["response"][index].pnl) != 0 ||
+              parseFloat(data["response"][index].pnl) != -0
+            ) {
+              cum_pnl.push({
+                x: new Date(
+                  parseInt(data["response"][index].ledger_timestamp) * 1000
+                ),
+                y: parseFloat(data["response"][index].pnl),
+              });
+            }
+          }
+
+          // await delay(1000);
+          if (cum_pnl.length != 0) {
+            set_cum_pnl(cum_pnl);
+            Set_individual_pnl_graph_cache({ [props.model_name]: cum_pnl });
+            let len = data["response"].length - 1;
+            let start_time = parseInt(data["response"][0].ledger_timestamp);
+            let end_time = parseInt(data["response"][len].ledger_timestamp);
+            let avg = (end_time - start_time) / 2;
+            let result = avg + start_time;
+            // console.log("Result -->", len, start_time, avg, result);
+            setStart(result);
+            setEnd(parseInt(data["response"][len].ledger_timestamp));
+          }
+          // console.log("Cum pnl -->", cum_pnl);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      set_cum_pnl(individual_pnl_graph_cache[props.model_name]);
+
+      // console.log(
+      //   "I am using cached value for straight spline graph -->",
+      //   straight_spline_graph_cache[props.model_name]
+      // );
+    }
+  }, [model_name]);
+
+  useEffect(() => {
+    if (cummulative_pnl.length != 0) {
+      // console.log("Negative graph -->", cummulative_pnl);
+      setDataPoints(cummulative_pnl);
+      setIsLoaded(true);
+    }
+  }, [cummulative_pnl]);
+
+  //   useEffect(() => {
+  //     fetch("https://canvasjs.com/data/gallery/react/btcusd2017-18.json")
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         const dps = [];
+  //         for (let i = 0; i < data.length; i++) {
+  //           if (i % 2 === 0) {
+  //             dps.push({
+  //               x: new Date(data[i].date),
+  //               y: 1 * Number(data[i].close),
+  //             });
+  //           } else {
+  //             dps.push({
+  //               x: new Date(data[i].date),
+  //               y: -1 * Number(data[i].close),
+  //             });
+  //           }
+  //         }
+  //         setDataPoints(dps);
+  //         setIsLoaded(true);
+  //       });
+  //   }, []);
+
   const options = {
+    // title: {
+    //   text: "React StockChart with Spline Area Chart",
+    // },
     theme: "light2",
     backgroundColor: "transparent",
-    dataPointWidth: 20,
 
-
-    axisX: {
-      includeZero: false,
-      labelFontSize: 10,
-      gridColor: "#43577533",
-      tickColor: "#43577533",
-      lineColor: "#43577533",   
+    rangeSelector: {
+      enabled: false, //change it to true
     },
+    // subtitles: [
+    //   {
+    //     text: "BTC/USD",
+    //   },
+    // ],
+    charts: [
+      {
+        zoomEnabled: false, // Enable zoom
 
+        axisX: {
+          //   lineColor: "#43577533",
+          labelFontSize: 10,
+          crosshair: {
+            enabled: false,
+            snapToDataPoint: false,
+            valueFormatString: "MMM DD YYYY",
+          },
+        },
+        axisY: {
+          //   title: "Bitcoin Price",
+          // prefix: "$",
+          gridColor: "#43577533",
+          tickColor: "#43577533",
+          labelFontSize: 10,
+          crosshair: {
+            enabled: false,
 
-    axisY: {
-      includeZero: false,
-      labelFontSize: 10,
-      gridColor: "#43577533",
-      tickColor: "#43577533",
-      
+            snapToDataPoint: false,
+            valueFormatString: "$#,###.##",
+          },
+        },
+        toolTip: {
+          shared: true,
+          fontSize: 10,
 
+          contentFormatter: (e) => {
+            const date = CanvasJSReact.CanvasJS.formatDate(
+              e.entries[0].dataPoint.x,
+              "DD/MM/YYYY HH:mm:ss"
+            );
+            let content = `<strong>${date}</strong><br/><br/>`;
+
+            e.entries.forEach((entry) => {
+              content += `<span style="color: ${entry.dataPoint.color};">PNL: </span>${entry.dataPoint.y}<br/>`;
+            });
+
+            return content;
+          },
+        },
+        data: [
+          {
+            showInLegend: false,
+            yValueFormatString: "#,##0",
+            xValueType: "dateTime",
+            dataPoints: dataPoints.map((point) => ({
+              ...point,
+              color: point.y >= 0 ? "green" : "red",
+            })),
+          },
+        ],
+      },
+    ],
+    navigator: {
+      enabled: flag,
+      axisX: {
+        labelFontSize: 10,
+      },
+      data: [
+        {
+          color: "#16c784",
+          type: "splineArea",
+          dataPoints: dataPoints,
+        },
+      ],
+
+      slider: {
+        minimum: new Date(start * 1000),
+        maximum: new Date(end * 1000),
+        handleColor: "#fddd4e",
+        handleBorderThickness: 5,
+        handleBorderColor: "#fddd4e",
+      },
     },
+  };
 
-    axisY2: {
-      includeZero: true,
-      gridColor: "#B5E5F5",
-      tickColor: "#B5E5F5",
-      labelFontSize: 10,
-    },
-
-    // data: [{
-		// 		type: "column", //change type to bar, line, area, pie, etc
-		// 		//indexLabel: "{y}", //Shows y value on all Data Points
-		// 		indexLabelFontColor: "#5A5757",
-		// 		indexLabelPlacement: "outside",
-		// 		dataPoints: [
-		// 			{ x: 10, y: 71 },
-		// 			{ x: 20, y: 55 },
-		// 			{ x: 30, y: 50 },
-		// 			{ x: 40, y: 65 },
-		// 			{ x: 50, y: 71 },
-		// 			{ x: 60, y: 68 },
-		// 			{ x: 70, y: 38 },
-		// 			{ x: 80, y: 92, indexLabel: "Highest" },
-		// 			{ x: 90, y: 54 },
-		// 			{ x: 100, y: 60 },
-		// 			{ x: 110, y: 21 },
-		// 			{ x: 120, y: 49 },
-		// 			{ x: 130, y: 36 }
-		// 		]
-		// 	}]
-
-
-    data: [{
-				type: "waterfall",
-				yValueFormatString: "$#,##0,.00K",
-				risingColor: "#16c784",
-				fallingColor: "#ff2e2e",
-				indexLabelOrientation: "vertical",
-				dataPoints: [
-					{ label: "Initial", y: 7655 },
-					{ label: "Jan", y: 5312 },
-					{ label: "Feb", y: 4065 },
-					{ label: "Mar", y: -2564 },
-					{ label: "Apr", y: 7004},
-					{ label: "May", y: 5324 },
-					{ label: "Jun", y: -11543 },
-					{ label: "July", y: 4008 },
-					{ label: "Aug", y: 5673 },
-					{ label: "Sep", y: -6997 },
-					{ label: "Oct", y: 6654 },
-					{ label: "Nov", y: -10943 },
-					{ label: "Dec", y: 4324 },
-					{ label: "Final", isCumulativeSum: true }
-				]
-			}]
-		
+  const containerProps = {
+    // width: "100%",
+    // height: "450px",
+    margin: "auto",
   };
 
   return (
     <div>
-      <CanvasJSChart options={options} />
+      {isLoaded ? (
+        <CanvasJSStockChart containerProps={containerProps} options={options} />
+      ) : (
+        <div className="container loader-container">
+          <ThreeDots
+            className="backtest-loader"
+            color="#fddd4e"
+            height={80}
+            width={80}
+          />
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default PerformanceBarChart;
-
