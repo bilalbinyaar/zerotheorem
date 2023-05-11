@@ -73,8 +73,7 @@ function App() {
   return (
     !loading && (
       <React.Fragment>
-        {checkLoginMain == true
-         ? (
+        {checkLoginMain == true ? (
           <div>
             <Navbar />
             <Routes basename="/zero-theorem">
@@ -92,7 +91,6 @@ function App() {
               <Route path="/backtest" element={<BactestRouteComponent />} />
               <Route path="/api" element={<Documentation />} />
               <Route path="/performance" element={<Performance />} />
-
 
               {/* RESOURCES ROUTING FOR SUB ITEMS */}
               <Route
@@ -150,13 +148,13 @@ function App() {
               />
             </Routes>
             <Footer />
-            </div>
-          ) : (
+          </div>
+        ) : (
           <div>
-              <LoginForm  />
-              <Routes basename="/zero-theorem">
-                <Route path="/sitemap.xml" />
-              </Routes>
+            <LoginForm />
+            <Routes basename="/zero-theorem">
+              <Route path="/sitemap.xml" />
+            </Routes>
           </div>
         )}
       </React.Fragment>
@@ -181,7 +179,6 @@ function App() {
     //         <Route path="/backtest" element={<BactestRouteComponent />} />
     //         <Route path="/api" element={<Documentation />} />
     //         <Route path="/performance" element={<Performance />} />
-
 
     //         {/* RESOURCES ROUTING FOR SUB ITEMS */}
     //         <Route

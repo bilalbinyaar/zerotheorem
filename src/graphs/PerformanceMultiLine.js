@@ -51,7 +51,6 @@ function PerformanceMultiLine() {
 
           if (temp_data.length != 0) {
             set_data_for_graph_historical(temp_data);
-            console.log("Here is stats -->", temp_data);
             // console.log("Here is the data for current position", temp_data);
           }
         });
@@ -82,7 +81,7 @@ function PerformanceMultiLine() {
 
           if (temp_data.length != 0) {
             set_data_for_graph_historical(temp_data);
-            console.log("Here is stats -->", temp_data);
+            // console.log("Here is stats -->", temp_data);
             // console.log("Here is the data for current position", temp_data);
           }
         });

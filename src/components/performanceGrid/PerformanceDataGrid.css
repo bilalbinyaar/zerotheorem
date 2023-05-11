@@ -1,3 +1,174 @@
 .strategies-heading {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
+
+.model-grid .container {
+  padding: 0rem 0rem 1rem 0rem;
+}
+
+.graph-data {
+  width: 80px;
+}
+
+/* SEARCH FILTERS CSS */
+.css-13cymwt-control {
+  margin-left: 0.8rem;
+  cursor: pointer !important;
+  min-height: 28px !important;
+  background-color: var(--color-day-white) !important;
+}
+
+.css-13cymwt-control:focus {
+  outline: none !important;
+}
+
+.css-t3ipsp-control {
+  border: none !important;
+  margin-left: 0.8rem;
+  box-shadow: none !important;
+}
+
+.css-1jqq78o-placeholder {
+  font-size: 12px;
+}
+
+.css-d7l1ni-option {
+  font-size: 12px !important;
+}
+
+.css-10wo9uf-option {
+  font-size: 12px !important;
+}
+
+.css-tr4s17-option {
+  font-size: 12px !important;
+}
+
+.css-qbdosj-Input {
+  font-size: 12px !important;
+}
+
+.css-1ktriz-container {
+  font-size: 12px !important;
+}
+
+.model-grid-web {
+  display: block;
+}
+
+.model-grid-mob {
+  display: none;
+}
+
+.horizon-head {
+  margin-bottom: 0.4rem;
+}
+
+.all-models-description {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+
+.star-icons {
+  height: 18px;
+  width: auto;
+}
+
+.star-filled-icons {
+  height: 18px;
+  width: auto;
+  color: var(--color-day-yellow);
+}
+
+@media screen and (min-width: 1080px) {
+  .grid-div-tab {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .grid-div-tab {
+    display: block;
+  }
+
+  .grid-div-web {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .grid-for-tab {
+    display: none;
+  }
+
+  .model-grid .container {
+    padding: 0.6rem 0rem 2rem 0rem;
+  }
+
+  .css-13cymwt-control {
+    margin-left: 0.4rem !important;
+  }
+
+  .css-t3ipsp-control {
+    margin-left: 0.4rem;
+  }
+
+  .css-1ktriz-container {
+    width: 100% !important;
+  }
+
+  .css-1jqq78o-placeholder {
+    font-size: 10px;
+  }
+
+  .css-d7l1ni-option {
+    font-size: 10px !important;
+  }
+
+  .css-10wo9uf-option {
+    font-size: 10px !important;
+  }
+
+  .css-tr4s17-option {
+    font-size: 10px !important;
+  }
+
+  .css-qbdosj-Input {
+    font-size: 10px !important;
+  }
+
+  .css-1ktriz-container {
+    font-size: 10px !important;
+  }
+
+  .model-grid-mob {
+    display: block;
+  }
+
+  .model-grid-web {
+    display: none;
+  }
+
+  .currency-auto {
+    width: 40% !important;
+  }
+
+  .model-auto {
+    width: 60% !important;
+  }
+
+  .star-icons {
+    height: 16px;
+  }
+
+  .star-filled-icons {
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .currency-auto {
+    width: 50% !important;
+  }
+}
+/* SEARCH FILTERS CSS */

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo, useRef } from "react";
-import "../modelDataGrid/ModelDataGrid.css";
+import "./PerformanceDataGrid.css";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { DataGridPro } from "@mui/x-data-grid-pro";
@@ -68,7 +68,7 @@ function CustomFooter() {
   );
 }
 
-const ModelDataGrid = () => {
+const PerformanceDataGrid = () => {
   const { uid, setUid, authCheckLogin, setAuthCheckLogin } = useStateContext();
 
   const windowWidth = useRef(window.innerWidth);
@@ -1170,7 +1170,7 @@ const ModelDataGrid = () => {
         });
       }
     } else {
-      // linkModels(`/${params.row.modelName.replace("_", "-")}`);
+      linkModels(`/${params.row.modelName.replace("_", "-")}`);
     }
   }
   return (
@@ -2148,4 +2148,4 @@ const ModelDataGrid = () => {
   );
 };
 
-export default memo(ModelDataGrid);
+export default PerformanceDataGrid;

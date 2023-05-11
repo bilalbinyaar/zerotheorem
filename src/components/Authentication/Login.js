@@ -92,7 +92,7 @@ function Login({ Login, error }) {
               type="auth"
               value="LOGIN"
               onClick={() => {
-                console.log("Submit button is clicked");
+                // console.log("Submit button is clicked");
                 const email = document.getElementById("email").value;
                 const password = document.getElementById("password").value;
                 if (!email || !password) {

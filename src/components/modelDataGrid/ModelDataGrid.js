@@ -222,13 +222,13 @@ const ModelDataGrid = () => {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
+    console.log("Here is strategies -->", strategies, pnl_for_each_strategy);
     if (strategies == null && pnl_for_each_strategy == null) {
       return;
     } else {
       //   console.log("Hi here is pnl for each -->", pnl_for_each_strategy);
       var data_for_rows = [];
       var index = 0;
-
       for (var key in strategies) {
         data_for_rows.push({
           favs: false,
@@ -509,7 +509,7 @@ const ModelDataGrid = () => {
         setFlag(true);
       }
     }
-  }, [Flag]);
+  }, []);
 
   // To Link Grid Rows to Models Component
   const linkModels = useNavigate();
@@ -758,7 +758,7 @@ const ModelDataGrid = () => {
       flex: 1.5,
       renderCell: (cellValues) => {
         // console.log("I am called in dark mode -->", cellValues.value);
-        return <DataGridGraph model_name={cellValues.value} />;
+        return <DataGridGraph model_name={cellValues.value + "_PNL"} />;
       },
       renderHeader: (params) => (
         <strong>
@@ -1009,7 +1009,7 @@ const ModelDataGrid = () => {
       flex: 1.35,
       renderCell: (cellValues) => {
         // console.log("I am called in dark mode -->", cellValues.value);
-        return <DataGridGraph model_name={cellValues.value} />;
+        return <DataGridGraph model_name={cellValues.value + "_PNL"} />;
       },
       renderHeader: (params) => (
         <strong>
@@ -1110,7 +1110,7 @@ const ModelDataGrid = () => {
       headerAlign: "center",
       flex: 1,
       renderCell: (cellValues) => {
-        return <DataGridGraph model_name={cellValues.value} />;
+        return <DataGridGraph model_name={cellValues.value + "_PNL"} />;
       },
     },
   ];

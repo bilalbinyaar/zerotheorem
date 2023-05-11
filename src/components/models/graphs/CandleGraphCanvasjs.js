@@ -72,8 +72,8 @@ function CandleGraphCanvasjs(props) {
     Set_model_search_selection_cache,
   } = useStateContext();
   useEffect(() => {
-    if (Object.keys(strategies_cache).length == 0) {
-      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
+    if (props.model_name.includes("strategy")) {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
@@ -144,23 +144,100 @@ function CandleGraphCanvasjs(props) {
           }
           if (JSON.stringify(data_for_strategies) !== "{}") {
             setStrategies(data_for_strategies);
-            //console.log("Strategies final -->", data_for_strategies);
-            Set_strategies_cache({ strategies: data_for_strategies });
-            Set_coin_search_selection_cache({
-              coin_names: coin_names,
-            });
-            Set_model_search_selection_cache({
-              model_names: model_names,
-            });
           }
         })
         .catch((err) => console.log(err));
     } else {
-      // console.log(
-      //   "I am using cached value of strategies -->",
-      //   strategies_cache
-      // );
-      setStrategies(strategies_cache["strategies"]);
+      if (Object.keys(strategies_cache).length == 0) {
+        fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data["response"].length);
+            var data_for_strategies = {};
+            var model_names = [];
+            var coin_names = [];
+            var unique_coins = {};
+            var index = 0;
+            for (var i = 0; i < data["response"].length; i++) {
+              model_names.push({
+                label: data["response"][i].strategy_name.replace("_", "-"),
+                value: data["response"][i].time_horizon,
+                currency: data["response"][i].currency,
+              });
+              if (!unique_coins[data["response"][i].currency]) {
+                unique_coins[data["response"][i].currency] = 1;
+                coin_names.push({
+                  label: data["response"][i].currency,
+                  // value: i,
+                });
+              }
+              var dt = new Date(
+                parseInt(data["response"][i].forecast_time) * 1000
+              ).toLocaleString();
+              var year = dt.split("/")[2].split(",")[0];
+              var month = dt.split("/")[0];
+              if (month.length == 1) {
+                month = "0" + month;
+              }
+              var day = dt.split("/")[1];
+              if (day.length == 1) {
+                day = "0" + day;
+              }
+              var hours = dt.split(", ")[1].split(":")[0];
+              if (hours.length == 1) {
+                hours = "0" + hours;
+              }
+              var minutes = dt.split(":")[1];
+              if (minutes.length == 1) {
+                minutes = "0" + minutes;
+              }
+              var curr_time_version = dt.split(" ")[2];
+              if (curr_time_version == "PM") {
+                hours = parseInt(hours) + 12;
+              }
+              var dt_str =
+                year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+              // console.log(data["response"][i].strategy_name);
+              data_for_strategies[data["response"][i].strategy_name] = {
+                current_position: data["response"][i].current_position,
+                time_horizon: data["response"][i].time_horizon,
+                currency: data["response"][i].currency,
+                date_started: data["response"][i].date_started,
+                entry_price: data["response"][i].entry_price,
+                forecast_time: dt_str,
+                next_forecast: data["response"][i].next_forecast,
+                current_price: data["response"][i].current_price,
+                strategy_name: data["response"][i].strategy_name,
+                current_pnl: data["response"][i].current_pnl,
+                position_start_time: data["response"][i].position_start_time,
+              };
+              index++;
+            }
+            if (JSON.stringify(data_for_strategies) !== "{}") {
+              setStrategies(data_for_strategies);
+              //console.log("Strategies final -->", data_for_strategies);
+              Set_strategies_cache({ strategies: data_for_strategies });
+              Set_coin_search_selection_cache({
+                coin_names: coin_names,
+              });
+              Set_model_search_selection_cache({
+                model_names: model_names,
+              });
+            }
+          })
+          .catch((err) => console.log(err));
+      } else {
+        // console.log(
+        //   "I am using cached value of strategies -->",
+        //   strategies_cache
+        // );
+        setStrategies(strategies_cache["strategies"]);
+      }
     }
   }, [model_name]);
   const [current_position, set_current_position] = useState({});

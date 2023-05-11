@@ -94,6 +94,65 @@ const CanvasDoughnutBacktest = (props) => {
           }
         })
         .catch((err) => console.log(err));
+    } else if (props.model_name.includes("strategy")) {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"][0]);
+          var model_names = {};
+          // console.log("Data for --->", data["response"]);
+          model_names[props.model_name] = {
+            strategy_name: data["response"][0].strategy_name,
+            current_drawdown: data["response"][0].current_drawdown,
+            curr_drawdown_duration: data["response"][0].curr_drawdown_duration,
+            average_drawdown: data["response"][0].average_drawdown,
+            average_drawdown_duration:
+              data["response"][0].average_drawdown_duration,
+            max_drawdown: data["response"][0].max_drawdown,
+            max_drawdown_duration: data["response"][0].max_drawdown_duration,
+            r2_score: data["response"][0].r2_score,
+            sharpe: data["response"][0].sharpe,
+            sortino: data["response"][0].sortino,
+            total_pnl: data["response"][0].total_pnl,
+            total_positive_pnl: data["response"][0].total_positive_pnl,
+            total_negative_pnl: data["response"][0].total_negative_pnl,
+            total_wins: data["response"][0].total_wins,
+            total_losses: data["response"][0].total_losses,
+            consective_wins: data["response"][0].consective_wins,
+            consective_losses: data["response"][0].consective_losses,
+            win_percentage: data["response"][0].win_percentage,
+            loss_percentage: data["response"][0].loss_percentage,
+            pnl_sum_1: data["response"][0].pnl_sum_1,
+            pnl_sum_7: data["response"][0].pnl_sum_7,
+            pnl_sum_15: data["response"][0].pnl_sum_15,
+            pnl_sum_30: data["response"][0].pnl_sum_30,
+            pnl_sum_45: data["response"][0].pnl_sum_45,
+            pnl_sum_60: data["response"][0].pnl_sum_60,
+            average_daily_pnl: data["response"][0].average_daily_pnl,
+            win_loss_ratio: data["response"][0].win_loss_ratio,
+
+            rank: data["response"][0].rank,
+          };
+          if (JSON.stringify(model_names) !== "{}") {
+            // console.log("Sortable -->", model_names);
+
+            // const sorted = Object.keys(model_names)
+            //   .map((key) => {
+            //     return { ...model_names[key], key };
+            //   })
+            //   .sort((a, b) => b.total_pnl - a.total_pnl);
+            setStats(model_names);
+            set_model_name(props.model_name);
+
+            // Set_sorted_stats_cache({ sorted_stats: sorted });
+          }
+        })
+        .catch((err) => console.log(err));
     } else {
       if (model_name != props.model_name) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {

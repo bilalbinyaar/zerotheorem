@@ -484,7 +484,7 @@ function Signup({ Login, error }) {
               type="auth"
               value="SIGN UP"
               onClick={() => {
-                console.log("Submit button is clicked");
+                // console.log("Submit button is clicked");
                 const email = document.getElementById("email").value;
                 const password = document.getElementById("password").value;
                 const repassword = document.getElementById("repassword").value;

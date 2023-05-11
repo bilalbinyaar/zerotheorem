@@ -15,17 +15,14 @@ import {
   AiOutlineClose,
   AiOutlineLogout,
   AiFillWallet,
-  AiOutlineAppstore
+  AiOutlineAppstore,
 } from "react-icons/ai";
 
-import { MdOutlineSource } from 'react-icons/md';
+import { MdOutlineSource } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
 
-import {
-  BsFillLayersFill,
-  BsFillInfoCircleFill,
-} from "react-icons/bs";
+import { BsFillLayersFill, BsFillInfoCircleFill } from "react-icons/bs";
 import { BiColumns } from "react-icons/bi";
 import { FaQuestionCircle, FaRegEdit } from "react-icons/fa";
 import "../../components/navbar/Navbar.css";
@@ -40,15 +37,21 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 
-
 export default function NavMobile(props) {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const dispatch = useDispatch();
 
   // Login State
-  const { authCheckLogin, setAuthCheckLogin, authCheck, userEmail, setAuthCheck, theme, setTheme } =
-    useStateContext();
+  const {
+    authCheckLogin,
+    setAuthCheckLogin,
+    authCheck,
+    userEmail,
+    setAuthCheck,
+    theme,
+    setTheme,
+  } = useStateContext();
   // Login State
 
   // mobile nav state
@@ -103,10 +106,8 @@ export default function NavMobile(props) {
     setIsChecked(!isChecked);
   }
 
-
-
   // FOR MOBILE POPUP
-    const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleShowPopup = () => {
     setShowPopup(true);
@@ -358,7 +359,7 @@ export default function NavMobile(props) {
         type="auth"
         value="Sign Up"
         onClick={() => {
-          console.log("Submit button is clicked");
+          // console.log("Submit button is clicked");
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
           if (!email || !password) {
@@ -453,11 +454,10 @@ export default function NavMobile(props) {
     </div>,
   ];
 
-
   function toCloseNavandShowPopup() {
     toCloseNav();
     handleShowPopup();
-  };
+  }
 
   return (
     <div className="header">
@@ -519,34 +519,49 @@ export default function NavMobile(props) {
               <AiFillWallet className="nav-icons" />
               Forecasts
             </CustomLink>
-              {/* Sub Menu */}
-              <CustomLink className="mobile-submenu" to="/" onClick={toCloseNav}>
-                <AiOutlineAppstore className="nav-icons nav-icons-mobile" />
-                All Models
-              </CustomLink>
-              <CustomLink className="mobile-submenu" to="/backtest" onClick={toCloseNav}>
-                <BsGraphUp className="nav-icons nav-icons-mobile" />
-                Backtest
-              </CustomLink>
-              <CustomLink className="mobile-submenu" to="/compare" onClick={toCloseNav}>
-                <BiColumns className="nav-icons nav-icons-mobile" />
-                Compare
-              </CustomLink>
-
+            {/* Sub Menu */}
+            <CustomLink className="mobile-submenu" to="/" onClick={toCloseNav}>
+              <AiOutlineAppstore className="nav-icons nav-icons-mobile" />
+              All Models
+            </CustomLink>
+            <CustomLink
+              className="mobile-submenu"
+              to="/backtest"
+              onClick={toCloseNav}
+            >
+              <BsGraphUp className="nav-icons nav-icons-mobile" />
+              Backtest
+            </CustomLink>
+            <CustomLink
+              className="mobile-submenu"
+              to="/compare"
+              onClick={toCloseNav}
+            >
+              <BiColumns className="nav-icons nav-icons-mobile" />
+              Compare
+            </CustomLink>
 
             <CustomLink to="" onClick={toCloseNav}>
               <MdOutlineSource className="nav-icons" />
               Resources
             </CustomLink>
-              {/* Sub Menu */}
-              <CustomLink className="mobile-submenu" to="/derivations" onClick={toCloseNav}>
-                <BsFillLayersFill className="nav-icons nav-icons-mobile" />
-                Derivations
-              </CustomLink>
-              <CustomLink className="mobile-submenu" to="/faqs" onClick={toCloseNav}>
-                <FaQuestionCircle className="nav-icons nav-icons-mobile" />
-                FAQs
-              </CustomLink>
+            {/* Sub Menu */}
+            <CustomLink
+              className="mobile-submenu"
+              to="/derivations"
+              onClick={toCloseNav}
+            >
+              <BsFillLayersFill className="nav-icons nav-icons-mobile" />
+              Derivations
+            </CustomLink>
+            <CustomLink
+              className="mobile-submenu"
+              to="/faqs"
+              onClick={toCloseNav}
+            >
+              <FaQuestionCircle className="nav-icons nav-icons-mobile" />
+              FAQs
+            </CustomLink>
 
             {/* <CustomLink to="/" onClick={toCloseNav}>
               <AiFillHome className="nav-icons" />
@@ -569,16 +584,24 @@ export default function NavMobile(props) {
               <AiOutlineApi className="nav-icons" />
               API
             </CustomLink>
-              {/* Sub Menu */}
-              <CustomLink className="mobile-submenu" to="/api-registration" onClick={toCloseNav}>
-                <FaRegEdit className="nav-icons nav-icons-mobile" />
-                Registration
-              </CustomLink>
-              <CustomLink className="mobile-submenu" to="/api" onClick={toCloseNav}>
-                <AiOutlineFileDone className="nav-icons nav-icons-mobile" />
-                Documentation
-              </CustomLink>
-            
+            {/* Sub Menu */}
+            <CustomLink
+              className="mobile-submenu"
+              to="/api-registration"
+              onClick={toCloseNav}
+            >
+              <FaRegEdit className="nav-icons nav-icons-mobile" />
+              Registration
+            </CustomLink>
+            <CustomLink
+              className="mobile-submenu"
+              to="/api"
+              onClick={toCloseNav}
+            >
+              <AiOutlineFileDone className="nav-icons nav-icons-mobile" />
+              Documentation
+            </CustomLink>
+
             <CustomLink to="/about" onClick={toCloseNav}>
               <BsFillInfoCircleFill className="nav-icons" />
               About
@@ -592,31 +615,34 @@ export default function NavMobile(props) {
               Contact
             </CustomLink>
             {authCheckLogin === true ? (
-              <CustomLink to="" onClick={ () => {
-                Swal.fire({
-                  title: "Logout successful",
-                  icon: "success",
-                  timer: 2000,
-                  timerProgressBar: true,
-                  toast: true,
-                  position: "top-right",
-                  showConfirmButton: false,
-                });
-                toCloseNav();
-                setAuthCheckLogin(false);
-                auth.signOut();
-                // linkModels(`/`);
-              }}>
+              <CustomLink
+                to=""
+                onClick={() => {
+                  Swal.fire({
+                    title: "Logout successful",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    toast: true,
+                    position: "top-right",
+                    showConfirmButton: false,
+                  });
+                  toCloseNav();
+                  setAuthCheckLogin(false);
+                  auth.signOut();
+                  // linkModels(`/`);
+                }}
+              >
                 <AiOutlineLogout className="nav-icons" />
                 Logout
               </CustomLink>
             ) : (
-            <CustomLink to="" onClick={toCloseNavandShowPopup}>
-              <AiOutlineUserAdd className="nav-icons" />
-              Login
-            </CustomLink>)}
+              <CustomLink to="" onClick={toCloseNavandShowPopup}>
+                <AiOutlineUserAdd className="nav-icons" />
+                Login
+              </CustomLink>
+            )}
           </ul>
-          
         )}
 
         {showPopup && (
@@ -625,10 +651,7 @@ export default function NavMobile(props) {
               <div className="login">
                 <div className="containers">
                   <form className="login-form" onSubmit={submitHandler}>
-                    <button
-                      className="popup__close"
-                      onClick={handleClosePopup}
-                    >
+                    <button className="popup__close" onClick={handleClosePopup}>
                       <AiOutlineClose />
                     </button>
                     <div className="form-inner">
@@ -639,18 +662,14 @@ export default function NavMobile(props) {
                       )}
                       <div className="form-headings">
                         <h2
-                          className={
-                            selectedHeadingIndex === 0 ? "active" : ""
-                          }
+                          className={selectedHeadingIndex === 0 ? "active" : ""}
                           onClick={() => handleClickForPopups(0)}
                         >
                           Log In
                         </h2>
 
                         <h2
-                          className={
-                            selectedHeadingIndex === 1 ? "active" : ""
-                          }
+                          className={selectedHeadingIndex === 1 ? "active" : ""}
                           onClick={() => handleClickForPopups(1)}
                         >
                           Sign Up
