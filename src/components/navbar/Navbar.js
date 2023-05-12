@@ -49,6 +49,7 @@ export default function Navbar() {
     uid,
     setUid,
     setTheme,
+    authCheckLoginInvestor
   } = useStateContext();
   // Login State
   // const [theme, setTheme] = useState("light-theme");
@@ -490,7 +491,46 @@ export default function Navbar() {
             )}
           </div>
 
-          <ul
+              {authCheckLoginInvestor == true ? (
+
+                <ul
+            id="mobile-nav"
+            className={click ? "nav-menu active" : "nav-menu"}
+          >
+            <CustomLink to="/" onClick={toCloseNav}>
+              Performance
+            </CustomLink>
+            <CustomLink to="/backtest" className="menu-item">
+              Backtest
+            </CustomLink>
+            <CustomLink to="/derivations" className="menu-item">
+              Derivations
+            </CustomLink>
+            <CustomLink className="menu-item">
+              API
+              <ul className="sub-menu-items">
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/api-registration"
+                  onClick={toCloseNav}
+                >
+                  Registration
+                </CustomLink>
+                <CustomLink
+                  className="sub-menu-item"
+                  to="/api"
+                  onClick={toCloseNav}
+                >
+                  Documentation
+                </CustomLink>
+              </ul>
+            </CustomLink>
+                </ul>
+                
+
+              ) : (
+
+                <ul
             id="mobile-nav"
             className={click ? "nav-menu active" : "nav-menu"}
           >
@@ -584,7 +624,9 @@ export default function Navbar() {
             {/* <CustomLink to="/faqs" onClick={toCloseNav}>
               FAQs
             </CustomLink> */}
-          </ul>
+                </ul>
+              ) }
+          
 
           {toggle && (
             <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -653,7 +695,10 @@ export default function Navbar() {
             )}
           </div>
 
-          {authCheckLogin === true ? (
+
+          {authCheckLoginInvestor == true ? (null) : (
+            <div>
+              {authCheckLogin === true ? (
             <div className="btn-group nav-btn">
               <button
                 className="btn btn-nav"
@@ -728,6 +773,10 @@ export default function Navbar() {
               )}
             </div>
           )}
+            </div>
+          ) }
+
+          
 
           <div className="hamburger" onClick={oneClick}>
             {click ? (

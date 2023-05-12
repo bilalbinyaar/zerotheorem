@@ -85,7 +85,7 @@ function App() {
             <div>
               <Navbar />
               <Routes basename="/zero-theorem">
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Performance />} />
                 <Route path="/derivations" element={<Introduction />} />
                 <Route path="/:name" element={<Models />} />
                 <Route path="/about" element={<About />} />
@@ -159,7 +159,7 @@ function App() {
                 />
                 <Route path="/reload" element={<LoginForm />} />
               </Routes>
-              {/* <Footer /> */}
+              <Footer />
             </div>
           ) : (
             <div>
