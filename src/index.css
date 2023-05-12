@@ -234,6 +234,12 @@ form .form-inner h2 {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 30px;
+  color: #fff;
+}
+
+form .form-inner h3 {
+  color: #fff;
+
 }
 
 .form-inner .form-group label {
