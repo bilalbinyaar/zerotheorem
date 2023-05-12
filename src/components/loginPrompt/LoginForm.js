@@ -1,61 +1,53 @@
-import React, { useState } from 'react';
-import { RiLockPasswordFill } from 'react-icons/ri';
+import React, { useState } from "react";
+import { RiLockPasswordFill } from "react-icons/ri";
 import { useStateContext } from "../../ContextProvider";
-import { AiOutlineMail, AiOutlineClose, AiFillGoogleCircle } from "react-icons/ai";
+import {
+  AiOutlineMail,
+  AiOutlineClose,
+  AiFillGoogleCircle,
+} from "react-icons/ai";
 // import videoBackground from '../../assets/investor-bg.mp4';
-import videoBackground from '../../assets/2x-bg.mp4';
+import videoBackground from "../../assets/2x-bg.mp4";
 import logoWhite from "../../assets/logo-white.svg";
 
-
-
 function LoginForm() {
-    const {  adminUserMain, checkLoginMain, setCheckLoginMain} = useStateContext();
-    const [input, setInput] = useState("")
-    const [email, setEmail] = useState("")
+  const {
+    adminUserMain,
+    checkLoginMain,
+    setCheckLoginMain,
+    authCheckLogin,
+    setAuthCheckLogin,
+    authCheckLoginInvestor,
+    setAuthCheckLoginInvestor,
+  } = useStateContext();
+  const [input, setInput] = useState("");
+  const [email, setEmail] = useState("");
 
-    // const submitHandlerMain = 
+  // const submitHandlerMain =
 
+  const [showPopup, setShowPopup] = useState(false);
 
+  const handleShowPopup = () => {
+    setShowPopup(true);
+  };
 
-    const [showPopup, setShowPopup] = useState(false);
-
-    const handleShowPopup = () => {
-        setShowPopup(true);
-    };
-
-    const handleClosePopup = () => {
-        setShowPopup(false);
-    };
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
 
   const contents = [
-
     // REGISTER INTEREST POPUP CONTENT
     <div className="popup-inner">
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input
-          type="name"
-          placeholder="Name"
-          name="name"
-          id="name"
-        />
+        <input type="name" placeholder="Name" name="name" id="name" />
       </div>
       <div className="form-group no-margin-bottom">
         <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          id="email"
-        />
+        <input type="email" placeholder="Email" name="email" id="email" />
       </div>
       <div className="checkbox-div">
-        <input
-          type="checkbox"
-          id="tandc"
-          name="tandc"
-          value=""
-        />
+        <input type="checkbox" id="tandc" name="tandc" value="" />
         {/* <label for="tandc"> I agree the Term and Conditions</label> */}
       </div>
       <input
@@ -133,9 +125,7 @@ function LoginForm() {
       </div>
 
       <div className="google-login-div">
-        <button
-          className="google-login-btn"
-        >
+        <button className="google-login-btn">
           <AiFillGoogleCircle className="google-login-icon" />
           Continue with Google
         </button>
@@ -144,11 +134,7 @@ function LoginForm() {
       <div className="register-text">
         <p>
           Already have an account?
-          <strong
-            className="color-yellow"
-          >
-            Log In
-          </strong>
+          <strong className="color-yellow">Log In</strong>
         </p>
       </div>
     </div>,
@@ -156,51 +142,76 @@ function LoginForm() {
 
   return (
     <div>
-        <div className="video-background">
-            <video autoPlay muted>
-                <source src={videoBackground} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <div className="video-overlay"></div>
+      <div className="video-background">
+        <video autoPlay muted>
+          <source src={videoBackground} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="video-overlay"></div>
+      </div>
+
+      <form className="login-form main-web-login">
+        <div className="investor-zt-logo">
+          <img className="investor-zt-logo-img" src={logoWhite} alt="logo" />
         </div>
+        <div className="form-inner main-web-form-inner">
+          {/* {(error !== '') ? ( <div className='error'> {error} </div> ) : ''} */}
+          <h2>Investor Login</h2>
+          <h3>Please enter email and password to access the website</h3>
 
-        
+          <div className="form-group main-web-form-group">
+            <label htmlFor="email"></label>
+            <span className="iconSpace">
+              <AiOutlineMail />
+            </span>
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              id="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+          </div>
 
-        <form className='login-form main-web-login'>
-            <div className="investor-zt-logo">
-                <img className="investor-zt-logo-img" src={logoWhite} alt="logo" />
-            </div>
-            <div className='form-inner main-web-form-inner'>
-                {/* {(error !== '') ? ( <div className='error'> {error} </div> ) : ''} */}
-                <h2>Investor Login</h2>
-                <h3>Please enter email and password to access the website</h3>
+          <div className="form-group main-web-form-group only-mb">
+            <label htmlFor="password"></label>
+            <span className="iconSpace">
+              <RiLockPasswordFill />
+            </span>
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            />
+          </div>
 
-                <div className='form-group main-web-form-group'>
-                    <label htmlFor='email'></label>
-                    <span className='iconSpace'><AiOutlineMail /></span><input type='email' placeholder='Email' name='email' id='email' 
-                    onChange={(e)=>{
-                        setEmail(e.target.value);
-                    }} />
-                </div>
+          <input
+            type="submit"
+            value="Login"
+            onClick={() => {
+              if (
+                adminUserMain.passwordMain == input &&
+                adminUserMain.userMain == email
+              ) {
+                setCheckLoginMain(true);
+              } else if (
+                adminUserMain.passwordMain == input &&
+                adminUserMain.investorMain == email
+              ) {
+                setAuthCheckLoginInvestor(true);
+              } else {
+                alert("Kindly input valid credentials");
+              }
+            }}
+          />
 
-                <div className='form-group main-web-form-group only-mb'>
-                    <label htmlFor='password'></label>
-                    <span className='iconSpace'><RiLockPasswordFill /></span><input type='password' placeholder='Password' name='password' id='password' 
-                    onChange={(e)=>{
-                        setInput(e.target.value);
-                    }} />
-                </div>
-                
-                <input type='submit' value='Login' onClick={()=>{
-                    if(adminUserMain.passwordMain == input && adminUserMain.userMain == email){
-                        setCheckLoginMain(true);
-                    }
-                    else{
-                      alert("Kindly input valid credentials")
-                    }
-                }}/>
-
-                {/* <button className='reg-interest' onClick={handleShowPopup}>Register your interest</button>
+          {/* <button className='reg-interest' onClick={handleShowPopup}>Register your interest</button>
 
                 {showPopup && (
                     <div className="popup">
@@ -228,11 +239,10 @@ function LoginForm() {
                     </div>
                     </div>
                 )} */}
-            </div>
-        </form>
+        </div>
+      </form>
     </div>
-    
-  )
+  );
 }
 
 export default LoginForm;

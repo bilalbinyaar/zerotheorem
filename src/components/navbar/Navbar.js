@@ -494,7 +494,6 @@ export default function Navbar() {
             id="mobile-nav"
             className={click ? "nav-menu active" : "nav-menu"}
           >
-
             <CustomLink to="/performance" onClick={toCloseNav}>
               Performance
             </CustomLink>

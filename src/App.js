@@ -61,7 +61,14 @@ function App() {
   // const MY_VARIABLE = useEnv("REACT_APP_SECRET_KEY");
   // console.log("Here finally secret key -->", process.env.REACT_APP_SECRET_KEY);
 
-  const { userMain, errorMain, loading, checkLoginMain } = useStateContext();
+  const {
+    userMain,
+    errorMain,
+    loading,
+    checkLoginMain,
+    authCheckLoginInvestor,
+    setAuthCheckLoginInvestor,
+  } = useStateContext();
 
   // SCROLL TO TOP
   const location = useLocation();
@@ -73,82 +80,168 @@ function App() {
   return (
     !loading && (
       <React.Fragment>
-        {checkLoginMain == true ? (
-          <div>
-            <Navbar />
-            <Routes basename="/zero-theorem">
-              <Route path="/" element={<Home />} />
-              <Route path="/derivations" element={<Introduction />} />
-              <Route path="/:name" element={<Models />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/faqs" element={<FAQ />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/api-registration" element={<RegistrationForm />} />
-              <Route path="/contact" element={<Contact />} />
+        {checkLoginMain == true || authCheckLoginInvestor == true ? (
+          authCheckLoginInvestor == true ? (
+            <div>
+              <Navbar />
+              <Routes basename="/zero-theorem">
+                <Route path="/" element={<Home />} />
+                <Route path="/derivations" element={<Introduction />} />
+                <Route path="/:name" element={<Models />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/faqs" element={<FAQ />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route
+                  path="/api-registration"
+                  element={<RegistrationForm />}
+                />
+                <Route path="/contact" element={<Contact />} />
 
-              <Route path="/compare" element={<Compare />} />
-              <Route path="/backtest" element={<BactestRouteComponent />} />
-              <Route path="/api" element={<Documentation />} />
-              <Route path="/performance" element={<Performance />} />
+                <Route path="/compare" element={<Compare />} />
+                <Route path="/backtest" element={<BactestRouteComponent />} />
+                <Route path="/api" element={<Documentation />} />
+                <Route path="/performance" element={<Performance />} />
 
-              {/* RESOURCES ROUTING FOR SUB ITEMS */}
-              <Route
-                path="/the-underlying-assumptions"
-                element={<TheUnderlyingAssumptions />}
-              />
-              <Route
-                path="/representation-of-a-new-asset-class-via-substitution"
-                element={<RepresentationofaNewAssetClassviaSubstitution />}
-              />
-              <Route
-                path="/the-governing-equation"
-                element={<TheGoverningEquation />}
-              />
-              <Route
-                path="/investigating-alpha"
-                element={<InvestigatingAlpha />}
-              />
-              <Route
-                path="/sensitivity-analysis-general-case"
-                element={<SensitivityAnalysisGeneralCase />}
-              />
-              <Route
-                path="/senstitivity-analysis-market-specific-alpha"
-                element={<SenstitivityAnalysisMarketSpecificAlpha />}
-              />
-              <Route
-                path="/senstitivity-analysis-single-alpha-case"
-                element={<SenstitivityAnalysisSingleAlphaCas />}
-              />
-              <Route path="/derivations-details" element={<Derivations />} />
-              <Route
-                path="/further-derivations"
-                element={<FurtherDerivations />}
-              />
-              <Route
-                path="/alternative-bass-model-for-alpha"
-                element={<AlternativeBassModelforAlpha />}
-              />
-              <Route
-                path="/alternative-frechet-model-for-alpha"
-                element={<AlternativeFrechetModelforAlpha />}
-              />
-              <Route
-                path="/alternative-weibul-model-for-alpha"
-                element={<AlternativeWeibulModelforAlpha />}
-              />
-              <Route
-                path="/alternative-gumbel-model-for-alpha"
-                element={<AlternativeGumbelModelforAlpha />}
-              />
-              <Route
-                path="/alternative-shifted-gompertz-model-for-alpha"
-                element={<AlternativeShiftedGompertzModelforAlpha />}
-              />
-            </Routes>
-            <Footer />
-          </div>
+                {/* RESOURCES ROUTING FOR SUB ITEMS */}
+                <Route
+                  path="/the-underlying-assumptions"
+                  element={<TheUnderlyingAssumptions />}
+                />
+                <Route
+                  path="/representation-of-a-new-asset-class-via-substitution"
+                  element={<RepresentationofaNewAssetClassviaSubstitution />}
+                />
+                <Route
+                  path="/the-governing-equation"
+                  element={<TheGoverningEquation />}
+                />
+                <Route
+                  path="/investigating-alpha"
+                  element={<InvestigatingAlpha />}
+                />
+                <Route
+                  path="/sensitivity-analysis-general-case"
+                  element={<SensitivityAnalysisGeneralCase />}
+                />
+                <Route
+                  path="/senstitivity-analysis-market-specific-alpha"
+                  element={<SenstitivityAnalysisMarketSpecificAlpha />}
+                />
+                <Route
+                  path="/senstitivity-analysis-single-alpha-case"
+                  element={<SenstitivityAnalysisSingleAlphaCas />}
+                />
+                <Route path="/derivations-details" element={<Derivations />} />
+                <Route
+                  path="/further-derivations"
+                  element={<FurtherDerivations />}
+                />
+                <Route
+                  path="/alternative-bass-model-for-alpha"
+                  element={<AlternativeBassModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-frechet-model-for-alpha"
+                  element={<AlternativeFrechetModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-weibul-model-for-alpha"
+                  element={<AlternativeWeibulModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-gumbel-model-for-alpha"
+                  element={<AlternativeGumbelModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-shifted-gompertz-model-for-alpha"
+                  element={<AlternativeShiftedGompertzModelforAlpha />}
+                />
+                <Route path="/reload" element={<LoginForm />} />
+              </Routes>
+              {/* <Footer /> */}
+            </div>
+          ) : (
+            <div>
+              <Navbar />
+              <Routes basename="/zero-theorem">
+                <Route path="/" element={<Home />} />
+                <Route path="/derivations" element={<Introduction />} />
+                <Route path="/:name" element={<Models />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/faqs" element={<FAQ />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route
+                  path="/api-registration"
+                  element={<RegistrationForm />}
+                />
+                <Route path="/contact" element={<Contact />} />
+
+                <Route path="/compare" element={<Compare />} />
+                <Route path="/backtest" element={<BactestRouteComponent />} />
+                <Route path="/api" element={<Documentation />} />
+                <Route path="/performance" element={<Performance />} />
+
+                {/* RESOURCES ROUTING FOR SUB ITEMS */}
+                <Route
+                  path="/the-underlying-assumptions"
+                  element={<TheUnderlyingAssumptions />}
+                />
+                <Route
+                  path="/representation-of-a-new-asset-class-via-substitution"
+                  element={<RepresentationofaNewAssetClassviaSubstitution />}
+                />
+                <Route
+                  path="/the-governing-equation"
+                  element={<TheGoverningEquation />}
+                />
+                <Route
+                  path="/investigating-alpha"
+                  element={<InvestigatingAlpha />}
+                />
+                <Route
+                  path="/sensitivity-analysis-general-case"
+                  element={<SensitivityAnalysisGeneralCase />}
+                />
+                <Route
+                  path="/senstitivity-analysis-market-specific-alpha"
+                  element={<SenstitivityAnalysisMarketSpecificAlpha />}
+                />
+                <Route
+                  path="/senstitivity-analysis-single-alpha-case"
+                  element={<SenstitivityAnalysisSingleAlphaCas />}
+                />
+                <Route path="/derivations-details" element={<Derivations />} />
+                <Route
+                  path="/further-derivations"
+                  element={<FurtherDerivations />}
+                />
+                <Route
+                  path="/alternative-bass-model-for-alpha"
+                  element={<AlternativeBassModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-frechet-model-for-alpha"
+                  element={<AlternativeFrechetModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-weibul-model-for-alpha"
+                  element={<AlternativeWeibulModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-gumbel-model-for-alpha"
+                  element={<AlternativeGumbelModelforAlpha />}
+                />
+                <Route
+                  path="/alternative-shifted-gompertz-model-for-alpha"
+                  element={<AlternativeShiftedGompertzModelforAlpha />}
+                />
+                <Route path="/reload" element={<LoginForm />} />
+              </Routes>
+              <Footer />
+            </div>
+          )
         ) : (
           <div>
             <LoginForm />

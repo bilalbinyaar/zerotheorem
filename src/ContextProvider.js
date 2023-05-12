@@ -25,6 +25,8 @@ export const ContextProvider = ({ children }) => {
   // console.log("Value of redux state -->", default_theme.theme);
   const [theme, setTheme] = useState(default_theme.theme);
   const [authCheckLogin, setAuthCheckLogin] = useState(false);
+  const [authCheckLoginInvestor, setAuthCheckLoginInvestor] = useState(false);
+
   const [uid, setUid] = useState(null);
   const toggleTheme = () => {
     if (theme === "dark-theme") {
@@ -71,7 +73,8 @@ export const ContextProvider = ({ children }) => {
   // Login
   const adminUserMain = {
     passwordMain: "sorez",
-    userMain: "zerotheorem@gmail.com"
+    userMain: "zerotheorem@gmail.com",
+    investorMain: "user@zerotheorem.com",
   };
   const [userMain, setUserMain] = useState({ name: "", password: "" });
   const [errorMain, setErrorMain] = useState("");
@@ -384,6 +387,8 @@ export const ContextProvider = ({ children }) => {
         setAuthCheckLogin,
         uid,
         setUid,
+        authCheckLoginInvestor,
+        setAuthCheckLoginInvestor,
       }}
     >
       {children}
