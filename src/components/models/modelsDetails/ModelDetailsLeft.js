@@ -508,22 +508,29 @@ const ModelDetailsLeft = (props) => {
         </div>
 
         {/* Body # 4 */}
-        <div className="model-details-left-body">
-          <div className="model-details-left-body-stats compare-btn-div">
-            {strategies[props.model_name] ? (
-              <Link
-                to="/compare"
-                state={{
-                  model_name: `${props.model_name}`,
-                  currency: `${strategies[props.model_name].currency}`,
-                  time_horizon: `${strategies[props.model_name].time_horizon}`,
-                }}
-              >
-                <p className="compare-btn">Compare</p>
-              </Link>
-            ) : null}
-          </div>
-          {/* <div className="model-details-left-body-stats backtest-btn-div">
+
+        {strategies[props.model_name] ? (
+          props.model_name.includes("strategy") ? null : (
+            <div className="model-details-left-body">
+              <div className="model-details-left-body-stats compare-btn-div">
+                <Link
+                  to="/compare"
+                  state={{
+                    model_name: `${props.model_name}`,
+                    currency: `${strategies[props.model_name].currency}`,
+                    time_horizon: `${
+                      strategies[props.model_name].time_horizon
+                    }`,
+                  }}
+                >
+                  <p className="compare-btn">Compare</p>
+                </Link>
+              </div>
+            </div>
+          )
+        ) : null}
+      </div>
+      {/* <div className="model-details-left-body-stats backtest-btn-div">
             {strategies[props.model_name] ? (
               <Link
                 to="/backtest"
@@ -537,8 +544,6 @@ const ModelDetailsLeft = (props) => {
               </Link>
             ) : null}
           </div> */}
-        </div>
-      </div>
     </div>
   );
 };
