@@ -267,6 +267,7 @@ function CandleGraphCanvasjs(props) {
 
           if (temp_data.length != 0) {
             set_current_position(temp_data);
+            console.log("Debuggin current prices -->", temp_data);
             // console.log("Here is the data for current position", temp_data);
           }
         });

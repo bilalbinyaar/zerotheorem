@@ -323,6 +323,8 @@ const PerformanceDataGrid = () => {
   useEffect(() => {
     if (topPerformerModels == null) {
       return;
+    } else if (pnl_for_each_strategy.length == 0) {
+      setFlag(null);
     } else {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
         method: "GET",
