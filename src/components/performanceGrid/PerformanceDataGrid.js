@@ -1016,22 +1016,22 @@ const PerformanceDataGrid = () => {
 
   // COLUMNS FOR MOBILE VIEW
   const columnsMobile = [
-    {
-      field: "favs",
-      with: 10,
-      flex: 0.09,
-      headerName: "",
-      headerAlign: "center",
-      type: Boolean,
-      sortable: false,
-      renderCell: (cellValues) => {
-        return cellValues.value == true ? (
-          <AiFillStar className="star-filled-icons" />
-        ) : (
-          <AiOutlineStar className="star-icons" />
-        );
-      },
-    },
+    // {
+    //   field: "favs",
+    //   with: 10,
+    //   flex: 0.09,
+    //   headerName: "",
+    //   headerAlign: "center",
+    //   type: Boolean,
+    //   sortable: false,
+    //   renderCell: (cellValues) => {
+    //     return cellValues.value == true ? (
+    //       <AiFillStar className="star-filled-icons" />
+    //     ) : (
+    //       <AiOutlineStar className="star-icons" />
+    //     );
+    //   },
+    // },
 
     {
       field: "modelNameMob",

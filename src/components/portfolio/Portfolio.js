@@ -98,17 +98,17 @@ const Portfolio = () => {
           <h1>Performance</h1>
         </div>
 
-        <div className="forecasts-details">
-          {/* <p className="forcasts-description">
+        {/* <div className="forecasts-details">
+          <p className="forcasts-description">
             Zero Theorem is an economic framework for valuing Bitcoin. On the
             forecast page you will find a variety of machine learning solutions
             to the Zero Theorem governing equation. Each model attempts to
             estimate substitution parameter 𝛼<sub>𝑘</sub> to solve the market
             sizing dilemma. Hence each model also produces a forward valuation
             and pricing direction.
-          </p> */}
+          </p>
 
-          {/* {theme === "dark-theme" ? (
+          {theme === "dark-theme" ? (
             <div className="equation-img">
               <div className="equation-i-div">
                 <Tooltip
@@ -146,8 +146,8 @@ const Portfolio = () => {
                 Zero Theorem Governing Equation ​
               </p>
             </div>
-          )} */}
-        </div>
+          )}
+        </div> */}
 
         <div className="portfolio-stats">
           <div className="today-stats for-flex-col">

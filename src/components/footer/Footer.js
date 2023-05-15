@@ -43,9 +43,14 @@ const Footer = () => {
                 )}
               </div>
               <h2>Performance</h2>
-              {/* <p className="disclaimer-text">
-              Zero Theorem is an economic framework for valuing Bitcoin. On the forecast page you will find a variety of machine learning solutions to the Zero Theorem governing equation. Each model attempts to estimate substitution parameter 𝛼𝑘 to solve the market sizing dilemma. Hence each model also produces a forward valuation and pricing direction.
-            </p> */}
+              <p className="disclaimer-text">
+                Zero Theorem is an economic framework for valuing Bitcoin. On
+                the forecast page you will find a variety of machine learning
+                solutions to the Zero Theorem governing equation. Each model
+                attempts to estimate substitution parameter 𝛼𝑘 to solve the
+                market sizing dilemma. Hence each model also produces a forward
+                valuation and pricing direction.
+              </p>
             </div>
             <div className="footer-inner-right">
               <div className="forecasts-card footer-card">
@@ -66,14 +71,14 @@ const Footer = () => {
                       {theme === "dark-theme" ? (
                         <div className="equation-img">
                           <div className="equation-i-div">
-                            {/* <Tooltip
-                            className="equation-i"
-                            title="Where πBTC = αPbtc/αt represents the rate of change, Pbtc = price of Bitcoin in USD, Pk = price of k asset in USD, Rk = volume traded of k asset in USD, αk = substitution rate phenomena, T’j= velocity of transactions, b = block reward, h = hash rate and d = difficulty"
-                          >
-                            <IconButton>
-                              <BsFillInfoCircleFill />
-                            </IconButton>
-                          </Tooltip> */}
+                            <Tooltip
+                              className="equation-i"
+                              title="Where πBTC = αPbtc/αt represents the rate of change, Pbtc = price of Bitcoin in USD, Pk = price of k asset in USD, Rk = volume traded of k asset in USD, αk = substitution rate phenomena, T’j= velocity of transactions, b = block reward, h = hash rate and d = difficulty"
+                            >
+                              <IconButton>
+                                <BsFillInfoCircleFill />
+                              </IconButton>
+                            </Tooltip>
                           </div>
                           <MathComponent
                             tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`}
