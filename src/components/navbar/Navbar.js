@@ -49,7 +49,9 @@ export default function Navbar() {
     uid,
     setUid,
     setTheme,
-    authCheckLoginInvestor
+    authCheckLoginInvestor,
+    setAuthCheckLoginInvestor,
+    setCheckLoginMain
   } = useStateContext();
   // Login State
   // const [theme, setTheme] = useState("light-theme");
@@ -500,30 +502,17 @@ export default function Navbar() {
             <CustomLink to="/" onClick={toCloseNav}>
               Performance
             </CustomLink>
+            <CustomLink to="/compare" className="menu-item">
+              Compare
+            </CustomLink>
             <CustomLink to="/backtest" className="menu-item">
               Backtest
             </CustomLink>
             <CustomLink to="/derivations" className="menu-item">
               Derivations
             </CustomLink>
-            <CustomLink className="menu-item">
+            <CustomLink to="/api" className="menu-item">
               API
-              <ul className="sub-menu-items">
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/api-registration"
-                  onClick={toCloseNav}
-                >
-                  Registration
-                </CustomLink>
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/api"
-                  onClick={toCloseNav}
-                >
-                  Documentation
-                </CustomLink>
-              </ul>
             </CustomLink>
                 </ul>
                 
@@ -696,7 +685,28 @@ export default function Navbar() {
           </div>
 
 
-          {authCheckLoginInvestor == true ? (null) : (
+          {/* {authCheckLoginInvestor == true ? (
+            <div className="btn-group nav-btn">
+              <button
+                className="btn btn-nav"
+                onClick={() => {
+                  Swal.fire({
+                    title: "Logout successful",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    toast: true,
+                    position: "top-right",
+                    showConfirmButton: false,
+                  });
+                  setAuthCheckLoginInvestor(false);
+                  linkModels(`/`);
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
             <div>
               {authCheckLogin === true ? (
             <div className="btn-group nav-btn">
@@ -722,7 +732,7 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="btn-group nav-btn">
-              {/* LOGIN POPUP FOR WEB */}
+              
               <button className="btn btn-nav" onClick={handleShowPopup}>
                 Login
               </button>
@@ -773,6 +783,51 @@ export default function Navbar() {
               )}
             </div>
           )}
+            </div>
+          ) } */}
+
+
+          {authCheckLoginInvestor == true ? (
+            <div className="btn-group nav-btn">
+              <button
+                className="btn btn-nav"
+                onClick={() => {
+                  Swal.fire({
+                    title: "Logout successful",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    toast: true,
+                    position: "top-right",
+                    showConfirmButton: false,
+                  });
+                  setAuthCheckLoginInvestor(false);
+                  linkModels(`/`);
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="btn-group nav-btn">
+              <button
+                className="btn btn-nav"
+                onClick={() => {
+                  Swal.fire({
+                    title: "Logout successful",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    toast: true,
+                    position: "top-right",
+                    showConfirmButton: false,
+                  });
+                  setCheckLoginMain(false);
+                  linkModels(`/`);
+                }}
+              >
+                Logout
+              </button>
             </div>
           ) }
 

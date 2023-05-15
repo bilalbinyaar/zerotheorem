@@ -130,6 +130,10 @@
     text-align: justify;
 }
 
+.news-inner .equation-img {
+    margin-left: 0 !important;
+}
+
 @media screen and (max-width: 688px) {
     .footer .container {
         padding: 0;

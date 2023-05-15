@@ -10,13 +10,103 @@ import { BsDot } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { BsFillInfoCircleFill } from "react-icons/bs";
+import { Tooltip } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import { MathComponent } from "mathjax-react";
 
 const Footer = () => {
-  const { theme } = useStateContext();
+  const { theme, checkLoginMain,
+    authCheckLoginInvestor, } = useStateContext();
   return (
     <div className="footer">
       <div className="footer-main-div">
-        <div className="container">
+        {authCheckLoginInvestor == true ? (
+
+          <div className="container">
+          <div className="footer-inner-left">
+            <div className="footer-logo-div">
+              {theme === "dark-theme" ? (
+                <Link to="/">
+                  <img className="footer-logo-img" src={logoWhite} alt="logo" />
+                </Link>
+              ) : (
+                <Link to="/">
+                  <img className="footer-logo-img" src={logoBlack} alt="logo" />
+                </Link>
+              )}
+            </div>
+            <h2>Performance</h2>
+            <p className="disclaimer-text">
+              Zero Theorem is an economic framework for valuing Bitcoin. On the forecast page you will find a variety of machine learning solutions to the Zero Theorem governing equation. Each model attempts to estimate substitution parameter 𝛼𝑘 to solve the market sizing dilemma. Hence each model also produces a forward valuation and pricing direction.
+            </p>
+          </div>
+          <div className="footer-inner-right">
+            <div className="forecasts-card footer-card">
+              <div className="announcement-card">
+                <div className="announcement-row">
+                  <div className="title-div footer-ann-h">
+                    <h2>Equation</h2>
+                  </div>
+
+                  {/* <div className='forecasts-more footer-more'>
+                                <h3>More</h3>
+                                <AiFillCaretRight className='more-icon'/>
+                            </div> */}
+                </div>
+
+                <div className="announcement-news">
+                  <div className="news-inner footer-news-inner">
+                    {theme === "dark-theme" ? (
+                      <div className="equation-img">
+                        <div className="equation-i-div">
+                          {/* <Tooltip
+                            className="equation-i"
+                            title="Where πBTC = αPbtc/αt represents the rate of change, Pbtc = price of Bitcoin in USD, Pk = price of k asset in USD, Rk = volume traded of k asset in USD, αk = substitution rate phenomena, T’j= velocity of transactions, b = block reward, h = hash rate and d = difficulty"
+                          >
+                            <IconButton>
+                              <BsFillInfoCircleFill />
+                            </IconButton>
+                          </Tooltip> */}
+                        </div>
+                        <MathComponent
+                          tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`}
+                        />
+                        {/* <p className="equation-caption">
+                          Zero Theorem Governing Equation ​
+                        </p> */}
+                      </div>
+                    ) : (
+                      <div className="equation-img">
+                        <div className="equation-i-div">
+                          {/* <Tooltip
+                            className="equation-i"
+                            title="Where πBTC = αPbtc/αt represents the rate of change, Pbtc = price of Bitcoin in USD, Pk = price of k asset in USD, Rk = volume traded of k asset in USD, αk = substitution rate phenomena, T’j= velocity of transactions, b = block reward, h = hash rate and d = difficulty"
+                          >
+                            <IconButton>
+                              <BsFillInfoCircleFill />
+                            </IconButton>
+                          </Tooltip> */}
+                        </div>
+                        <MathComponent
+                          tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`}
+                        />
+                        {/* <p className="equation-caption">
+                          Zero Theorem Governing Equation ​
+                        </p> */}
+                      </div>
+                    )}
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        ) : (
+
+          <div className="container">
           <div className="footer-inner-left">
             <div className="footer-logo-div">
               {theme === "dark-theme" ? (
@@ -130,6 +220,11 @@ const Footer = () => {
           </div>
         </div>
 
+        )}
+
+        
+        
+
         <div className="footer-bar-container container">
           <div className="footer-inner-left">
             <p className="footer-copyright-text">
@@ -140,7 +235,12 @@ const Footer = () => {
             <div className="forecasts-card footer-card">
               <div className="announcement-card">
                 <div className="announcement-news">
-                  <div className="news-inner footer-news-inner inner-footer-bar">
+                  {authCheckLoginInvestor == true ? (
+                    <div className="news-inner footer-news-inner inner-footer-bar" >
+                        
+                      </div>
+                  ) : (
+                    <div className="news-inner footer-news-inner inner-footer-bar">
                     <p className="footer-follow-text">Find us</p>
                     <div className="footer-icons-div">
                       {/* <FaDiscord className="footer-icons dis" /> */}
@@ -150,6 +250,8 @@ const Footer = () => {
                       {/* <FaTelegramPlane className="footer-icons tele" /> */}
                     </div>
                   </div>
+                  ) }
+                  
                 </div>
               </div>
             </div>

@@ -237,7 +237,7 @@ function App() {
                   path="/alternative-shifted-gompertz-model-for-alpha"
                   element={<AlternativeShiftedGompertzModelforAlpha />}
                 />
-                <Route path="/reload" element={<LoginForm />} />
+                <Route path="/login" element={<LoginForm />} />
               </Routes>
               <Footer />
             </div>

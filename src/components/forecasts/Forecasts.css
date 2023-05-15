@@ -225,7 +225,7 @@
 .forecasts-model-name h3 {
   margin-left: 0.5rem;
   color: var(--forecasts-model-name);
-  font-size: 11px;
+  font-size: 12px;
   cursor: pointer;
   text-align: left;
 }
