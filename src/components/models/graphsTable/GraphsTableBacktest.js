@@ -10,6 +10,7 @@ import PerformanceTableBacktest from "./PerformanceTableBacktest";
 const GraphsTableBacktest = (props) => {
   //console.log("Finally drawdown model name -->", props.model_name);
   const name = props.model_name;
+  console.log("Here is model name -->", name);
   return (
     <div className="graphs-table">
       <div className="current-position">

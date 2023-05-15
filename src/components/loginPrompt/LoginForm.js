@@ -6,11 +6,16 @@ import {
   AiOutlineClose,
   AiFillGoogleCircle,
 } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
+
 // import videoBackground from '../../assets/investor-bg.mp4';
 import videoBackground from "../../assets/2x-bg.mp4";
 import logoWhite from "../../assets/logo-white.svg";
+import { set_login } from "../../store";
 
 function LoginForm() {
+  const dispatch = useDispatch();
+
   const {
     adminUserMain,
     checkLoginMain,
@@ -33,6 +38,9 @@ function LoginForm() {
 
   const handleClosePopup = () => {
     setShowPopup(false);
+  };
+  const handleInvestorLogin = () => {
+    dispatch(set_login());
   };
 
   const contents = [
@@ -205,6 +213,7 @@ function LoginForm() {
                 adminUserMain.investorMain == email
               ) {
                 setAuthCheckLoginInvestor(true);
+                handleInvestorLogin();
               } else {
                 alert("Kindly input valid credentials");
               }
