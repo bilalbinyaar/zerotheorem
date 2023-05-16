@@ -36,6 +36,8 @@ import Signup from "./components/Authentication/Signup";
 import RegistrationForm from "./components/apiRegistrationForm/RegistrationForm";
 import Contact from "./components/contact/Contact";
 import Performance from "./pages/Performance";
+import { useSelector, useDispatch } from "react-redux";
+import { set_login } from "./store";
 // import dotenv from "dotenv";
 function App() {
   // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
@@ -75,6 +77,8 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+  const default_login = useSelector((state) => state.loginFlag);
+
   // SCROLL TO TOP
 
   return (

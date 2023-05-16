@@ -61,8 +61,8 @@ const PerformanceBarChart = (props) => {
           let avg = (end_time - start_time) / 2;
           let result = avg + start_time;
           // console.log("Result -->", len, start_time, avg, result);
-          setStart(result);
-          setEnd(parseInt(data["response"][len].ledger_timestamp));
+          // setStart(result);
+          // setEnd(parseInt(data["response"][len].ledger_timestamp));
         }
         // console.log("Cum pnl -->", cum_pnl);
       })

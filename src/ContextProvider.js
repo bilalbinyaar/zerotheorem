@@ -20,12 +20,16 @@ export const ContextProvider = ({ children }) => {
 
   // Dark Light Mode
   const default_theme = useSelector((state) => state.theme);
+  const default_login = useSelector((state) => state.loginFlag);
+  // console.log("Got this state bro -->", default_login);
   const dispatch = useDispatch();
 
   // console.log("Value of redux state -->", default_theme.theme);
   const [theme, setTheme] = useState(default_theme.theme);
   const [authCheckLogin, setAuthCheckLogin] = useState(false);
-  const [authCheckLoginInvestor, setAuthCheckLoginInvestor] = useState(false);
+  const [authCheckLoginInvestor, setAuthCheckLoginInvestor] = useState(
+    default_login.loginFlag
+  );
 
   const [uid, setUid] = useState(null);
   const toggleTheme = () => {

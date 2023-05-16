@@ -11,7 +11,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 const Portfolio = () => {
   const [timer_for_current, set_timer_for_current_position] = useState(null);
   const [stats, setStats] = useState(null);
-  const { theme, authCheckLoginInvestor } = useStateContext();
+  const { theme } = useStateContext();
   const forColor = (total_pnl, id) => {
     try {
       if (total_pnl < 0) {
@@ -94,15 +94,11 @@ const Portfolio = () => {
   return (
     <div id="forecasts" className="forecasts">
       <div className="container">
-        {/* {authCheckLoginInvestor == true ? (null) : ()} */}
-          <div className="top-div">
-            <h1>Performance</h1>
-          </div>
-        
-        
+        <div className="top-div">
+          <h1>Performance</h1>
+        </div>
 
-        {authCheckLoginInvestor == true ? (null) : (
-          <div className="forecasts-details">
+        {/* <div className="forecasts-details">
           <p className="forcasts-description">
             Zero Theorem is an economic framework for valuing Bitcoin. On the
             forecast page you will find a variety of machine learning solutions
@@ -151,12 +147,9 @@ const Portfolio = () => {
               </p>
             </div>
           )}
-        </div>
-        )}
-        
+        </div> */}
 
-            {authCheckLoginInvestor == true ? (
-              <div className="portfolio-stats pt-0">
+        <div className="portfolio-stats">
           <div className="today-stats for-flex-col">
             <h2>Overall Return</h2>
             <div className="portfolio-stats-percentage" id="pnl-bg">
@@ -306,159 +299,6 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
-            ) : ( 
-              <div className="portfolio-stats">
-          <div className="today-stats for-flex-col">
-            <h2>Overall Return</h2>
-            <div className="portfolio-stats-percentage" id="pnl-bg">
-              {stats ? (
-                stats["live_pnls"].pnl_all >= 0 ? (
-                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
-                ) : (
-                  <AiFillCaretDown className="model-details-left-top-percentage-icon " />
-                )
-              ) : null}
-              <p
-                id="pnl-color10"
-                onChange={
-                  stats
-                    ? forColor(
-                        parseInt(stats["live_pnls"].pnl_all),
-                        "pnl-color10"
-                      )
-                    : null
-                }
-              >
-                {stats ? `${stats["live_pnls"].pnl_all}%` : null}
-              </p>
-            </div>
-          </div>
-
-          {/* <div className="today-stats for-space-between"> */}
-          {/* <div className="overall-stats for-space-between portfolio-ml">
-                <h3>Today</h3>
-                <div className="portfolio-stats-percentage" id="pnl-bg">
-                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
-                  <p>
-                    2.12%
-                  </p>
-                </div>
-            </div> */}
-
-          <div className="pnl-stats-bar for-space-between portfolio-ml">
-            <div className="pnl-day-stats for-flex-col">
-              <h3>Today</h3>
-              <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
-                  stats["live_pnls"].pnl_1 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
-                  ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
-                  )
-                ) : null}
-                <p
-                  id="pnl-color10"
-                  onChange={
-                    stats
-                      ? forColor(
-                          parseInt(stats["live_pnls"].pnl_1),
-                          "pnl-color10"
-                        )
-                      : null
-                  }
-                >
-                  {stats ? `${stats["live_pnls"].pnl_1}%` : null}
-                </p>
-              </div>
-            </div>
-
-            <div className="divider-div-pnl-stats"></div>
-
-            <div className="pnl-day-stats for-flex-col">
-              <h3>7-Day</h3>
-              <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
-                  stats["live_pnls"].pnl_7 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
-                  ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
-                  )
-                ) : null}
-                <p
-                  id="pnl-color10"
-                  onChange={
-                    stats
-                      ? forColor(
-                          parseInt(stats["live_pnls"].pnl_7),
-                          "pnl-color10"
-                        )
-                      : null
-                  }
-                >
-                  {stats ? `${stats["live_pnls"].pnl_7}%` : null}
-                </p>
-              </div>
-            </div>
-
-            <div className="divider-div-pnl-stats"></div>
-
-            <div className="pnl-day-stats for-flex-col">
-              <h3>30-Day</h3>
-              <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
-                  stats["live_pnls"].pnl_30 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
-                  ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
-                  )
-                ) : null}
-                <p
-                  id="pnl-color10"
-                  onChange={
-                    stats
-                      ? forColor(
-                          parseInt(stats["live_pnls"].pnl_30),
-                          "pnl-color10"
-                        )
-                      : null
-                  }
-                >
-                  {stats ? `${stats["live_pnls"].pnl_30}%` : null}
-                </p>
-              </div>
-            </div>
-
-            <div className="divider-div-pnl-stats"></div>
-
-            <div className="pnl-day-stats for-flex-col">
-              <h3>60-Day</h3>
-              <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
-                  stats["live_pnls"].pnl_60 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
-                  ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
-                  )
-                ) : null}
-                <p
-                  id="pnl-color10"
-                  onChange={
-                    stats
-                      ? forColor(
-                          parseInt(stats["live_pnls"].pnl_60),
-                          "pnl-color10"
-                        )
-                      : null
-                  }
-                >
-                  {stats ? `${stats["live_pnls"].pnl_60}%` : null}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-            )}
-        
       </div>
     </div>
   );

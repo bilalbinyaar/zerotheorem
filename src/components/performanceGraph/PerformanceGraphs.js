@@ -10,6 +10,7 @@ const PerformanceGraphs = () => {
     <div className="performance-graphs">
       <div className="container">
         <div className="performance-graphs-main">
+          <h2>Historical Returns</h2>
 
             <h2>Historical Returns</h2>
             
@@ -22,10 +23,9 @@ const PerformanceGraphs = () => {
                 <RiCheckboxBlankFill className="indicator-short" />
                 <p>Alpha</p>
               </div> */}
-            </div>
-            <PerformanceMultiLine model_name={"ZT1_0M24BTC1"}/>
-            {/* <IndividualPnlCanvasjs model_name={"ZT1_0M24BTC1"} /> */}
-
+          </div>
+          <PerformanceMultiLine model_name={"ZT1_0M24BTC1"} />
+          {/* <IndividualPnlCanvasjs model_name={"ZT1_0M24BTC1"} /> */}
         </div>
       </div>
     </div>
