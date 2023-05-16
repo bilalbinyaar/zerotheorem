@@ -107,9 +107,9 @@
     background-color: var(--forecasts-model-index);
 }
 
-.pt-0 {
+/* .pt-0 {
     padding-top: 0 !important;
-}
+} */
 
 @media screen and (max-width: 568px) {
     .for-overall-stat p {

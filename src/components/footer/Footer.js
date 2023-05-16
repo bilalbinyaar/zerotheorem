@@ -23,9 +23,8 @@ const Footer = () => {
       <div className="footer-main-div">
         {authCheckLoginInvestor == true ? (
 
-          <div className="container">
-          <div className="footer-inner-left">
-            <div className="footer-logo-div">
+          <div className="container investor-container">
+            <div className="footer-logo-div investor-logo-div">
               {theme === "dark-theme" ? (
                 <Link to="/">
                   <img className="footer-logo-img" src={logoWhite} alt="logo" />
@@ -36,12 +35,15 @@ const Footer = () => {
                 </Link>
               )}
             </div>
-            <h2>Performance</h2>
+            <div className="investor-footer-inner">
+                <div className="footer-inner-left footer-inner-left-investor">
+            
+            <h2>About</h2>
             <p className="disclaimer-text">
               Zero Theorem is an economic framework for valuing Bitcoin. On the forecast page you will find a variety of machine learning solutions to the Zero Theorem governing equation. Each model attempts to estimate substitution parameter 𝛼𝑘 to solve the market sizing dilemma. Hence each model also produces a forward valuation and pricing direction.
             </p>
           </div>
-          <div className="footer-inner-right">
+          <div className="footer-inner-right investor-no-mt">
             <div className="forecasts-card footer-card">
               <div className="announcement-card">
                 <div className="announcement-row">
@@ -102,6 +104,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
+            </div>
+          
         </div>
 
         ) : (

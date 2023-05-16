@@ -94,11 +94,11 @@ const Portfolio = () => {
   return (
     <div id="forecasts" className="forecasts">
       <div className="container">
-        {authCheckLoginInvestor == true ? (null) : (
+        {/* {authCheckLoginInvestor == true ? (null) : ()} */}
           <div className="top-div">
             <h1>Performance</h1>
           </div>
-        )}
+        
         
 
         {authCheckLoginInvestor == true ? (null) : (

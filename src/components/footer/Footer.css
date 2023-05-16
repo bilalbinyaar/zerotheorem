@@ -134,6 +134,28 @@
     margin-left: 0 !important;
 }
 
+.investor-container {
+    flex-direction: column;
+}
+
+.investor-footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.investor-no-mt {
+    margin-top: 0 !important;
+}
+
+.investor-logo-div {
+    width: 100%;
+}
+
+.footer-inner-left-investor p {
+    margin-top: 16px;
+}
+
 @media screen and (max-width: 688px) {
     .footer .container {
         padding: 0;

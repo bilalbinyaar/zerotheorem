@@ -14,11 +14,11 @@ const PerformanceGraphs = () => {
             <h2>Historical Returns</h2>
             
             <div className="overview-indicators for-performance-legends">
-              {/* <div className="indicator">
+              <div className="indicator">
                 <RiCheckboxBlankFill className="indicator-long" />
                 <p>PNL Sum</p>
               </div>
-              <div className="indicator">
+              {/* <div className="indicator">
                 <RiCheckboxBlankFill className="indicator-short" />
                 <p>Alpha</p>
               </div> */}
