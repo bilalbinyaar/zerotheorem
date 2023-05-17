@@ -26,74 +26,78 @@ const Portfolio = () => {
     } catch {}
   };
   useEffect(() => {
-    if (timer_for_current == null) {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_returns`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const temp_data = {};
-          // console.log(
-          //   "Finally btc data -->",
-          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-          // );
-
-          for (let i = 0; i < data["response"].length; i++) {
-            temp_data["live_pnls"] = {
-              pnl_all: data["response"][i].pnl_all,
-              pnl_1: data["response"][i].pnl_1,
-              pnl_7: data["response"][i].pnl_7,
-              pnl_30: data["response"][i].pnl_30,
-              pnl_60: data["response"][i].pnl_60,
-            };
-          }
-
-          if (temp_data.length != 0) {
-            setStats(temp_data);
-            console.log("Here is stats -->", temp_data);
-            // console.log("Here is the data for current position", temp_data);
-          }
+    try {
+      if (timer_for_current == null) {
+        fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_returns`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
         })
-        .catch((err) => {
-          alert("Error occured");
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            const temp_data = {};
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
+
+            for (let i = 0; i < data["response"].length; i++) {
+              temp_data["live_pnls"] = {
+                pnl_all: data["response"][i].pnl_all,
+                pnl_1: data["response"][i].pnl_1,
+                pnl_7: data["response"][i].pnl_7,
+                pnl_30: data["response"][i].pnl_30,
+                pnl_60: data["response"][i].pnl_60,
+              };
+            }
+
+            if (temp_data.length != 0) {
+              setStats(temp_data);
+              console.log("Here is stats -->", temp_data);
+              // console.log("Here is the data for current position", temp_data);
+            }
+          })
+          .catch((err) => {
+            alert("Error occured");
+          });
+      }
+      setTimeout(() => {
+        fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_returns`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const temp_data = {};
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
+
+            for (let i = 0; i < data["response"].length; i++) {
+              temp_data["live_pnls"] = {
+                pnl_all: data["response"][i].pnl_all,
+                pnl_1: data["response"][i].pnl_1,
+                pnl_7: data["response"][i].pnl_7,
+                pnl_30: data["response"][i].pnl_30,
+                pnl_60: data["response"][i].pnl_60,
+              };
+            }
+
+            if (temp_data.length != 0) {
+              setStats(temp_data);
+              // console.log("Here is the data for current position", temp_data);
+            }
+          })
+          .catch((err) => alert("Error occured"));
+        set_timer_for_current_position(new Date());
+      }, 60000);
+    } catch (error) {
+      console.log("Error occured");
     }
-    setTimeout(() => {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_returns`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const temp_data = {};
-          // console.log(
-          //   "Finally btc data -->",
-          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-          // );
-
-          for (let i = 0; i < data["response"].length; i++) {
-            temp_data["live_pnls"] = {
-              pnl_all: data["response"][i].pnl_all,
-              pnl_1: data["response"][i].pnl_1,
-              pnl_7: data["response"][i].pnl_7,
-              pnl_30: data["response"][i].pnl_30,
-              pnl_60: data["response"][i].pnl_60,
-            };
-          }
-
-          if (temp_data.length != 0) {
-            setStats(temp_data);
-            // console.log("Here is the data for current position", temp_data);
-          }
-        })
-        .catch((err) => alert("Error occured"));
-      set_timer_for_current_position(new Date());
-    }, 60000);
   }, [timer_for_current]);
   return (
     <div id="forecasts" className="forecasts">

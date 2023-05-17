@@ -32,114 +32,127 @@ const CanvasNegativeBar = (props) => {
   });
 
   useEffect(() => {
-    if (!individual_pnl_canvasjs_graph_cache[props.model_name]) {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((response) => response.json())
-        .then(async (data) => {
-          // console.log("Debugging -->", props.model_name, data["response"]);
-          var main_series = [];
-          var temp_positive_series = [];
-          var temp_negative_series = [];
-          for (var index = 0; index < data["response"].length; index++) {
-            if (index + 1 == data["response"].length) {
-              if (temp_positive_series.length != 0) {
-                main_series.push({
-                  type: "column",
-                  color: "#16c784",
-                  dataPoints: temp_positive_series,
-                });
-              } else {
-                main_series.push({
-                  type: "column",
-                  color: "#ff2e2e",
-                  dataPoints: temp_negative_series,
-                });
-              }
-            } else {
-              if (parseFloat(data["response"][index].pnl) >= 0) {
-                if (temp_negative_series.length != 0) {
-                  main_series.push({
-                    type: "column",
-                    color: "#ff2e2e",
-                    dataPoints: temp_negative_series,
-                  });
-                  temp_negative_series = [];
-                } else {
-                  temp_positive_series.push({
-                    x: new Date(
-                      parseInt(data["response"][index].ledger_timestamp) * 1000
-                    ),
-                    y: parseInt(data["response"][index].pnl),
-                  });
-                }
-              } else if (parseFloat(data["response"][index].pnl) < 0) {
+    try {
+      if (!individual_pnl_canvasjs_graph_cache[props.model_name]) {
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then(async (data) => {
+            // console.log("Debugging -->", props.model_name, data["response"]);
+            var main_series = [];
+            var temp_positive_series = [];
+            var temp_negative_series = [];
+            for (var index = 0; index < data["response"].length; index++) {
+              if (index + 1 == data["response"].length) {
                 if (temp_positive_series.length != 0) {
                   main_series.push({
                     type: "column",
                     color: "#16c784",
                     dataPoints: temp_positive_series,
                   });
-                  temp_positive_series = [];
                 } else {
-                  temp_negative_series.push({
-                    x: new Date(
-                      parseInt(data["response"][index].ledger_timestamp) * 1000
-                    ),
-                    y: parseInt(data["response"][index].pnl),
+                  main_series.push({
+                    type: "column",
+                    color: "#ff2e2e",
+                    dataPoints: temp_negative_series,
                   });
+                }
+              } else {
+                if (parseFloat(data["response"][index].pnl) >= 0) {
+                  if (temp_negative_series.length != 0) {
+                    main_series.push({
+                      type: "column",
+                      color: "#ff2e2e",
+                      dataPoints: temp_negative_series,
+                    });
+                    temp_negative_series = [];
+                  } else {
+                    temp_positive_series.push({
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseInt(data["response"][index].pnl),
+                    });
+                  }
+                } else if (parseFloat(data["response"][index].pnl) < 0) {
+                  if (temp_positive_series.length != 0) {
+                    main_series.push({
+                      type: "column",
+                      color: "#16c784",
+                      dataPoints: temp_positive_series,
+                    });
+                    temp_positive_series = [];
+                  } else {
+                    temp_negative_series.push({
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseInt(data["response"][index].pnl),
+                    });
+                  }
                 }
               }
             }
-          }
-          // console.log("Bar data -->", main_series, props.model_name);
+            // console.log("Bar data -->", main_series, props.model_name);
 
-          if (main_series.length != 0) {
-            set_cum_pnl(main_series);
-            Set_individual_pnl_canvasjs_graph_cache({
-              [props.model_name]: main_series,
-            });
-          }
-        })
-        .catch((err) => console.log(err));
-    } else {
-      set_cum_pnl(individual_pnl_canvasjs_graph_cache[props.model_name]);
+            if (main_series.length != 0) {
+              set_cum_pnl(main_series);
+              Set_individual_pnl_canvasjs_graph_cache({
+                [props.model_name]: main_series,
+              });
+            }
+          })
+          .catch((err) => console.log(err));
+      } else {
+        set_cum_pnl(individual_pnl_canvasjs_graph_cache[props.model_name]);
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [model_name]);
 
   useEffect(() => {
-    if (cummulative_pnl.length != 0) {
-      // console.log("Negative data -->", cummulative_pnl);
-      setOptions({
-        backgroundColor: "transparent",
-        type: "bar",
+    try {
+      if (cummulative_pnl.length != 0) {
+        // console.log("Negative data -->", cummulative_pnl);
+        setOptions({
+          backgroundColor: "transparent",
+          type: "bar",
 
-        dataPointWidth: 3,
-        type: "column",
+          dataPointWidth: 3,
+          type: "column",
 
-        xValueType: "dateTime",
-        showInLegend: false,
+          xValueType: "dateTime",
+          showInLegend: false,
 
-        theme: "light2", //"light1", "dark1", "dark2"
-        axisY: {
-          includeZero: true,
-          gridColor: "#43577533",
-          tickColor: "#43577533",
-          labelFontSize: 8,
-        },
+          theme: "light2", //"light1", "dark1", "dark2"
+          axisY: {
+            includeZero: true,
+            gridColor: "#43577533",
+            tickColor: "#43577533",
+            labelFontSize: 8,
+          },
 
-        axisX: {
-          lineColor: "#43577577",
-          interval: 50,
-          labelFontSize: 8,
-        },
+          axisX: {
+            lineColor: "#43577577",
+            interval: 50,
+            labelFontSize: 8,
+          },
 
-        data: cummulative_pnl,
-      });
+          data: cummulative_pnl,
+        });
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [cummulative_pnl]);
 

@@ -72,89 +72,17 @@ function CandleGraphCanvasjs(props) {
     Set_model_search_selection_cache,
   } = useStateContext();
   useEffect(() => {
-    if (props.model_name.includes("strategy")) {
-      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log(data["response"].length);
-          var data_for_strategies = {};
-          var model_names = [];
-          var coin_names = [];
-          var unique_coins = {};
-          var index = 0;
-          for (var i = 0; i < data["response"].length; i++) {
-            model_names.push({
-              label: data["response"][i].strategy_name.replace("_", "-"),
-              value: data["response"][i].time_horizon,
-              currency: data["response"][i].currency,
-            });
-            if (!unique_coins[data["response"][i].currency]) {
-              unique_coins[data["response"][i].currency] = 1;
-              coin_names.push({
-                label: data["response"][i].currency,
-                // value: i,
-              });
-            }
-            var dt = new Date(
-              parseInt(data["response"][i].forecast_time) * 1000
-            ).toLocaleString();
-            var year = dt.split("/")[2].split(",")[0];
-            var month = dt.split("/")[0];
-            if (month.length == 1) {
-              month = "0" + month;
-            }
-            var day = dt.split("/")[1];
-            if (day.length == 1) {
-              day = "0" + day;
-            }
-            var hours = dt.split(", ")[1].split(":")[0];
-            if (hours.length == 1) {
-              hours = "0" + hours;
-            }
-            var minutes = dt.split(":")[1];
-            if (minutes.length == 1) {
-              minutes = "0" + minutes;
-            }
-            var curr_time_version = dt.split(" ")[2];
-            if (curr_time_version == "PM") {
-              hours = parseInt(hours) + 12;
-            }
-            var dt_str =
-              year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-            // console.log(data["response"][i].strategy_name);
-            data_for_strategies[data["response"][i].strategy_name] = {
-              current_position: data["response"][i].current_position,
-              time_horizon: data["response"][i].time_horizon,
-              currency: data["response"][i].currency,
-              date_started: data["response"][i].date_started,
-              entry_price: data["response"][i].entry_price,
-              forecast_time: dt_str,
-              next_forecast: data["response"][i].next_forecast,
-              current_price: data["response"][i].current_price,
-              strategy_name: data["response"][i].strategy_name,
-              current_pnl: data["response"][i].current_pnl,
-              position_start_time: data["response"][i].position_start_time,
-            };
-            index++;
+    try {
+      if (props.model_name.includes("strategy")) {
+        fetch(
+          "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
           }
-          if (JSON.stringify(data_for_strategies) !== "{}") {
-            setStrategies(data_for_strategies);
-          }
-        })
-        .catch((err) => console.log(err));
-    } else {
-      if (Object.keys(strategies_cache).length == 0) {
-        fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
-        })
+        )
           .then((response) => response.json())
           .then((data) => {
             // console.log(data["response"].length);
@@ -220,88 +148,174 @@ function CandleGraphCanvasjs(props) {
             }
             if (JSON.stringify(data_for_strategies) !== "{}") {
               setStrategies(data_for_strategies);
-              //console.log("Strategies final -->", data_for_strategies);
-              Set_strategies_cache({ strategies: data_for_strategies });
-              Set_coin_search_selection_cache({
-                coin_names: coin_names,
-              });
-              Set_model_search_selection_cache({
-                model_names: model_names,
-              });
             }
           })
           .catch((err) => console.log(err));
       } else {
-        // console.log(
-        //   "I am using cached value of strategies -->",
-        //   strategies_cache
-        // );
-        setStrategies(strategies_cache["strategies"]);
+        if (Object.keys(strategies_cache).length == 0) {
+          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // console.log(data["response"].length);
+              var data_for_strategies = {};
+              var model_names = [];
+              var coin_names = [];
+              var unique_coins = {};
+              var index = 0;
+              for (var i = 0; i < data["response"].length; i++) {
+                model_names.push({
+                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  value: data["response"][i].time_horizon,
+                  currency: data["response"][i].currency,
+                });
+                if (!unique_coins[data["response"][i].currency]) {
+                  unique_coins[data["response"][i].currency] = 1;
+                  coin_names.push({
+                    label: data["response"][i].currency,
+                    // value: i,
+                  });
+                }
+                var dt = new Date(
+                  parseInt(data["response"][i].forecast_time) * 1000
+                ).toLocaleString();
+                var year = dt.split("/")[2].split(",")[0];
+                var month = dt.split("/")[0];
+                if (month.length == 1) {
+                  month = "0" + month;
+                }
+                var day = dt.split("/")[1];
+                if (day.length == 1) {
+                  day = "0" + day;
+                }
+                var hours = dt.split(", ")[1].split(":")[0];
+                if (hours.length == 1) {
+                  hours = "0" + hours;
+                }
+                var minutes = dt.split(":")[1];
+                if (minutes.length == 1) {
+                  minutes = "0" + minutes;
+                }
+                var curr_time_version = dt.split(" ")[2];
+                if (curr_time_version == "PM") {
+                  hours = parseInt(hours) + 12;
+                }
+                var dt_str =
+                  year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+                // console.log(data["response"][i].strategy_name);
+                data_for_strategies[data["response"][i].strategy_name] = {
+                  current_position: data["response"][i].current_position,
+                  time_horizon: data["response"][i].time_horizon,
+                  currency: data["response"][i].currency,
+                  date_started: data["response"][i].date_started,
+                  entry_price: data["response"][i].entry_price,
+                  forecast_time: dt_str,
+                  next_forecast: data["response"][i].next_forecast,
+                  current_price: data["response"][i].current_price,
+                  strategy_name: data["response"][i].strategy_name,
+                  current_pnl: data["response"][i].current_pnl,
+                  position_start_time: data["response"][i].position_start_time,
+                };
+                index++;
+              }
+              if (JSON.stringify(data_for_strategies) !== "{}") {
+                setStrategies(data_for_strategies);
+                //console.log("Strategies final -->", data_for_strategies);
+                Set_strategies_cache({ strategies: data_for_strategies });
+                Set_coin_search_selection_cache({
+                  coin_names: coin_names,
+                });
+                Set_model_search_selection_cache({
+                  model_names: model_names,
+                });
+              }
+            })
+            .catch((err) => console.log(err));
+        } else {
+          // console.log(
+          //   "I am using cached value of strategies -->",
+          //   strategies_cache
+          // );
+          setStrategies(strategies_cache["strategies"]);
+        }
       }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [model_name]);
   const [current_position, set_current_position] = useState({});
   useEffect(() => {
-    if (props.model_name.includes("strategy")) {
-      // console.log("Here is it ", strategies[props.model_name]);
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const temp_data = {};
-          // console.log(
-          //   "Finally btc data -->",
-          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-          // );
-
-          for (let i = 0; i < data["response"].length; i++) {
-            temp_data[data["response"][i].strategy_name] = {
-              current_pnl: data["response"][i].current_pnl,
-              current_price: data["response"][i].current_price,
-            };
+    try {
+      if (props.model_name.includes("strategy")) {
+        // console.log("Here is it ", strategies[props.model_name]);
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
           }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            const temp_data = {};
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
 
-          if (temp_data.length != 0) {
-            set_current_position(temp_data);
-            console.log("Debuggin current prices -->", temp_data);
-            // console.log("Here is the data for current position", temp_data);
-          }
-        });
-    } else {
-      // console.log("Here is it ", strategies[props.model_name]);
-      fetch(
-        `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const temp_data = {};
-          // console.log(
-          //   "Finally btc data -->",
-          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-          // );
+            for (let i = 0; i < data["response"].length; i++) {
+              temp_data[data["response"][i].strategy_name] = {
+                current_pnl: data["response"][i].current_pnl,
+                current_price: data["response"][i].current_price,
+              };
+            }
 
-          for (let i = 0; i < data["response"].length; i++) {
-            temp_data[data["response"][i].strategy_name] = {
-              current_pnl: data["response"][i].current_pnl,
-              current_price: data["response"][i].current_price,
-            };
+            if (temp_data.length != 0) {
+              set_current_position(temp_data);
+              console.log("Debuggin current prices -->", temp_data);
+              // console.log("Here is the data for current position", temp_data);
+            }
+          });
+      } else {
+        // console.log("Here is it ", strategies[props.model_name]);
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/current_position`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
           }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            const temp_data = {};
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
 
-          if (temp_data.length != 0) {
-            set_current_position(temp_data);
-            // console.log("Here is the data for current position", temp_data);
-          }
-        });
+            for (let i = 0; i < data["response"].length; i++) {
+              temp_data[data["response"][i].strategy_name] = {
+                current_pnl: data["response"][i].current_pnl,
+                current_price: data["response"][i].current_price,
+              };
+            }
+
+            if (temp_data.length != 0) {
+              set_current_position(temp_data);
+              // console.log("Here is the data for current position", temp_data);
+            }
+          });
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [last_minute]);
   const containerProps = {
@@ -310,86 +324,92 @@ function CandleGraphCanvasjs(props) {
     margin: "auto",
   };
   useEffect(() => {
-    if (strategies == null) {
-      return;
-    } else {
-      // console.log("Here is it ", strategies[props.model_name]);
-      fetch(
-        `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${parseInt(
-          strategies[props.model_name].position_start_time
-        )}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const dps1 = [];
-          const dps2 = [];
-          const dps3 = [];
-          // console.log(
-          //   "Finally btc data -->",
-          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-          // );
-
-          for (let i = 0; i < data["response"].length; i++) {
-            dps1.push({
-              x: new Date(parseInt(data["response"][i].timestamp) * 1000),
-              y: [
-                Number(data["response"][i].open),
-                Number(data["response"][i].high),
-                Number(data["response"][i].low),
-                Number(data["response"][i].close),
-              ],
-              color:
-                data["response"][i].open < data["response"][i].close
-                  ? "#16C784"
-                  : "#FF2E2E",
-            });
-            dps2.push({
-              x: new Date(parseInt(data["response"][i].timestamp) * 1000),
-              y: Number(data["response"][i].volume),
-              color:
-                data["response"][i].open < data["response"][i].close
-                  ? "#16C784"
-                  : "#FF2E2E",
-            });
-            dps3.push({
-              x: new Date(parseInt(data["response"][i].timestamp) * 1000),
-              y: Number(data["response"][i].close),
-            });
-          }
-          setDataPoints1(dps1);
-          setDataPoints2(dps2);
-          setDataPoints3(dps3);
-          console.log(dps1);
-          setIsLoaded(true);
-          // console.log("Console values -->", dps1, dps2, dps3);
-          let start_time = parseInt(
+    try {
+      if (strategies == null) {
+        return;
+      } else {
+        // console.log("Here is it ", strategies[props.model_name]);
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${parseInt(
             strategies[props.model_name].position_start_time
-          );
-          let end_time = parseInt(
-            data["response"][data["response"].length - 1].timestamp
-          );
-          let avg = (end_time - start_time) / 2;
-          let result = avg + start_time;
-          // console.log("Result -->", end_time, start_time, result, result2);
-          set_start_date(result);
-          setStart(parseInt(strategies[props.model_name].position_start_time));
-          setEnd(
-            parseInt(data["response"][data["response"].length - 1].timestamp)
-          );
-          set_last_minute(
-            data["response"][data["response"].length - 1].timestamp
-          );
-          set_entry_price(parseInt(strategies[props.model_name].entry_price));
-          set_current_price(
-            parseInt(strategies[props.model_name].current_price)
-          );
-        });
+          )}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            const dps1 = [];
+            const dps2 = [];
+            const dps3 = [];
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
+
+            for (let i = 0; i < data["response"].length; i++) {
+              dps1.push({
+                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                y: [
+                  Number(data["response"][i].open),
+                  Number(data["response"][i].high),
+                  Number(data["response"][i].low),
+                  Number(data["response"][i].close),
+                ],
+                color:
+                  data["response"][i].open < data["response"][i].close
+                    ? "#16C784"
+                    : "#FF2E2E",
+              });
+              dps2.push({
+                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                y: Number(data["response"][i].volume),
+                color:
+                  data["response"][i].open < data["response"][i].close
+                    ? "#16C784"
+                    : "#FF2E2E",
+              });
+              dps3.push({
+                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                y: Number(data["response"][i].close),
+              });
+            }
+            setDataPoints1(dps1);
+            setDataPoints2(dps2);
+            setDataPoints3(dps3);
+            console.log(dps1);
+            setIsLoaded(true);
+            // console.log("Console values -->", dps1, dps2, dps3);
+            let start_time = parseInt(
+              strategies[props.model_name].position_start_time
+            );
+            let end_time = parseInt(
+              data["response"][data["response"].length - 1].timestamp
+            );
+            let avg = (end_time - start_time) / 2;
+            let result = avg + start_time;
+            // console.log("Result -->", end_time, start_time, result, result2);
+            set_start_date(result);
+            setStart(
+              parseInt(strategies[props.model_name].position_start_time)
+            );
+            setEnd(
+              parseInt(data["response"][data["response"].length - 1].timestamp)
+            );
+            set_last_minute(
+              data["response"][data["response"].length - 1].timestamp
+            );
+            set_entry_price(parseInt(strategies[props.model_name].entry_price));
+            set_current_price(
+              parseInt(strategies[props.model_name].current_price)
+            );
+          });
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [strategies]);
   var flag = true;
@@ -598,99 +618,105 @@ function CandleGraphCanvasjs(props) {
   };
   useEffect(() => {
     // console.log("I am called again bro");
-    if (last_minute == null) {
-      return;
-    } else {
-      setTimeout(() => {
-        // console.log("Here is it ", strategies[props.model_name]);
-        fetch(
-          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${last_minute}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-            },
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            const dps1 = [...dataPoints1];
-            const dps2 = [...dataPoints2];
-            const dps3 = [...dataPoints3];
-            // console.log("Data is found bro", dps1, dps2, dps3);
-            // console.log(
-            //   "Finally btc data -->",
-            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-            // );
-
-            for (let i = 1; i < data["response"].length; i++) {
-              dps1.push({
-                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
-                y: [
-                  Number(data["response"][i].open),
-                  Number(data["response"][i].high),
-                  Number(data["response"][i].low),
-                  Number(data["response"][i].close),
-                ],
-                color:
-                  data["response"][i].open < data["response"][i].close
-                    ? "#16C784"
-                    : "#FF2E2E",
-              });
-              dps2.push({
-                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
-                y: Number(data["response"][i].volume),
-                color:
-                  data["response"][i].open < data["response"][i].close
-                    ? "#16C784"
-                    : "#FF2E2E",
-              });
-              dps3.push({
-                x: new Date(parseInt(data["response"][i].timestamp) * 1000),
-                y: Number(data["response"][i].close),
-              });
+    try {
+      if (last_minute == null) {
+        return;
+      } else {
+        setTimeout(() => {
+          // console.log("Here is it ", strategies[props.model_name]);
+          fetch(
+            `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_btc_minute_data/${last_minute}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+              },
             }
-            // console.log("Data after setting is found bro", dps1, dps2, dps3);
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              const dps1 = [...dataPoints1];
+              const dps2 = [...dataPoints2];
+              const dps3 = [...dataPoints3];
+              // console.log("Data is found bro", dps1, dps2, dps3);
+              // console.log(
+              //   "Finally btc data -->",
+              //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+              // );
 
-            // const newState = { ...dataPoints1, dps1 };
-            // const newState2 = { ...dataPoints1, dps1 };
-            // const newState3 = { ...dataPoints1, dps1 };
+              for (let i = 1; i < data["response"].length; i++) {
+                dps1.push({
+                  x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                  y: [
+                    Number(data["response"][i].open),
+                    Number(data["response"][i].high),
+                    Number(data["response"][i].low),
+                    Number(data["response"][i].close),
+                  ],
+                  color:
+                    data["response"][i].open < data["response"][i].close
+                      ? "#16C784"
+                      : "#FF2E2E",
+                });
+                dps2.push({
+                  x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                  y: Number(data["response"][i].volume),
+                  color:
+                    data["response"][i].open < data["response"][i].close
+                      ? "#16C784"
+                      : "#FF2E2E",
+                });
+                dps3.push({
+                  x: new Date(parseInt(data["response"][i].timestamp) * 1000),
+                  y: Number(data["response"][i].close),
+                });
+              }
+              // console.log("Data after setting is found bro", dps1, dps2, dps3);
 
-            // console.log(
-            //   "Here is data received after setting values -->",
-            //   newState,
-            //   newState2,
-            //   newState3
-            // );
-            setDataPoints1(dps1);
-            setDataPoints2(dps2);
-            setDataPoints3(dps3);
-            // setIsLoaded(true);
-            // console.log("Console values -->", dps1, dps2, dps3);
-            // let start_time = parseInt(
-            //   strategies[props.model_name].position_start_time
-            // );
-            let end_time = parseInt(
-              data["response"][data["response"].length - 1].timestamp + 1000
-            );
-            let avg = (end_time - start) / 2;
-            let result = avg + start;
-            // console.log("Result -->", end_time, start_time, result, result2);
-            // set_start_date(result);
-            setStart(start);
-            setEnd(
-              parseInt(data["response"][data["response"].length - 1].timestamp)
-            );
-            set_last_minute(
-              data["response"][data["response"].length - 1].timestamp
-            );
-            // set_entry_price(parseInt(strategies[props.model_name].entry_price));
-            // set_current_price(
-            //   parseInt(strategies[props.model_name].current_price)
-            // );
-          });
-        // set_last_minute(new Date());
-      }, 60000);
+              // const newState = { ...dataPoints1, dps1 };
+              // const newState2 = { ...dataPoints1, dps1 };
+              // const newState3 = { ...dataPoints1, dps1 };
+
+              // console.log(
+              //   "Here is data received after setting values -->",
+              //   newState,
+              //   newState2,
+              //   newState3
+              // );
+              setDataPoints1(dps1);
+              setDataPoints2(dps2);
+              setDataPoints3(dps3);
+              // setIsLoaded(true);
+              // console.log("Console values -->", dps1, dps2, dps3);
+              // let start_time = parseInt(
+              //   strategies[props.model_name].position_start_time
+              // );
+              let end_time = parseInt(
+                data["response"][data["response"].length - 1].timestamp + 1000
+              );
+              let avg = (end_time - start) / 2;
+              let result = avg + start;
+              // console.log("Result -->", end_time, start_time, result, result2);
+              // set_start_date(result);
+              setStart(start);
+              setEnd(
+                parseInt(
+                  data["response"][data["response"].length - 1].timestamp
+                )
+              );
+              set_last_minute(
+                data["response"][data["response"].length - 1].timestamp
+              );
+              // set_entry_price(parseInt(strategies[props.model_name].entry_price));
+              // set_current_price(
+              //   parseInt(strategies[props.model_name].current_price)
+              // );
+            });
+          // set_last_minute(new Date());
+        }, 60000);
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [last_minute]);
 

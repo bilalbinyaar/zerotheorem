@@ -22,94 +22,105 @@ function DrawdownCanvasjs(props) {
   // console.log("I am setting drawdown in cache -->", props.model_name);
 
   useEffect(() => {
-    if (!drawdown_canvasjs_graph_cache[props.model_name]) {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((response) => response.json())
-        .then(async (data) => {
-          var main_series = [];
-          for (var index = 0; index < data["response"].length; index++) {
-            main_series.push({
-              x: new Date(
-                parseInt(data["response"][index].ledger_timestamp) * 1000
-              ),
-              y: parseInt(data["response"][index].drawdown),
-            });
+    try {
+      if (!drawdown_canvasjs_graph_cache[props.model_name]) {
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
           }
-          // console.log("Testing data -->", main_series);
+        )
+          .then((response) => response.json())
+          .then(async (data) => {
+            var main_series = [];
+            for (var index = 0; index < data["response"].length; index++) {
+              main_series.push({
+                x: new Date(
+                  parseInt(data["response"][index].ledger_timestamp) * 1000
+                ),
+                y: parseInt(data["response"][index].drawdown),
+              });
+            }
+            // console.log("Testing data -->", main_series);
 
-          if (main_series.length != 0) {
-            set_cum_pnl([
-              {
-                type: "splineArea",
-                color: "#ff2e2e",
-                markerType: "none",
-                fillOpacity: 0.4,
-                dataPoints: main_series,
-              },
-            ]);
-            Set_drawdown_canvasjs_graph_cache({
-              [props.model_name]: main_series,
-            });
-          }
-        })
-        .catch((err) => console.log(err));
-    } else {
-      set_cum_pnl([
-        {
-          type: "splineArea",
-          color: "#ff2e2e",
-          markerType: "none",
-          fillOpacity: 0.4,
-          dataPoints: drawdown_canvasjs_graph_cache[props.model_name],
-        },
-      ]);
+            if (main_series.length != 0) {
+              set_cum_pnl([
+                {
+                  type: "splineArea",
+                  color: "#ff2e2e",
+                  markerType: "none",
+                  fillOpacity: 0.4,
+                  dataPoints: main_series,
+                },
+              ]);
+              Set_drawdown_canvasjs_graph_cache({
+                [props.model_name]: main_series,
+              });
+            }
+          })
+          .catch((err) => console.log(err));
+      } else {
+        set_cum_pnl([
+          {
+            type: "splineArea",
+            color: "#ff2e2e",
+            markerType: "none",
+            fillOpacity: 0.4,
+            dataPoints: drawdown_canvasjs_graph_cache[props.model_name],
+          },
+        ]);
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [model_name]);
 
   useEffect(() => {
-    if (cummulative_pnl.length != 0) {
-      // console.log("Canvasjs data -->", cummulative_pnl);
-      setOptions({
-        backgroundColor: "transparent",
-        theme: "light2",
-        animationEnabled: false,
-        data: cummulative_pnl,
+    try {
+      if (cummulative_pnl.length != 0) {
+        // console.log("Canvasjs data -->", cummulative_pnl);
+        setOptions({
+          backgroundColor: "transparent",
+          theme: "light2",
+          animationEnabled: false,
+          data: cummulative_pnl,
 
-        toolTip: {
-          fontSize: 10,
-          contentFormatter: (e) => {
-            const date = CanvasJSReact.CanvasJS.formatDate(
-              e.entries[0].dataPoint.x,
-              "DD/MM/YYYY HH:mm:ss"
-            );
-            let content = `<strong>${date}</strong><br/><br/>`;
+          toolTip: {
+            fontSize: 10,
+            contentFormatter: (e) => {
+              const date = CanvasJSReact.CanvasJS.formatDate(
+                e.entries[0].dataPoint.x,
+                "DD/MM/YYYY HH:mm:ss"
+              );
+              let content = `<strong>${date}</strong><br/><br/>`;
 
-            e.entries.forEach((entry) => {
-              content += `<span style="color: ${entry.dataPoint.color};">Drawdown</span> :  ${entry.dataPoint.y}<br/>`;
-            });
+              e.entries.forEach((entry) => {
+                content += `<span style="color: ${entry.dataPoint.color};">Drawdown</span> :  ${entry.dataPoint.y}<br/>`;
+              });
 
-            return content;
+              return content;
+            },
           },
-        },
 
-        axisY: {
-          gridColor: "#43577533",
-          labelFontColor: "rgb(55, 61, 63)",
-          tickColor: "#43577533",
-          labelFontSize: 10,
-        },
-        axisX: {
-          labelFontColor: "rgb(55, 61, 63)",
-          tickColor: "#43577533",
-          lineColor: "#43577577",
-          labelFontSize: 10,
-        },
-      });
+          axisY: {
+            gridColor: "#43577533",
+            labelFontColor: "rgb(55, 61, 63)",
+            tickColor: "#43577533",
+            labelFontSize: 10,
+          },
+          axisX: {
+            labelFontColor: "rgb(55, 61, 63)",
+            tickColor: "#43577533",
+            lineColor: "#43577577",
+            labelFontSize: 10,
+          },
+        });
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [cummulative_pnl]);
 

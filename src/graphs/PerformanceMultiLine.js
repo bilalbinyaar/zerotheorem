@@ -25,68 +25,72 @@ function PerformanceMultiLine() {
     } catch {}
   };
   useEffect(() => {
-    if (timer_for_current == null) {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const temp_data = [];
-          // console.log(
-          //   "Finally btc data -->",
-          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-          // );
+    try {
+      if (timer_for_current == null) {
+        fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const temp_data = [];
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
 
-          for (let i = 0; i < data["response"].length; i++) {
-            temp_data.push({
-              x: new Date(
-                parseInt(data["response"][i].ledger_timestamp) * 1000
-              ),
-              y: data["response"][i].pnl_sum,
-            });
-          }
+            for (let i = 0; i < data["response"].length; i++) {
+              temp_data.push({
+                x: new Date(
+                  parseInt(data["response"][i].ledger_timestamp) * 1000
+                ),
+                y: data["response"][i].pnl_sum,
+              });
+            }
 
-          if (temp_data.length != 0) {
-            set_data_for_graph_historical(temp_data);
-            // console.log("Here is the data for current position", temp_data);
-          }
-        });
+            if (temp_data.length != 0) {
+              set_data_for_graph_historical(temp_data);
+              // console.log("Here is the data for current position", temp_data);
+            }
+          });
+      }
+      setTimeout(() => {
+        fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const temp_data = [];
+            // console.log(
+            //   "Finally btc data -->",
+            //   new Date(parseInt(data["response"][0].timestamp) * 1000)
+            // );
+
+            for (let i = 0; i < data["response"].length; i++) {
+              temp_data.push({
+                x: new Date(
+                  parseInt(data["response"][i].ledger_timestamp) * 1000
+                ),
+                y: data["response"][i].pnl_sum,
+              });
+            }
+
+            if (temp_data.length != 0) {
+              set_data_for_graph_historical(temp_data);
+              // console.log("Here is stats -->", temp_data);
+              // console.log("Here is the data for current position", temp_data);
+            }
+          });
+        set_timer_for_current_position(new Date());
+      }, 60000);
+    } catch (error) {
+      console.log("Error occured");
     }
-    setTimeout(() => {
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const temp_data = [];
-          // console.log(
-          //   "Finally btc data -->",
-          //   new Date(parseInt(data["response"][0].timestamp) * 1000)
-          // );
-
-          for (let i = 0; i < data["response"].length; i++) {
-            temp_data.push({
-              x: new Date(
-                parseInt(data["response"][i].ledger_timestamp) * 1000
-              ),
-              y: data["response"][i].pnl_sum,
-            });
-          }
-
-          if (temp_data.length != 0) {
-            set_data_for_graph_historical(temp_data);
-            // console.log("Here is stats -->", temp_data);
-            // console.log("Here is the data for current position", temp_data);
-          }
-        });
-      set_timer_for_current_position(new Date());
-    }, 60000);
   }, [timer_for_current]);
   const [datapoint1, setDatapoint1] = useState([]);
 

@@ -131,8 +131,8 @@ export default function NavMobile(props) {
         const token = credential.accessToken;
 
         // The signed-in user info.
-        const user = result.user.email;
-        console.log(user);
+        // const user = result.user.email;
+        // console.log(user);
         // alert("Successfully login with email " + user);
         Swal.fire({
           title: "Login successful",

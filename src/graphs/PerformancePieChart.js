@@ -15,42 +15,46 @@ const PerformancePieChart = (props) => {
   const [series, setSeries] = useState([]);
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
-    fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data["response"].length);
-        var model_names = {};
-        var temp_labels = [];
-        var temp_stats = [];
-        for (var i = 0; i < data["response"].length; i++) {
-          // console.log(data["response"][i].strategy_name);
-          model_names[data["response"][i].strategy_name] = {
-            portfolio_allocation: data["response"][i].portfolio_allocation,
-          };
-          temp_stats.push(data["response"][i].portfolio_allocation);
-          temp_labels.push(data["response"][i].strategy_name);
-        }
-        if (JSON.stringify(model_names) !== "{}") {
-          // console.log("Sortable -->", model_names);
-
-          // const sorted = Object.keys(model_names)
-          //   .map((key) => {
-          //     return { ...model_names[key], key };
-          //   })
-          //   .sort((a, b) => b.total_pnl - a.total_pnl);
-          setStats(model_names);
-          setSeries(temp_stats);
-          setLabels(temp_labels);
-          setIsLoaded(true);
-          // Set_sorted_stats_cache({ sorted_stats: sorted });
-        }
+    try {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
       })
-      .catch((err) => console.log(err));
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"].length);
+          var model_names = {};
+          var temp_labels = [];
+          var temp_stats = [];
+          for (var i = 0; i < data["response"].length; i++) {
+            // console.log(data["response"][i].strategy_name);
+            model_names[data["response"][i].strategy_name] = {
+              portfolio_allocation: data["response"][i].portfolio_allocation,
+            };
+            temp_stats.push(data["response"][i].portfolio_allocation);
+            temp_labels.push(data["response"][i].strategy_name);
+          }
+          if (JSON.stringify(model_names) !== "{}") {
+            // console.log("Sortable -->", model_names);
+
+            // const sorted = Object.keys(model_names)
+            //   .map((key) => {
+            //     return { ...model_names[key], key };
+            //   })
+            //   .sort((a, b) => b.total_pnl - a.total_pnl);
+            setStats(model_names);
+            setSeries(temp_stats);
+            setLabels(temp_labels);
+            setIsLoaded(true);
+            // Set_sorted_stats_cache({ sorted_stats: sorted });
+          }
+        })
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log("Error occured");
+    }
   }, [model_name]);
 
   // useEffect(() => {

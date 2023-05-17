@@ -16,63 +16,67 @@ const Overview = () => {
   const { position_stats_cache, Set_position_stats_cache } = useStateContext();
   const [position_analysis_stats, set_position_analysis_stats] = useState([]);
   useEffect(() => {
-    if (Object.keys(position_stats_cache).length == 0) {
-      fetch(
-        "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/position_percentage",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log(data["response"].length);
-          var stats = {};
-          for (var i = 0; i < data["response"].length; i++) {
-            var dt = new Date(
-              parseInt(data["response"][i].forecast_time) * 1000
-            ).toLocaleString();
+    try {
+      if (Object.keys(position_stats_cache).length == 0) {
+        fetch(
+          "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/position_percentage",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data["response"].length);
+            var stats = {};
+            for (var i = 0; i < data["response"].length; i++) {
+              var dt = new Date(
+                parseInt(data["response"][i].forecast_time) * 1000
+              ).toLocaleString();
 
-            var year = dt.split("/")[2].split(",")[0];
-            var month = dt.split("/")[0];
-            if (month.length == 1) {
-              month = "0" + month;
+              var year = dt.split("/")[2].split(",")[0];
+              var month = dt.split("/")[0];
+              if (month.length == 1) {
+                month = "0" + month;
+              }
+              var day = dt.split("/")[1];
+              if (day.length == 1) {
+                day = "0" + day;
+              }
+              var hours = dt.split(", ")[1].split(":")[0];
+              if (hours.length == 1) {
+                hours = "0" + hours;
+              }
+              var minutes = dt.split(":")[1];
+              if (minutes.length == 1) {
+                minutes = "0" + minutes;
+              }
+              var curr_time_version = dt.split(" ")[2];
+              if (curr_time_version == "PM") {
+                hours = parseInt(hours) + 12;
+              }
+              var dt_str =
+                year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+              stats[data["response"][i].time_horizon] = {
+                long_percentage: data["response"][i].long_percentage,
+                short_percentage: data["response"][i].short_percentage,
+                forecast_time: dt_str,
+              };
             }
-            var day = dt.split("/")[1];
-            if (day.length == 1) {
-              day = "0" + day;
+            if (JSON.stringify(stats) !== "{}") {
+              // console.log("Stats -->", stats);
+              set_position_analysis_stats(stats);
+              Set_position_stats_cache({ position_stats: stats });
             }
-            var hours = dt.split(", ")[1].split(":")[0];
-            if (hours.length == 1) {
-              hours = "0" + hours;
-            }
-            var minutes = dt.split(":")[1];
-            if (minutes.length == 1) {
-              minutes = "0" + minutes;
-            }
-            var curr_time_version = dt.split(" ")[2];
-            if (curr_time_version == "PM") {
-              hours = parseInt(hours) + 12;
-            }
-            var dt_str =
-              year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-            stats[data["response"][i].time_horizon] = {
-              long_percentage: data["response"][i].long_percentage,
-              short_percentage: data["response"][i].short_percentage,
-              forecast_time: dt_str,
-            };
-          }
-          if (JSON.stringify(stats) !== "{}") {
-            // console.log("Stats -->", stats);
-            set_position_analysis_stats(stats);
-            Set_position_stats_cache({ position_stats: stats });
-          }
-        })
-        .catch((err) => console.log(err));
-    } else {
-      set_position_analysis_stats(position_stats_cache["position_stats"]);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        set_position_analysis_stats(position_stats_cache["position_stats"]);
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, []);
   const windowWidth = useRef(window.innerWidth);

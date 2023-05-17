@@ -39,31 +39,35 @@ const ModelDetailsTable = (props) => {
   }, []);
 
   useEffect(() => {
-    fetch(
-      `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stat/${props.model_name}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data["response"]);
-        var data_for_stat = {};
-        for (var i = 0; i < data["response"].length; i++) {
-          //  console.log("Strategy -->", data["response"][i].strategy_name);
-          data_for_stat[data["response"][i].strategy_name] = {
-            total_pnl: data["response"][i].total_pnl,
-          };
+    try {
+      fetch(
+        `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stat/${props.model_name}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
         }
-        if (JSON.stringify(data_for_stat) !== "{}") {
-          setStats(data_for_stat);
-          //   console.log("Data for setting stat -->", data_for_stat);
-        }
-      })
-      .catch((err) => console.log(err));
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"]);
+          var data_for_stat = {};
+          for (var i = 0; i < data["response"].length; i++) {
+            //  console.log("Strategy -->", data["response"][i].strategy_name);
+            data_for_stat[data["response"][i].strategy_name] = {
+              total_pnl: data["response"][i].total_pnl,
+            };
+          }
+          if (JSON.stringify(data_for_stat) !== "{}") {
+            setStats(data_for_stat);
+            //   console.log("Data for setting stat -->", data_for_stat);
+          }
+        })
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log("Error occured");
+    }
   }, []);
 
   return (

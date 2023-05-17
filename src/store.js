@@ -55,6 +55,11 @@ const loginSlice = createSlice({
         draftState.loginFlag = true;
       });
     },
+    set_login_flase: (state) => {
+      return produce(state, (draftState) => {
+        draftState.loginFlag = false;
+      });
+    },
   },
 });
 const scrollSlicePosition = createSlice({
@@ -94,7 +99,7 @@ export const { set_day_mode, set_night_mode } = counterSlice.actions;
 export const { set_scroll } = scrollSlice.actions;
 export const { set_scroll_position } = scrollSlicePosition.actions;
 export const { set_scroll_recently } = scrollSliceRecently.actions;
-export const { set_login } = loginSlice.actions;
+export const { set_login, set_login_flase } = loginSlice.actions;
 
 export const store = configureStore({
   reducer: {

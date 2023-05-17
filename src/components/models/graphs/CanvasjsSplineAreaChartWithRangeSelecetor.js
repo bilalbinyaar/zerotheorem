@@ -47,59 +47,26 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
   const [cummulative_pnl, set_cum_pnl] = useState([]);
 
   useEffect(() => {
-    if (!drawdown_negative_canvasjs_graph_cache[props.model_name]) {
-      // console.log("I received model name for graph -->", props.model_name);
+    try {
+      if (!drawdown_negative_canvasjs_graph_cache[props.model_name]) {
+        // console.log("I received model name for graph -->", props.model_name);
 
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((response) => response.json())
-        .then(async (data) => {
-          var main_series = [];
-          var temp_positive_series = [];
-          var temp_negative_series = [];
-          for (var index = 0; index < data["response"].length; index++) {
-            if (index + 1 == data["response"].length) {
-              if (temp_positive_series.length != 0) {
-                main_series.push({
-                  type: "splineArea",
-                  color: "#16c784",
-                  markerType: "none",
-                  fillOpacity: 0.4,
-                  dataPoints: temp_positive_series,
-                });
-              } else {
-                main_series.push({
-                  type: "splineArea",
-                  color: "#ff2e2e",
-                  markerType: "none",
-                  fillOpacity: 0.4,
-                  dataPoints: temp_negative_series,
-                });
-              }
-            } else {
-              if (parseFloat(data["response"][index].pnl_sum) >= 0) {
-                if (temp_negative_series.length != 0) {
-                  main_series.push({
-                    type: "splineArea",
-                    color: "#ff2e2e",
-                    markerType: "none",
-                    fillOpacity: 0.4,
-                    dataPoints: temp_negative_series,
-                  });
-                  temp_negative_series = [];
-                } else {
-                  temp_positive_series.push({
-                    x: new Date(
-                      parseInt(data["response"][index].ledger_timestamp) * 1000
-                    ),
-                    y: parseFloat(data["response"][index].pnl_sum),
-                  });
-                }
-              } else {
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then(async (data) => {
+            var main_series = [];
+            var temp_positive_series = [];
+            var temp_negative_series = [];
+            for (var index = 0; index < data["response"].length; index++) {
+              if (index + 1 == data["response"].length) {
                 if (temp_positive_series.length != 0) {
                   main_series.push({
                     type: "splineArea",
@@ -108,140 +75,187 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
                     fillOpacity: 0.4,
                     dataPoints: temp_positive_series,
                   });
-                  temp_positive_series = [];
                 } else {
-                  temp_negative_series.push({
-                    x: new Date(
-                      parseInt(data["response"][index].ledger_timestamp) * 1000
-                    ),
-                    y: parseFloat(data["response"][index].pnl_sum),
+                  main_series.push({
+                    type: "splineArea",
+                    color: "#ff2e2e",
+                    markerType: "none",
+                    fillOpacity: 0.4,
+                    dataPoints: temp_negative_series,
                   });
+                }
+              } else {
+                if (parseFloat(data["response"][index].pnl_sum) >= 0) {
+                  if (temp_negative_series.length != 0) {
+                    main_series.push({
+                      type: "splineArea",
+                      color: "#ff2e2e",
+                      markerType: "none",
+                      fillOpacity: 0.4,
+                      dataPoints: temp_negative_series,
+                    });
+                    temp_negative_series = [];
+                  } else {
+                    temp_positive_series.push({
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    });
+                  }
+                } else {
+                  if (temp_positive_series.length != 0) {
+                    main_series.push({
+                      type: "splineArea",
+                      color: "#16c784",
+                      markerType: "none",
+                      fillOpacity: 0.4,
+                      dataPoints: temp_positive_series,
+                    });
+                    temp_positive_series = [];
+                  } else {
+                    temp_negative_series.push({
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    });
+                  }
                 }
               }
             }
-          }
-          // console.log("Testing data -->", main_series);
+            // console.log("Testing data -->", main_series);
 
-          if (main_series.length != 0) {
-            let len = data["response"].length - 1;
-            let start_time = parseInt(data["response"][0].ledger_timestamp);
-            let end_time = parseInt(data["response"][len].ledger_timestamp);
-            let avg = (end_time - start_time) / 2;
-            let result = avg + start_time;
-            // console.log("Values are --->", start_time, end_time, avg, result);
-            // console.log("Result -->", len, start_time, avg, result);
-            setStart(new Date(result) * 1000);
-            setEnd(
-              new Date(parseInt(data["response"][len].ledger_timestamp)) * 1000
-            );
-            set_cum_pnl(main_series);
-            Set_drawdown_negative_canvasjs_graph_cache({
-              [props.model_name]: main_series,
-            });
-            setIsLoaded(true);
-          }
-          // console.log("Cum pnl -->", cum_pnl);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      set_cum_pnl(drawdown_negative_canvasjs_graph_cache[props.model_name]);
-      setIsLoaded(true);
+            if (main_series.length != 0) {
+              let len = data["response"].length - 1;
+              let start_time = parseInt(data["response"][0].ledger_timestamp);
+              let end_time = parseInt(data["response"][len].ledger_timestamp);
+              let avg = (end_time - start_time) / 2;
+              let result = avg + start_time;
+              // console.log("Values are --->", start_time, end_time, avg, result);
+              // console.log("Result -->", len, start_time, avg, result);
+              setStart(new Date(result) * 1000);
+              setEnd(
+                new Date(parseInt(data["response"][len].ledger_timestamp)) *
+                  1000
+              );
+              set_cum_pnl(main_series);
+              Set_drawdown_negative_canvasjs_graph_cache({
+                [props.model_name]: main_series,
+              });
+              setIsLoaded(true);
+            }
+            // console.log("Cum pnl -->", cum_pnl);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        set_cum_pnl(drawdown_negative_canvasjs_graph_cache[props.model_name]);
+        setIsLoaded(true);
 
-      // console.log(
-      //   "I am using cached value for straight spline graph -->",
-      //   straight_spline_graph_cache[props.model_name]
-      // );
+        // console.log(
+        //   "I am using cached value for straight spline graph -->",
+        //   straight_spline_graph_cache[props.model_name]
+        // );
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [model_name]);
 
   useEffect(() => {
-    if (cummulative_pnl.length != 0) {
-      // console.log("Negative graph -->", cummulative_pnl);
-      setDataPoints(cummulative_pnl);
-      // console.log("I am here with values -->", start, end);
-      setOptions({
-        // title: {
-        //   text: "React StockChart with Spline Area Chart",
-        // },
-        theme: "light2",
-        backgroundColor: "transparent",
+    try {
+      if (cummulative_pnl.length != 0) {
+        // console.log("Negative graph -->", cummulative_pnl);
+        setDataPoints(cummulative_pnl);
+        // console.log("I am here with values -->", start, end);
+        setOptions({
+          // title: {
+          //   text: "React StockChart with Spline Area Chart",
+          // },
+          theme: "light2",
+          backgroundColor: "transparent",
 
-        // subtitles: [
-        //   {
-        //     text: "BTC/USD",
-        //   },
-        // ],
-        charts: [
-          {
-            // rangeSelector: {
-            //   enabled: false, //change it to true
-            // },
-            zoomEnabled: false, // Enable zoom
+          // subtitles: [
+          //   {
+          //     text: "BTC/USD",
+          //   },
+          // ],
+          charts: [
+            {
+              // rangeSelector: {
+              //   enabled: false, //change it to true
+              // },
+              zoomEnabled: false, // Enable zoom
 
+              axisX: {
+                //   lineColor: "#43577533",
+                labelFontSize: 10,
+                gridColor: "#43577533",
+                tickColor: "#43577533",
+                lineThickness: 1,
+                tickLength: 0,
+                crosshair: {
+                  enabled: false,
+                  snapToDataPoint: false,
+                  valueFormatString: "MMM DD YYYY",
+                },
+              },
+              rangeSelector: {
+                enabled: false, //change it to true
+              },
+              axisY: {
+                //   title: "Bitcoin Price",
+                // prefix: "$",
+                gridColor: "#43577533",
+                tickColor: "#43577533",
+                labelFontSize: 10,
+                crosshair: {
+                  enabled: false,
+
+                  snapToDataPoint: false,
+                  valueFormatString: "$#,###.##",
+                },
+              },
+              toolTip: {
+                shared: true,
+                fontSize: 10,
+
+                contentFormatter: (e) => {
+                  const date = CanvasJSReact.CanvasJS.formatDate(
+                    e.entries[0].dataPoint.x,
+                    "DD/MM/YYYY HH:mm:ss"
+                  );
+                  let content = `<strong>${date}</strong><br/><br/>`;
+
+                  e.entries.forEach((entry) => {
+                    content += `<span style="color: ${entry.dataPoint.color};">PNL: </span>${entry.dataPoint.y}<br/>`;
+                  });
+
+                  return content;
+                },
+              },
+              data: cummulative_pnl,
+            },
+          ],
+          navigator: {
             axisX: {
-              //   lineColor: "#43577533",
               labelFontSize: 10,
-              gridColor: "#43577533",
-              tickColor: "#43577533",
-              lineThickness: 1,
-              tickLength: 0,
-              crosshair: {
-                enabled: false,
-                snapToDataPoint: false,
-                valueFormatString: "MMM DD YYYY",
-              },
-            },
-            rangeSelector: {
-              enabled: false, //change it to true
-            },
-            axisY: {
-              //   title: "Bitcoin Price",
-              // prefix: "$",
-              gridColor: "#43577533",
-              tickColor: "#43577533",
-              labelFontSize: 10,
-              crosshair: {
-                enabled: false,
-
-                snapToDataPoint: false,
-                valueFormatString: "$#,###.##",
-              },
-            },
-            toolTip: {
-              shared: true,
-              fontSize: 10,
-
-              contentFormatter: (e) => {
-                const date = CanvasJSReact.CanvasJS.formatDate(
-                  e.entries[0].dataPoint.x,
-                  "DD/MM/YYYY HH:mm:ss"
-                );
-                let content = `<strong>${date}</strong><br/><br/>`;
-
-                e.entries.forEach((entry) => {
-                  content += `<span style="color: ${entry.dataPoint.color};">PNL: </span>${entry.dataPoint.y}<br/>`;
-                });
-
-                return content;
-              },
             },
             data: cummulative_pnl,
+            slider: {
+              minimum: start,
+              maximum: end,
+              handleColor: "#000000",
+              handleBorderThickness: 1,
+              handleBorderColor: "#fddd4e",
+            },
           },
-        ],
-        navigator: {
-          axisX: {
-            labelFontSize: 10,
-          },
-          data: cummulative_pnl,
-          slider: {
-            minimum: start,
-            maximum: end,
-            handleColor: "#000000",
-            handleBorderThickness: 1,
-            handleBorderColor: "#fddd4e",
-          },
-        },
-      });
+        });
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [cummulative_pnl]);
 

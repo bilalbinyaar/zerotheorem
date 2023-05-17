@@ -10,7 +10,12 @@ import { useStateContext } from "../../ContextProvider";
 import { AiOutlineClose, AiFillGoogleCircle } from "react-icons/ai";
 import NavMobile from "../../mobile-components/nav/NavMobile";
 import { useSelector, useDispatch } from "react-redux";
-import { set_day_mode, set_night_mode } from "../../store";
+import {
+  set_day_mode,
+  set_login,
+  set_night_mode,
+  set_login_flase,
+} from "../../store";
 import LoginPopup from "../login-popup/LoginPopup";
 import { auth, provider } from "../../firebase_config";
 import Swal from "sweetalert2";
@@ -38,6 +43,9 @@ export default function Navbar() {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const dispatch = useDispatch();
+  const handlePersistantLogin = () => {
+    dispatch(set_login_flase(false));
+  };
   // Login State
   const {
     authCheckLogin,
@@ -51,7 +59,7 @@ export default function Navbar() {
     setTheme,
     authCheckLoginInvestor,
     setAuthCheckLoginInvestor,
-    setCheckLoginMain
+    setCheckLoginMain,
   } = useStateContext();
   // Login State
   // const [theme, setTheme] = useState("light-theme");
@@ -493,86 +501,82 @@ export default function Navbar() {
             )}
           </div>
 
-              {authCheckLoginInvestor == true ? (
-
-                <ul
-            id="mobile-nav"
-            className={click ? "nav-menu active" : "nav-menu"}
-          >
-            <CustomLink to="/" onClick={toCloseNav}>
-              Performance
-            </CustomLink>
-            <CustomLink to="/compare" className="menu-item">
-              Compare
-            </CustomLink>
-            <CustomLink to="/backtest" className="menu-item">
-              Backtest
-            </CustomLink>
-            <CustomLink to="/derivations" className="menu-item">
-              Derivations
-            </CustomLink>
-            <CustomLink to="/api" className="menu-item">
-              API
-            </CustomLink>
+          {authCheckLoginInvestor == true ? (
+            <ul
+              id="mobile-nav"
+              className={click ? "nav-menu active" : "nav-menu"}
+            >
+              <CustomLink to="/" onClick={toCloseNav}>
+                Performance
+              </CustomLink>
+              <CustomLink to="/compare" className="menu-item">
+                Compare
+              </CustomLink>
+              <CustomLink to="/backtest" className="menu-item">
+                Backtest
+              </CustomLink>
+              <CustomLink to="/derivations" className="menu-item">
+                Derivations
+              </CustomLink>
+              <CustomLink to="/api" className="menu-item">
+                API
+              </CustomLink>
+            </ul>
+          ) : (
+            <ul
+              id="mobile-nav"
+              className={click ? "nav-menu active" : "nav-menu"}
+            >
+              <CustomLink to="/performance" onClick={toCloseNav}>
+                Performance
+              </CustomLink>
+              <CustomLink className="menu-item">
+                Forecasts
+                <ul className="sub-menu-items">
+                  <CustomLink
+                    className="sub-menu-item"
+                    to="/"
+                    onClick={toCloseNav}
+                  >
+                    All Models
+                  </CustomLink>
+                  <CustomLink
+                    className="sub-menu-item"
+                    to="/backtest"
+                    onClick={toCloseNav}
+                  >
+                    Backtest
+                  </CustomLink>
+                  <CustomLink
+                    className="sub-menu-item"
+                    to="/compare"
+                    onClick={toCloseNav}
+                  >
+                    Compare
+                  </CustomLink>
                 </ul>
-                
+              </CustomLink>
+              <CustomLink className="menu-item">
+                Resources
+                <ul className="sub-menu-items">
+                  <CustomLink
+                    className="sub-menu-item"
+                    to="/derivations"
+                    onClick={toCloseNav}
+                  >
+                    Derivations
+                  </CustomLink>
+                  <CustomLink
+                    className="sub-menu-item"
+                    to="/faqs"
+                    onClick={toCloseNav}
+                  >
+                    FAQs
+                  </CustomLink>
+                </ul>
+              </CustomLink>
 
-              ) : (
-
-                <ul
-            id="mobile-nav"
-            className={click ? "nav-menu active" : "nav-menu"}
-          >
-            <CustomLink to="/performance" onClick={toCloseNav}>
-              Performance
-            </CustomLink>
-            <CustomLink className="menu-item">
-              Forecasts
-              <ul className="sub-menu-items">
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/"
-                  onClick={toCloseNav}
-                >
-                  All Models
-                </CustomLink>
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/backtest"
-                  onClick={toCloseNav}
-                >
-                  Backtest
-                </CustomLink>
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/compare"
-                  onClick={toCloseNav}
-                >
-                  Compare
-                </CustomLink>
-              </ul>
-            </CustomLink>
-            <CustomLink className="menu-item">
-              Resources
-              <ul className="sub-menu-items">
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/derivations"
-                  onClick={toCloseNav}
-                >
-                  Derivations
-                </CustomLink>
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/faqs"
-                  onClick={toCloseNav}
-                >
-                  FAQs
-                </CustomLink>
-              </ul>
-            </CustomLink>
-
-            {/* <CustomLink to="/" onClick={toCloseNav}>
+              {/* <CustomLink to="/" onClick={toCloseNav}>
               Forecasts
             </CustomLink> 
             <CustomLink to="/backtest" onClick={toCloseNav}>
@@ -585,37 +589,36 @@ export default function Navbar() {
             <CustomLink to="/derivations" onClick={toCloseNav}>
               Derivations
             </CustomLink> */}
-            <CustomLink className="menu-item">
-              API
-              <ul className="sub-menu-items">
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/api-registration"
-                  onClick={toCloseNav}
-                >
-                  Registration
-                </CustomLink>
-                <CustomLink
-                  className="sub-menu-item"
-                  to="/api"
-                  onClick={toCloseNav}
-                >
-                  Documentation
-                </CustomLink>
-              </ul>
-            </CustomLink>
-            <CustomLink to="/about" onClick={toCloseNav}>
-              About
-            </CustomLink>
-            <CustomLink to="/contact" onClick={toCloseNav}>
-              Contact
-            </CustomLink>
-            {/* <CustomLink to="/faqs" onClick={toCloseNav}>
+              <CustomLink className="menu-item">
+                API
+                <ul className="sub-menu-items">
+                  <CustomLink
+                    className="sub-menu-item"
+                    to="/api-registration"
+                    onClick={toCloseNav}
+                  >
+                    Registration
+                  </CustomLink>
+                  <CustomLink
+                    className="sub-menu-item"
+                    to="/api"
+                    onClick={toCloseNav}
+                  >
+                    Documentation
+                  </CustomLink>
+                </ul>
+              </CustomLink>
+              <CustomLink to="/about" onClick={toCloseNav}>
+                About
+              </CustomLink>
+              <CustomLink to="/contact" onClick={toCloseNav}>
+                Contact
+              </CustomLink>
+              {/* <CustomLink to="/faqs" onClick={toCloseNav}>
               FAQs
             </CustomLink> */}
-                </ul>
-              ) }
-          
+            </ul>
+          )}
 
           {toggle && (
             <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -683,7 +686,6 @@ export default function Navbar() {
               />
             )}
           </div>
-
 
           {/* {authCheckLoginInvestor == true ? (
             <div className="btn-group nav-btn">
@@ -786,7 +788,6 @@ export default function Navbar() {
             </div>
           ) } */}
 
-
           {authCheckLoginInvestor == true ? (
             <div className="btn-group nav-btn">
               <button
@@ -802,6 +803,8 @@ export default function Navbar() {
                     showConfirmButton: false,
                   });
                   setAuthCheckLoginInvestor(false);
+                  handlePersistantLogin();
+
                   linkModels(`/`);
                 }}
               >
@@ -829,9 +832,7 @@ export default function Navbar() {
                 Logout
               </button>
             </div>
-          ) }
-
-          
+          )}
 
           <div className="hamburger" onClick={oneClick}>
             {click ? (

@@ -222,49 +222,53 @@ const ModelDataGrid = () => {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    console.log("Here is strategies -->", strategies, pnl_for_each_strategy);
-    if (strategies == null && pnl_for_each_strategy == null) {
-      return;
-    } else {
-      //   console.log("Hi here is pnl for each -->", pnl_for_each_strategy);
-      var data_for_rows = [];
-      var index = 0;
-      for (var key in strategies) {
-        data_for_rows.push({
-          favs: false,
-          id: index,
-          modelNameMob: [
-            strategies[key].time_horizon,
-            strategies[key].currency,
-            key,
-            strategies[key].current_position,
-          ],
-          modelName: key.replace("_", "-"),
-          currency: strategies[key].currency,
-          timeHorizon: strategies[key].time_horizon,
-          dateAdded: strategies[key].date_started,
-          currentForecast: strategies[key].current_position,
-          pnl_sum_7: pnl_for_each_strategy[key].pnl_sum_7,
-          nextForecast: [
-            strategies[key].time_horizon,
-            strategies[key].next_forecast,
-          ],
-          avg_daily_pnl: pnl_for_each_strategy[key].average_daily_pnl,
-          forecast_time: strategies[key].forecast_time,
-          tpsl: "$186 / $740",
+    // console.log("Here is strategies -->", strategies, pnl_for_each_strategy);
+    try {
+      if (strategies == null || pnl_for_each_strategy == null) {
+        return;
+      } else {
+        //   console.log("Hi here is pnl for each -->", pnl_for_each_strategy);
+        var data_for_rows = [];
+        var index = 0;
+        for (var key in strategies) {
+          data_for_rows.push({
+            favs: false,
+            id: index,
+            modelNameMob: [
+              strategies[key].time_horizon,
+              strategies[key].currency,
+              key,
+              strategies[key].current_position,
+            ],
+            modelName: key.replace("_", "-"),
+            currency: strategies[key].currency,
+            timeHorizon: strategies[key].time_horizon,
+            dateAdded: strategies[key].date_started,
+            currentForecast: strategies[key].current_position,
+            pnl_sum_7: pnl_for_each_strategy[key].pnl_sum_7,
+            nextForecast: [
+              strategies[key].time_horizon,
+              strategies[key].next_forecast,
+            ],
+            avg_daily_pnl: pnl_for_each_strategy[key].average_daily_pnl,
+            forecast_time: strategies[key].forecast_time,
+            tpsl: "$186 / $740",
 
-          totalpnl: pnl_for_each_strategy[key].total_pnl,
-          pnlGraph: `${key}`,
-        });
-        index++;
+            totalpnl: pnl_for_each_strategy[key].total_pnl,
+            pnlGraph: `${key}`,
+          });
+          index++;
+        }
+        if (data_for_rows.length != 0) {
+          setRows(data_for_rows);
+          setPinnedRows([data_for_rows[2]]);
+          set_rows_cached(data_for_rows);
+          setIsLoaded(true);
+          //  console.log("Here are data grid--->", data_for_rows);
+        }
       }
-      if (data_for_rows.length != 0) {
-        setRows(data_for_rows);
-        setPinnedRows([data_for_rows[2]]);
-        set_rows_cached(data_for_rows);
-        setIsLoaded(true);
-        //  console.log("Here are data grid--->", data_for_rows);
-      }
+    } catch (err) {
+      console.log("Error occured -->", err);
     }
   }, [strategies]);
   const [favs_list, set_favs_list] = useState([]);
@@ -300,214 +304,227 @@ const ModelDataGrid = () => {
   }, [authCheckLogin, rows]);
 
   useEffect(() => {
-    if (favs_list.length > 0) {
-      const updatedRows = rows.map((row) =>
-        favs_list.includes(row.modelName) ? { ...row, ["favs"]: true } : row
-      );
-      var sorted = {};
-      if (Object.keys(updatedRows).length > 10) {
-        sorted = Object.keys(updatedRows)
-          .map((key) => {
-            return { ...updatedRows[key], key };
-          })
-          .sort((a, b) => b.favs - a.favs);
-      }
+    try {
+      if (favs_list.length > 0) {
+        const updatedRows = rows.map((row) =>
+          favs_list.includes(row.modelName) ? { ...row, ["favs"]: true } : row
+        );
+        var sorted = {};
+        if (Object.keys(updatedRows).length > 10) {
+          sorted = Object.keys(updatedRows)
+            .map((key) => {
+              return { ...updatedRows[key], key };
+            })
+            .sort((a, b) => b.favs - a.favs);
+        }
 
-      if (Object.keys(sorted).length > 10) {
-        setRows(sorted);
-        // set_rows_cached(rows);
+        if (Object.keys(sorted).length > 10) {
+          setRows(sorted);
+          // set_rows_cached(rows);
+        }
       }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [favs_list]);
 
   useEffect(() => {
-    if (topPerformerModels == null) {
-      return;
-    } else {
-      if (Object.keys(strategies_cache).length == 0) {
-        fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log(data["response"].length);
-            var data_for_strategies = {};
-            var model_names = [];
-            var coin_names = [];
-            var unique_coins = {};
-            var index = 0;
-            for (var i = 0; i < data["response"].length; i++) {
-              // var name = data["response"][i].strategy_name.replace("_", "-");
-              model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
-                value: data["response"][i].time_horizon,
-                currency: data["response"][i].currency,
-              });
-              if (!unique_coins[data["response"][i].currency]) {
-                unique_coins[data["response"][i].currency] = 1;
-                coin_names.push({
-                  label: data["response"][i].currency,
-                  // value: i,
-                });
-              }
-              var dt = new Date(
-                parseInt(data["response"][i].forecast_time) * 1000
-              ).toLocaleString();
-              // console.log("Locale string -->", dt);
-              var year = dt.split("/")[2].split(",")[0];
-              var month = dt.split("/")[0];
-              if (month.length == 1) {
-                month = "0" + month;
-              }
-              var day = dt.split("/")[1];
-              if (day.length == 1) {
-                day = "0" + day;
-              }
-              var hours = dt.split(", ")[1].split(":")[0];
-              if (hours.length == 1) {
-                hours = "0" + hours;
-              }
-              var minutes = dt.split(":")[1];
-              if (minutes.length == 1) {
-                minutes = "0" + minutes;
-              }
-              var curr_time_version = dt.split(" ")[2];
-              if (curr_time_version == "PM") {
-                hours = parseInt(hours) + 12;
-              }
-              var dt_str =
-                year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-              // console.log("DT", dt, dt_str);
-
-              data_for_strategies[data["response"][i].strategy_name] = {
-                current_position: data["response"][i].current_position,
-                time_horizon: data["response"][i].time_horizon,
-                currency: data["response"][i].currency,
-                date_started: data["response"][i].date_started,
-                entry_price: data["response"][i].entry_price,
-                forecast_time: dt_str,
-                // .split(".")[0]
-                // .slice(0, -3),
-                next_forecast: data["response"][i].next_forecast,
-                current_price: data["response"][i].current_price,
-                strategy_name: data["response"][i].strategy_name,
-                current_pnl: data["response"][i].current_pnl,
-                position_start_time: data["response"][i].position_start_time,
-              };
-              index++;
-            }
-            if (JSON.stringify(data_for_strategies) !== "{}") {
-              setStrategies(data_for_strategies);
-              set_model_search_selection(model_names);
-              //  console.log("Strategies final -->", data_for_strategies);
-              Set_strategies_cache({ strategies: data_for_strategies });
-              Set_coin_search_selection_cache({
-                coin_names: coin_names,
-              });
-              Set_model_search_selection_cache({
-                model_names: model_names,
-              });
-              // console.log("Here are model names --->", model_names);
-            }
-          })
-          .catch((err) => console.log(err));
+    try {
+      if (topPerformerModels == null) {
+        return;
       } else {
-        // console.log(
-        //   "I am using cached value of strategies -->",
-        //   strategies_cache
-        // );
-        setStrategies(strategies_cache["strategies"]);
-        // console.log(
-        //   "Here are model names c--->",
-        //   model_selection_cache["model_names"]
-        // );
+        if (Object.keys(strategies_cache).length == 0) {
+          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // console.log(data["response"].length);
+              console.log("Here pnl list -->", pnl_for_each_strategy);
+              var data_for_strategies = {};
+              var model_names = [];
+              var coin_names = [];
+              var unique_coins = {};
+              var index = 0;
+              for (var i = 0; i < data["response"].length; i++) {
+                // var name = data["response"][i].strategy_name.replace("_", "-");
+                model_names.push({
+                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  value: data["response"][i].time_horizon,
+                  currency: data["response"][i].currency,
+                });
+                if (!unique_coins[data["response"][i].currency]) {
+                  unique_coins[data["response"][i].currency] = 1;
+                  coin_names.push({
+                    label: data["response"][i].currency,
+                    // value: i,
+                  });
+                }
+                var dt = new Date(
+                  parseInt(data["response"][i].forecast_time) * 1000
+                ).toLocaleString();
+                // console.log("Locale string -->", dt);
+                var year = dt.split("/")[2].split(",")[0];
+                var month = dt.split("/")[0];
+                if (month.length == 1) {
+                  month = "0" + month;
+                }
+                var day = dt.split("/")[1];
+                if (day.length == 1) {
+                  day = "0" + day;
+                }
+                var hours = dt.split(", ")[1].split(":")[0];
+                if (hours.length == 1) {
+                  hours = "0" + hours;
+                }
+                var minutes = dt.split(":")[1];
+                if (minutes.length == 1) {
+                  minutes = "0" + minutes;
+                }
+                var curr_time_version = dt.split(" ")[2];
+                if (curr_time_version == "PM") {
+                  hours = parseInt(hours) + 12;
+                }
+                var dt_str =
+                  year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+                // console.log("DT", dt, dt_str);
 
-        set_coin_search_selection(coin_selection_cache["coin_names"]);
-        set_model_search_selection(model_selection_cache["model_names"]);
+                data_for_strategies[data["response"][i].strategy_name] = {
+                  current_position: data["response"][i].current_position,
+                  time_horizon: data["response"][i].time_horizon,
+                  currency: data["response"][i].currency,
+                  date_started: data["response"][i].date_started,
+                  entry_price: data["response"][i].entry_price,
+                  forecast_time: dt_str,
+                  // .split(".")[0]
+                  // .slice(0, -3),
+                  next_forecast: data["response"][i].next_forecast,
+                  current_price: data["response"][i].current_price,
+                  strategy_name: data["response"][i].strategy_name,
+                  current_pnl: data["response"][i].current_pnl,
+                  position_start_time: data["response"][i].position_start_time,
+                };
+                index++;
+              }
+              if (JSON.stringify(data_for_strategies) !== "{}") {
+                setStrategies(data_for_strategies);
+                set_model_search_selection(model_names);
+                //  console.log("Strategies final -->", data_for_strategies);
+                Set_strategies_cache({ strategies: data_for_strategies });
+                Set_coin_search_selection_cache({
+                  coin_names: coin_names,
+                });
+                Set_model_search_selection_cache({
+                  model_names: model_names,
+                });
+                // console.log("Here are model names --->", model_names);
+              }
+            })
+            .catch((err) => console.log(err));
+        } else {
+          // console.log(
+          //   "I am using cached value of strategies -->",
+          //   strategies_cache
+          // );
+          setStrategies(strategies_cache["strategies"]);
+          // console.log(
+          //   "Here are model names c--->",
+          //   model_selection_cache["model_names"]
+          // );
+
+          set_coin_search_selection(coin_selection_cache["coin_names"]);
+          set_model_search_selection(model_selection_cache["model_names"]);
+        }
       }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [topPerformerModels]);
 
   useEffect(() => {
-    if (Flag == null) {
-      if (Object.keys(stats_cache).length == 0) {
-        fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log(data["response"].length);
-            var model_names = {};
-            for (var i = 0; i < data["response"].length; i++) {
-              // console.log(data["response"][i].strategy_name);
-              // var name = data["response"][i].strategy_name;
-              model_names[data["response"][i].strategy_name] = {
-                strategy_name: data["response"][i].strategy_name,
-                current_drawdown: data["response"][i].current_drawdown,
-                curr_drawdown_duration:
-                  data["response"][i].curr_drawdown_duration,
-                average_drawdown: data["response"][i].average_drawdown,
-                average_drawdown_duration:
-                  data["response"][i].average_drawdown_duration,
-                max_drawdown: data["response"][i].max_drawdown,
-                max_drawdown_duration:
-                  data["response"][i].max_drawdown_duration,
-                r2_score: data["response"][i].r2_score,
-                sharpe: data["response"][i].sharpe,
-                sortino: data["response"][i].sortino,
-                total_pnl: data["response"][i].total_pnl,
-                total_positive_pnl: data["response"][i].total_positive_pnl,
-                total_negative_pnl: data["response"][i].total_negative_pnl,
-                total_wins: data["response"][i].total_wins,
-                total_losses: data["response"][i].total_losses,
-                consective_wins: data["response"][i].consective_wins,
-                consective_losses: data["response"][i].consective_losses,
-                win_percentage: data["response"][i].win_percentage,
-                loss_percentage: data["response"][i].loss_percentage,
-                pnl_sum_1: data["response"][i].pnl_sum_1,
-                pnl_sum_7: data["response"][i].pnl_sum_7,
-                pnl_sum_15: data["response"][i].pnl_sum_15,
-                pnl_sum_30: data["response"][i].pnl_sum_30,
-                pnl_sum_45: data["response"][i].pnl_sum_45,
-                pnl_sum_60: data["response"][i].pnl_sum_60,
-                average_daily_pnl: data["response"][i].average_daily_pnl,
-                win_loss_ratio: data["response"][i].win_loss_ratio,
-
-                rank: data["response"][i].rank,
-              };
-            }
-            if (JSON.stringify(model_names) !== "{}") {
-              // console.log("Sortable -->", model_names);
-
-              const sorted = Object.keys(model_names)
-                .map((key) => {
-                  return { ...model_names[key], key };
-                })
-                .sort((a, b) => b.total_pnl - a.total_pnl);
-              Set_stats_cache({ stats: model_names });
-              setPnlForEachStrategy(model_names);
-
-              Set_sorted_stats_cache({ sorted_stats: sorted });
-              setTopPerformersModels(sorted);
-              setFlag(true);
-            }
+    try {
+      if (Flag == null) {
+        if (Object.keys(stats_cache).length == 0) {
+          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
           })
-          .catch((err) => console.log(err));
-      } else {
-        // console.log(
-        //   "I am using cached values of sorted stats -->",
-        //   sorted_stats_cache
-        // );
-        setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
-        setPnlForEachStrategy(stats_cache["stats"]);
-        setFlag(true);
+            .then((response) => response.json())
+            .then((data) => {
+              // console.log(data["response"].length);
+              var model_names = {};
+              for (var i = 0; i < data["response"].length; i++) {
+                // console.log(data["response"][i].strategy_name);
+                // var name = data["response"][i].strategy_name;
+                model_names[data["response"][i].strategy_name] = {
+                  strategy_name: data["response"][i].strategy_name,
+                  current_drawdown: data["response"][i].current_drawdown,
+                  curr_drawdown_duration:
+                    data["response"][i].curr_drawdown_duration,
+                  average_drawdown: data["response"][i].average_drawdown,
+                  average_drawdown_duration:
+                    data["response"][i].average_drawdown_duration,
+                  max_drawdown: data["response"][i].max_drawdown,
+                  max_drawdown_duration:
+                    data["response"][i].max_drawdown_duration,
+                  r2_score: data["response"][i].r2_score,
+                  sharpe: data["response"][i].sharpe,
+                  sortino: data["response"][i].sortino,
+                  total_pnl: data["response"][i].total_pnl,
+                  total_positive_pnl: data["response"][i].total_positive_pnl,
+                  total_negative_pnl: data["response"][i].total_negative_pnl,
+                  total_wins: data["response"][i].total_wins,
+                  total_losses: data["response"][i].total_losses,
+                  consective_wins: data["response"][i].consective_wins,
+                  consective_losses: data["response"][i].consective_losses,
+                  win_percentage: data["response"][i].win_percentage,
+                  loss_percentage: data["response"][i].loss_percentage,
+                  pnl_sum_1: data["response"][i].pnl_sum_1,
+                  pnl_sum_7: data["response"][i].pnl_sum_7,
+                  pnl_sum_15: data["response"][i].pnl_sum_15,
+                  pnl_sum_30: data["response"][i].pnl_sum_30,
+                  pnl_sum_45: data["response"][i].pnl_sum_45,
+                  pnl_sum_60: data["response"][i].pnl_sum_60,
+                  average_daily_pnl: data["response"][i].average_daily_pnl,
+                  win_loss_ratio: data["response"][i].win_loss_ratio,
+
+                  rank: data["response"][i].rank,
+                };
+              }
+              if (JSON.stringify(model_names) !== "{}") {
+                // console.log("Sortable -->", model_names);
+
+                const sorted = Object.keys(model_names)
+                  .map((key) => {
+                    return { ...model_names[key], key };
+                  })
+                  .sort((a, b) => b.total_pnl - a.total_pnl);
+                Set_stats_cache({ stats: model_names });
+                setPnlForEachStrategy(model_names);
+
+                Set_sorted_stats_cache({ sorted_stats: sorted });
+                setTopPerformersModels(sorted);
+                setFlag(true);
+              }
+            })
+            .catch((err) => console.log(err));
+        } else {
+          // console.log(
+          //   "I am using cached values of sorted stats -->",
+          //   sorted_stats_cache
+          // );
+          setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
+          setPnlForEachStrategy(stats_cache["stats"]);
+          setFlag(true);
+        }
       }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, []);
 

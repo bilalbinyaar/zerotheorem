@@ -13,108 +13,123 @@ const AreaLineChart = (props) => {
   const [cummulative_pnl, set_cum_pnl] = useState([]);
 
   useEffect(() => {
-    if (!negative_graph_cache[props.model_name]) {
-      // console.log("I received model name for graph -->", props.model_name);
+    try {
+      if (!negative_graph_cache[props.model_name]) {
+        // console.log("I received model name for graph -->", props.model_name);
 
-      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-        },
-      })
-        .then((response) => response.json())
-        .then(async (data) => {
-          // console.log("I received data for each series -->", data["response"]);
-          var cum_pnl = [];
-          for (var index = 0; index < data["response"].length; index++) {
-            cum_pnl.push({
-              category: new Date(
-                parseInt(data["response"][index].ledger_timestamp) * 1000
-              ).toLocaleString(),
-              value: parseInt(data["response"][index].pnl_sum),
-            });
+        fetch(
+          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
           }
+        )
+          .then((response) => response.json())
+          .then(async (data) => {
+            // console.log("I received data for each series -->", data["response"]);
+            var cum_pnl = [];
+            for (var index = 0; index < data["response"].length; index++) {
+              cum_pnl.push({
+                category: new Date(
+                  parseInt(data["response"][index].ledger_timestamp) * 1000
+                ).toLocaleString(),
+                value: parseInt(data["response"][index].pnl_sum),
+              });
+            }
 
-          // await delay(1000);
-          if (cum_pnl.length != 0) {
-            set_cum_pnl(cum_pnl);
-            Set_negative_graph_cache({ [props.model_name]: cum_pnl });
-          }
-          // console.log("Cum pnl -->", cum_pnl);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      set_cum_pnl(negative_graph_cache[props.model_name]);
+            // await delay(1000);
+            if (cum_pnl.length != 0) {
+              set_cum_pnl(cum_pnl);
+              Set_negative_graph_cache({ [props.model_name]: cum_pnl });
+            }
+            // console.log("Cum pnl -->", cum_pnl);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        set_cum_pnl(negative_graph_cache[props.model_name]);
 
-      // console.log(
-      //   "I am using cached value for straight spline graph -->",
-      //   straight_spline_graph_cache[props.model_name]
-      // );
+        // console.log(
+        //   "I am using cached value for straight spline graph -->",
+        //   straight_spline_graph_cache[props.model_name]
+        // );
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, []);
 
   useEffect(() => {
-    if (cummulative_pnl.length != 0) {
-      set_data_for_pnl_graph(cummulative_pnl);
+    try {
+      if (cummulative_pnl.length != 0) {
+        set_data_for_pnl_graph(cummulative_pnl);
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [cummulative_pnl]);
 
   useEffect(() => {
-    if (data_for_pnl_graph == null) {
-      return;
-    } else {
-      // Create chart instance
-      let chart = am4core.create("chartdiv", am4charts.XYChart);
+    try {
+      if (data_for_pnl_graph == null) {
+        return;
+      } else {
+        // Create chart instance
+        let chart = am4core.create("chartdiv", am4charts.XYChart);
 
-      // Add data
-      chart.data = data_for_pnl_graph;
+        // Add data
+        chart.data = data_for_pnl_graph;
 
-      // Create axes
-      let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-      categoryAxis.dataFields.category = "category";
-      categoryAxis.renderer.minGridDistance = 50;
-      categoryAxis.renderer.cellStartLocation = 0.2;
-      categoryAxis.renderer.cellEndLocation = 0.8;
-      categoryAxis.renderer.labels.template.rotation = 315;
+        // Create axes
+        let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "category";
+        categoryAxis.renderer.minGridDistance = 50;
+        categoryAxis.renderer.cellStartLocation = 0.2;
+        categoryAxis.renderer.cellEndLocation = 0.8;
+        categoryAxis.renderer.labels.template.rotation = 315;
 
-      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
-      // Create series
-      let series = chart.series.push(new am4charts.LineSeries());
-      series.dataFields.valueY = "value";
-      series.dataFields.categoryX = "category";
-      series.strokeWidth = 2;
-      series.tensionX = 0.8;
-      series.fillOpacity = 0.5;
+        // Create series
+        let series = chart.series.push(new am4charts.LineSeries());
+        series.dataFields.valueY = "value";
+        series.dataFields.categoryX = "category";
+        series.strokeWidth = 2;
+        series.tensionX = 0.8;
+        series.fillOpacity = 0.5;
 
-      // Set colors based on values
-      let range = valueAxis.createSeriesRange(series);
-      range.value = 0;
-      range.endValue = Number.MAX_VALUE;
-      range.contents.stroke = am4core.color("#16C784");
-      range.contents.fill = am4core.color("#16C784");
-      range.contents.fillOpacity = 0.5;
+        // Set colors based on values
+        let range = valueAxis.createSeriesRange(series);
+        range.value = 0;
+        range.endValue = Number.MAX_VALUE;
+        range.contents.stroke = am4core.color("#16C784");
+        range.contents.fill = am4core.color("#16C784");
+        range.contents.fillOpacity = 0.5;
 
-      range = valueAxis.createSeriesRange(series);
-      range.value = -Number.MAX_VALUE;
-      range.endValue = 0;
-      range.contents.stroke = am4core.color("#FF2E2E");
-      range.contents.fill = am4core.color("#FF2E2E");
-      range.contents.fillOpacity = 0.5;
+        range = valueAxis.createSeriesRange(series);
+        range.value = -Number.MAX_VALUE;
+        range.endValue = 0;
+        range.contents.stroke = am4core.color("#FF2E2E");
+        range.contents.fill = am4core.color("#FF2E2E");
+        range.contents.fillOpacity = 0.5;
 
-      //disable vertical lines
-      categoryAxis.renderer.grid.template.strokeWidth = 0;
+        //disable vertical lines
+        categoryAxis.renderer.grid.template.strokeWidth = 0;
 
-      // Enable ClassNames for CSS
-      am4core.options.autoSetClassName = true;
+        // Enable ClassNames for CSS
+        am4core.options.autoSetClassName = true;
 
-      // Add cursor
-      chart.cursor = new am4charts.XYCursor();
-      chart.cursor.behavior = "zoomXY";
+        // Add cursor
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.behavior = "zoomXY";
 
-      return () => {
-        chart.dispose();
-      };
+        return () => {
+          chart.dispose();
+        };
+      }
+    } catch (error) {
+      console.log("Error occured");
     }
   }, [data_for_pnl_graph]);
 
