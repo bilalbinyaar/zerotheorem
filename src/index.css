@@ -471,7 +471,7 @@ a:-webkit-any-link {
 }
 
 .canvas-main-div .container {
-  padding: 4rem 0rem;
+  padding: 2rem 0rem 4rem 0rem;
 }
 
 .dataGrid-spline div {
@@ -916,13 +916,13 @@ a:-webkit-any-link {
 
 .MuiPagination-root {
   position: absolute !important;
-  left: 37% !important;
+  left: 45% !important;
   z-index: 4;
 }
 
 .css-1oj2twp-MuiPagination-root {
   position: absolute !important;
-  left: 37% !important;
+  left: 45% !important;
   z-index: 4;
 }
 

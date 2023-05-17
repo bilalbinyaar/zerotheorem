@@ -77,11 +77,14 @@ const PerformancePieChart = (props) => {
   const options = {
     labels: labels,
     // colors: ["#16C784", "#FF2E2E"],
+
     chart: {
       width: 500,
       height: 300,
       type: "radialBar",
     },
+
+
     plotOptions: {
       radialBar: {
         offsetY: 0,
@@ -108,6 +111,9 @@ const PerformancePieChart = (props) => {
     },
     fill: {
       type: "gradient",
+    },
+    stroke : {
+      colors: ["#FF2E2E"],
     },
     legend: {
       show: true,

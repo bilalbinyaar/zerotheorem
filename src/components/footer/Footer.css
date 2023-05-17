@@ -156,6 +156,15 @@
     margin-top: 16px;
 }
 
+.equation-img-investor {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+
+.equation-i-div-investor {
+    width: unset;
+}
+
 @media screen and (max-width: 688px) {
     .footer .container {
         padding: 0;
