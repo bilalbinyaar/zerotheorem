@@ -10,7 +10,7 @@ import { AiFillCaretUp } from "react-icons/ai";
 import { AiFillCaretDown } from "react-icons/ai";
 const Portfolio = () => {
   const [timer_for_current, set_timer_for_current_position] = useState(null);
-  const [stats, setStats] = useState(null);
+  const [stats, setStats] = useState([]);
   const { theme } = useStateContext();
   const forColor = (total_pnl, id) => {
     try {
@@ -56,6 +56,9 @@ const Portfolio = () => {
             console.log("Here is stats -->", temp_data);
             // console.log("Here is the data for current position", temp_data);
           }
+        })
+        .catch((err) => {
+          alert("Error occured");
         });
     }
     setTimeout(() => {
@@ -87,7 +90,8 @@ const Portfolio = () => {
             setStats(temp_data);
             // console.log("Here is the data for current position", temp_data);
           }
-        });
+        })
+        .catch((err) => alert("Error occured"));
       set_timer_for_current_position(new Date());
     }, 60000);
   }, [timer_for_current]);
@@ -153,7 +157,7 @@ const Portfolio = () => {
           <div className="today-stats for-flex-col">
             <h2>Overall Return</h2>
             <div className="portfolio-stats-percentage" id="pnl-bg">
-              {stats ? (
+              {stats["live_pnls"] ? (
                 stats["live_pnls"].pnl_all >= 0 ? (
                   <AiFillCaretUp className="model-details-left-top-percentage-icon " />
                 ) : (
@@ -163,7 +167,7 @@ const Portfolio = () => {
               <p
                 id="pnl-color10"
                 onChange={
-                  stats
+                  stats["live_pnls"]
                     ? forColor(
                         parseInt(stats["live_pnls"].pnl_all),
                         "pnl-color10"
@@ -171,7 +175,7 @@ const Portfolio = () => {
                     : null
                 }
               >
-                {stats ? `${stats["live_pnls"].pnl_all}%` : null}
+                {stats["live_pnls"] ? `${stats["live_pnls"].pnl_all}%` : null}
               </p>
             </div>
           </div>
@@ -191,7 +195,7 @@ const Portfolio = () => {
             <div className="pnl-day-stats for-flex-col">
               <h3>Today</h3>
               <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
+                {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_1 >= 0 ? (
                     <AiFillCaretUp className="model-details-left-top-percentage-icon " />
                   ) : (
@@ -201,7 +205,7 @@ const Portfolio = () => {
                 <p
                   id="pnl-color10"
                   onChange={
-                    stats
+                    stats["live_pnls"]
                       ? forColor(
                           parseInt(stats["live_pnls"].pnl_1),
                           "pnl-color10"
@@ -209,7 +213,7 @@ const Portfolio = () => {
                       : null
                   }
                 >
-                  {stats ? `${stats["live_pnls"].pnl_1}%` : null}
+                  {stats["live_pnls"] ? `${stats["live_pnls"].pnl_1}%` : null}
                 </p>
               </div>
             </div>
@@ -219,7 +223,7 @@ const Portfolio = () => {
             <div className="pnl-day-stats for-flex-col">
               <h3>7-Day</h3>
               <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
+                {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_7 >= 0 ? (
                     <AiFillCaretUp className="model-details-left-top-percentage-icon " />
                   ) : (
@@ -229,7 +233,7 @@ const Portfolio = () => {
                 <p
                   id="pnl-color10"
                   onChange={
-                    stats
+                    stats["live_pnls"]
                       ? forColor(
                           parseInt(stats["live_pnls"].pnl_7),
                           "pnl-color10"
@@ -237,7 +241,7 @@ const Portfolio = () => {
                       : null
                   }
                 >
-                  {stats ? `${stats["live_pnls"].pnl_7}%` : null}
+                  {stats["live_pnls"] ? `${stats["live_pnls"].pnl_7}%` : null}
                 </p>
               </div>
             </div>
@@ -247,7 +251,7 @@ const Portfolio = () => {
             <div className="pnl-day-stats for-flex-col">
               <h3>30-Day</h3>
               <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
+                {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_30 >= 0 ? (
                     <AiFillCaretUp className="model-details-left-top-percentage-icon " />
                   ) : (
@@ -257,7 +261,7 @@ const Portfolio = () => {
                 <p
                   id="pnl-color10"
                   onChange={
-                    stats
+                    stats["live_pnls"]
                       ? forColor(
                           parseInt(stats["live_pnls"].pnl_30),
                           "pnl-color10"
@@ -265,7 +269,7 @@ const Portfolio = () => {
                       : null
                   }
                 >
-                  {stats ? `${stats["live_pnls"].pnl_30}%` : null}
+                  {stats["live_pnls"] ? `${stats["live_pnls"].pnl_30}%` : null}
                 </p>
               </div>
             </div>
@@ -275,7 +279,7 @@ const Portfolio = () => {
             <div className="pnl-day-stats for-flex-col">
               <h3>60-Day</h3>
               <div className="portfolio-stats-percentage" id="pnl-bg">
-                {stats ? (
+                {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_60 >= 0 ? (
                     <AiFillCaretUp className="model-details-left-top-percentage-icon " />
                   ) : (
@@ -285,7 +289,7 @@ const Portfolio = () => {
                 <p
                   id="pnl-color10"
                   onChange={
-                    stats
+                    stats["live_pnls"]
                       ? forColor(
                           parseInt(stats["live_pnls"].pnl_60),
                           "pnl-color10"
@@ -293,7 +297,7 @@ const Portfolio = () => {
                       : null
                   }
                 >
-                  {stats ? `${stats["live_pnls"].pnl_60}%` : null}
+                  {stats["live_pnls"] ? `${stats["live_pnls"].pnl_60}%` : null}
                 </p>
               </div>
             </div>

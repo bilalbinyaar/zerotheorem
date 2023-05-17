@@ -19,6 +19,7 @@ const DuplicatesForPerformance = (props) => {
         <div className="in-depth-gd for-performance-mb portfolio-allocation-div">
           <h3>Portfolio Allocation</h3>
           <PerformancePieChart />
+          {/* <GradientDonut model_name={"collection"} /> */}
         </div>
       </div>
     </div>
