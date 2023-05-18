@@ -3,6 +3,19 @@ import "./LivePNL.css";
 
 const LivePNL = () => {
   const [stats, setStats] = useState([]);
+  const forColor = (total_pnl, id) => {
+    try {
+      if (total_pnl < 0) {
+        document
+          .getElementById(`${id}`)
+          .setAttribute("style", "color:#FF2E2E !important");
+      } else if (total_pnl >= 0) {
+        document
+          .getElementById(`${id}`)
+          .setAttribute("style", "color:#16C784 !important");
+      }
+    } catch {}
+  };
   useEffect(() => {
     fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
       method: "GET",
@@ -87,7 +100,24 @@ const LivePNL = () => {
         <div className="live-pnl-stats-div">
           <div className="overall-live overall-live-stats">
             <h3>Overall</h3>
-            <h3 className="live-stats">
+            <h3
+              //   className="live-stats"
+              id="pnl-color5"
+              onChange={
+                stats["4"]
+                  ? forColor(
+                      `${(
+                        parseFloat(stats["0"].current_pnl) +
+                        parseFloat(stats["1"].current_pnl) +
+                        parseFloat(stats["2"].current_pnl) +
+                        parseFloat(stats["3"].current_pnl) +
+                        parseFloat(stats["4"].current_pnl)
+                      ).toFixed(2)}`,
+                      "pnl-color5"
+                    )
+                  : null
+              }
+            >
               {stats["4"]
                 ? `${(
                     parseFloat(stats["0"].current_pnl) +
@@ -95,7 +125,7 @@ const LivePNL = () => {
                     parseFloat(stats["2"].current_pnl) +
                     parseFloat(stats["3"].current_pnl) +
                     parseFloat(stats["4"].current_pnl)
-                  ).toFixed(1)}%`
+                  ).toFixed(2)}%`
                 : null}
             </h3>
           </div>
@@ -105,35 +135,90 @@ const LivePNL = () => {
           <div className="strategies-live-stats">
             <div className="overall-live strategy-live-stats">
               <h3>{stats["0"] ? stats["0"].strategy_name : "Loading"}</h3>
-              <h3 className="live-stats">
+              <h3
+                className="live-stats"
+                id="pnl-color1"
+                onChange={
+                  stats["0"]
+                    ? forColor(
+                        `${parseFloat(stats["0"].current_pnl)}`,
+                        "pnl-color1"
+                      )
+                    : null
+                }
+              >
                 {stats["0"] ? `${stats["0"].current_pnl}%` : null}
               </h3>
             </div>
 
             <div className="overall-live strategy-live-stats">
               <h3>{stats["1"] ? stats["1"].strategy_name : "Loading"}</h3>
-              <h3 className="live-stats">
+              <h3
+                className="live-stats"
+                id="pnl-color2"
+                onChange={
+                  stats["1"]
+                    ? forColor(
+                        `${parseFloat(stats["1"].current_pnl)}`,
+                        "pnl-color2"
+                      )
+                    : null
+                }
+              >
                 {stats["1"] ? `${stats["1"].current_pnl}%` : null}
               </h3>
             </div>
 
             <div className="overall-live strategy-live-stats">
               <h3>{stats["2"] ? stats["2"].strategy_name : "Loading"}</h3>
-              <h3 className="live-stats">
+              <h3
+                className="live-stats"
+                id="pnl-color3"
+                onChange={
+                  stats["2"]
+                    ? forColor(
+                        `${parseFloat(stats["2"].current_pnl)}`,
+                        "pnl-color3"
+                      )
+                    : null
+                }
+              >
                 {stats["2"] ? `${stats["2"].current_pnl}%` : null}
               </h3>
             </div>
 
             <div className="overall-live strategy-live-stats">
               <h3>{stats["3"] ? stats["3"].strategy_name : "Loading"}</h3>
-              <h3 className="live-stats">
+              <h3
+                className="live-stats"
+                id="pnl-color4"
+                onChange={
+                  stats["3"]
+                    ? forColor(
+                        `${parseFloat(stats["3"].current_pnl)}`,
+                        "pnl-color4"
+                      )
+                    : null
+                }
+              >
                 {stats["3"] ? `${stats["3"].current_pnl}%` : null}
               </h3>
             </div>
 
             <div className="overall-live strategy-live-stats">
               <h3>{stats["4"] ? stats["4"].strategy_name : "Loading"}</h3>
-              <h3 className="live-stats">
+              <h3
+                className="live-stats"
+                id="pnl-color6"
+                onChange={
+                  stats["4"]
+                    ? forColor(
+                        `${parseFloat(stats["4"].current_pnl)}`,
+                        "pnl-color6"
+                      )
+                    : null
+                }
+              >
                 {stats["4"] ? `${stats["4"].current_pnl}%` : null}
               </h3>
             </div>
