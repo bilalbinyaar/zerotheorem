@@ -3,6 +3,7 @@ import Portfolio from "../components/portfolio/Portfolio";
 import PerformanceGraphs from "../components/performanceGraph/PerformanceGraphs";
 import PerformanceDataGrid from "../components/performanceGrid/PerformanceDataGrid";
 import CurrentPortfolio from "../components/currentPortfolio/CurrentPortfolio";
+import LivePNL from "../components/livepnl/LivePNL";
 
 const Performance = () => {
   return (
@@ -10,6 +11,7 @@ const Performance = () => {
       <Portfolio />
       <PerformanceGraphs />
       <PerformanceDataGrid />
+      <LivePNL />
       <CurrentPortfolio />
     </React.Fragment>
   );
