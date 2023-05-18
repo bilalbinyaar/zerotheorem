@@ -3,14 +3,14 @@ import ReactApexChart from "react-apexcharts";
 import { useStateContext } from "../../../ContextProvider";
 import { ThreeDots } from "react-loader-spinner";
 
-const GradientDonut = (props) => {
+const DoughnutRadialBar = (props) => {
   const [model_name, set_model_name] = useState(props.model_name);
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
   }
+  const [stats, setStats] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const [stats, setStats] = useState(null);
   const [series, setSeries] = useState([]);
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
@@ -167,23 +167,50 @@ const GradientDonut = (props) => {
     labels: ["Win", "Loss"],
     colors: ["#16C784", "#FF2E2E"],
     chart: {
-      width: 380,
-      height: 260,
-      type: "donut",
+      width: 500,
+      height: 300,
+      type: "radialBar",
     },
     plotOptions: {
-      pie: {
-        startAngle: -70,
-        endAngle: 290,
+      radialBar: {
+        offsetY: 0,
+        startAngle: 0,
+        endAngle: 270,
+        hollow: {
+          margin: 5,
+          size: "40%",
+          background: "transparent",
+          image: undefined,
+        },
+        track: {
+          background: "#a6a6a6",
+        },
+        dataLabels: {
+          name: {
+            show: true,
+          },
+          value: {
+            show: true,
+          },
+        },
       },
     },
     dataLabels: {
-      enabled: false,
+      enabled: true,
     },
     fill: {
       type: "gradient",
     },
     legend: {
+      show: true,
+      floating: true,
+      fontSize: "16px",
+      position: "right",
+      offsetX: 160,
+      offsetY: 15,
+      labels: {
+        useSeriesColors: true,
+      },
       formatter: function (val, opts) {
         return val + " - " + opts.w.globals.series[opts.seriesIndex];
       },
@@ -194,7 +221,7 @@ const GradientDonut = (props) => {
         breakpoint: 480,
         options: {
           chart: {
-            width: 200,
+            width: 400,
           },
           legend: {
             position: "bottom",
@@ -207,12 +234,14 @@ const GradientDonut = (props) => {
   return (
     <div id="chart" className="donut-chart">
       {isLoaded ? (
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="donut"
-          height={260}
-        />
+        <div>
+          <ReactApexChart
+            options={options}
+            series={series}
+            type="radialBar"
+            height={350}
+          />{" "}
+        </div>
       ) : (
         <div className="container loader-container">
           <ThreeDots
@@ -227,4 +256,4 @@ const GradientDonut = (props) => {
   );
 };
 
-export default GradientDonut;
+export default DoughnutRadialBar;

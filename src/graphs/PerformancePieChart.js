@@ -84,7 +84,6 @@ const PerformancePieChart = (props) => {
       type: "radialBar",
     },
 
-
     plotOptions: {
       radialBar: {
         offsetY: 0,
@@ -92,9 +91,12 @@ const PerformancePieChart = (props) => {
         endAngle: 270,
         hollow: {
           margin: 5,
-          size: "40%",
+          size: "25%",
           background: "transparent",
           image: undefined,
+        },
+        track: {
+          background: "#a6a6a6",
         },
         dataLabels: {
           name: {
@@ -112,7 +114,7 @@ const PerformancePieChart = (props) => {
     fill: {
       type: "gradient",
     },
-    stroke : {
+    stroke: {
       colors: ["#FF2E2E"],
     },
     legend: {
