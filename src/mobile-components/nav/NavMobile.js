@@ -510,6 +510,9 @@ export default function NavMobile(props) {
               <div className="display-none"></div>
             )}
 
+
+            
+
             <CustomLink to="/performance" onClick={toCloseNav}>
               <AiFillHome className="nav-icons" />
               Performance

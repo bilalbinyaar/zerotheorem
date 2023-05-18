@@ -90,18 +90,15 @@ const HeatMapChart = () => {
         },
       },
     },
-    title: {
-      text: "HeatMap Chart with Color Range and Correlation",
-    },
   };
 
   return (
-    <div className="container">
+    <div className="cont">
       <ReactApexChart
         options={options}
         series={series}
         type="heatmap"
-        // height={350}
+        height={340}
       />
     </div>
   );

@@ -53,3 +53,38 @@
 .strategy-live-stats .live-stats {
     color: var(--color-day-green);
 }
+
+@media screen and (max-width: 568px) {
+
+    .live-pnl-stats-div {
+        flex-direction: column;
+        border-top: none;
+        border-bottom: none;
+    }
+
+    .overall-live-stats {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0.8rem;
+    }
+
+    .divider-div-pnl-live {
+        display: none;
+    }
+
+    .strategies-live-stats {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .strategy-live-stats {
+        margin-left: 0;
+        margin-bottom: 0.8rem;
+    }
+
+    /* .overall-live {
+        flex-direction: column;
+    } */
+
+
+}
