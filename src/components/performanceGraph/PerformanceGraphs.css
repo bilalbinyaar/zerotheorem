@@ -7,6 +7,14 @@
   margin-bottom: 0.8rem;
 }
 
+.performance-graphs-main {
+  margin-bottom: 5rem;
+}
+
+.for-mb-returns {
+  margin-bottom: 1.8rem;
+}
+
 /* .performance-graphs-main {
     display: flex;
     justify-content: space-between;

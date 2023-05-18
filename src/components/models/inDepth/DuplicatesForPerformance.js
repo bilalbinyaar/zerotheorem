@@ -9,6 +9,7 @@ import PerformancePieChart from "../../../graphs/PerformancePieChart";
 import PerformanceMultiLine from "../../../graphs/PerformanceMultiLine";
 import PerformanceBarChart from "../../../graphs/PerformanceBarChart";
 import { useStateContext } from "../../../ContextProvider";
+import HeatMapChart from "../graphs/HeatmapChart";
 
 const DuplicatesForPerformance = (props) => {
   const { authCheckLoginInvestor } = useStateContext();
@@ -16,13 +17,16 @@ const DuplicatesForPerformance = (props) => {
     <div className="in-depth">
       <div className="in-depth-charts">
         <div className="in-depth-nc for-performance-mb">
-          {authCheckLoginInvestor ? (
-            <h3>Daily Returns</h3>
+          {/* {authCheckLoginInvestor ? (
+            // <h3>Daily Returns</h3>
+            null
           ) : (
             <h3>Individual Returns</h3>
-          )}
+          )} */}
 
-          <PerformanceBarChart model_name={"live_pnls"} />
+          {/* <PerformanceBarChart model_name={"live_pnls"} /> */}
+          <h3>Correlation Plot</h3>
+          <HeatMapChart model_name={"strategy_1"}/>
         </div>
         <div className="in-depth-gd for-performance-mb portfolio-allocation-div">
           <h3>Portfolio Allocation</h3>

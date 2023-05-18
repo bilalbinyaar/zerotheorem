@@ -622,6 +622,56 @@ export default function Navbar() {
 
           {toggle && (
             <ul className={click ? "nav-menu active" : "nav-menu"}>
+              {authCheckLoginInvestor === true ? (
+                <div>
+                  <p className="welcome-user welcome-user-mobile">
+                    Welcome, {userEmail}
+                  </p>
+                </div>
+              ) : (
+                <div className="display-none"></div>
+              )}
+
+              
+              <CustomLink to="/" onClick={toCloseNav}>
+                Forecasts
+              </CustomLink>
+              <CustomLink to="/backtest" onClick={toCloseNav}>
+                Backtest
+              </CustomLink>
+              <CustomLink to="/compare" onClick={toCloseNav}>
+                Compare
+              </CustomLink>
+              <CustomLink to="/derivations" onClick={toCloseNav}>
+                Derivations
+              </CustomLink>
+              <CustomLink to="/documentation" onClick={toCloseNav}>
+                API
+              </CustomLink>
+              <CustomLink to="/about" onClick={toCloseNav}>
+                About
+              </CustomLink>
+              <CustomLink to="/faqs" onClick={toCloseNav}>
+                FAQs
+              </CustomLink>
+
+              {authCheck === true ? (
+                <CustomLink
+                  to="/"
+                  onClick={() => {
+                    setAuthCheck(false);
+                  }}
+                >
+                  Logout
+                </CustomLink>
+              ) : (
+                <CustomLink to="/login">Login</CustomLink>
+              )}
+            </ul>
+          )}
+
+          {/* {toggle && (
+            <ul className={click ? "nav-menu active" : "nav-menu"}>
               {authCheck === true ? (
                 <div>
                   <p className="welcome-user welcome-user-mobile">
@@ -667,7 +717,7 @@ export default function Navbar() {
                 <CustomLink to="/login">Login</CustomLink>
               )}
             </ul>
-          )}
+          )} */}
 
           <div className="dark-lite">
             {(iamClick && theme === "dark-theme") || theme == "dark-theme" ? (

@@ -200,6 +200,14 @@
     .footer-copyright-text {
         text-align: center;
     } 
+
+    .investor-footer-inner {
+        flex-direction: column;
+    }
+
+    .footer-inner-left-investor {
+        margin: 2rem 0;
+    } 
 }
 
 
