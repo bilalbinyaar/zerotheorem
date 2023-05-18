@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 const HeatMapChart = () => {
@@ -17,6 +17,8 @@ const HeatMapChart = () => {
     "Strategy_4",
     "Strategy_5",
   ];
+
+  const [correlations, setCorrelations] = useState([]);
 
   const series = variables.map((variable, index) => ({
     // name: "Strategy",
