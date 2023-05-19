@@ -68,7 +68,7 @@ const PolarAreaChartApexCharts = () => {
       show: false,
     },
     legend: {
-      position: "bottom",
+      position: "top",
     },
     // dataLabels: {
     //   enabled: true,

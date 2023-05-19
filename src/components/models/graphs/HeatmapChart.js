@@ -84,9 +84,9 @@ const HeatMapChart = () => {
     },
     plotOptions: {
       heatmap: {
-        // shadeIntensity: 0.5,
+        shadeIntensity: 1,
         radius: 0,
-        // useFillColorAsStroke: true,
+        useFillColorAsStroke: true,
         colorScale: {
           ranges: [
             { from: -1, to: -0.5, name: "Strong Negative", color: "#FF0000" },
@@ -101,9 +101,9 @@ const HeatMapChart = () => {
     dataLabels: {
       enabled: true,
     },
-    // stroke: {
-    //   width: 1,
-    // },
+    stroke: {
+      width: 1,
+    },
     xaxis: {
       categories: strategies,
       labels: {
