@@ -565,6 +565,24 @@ function Documentation() {
             >
               Get Historical Forecasts
             </li>
+            <li
+              className={selectedHeadingIndex === 6 ? "active" : ""}
+              onClick={() => handleClick(6)}
+            >
+              Example 1
+            </li>
+            <li
+              className={selectedHeadingIndex === 7 ? "active" : ""}
+              onClick={() => handleClick(7)}
+            >
+              Example 2
+            </li>
+            <li
+              className={selectedHeadingIndex === 8 ? "active" : ""}
+              onClick={() => handleClick(8)}
+            >
+              Example 3
+            </li>
           </ul>           
 
           </div>
@@ -615,6 +633,24 @@ function Documentation() {
               onClick={() => handleClick(5)}
             >
               Get Historical Forecasts
+            </li>
+            <li
+              className={selectedHeadingIndex === 6 ? "active" : ""}
+              onClick={() => handleClick(6)}
+            >
+              Example 1
+            </li>
+            <li
+              className={selectedHeadingIndex === 7 ? "active" : ""}
+              onClick={() => handleClick(7)}
+            >
+              Example 2
+            </li>
+            <li
+              className={selectedHeadingIndex === 8 ? "active" : ""}
+              onClick={() => handleClick(8)}
+            >
+              Example 3
             </li>
           </ul>
         </div>

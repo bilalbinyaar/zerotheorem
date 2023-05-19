@@ -448,6 +448,10 @@
   }
 } */
 
+.model-details-body-left-four {
+  display: flex;
+}
+
 @media screen and (max-width: 568px) {
   .for-font-size {
     font-size: 10px !important;

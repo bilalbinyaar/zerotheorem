@@ -21,16 +21,16 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-main-div">
         {authCheckLoginInvestor == true ? (
-
+          
           <div className="container investor-container">
             <div className="footer-logo-div investor-logo-div">
               {theme === "dark-theme" ? (
                 <Link to="/">
-                  <img className="footer-logo-img" src={logoWhite} alt="logo" />
+                  <img className="footer-logo-img footer-logo-img-investor" src={logoWhite} alt="logo" />
                 </Link>
               ) : (
                 <Link to="/">
-                  <img className="footer-logo-img" src={logoBlack} alt="logo" />
+                  <img className="footer-logo-img footer-logo-img-investor" src={logoBlack} alt="logo" />
                 </Link>
               )}
             </div>
@@ -57,7 +57,7 @@ const Footer = () => {
                   </div>
 
                   <div className="announcement-news">
-                    <div className="news-inner footer-news-inner">
+                    <div className="news-inner footer-news-inner footer-news-inner-investor">
                       {theme === "dark-theme" ? (
                         <div className="equation-img equation-img-investor">
                           <div className="equation-i-div equation-i-div-investor">
@@ -241,7 +241,7 @@ const Footer = () => {
               <div className="announcement-card">
                 <div className="announcement-news">
                   {authCheckLoginInvestor == true ? (
-                    <div className="news-inner footer-news-inner inner-footer-bar"></div>
+                    <div className="news-inner footer-news-inner inner-footer-bar footer-news-inner-investor"></div>
                   ) : (
                     <div className="news-inner footer-news-inner inner-footer-bar">
                       <p className="footer-follow-text">Find us</p>

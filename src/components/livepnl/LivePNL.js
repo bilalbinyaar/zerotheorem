@@ -264,7 +264,7 @@ const LivePNL = () => {
   return (
     <div className="live-pnl">
       <div className="container">
-        <h2>Live PNLS</h2>
+        <h2>Live PNLs</h2>
 
         <div className="live-pnl-stats-div">
           <div className="overall-live overall-live-stats">

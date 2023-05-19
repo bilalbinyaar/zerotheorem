@@ -85,7 +85,7 @@
 }
 
 .portfolio-stats-percentage svg {
-    color: var(--color-day-green) !important;
+    margin-top: 4px;
 }
 
 .portfolio-stats-percentage p {
@@ -107,6 +107,7 @@
     background-color: var(--forecasts-model-index);
 }
 
+
 /* .pt-0 {
     padding-top: 0 !important;
 } */
@@ -121,6 +122,7 @@
         margin-top: 3px !important;
     }
     .portfolio-stats {
+        padding: 1.2rem 0rem 0rem 0rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;

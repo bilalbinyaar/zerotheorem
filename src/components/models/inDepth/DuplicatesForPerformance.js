@@ -16,7 +16,7 @@ const DuplicatesForPerformance = (props) => {
   return (
     <div className="in-depth">
       <div className="in-depth-charts">
-        <div className="in-depth-nc for-performance-mb">
+        <div className="in-depth-nc for-performance-mb for-performance-nc">
           {/* {authCheckLoginInvestor ? (
             // <h3>Daily Returns</h3>
             null

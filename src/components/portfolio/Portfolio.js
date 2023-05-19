@@ -106,66 +106,15 @@ const Portfolio = () => {
           <h1>Performance</h1>
         </div>
 
-        {/* <div className="forecasts-details">
-          <p className="forcasts-description">
-            Zero Theorem is an economic framework for valuing Bitcoin. On the
-            forecast page you will find a variety of machine learning solutions
-            to the Zero Theorem governing equation. Each model attempts to
-            estimate substitution parameter 𝛼<sub>𝑘</sub> to solve the market
-            sizing dilemma. Hence each model also produces a forward valuation
-            and pricing direction.
-          </p>
-
-          {theme === "dark-theme" ? (
-            <div className="equation-img">
-              <div className="equation-i-div">
-                <Tooltip
-                  className="equation-i"
-                  title="Where πBTC = αPbtc/αt represents the rate of change, Pbtc = price of Bitcoin in USD, Pk = price of k asset in USD, Rk = volume traded of k asset in USD, αk = substitution rate phenomena, T’j= velocity of transactions, b = block reward, h = hash rate and d = difficulty"
-                >
-                  <IconButton>
-                    <BsFillInfoCircleFill />
-                  </IconButton>
-                </Tooltip>
-              </div>
-              <MathComponent
-                tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`}
-              />
-              <p className="equation-caption">
-                Zero Theorem Governing Equation ​
-              </p>
-            </div>
-          ) : (
-            <div className="equation-img">
-              <div className="equation-i-div">
-                <Tooltip
-                  className="equation-i"
-                  title="Where πBTC = αPbtc/αt represents the rate of change, Pbtc = price of Bitcoin in USD, Pk = price of k asset in USD, Rk = volume traded of k asset in USD, αk = substitution rate phenomena, T’j= velocity of transactions, b = block reward, h = hash rate and d = difficulty"
-                >
-                  <IconButton>
-                    <BsFillInfoCircleFill />
-                  </IconButton>
-                </Tooltip>
-              </div>
-              <MathComponent
-                tex={String.raw`\pi_{B T C}=\frac{\partial}{\partial t}\left[\ln \left(\sum_{k=1}^n \alpha_k \cdot P_k \cdot R_k\right)+\ln \left(\frac{1}{m} \sum_{j=1}^m T_j^{\prime}\right)-\ln (b)-\ln (h)+\ln (d)\right]`}
-              />
-              <p className="equation-caption">
-                Zero Theorem Governing Equation ​
-              </p>
-            </div>
-          )}
-        </div> */}
-
         <div className="portfolio-stats">
           <div className="today-stats for-flex-col">
             <h2>Overall Return</h2>
             <div className="portfolio-stats-percentage" id="pnl-bg">
               {stats["live_pnls"] ? (
                 stats["live_pnls"].pnl_all >= 0 ? (
-                  <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                  <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
                 ) : (
-                  <AiFillCaretDown className="model-details-left-top-percentage-icon " />
+                  <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
                 )
               ) : null}
               <p
@@ -201,9 +150,9 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_1 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
                   ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
                   )
                 ) : null}
                 <p
@@ -229,9 +178,9 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_7 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
                   ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
                   )
                 ) : null}
                 <p
@@ -257,9 +206,9 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_30 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
                   ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
                   )
                 ) : null}
                 <p
@@ -285,9 +234,9 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_60 >= 0 ? (
-                    <AiFillCaretUp className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
                   ) : (
-                    <AiFillCaretDown className="model-details-left-top-percentage-icon " />
+                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
                   )
                 ) : null}
                 <p
