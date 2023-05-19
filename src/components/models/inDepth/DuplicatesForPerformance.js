@@ -10,7 +10,7 @@ import PerformanceMultiLine from "../../../graphs/PerformanceMultiLine";
 import PerformanceBarChart from "../../../graphs/PerformanceBarChart";
 import { useStateContext } from "../../../ContextProvider";
 import HeatMapChart from "../graphs/HeatmapChart";
-
+import PolarAreaChartApexCharts from "../graphs/PolarAreaChartApexCharts";
 const DuplicatesForPerformance = (props) => {
   const { authCheckLoginInvestor } = useStateContext();
   return (
@@ -26,11 +26,12 @@ const DuplicatesForPerformance = (props) => {
 
           {/* <PerformanceBarChart model_name={"live_pnls"} /> */}
           <h3>Correlation Plot</h3>
-          <HeatMapChart model_name={"strategy_1"}/>
+          <HeatMapChart model_name={"strategy_1"} />
         </div>
         <div className="in-depth-gd for-performance-mb portfolio-allocation-div">
           <h3>Portfolio Allocation</h3>
-          <PerformancePieChart />
+          <PolarAreaChartApexCharts />
+          {/* <PerformancePieChart /> */}
           {/* <GradientDonut model_name={"collection"} /> */}
         </div>
       </div>

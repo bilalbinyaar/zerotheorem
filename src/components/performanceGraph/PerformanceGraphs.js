@@ -4,7 +4,7 @@ import { RiCheckboxBlankFill } from "react-icons/ri";
 import PerformanceMultiLine from "../../graphs/PerformanceMultiLine";
 import PerformanceBarChart from "../../graphs/PerformanceBarChart";
 import IndividualPnlCanvasjs from "../models/graphs/IndividualPnlCanvasjs";
-
+import PolarAreaChartApexCharts from "../models/graphs/PolarAreaChartApexCharts";
 const PerformanceGraphs = () => {
   return (
     <div className="performance-graphs">

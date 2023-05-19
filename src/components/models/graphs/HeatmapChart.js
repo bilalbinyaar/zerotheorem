@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { ThreeDots } from "react-loader-spinner";
 
 const HeatMapChart = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const correlationMatrix = [
     [1, 0.8, 0.2, -0.5, -0.9],
     [0.8, 1, -0.3, 0.1, 0.6],
@@ -19,11 +22,56 @@ const HeatMapChart = () => {
   ];
 
   const [correlations, setCorrelations] = useState([]);
+  const [strategies, setStrategies] = useState([]);
 
-  const series = variables.map((variable, index) => ({
+  useEffect(() => {
+    try {
+      fetch(
+        "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_correlations",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"].length);
+          var temp_correlations = [];
+          for (var i = 0; i < data["response"].length; i++) {
+            var temp_arr = [];
+            for (let strategy_name in data["response"][i]) {
+              temp_arr.push(data["response"][i][strategy_name]);
+            }
+            temp_correlations.push(temp_arr);
+          }
+          if (temp_correlations.length > 0) {
+            // console.log("Correlations -->", temp_correlations);
+            setCorrelations(temp_correlations);
+            // console.log("Here are keys -->", Object.keys(data["response"][0]));
+            setStrategies(Object.keys(data["response"][0]));
+            setIsLoaded(true);
+            // console.log("Sortable -->", model_names);
+            // const sorted = Object.keys(model_names)
+            //   .map((key) => {
+            //     return { ...model_names[key], key };
+            //   })
+            //   .sort((a, b) => b.total_pnl - a.total_pnl);
+            // setStats(model_names);
+            // Set_sorted_stats_cache({ sorted_stats: sorted });
+          }
+        })
+        .catch((err) => console.log(err));
+    } catch {
+      console.log("Error occurred");
+    }
+  }, []);
+
+  const series = strategies.map((variable, index) => ({
     // name: "Strategy",
     name: " " + variable,
-    data: correlationMatrix[index],
+    data: correlations[index],
   }));
 
   const options = {
@@ -41,25 +89,11 @@ const HeatMapChart = () => {
         // useFillColorAsStroke: true,
         colorScale: {
           ranges: [
-            { from: -1, to: -0.8, name: "Strong Negative", color: "#FF0000" },
-            {
-              from: -0.8,
-              to: -0.6,
-              name: "Moderate Negative",
-              color: "#FF6600",
-            },
-            { from: -0.6, to: -0.4, name: "Weak Negative", color: "#FFCC00" },
-            { from: -0.4, to: -0.2, name: "Slight Negative", color: "#FFFF00" },
-            { from: -0.2, to: 0.2, name: "No Correlation", color: "#FFFFFF" },
-            { from: 0.2, to: 0.4, name: "Slight Positive", color: "#00FFFF" },
-            { from: 0.4, to: 0.6, name: "Weak Positive", color: "#00CCFF" },
-            {
-              from: 0.6,
-              to: 0.8,
-              name: "Moderate Positive",
-              color: "#0066FF",
-            },
-            { from: 0.8, to: 1, name: "Strong Positive", color: "#0000FF" },
+            { from: -1, to: -0.5, name: "Strong Negative", color: "#FF0000" },
+            { from: -0.5, to: -0.001, name: "Weak Negative", color: "#FFCC00" },
+            { from: 0, to: 0, name: "No Correlation", color: "#FFFFFF" },
+            { from: 0.001, to: 0.5, name: "Weak Positive", color: "#00CCFF" },
+            { from: 0.5, to: 1, name: "Strong Positive", color: "#0000FF" },
           ],
         },
       },
@@ -71,7 +105,7 @@ const HeatMapChart = () => {
     //   width: 1,
     // },
     xaxis: {
-      categories: variables,
+      categories: strategies,
       labels: {
         style: {
           colors: "#000000",
@@ -79,7 +113,7 @@ const HeatMapChart = () => {
       },
     },
     yaxis: {
-      categories: variables,
+      categories: strategies,
       opposite: false,
       forceNiceScale: false,
       floating: false,
@@ -92,16 +126,30 @@ const HeatMapChart = () => {
         },
       },
     },
+    title: {
+      text: "HeatMap Chart with Color Range and Correlation",
+    },
   };
 
   return (
-    <div className="cont">
-      <ReactApexChart
-        options={options}
-        series={series}
-        type="heatmap"
-        height={340}
-      />
+    <div className="container">
+      {isLoaded ? (
+        <ReactApexChart
+          options={options}
+          series={series}
+          type="heatmap"
+          // height={350}
+        />
+      ) : (
+        <div className="container loader-container">
+          <ThreeDots
+            className="backtest-loader"
+            color="#fddd4e"
+            height={80}
+            width={80}
+          />
+        </div>
+      )}
     </div>
   );
 };
