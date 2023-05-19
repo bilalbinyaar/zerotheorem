@@ -121,6 +121,7 @@
         margin-top: 3px !important;
     }
     .portfolio-stats {
+        padding: 1.2rem 0rem 0rem 0rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;

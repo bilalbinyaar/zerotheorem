@@ -54,12 +54,17 @@
     color: var(--color-day-green);
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 768px) {
+
+    .live-pnl .container {
+        padding: 1.2rem 0rem 0rem 0rem;
+    }
 
     .live-pnl-stats-div {
         flex-direction: column;
         border-top: none;
         border-bottom: none;
+        margin-top: 0.4rem;
     }
 
     .overall-live-stats {

@@ -15,6 +15,18 @@
   margin-bottom: 1.8rem;
 }
 
+@media screen and (max-width: 568px) {
+  .performance-graphs-main {
+    margin-bottom: 2rem;
+  }
+
+  .performance-graphs .container {
+    padding: 2rem 0rem 1.4rem 0rem;
+  }
+}
+
+
+
 /* .performance-graphs-main {
     display: flex;
     justify-content: space-between;

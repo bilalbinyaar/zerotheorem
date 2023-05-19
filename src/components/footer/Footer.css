@@ -174,6 +174,10 @@
         flex-direction: column-reverse;
     }
 
+    .footer .investor-container {
+        flex-direction: column !important;
+    }
+
     .footer-logo-div {
         display: none;
     }
@@ -206,8 +210,17 @@
     }
 
     .footer-inner-left-investor {
-        margin: 2rem 0;
+        margin: 1.8rem 0;
     } 
+
+    .investor-logo-div {
+        display: block !important;
+    }
+
+    .footer-logo-img-investor {
+        margin-bottom: 0 !important;
+        margin-top: 2rem !important;
+    }
 }
 
 
@@ -246,4 +259,12 @@
     .footer-copyright-text {
         text-align: center;
     } 
+
+    .investor-no-mt {
+        margin-bottom: 0 !important;
+    }
+
+    .footer-news-inner-investor {
+        padding-top: 0 !important;
+    }
 }
