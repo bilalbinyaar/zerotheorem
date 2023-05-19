@@ -536,7 +536,8 @@ const ModelDetailsLeft = (props) => {
 
         {/* Body # 4 */}
 
-        {strategies[props.model_name] ? (
+        <div className="model-details-body-left-four">
+                  {strategies[props.model_name] ? (
           props.model_name.includes("strategy") ? (
             <div className="model-details-left-body">
               <div className="model-details-left-body-stats compare-btn-div">
@@ -573,21 +574,25 @@ const ModelDetailsLeft = (props) => {
             </div>
           )
         ) : null}
-      </div>
-      {/* <div className="model-details-left-body-stats backtest-btn-div">
-            {strategies[props.model_name] ? (
+
+          <div className="model-details-left-body">
+            <div className="model-details-left-body-stats compare-btn-div">
               <Link
                 to="/backtest"
-                state={{
-                  model_name: `${props.model_name}`,
-                  currency: `${strategies[props.model_name].currency}`,
-                  time_horizon: `${strategies[props.model_name].time_horizon}`,
-                }}
               >
                 <p className="compare-btn">Backtest</p>
               </Link>
-            ) : null}
-          </div> */}
+            </div>
+          </div>
+        </div>
+
+
+                  
+        
+      </div>
+
+      
+      
     </div>
   );
 };

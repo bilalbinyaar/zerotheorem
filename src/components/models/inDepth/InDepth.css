@@ -93,7 +93,11 @@
     }
 
     .portfolio-allocation-div {
-        margin: 2rem 0rem;
+        margin: 1rem 0rem;
+    }
+
+    .for-performance-nc .container {
+        padding: 0rem !important;
     }
 
     /* .in-depth-head h2 {

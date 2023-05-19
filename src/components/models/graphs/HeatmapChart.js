@@ -126,9 +126,9 @@ const HeatMapChart = () => {
         },
       },
     },
-    title: {
-      text: "HeatMap Chart with Color Range and Correlation",
-    },
+    // title: {
+    //   text: "HeatMap Chart with Color Range and Correlation",
+    // },
   };
 
   return (
@@ -138,7 +138,7 @@ const HeatMapChart = () => {
           options={options}
           series={series}
           type="heatmap"
-          // height={350}
+          height={350}
         />
       ) : (
         <div className="container loader-container">

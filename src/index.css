@@ -425,10 +425,13 @@ a:-webkit-any-link {
 
   .apexcharts-yaxis-label tspan {
     font-size: 7px !important;
+    fill: var(--color-day-black) !important;
   }
 
   .apexcharts-xaxis-label tspan {
     font-size: 7px !important;
+    fill: var(--color-day-black) !important;
+
   }
 
   .candle-canvas {

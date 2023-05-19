@@ -523,7 +523,7 @@ const PerformanceDataGrid = () => {
       },
     },
 
-    { field: "id", headerName: "#", headerAlign: "center", width: 18 },
+    // { field: "id", headerName: "#", headerAlign: "center", width: 18 },
     // {
     //   field: "modelName",
     //   headerName: "Model Name",
@@ -611,16 +611,41 @@ const PerformanceDataGrid = () => {
       ),
     },
 
+    // {
+    //   field: "forecast_time",
+    //   headerName: "Forecast Time",
+    //   width: 140,
+    //   sortable: true,
+    //   headerAlign: "center",
+    //   flex: 2,
+    //   renderHeader: (params) => (
+    //     <strong>
+    //       {"Forecast Time"}
+    //       <Tooltip
+    //         className="performance-table-tooltip"
+    //         title="Time when the forecast is created (in local system time)"
+    //       >
+    //         <IconButton>
+    //           <BsFillInfoCircleFill />
+    //         </IconButton>
+    //       </Tooltip>
+    //     </strong>
+    //   ),
+    // },
+
     {
-      field: "forecast_time",
-      headerName: "Forecast Time",
+      field: "tyu",
+      headerName: "Alpha",
       width: 140,
       sortable: true,
       headerAlign: "center",
-      flex: 2,
+      flex: 1.5,
+      renderCell: (cellValues) => {
+        return <p>dummy</p>;
+      },
       renderHeader: (params) => (
         <strong>
-          {"Forecast Time"}
+          {"Alpha"}
           <Tooltip
             className="performance-table-tooltip"
             title="Time when the forecast is created (in local system time)"
@@ -633,23 +658,73 @@ const PerformanceDataGrid = () => {
       ),
     },
 
+    // {
+    //   field: "nextForecast",
+    //   headerName: "Next Forecast",
+    //   width: 120,
+    //   sortable: false,
+    //   headerAlign: "center",
+    //   flex: 1.67,
+    //   renderCell: (cellValues) => {
+    //     // console.log("Here is the model -->", cellValues.value);
+    //     return <Timer time_horizon={cellValues.value} />;
+    //   },
+    //   renderHeader: (params) => (
+    //     <strong>
+    //       {"Next Forecast "}
+    //       <Tooltip
+    //         className="performance-table-tooltip"
+    //         title="Countdown clock till time of next forecast"
+    //       >
+    //         <IconButton>
+    //           <BsFillInfoCircleFill />
+    //         </IconButton>
+    //       </Tooltip>
+    //     </strong>
+    //   ),
+    // },
+
     {
-      field: "nextForecast",
-      headerName: "Next Forecast",
+      field: "abc",
+      headerName: "Beta",
       width: 120,
       sortable: false,
       headerAlign: "center",
-      flex: 1.67,
+      flex: 1.5,
       renderCell: (cellValues) => {
-        // console.log("Here is the model -->", cellValues.value);
-        return <Timer time_horizon={cellValues.value} />;
+        return <p>dummy</p>;
       },
       renderHeader: (params) => (
         <strong>
-          {"Next Forecast "}
+          {"Beta"}
           <Tooltip
             className="performance-table-tooltip"
             title="Countdown clock till time of next forecast"
+          >
+            <IconButton>
+              <BsFillInfoCircleFill />
+            </IconButton>
+          </Tooltip>
+        </strong>
+      ),
+    },
+
+    {
+      field: "xyz",
+      headerName: "Sharpe",
+      width: 100,
+      sortable: true,
+      headerAlign: "center",
+      flex: 1.5,
+      renderCell: (cellValues) => {
+        return <p>dummy</p>;
+      },
+      renderHeader: (params) => (
+        <strong>
+          {"Sharpe"}
+          <Tooltip
+            className="performance-table-tooltip"
+            title="Sharpe"
           >
             <IconButton>
               <BsFillInfoCircleFill />
@@ -781,7 +856,7 @@ const PerformanceDataGrid = () => {
       },
     },
 
-    { field: "id", headerName: "#", headerAlign: "center", width: 23 },
+    // { field: "id", headerName: "#", headerAlign: "center", width: 23 },
 
     {
       field: "modelNameMob",
@@ -862,16 +937,38 @@ const PerformanceDataGrid = () => {
       ),
     },
 
+    // {
+    //   field: "forecast_time",
+    //   headerName: "Forecast Time",
+    //   width: 140,
+    //   sortable: true,
+    //   headerAlign: "center",
+    //   flex: 1.75,
+    //   renderHeader: (params) => (
+    //     <strong>
+    //       {"Forecast Time"}
+    //       <Tooltip
+    //         className="performance-table-tooltip"
+    //         title="Time when the forecast is created (in local system time)"
+    //       >
+    //         <IconButton>
+    //           <BsFillInfoCircleFill />
+    //         </IconButton>
+    //       </Tooltip>
+    //     </strong>
+    //   ),
+    // },
+
     {
-      field: "forecast_time",
-      headerName: "Forecast Time",
+      field: "forecast_tim",
+      headerName: "Alpha",
       width: 140,
       sortable: true,
       headerAlign: "center",
-      flex: 1.75,
+      flex: 1.5,
       renderHeader: (params) => (
         <strong>
-          {"Forecast Time"}
+          {"Alpha"}
           <Tooltip
             className="performance-table-tooltip"
             title="Time when the forecast is created (in local system time)"
