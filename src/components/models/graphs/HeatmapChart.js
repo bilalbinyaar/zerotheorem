@@ -42,7 +42,7 @@ const HeatMapChart = () => {
           for (var i = 0; i < data["response"].length; i++) {
             var temp_arr = [];
             for (let strategy_name in data["response"][i]) {
-              temp_arr.push(data["response"][i][strategy_name]);
+              temp_arr.push(parseFloat(data["response"][i][strategy_name]));
             }
             temp_correlations.push(temp_arr);
           }

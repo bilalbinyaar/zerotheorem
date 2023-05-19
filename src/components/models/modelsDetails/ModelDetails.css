@@ -387,7 +387,7 @@
 }
 
 @media screen and (max-width: 908px) {
-  .model-details-main{
+  .model-details-main {
     flex-direction: column;
   }
 
@@ -565,13 +565,13 @@
 }
 
 @media screen and (max-width: 400px) {
- .model-details-left-body p {
-  font-size: 9px;
- }
+  .model-details-left-body p {
+    font-size: 9px;
+  }
 }
 
 @media screen and (max-width: 370px) {
- .model-details-left-body p {
-  font-size: 8px;
- }
+  .model-details-left-body p {
+    font-size: 8px;
+  }
 }
