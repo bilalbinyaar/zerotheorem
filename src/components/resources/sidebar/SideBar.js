@@ -36,6 +36,8 @@ const SideBar = () => {
     setShowSeven,
     showSubFour,
     setShowSubFour,
+    showEight,
+    setShowEight,
   } = useStateContext();
 
   const [toggleRes, setToggleRes] = useState(false);
@@ -197,7 +199,16 @@ const SideBar = () => {
                 <h3>*Alternative* Shifted Gompertz Model for Alpha</h3>
               </div>
             </Link>
-          </div>                
+          </div>    
+
+          {/* MENU ITEM 15 */}
+          <div className="main-item">
+            <Link to='/an-initial-solution'>
+              <div>
+                <h3>An Initial Solution</h3>
+              </div>
+            </Link>
+          </div>             
 
           </div>
         </div>
@@ -336,6 +347,15 @@ const SideBar = () => {
             <Link to='/alternative-shifted-gompertz-model-for-alpha'>
               <div>
                 <h3>*Alternative* Shifted Gompertz Model for Alpha</h3>
+              </div>
+            </Link>
+          </div>
+
+           {/* MENU ITEM 14 */}
+          <div className="main-item">
+            <Link to='/an-initial-solution'>
+              <div>
+                <h3>An Initial Solution</h3>
               </div>
             </Link>
           </div>                

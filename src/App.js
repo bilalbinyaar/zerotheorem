@@ -16,6 +16,7 @@ import AlternativeFrechetModelforAlpha from "../src/components/resources/derivat
 import AlternativeGumbelModelforAlpha from "../src/components/resources/derivations/AlternativeGumbelModelforAlpha";
 import AlternativeShiftedGompertzModelforAlpha from "../src/components/resources/derivations/AlternativeShiftedGompertzModelforAlpha";
 import AlternativeWeibulModelforAlpha from "../src/components/resources/derivations/AlternativeWeibulModelforAlpha";
+import AnInitialSolution from "../src/components/resources/derivations/AnInitialSolution";
 import Derivations from "../src/components/resources/derivations/Derivations";
 import FurtherDerivations from "../src/components/resources/derivations/FurtherDerivations";
 import InvestigatingAlpha from "../src/components/resources/derivations/InvestigatingAlpha";
@@ -161,6 +162,13 @@ function App() {
                   path="/alternative-shifted-gompertz-model-for-alpha"
                   element={<AlternativeShiftedGompertzModelforAlpha />}
                 />
+
+                <Route
+                  path="/an-initial-solution"
+                  element={<AnInitialSolution />}
+                />
+
+                
                 <Route path="/reload" element={<LoginForm />} />
               </Routes>
               <Footer />
