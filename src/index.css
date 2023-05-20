@@ -68,7 +68,6 @@ body {
   --color-box-shadow-day: rgba(255, 255, 255, 0.2);
   --color-code-snippet: rgba(67, 87, 117, 0.4);
   --color-nav-submenu: rgba(67, 87, 117);
-
 }
 
 .btn {
@@ -239,7 +238,6 @@ form .form-inner h2 {
 
 form .form-inner h3 {
   color: #fff;
-
 }
 
 .form-inner .form-group label {
@@ -307,7 +305,7 @@ form .form-inner input[type="submit"]:hover {
   justify-content: flex-end;
 }
 
-.forget-pwd p{
+.forget-pwd p {
   margin-top: 12px;
 }
 
@@ -439,7 +437,6 @@ a:-webkit-any-link {
   .apexcharts-xaxis-label tspan {
     font-size: 7px !important;
     fill: var(--color-day-black) !important;
-
   }
 
   .candle-canvas {
@@ -1346,8 +1343,6 @@ pre[class*="language-"] {
 
 /* API PAGE CSS END */
 
-
-
 /* LOGIN/SIGN UP POPUP STYLES */
 
 .popup {
@@ -1398,8 +1393,6 @@ pre[class*="language-"] {
   }
 }
 
-
-
 /* MAIN WEB LOGIN PAGE */
 
 .main-web-form-group {
@@ -1415,13 +1408,11 @@ pre[class*="language-"] {
   margin-top: 0 !important;
 }
 
-
-
 .scattered .container {
   padding: 0rem;
 }
 
-.scattered .container h2{
+.scattered .container h2 {
   margin-bottom: 1.4rem;
 }
 
@@ -1433,5 +1424,14 @@ pre[class*="language-"] {
   margin-bottom: 2.5rem;
 }
 
+#canvasjs-react-chart-container-3 {
+  width: 100%;
+  position: relative;
+  height: 300px;
+}
 
-
+#canvasjs-react-chart-container-5 {
+  width: 100%;
+  position: relative;
+  height: 300px;
+}

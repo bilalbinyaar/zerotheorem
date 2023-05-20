@@ -1065,25 +1065,25 @@ for idx in indices:
                   className={selectedHeadingIndex === 6 ? "active" : ""}
                   onClick={() => handleClick(6)}
                 >
-                  Run Backtest
+                  Use Case: Run Backtest
                 </li>
                 <li
                   className={selectedHeadingIndex === 7 ? "active" : ""}
                   onClick={() => handleClick(7)}
                 >
-                  Ensemble Forecasts
+                  Use Case: Ensemble Forecasts
                 </li>
                 <li
                   className={selectedHeadingIndex === 8 ? "active" : ""}
                   onClick={() => handleClick(8)}
                 >
-                  Listener Forecast
+                  Use Case: Forecast Listener
                 </li>
                 <li
                   className={selectedHeadingIndex === 9 ? "active" : ""}
                   onClick={() => handleClick(9)}
                 >
-                  Best Strategies
+                  Use Case: Sort by any Metric
                 </li>
               </ul>
             </div>
@@ -1138,25 +1138,25 @@ for idx in indices:
               className={selectedHeadingIndex === 6 ? "active" : ""}
               onClick={() => handleClick(6)}
             >
-              Run Backtest
+              Use Case: Run Backtest
             </li>
             <li
               className={selectedHeadingIndex === 7 ? "active" : ""}
               onClick={() => handleClick(7)}
             >
-              Ensemble Forecasts
+              Use Case: Ensemble Forecasts
             </li>
             <li
               className={selectedHeadingIndex === 8 ? "active" : ""}
               onClick={() => handleClick(8)}
             >
-              Listener Forecast
+              Use Case: Forecast Listener
             </li>
             <li
               className={selectedHeadingIndex === 9 ? "active" : ""}
               onClick={() => handleClick(9)}
             >
-              Best Strategies
+              Use Case: Sort by any Metric
             </li>
           </ul>
         </div>

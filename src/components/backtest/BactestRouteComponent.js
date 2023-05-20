@@ -1213,10 +1213,10 @@ const BactestRouteComponent = () => {
           const dateStr = strategies[model].date_started;
           const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
           setSelectedDate(dayjs.unix(unixTimestamp));
-          setDisableBefore(dayjs.unix(unixTimestamp));
+          // setDisableBefore(dayjs.unix(unixTimestamp));
 
           set_model_selected_for_backtest(model.replace("-", "_"));
-          setDisableBefore(dayjs.unix(unixTimestamp));
+          // setDisableBefore(dayjs.unix(unixTimestamp));
           set_date_selected_for_backtest(unixTimestamp);
           // set_model_name_for_result_backtest_result(name.replace("-", "_"));
           // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
