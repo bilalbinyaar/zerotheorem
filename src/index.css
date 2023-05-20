@@ -350,6 +350,10 @@ form .form-inner input[type="submit"]:hover {
   color: var(--color-day-black) !important;
 }
 
+text {
+  fill: var(--color-day-black) !important;
+}
+
 /* PDF CSS */
 
 .react-pdf__Page__canvas {
@@ -416,6 +420,10 @@ a:-webkit-any-link {
 
 .timer:hover {
   color: var(--color-day-yellow);
+}
+
+.donut-chart {
+  padding-top: 3rem;
 }
 
 @media screen and (max-width: 568px) {
@@ -1406,3 +1414,24 @@ pre[class*="language-"] {
   height: 88%;
   margin-top: 0 !important;
 }
+
+
+
+.scattered .container {
+  padding: 0rem 0rem 2rem 0rem;
+}
+
+.scattered .container h2{
+  margin-bottom: 1.4rem;
+}
+
+.kelly-line-charts {
+  width: 100% !important;
+}
+
+.kelly-line-charts h2 {
+  margin-bottom: 1.8rem;
+}
+
+
+

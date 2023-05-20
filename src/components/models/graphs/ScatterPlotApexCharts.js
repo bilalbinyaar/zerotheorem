@@ -207,14 +207,18 @@ const ScatterPlotApexCharts = () => {
   }, [timer_for_current]);
 
   return (
-    <div className="container">
-      <ReactApexChart
-        options={state.options}
-        series={state.series}
-        type="scatter"
-        height={350}
-      />
+    <div className="scattered">
+      <div className="container">
+        <h2>Market Comparison Rate</h2>
+        <ReactApexChart
+          options={state.options}
+          series={state.series}
+          type="scatter"
+          height={350}
+        />
+      </div>
     </div>
+    
   );
 };
 
