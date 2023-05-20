@@ -49,6 +49,19 @@
     margin-bottom: 1rem;
 }
 
+.for-performance-nc .container{
+    width: 100% !important;
+}
+
+.for-performance-nc {
+    width: 100% !important;
+    padding: 2rem 0rem 0rem 0rem !important;
+}
+
+.portfolio-allocation-div {
+    width: 70% !important;
+}
+
 @media screen and (max-width: 768px) {
     .in-depth-charts {
         flex-direction: column;
