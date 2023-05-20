@@ -82,6 +82,9 @@ const HeatMapChart = () => {
         show: false, // Hide the chart toolbar
       },
     },
+    // legend: {
+    //   position: "left",
+    // },
     plotOptions: {
       heatmap: {
         shadeIntensity: 1,

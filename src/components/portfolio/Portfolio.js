@@ -112,18 +112,26 @@ const Portfolio = () => {
             <div className="portfolio-stats-percentage" id="pnl-bg">
               {stats["live_pnls"] ? (
                 stats["live_pnls"].pnl_all >= 0 ? (
-                  <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
+                  <AiFillCaretUp
+                    className=".model-details-left-top-percentage-icon-performance"
+                    style={{ color: "#16c784" }}
+                    size={13}
+                  />
                 ) : (
-                  <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
+                  <AiFillCaretDown
+                    className=".model-details-left-top-percentage-icon-performance"
+                    style={{ color: "#ff2e2e" }}
+                    size={13}
+                  />
                 )
               ) : null}
               <p
-                id="pnl-color10"
+                id="pnl-color16"
                 onChange={
                   stats["live_pnls"]
                     ? forColor(
                         parseInt(stats["live_pnls"].pnl_all),
-                        "pnl-color10"
+                        "pnl-color16"
                       )
                     : null
                 }
@@ -150,18 +158,26 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_1 >= 0 ? (
-                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
+                    <AiFillCaretUp
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#16c784" }}
+                      size={13}
+                    />
                   ) : (
-                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
+                    <AiFillCaretDown
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#ff2e2e" }}
+                      size={13}
+                    />
                   )
                 ) : null}
                 <p
-                  id="pnl-color10"
+                  id="pnl-color11"
                   onChange={
                     stats["live_pnls"]
                       ? forColor(
-                          parseInt(stats["live_pnls"].pnl_1),
-                          "pnl-color10"
+                          parseFloat(stats["live_pnls"].pnl_1),
+                          "pnl-color11"
                         )
                       : null
                   }
@@ -178,18 +194,26 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_7 >= 0 ? (
-                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
+                    <AiFillCaretUp
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#16c784" }}
+                      size={13}
+                    />
                   ) : (
-                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
+                    <AiFillCaretDown
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#ff2e2e" }}
+                      size={13}
+                    />
                   )
                 ) : null}
                 <p
-                  id="pnl-color11"
+                  id="pnl-color60"
                   onChange={
                     stats["live_pnls"]
                       ? forColor(
-                          parseInt(stats["live_pnls"].pnl_7),
-                          "pnl-color11"
+                          parseFloat(stats["live_pnls"].pnl_7),
+                          "pnl-color60"
                         )
                       : null
                   }
@@ -206,18 +230,26 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_30 >= 0 ? (
-                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
+                    <AiFillCaretUp
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#16c784" }}
+                      size={13}
+                    />
                   ) : (
-                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
+                    <AiFillCaretDown
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#ff2e2e" }}
+                      size={13}
+                    />
                   )
                 ) : null}
                 <p
-                  id="pnl-color10"
+                  id="pnl-color14"
                   onChange={
                     stats["live_pnls"]
                       ? forColor(
-                          parseInt(stats["live_pnls"].pnl_30),
-                          "pnl-color10"
+                          parseFloat(stats["live_pnls"].pnl_30),
+                          "pnl-color14"
                         )
                       : null
                   }
@@ -234,18 +266,26 @@ const Portfolio = () => {
               <div className="portfolio-stats-percentage" id="pnl-bg">
                 {stats["live_pnls"] ? (
                   stats["live_pnls"].pnl_60 >= 0 ? (
-                    <AiFillCaretUp className=".model-details-left-top-percentage-icon-performance" style={{ color: "#16c784" }} size={13}/>
+                    <AiFillCaretUp
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#16c784" }}
+                      size={13}
+                    />
                   ) : (
-                    <AiFillCaretDown className=".model-details-left-top-percentage-icon-performance" style={{ color: "#ff2e2e" }} size={13}/>
+                    <AiFillCaretDown
+                      className=".model-details-left-top-percentage-icon-performance"
+                      style={{ color: "#ff2e2e" }}
+                      size={13}
+                    />
                   )
                 ) : null}
                 <p
-                  id="pnl-color10"
+                  id="pnl-color15"
                   onChange={
                     stats["live_pnls"]
                       ? forColor(
                           parseInt(stats["live_pnls"].pnl_60),
-                          "pnl-color10"
+                          "pnl-color15"
                         )
                       : null
                   }

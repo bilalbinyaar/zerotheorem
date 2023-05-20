@@ -79,9 +79,8 @@ const PerformancePieChart = (props) => {
     // colors: ["#16C784", "#FF2E2E"],
 
     chart: {
-      width: 500,
-      height: 300,
       type: "radialBar",
+      width: 700,
     },
 
     plotOptions: {
@@ -91,7 +90,7 @@ const PerformancePieChart = (props) => {
         endAngle: 270,
         hollow: {
           margin: 5,
-          size: "25%",
+          size: "10%",
           background: "transparent",
           image: undefined,
         },
@@ -100,7 +99,7 @@ const PerformancePieChart = (props) => {
         },
         dataLabels: {
           name: {
-            show: true,
+            show: false,
           },
           value: {
             show: true,
@@ -109,7 +108,7 @@ const PerformancePieChart = (props) => {
       },
     },
     dataLabels: {
-      enabled: true,
+      enabled: false,
     },
     fill: {
       type: "gradient",
@@ -119,11 +118,10 @@ const PerformancePieChart = (props) => {
     },
     legend: {
       show: true,
-      floating: true,
-      fontSize: "16px",
+      floating: false,
       position: "right",
-      offsetX: 160,
-      offsetY: 15,
+      // offsetX: 0,
+      // offsetY: 0,
       labels: {
         useSeriesColors: true,
       },
@@ -139,9 +137,9 @@ const PerformancePieChart = (props) => {
           chart: {
             width: 400,
           },
-          legend: {
-            position: "bottom",
-          },
+          // legend: {
+          //   position: "left",
+          // },
         },
       },
     ],

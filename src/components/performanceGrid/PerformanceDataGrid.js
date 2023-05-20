@@ -256,6 +256,9 @@ const PerformanceDataGrid = () => {
 
             totalpnl: pnl_for_each_strategy[key].total_pnl,
             pnlGraph: `${key}`,
+            alpha: pnl_for_each_strategy[key].alpha,
+            sharpe: pnl_for_each_strategy[key].sharpe,
+            beta: pnl_for_each_strategy[key].beta,
           });
           index++;
         }
@@ -475,7 +478,8 @@ const PerformanceDataGrid = () => {
                 pnl_sum_60: data["response"][i].pnl_sum_60,
                 average_daily_pnl: data["response"][i].average_daily_pnl,
                 win_loss_ratio: data["response"][i].win_loss_ratio,
-
+                alpha: data["response"][i].alpha,
+                beta: data["response"][i].beta,
                 rank: data["response"][i].rank,
               };
             }
@@ -634,15 +638,13 @@ const PerformanceDataGrid = () => {
     // },
 
     {
-      field: "tyu",
+      field: "alpha",
       headerName: "Alpha",
       width: 140,
       sortable: true,
       headerAlign: "center",
       flex: 1.5,
-      renderCell: (cellValues) => {
-        return <p>dummy</p>;
-      },
+
       renderHeader: (params) => (
         <strong>
           {"Alpha"}
@@ -685,15 +687,13 @@ const PerformanceDataGrid = () => {
     // },
 
     {
-      field: "abc",
+      field: "beta",
       headerName: "Beta",
       width: 120,
       sortable: false,
       headerAlign: "center",
       flex: 1.5,
-      renderCell: (cellValues) => {
-        return <p>dummy</p>;
-      },
+
       renderHeader: (params) => (
         <strong>
           {"Beta"}
@@ -710,22 +710,16 @@ const PerformanceDataGrid = () => {
     },
 
     {
-      field: "xyz",
+      field: "sharpe",
       headerName: "Sharpe",
       width: 100,
       sortable: true,
       headerAlign: "center",
       flex: 1.5,
-      renderCell: (cellValues) => {
-        return <p>dummy</p>;
-      },
       renderHeader: (params) => (
         <strong>
           {"Sharpe"}
-          <Tooltip
-            className="performance-table-tooltip"
-            title="Sharpe"
-          >
+          <Tooltip className="performance-table-tooltip" title="Sharpe">
             <IconButton>
               <BsFillInfoCircleFill />
             </IconButton>

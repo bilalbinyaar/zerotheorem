@@ -166,6 +166,8 @@ const LivePNL = () => {
                 current_price: data["response"][i].current_price,
                 strategy_name: data["response"][i].strategy_name,
                 current_pnl: data["response"][i].current_pnl,
+                portfolio_live_pnl_percent:
+                  data["response"][i].portfolio_live_pnl_percent,
                 position_start_time: data["response"][i].position_start_time,
               };
             }
@@ -245,6 +247,8 @@ const LivePNL = () => {
                 current_price: data["response"][i].current_price,
                 strategy_name: data["response"][i].strategy_name,
                 current_pnl: data["response"][i].current_pnl,
+                portfolio_live_pnl_percent:
+                  data["response"][i].portfolio_live_pnl_percent,
                 position_start_time: data["response"][i].position_start_time,
               };
             }
@@ -276,11 +280,11 @@ const LivePNL = () => {
                 stats["4"]
                   ? forColor(
                       `${(
-                        parseFloat(stats["0"].current_pnl) +
-                        parseFloat(stats["1"].current_pnl) +
-                        parseFloat(stats["2"].current_pnl) +
-                        parseFloat(stats["3"].current_pnl) +
-                        parseFloat(stats["4"].current_pnl)
+                        parseFloat(stats["0"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["1"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["2"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["3"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["4"].portfolio_live_pnl_percent)
                       ).toFixed(2)}`,
                       "pnl-color5"
                     )
@@ -289,11 +293,11 @@ const LivePNL = () => {
             >
               {stats["4"]
                 ? `${(
-                    parseFloat(stats["0"].current_pnl) +
-                    parseFloat(stats["1"].current_pnl) +
-                    parseFloat(stats["2"].current_pnl) +
-                    parseFloat(stats["3"].current_pnl) +
-                    parseFloat(stats["4"].current_pnl)
+                    parseFloat(stats["0"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["1"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["2"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["3"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["4"].portfolio_live_pnl_percent)
                   ).toFixed(2)}%`
                 : null}
             </h3>
@@ -310,13 +314,15 @@ const LivePNL = () => {
                 onChange={
                   stats["0"]
                     ? forColor(
-                        `${parseFloat(stats["0"].current_pnl)}`,
+                        `${parseFloat(stats["0"].portfolio_live_pnl_percent)}`,
                         "pnl-color1"
                       )
                     : null
                 }
               >
-                {stats["0"] ? `${stats["0"].current_pnl}%` : null}
+                {stats["0"]
+                  ? `${stats["0"].portfolio_live_pnl_percent}%`
+                  : null}
               </h3>
             </div>
 
@@ -328,13 +334,15 @@ const LivePNL = () => {
                 onChange={
                   stats["1"]
                     ? forColor(
-                        `${parseFloat(stats["1"].current_pnl)}`,
+                        `${parseFloat(stats["1"].portfolio_live_pnl_percent)}`,
                         "pnl-color2"
                       )
                     : null
                 }
               >
-                {stats["1"] ? `${stats["1"].current_pnl}%` : null}
+                {stats["1"]
+                  ? `${stats["1"].portfolio_live_pnl_percent}%`
+                  : null}
               </h3>
             </div>
 
@@ -346,13 +354,15 @@ const LivePNL = () => {
                 onChange={
                   stats["2"]
                     ? forColor(
-                        `${parseFloat(stats["2"].current_pnl)}`,
+                        `${parseFloat(stats["2"].portfolio_live_pnl_percent)}`,
                         "pnl-color3"
                       )
                     : null
                 }
               >
-                {stats["2"] ? `${stats["2"].current_pnl}%` : null}
+                {stats["2"]
+                  ? `${stats["2"].portfolio_live_pnl_percent}%`
+                  : null}
               </h3>
             </div>
 
@@ -364,13 +374,15 @@ const LivePNL = () => {
                 onChange={
                   stats["3"]
                     ? forColor(
-                        `${parseFloat(stats["3"].current_pnl)}`,
+                        `${parseFloat(stats["3"].portfolio_live_pnl_percent)}`,
                         "pnl-color4"
                       )
                     : null
                 }
               >
-                {stats["3"] ? `${stats["3"].current_pnl}%` : null}
+                {stats["3"]
+                  ? `${stats["3"].portfolio_live_pnl_percent}%`
+                  : null}
               </h3>
             </div>
 
@@ -382,13 +394,15 @@ const LivePNL = () => {
                 onChange={
                   stats["4"]
                     ? forColor(
-                        `${parseFloat(stats["4"].current_pnl)}`,
+                        `${parseFloat(stats["4"].portfolio_live_pnl_percent)}`,
                         "pnl-color6"
                       )
                     : null
                 }
               >
-                {stats["4"] ? `${stats["4"].current_pnl}%` : null}
+                {stats["4"]
+                  ? `${stats["4"].portfolio_live_pnl_percent}%`
+                  : null}
               </h3>
             </div>
           </div>

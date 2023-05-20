@@ -41,10 +41,10 @@ function Documentation() {
   const pythonCode = [
     `!pip install zerotheorem-python\nimport zerotheorem-python as zt`,
     "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\n",
-    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_forecast('Model name')\n",
-    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_stats('Model name')\n",
-    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_ledger('Model name')\n",
-    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_historical_forecasts('Model name')\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_forecast('strategy name')\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_stats('strategy name')\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_ledger('strategy name')\n",
+    "import zerotheorem-python as zt \nauth_token = 'your authentication token'\nzt.authenticate(auth_token)\nzt.get_historical_forecasts('strategy name')\n",
   ];
   const contents = [
     <div className="content-main-div">
@@ -121,14 +121,14 @@ function Documentation() {
       <p className="lineheight-docs"> get_forecast</p>
       <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
-        This function takes a model name as input and returns forecast for that
-        model..
+        This function takes a strategy name as input and returns forecast for
+        that strategy..
       </p>
       <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
-          <strong>model_name</strong> (string): The name of the model for which
-          forecast is requested. This is a required parameter.
+          <strong>strategy_name</strong> (string): The name of the strategy for
+          which forecast is requested. This is a required parameter.
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
@@ -139,26 +139,27 @@ function Documentation() {
       <ul className="lineheight-docs-list">
         {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
-          information on the model's historical forecasts.
+          information on the strategy's historical forecasts.
         </li> */}
         <li>
           <strong>forecast_timestamp</strong> (int): The timestamp of the
           forecast in Unix time.
         </li>
         <li>
-          <strong>prediction</strong> (string): The prediction made by the model
-          for this forecast, either "long" or "short".
+          <strong>prediction</strong> (string): The prediction made by the
+          strategy for this forecast, either "long" or "short".
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get the forecast for a model named "ZT1-0M24BTC1", you can call the
-        function like this:
+        To get the forecast for a strategy named "ZT1-0M24BTC1", you can call
+        the function like this:
       </p>
       <pre className="lineheight-docs">zt.get_forecast("ZT1-0M24BTC1")</pre>
       <p className="lineheight-docs">
         This will return a dictionary with information on the historical
-        forecasts for the specified model, which will look something like this:
+        forecasts for the specified strategy, which will look something like
+        this:
       </p>
       <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
 
@@ -174,8 +175,8 @@ function Documentation() {
       <p className="lineheight-docs">get_stats</p>
       <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
-        This function takes a model name as input and returns a dictionary with
-        stats for that model. <br />
+        This function takes a strategy name as input and returns a dictionary
+        with stats for that strategy. <br />
         The stats include data such as the current drawdown, average drawdown,
         maximum drawdown, <br /> R-squared score, Sharpe ratio, Sortino ratio,
         total profit and loss, win-loss ratio, win percentage, <br />
@@ -185,8 +186,8 @@ function Documentation() {
       <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
-          <strong>model_name</strong> (string): The name of the model for which
-          stats are requested. This is a required parameter.
+          <strong>strategy_name</strong> (string): The name of the strategy for
+          which stats are requested. This is a required parameter.
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
@@ -196,20 +197,20 @@ function Documentation() {
       <ul className="lineheight-docs-list">
         {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
-          stats on the model.
+          stats on the strategy.
         </li> */}
         {/* <ul className="lineheight-docs-list"> */}
         <li>
-          <strong>rank</strong> (int): The rank of the model based on its
+          <strong>rank</strong> (int): The rank of the strategy based on its
           performance.
         </li>
         <li>
           <strong>strategy_name</strong> (string): The name of the strategy used
-          by the model.
+          by the strategy.
         </li>
         <li>
           <strong>current_drawdown</strong> (float): The current drawdown for
-          the model, as a percentage.
+          the strategy, as a percentage.
         </li>
         <li>
           <strong>curr_drawdown_duration</strong> (int): The duration of the
@@ -217,7 +218,7 @@ function Documentation() {
         </li>
         <li>
           <strong>average_drawdown</strong> (float): The average drawdown for
-          the model, as a percentage.
+          the strategy, as a percentage.
         </li>
         <li>
           <strong>average_drawdown_duration</strong> (float): The average
@@ -225,103 +226,104 @@ function Documentation() {
         </li>
         <li>
           <strong>max_drawdown</strong> (float): The maximum drawdown for the
-          model, as a percentage.
+          strategy, as a percentage.
         </li>
         <li>
           <strong>max_drawdown_duration</strong> (int): The duration of the
           maximum drawdown, in days.
         </li>
         <li>
-          <strong>r2_score</strong> (float): The R-squared score for the model.
+          <strong>r2_score</strong> (float): The R-squared score for the
+          strategy.
         </li>
         <li>
-          <strong>sharpe</strong> (float): The Sharpe ratio for the model.
+          <strong>sharpe</strong> (float): The Sharpe ratio for the strategy.
         </li>
         <li>
-          <strong>sortino</strong> (float): The Sortino ratio for the model.
+          <strong>sortino</strong> (float): The Sortino ratio for the strategy.
         </li>
         <li>
           <strong>total_pnl</strong> (float): The total profit or loss for the
-          model, as a percentage.
+          strategy, as a percentage.
         </li>
         <li>
           <strong>average_daily_pnl</strong> (float): The average daily profit
-          or loss for the model, as a percentage.
+          or loss for the strategy, as a percentage.
         </li>
         <li>
           <strong>win_loss_ratio</strong> (float): The win-loss ratio for the
-          model.
+          strategy.
         </li>
         <li>
           <strong>total_positive_pnl</strong> (float): The total profit for the
-          model, as a percentage.
+          strategy, as a percentage.
         </li>
         <li>
           <strong>total_negative_pnl</strong> (float): The total loss for the
-          model,as a percentage.!pip install numpy pandas zerotheorem-python
+          strategy,as a percentage.!pip install numpy pandas zerotheorem-python
           import os import datetime import numpy as np import pandas as pd
           import zerotheorem-python as zt auth_token = 'your authentication
-          token' zt.authenticate(auth_token) zt.get_historical_forecasts('Model
-          name')
+          token' zt.authenticate(auth_token)
+          zt.get_historical_forecasts('strategy name')
         </li>
         <li>
           <strong>total_wins</strong> (int): The total number of winning trades
-          for the model.
+          for the strategy.
         </li>
         <li>
           <strong>total_losses</strong> (int): The total number of losing trades
-          for the model.
+          for the strategy.
         </li>
         <li>
           <strong>consecutive_wins</strong> (int): The longest streak of
-          consecutive winning trades for the model.
+          consecutive winning trades for the strategy.
         </li>
         <li>
           <strong>consecutive_losses</strong> (int): The longest streak of
-          consecutive losing trades for the model.
+          consecutive losing trades for the strategy.
         </li>
         <li>
           <strong>win_percentage</strong> (float): The percentage of winning
-          trades for the model.
+          trades for the strategy.
         </li>
         <li>
           <strong>loss_percentage</strong> (float): The percentage of losing
-          trades for the model.
+          trades for the strategy.
         </li>
         <li>
-          <strong>pnl_sum_1</strong> (float): The sum of the model's profit and
-          loss over the last 1 day, as a percentage.
+          <strong>pnl_sum_1</strong> (float): The sum of the strategy's profit
+          and loss over the last 1 day, as a percentage.
         </li>
         <li>
-          <strong>pnl_sum_7</strong> (float): The sum of the model's profit and
-          loss over the last 7 days, as a percentage.
+          <strong>pnl_sum_7</strong> (float): The sum of the strategy's profit
+          and loss over the last 7 days, as a percentage.
         </li>
         <li>
-          <strong>pnl_sum_15</strong> (float): The sum of the model's profit and
-          loss over the last 15 days, as a percentage.
+          <strong>pnl_sum_15</strong> (float): The sum of the strategy's profit
+          and loss over the last 15 days, as a percentage.
         </li>
         <li>
-          <strong>pnl_sum_30</strong> (float): The sum of the model's profit and
-          loss over the last 30 days, as a percentage.
+          <strong>pnl_sum_30</strong> (float): The sum of the strategy's profit
+          and loss over the last 30 days, as a percentage.
         </li>
         <li>
-          <strong>pnl_sum_45</strong> (float): The sum of the model's profit and
-          loss over the last 45 days, as a percentage.
+          <strong>pnl_sum_45</strong> (float): The sum of the strategy's profit
+          and loss over the last 45 days, as a percentage.
         </li>
         <li>
-          <strong>pnl_sum_60</strong> (float): The sum of the model's profit and
-          loss over the last 60 days, as a percentage.
+          <strong>pnl_sum_60</strong> (float): The sum of the strategy's profit
+          and loss over the last 60 days, as a percentage.
         </li>
         {/* </ul> */}
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get stats for a model named "Model Name", you can call the function
-        like this:
+        To get stats for a strategy named "strategy name", you can call the
+        function like this:
       </p>
       <pre className="lineheight-docs">zt.get_stats("ZT1-0M24BTC1")</pre>
       <p className="lineheight-docs">
-        This will return a dictionary with information on the model stats.
+        This will return a dictionary with information on the strategy stats.
       </p>
 
       <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
@@ -338,17 +340,18 @@ function Documentation() {
       <p className="lineheight-docs">get_ledger</p>
       <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
-        This function takes a model name as input and returns a dictionary with
-        information on the ledger for that model. The ledger includes data such
-        as the timestamp of the last transaction, the action taken (long or
-        short), the buy and sell prices, the profit and loss (PNL), the current
-        balance, the total PNL, the ledger key, and the drawdown.
+        This function takes a strategy name as input and returns a dictionary
+        with information on the ledger for that strategy. The ledger includes
+        data such as the timestamp of the last transaction, the action taken
+        (long or short), the buy and sell prices, the profit and loss (PNL), the
+        current balance, the total PNL, the ledger key, and the drawdown.
       </p>
       <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
-          <strong>model_name</strong> (string): The name of the model for which
-          the ledger information is requested. This is a required parameter.
+          <strong>strategy_name</strong> (string): The name of the strategy for
+          which the ledger information is requested. This is a required
+          parameter.
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
@@ -358,7 +361,7 @@ function Documentation() {
       <ul className="lineheight-docs-list">
         {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
-          information on the model's ledger.
+          information on the strategy's ledger.
         </li> */}
         <li>
           <strong>ledger_timestamp</strong> (int): The timestamp of the last
@@ -382,30 +385,30 @@ function Documentation() {
           transaction, as a percentage.
         </li>
         <li>
-          <strong>balance</strong> (float): The current balance of the model.
+          <strong>balance</strong> (float): The current balance of the strategy.
         </li>
         <li>
           <strong>pnl_sum</strong> (float): The total profit or loss for all
-          transactions made by the model, as a percentage.
+          transactions made by the strategy, as a percentage.
         </li>
         <li>
           <strong>ledger_key</strong> (int): A unique identifier for the ledger
           entry.
         </li>
         <li>
-          <strong>drawdown</strong> (float): The current drawdown for the model,
-          as a percentage.
+          <strong>drawdown</strong> (float): The current drawdown for the
+          strategy, as a percentage.
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get the ledger information for a model named "ZT1-0M24BTC1", you can
-        call the function like this:
+        To get the ledger information for a strategy named "ZT1-0M24BTC1", you
+        can call the function like this:
       </p>
       <pre className="lineheight-docs">zt.get_ledger("ZT1-0M24BTC1")</pre>
       <p className="lineheight-docs">
         This will return a dictionary with information on the ledger for the
-        specified model.
+        specified strategy.
       </p>
       <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
     </div>,
@@ -415,16 +418,17 @@ function Documentation() {
       <p className="lineheight-docs">get_historical_forecasts</p>
       <h2 className="lineheight-docs for-mt-secondary">Description</h2>
       <p className="lineheight-docs">
-        This function takes a model name as input and returns a dictionary with
-        information on the historical forecasts for that model. The historical
-        forecasts include data such as the timestamp of the forecast, and the
-        prediction made by the model (long or short).
+        This function takes a strategy name as input and returns a dictionary
+        with information on the historical forecasts for that strategy. The
+        historical forecasts include data such as the timestamp of the forecast,
+        and the prediction made by the strategy (long or short).
       </p>
       <h2 className="lineheight-docs for-mt-secondary">Parameters</h2>
       <ul className="lineheight-docs-list">
         <li>
-          <strong>model_name</strong> (string): The name of the model for which
-          the historical forecasts are requested. This is a required parameter.
+          <strong>strategy_name</strong> (string): The name of the strategy for
+          which the historical forecasts are requested. This is a required
+          parameter.
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Return Value</h2>
@@ -435,20 +439,20 @@ function Documentation() {
       <ul className="lineheight-docs-list">
         {/* <li>
           <strong>response</strong> (list): A list containing a dictionary with
-          information on the model's historical forecasts.
+          information on the strategy's historical forecasts.
         </li> */}
         <li>
           <strong>forecast_timestamp</strong> (int): The timestamp of the
           forecast in Unix time.
         </li>
         <li>
-          <strong>prediction</strong> (string): The prediction made by the model
-          for this forecast, either "long" or "short".
+          <strong>prediction</strong> (string): The prediction made by the
+          strategy for this forecast, either "long" or "short".
         </li>
       </ul>
       <h2 className="lineheight-docs for-mt-secondary">Example Usage</h2>
       <p className="lineheight-docs">
-        To get the historical forecasts for a model named "ZT1-0M24BTC1", you
+        To get the historical forecasts for a strategy named "ZT1-0M24BTC1", you
         can call the function like this:
       </p>
       <pre className="lineheight-docs">
@@ -456,7 +460,8 @@ function Documentation() {
       </pre>
       <p className="lineheight-docs">
         This will return a dictionary with information on the historical
-        forecasts for the specified model, which will look something like this:
+        forecasts for the specified strategy, which will look something like
+        this:
       </p>
       <h3 className="lineheight-docs for-mt-secondary">Python Code</h3>
       {/* <pre>

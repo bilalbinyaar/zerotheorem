@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import { useStateContext } from "../../../ContextProvider";
 import { ThreeDots } from "react-loader-spinner";
+import { Label } from "recharts";
 
 const GradientDonut = (props) => {
   const [model_name, set_model_name] = useState(props.model_name);
@@ -11,10 +12,46 @@ const GradientDonut = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const [stats, setStats] = useState(null);
+  const [labels, setLabels] = useState([]);
   const [series, setSeries] = useState([]);
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
-    if (props.model_name.includes("strategy")) {
+    if (props.model_name.includes("collection")) {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"].length);
+          var model_names = [];
+          var allocations = [];
+          for (var i = 0; i < data["response"].length; i++) {
+            // console.log(data["response"][i].strategy_name);
+            model_names.push(data["response"][i].strategy_name);
+            allocations.push(data["response"][i].portfolio_allocation);
+          }
+          if (model_name.length > 0) {
+            // console.log("Sortable -->", model_names);
+
+            // const sorted = Object.keys(model_names)
+            //   .map((key) => {
+            //     return { ...model_names[key], key };
+            //   })
+            //   .sort((a, b) => b.total_pnl - a.total_pnl);
+            setSeries(allocations);
+            setLabels(model_names);
+            setIsLoaded(true);
+            // console.log("Allocations ", allocations, data);
+            // setIsLoaded(true);
+
+            // Set_sorted_stats_cache({ sorted_stats: sorted });
+          }
+        })
+        .catch((err) => console.log(err));
+    } else if (props.model_name.includes("strategy")) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
         method: "GET",
         headers: {
@@ -57,7 +94,7 @@ const GradientDonut = (props) => {
               pnl_sum_60: data["response"][i].pnl_sum_60,
               average_daily_pnl: data["response"][i].average_daily_pnl,
               win_loss_ratio: data["response"][i].win_loss_ratio,
-
+              portfolio_allocaton: data["response"][i].win_loss_ratio,
               rank: data["response"][i].rank,
             };
           }
@@ -150,22 +187,39 @@ const GradientDonut = (props) => {
     if (stats == null) {
       return;
     } else {
-      var data_for_stat = [];
-      data_for_stat.push(stats[props.model_name].win_percentage);
-      data_for_stat.push(stats[props.model_name].loss_percentage);
-      //console.log("Strategy -->", data["response"][i].strategy_name);
-      // data_for_stat.push(data["response"]);
-      if (data_for_stat.length !== 0) {
-        setSeries(data_for_stat);
-        setIsLoaded(true);
-        // console.log("Data for setting stat -->", data_for_stat);
+      if (props.model_name.includes("collection")) {
+        // var data_for_stat = [];
+        // for (let i = 0; i < stats.length; i++) {
+        //   data_for_stat.push(stats[props.model_name].portfolio_allocaton);
+        // }
+        // //console.log("Strategy -->", data["response"][i].strategy_name);
+        // // data_for_stat.push(data["response"]);
+        // if (data_for_stat.length >= 0) {
+        //   setSeries(data_for_stat);
+        //   setIsLoaded(true);
+        //   // console.log("Data for setting stat -->", data_for_stat);
+        // }
+      } else {
+        var data_for_stat = [];
+        data_for_stat.push(stats[props.model_name].win_percentage);
+        data_for_stat.push(stats[props.model_name].loss_percentage);
+        //console.log("Strategy -->", data["response"][i].strategy_name);
+        // data_for_stat.push(data["response"]);
+        if (data_for_stat.length !== 0) {
+          setSeries(data_for_stat);
+          setLabels(["Wins", "Losses"]);
+          setIsLoaded(true);
+          // console.log("Data for setting stat -->", data_for_stat);
+        }
       }
     }
   }, [stats]);
 
   const options = {
-    labels: ["Win", "Loss"],
-    colors: ["#16C784", "#FF2E2E"],
+    labels: labels,
+    colors: props.model_name.includes("collection")
+      ? ["#16C784", "#FF2E2E", "#F9A52B", "#4287f5", "#9B59B6"]
+      : ["#16C784", "#FF2E2E"],
     chart: {
       width: 380,
       height: 260,

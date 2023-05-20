@@ -17,12 +17,10 @@ const PolarAreaChartApexCharts = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data["response"].length);
           var model_names = {};
           var temp_labels = [];
           var temp_stats = [];
           for (var i = 0; i < data["response"].length; i++) {
-            // console.log(data["response"][i].strategy_name);
             model_names[data["response"][i].strategy_name] = {
               portfolio_allocation: data["response"][i].portfolio_allocation,
             };
@@ -30,30 +28,19 @@ const PolarAreaChartApexCharts = () => {
             temp_labels.push(data["response"][i].strategy_name);
           }
           if (JSON.stringify(model_names) !== "{}") {
-            // console.log("Sortable -->", model_names);
-
-            // const sorted = Object.keys(model_names)
-            //   .map((key) => {
-            //     return { ...model_names[key], key };
-            //   })
-            //   .sort((a, b) => b.total_pnl - a.total_pnl);
             setLabels(temp_labels);
-
-            // setStats(model_names);
             setSeries(temp_stats);
-            // console.log("Labels --->", temp_labels);
             setIsLoaded(true);
-            // Set_sorted_stats_cache({ sorted_stats: sorted });
           }
         })
         .catch((err) => console.log(err));
     } catch (error) {
-      console.log("Error occured");
+      console.log("Error occurred");
     }
   }, []);
+
   const options = {
     chart: {
-      width: 380,
       type: "polarArea",
     },
     labels: Labels,
@@ -68,11 +55,8 @@ const PolarAreaChartApexCharts = () => {
       show: false,
     },
     legend: {
-      position: "top",
+      position: "right",
     },
-    // dataLabels: {
-    //   enabled: true,
-    // },
     plotOptions: {
       polarArea: {
         rings: {
@@ -90,6 +74,19 @@ const PolarAreaChartApexCharts = () => {
         shadeIntensity: 0.9,
       },
     },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 400,
+          },
+          legend: {
+            position: "right",
+          },
+        },
+      },
+    ],
   };
 
   return (
@@ -99,7 +96,7 @@ const PolarAreaChartApexCharts = () => {
           options={options}
           series={series}
           type="polarArea"
-          width={380}
+          width="100%"
         />
       ) : (
         <div className="container loader-container">
