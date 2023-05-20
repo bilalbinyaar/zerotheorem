@@ -1418,7 +1418,7 @@ pre[class*="language-"] {
 
 
 .scattered .container {
-  padding: 0rem 0rem 2rem 0rem;
+  padding: 0rem;
 }
 
 .scattered .container h2{
@@ -1430,7 +1430,7 @@ pre[class*="language-"] {
 }
 
 .kelly-line-charts h2 {
-  margin-bottom: 1.8rem;
+  margin-bottom: 2.5rem;
 }
 
 
