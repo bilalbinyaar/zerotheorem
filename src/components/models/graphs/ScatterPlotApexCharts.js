@@ -79,7 +79,7 @@ const ScatterPlotApexCharts = () => {
               setState({
                 series: [
                   {
-                    name: "BTC Return ",
+                    name: "Market Return ",
                     data: temp_data,
                   },
                 ],
@@ -154,7 +154,7 @@ const ScatterPlotApexCharts = () => {
               setState({
                 series: [
                   {
-                    name: "BTC Return ",
+                    name: "Market Return ",
                     data: temp_data,
                   },
                 ],
@@ -170,6 +170,7 @@ const ScatterPlotApexCharts = () => {
                       show: false, // Hide the chart toolbar
                     },
                   },
+
                   xaxis: {
                     tickAmount: 10,
                     labels: {
