@@ -87,7 +87,15 @@ const AnInitialSolution = () => {
             </p>
             <h3 className="for-mt-primary">State space</h3>
             <p className="for-mt-secondary">Before defining the state space, we first introduce following terms:</p>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+& -\mathrm{s} 1=\ln \left(\sum_{k=1}^n P_k \cdot R_k\right)_{@ t}-\ln \left(\sum_{k=1}^n P_k \cdot R_k\right)_{@ t-1} \\
+& -\mathrm{s} 2=\ln (b) \propto t-\ln (b)_{@ t-1} \\
+& -\mathrm{s} 3=\ln (h) \propto t-\ln (h) \propto t-1 \\
+& -\mathrm{s} 4=\ln (d){ }^{\alpha t}-\ln (d) a t-1 \\
+& -\mathrm{s} 5=\ln \left(\frac{1}{n} \sum_{j=1}^n T_j^{\prime}\right)_{\alpha t}-\ln \left(\frac{1}{n} \sum_{j=1}^n T_j^{\prime}\right)_{\Delta t-1} \\
+& -s 6=\ln \left(\pi_{B T C}\right)_{a t-1}-\ln \left(\pi_{B T C}\right)_{a t-2} \\
+&
+\end{eqnarray}`} />
             <p className="for-mt-secondary">These terms (s1 to s6) are in log difference format such that the log value of previous
             timestep (t − 1) is subtracted from the log value of current timestep (t). It can be seen that these terms are taken from the Equation 1. The term s6 represents log difference value
             of previous timestep, i.e., if the current timestep is t then the log value π<sub>BTC</sub> at t − 2 is
@@ -136,15 +144,17 @@ const AnInitialSolution = () => {
             r(t)=r_{\text {target }}(t)+r_{\text {error }}(t)
             `} />
             <p className="for-mt-secondary">where r<sub>target</sub> is the target accuracy reward defined a</p>
-            <MathComponent tex={String.raw`
-            dummy
-            `} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            r_{\text {target }}(t)= g(t) & \pi_{B T C \text { estimated } a t}^{\prime} \geq 0 \\ f(t) & \text { otherwise }
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">with</p>
-            <MathComponent tex={String.raw`
-            dummy
-            `} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            g(t)= 1 & \pi_{B T C \text { estimated }}^{\prime} \Delta t \leq \pi_{\text {positive }} \Delta t \\ -1 & \text { otherwise }
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">and</p>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            dummy
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">
             The reward for minimising error on π
             <sup>′</sup><sub>BTC</sub> is defined as fol</p>
@@ -157,14 +167,23 @@ const AnInitialSolution = () => {
 
             <h2 className="for-mt-primary">DRL Algorithms</h2>
             <h3 className="for-mt-primary">DDPG</h3>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            L(\theta)=\mathbb{E}_{s_t, a_t, r_{t+1}, s_{t+1} \sim D}\left[\left(r_{t+1}+\gamma Q_{\theta^{\prime}}\left(s_{t+1}, \pi_{\phi^{\prime}}\left(s_{t+1}\right)\right)-Q_\theta\left(s_t, a_t\right)\right)^2\right] \\
+            J(\phi)=\mathbb{E}_{s_t \sim D}\left[Q_\theta\left(s_t, \pi_\phi\left(s_t\right)\right)\right]
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">where θ
             0 and φ are the target network parameters. There target network parameters are
             updated every iteration.
             </p>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            \theta^{\prime} \leftarrow \tau \theta+(1-\tau) \theta^{\prime} \\
+            \phi^{\prime} \leftarrow \tau \phi+(1-\tau) \phi^{\prime}
+            \end{eqnarray}`} />
             <h3 className="for-mt-primary">TD3</h3>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            L\left(\theta_i\right)=\mathbb{E}_{s_t, a_t, r_{t+1}, s_{t+1} \sim D}\left[\left(r_{t+1}+\gamma \min _j Q_{\theta_j^{\prime}}\left(s_{t+1}, \pi_{\phi^{\prime}}\left(s_{t+1}\right)+\epsilon\right)-Q_{\theta_i}\left(s_t, a_t\right)\right)^2\right] \\
+            J(\phi)=\mathbb{E}_{s_t \sim D}\left[\min _i Q_{\theta_i}\left(s_t, \pi_\phi\left(s_t\right)\right)\right]
+            \end{eqnarray}`} />
 
             <h3 className="for-mt-primary">SAC</h3>
             <MathComponent tex={String.raw`dummy`} />
@@ -207,7 +226,12 @@ const AnInitialSolution = () => {
             <p className="for-mt-secondary">The policy objective is a combination of SAC’s objective and MMD penalty.</p>
             <MathComponent tex={String.raw`dummy`} />
             <p className="for-mt-secondary">where MMD is computed as follows.</p>
-            <MathComponent tex={String.raw`dummy`} />
+
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            {MMD}(x, y)= \frac{1}{N^2} \sum_{i, i^{\prime}} k\left(x_i, x_{i^{\prime}}\right)-\frac{2}{N M} \sum_{i, j} k\left(x_i, y_j\right)+\frac{1}{M^2} \sum_{j, j^{\prime}} k\left(y_j, y_{j^{\prime}}\right)
+            
+            \end{eqnarray}`
+            } />
             <p className="for-mt-secondary">where k(x, y) is a gaussian kernel k(x, y) = exp ((x − y)<sup>2</sup> / 2σ<sup>2</sup>))</p>
 
 
