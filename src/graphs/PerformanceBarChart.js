@@ -155,7 +155,7 @@ const PerformanceBarChart = (props) => {
           contentFormatter: (e) => {
             const date = CanvasJSReact.CanvasJS.formatDate(
               e.entries[0].dataPoint.x,
-              "DD/MM/YYYY HH:mm:ss"
+              ""
             );
             let content = `<strong>${date}</strong><br/><br/>`;
 
