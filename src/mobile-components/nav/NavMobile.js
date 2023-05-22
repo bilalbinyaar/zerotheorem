@@ -18,7 +18,7 @@ import {
   AiOutlineAppstore,
 } from "react-icons/ai";
 
-import { MdOutlineSource } from "react-icons/md";
+import { MdOutlineSource, MdManageAccounts } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { set_day_mode, set_night_mode } from "../../store";
 import { useNavigate } from "react-router-dom";
@@ -498,6 +498,10 @@ export default function NavMobile(props) {
                     <CustomLink to="/performance" onClick={toCloseNav}>
                         <AiFillHome className="nav-icons" />
                         Performance
+                    </CustomLink>
+                    <CustomLink to="/risk-management" onClick={toCloseNav}>
+                      <MdManageAccounts className="nav-icons" />
+                      Risk Management
                     </CustomLink>
                     <CustomLink to="/compare" onClick={toCloseNav}>
                         <BiColumns className="nav-icons nav-icons-mobile" />

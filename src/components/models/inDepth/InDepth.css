@@ -106,12 +106,16 @@
     }
 
     .portfolio-allocation-div {
-        margin: 1rem 0rem;
+        margin: 0rem;
         width: 100% !important;
     }
 
     .for-performance-nc .container {
         padding: 0rem !important;
+    }
+
+    .for-performance-nc {
+        padding: 1rem 0rem 0rem 0rem !important;
     }
 
     /* .in-depth-head h2 {

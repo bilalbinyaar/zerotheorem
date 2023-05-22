@@ -2047,6 +2047,20 @@ const BactestRouteComponent = () => {
             />
           </div>
 
+          <div className="fee-input flex-display">
+            <h3>Stop Time</h3>
+            <TextField
+              id="fee"
+              placeholder="0-1%"
+              variant="outlined"
+              value={fee_selected_for_backtest}
+              onChange={handleFeeChange}
+              sx={{
+                width: 85,
+              }}
+            />
+          </div>
+
           <div className="btn-div-backtest" onClick={handleRunBacktestChange}>
             <button
               className="btn-contact-backtest"
@@ -2125,6 +2139,20 @@ const BactestRouteComponent = () => {
             </div>
             <div className="fee-input flex-display">
               <h3>Fee:</h3>
+              <TextField
+                id="outlined-basic"
+                placeholder="0-1%"
+                variant="outlined"
+                value={fee_selected_for_backtest_mobile}
+                onChange={handleFeeChangeMobile}
+                sx={{
+                  width: 75,
+                }}
+              />
+            </div>
+
+            <div className="fee-input flex-display">
+              <h3>Stop Time:</h3>
               <TextField
                 id="outlined-basic"
                 placeholder="0-1%"

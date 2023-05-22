@@ -54,10 +54,15 @@
     color: var(--color-day-green);
 }
 
+
+.strategy-live-stats a {
+    color: var(--color-day-black);
+}
+
 @media screen and (max-width: 768px) {
 
     .live-pnl .container {
-        padding: 1.2rem 0rem 0rem 0rem;
+        padding: 0.2rem 0rem 0rem 0rem;
     }
 
     .live-pnl-stats-div {
@@ -79,12 +84,18 @@
 
     .strategies-live-stats {
         width: 100%;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .strategy-live-stats {
         margin-left: 0;
         margin-bottom: 0.8rem;
+        width: 95%;
+    }
+
+    .live-state-ml {
+        margin-left: 0.4rem;
     }
 
     /* .overall-live {

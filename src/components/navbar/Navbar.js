@@ -509,6 +509,9 @@ export default function Navbar() {
               <CustomLink to="/" onClick={toCloseNav}>
                 Performance
               </CustomLink>
+              <CustomLink to="/risk-management" onClick={toCloseNav}>
+                Risk Management
+              </CustomLink>
               <CustomLink to="/compare" className="menu-item">
                 Compare
               </CustomLink>

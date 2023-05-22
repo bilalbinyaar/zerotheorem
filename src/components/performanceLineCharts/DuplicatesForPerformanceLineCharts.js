@@ -10,7 +10,7 @@ const DuplicatesForPerformanceLineCharts = (props) => {
   return (
     <div className="in-depth">
       <div className="in-depth-charts">
-        <div className="in-depth-nc for-performance-mb kelly-line-charts">
+        <div className="in-depth-nc for-performance-mb kelly-line-charts padding-bottom-kelly">
           <h2>Kelly Optimal Portfolio Allocation</h2>
           {/* <PerformanceMultiLine model_name={"ZT1_0M24BTC1"} /> */}
           <Kelly_Allocation_ApexCharts model_name={"ZT1_0M24BTC1"} />

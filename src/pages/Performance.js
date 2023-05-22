@@ -15,9 +15,9 @@ const Performance = () => {
       <PerformanceGraphs />
       <PerformanceDataGrid />
       <LivePNL />
-      <CurrentPortfolio />
+      {/* <CurrentPortfolio /> */}
       <ScatterPlotApexCharts />
-      <PerformanceLineCharts />
+      {/* <PerformanceLineCharts /> */}
       {/* <HeatmapChart model_name={"strategy_1"} /> */}
       {/* <PerformanceBarChart model_name={"live_pnls"} /> */}
     </React.Fragment>

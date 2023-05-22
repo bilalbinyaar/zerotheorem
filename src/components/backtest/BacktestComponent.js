@@ -1437,6 +1437,20 @@ const BacktestComponent = (props) => {
                   }}
                 />
               </div>
+
+              <div className="fee-input flex-display">
+                <h3>Stop Time:</h3>
+                <TextField
+                  id="fee"
+                  placeholder="0-1%"
+                  variant="outlined"
+                  value={fee_selected_for_backtest}
+                  onChange={handleFeeChange}
+                  sx={{
+                    width: 85,
+                  }}
+                />
+              </div>
               {/* <div className="backtest-btn-div backtest-btn-page">
               <Link to="#">
                 <p className="compare-btn" onClick={handleRunBacktestChange}>
@@ -1525,6 +1539,20 @@ const BacktestComponent = (props) => {
                 </div>
                 <div className="fee-input flex-display">
                   <h3>Fee:</h3>
+                  <TextField
+                    id="outlined-basic"
+                    placeholder="0-1%"
+                    variant="outlined"
+                    value={fee_selected_for_backtest_mobile}
+                    onChange={handleFeeChangeMobile}
+                    sx={{
+                      width: 75,
+                    }}
+                  />
+                </div>
+
+                <div className="fee-input flex-display">
+                  <h3>Stop Time:</h3>
                   <TextField
                     id="outlined-basic"
                     placeholder="0-1%"
