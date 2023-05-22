@@ -2033,7 +2033,7 @@ const BactestRouteComponent = () => {
               }}
             />
           </div>
-          <div className="fee-input flex-display">
+          <div className="loss-input flex-display">
             <h3>Fee:</h3>
             <TextField
               id="fee"
@@ -2133,11 +2133,11 @@ const BactestRouteComponent = () => {
                 value={stop_loss_selected_for_backtest_mobile}
                 onChange={handleLossChangeMobile}
                 sx={{
-                  width: 75,
+                  width: 65,
                 }}
               />
             </div>
-            <div className="fee-input flex-display">
+            <div className="loss-input flex-display">
               <h3>Fee:</h3>
               <TextField
                 id="outlined-basic"
@@ -2146,7 +2146,7 @@ const BactestRouteComponent = () => {
                 value={fee_selected_for_backtest_mobile}
                 onChange={handleFeeChangeMobile}
                 sx={{
-                  width: 75,
+                  width: 65,
                 }}
               />
             </div>
@@ -2160,7 +2160,7 @@ const BactestRouteComponent = () => {
                 value={fee_selected_for_backtest_mobile}
                 onChange={handleFeeChangeMobile}
                 sx={{
-                  width: 75,
+                  width: 65,
                 }}
               />
             </div>
