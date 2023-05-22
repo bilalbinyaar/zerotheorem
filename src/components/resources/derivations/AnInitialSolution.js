@@ -152,12 +152,15 @@ const AnInitialSolution = () => {
             g(t)= 1 & \pi_{B T C \text { estimated }}^{\prime} \Delta t \leq \pi_{\text {positive }} \Delta t \\ -1 & \text { otherwise }
             \end{eqnarray}`} />
             <p className="for-mt-secondary">and</p>
+            {/* <MathComponent tex={String.raw`\begin{eqnarray}
+            f(t)= 1 & \mid \pi_{B T C}^{\prime} \text { estimated } ₫ t|\leq| \pi_{\text {negative }} a t \mid \\ -1 & \text { otherwise }
+            \end{eqnarray}`} /> */}
             <MathComponent tex={String.raw`\begin{eqnarray}
             dummy
             \end{eqnarray}`} />
             <p className="for-mt-secondary">
             The reward for minimising error on π
-            <sup>′</sup><sub>BTC</sub> is defined as fol</p>
+            <sup>′</sup><sub>BTC</sub> is defined as follow</p>
             <MathComponent tex={String.raw`r_{\text {error }}=-1 \cdot\left|\pi_{B T C \text { actual }}^{\prime} \Delta t-\pi_{B T C \text { estimated } @ t+1}^{\prime}\right|`} />
             <div className="img-doc for-mt-primary">
               <img src={img3} alt="p1" />
@@ -186,45 +189,74 @@ const AnInitialSolution = () => {
             \end{eqnarray}`} />
 
             <h3 className="for-mt-primary">SAC</h3>
-            <MathComponent tex={String.raw`dummy`} />
-            <MathComponent tex={String.raw`dummy`} />
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            L\left(\theta_i\right)=\mathbb{E}_{s_t, a_t, r_{t+1}, s_{t+1} \sim D, a_{t+1} \sim \pi_\phi\left(\cdot \mid s_{t+1}\right)}\left[\left(y-Q_{\theta_i}\left(s_t, a_t\right)\right)^2\right] \\
+            y=r_{t+1}+\gamma\left(\min _j Q_{\theta_j}\left(s_{t+1}, a_{t+1}\right)-\alpha \log \left(\pi_\phi\left(a_{t+1} \mid s_{t+1}\right)\right)\right) \\
+            J(\phi)=\mathbb{E}_{s_t \sim D, a_t \sim \pi_\phi\left(\cdot \mid s_t\right)}\left[\alpha \log \left(\pi_\phi\left(a_t \mid s_t\right)\right)-\min _i Q_{\theta_i}\left(s_t, \pi_\phi\left(a_t \mid s_t\right)\right)\right]
+            \end{eqnarray}`} />
+
             <p className="for-mt-secondary">The temperature parameter α is also automatically adjustable</p>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            J(\alpha)=\mathbb{E}_{s_t \sim D, a_t \sim \pi_\phi\left(\cdot \mid s_t\right)}\left[-\alpha\left(\log \left(\pi_\phi\left(a_t \mid s_t\right)\right)+H\right)\right]
+            \end{eqnarray}`} />
 
 
             <h3 className="for-mt-primary">CQL</h3>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            L\left(\theta_i\right)=\alpha \mathbb{E}_{s_t \sim D}\left[\log \sum_a \exp Q_{\theta_i}\left(s_t, a\right)-\mathbb{E}_{a \sim D}\left[Q_{\theta_i}(s, a)\right]-\tau\right]+L_{\mathrm{SAC}}\left(\theta_i\right)
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">
             where α is an automatically adjustable value via Lagrangian dual gradient descent and τ is
             a threshold value. If the action-value difference is smaller than τ , the α will become smaller.
             Otherwise, the α will become larger to aggressively penalize action-values. In continuous
             control, log Σ<sub>a</sub>
             exp Q(s, a) is computed as follows</p>
-            <MathComponent tex={String.raw`dummy`} />
+            {/* <MathComponent tex={String.raw`\begin{eqnarray}
+            \log \sum_a \exp Q(s, a) \approx \log \left(\frac{1}{2 N} \sum_{a_i \sim \operatorname{Unf}(a)}^N\left[\frac{\exp Q\left(s, a_i\right)}{\operatorname{Unif}(a)}\right]+\frac{1}{2 N} \sum_{a_i \sim \pi_\phi(a \mid s)}^N\left[\frac{\exp Q\left(s, a_i\right)}{\pi_\phi\left(a_i \mid s\right)}\right]\right)
+            \end{eqnarray}`} /> */}
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            dummy
+            \end{eqnarray}`} />
 
             <h3 className="for-mt-primary">AWR</h3>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            L(\theta)=\mathbb{E}_{s_t, R_t \sim D}\left[\left(R_t-V\left(s_t \mid \theta\right)\right)^2\right]
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">
             where Rt is approximated using TD(λ) to mitigate high variance issue. The policy function
             is also trained as a supervised regression problem</p>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            J(\phi)=\mathbb{E}_{s_t, a_t, R_t \sim D}\left[\log \pi\left(a_t \mid s_t, \phi\right) \exp \left(\frac{1}{B}\left(R_t-V\left(s_t \mid \theta\right)\right)\right)\right]
+            \end{eqnarray}`} />
 
 
             <h3 className="for-mt-primary">AWAC</h3>
-            <MathComponent tex={String.raw`dummy`} />
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            J(\phi)=\mathbb{E}_{s_t, a_t \sim D}\left[\log \pi_\phi\left(a_t \mid s_t\right) \exp \left(\frac{1}{\lambda} A^\pi\left(s_t, a_t\right)\right)\right]
+            \end{eqnarray}`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            A^\pi\left(s_t, a_t\right)=Q_\theta\left(s_t, a_t\right)-Q_\theta\left(s_t, a_t^{\prime}\right)$ and $a_t^{\prime} \sim \pi_\phi\left(\cdot \mid s_t\right)$
+            \end{eqnarray}`} />
 
 
             <h3 className="for-mt-primary">PLAS</h3>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            a \sim p_\beta\left(a \mid s, z=\pi_\phi(s)\right)
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">where β is a parameter of the decoder in Conditional VAE</p>
 
 
             <h3 className="for-mt-primary">BEAR</h3>
-            <MathComponent tex={String.raw`dummy`} />
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            L(\beta)=\mathbb{E}_{s_t, a_t \sim D, a \sim \pi_\beta\left(\cdot \mid s_t\right)}\left[\left(a-a_t\right)^2\right]
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">The policy objective is a combination of SAC’s objective and MMD penalty.</p>
-            <MathComponent tex={String.raw`dummy`} />
+            {/* <MathComponent tex={String.raw`\begin{eqnarray}
+            J(\phi)=J_{S A C}(\phi)-\mathbb{E}_{s_t \sim D} \alpha\left(\operatorname{MMD}\left(\pi_\beta\left(\cdot \mid s_t\right), \pi_\phi\left(\cdot \mid s_t\right)\right)-\epsilon\right)
+            \end{eqnarray}`} /> */}
+            <MathComponent tex={String.raw`\begin{eqnarray}
+            dummy
+            \end{eqnarray}`} />
             <p className="for-mt-secondary">where MMD is computed as follows.</p>
 
             <MathComponent tex={String.raw`\begin{eqnarray}
