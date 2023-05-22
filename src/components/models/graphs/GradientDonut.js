@@ -266,7 +266,8 @@ const GradientDonut = (props) => {
           options={options}
           series={series}
           type="donut"
-          height={260}
+          height={300}
+          width={450}
         />
       ) : (
         <div className="container loader-container">
