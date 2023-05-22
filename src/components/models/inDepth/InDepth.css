@@ -107,6 +107,7 @@
 
     .portfolio-allocation-div {
         margin: 1rem 0rem;
+        width: 100% !important;
     }
 
     .for-performance-nc .container {
