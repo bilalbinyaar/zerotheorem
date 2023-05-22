@@ -1356,14 +1356,14 @@ const BacktestComponent = (props) => {
           <div className="container">
             <h1>Backtest</h1>
             <p className="backtest-description">
-              To conduct a personalized backtest, begin by choosing a model
+              To conduct a personalized backtest, begin by choosing a strategy
               through either the time horizon and currencies filter or by
-              selecting from the Models dropdown menu. Afterwards, adjust the
-              backtest inputs to fit your preferences, including the start date,
-              which must not be earlier than the model's Start date (default
-              value). Additionally, set the take profit and stop loss values
-              within a range of 0 to 100, and specify a fee for each transaction
-              with a value between 0 and 1.
+              selecting from the Strategies dropdown menu. Afterwards, adjust
+              the backtest inputs to fit your preferences, including the start
+              date, which must not be earlier than the model's Start date
+              (default value). Additionally, set the take profit and stop loss
+              values within a range of 0 to 100, and specify a fee for each
+              transaction with a value between 0 and 1.
             </p>
 
             {/* THIS IS FOR WEB */}
