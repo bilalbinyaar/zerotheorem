@@ -614,7 +614,27 @@ const PerformanceDataGrid = () => {
         </strong>
       ),
     },
-
+    {
+      field: "avg_daily_pnl",
+      headerName: "Avg Daily PNL",
+      width: 100,
+      sortable: true,
+      headerAlign: "center",
+      flex: 2,
+      renderHeader: (params) => (
+        <strong>
+          {"Avg Daily PNL"}
+          <Tooltip
+            className="performance-table-tooltip"
+            title="Average daily PNL"
+          >
+            <IconButton>
+              <BsFillInfoCircleFill />
+            </IconButton>
+          </Tooltip>
+        </strong>
+      ),
+    },
     // {
     //   field: "forecast_time",
     //   headerName: "Forecast Time",
@@ -650,7 +670,7 @@ const PerformanceDataGrid = () => {
           {"Alpha"}
           <Tooltip
             className="performance-table-tooltip"
-            title="Time when the forecast is created (in local system time)"
+            title="Alpha of the strategy"
           >
             <IconButton>
               <BsFillInfoCircleFill />
@@ -699,7 +719,7 @@ const PerformanceDataGrid = () => {
           {"Beta"}
           <Tooltip
             className="performance-table-tooltip"
-            title="Countdown clock till time of next forecast"
+            title="Beta of the strategy"
           >
             <IconButton>
               <BsFillInfoCircleFill />
@@ -719,28 +739,9 @@ const PerformanceDataGrid = () => {
       renderHeader: (params) => (
         <strong>
           {"Sharpe"}
-          <Tooltip className="performance-table-tooltip" title="Sharpe">
-            <IconButton>
-              <BsFillInfoCircleFill />
-            </IconButton>
-          </Tooltip>
-        </strong>
-      ),
-    },
-
-    {
-      field: "avg_daily_pnl",
-      headerName: "Avg Daily PNL",
-      width: 100,
-      sortable: true,
-      headerAlign: "center",
-      flex: 2,
-      renderHeader: (params) => (
-        <strong>
-          {"Avg Daily PNL"}
           <Tooltip
             className="performance-table-tooltip"
-            title="Average daily PNL"
+            title="Sharpe of the strategy"
           >
             <IconButton>
               <BsFillInfoCircleFill />

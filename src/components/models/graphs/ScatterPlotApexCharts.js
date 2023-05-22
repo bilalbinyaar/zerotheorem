@@ -24,6 +24,20 @@ const ScatterPlotApexCharts = () => {
           show: false, // Hide the chart toolbar
         },
       },
+      tooltip: {
+        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+          return (
+            '<div class="tooltip">' +
+            "<span>X: " +
+            w.config.series[seriesIndex].data[dataPointIndex][0] +
+            "</span>" +
+            "<span>Y: " +
+            w.config.series[seriesIndex].data[dataPointIndex][1] +
+            "</span>" +
+            "</div>"
+          );
+        },
+      },
       xaxis: {
         tickAmount: 10,
         labels: {
@@ -79,7 +93,7 @@ const ScatterPlotApexCharts = () => {
               setState({
                 series: [
                   {
-                    name: "BTC Return ",
+                    name: "Market Return ",
                     data: temp_data,
                   },
                 ],
@@ -95,7 +109,29 @@ const ScatterPlotApexCharts = () => {
                       show: false, // Hide the chart toolbar
                     },
                   },
+                  tooltip: {
+                    custom: function ({
+                      series,
+                      seriesIndex,
+                      dataPointIndex,
+                      w,
+                    }) {
+                      return (
+                        '<div class="tooltip" style="padding: 4px;">' +
+                        "<span>Portfolio Return: " +
+                        w.config.series[seriesIndex].data[dataPointIndex][0] +
+                        "%</span><br>" +
+                        "<span>Market Return: " +
+                        w.config.series[seriesIndex].data[dataPointIndex][1] +
+                        "%</span>" +
+                        "</div>"
+                      );
+                    },
+                  },
                   xaxis: {
+                    title: {
+                      text: "PNL Returns",
+                    },
                     tickAmount: 10,
                     labels: {
                       align: "center",
@@ -106,6 +142,14 @@ const ScatterPlotApexCharts = () => {
                     },
                   },
                   yaxis: {
+                    title: {
+                      text: "Market Returns",
+                      offsetX: -10,
+                      // style: {
+                      //   padding: "10px 10px 10px 10px", // Adjust the margin as needed
+                      // },
+                    },
+
                     opposite: false,
                     forceNiceScale: false,
                     floating: false,
@@ -116,6 +160,7 @@ const ScatterPlotApexCharts = () => {
                       style: {
                         colors: "#000000",
                       },
+                      offsetX: 20,
                     },
                   },
                 },
@@ -154,7 +199,7 @@ const ScatterPlotApexCharts = () => {
               setState({
                 series: [
                   {
-                    name: "BTC Return ",
+                    name: "Market Return ",
                     data: temp_data,
                   },
                 ],
@@ -168,6 +213,19 @@ const ScatterPlotApexCharts = () => {
                     },
                     toolbar: {
                       show: false, // Hide the chart toolbar
+                    },
+                  },
+                  tooltip: {
+                    shared: false,
+                    x: {
+                      formatter: function (val) {
+                        return parseFloat(val).toFixed(1);
+                      },
+                    },
+                    y: {
+                      formatter: function (val) {
+                        return val.toFixed(2);
+                      },
                     },
                   },
                   xaxis: {
@@ -218,7 +276,6 @@ const ScatterPlotApexCharts = () => {
         />
       </div>
     </div>
-    
   );
 };
 
