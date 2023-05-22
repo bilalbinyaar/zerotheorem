@@ -127,7 +127,7 @@ const GradientDonut = (props) => {
         .then((response) => response.json())
         .then((data) => {
           // console.log(data["response"].length);
-          console.log("Debug stats -->", data);
+          // console.log("Debug stats -->", data);
           var temp_stats = [];
           for (var i = 0; i < data["response"].length; i++) {
             // console.log(data["response"][i].strategy_name);
@@ -201,9 +201,19 @@ const GradientDonut = (props) => {
         //   setIsLoaded(true);
         //   // console.log("Data for setting stat -->", data_for_stat);
         // }
+      } else if (props.model_name.includes("strategy")) {
+        var data_for_stat = [];
+        console.log("Backtest --->", stats);
+        data_for_stat.push(stats[props.model_name].win_percentage);
+        data_for_stat.push(stats[props.model_name].loss_percentage);
+        setSeries(data_for_stat);
+        setLabels(["Wins", "Losses"]);
+        setIsLoaded(true);
+        // console.log("Strategy -->", data["response"][i].strategy_name);
+        // data_for_stat.push(data["response"]);
       } else {
         // var data_for_stat = [];
-        // console.log("Backtest --->", stats);
+        console.log("Backtest --->", stats);
         // data_for_stat.push(stats[props.model_name].win_percentage);
         // data_for_stat.push(stats[props.model_name].loss_percentage);
         //console.log("Strategy -->", data["response"][i].strategy_name);

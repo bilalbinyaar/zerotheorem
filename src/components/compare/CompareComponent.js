@@ -985,19 +985,19 @@ const CompareComponent = () => {
         <h1>Compare</h1>
         {windowWidth.current <= 768 ? (
           <p className="compare-description">
-            Compare any two models by selecting them in the columns below, where
-            you can review their details and performance metrics. To refine your
-            search, use the time horizon and currency filters to locate a
-            specific model, or type in the model name directly to select it. The
-            best values are colored green with the exception of the Forecast
-            where Long is always green and Short is always red.
+            Compare any two strategies by selecting them in the columns below,
+            where you can review their details and performance metrics. To
+            refine your search, use the time horizon and currency filters to
+            locate a specific strategy, or type in the strategy name directly to
+            select it. The best values are colored green with the exception of
+            the Forecast where Long is always green and Short is always red.
           </p>
         ) : (
           <p className="compare-description">
-            Compare up to three models by selecting them in the columns below,
-            where you can review their details and performance metrics. To
-            refine your search, use the time horizon and currency filters to
-            locate a specific model, or type in the model name directly to
+            Compare up to three strategies by selecting them in the columns
+            below, where you can review their details and performance metrics.
+            To refine your search, use the time horizon and currency filters to
+            locate a specific strategy, or type in the strategy name directly to
             select it. The best values are colored green with the exception of
             the Forecast where Long is always green and Short is always red.
           </p>
@@ -1739,7 +1739,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -2164,7 +2164,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -3151,7 +3151,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -3575,7 +3575,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -4248,7 +4248,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
