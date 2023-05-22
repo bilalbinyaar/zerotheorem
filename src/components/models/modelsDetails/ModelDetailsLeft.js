@@ -537,62 +537,64 @@ const ModelDetailsLeft = (props) => {
         {/* Body # 4 */}
 
         <div className="model-details-body-left-four">
-                  {strategies[props.model_name] ? (
-          props.model_name.includes("strategy") ? (
-            <div className="model-details-left-body">
-              <div className="model-details-left-body-stats compare-btn-div">
-                <Link
-                  to="/compare"
-                  state={{
-                    model_name: `${props.model_name}`,
-                    currency: `${strategies[props.model_name].currency}`,
-                    time_horizon: `${
-                      strategies[props.model_name].time_horizon
-                    }`,
-                  }}
-                >
-                  <p className="compare-btn">Compare</p>
-                </Link>
+          {strategies[props.model_name] ? (
+            props.model_name.includes("strategy") ? (
+              <div className="model-details-left-body">
+                <div className="model-details-left-body-stats compare-btn-div">
+                  <Link
+                    to="/compare"
+                    state={{
+                      model_name: `${props.model_name}`,
+                      currency: `${strategies[props.model_name].currency}`,
+                      time_horizon: `${
+                        strategies[props.model_name].time_horizon
+                      }`,
+                    }}
+                  >
+                    <p className="compare-btn">Compare</p>
+                  </Link>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="model-details-left-body">
-              <div className="model-details-left-body-stats compare-btn-div">
-                <Link
-                  to="/compare"
-                  state={{
-                    model_name: `${props.model_name}`,
-                    currency: `${strategies[props.model_name].currency}`,
-                    time_horizon: `${
-                      strategies[props.model_name].time_horizon
-                    }`,
-                  }}
-                >
-                  <p className="compare-btn">Compare</p>
-                </Link>
+            ) : (
+              <div className="model-details-left-body">
+                <div className="model-details-left-body-stats compare-btn-div">
+                  <Link
+                    to="/compare"
+                    state={{
+                      model_name: `${props.model_name}`,
+                      currency: `${strategies[props.model_name].currency}`,
+                      time_horizon: `${
+                        strategies[props.model_name].time_horizon
+                      }`,
+                    }}
+                  >
+                    <p className="compare-btn">Compare</p>
+                  </Link>
+                </div>
               </div>
-            </div>
-          )
-        ) : null}
+            )
+          ) : null}
 
           <div className="model-details-left-body">
-            <div className="model-details-left-body-stats compare-btn-div">
-              <Link
-                to="/backtest"
-              >
-                <p className="compare-btn">Backtest</p>
-              </Link>
-            </div>
+            {strategies[props.model_name] ? (
+              <div className="model-details-left-body-stats compare-btn-div">
+                <Link
+                  to="/backtest"
+                  state={{
+                    model_name: `${props.model_name}`,
+                    currency: `${strategies[props.model_name].currency}`,
+                    time_horizon: `${
+                      strategies[props.model_name].time_horizon
+                    }`,
+                  }}
+                >
+                  <p className="compare-btn">Backtest</p>
+                </Link>
+              </div>
+            ) : null}
           </div>
         </div>
-
-
-                  
-        
       </div>
-
-      
-      
     </div>
   );
 };
