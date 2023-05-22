@@ -1412,7 +1412,7 @@ pre[class*="language-"] {
 }
 
 .scattered .container {
-  padding: 0rem;
+  padding: 3rem 0rem;
 }
 
 .scattered .container h2 {
@@ -1421,6 +1421,7 @@ pre[class*="language-"] {
 
 .kelly-line-charts {
   width: 100% !important;
+  padding: 2rem 0rem 0rem 0rem!important;
 }
 
 .kelly-line-charts h2 {
@@ -1437,4 +1438,27 @@ pre[class*="language-"] {
   width: 100%;
   position: relative;
   height: 300px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .scattered .container {
+    padding: 1rem 0rem 2rem 0rem;
+  }
+
+  .kelly-line-charts {
+    padding: 1.2rem 0rem 0rem 0rem!important;
+  }
+
+  .padding-bottom-kelly {
+    margin-bottom: 1.2rem;
+  }
+}
+
+
+
+/* RISK MANAGEMENT PAGE CSS */
+
+.risk-management .container {
+  padding: 4rem 0rem 1rem 0rem;
 }

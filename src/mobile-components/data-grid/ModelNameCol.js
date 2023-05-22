@@ -234,8 +234,9 @@ const ModelNameCol = (props) => {
     <div className="forecasts-model-name">
       <div className="forecasts-model-name-icon-div">
         {/* {props.value[2].replace("_", "-")} */}
-
+        <Link to={props.value[2].replace("_", "-")}>
         <h3>{props.value[2].replace("_", "-")} </h3>
+        </Link>
         <BiLinkExternal className="model-link-icon" />
       </div>
       <div className="model-details-left-body for-forecasts-card">

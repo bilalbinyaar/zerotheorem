@@ -39,6 +39,7 @@ import Contact from "./components/contact/Contact";
 import Performance from "./pages/Performance";
 import { useSelector, useDispatch } from "react-redux";
 import { set_login } from "./store";
+import RiskManagement from "./pages/RiskManagement";
 // import dotenv from "dotenv";
 function App() {
   // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
@@ -107,6 +108,7 @@ function App() {
                 <Route path="/backtest" element={<BactestRouteComponent />} />
                 <Route path="/api" element={<Documentation />} />
                 <Route path="/performance" element={<Performance />} />
+                <Route path="/risk-management" element={<RiskManagement />} />
 
                 {/* RESOURCES ROUTING FOR SUB ITEMS */}
                 <Route

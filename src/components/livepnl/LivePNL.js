@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./LivePNL.css";
+import { Link } from "react-router-dom";
+
 
 const LivePNL = () => {
   const [stats, setStats] = useState([]);
@@ -306,28 +308,27 @@ const LivePNL = () => {
           <div className="divider-div-pnl-live"></div>
 
           <div className="strategies-live-stats">
-            <div className="overall-live strategy-live-stats">
-              <h3>{stats["0"] ? stats["0"].strategy_name : "Loading"}</h3>
-              <h3
-                className="live-stats"
-                id="pnl-color1"
-                onChange={
-                  stats["0"]
-                    ? forColor(
-                        `${parseFloat(stats["0"].portfolio_live_pnl_percent)}`,
-                        "pnl-color1"
-                      )
-                    : null
-                }
-              >
-                {stats["0"]
-                  ? `${stats["0"].portfolio_live_pnl_percent}%`
-                  : null}
-              </h3>
-            </div>
-
-            <div className="overall-live strategy-live-stats">
-              <h3>{stats["1"] ? stats["1"].strategy_name : "Loading"}</h3>
+              <div className="overall-live strategy-live-stats">
+                <h3>{stats["0"] ? <Link to = {stats["0"].strategy_name}>{stats["0"].strategy_name} </Link>: "Loading"}</h3>
+                <h3
+                  className="live-stats"
+                  id="pnl-color1"
+                  onChange={
+                    stats["0"]
+                      ? forColor(
+                          `${parseFloat(stats["0"].portfolio_live_pnl_percent)}`,
+                          "pnl-color1"
+                        )
+                      : null
+                  }
+                >
+                  {stats["0"]
+                    ? `${stats["0"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
+            <div className="overall-live strategy-live-stats live-state-ml">
+              <h3>{stats["1"] ? <Link to = {stats["1"].strategy_name}>{stats["1"].strategy_name} </Link>: "Loading"}</h3>
               <h3
                 className="live-stats"
                 id="pnl-color2"
@@ -347,7 +348,7 @@ const LivePNL = () => {
             </div>
 
             <div className="overall-live strategy-live-stats">
-              <h3>{stats["2"] ? stats["2"].strategy_name : "Loading"}</h3>
+              <h3>{stats["2"] ? <Link to = {stats["2"].strategy_name}>{stats["2"].strategy_name} </Link>: "Loading"}</h3>
               <h3
                 className="live-stats"
                 id="pnl-color3"
@@ -366,8 +367,8 @@ const LivePNL = () => {
               </h3>
             </div>
 
-            <div className="overall-live strategy-live-stats">
-              <h3>{stats["3"] ? stats["3"].strategy_name : "Loading"}</h3>
+            <div className="overall-live strategy-live-stats live-state-ml">
+              <h3>{stats["3"] ? <Link to = {stats["3"].strategy_name}>{stats["3"].strategy_name} </Link>: "Loading"}</h3>
               <h3
                 className="live-stats"
                 id="pnl-color4"
@@ -387,7 +388,7 @@ const LivePNL = () => {
             </div>
 
             <div className="overall-live strategy-live-stats">
-              <h3>{stats["4"] ? stats["4"].strategy_name : "Loading"}</h3>
+              <h3>{stats["4"] ? <Link to = {stats["4"].strategy_name}>{stats["4"].strategy_name} </Link>: "Loading"}</h3>
               <h3
                 className="live-stats"
                 id="pnl-color6"

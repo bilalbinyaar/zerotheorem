@@ -78,7 +78,7 @@ export const ContextProvider = ({ children }) => {
   const adminUserMain = {
     passwordMain: "sorez",
     userMain: "admin@zerotheorem.com",
-    investorMain: "investor@zerotheorem.com",
+    investorMain: "kristian@zerotheorem.com",
   };
   const [userMain, setUserMain] = useState({ name: "", password: "" });
   const [errorMain, setErrorMain] = useState("");
