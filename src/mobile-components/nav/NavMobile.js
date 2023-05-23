@@ -20,7 +20,7 @@ import {
 
 import { MdOutlineSource, MdManageAccounts } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
-import { set_day_mode, set_night_mode } from "../../store";
+import { set_day_mode, set_night_mode, set_login_flase } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { BsFillLayersFill, BsFillInfoCircleFill } from "react-icons/bs";
 import { BiColumns } from "react-icons/bi";
@@ -464,6 +464,10 @@ export default function NavMobile(props) {
 
   const linkModels = useNavigate();
 
+  const handlePersistantLogin = () => {
+    dispatch(set_login_flase(false));
+  };
+
   return (
     <div className="header">
       <div className="container">
@@ -532,6 +536,7 @@ export default function NavMobile(props) {
                             showConfirmButton: false,
                         });
                         toCloseNav();
+                        handlePersistantLogin();
                         setAuthCheckLoginInvestor(false);
                         linkModels(`/`);
                         }}
@@ -640,6 +645,7 @@ export default function NavMobile(props) {
                             showConfirmButton: false,
                         });
                         toCloseNav();
+                        handlePersistantLogin();
                         setCheckLoginMain(false);
                         linkModels(`/`);
                         }}
