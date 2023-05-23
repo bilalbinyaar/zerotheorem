@@ -765,6 +765,9 @@ const BacktestComponent = (props) => {
   var currency = "";
   var time_horizon = "";
   var time_horizon2 = "All";
+  var take_profit = "";
+  var stop_loss = "";
+  var fee = "";
 
   if (location.state) {
     model_name = location.state.model_name.replace("_", "-");
@@ -1424,7 +1427,7 @@ const BacktestComponent = (props) => {
                   }}
                 />
               </div>
-              <div className="fee-input flex-display">
+              <div className="loss-input flex-display">
                 <h3>Fee:</h3>
                 <TextField
                   id="fee"
@@ -1533,11 +1536,11 @@ const BacktestComponent = (props) => {
                     value={stop_loss_selected_for_backtest_mobile}
                     onChange={handleLossChangeMobile}
                     sx={{
-                      width: 75,
+                      width: 65,
                     }}
                   />
                 </div>
-                <div className="fee-input flex-display">
+                <div className="loss-input flex-display">
                   <h3>Fee:</h3>
                   <TextField
                     id="outlined-basic"
@@ -1546,7 +1549,7 @@ const BacktestComponent = (props) => {
                     value={fee_selected_for_backtest_mobile}
                     onChange={handleFeeChangeMobile}
                     sx={{
-                      width: 75,
+                      width: 65,
                     }}
                   />
                 </div>
@@ -1560,7 +1563,7 @@ const BacktestComponent = (props) => {
                     value={fee_selected_for_backtest_mobile}
                     onChange={handleFeeChangeMobile}
                     sx={{
-                      width: 75,
+                      width: 65,
                     }}
                   />
                 </div>
