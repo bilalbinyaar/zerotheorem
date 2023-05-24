@@ -212,23 +212,23 @@ function LoginForm() {
               ) {
                 setCheckLoginMain(true);
               } else if (
-                adminUserMain.passwordMain == input &&
+                adminUserMain.investorPassword == input &&
                 adminUserMain.investorMain == email
               ) {
                 setAuthCheckLoginInvestor(true);
                 handleInvestorLogin();
               } else {
                  event.stopPropagation();
-                 alert("Kindly input valid login credentials")
-              //   Swal.fire({
-              //   title: "Kindly input valid login credentials",
-              //   icon: "error",
-              //   timer: 3000,
-              //   timerProgressBar: true,
-              //   toast: true,
-              //   position: "top-right",
-              //   showConfirmButton: false,
-              // });            
+                //  alert("Kindly input valid login credentials")
+                Swal.fire({
+                title: "Invalid access credentials",
+                icon: "error",
+                timer: 3000,
+                timerProgressBar: true,
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+              });            
               }
             }}
           />
