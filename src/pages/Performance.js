@@ -8,10 +8,12 @@ import LivePNL from "../components/livepnl/LivePNL";
 import PerformanceBarChart from "../graphs/PerformanceBarChart";
 import ScatterPlotApexCharts from "../components/models/graphs/ScatterPlotApexCharts";
 import PerformanceLineCharts from "../components/performanceLineCharts/PerformanceLineCharts";
+import TestComponent from "../components/testperformance/TestComponent";
 const Performance = () => {
   return (
     <React.Fragment>
       <Portfolio />
+      {/* <TestComponent /> */}
       <PerformanceGraphs />
       <PerformanceDataGrid />
       <LivePNL />
