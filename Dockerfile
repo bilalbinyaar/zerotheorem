@@ -1,4 +1,4 @@
-FROM node:alpine3.16 as build
+FROM node:alpine3.16 as node_build
 WORKDIR /app
 
 COPY package.json .
@@ -8,9 +8,9 @@ COPY package.json .
 
 RUN npm install --force --verbose
 
-COPY . .
-RUN npm run build
+COPY build /app/build
+# RUN npm run build
 
 FROM nginx:1.23-alpine
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=node_build /app/build /usr/share/nginx/html

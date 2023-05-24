@@ -3,11 +3,22 @@ import ReactApexChart from "react-apexcharts";
 import regression from "regression";
 import { style } from "@mui/system";
 import { useStateContext } from "../../../ContextProvider";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ScatterPlotApexCharts = () => {
   const [scatterPlotData, setScatterPlotData] = useState([]);
   const [linePlotData, setLinePlotData] = useState([]);
   const { theme } = useStateContext();
+  const [Flag, setFlag] = useState(null);
+  const [color, setColor] = useState(theme == "dark-theme" ? "#FFF" : "#000");
+  const [curr_theme, set_curr_theme] = useState(theme);
+  if (curr_theme != theme) {
+    set_curr_theme(theme);
+    setFlag(Flag == true ? false : true);
+    setColor(theme == "dark-theme" ? "#FFF" : "#000");
+    console.log("I am here ");
+    // setColor(theme =??= "dark-theme" ? "#FFF" : "#000");
+  }
   const [options, setOptions] = useState({
     series: [
       {
@@ -163,7 +174,7 @@ const ScatterPlotApexCharts = () => {
               yaxis: [
                 {
                   y: 0,
-                  borderColor: "#000000",
+                  borderColor: color,
                   borderWidth: 2, // Adjust the stroke width here
 
                   label: {
@@ -181,7 +192,7 @@ const ScatterPlotApexCharts = () => {
               xaxis: [
                 {
                   x: 0,
-                  borderColor: "#000000",
+                  borderColor: color,
                   borderWidth: 2, // Adjust the stroke width here
 
                   label: {
@@ -266,7 +277,7 @@ const ScatterPlotApexCharts = () => {
           });
         }
       });
-  }, []);
+  }, [Flag]);
   return (
     <div className="scattered">
       <div className="container">
