@@ -601,6 +601,9 @@ const ModelDetailsLeft = (props) => {
                       backtest_start_date: `${
                         strategies[props.model_name].backtest_start_date
                       }`,
+                      time_horizon: `${
+                        strategies[props.model_name].time_horizon
+                      }`,
                     }}
                   >
                     <p className="compare-btn">Backtest</p>
