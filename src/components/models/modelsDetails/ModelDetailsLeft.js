@@ -313,6 +313,11 @@ const ModelDetailsLeft = (props) => {
                   strategy_name: data["response"][i].strategy_name,
                   current_pnl: data["response"][i].current_pnl,
                   position_start_time: data["response"][i].position_start_time,
+                  fee: data["response"][i].fee,
+                  stop_loss: data["response"][i].stop_loss,
+                  take_profit: data["response"][i].take_profit,
+                  backtest_start_date: data["response"][i].backtest_start_date,
+                  time_stop: data["response"][i].time_stop,
                 };
               }
               if (JSON.stringify(data_for_strategies) !== "{}") {
@@ -577,20 +582,49 @@ const ModelDetailsLeft = (props) => {
 
           <div className="model-details-left-body">
             {strategies[props.model_name] ? (
-              <div className="model-details-left-body-stats compare-btn-div">
-                <Link
-                  to="/backtest"
-                  state={{
-                    model_name: `${props.model_name}`,
-                    currency: `${strategies[props.model_name].currency}`,
-                    time_horizon: `${
-                      strategies[props.model_name].time_horizon
-                    }`,
-                  }}
-                >
-                  <p className="compare-btn">Backtest</p>
-                </Link>
-              </div>
+              props.model_name.includes("strategy") ? (
+                <div className="model-details-left-body-stats compare-btn-div">
+                  <Link
+                    to="/backtest"
+                    state={{
+                      model_name: `${props.model_name}`,
+                      currency: `${strategies[props.model_name].currency}`,
+                      time_horizon: `${
+                        strategies[props.model_name].time_horizon
+                      }`,
+                      take_profit: `${
+                        strategies[props.model_name].take_profit
+                      }`,
+                      stop_loss: `${strategies[props.model_name].stop_loss}`,
+                      time_stop: `${strategies[props.model_name].time_stop}`,
+                      fee: `${strategies[props.model_name].fee}`,
+                      backtest_start_date: `${
+                        strategies[props.model_name].backtest_start_date
+                      }`,
+                      time_horizon: `${
+                        strategies[props.model_name].time_horizon
+                      }`,
+                    }}
+                  >
+                    <p className="compare-btn">Backtest</p>
+                  </Link>
+                </div>
+              ) : (
+                <div className="model-details-left-body-stats compare-btn-div">
+                  <Link
+                    to="/backtest"
+                    state={{
+                      model_name: `${props.model_name}`,
+                      currency: `${strategies[props.model_name].currency}`,
+                      time_horizon: `${
+                        strategies[props.model_name].time_horizon
+                      }`,
+                    }}
+                  >
+                    <p className="compare-btn">Backtest</p>
+                  </Link>
+                </div>
+              )
             ) : null}
           </div>
         </div>

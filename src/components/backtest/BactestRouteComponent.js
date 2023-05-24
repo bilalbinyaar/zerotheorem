@@ -374,6 +374,11 @@ const BactestRouteComponent = () => {
                   strategy_name: data["response"][i].strategy_name,
                   current_pnl: data["response"][i].current_pnl,
                   position_start_time: data["response"][i].position_start_time,
+                  fee: data["response"][i].fee,
+                  stop_loss: data["response"][i].stop_loss,
+                  take_profit: data["response"][i].take_profit,
+                  backtest_start_date: data["response"][i].backtest_start_date,
+                  time_stop: data["response"][i].time_stop,
                 };
                 index++;
               }
@@ -758,13 +763,29 @@ const BactestRouteComponent = () => {
   var currency = "";
   var time_horizon = "";
   var time_horizon2 = "All";
-
+  var take_profit = "";
+  var stop_loss = "";
+  var fee = "";
+  var time_stop = "";
+  var backtest_start_date = "";
+  var default_date_selected_for_backtest = "";
   if (location.state) {
     model_name = location.state.model_name.replace("_", "-");
     currency = location.state.currency;
     time_horizon = location.state.time_horizon;
     time_horizon2 = location.state.time_horizon;
+    take_profit = location.state.take_profit;
+    stop_loss = location.state.stop_loss;
+    time_stop = location.state.time_stop;
+    fee = location.state.fee;
+    const dateStr = location.state.backtest_start_date;
+    const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
+    backtest_start_date = dayjs.unix(unixTimestamp);
+    default_date_selected_for_backtest = unixTimestamp;
+    // console.log(location.state);
   }
+  const [time_horizon_for_stop_time, set_time_horizon_for_stop_time] =
+    useState(time_horizon);
   const [selectedItem, setSelectedItem] = useState(time_horizon2);
 
   const [default_value_model, set_default_value_model] = useState({
@@ -777,35 +798,43 @@ const BactestRouteComponent = () => {
   });
   const [model_selected_for_backted, set_model_selected_for_backtest] =
     useState(model_name.replace("-", "_"));
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [date_selected_for_backtest, set_date_selected_for_backtest] =
-    useState(null);
+  const [selectedDate, setSelectedDate] = useState(backtest_start_date);
+  const [date_selected_for_backtest, set_date_selected_for_backtest] = useState(
+    default_date_selected_for_backtest
+  );
   const [
     take_profit_selected_for_backtest,
     set_take_profit_selected_for_backtest,
-  ] = useState(null);
+  ] = useState(take_profit);
   const [stop_loss_selected_for_backtest, set_stop_loss_selected_for_backtest] =
-    useState(null);
+    useState(stop_loss);
   const [fee_selected_for_backtest, set_fee_selected_for_backtest] =
-    useState(null);
+    useState(fee);
+  const [stop_time_selected_for_backtest, set_stop_time_selected_for_backtest] =
+    useState(time_stop);
+  const [
+    stop_time_selected_for_backtest_mobile,
+    set_stop_time_selected_for_backtest_mobile,
+  ] = useState(time_stop);
 
-  const [selectedDateMobile, setSelectedDateMobile] = useState(null);
+  const [selectedDateMobile, setSelectedDateMobile] =
+    useState(backtest_start_date);
   const [
     date_selected_for_backtest_mobile,
     set_date_selected_for_backtest_mobile,
-  ] = useState(null);
+  ] = useState(default_date_selected_for_backtest);
   const [
     take_profit_selected_for_backtest_mobile,
     set_take_profit_selected_for_backtest_mobile,
-  ] = useState(null);
+  ] = useState(take_profit);
   const [
     stop_loss_selected_for_backtest_mobile,
     set_stop_loss_selected_for_backtest_mobile,
-  ] = useState(null);
+  ] = useState(stop_loss);
   const [
     fee_selected_for_backtest_mobile,
     set_fee_selected_for_backtest_mobile,
-  ] = useState(null);
+  ] = useState(fee);
   const handleDateChange = (date) => {
     setSelectedDate(date);
     const parsedDate = dayjs(date).toDate();
@@ -823,8 +852,14 @@ const BactestRouteComponent = () => {
   const handleFeeChange = (event) => {
     set_fee_selected_for_backtest(event.target.value);
   };
+  const handleStopTimeChange = (event) => {
+    set_stop_time_selected_for_backtest(event.target.value);
+  };
   const handleFeeChangeMobile = (event) => {
     set_fee_selected_for_backtest_mobile(event.target.value);
+  };
+  const handleStopTimeChangeMobile = (event) => {
+    set_stop_time_selected_for_backtest_mobile(event.target.value);
   };
   const handleProfitChange = (event) => {
     set_take_profit_selected_for_backtest(event.target.value);
@@ -889,7 +924,7 @@ const BactestRouteComponent = () => {
           });
         }
 
-        if (!validator.isNumeric(take_profit_selected_for_backtest)) {
+        if (!validator.isNumeric(take_profit_selected_for_backtest + "")) {
           check = false;
           // alert("Kindly input value in numbers for take profit");
           setIsButtonDisabled(false);
@@ -922,7 +957,7 @@ const BactestRouteComponent = () => {
             showConfirmButton: false,
           });
         }
-        if (!validator.isNumeric(stop_loss_selected_for_backtest)) {
+        if (!validator.isNumeric(stop_loss_selected_for_backtest + "")) {
           check = false;
           setIsButtonDisabled(false);
 
@@ -952,7 +987,7 @@ const BactestRouteComponent = () => {
             showConfirmButton: false,
           });
         }
-        if (!validator.isNumeric(fee_selected_for_backtest)) {
+        if (!validator.isNumeric(fee_selected_for_backtest + "")) {
           check = false;
           setIsButtonDisabled(false);
 
@@ -967,23 +1002,60 @@ const BactestRouteComponent = () => {
             showConfirmButton: false,
           });
         }
+        if (!validator.isNumeric(stop_time_selected_for_backtest + "")) {
+          check = false;
+          setIsButtonDisabled(false);
+
+          // alert("Kindly input value in numbers for fee");
+          Swal.fire({
+            title: "Kindly input value in numbers for stop time",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
+          });
+        }
 
         if (check == true) {
-          setIsLoading(true);
-          set(ref(database, "backtest_queue/" + "user_" + id), {
-            id: "user_" + id,
-            modelName: model_selected_for_backted,
-            start_date: date_selected_for_backtest,
-            end_date: "1677555199",
-            take_profit: take_profit_selected_for_backtest,
-            stop_loss: stop_loss_selected_for_backtest,
-            transaction_fee: fee_selected_for_backtest,
-            status: 0,
-            current_time: timestamp,
+          if (
+            stop_time_selected_for_backtest < 0 ||
+            stop_time_selected_for_backtest >=
+              parseInt(time_horizon_for_stop_time)
+          ) {
+            check = false;
+            setIsButtonDisabled(false);
 
-            // profile_picture: imageUrl,
-          });
-          set_flag_backtest_result(new Date());
+            // alert("Fee should be in range 0-1%");
+            Swal.fire({
+              title:
+                "Stop time should be in time horizon range of selected model",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else {
+            setIsLoading(true);
+            set(ref(database, "backtest_queue/" + "user_" + id), {
+              id: "user_" + id,
+              modelName: model_selected_for_backted,
+              start_date: date_selected_for_backtest,
+              end_date: "1677555199",
+              take_profit: take_profit_selected_for_backtest,
+              stop_loss: stop_loss_selected_for_backtest,
+              transaction_fee: fee_selected_for_backtest,
+              status: 0,
+              current_time: timestamp,
+              stop_time: stop_time_selected_for_backtest,
+
+              // profile_picture: imageUrl,
+            });
+            set_flag_backtest_result(new Date());
+          }
         }
       }
     }
@@ -1034,7 +1106,9 @@ const BactestRouteComponent = () => {
             showConfirmButton: false,
           });
         }
-        if (!validator.isNumeric(take_profit_selected_for_backtest_mobile)) {
+        if (
+          !validator.isNumeric(take_profit_selected_for_backtest_mobile + "")
+        ) {
           check = false;
           setIsButtonDisabled(false);
 
@@ -1067,7 +1141,7 @@ const BactestRouteComponent = () => {
             showConfirmButton: false,
           });
         }
-        if (!validator.isNumeric(stop_loss_selected_for_backtest_mobile)) {
+        if (!validator.isNumeric(stop_loss_selected_for_backtest_mobile + "")) {
           check = false;
           setIsButtonDisabled(false);
 
@@ -1100,7 +1174,7 @@ const BactestRouteComponent = () => {
             showConfirmButton: false,
           });
         }
-        if (!validator.isNumeric(fee_selected_for_backtest_mobile)) {
+        if (!validator.isNumeric(fee_selected_for_backtest_mobile + "")) {
           check = false;
           setIsButtonDisabled(false);
 
@@ -1115,23 +1189,59 @@ const BactestRouteComponent = () => {
             showConfirmButton: false,
           });
         }
-        if (check == true) {
-          setIsLoading(true);
+        if (!validator.isNumeric(stop_time_selected_for_backtest_mobile + "")) {
+          check = false;
+          setIsButtonDisabled(false);
 
-          set(ref(database, "backtest_queue/" + "user_" + id), {
-            id: "user_" + id,
-            modelName: model_selected_for_backted,
-            start_date: date_selected_for_backtest_mobile,
-            end_date: "1677555199",
-            take_profit: take_profit_selected_for_backtest_mobile,
-            stop_loss: stop_loss_selected_for_backtest_mobile,
-            transaction_fee: fee_selected_for_backtest_mobile,
-            status: 0,
-            current_time: timestamp,
-
-            // profile_picture: imageUrl,
+          // alert("Kindly input value in numbers for fee");
+          Swal.fire({
+            title: "Kindly input value in numbers for stop time",
+            icon: "error",
+            timer: 2000,
+            timerProgressBar: true,
+            toast: true,
+            position: "top-right",
+            showConfirmButton: false,
           });
-          set_flag_backtest_result(new Date());
+        }
+        if (check == true) {
+          if (
+            stop_time_selected_for_backtest_mobile < 0 ||
+            stop_time_selected_for_backtest_mobile >=
+              parseInt(time_horizon_for_stop_time)
+          ) {
+            check = false;
+            setIsButtonDisabled(false);
+
+            // alert("Fee should be in range 0-1%");
+            Swal.fire({
+              title:
+                "Stop time should be in time horizon range of selected model",
+              icon: "error",
+              timer: 2000,
+              timerProgressBar: true,
+              toast: true,
+              position: "top-right",
+              showConfirmButton: false,
+            });
+          } else {
+            setIsLoading(true);
+            set(ref(database, "backtest_queue/" + "user_" + id), {
+              id: "user_" + id,
+              modelName: model_selected_for_backted,
+              start_date: date_selected_for_backtest_mobile,
+              end_date: "1677555199",
+              take_profit: take_profit_selected_for_backtest_mobile,
+              stop_loss: stop_loss_selected_for_backtest_mobile,
+              transaction_fee: fee_selected_for_backtest_mobile,
+              status: 0,
+              current_time: timestamp,
+              stop_time: stop_time_selected_for_backtest_mobile,
+
+              // profile_picture: imageUrl,
+            });
+            set_flag_backtest_result(new Date());
+          }
         }
       }
     }
@@ -1210,13 +1320,40 @@ const BactestRouteComponent = () => {
         // console.log("Here is strategies for date picker -->", strategies);
         if (model_selected_for_backted != "") {
           const model = model_selected_for_backted;
-          const dateStr = strategies[model].date_started;
+          const dateStr = strategies[model].backtest_start_date;
+          set_time_horizon_for_stop_time(strategies[model].time_horizon);
           const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
           setSelectedDate(dayjs.unix(unixTimestamp));
           // setDisableBefore(dayjs.unix(unixTimestamp));
 
           set_model_selected_for_backtest(model.replace("-", "_"));
-          // setDisableBefore(dayjs.unix(unixTimestamp));
+          set_take_profit_selected_for_backtest(
+            parseFloat(strategies[model].take_profit) + ""
+          );
+          set_stop_loss_selected_for_backtest(
+            parseFloat(strategies[model].stop_loss) + ""
+          );
+          set_stop_time_selected_for_backtest(
+            parseFloat(strategies[model].time_stop) + ""
+          );
+          set_fee_selected_for_backtest(parseFloat(strategies[model].fee) + "");
+
+          set_model_selected_for_backtest_mobile(model.replace("-", "_"));
+          set_take_profit_selected_for_backtest_mobile(
+            parseFloat(strategies[model].take_profit) + ""
+          );
+          set_stop_loss_selected_for_backtest_mobile(
+            parseFloat(strategies[model].stop_loss) + ""
+          );
+          set_stop_time_selected_for_backtest_mobile(
+            parseFloat(strategies[model].time_stop) + ""
+          );
+          set_fee_selected_for_backtest_mobile(
+            parseFloat(strategies[model].fee) + ""
+          );
+
+          // console.log("Strategies -->", parseFloat(strategies[model].fee));
+          setDisableBefore(dayjs.unix(unixTimestamp));
           set_date_selected_for_backtest(unixTimestamp);
           // set_model_name_for_result_backtest_result(name.replace("-", "_"));
           // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
@@ -2051,10 +2188,10 @@ const BactestRouteComponent = () => {
             <h3>Stop Time</h3>
             <TextField
               id="fee"
-              placeholder="0-1%"
+              placeholder="0-24"
               variant="outlined"
-              value={fee_selected_for_backtest}
-              onChange={handleFeeChange}
+              value={stop_time_selected_for_backtest}
+              onChange={handleStopTimeChange}
               sx={{
                 width: 85,
               }}
@@ -2155,10 +2292,10 @@ const BactestRouteComponent = () => {
               <h3>Stop Time:</h3>
               <TextField
                 id="outlined-basic"
-                placeholder="0-1%"
+                placeholder="0-24"
                 variant="outlined"
-                value={fee_selected_for_backtest_mobile}
-                onChange={handleFeeChangeMobile}
+                value={stop_time_selected_for_backtest_mobile}
+                onChange={handleStopTimeChangeMobile}
                 sx={{
                   width: 65,
                 }}
