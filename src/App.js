@@ -94,20 +94,20 @@ function App() {
                 <Route path="/" element={<Performance />} />
                 <Route path="/derivations" element={<Introduction />} />
                 <Route path="/:name" element={<Models />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/faqs" element={<FAQ />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route
+                {/* <Route path="/about" element={<About />} /> */}
+                {/* <Route path="/faqs" element={<FAQ />} /> */}
+                {/* <Route path="/login" element={<Login />} /> */}
+                {/* <Route path="/signup" element={<Signup />} /> */}
+                {/* <Route
                   path="/api-registration"
                   element={<RegistrationForm />}
-                />
-                <Route path="/contact" element={<Contact />} />
+                /> */}
+                {/* <Route path="/contact" element={<Contact />} /> */}
 
                 <Route path="/compare" element={<Compare />} />
                 <Route path="/backtest" element={<BactestRouteComponent />} />
                 <Route path="/api" element={<Documentation />} />
-                <Route path="/performance" element={<Performance />} />
+                {/* <Route path="/performance" element={<Performance />} /> */}
                 <Route path="/risk-management" element={<RiskManagement />} />
 
                 {/* RESOURCES ROUTING FOR SUB ITEMS */}
@@ -171,7 +171,7 @@ function App() {
                 />
 
                 
-                <Route path="/reload" element={<LoginForm />} />
+                {/* <Route path="/reload" element={<LoginForm />} /> */}
               </Routes>
               <Footer />
             </div>
@@ -179,7 +179,7 @@ function App() {
             <div>
               <Navbar />
               <Routes basename="/zero-theorem">
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Performance />} />
                 <Route path="/derivations" element={<Introduction />} />
                 <Route path="/:name" element={<Models />} />
                 <Route path="/about" element={<About />} />
@@ -191,12 +191,12 @@ function App() {
                   element={<RegistrationForm />}
                 />
                 <Route path="/contact" element={<Contact />} />
-
+                <Route path="/all-models" element={<Home />} />
                 <Route path="/compare" element={<Compare />} />
                 <Route path="/backtest" element={<BactestRouteComponent />} />
                 <Route path="/api" element={<Documentation />} />
-                <Route path="/performance" element={<Performance />} />
-
+                {/* <Route path="/performance" element={<Performance />} /> */}
+                <Route path="/risk-management" element={<RiskManagement />} />
                 {/* RESOURCES ROUTING FOR SUB ITEMS */}
                 <Route
                   path="/the-underlying-assumptions"

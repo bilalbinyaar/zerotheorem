@@ -499,7 +499,7 @@ export default function NavMobile(props) {
             
             {authCheckLoginInvestor == true ? (
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
-                    <CustomLink to="/performance" onClick={toCloseNav}>
+                    <CustomLink to="/" onClick={toCloseNav}>
                         <AiFillHome className="nav-icons" />
                         Performance
                     </CustomLink>
@@ -549,17 +549,20 @@ export default function NavMobile(props) {
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
 
                 
-                <CustomLink to="/performance" onClick={toCloseNav}>
+                <CustomLink to="/" onClick={toCloseNav}>
                 <AiFillHome className="nav-icons" />
                 Performance
                 </CustomLink>
-
+                <CustomLink to="/risk-management" onClick={toCloseNav}>
+                    <MdManageAccounts className="nav-icons" />
+                    Risk Management
+                </CustomLink>
                 <CustomLink to="" onClick={toCloseNav}>
                 <AiFillWallet className="nav-icons" />
                 Forecasts
                 </CustomLink>
                 {/* Sub Menu */}
-                <CustomLink className="mobile-submenu" to="/" onClick={toCloseNav}>
+                <CustomLink className="mobile-submenu" to="/all-models" onClick={toCloseNav}>
                 <AiOutlineAppstore className="nav-icons nav-icons-mobile" />
                 All Models
                 </CustomLink>
