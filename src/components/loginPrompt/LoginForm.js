@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 import videoBackground from "../../assets/2x-bg.mp4";
 import logoWhite from "../../assets/logo-white.svg";
 import { set_login } from "../../store";
+import { useHistory } from 'react-router-dom';
+import Swal from "sweetalert2";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -202,7 +204,8 @@ function LoginForm() {
           <input
             type="submit"
             value="Login"
-            onClick={() => {
+            onClick={(event) => {
+              event.preventDefault();
               if (
                 adminUserMain.passwordMain == input &&
                 adminUserMain.userMain == email
@@ -215,7 +218,17 @@ function LoginForm() {
                 setAuthCheckLoginInvestor(true);
                 handleInvestorLogin();
               } else {
-                alert("Kindly input valid credentials");
+                 event.stopPropagation();
+                 alert("Kindly input valid login credentials")
+              //   Swal.fire({
+              //   title: "Kindly input valid login credentials",
+              //   icon: "error",
+              //   timer: 3000,
+              //   timerProgressBar: true,
+              //   toast: true,
+              //   position: "top-right",
+              //   showConfirmButton: false,
+              // });            
               }
             }}
           />
