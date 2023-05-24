@@ -16,13 +16,13 @@ const ScatterPlotApexCharts = () => {
     set_curr_theme(theme);
     setFlag(Flag == true ? false : true);
     setColor(theme == "dark-theme" ? "#FFF" : "#000");
-    console.log("I am here ");
+    // console.log("I am here ");
     // setColor(theme =??= "dark-theme" ? "#FFF" : "#000");
   }
   const [options, setOptions] = useState({
     series: [
       {
-        name: "Points",
+        // name: "Points",
         type: "scatter",
         data: scatterPlotData,
       },
@@ -151,12 +151,12 @@ const ScatterPlotApexCharts = () => {
           setOptions({
             series: [
               {
-                name: "Points",
+                name: "PNL-Market Returns",
                 type: "scatter",
                 data: sorted_scatter_data,
               },
               {
-                name: "Line",
+                name: "Best fit",
                 color: "#fddd4e",
                 type: "line",
 
@@ -267,6 +267,7 @@ const ScatterPlotApexCharts = () => {
             // },
             legend: {
               show: false,
+              position: "top",
             },
             grid: {
               show: false,
