@@ -137,6 +137,15 @@ const SideBar = () => {
             </Link>
           </div>
 
+          {/* MENU ITEM 15 */}
+          <div className="main-item">
+            <Link to='/an-initial-solution'>
+              <div>
+                <h3>An Initial Solution</h3>
+              </div>
+            </Link>
+          </div>
+
           {/* MENU ITEM 8 */}
           <div className="main-item">
             <Link to="/derivations-details">
@@ -201,14 +210,7 @@ const SideBar = () => {
             </Link>
           </div>    
 
-          {/* MENU ITEM 15 */}
-          <div className="main-item">
-            <Link to='/an-initial-solution'>
-              <div>
-                <h3>An Initial Solution</h3>
-              </div>
-            </Link>
-          </div>             
+                       
 
           </div>
         </div>
@@ -287,6 +289,15 @@ const SideBar = () => {
             </Link>
           </div>
 
+           {/* MENU ITEM 14 */}
+          <div className="main-item">
+            <Link to='/an-initial-solution'>
+              <div>
+                <h3>An Initial Solution</h3>
+              </div>
+            </Link>
+          </div> 
+
           {/* MENU ITEM 8 */}
           <div className="main-item">
             <Link to="/derivations-details">
@@ -351,14 +362,7 @@ const SideBar = () => {
             </Link>
           </div>
 
-           {/* MENU ITEM 14 */}
-          <div className="main-item">
-            <Link to='/an-initial-solution'>
-              <div>
-                <h3>An Initial Solution</h3>
-              </div>
-            </Link>
-          </div>                
+                         
 
         </div>
       </div>

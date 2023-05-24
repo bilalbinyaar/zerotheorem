@@ -1462,3 +1462,13 @@ pre[class*="language-"] {
 .risk-management .container {
   padding: 4rem 0rem 1rem 0rem;
 }
+
+.test-component .container {
+  padding: 0rem 0rem 1rem 0rem;
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+
+.test-component {
+  display: flex;
+}

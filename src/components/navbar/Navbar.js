@@ -518,11 +518,12 @@ export default function Navbar() {
               <CustomLink to="/backtest" className="menu-item">
                 Backtest
               </CustomLink>
-              <CustomLink to="/derivations" className="menu-item">
-                Derivations
-              </CustomLink>
+              
               <CustomLink to="/api" className="menu-item">
                 API
+              </CustomLink>
+              <CustomLink to="/theory" className="menu-item">
+                Theory
               </CustomLink>
             </ul>
           ) : (
@@ -567,10 +568,10 @@ export default function Navbar() {
                 <ul className="sub-menu-items">
                   <CustomLink
                     className="sub-menu-item"
-                    to="/derivations"
+                    to="/theory"
                     onClick={toCloseNav}
                   >
-                    Derivations
+                    Theory
                   </CustomLink>
                   <CustomLink
                     className="sub-menu-item"
@@ -648,8 +649,8 @@ export default function Navbar() {
               <CustomLink to="/compare" onClick={toCloseNav}>
                 Compare
               </CustomLink>
-              <CustomLink to="/derivations" onClick={toCloseNav}>
-                Derivations
+              <CustomLink to="/theory" onClick={toCloseNav}>
+                Theory
               </CustomLink>
               <CustomLink to="/documentation" onClick={toCloseNav}>
                 API

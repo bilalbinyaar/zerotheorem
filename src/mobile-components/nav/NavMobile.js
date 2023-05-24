@@ -515,13 +515,13 @@ export default function NavMobile(props) {
                         <BsGraphUp className="nav-icons nav-icons-mobile" />
                         Backtest
                     </CustomLink>
-                    <CustomLink to="/derivations" onClick={toCloseNav}>
-                        <BsFillLayersFill className="nav-icons nav-icons-mobile" />
-                        Derivations
-                    </CustomLink>
                     <CustomLink to="/api" onClick={toCloseNav}>
                         <AiOutlineApi className="nav-icons" />
                         API
+                    </CustomLink>
+                    <CustomLink to="/theory" onClick={toCloseNav}>
+                        <BsFillLayersFill className="nav-icons nav-icons-mobile" />
+                        Theory
                     </CustomLink>
                     <CustomLink
                         to=""
@@ -590,11 +590,11 @@ export default function NavMobile(props) {
                 {/* Sub Menu */}
                 <CustomLink
                 className="mobile-submenu"
-                to="/derivations"
+                to="/theory"
                 onClick={toCloseNav}
                 >
                 <BsFillLayersFill className="nav-icons nav-icons-mobile" />
-                Derivations
+                Theory
                 </CustomLink>
                 <CustomLink
                 className="mobile-submenu"

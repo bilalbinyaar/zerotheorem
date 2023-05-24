@@ -321,7 +321,7 @@ vs. fitted values, (c) histograms of residuals, and (d) residuals vs. the order 
 fitted values, (c) histograms of residuals, and (d) residuals vs. the order of the data</p>
 
 
-            <h2 className="for-mt-primary">References</h2>
+            {/* <h2 className="for-mt-primary">References</h2>
             <p className="for-mt-secondary">
               1. V. Mnih, K. Kavukcuoglu, D. Silver, A. A. Rusu, J. Veness, M. G. Bellemare, A. Graves,
 M. Riedmiller, A. K. Fidjeland, G. Ostrovski et al., “Human-level control through deep reinforcement learning,” nature, vol. 518, no. 7540, pp. 529–533, 2015.
@@ -374,7 +374,7 @@ https://github.com/DLR-RM/stable-baselines3, 2019.
               <br/>
 15. T. Seno, “d3rlpy: An offline deep reinforcement library,” https://github.com/takuseno/d3rlpy,
 2020
-</p>
+</p> */}
 
 
 
