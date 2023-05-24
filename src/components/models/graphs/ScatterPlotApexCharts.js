@@ -29,21 +29,21 @@ const ScatterPlotApexCharts = () => {
       },
     },
     // stroke: { width: 5 },
-    xaxis: {
-      title: {
-        text: "PNL Returns",
-      },
-      tickAmount: 30,
-      labels: {
-        // minWidth: 0,
-        // maxWidth: 500,
-        align: "left",
-        style: {
-          colors: "#000000",
-        },
-        // offsetX: -20,
-      },
-    },
+    // xaxis: {
+    //   title: {
+    //     text: "PNL Returns",
+    //   },
+    //   tickAmount: 30,
+    //   labels: {
+    //     // minWidth: 0,
+    //     // maxWidth: 500,
+    //     align: "left",
+    //     style: {
+    //       colors: "#000000",
+    //     },
+    //     // offsetX: -20,
+    //   },
+    // },
     yaxis: {
       title: {
         text: "Market Returns",
@@ -84,6 +84,9 @@ const ScatterPlotApexCharts = () => {
     },
     xaxis: {
       type: "numeric",
+      title: {
+        text: "PNL Returns",
+      },
     },
   });
 
