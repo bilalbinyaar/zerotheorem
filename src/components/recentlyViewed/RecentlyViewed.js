@@ -5,6 +5,8 @@ import {
   AiFillCaretUp,
   AiOutlineFieldTime,
   AiOutlineDollarCircle,
+  AiFillDownCircle,
+  AiFillCaretDown,
 } from "react-icons/ai";
 import ModelDetailsRightGraph from "../models/modelsDetails/modelDetailsRightGraphs/ModelDetailsRightGraph";
 import { useState, useEffect } from "react";
@@ -22,7 +24,19 @@ const RecentlyViewed = (props) => {
   const dispatch = useDispatch();
   const persistant_states = useSelector((state) => state.scrollRecently);
   const default_login = useSelector((state) => state.loginFlag);
-
+  const forColor = (total_pnl, id) => {
+    try {
+      if (total_pnl < 0) {
+        document
+          .getElementById(`${id}`)
+          .setAttribute("style", "color:#FF2E2E !important");
+      } else if (total_pnl >= 0) {
+        document
+          .getElementById(`${id}`)
+          .setAttribute("style", "color:#16C784 !important");
+      }
+    } catch {}
+  };
   // console.log("States --->", persistant_states.scrollRecently);
   const {
     stats_cache,
@@ -995,8 +1009,39 @@ const RecentlyViewed = (props) => {
               </div>
 
               <div className="model-details-right-percentage">
-                <AiFillCaretUp className="model-details-right-percentage-icon" />
-                <p>
+                {Object.values(topPerformerModels)[0] &&
+                strategies[
+                  Object.values(topPerformerModels)[0].strategy_name
+                ] ? (
+                  Object.values(topPerformerModels)[0].total_pnl >= 0 ? (
+                    <AiFillCaretUp
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#16c784" }}
+                    />
+                  ) : (
+                    <AiFillCaretDown
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#ff2e2e" }}
+                    />
+                  )
+                ) : null}
+
+                <p
+                  id="pnl-color23"
+                  onChange={
+                    Object.values(topPerformerModels)[0] &&
+                    strategies[
+                      Object.values(topPerformerModels)[0].strategy_name
+                    ]
+                      ? forColor(
+                          parseFloat(
+                            Object.values(topPerformerModels)[0].total_pnl
+                          ),
+                          "pnl-color23"
+                        )
+                      : null
+                  }
+                >
                   {Object.values(topPerformerModels)[0] &&
                   strategies[Object.values(topPerformerModels)[0].strategy_name]
                     ? `${Object.values(topPerformerModels)[0].total_pnl}%`
@@ -1106,8 +1151,38 @@ const RecentlyViewed = (props) => {
                 )}
               </div>
               <div className="model-details-right-percentage">
-                <AiFillCaretUp className="model-details-right-percentage-icon" />
-                <p>
+                {Object.values(topPerformerModels)[1] &&
+                strategies[
+                  Object.values(topPerformerModels)[1].strategy_name
+                ] ? (
+                  Object.values(topPerformerModels)[1].total_pnl >= 0 ? (
+                    <AiFillCaretUp
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#16c784" }}
+                    />
+                  ) : (
+                    <AiFillCaretDown
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#ff2e2e" }}
+                    />
+                  )
+                ) : null}
+                <p
+                  id="pnl-color22"
+                  onChange={
+                    Object.values(topPerformerModels)[1] &&
+                    strategies[
+                      Object.values(topPerformerModels)[1].strategy_name
+                    ]
+                      ? forColor(
+                          parseFloat(
+                            Object.values(topPerformerModels)[1].total_pnl
+                          ),
+                          "pnl-color22"
+                        )
+                      : null
+                  }
+                >
                   {Object.values(topPerformerModels)[1] &&
                   strategies[Object.values(topPerformerModels)[1].strategy_name]
                     ? `${Object.values(topPerformerModels)[1].total_pnl}%`
@@ -1217,8 +1292,38 @@ const RecentlyViewed = (props) => {
                 )}
               </div>
               <div className="model-details-right-percentage">
-                <AiFillCaretUp className="model-details-right-percentage-icon" />
-                <p>
+                {Object.values(topPerformerModels)[2] &&
+                strategies[
+                  Object.values(topPerformerModels)[2].strategy_name
+                ] ? (
+                  Object.values(topPerformerModels)[2].total_pnl >= 0 ? (
+                    <AiFillCaretUp
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#16c784" }}
+                    />
+                  ) : (
+                    <AiFillCaretDown
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#ff2e2e" }}
+                    />
+                  )
+                ) : null}
+                <p
+                  id="pnl-color21"
+                  onChange={
+                    Object.values(topPerformerModels)[2] &&
+                    strategies[
+                      Object.values(topPerformerModels)[2].strategy_name
+                    ]
+                      ? forColor(
+                          parseFloat(
+                            Object.values(topPerformerModels)[2].total_pnl
+                          ),
+                          "pnl-color21"
+                        )
+                      : null
+                  }
+                >
                   {Object.values(topPerformerModels)[2] &&
                   strategies[Object.values(topPerformerModels)[2].strategy_name]
                     ? `${Object.values(topPerformerModels)[2].total_pnl}%`
@@ -1328,8 +1433,38 @@ const RecentlyViewed = (props) => {
                 )}
               </div>
               <div className="model-details-right-percentage">
-                <AiFillCaretUp className="model-details-right-percentage-icon" />
-                <p>
+                {Object.values(topPerformerModels)[3] &&
+                strategies[
+                  Object.values(topPerformerModels)[3].strategy_name
+                ] ? (
+                  Object.values(topPerformerModels)[3].total_pnl >= 0 ? (
+                    <AiFillCaretUp
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#16c784" }}
+                    />
+                  ) : (
+                    <AiFillCaretDown
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#ff2e2e" }}
+                    />
+                  )
+                ) : null}
+                <p
+                  id="pnl-color20"
+                  onChange={
+                    Object.values(topPerformerModels)[3] &&
+                    strategies[
+                      Object.values(topPerformerModels)[3].strategy_name
+                    ]
+                      ? forColor(
+                          parseFloat(
+                            Object.values(topPerformerModels)[3].total_pnl
+                          ),
+                          "pnl-color20"
+                        )
+                      : null
+                  }
+                >
                   {Object.values(topPerformerModels)[3] &&
                   strategies[Object.values(topPerformerModels)[3].strategy_name]
                     ? `${Object.values(topPerformerModels)[3].total_pnl}%`
@@ -1439,8 +1574,38 @@ const RecentlyViewed = (props) => {
                 )}
               </div>
               <div className="model-details-right-percentage">
-                <AiFillCaretUp className="model-details-right-percentage-icon" />
-                <p>
+                {Object.values(topPerformerModels)[4] &&
+                strategies[
+                  Object.values(topPerformerModels)[4].strategy_name
+                ] ? (
+                  Object.values(topPerformerModels)[4].total_pnl >= 0 ? (
+                    <AiFillCaretUp
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#16c784" }}
+                    />
+                  ) : (
+                    <AiFillCaretDown
+                      className="model-details-right-percentage-icon"
+                      style={{ color: "#ff2e2e" }}
+                    />
+                  )
+                ) : null}
+                <p
+                  id="pnl-color19"
+                  onChange={
+                    Object.values(topPerformerModels)[4] &&
+                    strategies[
+                      Object.values(topPerformerModels)[4].strategy_name
+                    ]
+                      ? forColor(
+                          parseFloat(
+                            Object.values(topPerformerModels)[4].total_pnl
+                          ),
+                          "pnl-color19"
+                        )
+                      : null
+                  }
+                >
                   {Object.values(topPerformerModels)[4] &&
                   strategies[Object.values(topPerformerModels)[4].strategy_name]
                     ? `${Object.values(topPerformerModels)[4].total_pnl}%`

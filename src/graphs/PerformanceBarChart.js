@@ -186,9 +186,13 @@ const PerformanceBarChart = (props) => {
       },
       data: [
         {
-          color: "#16c784",
-          type: "splineArea",
-          dataPoints: dataPoints,
+          showInLegend: false,
+          yValueFormatString: "#,##0",
+          xValueType: "dateTime",
+          dataPoints: dataPoints.map((point) => ({
+            ...point,
+            color: point.y >= 0 ? "green" : "red",
+          })),
         },
       ],
 

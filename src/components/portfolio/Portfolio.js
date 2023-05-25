@@ -12,6 +12,7 @@ const Portfolio = () => {
   const [timer_for_current, set_timer_for_current_position] = useState(null);
   const [stats, setStats] = useState([]);
   const { theme } = useStateContext();
+
   const forColor = (total_pnl, id) => {
     try {
       if (total_pnl < 0) {
@@ -280,12 +281,12 @@ const Portfolio = () => {
                   )
                 ) : null}
                 <p
-                  id="pnl-color15"
+                  id="pnl-color19"
                   onChange={
                     stats["live_pnls"]
                       ? forColor(
-                          parseInt(stats["live_pnls"].pnl_60),
-                          "pnl-color15"
+                          parseFloat(stats["live_pnls"].pnl_60),
+                          "pnl-color19"
                         )
                       : null
                   }
