@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./LivePNL.css";
 import { Link } from "react-router-dom";
+import { BiLinkExternal } from "react-icons/bi";
+
 
 
 const LivePNL = () => {
@@ -309,7 +311,10 @@ const LivePNL = () => {
 
           <div className="strategies-live-stats">
               <div className="overall-live strategy-live-stats">
-                <h3>{stats["0"] ? <Link to = {stats["0"].strategy_name}>{stats["0"].strategy_name} </Link>: "Loading"}</h3>
+                <div className="link-icon-div">
+                  <h3>{stats["0"] ? <Link to = {stats["0"].strategy_name}>{stats["0"].strategy_name} </Link>: "Loading"}</h3>
+                  <BiLinkExternal className="model-link-icon" />
+                </div>
                 <h3
                   className="live-stats"
                   id="pnl-color1"
@@ -328,7 +333,10 @@ const LivePNL = () => {
                 </h3>
               </div>
             <div className="overall-live strategy-live-stats live-state-ml">
-              <h3>{stats["1"] ? <Link to = {stats["1"].strategy_name}>{stats["1"].strategy_name} </Link>: "Loading"}</h3>
+                <div className="link-icon-div">
+                  <h3>{stats["1"] ? <Link to = {stats["1"].strategy_name}>{stats["1"].strategy_name} </Link>: "Loading"}</h3>
+                  <BiLinkExternal className="model-link-icon" />
+                </div>
               <h3
                 className="live-stats"
                 id="pnl-color2"
@@ -348,7 +356,11 @@ const LivePNL = () => {
             </div>
 
             <div className="overall-live strategy-live-stats">
-              <h3>{stats["2"] ? <Link to = {stats["2"].strategy_name}>{stats["2"].strategy_name} </Link>: "Loading"}</h3>
+              
+                <div className="link-icon-div">
+                  <h3>{stats["2"] ? <Link to = {stats["2"].strategy_name}>{stats["2"].strategy_name} </Link>: "Loading"}</h3>
+                  <BiLinkExternal className="model-link-icon" />
+                </div>
               <h3
                 className="live-stats"
                 id="pnl-color3"
@@ -368,7 +380,11 @@ const LivePNL = () => {
             </div>
 
             <div className="overall-live strategy-live-stats live-state-ml">
-              <h3>{stats["3"] ? <Link to = {stats["3"].strategy_name}>{stats["3"].strategy_name} </Link>: "Loading"}</h3>
+              
+              <div className="link-icon-div">
+                  <h3>{stats["3"] ? <Link to = {stats["3"].strategy_name}>{stats["3"].strategy_name} </Link>: "Loading"}</h3>
+                  <BiLinkExternal className="model-link-icon" />
+                </div>
               <h3
                 className="live-stats"
                 id="pnl-color4"
@@ -388,7 +404,11 @@ const LivePNL = () => {
             </div>
 
             <div className="overall-live strategy-live-stats">
-              <h3>{stats["4"] ? <Link to = {stats["4"].strategy_name}>{stats["4"].strategy_name} </Link>: "Loading"}</h3>
+              
+                <div className="link-icon-div">
+                  <h3>{stats["4"] ? <Link to = {stats["4"].strategy_name}>{stats["4"].strategy_name} </Link>: "Loading"}</h3>
+                  <BiLinkExternal className="model-link-icon" />
+                </div>
               <h3
                 className="live-stats"
                 id="pnl-color6"

@@ -59,6 +59,12 @@
     color: var(--color-day-black);
 }
 
+.link-icon-div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
 
     .live-pnl .container {
