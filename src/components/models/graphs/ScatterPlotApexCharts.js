@@ -3,15 +3,26 @@ import ReactApexChart from "react-apexcharts";
 import regression from "regression";
 import { style } from "@mui/system";
 import { useStateContext } from "../../../ContextProvider";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ScatterPlotApexCharts = () => {
   const [scatterPlotData, setScatterPlotData] = useState([]);
   const [linePlotData, setLinePlotData] = useState([]);
   const { theme } = useStateContext();
+  const [Flag, setFlag] = useState(null);
+  const [color, setColor] = useState(theme == "dark-theme" ? "#FFF" : "#000");
+  const [curr_theme, set_curr_theme] = useState(theme);
+  if (curr_theme != theme) {
+    set_curr_theme(theme);
+    setFlag(Flag == true ? false : true);
+    setColor(theme == "dark-theme" ? "#FFF" : "#000");
+    // console.log("I am here ");
+    // setColor(theme =??= "dark-theme" ? "#FFF" : "#000");
+  }
   const [options, setOptions] = useState({
     series: [
       {
-        name: "Points",
+        // name: "Points",
         type: "scatter",
         data: scatterPlotData,
       },
@@ -29,21 +40,21 @@ const ScatterPlotApexCharts = () => {
       },
     },
     // stroke: { width: 5 },
-    xaxis: {
-      title: {
-        text: "PNL Returns",
-      },
-      tickAmount: 30,
-      labels: {
-        // minWidth: 0,
-        // maxWidth: 500,
-        align: "left",
-        style: {
-          colors: "#000000",
-        },
-        // offsetX: -20,
-      },
-    },
+    // xaxis: {
+    //   title: {
+    //     text: "PNL Returns",
+    //   },
+    //   tickAmount: 30,
+    //   labels: {
+    //     // minWidth: 0,
+    //     // maxWidth: 500,
+    //     align: "left",
+    //     style: {
+    //       colors: "#000000",
+    //     },
+    //     // offsetX: -20,
+    //   },
+    // },
     yaxis: {
       title: {
         text: "Market Returns",
@@ -84,6 +95,9 @@ const ScatterPlotApexCharts = () => {
     },
     xaxis: {
       type: "numeric",
+      title: {
+        text: "PNL Returns",
+      },
     },
   });
 
@@ -137,12 +151,12 @@ const ScatterPlotApexCharts = () => {
           setOptions({
             series: [
               {
-                name: "Points",
+                name: "PNL-Market Returns",
                 type: "scatter",
                 data: sorted_scatter_data,
               },
               {
-                name: "Line",
+                name: "Best fit",
                 color: "#fddd4e",
                 type: "line",
 
@@ -160,7 +174,7 @@ const ScatterPlotApexCharts = () => {
               yaxis: [
                 {
                   y: 0,
-                  borderColor: "#000000",
+                  borderColor: color,
                   borderWidth: 2, // Adjust the stroke width here
 
                   label: {
@@ -178,7 +192,7 @@ const ScatterPlotApexCharts = () => {
               xaxis: [
                 {
                   x: 0,
-                  borderColor: "#000000",
+                  borderColor: color,
                   borderWidth: 2, // Adjust the stroke width here
 
                   label: {
@@ -253,6 +267,7 @@ const ScatterPlotApexCharts = () => {
             // },
             legend: {
               show: false,
+              position: "top",
             },
             grid: {
               show: false,
@@ -263,7 +278,7 @@ const ScatterPlotApexCharts = () => {
           });
         }
       });
-  }, []);
+  }, [Flag]);
   return (
     <div className="scattered">
       <div className="container">

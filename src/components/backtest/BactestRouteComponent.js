@@ -771,9 +771,9 @@ const BactestRouteComponent = () => {
   var default_date_selected_for_backtest = "";
   if (location.state) {
     model_name = location.state.model_name.replace("_", "-");
-    currency = location.state.currency;
-    time_horizon = location.state.time_horizon;
-    time_horizon2 = location.state.time_horizon;
+    // currency = location.state.currency;
+    // time_horizon = location.state.time_horizon;
+    // time_horizon2 = location.state.time_horizon;
     take_profit = location.state.take_profit;
     stop_loss = location.state.stop_loss;
     time_stop = location.state.time_stop;
