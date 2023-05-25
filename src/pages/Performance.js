@@ -13,8 +13,8 @@ const Performance = () => {
   return (
     <React.Fragment>
       <Portfolio />
-      {/* <TestComponent /> */}
-      <PerformanceGraphs />
+      <TestComponent />
+      {/* <PerformanceGraphs /> */}
       <PerformanceDataGrid />
       <LivePNL />
       {/* <CurrentPortfolio /> */}

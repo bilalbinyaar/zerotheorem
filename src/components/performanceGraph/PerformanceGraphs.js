@@ -26,8 +26,8 @@ const PerformanceGraphs = () => {
           {/* <IndividualPnlCanvasjs model_name={"ZT1_0M24BTC1"} /> */}
         </div>
 
-        <h2 className="for-mb-returns">Daily Returns</h2>
-        <PerformanceBarChart model_name={"live_pnls"} />
+        {/* <h2 className="for-mb-returns">Daily Returns</h2>
+        <PerformanceBarChart model_name={"live_pnls"} /> */}
       </div>
     </div>
   );

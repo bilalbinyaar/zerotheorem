@@ -1469,6 +1469,19 @@ pre[class*="language-"] {
   /* justify-content: space-between; */
 }
 
-.test-component {
+.test-component .container{
   display: flex;
+  justify-content: space-between;
+  padding: 3rem 0rem 1.8rem 0rem;
+}
+
+.test-dr {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .test-component .container{
+    justify-self: unset;
+    flex-direction: column;
+  }
 }
