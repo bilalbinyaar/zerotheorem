@@ -27,113 +27,100 @@ const PerformanceMultiLine = (props) => {
   const [cummulative_pnl, set_cum_pnl] = useState([]);
 
   useEffect(() => {
-    if (!individual_pnl_graph_cache[props.model_name]) {
-      // console.log("I received model name for graph -->", props.model_name);
-      if (props.model_name.includes("strategy")) {
-        fetch(
-          `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-            },
-          }
-        )
-          .then((response) => response.json())
-          .then(async (data) => {
-            // console.log("I received data for each series -->", data["response"]);
-            var cum_pnl = [];
-            for (var index = 0; index < data["response"].length; index++) {
-              if (
-                (parseFloat(data["response"][index].pnl) != 0 ||
-                  parseFloat(data["response"][index].pnl) != -0) &&
+    // console.log("I received model name for graph -->", props.model_name);
+    if (props.model_name.includes("strategy")) {
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then(async (data) => {
+          // console.log("I received data for each series -->", data["response"]);
+          var cum_pnl = [];
+          for (var index = 0; index < data["response"].length; index++) {
+            if (
+              (parseFloat(data["response"][index].pnl) != 0 ||
+                parseFloat(data["response"][index].pnl) != -0) &&
+              parseInt(data["response"][index].in_position) == 0
+            ) {
+              console.log(
+                "Here is PNL -->",
                 parseInt(data["response"][index].in_position) == 0
-              ) {
-                console.log(
-                  "Here is PNL -->",
-                  parseInt(data["response"][index].in_position) == 0
-                );
-                cum_pnl.push({
-                  x: new Date(
-                    parseInt(data["response"][index].ledger_timestamp) * 1000
-                  ),
-                  y: parseFloat(data["response"][index].pnl),
-                });
-              }
+              );
+              cum_pnl.push({
+                x: new Date(
+                  parseInt(data["response"][index].ledger_timestamp) * 1000
+                ),
+                y: parseFloat(data["response"][index].pnl),
+              });
             }
+          }
 
-            // await delay(1000);
-            if (cum_pnl.length != 0) {
-              set_cum_pnl(cum_pnl);
-              Set_individual_pnl_graph_cache({ [props.model_name]: cum_pnl });
-              let len = data["response"].length - 1;
-              let start_time = parseInt(data["response"][0].ledger_timestamp);
-              let end_time = parseInt(data["response"][len].ledger_timestamp);
-              let avg = (end_time - start_time) / 2;
-              let result = avg + start_time;
-              // console.log("Result -->", len, start_time, avg, result);
-              // setStart(result);
-              // setEnd(parseInt(data["response"][len].ledger_timestamp));
-            }
-            // console.log("Cum pnl -->", cum_pnl);
-          })
-          .catch((err) => console.log(err));
-      } else {
-        fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
+          // await delay(1000);
+          if (cum_pnl.length != 0) {
+            set_cum_pnl(cum_pnl);
+            Set_individual_pnl_graph_cache({ [props.model_name]: cum_pnl });
+            let len = data["response"].length - 1;
+            let start_time = parseInt(data["response"][0].ledger_timestamp);
+            let end_time = parseInt(data["response"][len].ledger_timestamp);
+            let avg = (end_time - start_time) / 2;
+            let result = avg + start_time;
+            // console.log("Result -->", len, start_time, avg, result);
+            // setStart(result);
+            // setEnd(parseInt(data["response"][len].ledger_timestamp));
+          }
+          // console.log("Cum pnl -->", cum_pnl);
         })
-          .then((response) => response.json())
-          .then(async (data) => {
-            // console.log("I received data for each series -->", data["response"]);
-            var cum_pnl = [];
-            var cum_pnl_2 = [];
-            for (var index = 0; index < data["response"].length; index++) {
-              if (
-                parseFloat(data["response"][index].pnl_sum) != 0 ||
-                parseFloat(data["response"][index].pnl_sum) != -0
-              ) {
-                cum_pnl.push({
-                  x: new Date(
-                    parseInt(data["response"][index].ledger_timestamp) * 1000
-                  ),
-                  y: parseFloat(data["response"][index].pnl_sum),
-                });
-                cum_pnl_2.push({
-                  x: new Date(
-                    parseInt(data["response"][index].ledger_timestamp) * 1000
-                  ),
-                  y: parseFloat(data["response"][index].pnl_sum * 10),
-                });
-              }
-            }
-
-            // await delay(1000);
-            if (cum_pnl.length != 0) {
-              set_cum_pnl(cum_pnl);
-              Set_individual_pnl_graph_cache({ [props.model_name]: cum_pnl });
-              let len = data["response"].length - 1;
-              let start_time = parseInt(data["response"][0].ledger_timestamp);
-              let end_time = parseInt(data["response"][len].ledger_timestamp);
-              let avg = (end_time - start_time) / 2;
-              let result = avg + start_time;
-              // console.log("Result -->", len, start_time, avg, result);
-              // setStart(result);
-              // setEnd(parseInt(data["response"][len].ledger_timestamp));
-            }
-            // console.log("Cum pnl -->", cum_pnl);
-          })
-          .catch((err) => console.log(err));
-      }
+        .catch((err) => console.log(err));
     } else {
-      set_cum_pnl(individual_pnl_graph_cache[props.model_name]);
+      fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_pnls`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then(async (data) => {
+          // console.log("I received data for each series -->", data["response"]);
+          var cum_pnl = [];
+          var cum_pnl_2 = [];
+          for (var index = 0; index < data["response"].length; index++) {
+            if (
+              parseFloat(data["response"][index].pnl_sum) != 0 ||
+              parseFloat(data["response"][index].pnl_sum) != -0
+            ) {
+              cum_pnl.push({
+                x: new Date(
+                  parseInt(data["response"][index].ledger_timestamp) * 1000
+                ),
+                y: parseFloat(data["response"][index].pnl_sum),
+              });
+              cum_pnl_2.push({
+                x: new Date(
+                  parseInt(data["response"][index].ledger_timestamp) * 1000
+                ),
+                y: parseFloat(data["response"][index].pnl_sum * 10),
+              });
+            }
+          }
 
-      // console.log(
-      //   "I am using cached value for straight spline graph -->",
-      //   straight_spline_graph_cache[props.model_name]
-      // );
+          // await delay(1000);
+          if (cum_pnl.length != 0) {
+            set_cum_pnl(cum_pnl);
+            let len = data["response"].length - 1;
+            let start_time = parseInt(data["response"][0].ledger_timestamp);
+            let end_time = parseInt(data["response"][len].ledger_timestamp);
+            let avg = (end_time - start_time) / 2;
+            let result = avg + start_time;
+            // console.log("Result -->", len, start_time, avg, result);
+            // setStart(result);
+            // setEnd(parseInt(data["response"][len].ledger_timestamp));
+          }
+          // console.log("Cum pnl -->", cum_pnl);
+        })
+        .catch((err) => console.log(err));
     }
   }, [model_name]);
 

@@ -36,56 +36,24 @@ function ForecastsSplineCanvasjs(props) {
           var main_series = [];
           var temp_positive_series = [];
           var temp_negative_series = [];
-          var min_value = Infinity;
-          var max_value = -Infinity;
+          var temp_last_data_positive = {};
+          var temp_last_data_negative = {};
+
           for (var index = 0; index < data["response"].length; index++) {
-            if (parseFloat(data["response"][index].pnl_sum) < min_value) {
-              min_value = parseFloat(data["response"][index].pnl_sum);
-              setMinValue(min_value);
-            }
-            if (data["response"][index].pnl_sum > max_value) {
-              max_value = data["response"][index].pnl_sum;
-              setMaxValue(max_value);
-            }
             if (index + 1 == data["response"].length) {
               if (temp_positive_series.length != 0) {
-                main_series.push({
-                  type: "splineArea",
-                  color: "#16c784",
-                  markerType: "none",
-                  fillOpacity: 0.4,
-                  dataPoints: temp_positive_series,
-                });
-              } else {
-                main_series.push({
-                  type: "splineArea",
-                  color: "#ff2e2e",
-                  markerType: "none",
-                  fillOpacity: 0.4,
-                  dataPoints: temp_negative_series,
-                });
-              }
-            } else {
-              if (parseInt(data["response"][index].pnl_sum) >= 0) {
-                if (temp_negative_series.length != 0) {
-                  main_series.push({
-                    type: "splineArea",
-                    color: "#ff2e2e",
-                    markerType: "none",
-                    fillOpacity: 0.4,
-                    dataPoints: temp_negative_series,
-                  });
-                  temp_negative_series = [];
+                if (main_series.length > 0) {
+                  if (JSON.stringify(temp_last_data_negative) !== "{}") {
+                    temp_positive_series.unshift(temp_last_data_negative);
+                    main_series.push({
+                      type: "splineArea",
+                      color: "#16c784",
+                      markerType: "none",
+                      fillOpacity: 0.4,
+                      dataPoints: temp_positive_series,
+                    });
+                  }
                 } else {
-                  temp_positive_series.push({
-                    x: new Date(
-                      parseInt(data["response"][index].ledger_timestamp) * 1000
-                    ),
-                    y: parseInt(data["response"][index].pnl_sum),
-                  });
-                }
-              } else {
-                if (temp_positive_series.length != 0) {
                   main_series.push({
                     type: "splineArea",
                     color: "#16c784",
@@ -93,13 +61,206 @@ function ForecastsSplineCanvasjs(props) {
                     fillOpacity: 0.4,
                     dataPoints: temp_positive_series,
                   });
-                  temp_positive_series = [];
+                }
+              } else {
+                if (main_series.length > 0) {
+                  if (JSON.stringify(temp_last_data_positive) !== "{}") {
+                    temp_negative_series.unshift(temp_last_data_positive);
+                    main_series.push({
+                      type: "splineArea",
+                      color: "#ff2e2e",
+                      markerType: "none",
+                      fillOpacity: 0.4,
+                      dataPoints: temp_negative_series,
+                    });
+                  }
                 } else {
+                  main_series.push({
+                    type: "splineArea",
+                    color: "#ff2e2e",
+                    markerType: "none",
+                    fillOpacity: 0.4,
+                    dataPoints: temp_negative_series,
+                  });
+                }
+              }
+            } else {
+              if (parseFloat(data["response"][index].pnl_sum) >= 0) {
+                if (temp_negative_series.length != 0) {
+                  if (main_series.length > 0) {
+                    if (JSON.stringify(temp_last_data_positive) !== "{}") {
+                      temp_negative_series.unshift(temp_last_data_positive);
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#ff2e2e",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_negative_series,
+                      });
+                      temp_negative_series = [];
+                      temp_last_data_positive = {
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      };
+                      temp_positive_series.push({
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      });
+                    } else {
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#ff2e2e",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_negative_series,
+                      });
+                      temp_negative_series = [];
+                      temp_last_data_positive = {
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      };
+                      temp_positive_series.push({
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      });
+                    }
+                  } else {
+                    main_series.push({
+                      type: "splineArea",
+                      color: "#ff2e2e",
+                      markerType: "none",
+                      fillOpacity: 0.4,
+                      dataPoints: temp_negative_series,
+                    });
+                    temp_negative_series = [];
+                    temp_last_data_positive = {
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    };
+                    temp_positive_series.push({
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    });
+                  }
+                } else {
+                  temp_last_data_positive = {
+                    x: new Date(
+                      parseInt(data["response"][index].ledger_timestamp) * 1000
+                    ),
+                    y: parseFloat(data["response"][index].pnl_sum),
+                  };
+                  temp_positive_series.push({
+                    x: new Date(
+                      parseInt(data["response"][index].ledger_timestamp) * 1000
+                    ),
+                    y: parseFloat(data["response"][index].pnl_sum),
+                  });
+                }
+              } else {
+                if (temp_positive_series.length != 0) {
+                  if (main_series.length > 0) {
+                    if (JSON.stringify(temp_last_data_positive) !== "{}") {
+                      temp_positive_series.unshift(temp_last_data_negative);
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#16c784",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_positive_series,
+                      });
+                      temp_positive_series = [];
+                      temp_last_data_negative = {
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      };
+                      temp_negative_series.push({
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      });
+                    } else {
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#16c784",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_positive_series,
+                      });
+                      temp_positive_series = [];
+                      temp_last_data_negative = {
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      };
+                      temp_negative_series.push({
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      });
+                    }
+                  } else {
+                    main_series.push({
+                      type: "splineArea",
+                      color: "#16c784",
+                      markerType: "none",
+                      fillOpacity: 0.4,
+                      dataPoints: temp_positive_series,
+                    });
+                    temp_positive_series = [];
+                    temp_last_data_negative = {
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    };
+                    temp_negative_series.push({
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    });
+                  }
+                } else {
+                  temp_last_data_negative = {
+                    x: new Date(
+                      parseInt(data["response"][index].ledger_timestamp) * 1000
+                    ),
+                    y: parseFloat(data["response"][index].pnl_sum),
+                  };
                   temp_negative_series.push({
                     x: new Date(
                       parseInt(data["response"][index].ledger_timestamp) * 1000
                     ),
-                    y: parseInt(data["response"][index].pnl_sum),
+                    y: parseFloat(data["response"][index].pnl_sum),
                   });
                 }
               }

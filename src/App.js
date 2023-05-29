@@ -94,6 +94,8 @@ function App() {
                 <Route path="/" element={<Performance />} />
                 <Route path="/theory" element={<Introduction />} />
                 <Route path="/:name" element={<Models />} />
+                {/* <Route path="/all-models/:name" element={<Models />} /> */}
+
                 {/* <Route path="/about" element={<About />} /> */}
                 {/* <Route path="/faqs" element={<FAQ />} /> */}
                 {/* <Route path="/login" element={<Login />} /> */}
@@ -170,7 +172,6 @@ function App() {
                   element={<AnInitialSolution />}
                 />
 
-                
                 {/* <Route path="/reload" element={<LoginForm />} /> */}
               </Routes>
               <Footer />

@@ -65,28 +65,45 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
             var main_series = [];
             var temp_positive_series = [];
             var temp_negative_series = [];
+            var temp_last_data_positive = {};
+            var temp_last_data_negative = {};
+
             for (var index = 0; index < data["response"].length; index++) {
               if (index + 1 == data["response"].length) {
                 if (temp_positive_series.length != 0) {
-                  main_series.push({
-                    type: "splineArea",
-                    color: "#16c784",
-                    markerType: "none",
-                    fillOpacity: 0.4,
-                    dataPoints: temp_positive_series,
-                  });
+                  if (main_series.length > 0) {
+                    if (JSON.stringify(temp_last_data_negative) !== "{}") {
+                      temp_positive_series.unshift(temp_last_data_negative);
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#16c784",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_positive_series,
+                      });
+                    }
+                  } else {
+                    main_series.push({
+                      type: "splineArea",
+                      color: "#16c784",
+                      markerType: "none",
+                      fillOpacity: 0.4,
+                      dataPoints: temp_positive_series,
+                    });
+                  }
                 } else {
-                  main_series.push({
-                    type: "splineArea",
-                    color: "#ff2e2e",
-                    markerType: "none",
-                    fillOpacity: 0.4,
-                    dataPoints: temp_negative_series,
-                  });
-                }
-              } else {
-                if (parseFloat(data["response"][index].pnl_sum) >= 0) {
-                  if (temp_negative_series.length != 0) {
+                  if (main_series.length > 0) {
+                    if (JSON.stringify(temp_last_data_positive) !== "{}") {
+                      temp_negative_series.unshift(temp_last_data_positive);
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#ff2e2e",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_negative_series,
+                      });
+                    }
+                  } else {
                     main_series.push({
                       type: "splineArea",
                       color: "#ff2e2e",
@@ -94,8 +111,92 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
                       fillOpacity: 0.4,
                       dataPoints: temp_negative_series,
                     });
-                    temp_negative_series = [];
+                  }
+                }
+              } else {
+                if (parseFloat(data["response"][index].pnl_sum) >= 0) {
+                  if (temp_negative_series.length != 0) {
+                    if (main_series.length > 0) {
+                      if (JSON.stringify(temp_last_data_positive) !== "{}") {
+                        temp_negative_series.unshift(temp_last_data_positive);
+                        main_series.push({
+                          type: "splineArea",
+                          color: "#ff2e2e",
+                          markerType: "none",
+                          fillOpacity: 0.4,
+                          dataPoints: temp_negative_series,
+                        });
+                        temp_negative_series = [];
+                        temp_last_data_positive = {
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        };
+                        temp_positive_series.push({
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        });
+                      } else {
+                        main_series.push({
+                          type: "splineArea",
+                          color: "#ff2e2e",
+                          markerType: "none",
+                          fillOpacity: 0.4,
+                          dataPoints: temp_negative_series,
+                        });
+                        temp_negative_series = [];
+                        temp_last_data_positive = {
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        };
+                        temp_positive_series.push({
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        });
+                      }
+                    } else {
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#ff2e2e",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_negative_series,
+                      });
+                      temp_negative_series = [];
+                      temp_last_data_positive = {
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      };
+                      temp_positive_series.push({
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      });
+                    }
                   } else {
+                    temp_last_data_positive = {
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    };
                     temp_positive_series.push({
                       x: new Date(
                         parseInt(data["response"][index].ledger_timestamp) *
@@ -106,15 +207,87 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
                   }
                 } else {
                   if (temp_positive_series.length != 0) {
-                    main_series.push({
-                      type: "splineArea",
-                      color: "#16c784",
-                      markerType: "none",
-                      fillOpacity: 0.4,
-                      dataPoints: temp_positive_series,
-                    });
-                    temp_positive_series = [];
+                    if (main_series.length > 0) {
+                      if (JSON.stringify(temp_last_data_positive) !== "{}") {
+                        temp_positive_series.unshift(temp_last_data_negative);
+                        main_series.push({
+                          type: "splineArea",
+                          color: "#16c784",
+                          markerType: "none",
+                          fillOpacity: 0.4,
+                          dataPoints: temp_positive_series,
+                        });
+                        temp_positive_series = [];
+                        temp_last_data_negative = {
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        };
+                        temp_negative_series.push({
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        });
+                      } else {
+                        main_series.push({
+                          type: "splineArea",
+                          color: "#16c784",
+                          markerType: "none",
+                          fillOpacity: 0.4,
+                          dataPoints: temp_positive_series,
+                        });
+                        temp_positive_series = [];
+                        temp_last_data_negative = {
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        };
+                        temp_negative_series.push({
+                          x: new Date(
+                            parseInt(data["response"][index].ledger_timestamp) *
+                              1000
+                          ),
+                          y: parseFloat(data["response"][index].pnl_sum),
+                        });
+                      }
+                    } else {
+                      main_series.push({
+                        type: "splineArea",
+                        color: "#16c784",
+                        markerType: "none",
+                        fillOpacity: 0.4,
+                        dataPoints: temp_positive_series,
+                      });
+                      temp_positive_series = [];
+                      temp_last_data_negative = {
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      };
+                      temp_negative_series.push({
+                        x: new Date(
+                          parseInt(data["response"][index].ledger_timestamp) *
+                            1000
+                        ),
+                        y: parseFloat(data["response"][index].pnl_sum),
+                      });
+                    }
                   } else {
+                    temp_last_data_negative = {
+                      x: new Date(
+                        parseInt(data["response"][index].ledger_timestamp) *
+                          1000
+                      ),
+                      y: parseFloat(data["response"][index].pnl_sum),
+                    };
                     temp_negative_series.push({
                       x: new Date(
                         parseInt(data["response"][index].ledger_timestamp) *
@@ -129,6 +302,8 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
             // console.log("Testing data -->", main_series);
 
             if (main_series.length != 0) {
+              console.log("Main series -->", main_series);
+
               let len = data["response"].length - 1;
               let start_time = parseInt(data["response"][0].ledger_timestamp);
               let end_time = parseInt(data["response"][len].ledger_timestamp);
@@ -147,7 +322,6 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
               });
               setIsLoaded(true);
             }
-            // console.log("Cum pnl -->", cum_pnl);
           })
           .catch((err) => console.log(err));
       } else {
@@ -228,9 +402,12 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
                     "DD/MM/YYYY HH:mm:ss"
                   );
                   let content = `<strong>${date}</strong><br/><br/>`;
-
+                  var counter = 0;
                   e.entries.forEach((entry) => {
-                    content += `<span style="color: ${entry.dataPoint.color};">PNL: </span>${entry.dataPoint.y}<br/>`;
+                    if (counter == 0) {
+                      content += `<span style="color: ${entry.dataPoint.color};">PNL: </span>${entry.dataPoint.y}<br/>`;
+                      counter = 2;
+                    }
                   });
 
                   return content;

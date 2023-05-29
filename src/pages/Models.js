@@ -28,6 +28,11 @@ const Models = () => {
   const location = useLocation();
   // console.log("Pathname -->", location.pathname.replace("/", ""));
   const name = location.pathname.replace("/", "").replace("-", "_");
+  // console.log("Here is model name -->", name);
+  // if (name.includes("all-models")) {
+  //   name = name.replace("all-models", "");
+  //   set_model_name(name);
+  // }
   const [model_name, set_model_name] = useState(name);
   if (name != model_name) {
     set_model_name(name);
