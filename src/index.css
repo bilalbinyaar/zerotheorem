@@ -1479,9 +1479,22 @@ pre[class*="language-"] {
   width: 100%;
 }
 
+.market-dr {
+  width: 100%;
+}
+
+.doughnut-dr {
+  width: 50%;
+}
+
 @media screen and (max-width: 768px) {
   .test-component .container{
     justify-self: unset;
     flex-direction: column;
+    padding: 1.6rem 0rem 1rem 0rem;
+  }
+
+  .doughnut-dr {
+    width: 100%;
   }
 }

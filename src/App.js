@@ -92,7 +92,7 @@ function App() {
               <Navbar />
               <Routes basename="/zero-theorem">
                 <Route path="/" element={<Performance />} />
-                <Route path="/theory" element={<Introduction />} />
+                <Route path="/theory" element={<TheUnderlyingAssumptions />} />
                 <Route path="/:name" element={<Models />} />
                 {/* <Route path="/all-models/:name" element={<Models />} /> */}
 
@@ -181,7 +181,7 @@ function App() {
               <Navbar />
               <Routes basename="/zero-theorem">
                 <Route path="/" element={<Performance />} />
-                <Route path="/theory" element={<Introduction />} />
+                <Route path="/theory" element={<TheUnderlyingAssumptions />} />
                 <Route path="/:name" element={<Models />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/faqs" element={<FAQ />} />

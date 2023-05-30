@@ -281,8 +281,8 @@ const ScatterPlotApexCharts = () => {
   }, [Flag]);
   return (
     <div className="scattered">
-      <div className="container">
-        <h2>Market Comparison Rate</h2>
+      <div className="containered">
+        {/* <h2>Market Comparison Rate</h2> */}
         <ReactApexChart
           options={options}
           series={options.series}

@@ -1292,7 +1292,7 @@ const PerformanceDataGrid = () => {
     }
   }
   return (
-    <div className="model-grid">
+    <div className="model-grid strategies-grid">
       <div className="container">
         {windowWidth.current <= 568 ? (
           <div className="model-grid-mob">

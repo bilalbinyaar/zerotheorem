@@ -23,6 +23,11 @@
   .performance-graphs .container {
     padding: 2rem 0rem 1.4rem 0rem;
   }
+
+  .for-mb-returns {
+    margin-bottom: 0.8rem;
+    margin-top: 1.8rem;
+  }
 }
 
 

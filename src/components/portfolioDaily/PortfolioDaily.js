@@ -1,12 +1,12 @@
 import React from 'react'
-import CurrentPortfolio from '../../components/currentPortfolio/CurrentPortfolio';
-import PerformanceLineCharts from '../../components/performanceLineCharts/PerformanceLineCharts'
+import CurrentPortfolio from '../currentPortfolio/CurrentPortfolio';
+import PerformanceLineCharts from '../performanceLineCharts/PerformanceLineCharts'
 import PR from './PR';
 import DR from './DR';
 import PerformanceGraphs from '../performanceGraph/PerformanceGraphs';
 
 
-const TestComponent = () => {
+const PortfolioDaily = () => {
   return (
     <div className='test-component'>
       <div className='container'>
@@ -17,5 +17,5 @@ const TestComponent = () => {
   )
 }
 
-export default TestComponent
+export default PortfolioDaily
 

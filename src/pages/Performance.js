@@ -8,17 +8,20 @@ import LivePNL from "../components/livepnl/LivePNL";
 import PerformanceBarChart from "../graphs/PerformanceBarChart";
 import ScatterPlotApexCharts from "../components/models/graphs/ScatterPlotApexCharts";
 import PerformanceLineCharts from "../components/performanceLineCharts/PerformanceLineCharts";
-import TestComponent from "../components/testperformance/TestComponent";
+import PortfolioDaily from "../components/portfolioDaily/PortfolioDaily";
+import MarketRate from "../components/marketRate/MarketRate";
 const Performance = () => {
   return (
     <React.Fragment>
       <Portfolio />
-      <TestComponent />
+      <PortfolioDaily />
+      <MarketRate />
+      <LivePNL />
       {/* <PerformanceGraphs /> */}
       <PerformanceDataGrid />
-      <LivePNL />
+      
       {/* <CurrentPortfolio /> */}
-      <ScatterPlotApexCharts />
+      {/* <ScatterPlotApexCharts /> */}
       {/* <PerformanceLineCharts /> */}
       {/* <HeatmapChart model_name={"strategy_1"} /> */}
       {/* <PerformanceBarChart model_name={"live_pnls"} /> */}

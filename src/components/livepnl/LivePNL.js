@@ -275,8 +275,10 @@ const LivePNL = () => {
         <h2>Live PNLs</h2>
 
         <div className="live-pnl-stats-div">
-          <div className="overall-live overall-live-stats">
+          <div className="pnl-live-main">
             <h3>Overall</h3>
+            <div className="overall-live overall-live-stats">
+            <h3>PNL</h3>
             <h3
               //   className="live-stats"
               id="pnl-color5"
@@ -305,15 +307,54 @@ const LivePNL = () => {
                   ).toFixed(2)}%`
                 : null}
             </h3>
+            </div>
+            <div className="overall-live overall-live-stats">
+            <h3>Portfolio PNL</h3>
+            <h3
+              //   className="live-stats"
+              id="pnl-color5"
+              onChange={
+                stats["4"]
+                  ? forColor(
+                      `${(
+                        parseFloat(stats["0"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["1"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["2"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["3"].portfolio_live_pnl_percent) +
+                        parseFloat(stats["4"].portfolio_live_pnl_percent)
+                      ).toFixed(2)}`,
+                      "pnl-color5"
+                    )
+                  : null
+              }
+            >
+              {stats["4"]
+                ? `${(
+                    parseFloat(stats["0"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["1"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["2"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["3"].portfolio_live_pnl_percent) +
+                    parseFloat(stats["4"].portfolio_live_pnl_percent)
+                  ).toFixed(2)}%`
+                : null}
+            </h3>
+            </div>
           </div>
+          
 
           <div className="divider-div-pnl-live"></div>
 
           <div className="strategies-live-stats">
-              <div className="overall-live strategy-live-stats">
-                <div className="link-icon-div">
-                  <h3>{stats["0"] ? <Link to = {stats["0"].strategy_name}>{stats["0"].strategy_name} </Link>: "Loading"}</h3>
+
+            <div className="pnl-live-main-strategies for-h3-mb">
+              <div className="link-icon-div for-h3-mb">
+                  <h3 className="strategies-color">{stats["0"] ? <Link to = {stats["0"].strategy_name}>{stats["0"].strategy_name} </Link>: "Loading"}</h3>
                   <BiLinkExternal className="model-link-icon" />
+              </div>
+              <div className="overall-live strategy-live-stats">
+                <div className="link-icon-div for-h3-mb">
+                  <h3>PNL</h3>
+                  {/* <BiLinkExternal className="model-link-icon" /> */}
                 </div>
                 <h3
                   className="live-stats"
@@ -332,100 +373,240 @@ const LivePNL = () => {
                     : null}
                 </h3>
               </div>
-            <div className="overall-live strategy-live-stats live-state-ml">
-                <div className="link-icon-div">
-                  <h3>{stats["1"] ? <Link to = {stats["1"].strategy_name}>{stats["1"].strategy_name} </Link>: "Loading"}</h3>
-                  <BiLinkExternal className="model-link-icon" />
+              <div className="overall-live strategy-live-stats for-h3-mb">
+                <div className="link-icon-div ">
+                  <h3>Portfolio PNL</h3>
+                  {/* <BiLinkExternal className="model-link-icon" /> */}
                 </div>
-              <h3
-                className="live-stats"
-                id="pnl-color2"
-                onChange={
-                  stats["1"]
-                    ? forColor(
-                        `${parseFloat(stats["1"].portfolio_live_pnl_percent)}`,
-                        "pnl-color2"
-                      )
-                    : null
-                }
-              >
-                {stats["1"]
-                  ? `${stats["1"].portfolio_live_pnl_percent}%`
-                  : null}
-              </h3>
+                <h3
+                  className="live-stats"
+                  id="pnl-color1"
+                  onChange={
+                    stats["0"]
+                      ? forColor(
+                          `${parseFloat(stats["0"].portfolio_live_pnl_percent)}`,
+                          "pnl-color1"
+                        )
+                      : null
+                  }
+                >
+                  {stats["0"]
+                    ? `${stats["0"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
             </div>
 
-            <div className="overall-live strategy-live-stats">
-              
-                <div className="link-icon-div">
-                  <h3>{stats["2"] ? <Link to = {stats["2"].strategy_name}>{stats["2"].strategy_name} </Link>: "Loading"}</h3>
-                  <BiLinkExternal className="model-link-icon" />
-                </div>
-              <h3
-                className="live-stats"
-                id="pnl-color3"
-                onChange={
-                  stats["2"]
-                    ? forColor(
-                        `${parseFloat(stats["2"].portfolio_live_pnl_percent)}`,
-                        "pnl-color3"
-                      )
-                    : null
-                }
-              >
-                {stats["2"]
-                  ? `${stats["2"].portfolio_live_pnl_percent}%`
-                  : null}
-              </h3>
+            <div className="pnl-live-main-strategies live-state-ml-web">
+              <div className="link-icon-div for-h3-mb">
+                <h3 className="strategies-color">{stats["1"] ? <Link to = {stats["1"].strategy_name}>{stats["1"].strategy_name} </Link>: "Loading"}</h3>
+                <BiLinkExternal className="model-link-icon" />
+              </div>
+              <div className="overall-live strategy-live-stats live-state-ml for-h3-mb">
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                <h3
+                  className="live-stats"
+                  id="pnl-color2"
+                  onChange={
+                    stats["1"]
+                      ? forColor(
+                          `${parseFloat(stats["1"].portfolio_live_pnl_percent)}`,
+                          "pnl-color2"
+                        )
+                      : null
+                  }
+                >
+                  {stats["1"]
+                    ? `${stats["1"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
+              <div className="overall-live strategy-live-stats live-state-ml for-h3-mb">
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>Portfolio PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                <h3
+                  className="live-stats"
+                  id="pnl-color2"
+                  onChange={
+                    stats["1"]
+                      ? forColor(
+                          `${parseFloat(stats["1"].portfolio_live_pnl_percent)}`,
+                          "pnl-color2"
+                        )
+                      : null
+                  }
+                >
+                  {stats["1"]
+                    ? `${stats["1"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
             </div>
 
-            <div className="overall-live strategy-live-stats live-state-ml">
-              
-              <div className="link-icon-div">
-                  <h3>{stats["3"] ? <Link to = {stats["3"].strategy_name}>{stats["3"].strategy_name} </Link>: "Loading"}</h3>
-                  <BiLinkExternal className="model-link-icon" />
-                </div>
-              <h3
-                className="live-stats"
-                id="pnl-color4"
-                onChange={
-                  stats["3"]
-                    ? forColor(
-                        `${parseFloat(stats["3"].portfolio_live_pnl_percent)}`,
-                        "pnl-color4"
-                      )
-                    : null
-                }
-              >
-                {stats["3"]
-                  ? `${stats["3"].portfolio_live_pnl_percent}%`
-                  : null}
-              </h3>
+            <div className="pnl-live-main-strategies live-state-ml-web">
+              <div className="link-icon-div for-h3-mb">
+                <h3 className="strategies-color">{stats["2"] ? <Link to = {stats["2"].strategy_name}>{stats["2"].strategy_name} </Link>: "Loading"}</h3>
+                <BiLinkExternal className="model-link-icon" />
+              </div>
+              <div className="overall-live strategy-live-stats for-h3-mb">
+                
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                <h3
+                  className="live-stats"
+                  id="pnl-color3"
+                  onChange={
+                    stats["2"]
+                      ? forColor(
+                          `${parseFloat(stats["2"].portfolio_live_pnl_percent)}`,
+                          "pnl-color3"
+                        )
+                      : null
+                  }
+                >
+                  {stats["2"]
+                    ? `${stats["2"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
+              <div className="overall-live strategy-live-stats for-h3-mb">
+                
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>Portfolio PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                <h3
+                  className="live-stats"
+                  id="pnl-color3"
+                  onChange={
+                    stats["2"]
+                      ? forColor(
+                          `${parseFloat(stats["2"].portfolio_live_pnl_percent)}`,
+                          "pnl-color3"
+                        )
+                      : null
+                  }
+                >
+                  {stats["2"]
+                    ? `${stats["2"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
             </div>
 
-            <div className="overall-live strategy-live-stats">
-              
-                <div className="link-icon-div">
-                  <h3>{stats["4"] ? <Link to = {stats["4"].strategy_name}>{stats["4"].strategy_name} </Link>: "Loading"}</h3>
-                  <BiLinkExternal className="model-link-icon" />
-                </div>
-              <h3
-                className="live-stats"
-                id="pnl-color6"
-                onChange={
-                  stats["4"]
-                    ? forColor(
-                        `${parseFloat(stats["4"].portfolio_live_pnl_percent)}`,
-                        "pnl-color6"
-                      )
-                    : null
-                }
-              >
-                {stats["4"]
-                  ? `${stats["4"].portfolio_live_pnl_percent}%`
-                  : null}
-              </h3>
+            <div className="pnl-live-main-strategies live-state-ml-web">
+              <div className="link-icon-div for-h3-mb">
+                <h3 className="strategies-color">{stats["3"] ? <Link to = {stats["3"].strategy_name}>{stats["3"].strategy_name} </Link>: "Loading"}</h3>
+                <BiLinkExternal className="model-link-icon" />
+              </div>
+              <div className="overall-live strategy-live-stats live-state-ml for-h3-mb">
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                  
+                <h3
+                  className="live-stats"
+                  id="pnl-color4"
+                  onChange={
+                    stats["3"]
+                      ? forColor(
+                          `${parseFloat(stats["3"].portfolio_live_pnl_percent)}`,
+                          "pnl-color4"
+                        )
+                      : null
+                  }
+                >
+                  {stats["3"]
+                    ? `${stats["3"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
+              <div className="overall-live strategy-live-stats live-state-ml for-h3-mb">
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>Portfolio PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                  
+                <h3
+                  className="live-stats"
+                  id="pnl-color4"
+                  onChange={
+                    stats["3"]
+                      ? forColor(
+                          `${parseFloat(stats["3"].portfolio_live_pnl_percent)}`,
+                          "pnl-color4"
+                        )
+                      : null
+                  }
+                >
+                  {stats["3"]
+                    ? `${stats["3"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
             </div>
+
+            <div className="pnl-live-main-strategies live-state-ml-web">
+                  <div className="link-icon-div for-h3-mb">
+                    <h3 className="strategies-color">{stats["4"] ? <Link to = {stats["4"].strategy_name}>{stats["4"].strategy_name} </Link>: "Loading"}</h3>
+                    <BiLinkExternal className="model-link-icon" />
+                  </div>
+              <div className="overall-live strategy-live-stats for-h3-mb">
+                
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                <h3
+                  className="live-stats"
+                  id="pnl-color6"
+                  onChange={
+                    stats["4"]
+                      ? forColor(
+                          `${parseFloat(stats["4"].portfolio_live_pnl_percent)}`,
+                          "pnl-color6"
+                        )
+                      : null
+                  }
+                >
+                  {stats["4"]
+                    ? `${stats["4"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
+              <div className="overall-live strategy-live-stats for-h3-mb">
+                
+                  <div className="link-icon-div for-h3-mb">
+                    <h3>Portfolio PNL</h3>
+                    {/* <BiLinkExternal className="model-link-icon" /> */}
+                  </div>
+                <h3
+                  className="live-stats"
+                  id="pnl-color6"
+                  onChange={
+                    stats["4"]
+                      ? forColor(
+                          `${parseFloat(stats["4"].portfolio_live_pnl_percent)}`,
+                          "pnl-color6"
+                        )
+                      : null
+                  }
+                >
+                  {stats["4"]
+                    ? `${stats["4"].portfolio_live_pnl_percent}%`
+                    : null}
+                </h3>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

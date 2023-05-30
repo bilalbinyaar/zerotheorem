@@ -60,14 +60,14 @@ const SideBar = () => {
       
       {/* FOR MOBILE */}
       <div className="heading-mob" onClick={oneClickRes}>
-        <h1>Derivations</h1>
+        <h1>Theory</h1>
         <div>{iamClickRes ? <AiFillCaretUp /> : <AiFillCaretDown />}</div>
       </div>
 
       {toggleRes && (
         <div id="for-mob-sidebar" className="side-bar">
           <div className="sidebar-head">
-            <h1>Derivations</h1>
+            <h1>Theory</h1>
           </div>
 
           <div className="for-hr sidebar-hr"></div>
@@ -219,7 +219,7 @@ const SideBar = () => {
       {/* FOR WEB */}
       <div id="for-web-sidebar" className="side-bar">
         <div className="sidebar-head">
-          <h1>Derivations</h1>
+          <h1>Theory</h1>
         </div>
 
         <div className="for-hr sidebar-hr"></div>
