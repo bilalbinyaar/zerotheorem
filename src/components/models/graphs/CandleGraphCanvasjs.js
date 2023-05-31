@@ -380,7 +380,7 @@ function CandleGraphCanvasjs(props) {
             setDataPoints1(dps1);
             setDataPoints2(dps2);
             setDataPoints3(dps3);
-            console.log(dps1);
+            // console.log(dps1);
             setIsLoaded(true);
             // console.log("Console values -->", dps1, dps2, dps3);
             let start_time = parseInt(

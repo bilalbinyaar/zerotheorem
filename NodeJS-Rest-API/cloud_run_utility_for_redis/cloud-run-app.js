@@ -96,7 +96,7 @@ const cacheDataStats = async () => {
       }
     );
     console.log(
-      `Data cached successfully at ${new Date()} for stats redis message ${redisResult}`
+      `Data cached successfully at ${new Date()} for stats redis message ${result}`
     );
   });
 };
@@ -190,7 +190,7 @@ const cacheDataLedger = async (timeH) => {
                             console.log(
                               `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
                                 queryResult.length
-                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult}`
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult} data ${resultStr}`
                             );
                           }
                         }
@@ -280,7 +280,7 @@ const cacheDataLedger = async (timeH) => {
                             console.log(
                               `Data cached successfully at ${new Date()} for ledger ${ledger_name} with length ${
                                 queryResult.length
-                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult}`
+                              } number ${i} time horizon ${timeH} time to live ${timeToLive} redis message ${redisResult} `
                             );
                           }
                         }

@@ -234,7 +234,7 @@ export default function NavMobileOld(props) {
               showConfirmButton: false,
             });
           } else {
-            console.log(email, password);
+            // console.log(email, password);
             signInWithEmailAndPassword(auth, email, password)
               .then((userCredential) => {
                 // Signed in
@@ -363,7 +363,7 @@ export default function NavMobileOld(props) {
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
           if (!email || !password) {
-            console.log();
+            // console.log();
             // alert("Kindly enter input details for signup");
             Swal.fire({
               title: "Kindly enter input details",
@@ -385,7 +385,7 @@ export default function NavMobileOld(props) {
               showConfirmButton: false,
             });
           } else {
-            console.log(email, password);
+            // console.log(email, password);
             createUserWithEmailAndPassword(auth, email, password)
               .then((userCredential) => {
                 // Signed in
@@ -510,9 +510,6 @@ export default function NavMobileOld(props) {
               <div className="display-none"></div>
             )}
 
-
-            
-              
             <CustomLink to="/performance" onClick={toCloseNav}>
               <AiFillHome className="nav-icons" />
               Performance

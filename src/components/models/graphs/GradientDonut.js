@@ -5,7 +5,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { Label } from "recharts";
 
 const GradientDonut = (props) => {
-  console.log("Model name -->", props.model_name);
+  // console.log("Model name -->", props.model_name);
   const [model_name, set_model_name] = useState(props.model_name);
   if (model_name != props.model_name) {
     set_model_name(props.model_name);
@@ -182,6 +182,71 @@ const GradientDonut = (props) => {
           }
         })
         .catch((err) => console.log(err));
+    } else if (props.model_name.includes("daily_wins_loss")) {
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_returns", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"].length);
+          // console.log("Debug stats -->", data);
+          var temp_stats = [];
+          for (var i = 0; i < data["response"].length; i++) {
+            // console.log(data["response"][i].strategy_name);
+            temp_stats.push(data["response"][i].daily_wins);
+            temp_stats.push(data["response"][i].daily_losses);
+
+            // model_names[data["response"][i].strategy_name] = {
+            //   strategy_name: data["response"][i].strategy_name,
+            //   current_drawdown: data["response"][i].current_drawdown,
+            //   curr_drawdown_duration:
+            //     data["response"][i].curr_drawdown_duration,
+            //   average_drawdown: data["response"][i].average_drawdown,
+            //   average_drawdown_duration:
+            //     data["response"][i].average_drawdown_duration,
+            //   max_drawdown: data["response"][i].max_drawdown,
+            //   max_drawdown_duration: data["response"][i].max_drawdown_duration,
+            //   r2_score: data["response"][i].r2_score,
+            //   sharpe: data["response"][i].sharpe,
+            //   sortino: data["response"][i].sortino,
+            //   total_pnl: data["response"][i].total_pnl,
+            //   total_positive_pnl: data["response"][i].total_positive_pnl,
+            //   total_negative_pnl: data["response"][i].total_negative_pnl,
+            //   total_wins: data["response"][i].total_wins,
+            //   total_losses: data["response"][i].total_losses,
+            //   consective_wins: data["response"][i].consective_wins,
+            //   consective_losses: data["response"][i].consective_losses,
+            //   win_percentage: data["response"][i].win_percentage,
+            //   loss_percentage: data["response"][i].loss_percentage,
+            //   pnl_sum_1: data["response"][i].pnl_sum_1,
+            //   pnl_sum_7: data["response"][i].pnl_sum_7,
+            //   pnl_sum_15: data["response"][i].pnl_sum_15,
+            //   pnl_sum_30: data["response"][i].pnl_sum_30,
+            //   pnl_sum_45: data["response"][i].pnl_sum_45,
+            //   pnl_sum_60: data["response"][i].pnl_sum_60,
+            //   average_daily_pnl: data["response"][i].average_daily_pnl,
+            //   win_loss_ratio: data["response"][i].win_loss_ratio,
+
+            //   rank: data["response"][i].rank,
+            // };
+          }
+          if (temp_stats.length > 0) {
+            // console.log("Sortable -->", model_names);
+
+            // const sorted = Object.keys(model_names)
+            //   .map((key) => {
+            //     return { ...model_names[key], key };
+            //   })
+            //   .sort((a, b) => b.total_pnl - a.total_pnl);
+            setStats(temp_stats);
+
+            // Set_sorted_stats_cache({ sorted_stats: sorted });
+          }
+        })
+        .catch((err) => console.log(err));
     } else {
       fetch(
         "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stat" +
@@ -245,7 +310,7 @@ const GradientDonut = (props) => {
             //     return { ...model_names[key], key };
             //   })
             //   .sort((a, b) => b.total_pnl - a.total_pnl);
-            console.log("Stats --->", temp_stats);
+            // console.log("Stats --->", temp_stats);
             setStats(temp_stats);
 
             // Set_sorted_stats_cache({ sorted_stats: sorted });
@@ -273,7 +338,7 @@ const GradientDonut = (props) => {
         // }
       } else if (props.model_name.includes("strategy")) {
         var data_for_stat = [];
-        console.log("Backtest --->", stats);
+        // console.log("Backtest --->", stats);
         data_for_stat.push(stats[props.model_name].win_percentage);
         data_for_stat.push(stats[props.model_name].loss_percentage);
         setSeries(data_for_stat);
@@ -283,7 +348,7 @@ const GradientDonut = (props) => {
         // data_for_stat.push(data["response"]);
       } else {
         // var data_for_stat = [];
-        console.log("Backtest --->", stats);
+        // console.log("Backtest --->", stats);
         // data_for_stat.push(stats[props.model_name].win_percentage);
         // data_for_stat.push(stats[props.model_name].loss_percentage);
         //console.log("Strategy -->", data["response"][i].strategy_name);

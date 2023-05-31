@@ -405,7 +405,7 @@ const RecentlyViewed = (props) => {
     const container = containerRef.current;
     if (container.scrollLeft > 0) {
       if (persistant_states.scrollRecently == "True") {
-        console.log("Here recently --->", persistant_states.scrollRecently);
+        // console.log("Here recently --->", persistant_states.scrollRecently);
         document.getElementById("toHidePopular").style.display = "none";
         dispatch(set_scroll_recently());
       }
