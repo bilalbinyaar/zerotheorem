@@ -31,7 +31,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-forecasts-card);
+    /* background-color: var(--color-forecasts-card); */
     /* padding: 0.6rem 0.8rem;
     border-radius: 3px; */
 }
@@ -73,7 +73,7 @@
     align-items: center;
     flex-direction: column;
     background-color: var(--color-forecasts-card);
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.2rem;
     border-radius: 3px;
 }
 
@@ -84,7 +84,7 @@
     align-items: center;
     flex-direction: column;
     background-color: var(--color-forecasts-card);
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.2rem;
     border-radius: 3px;
 }
 
@@ -142,6 +142,29 @@
 
     .live-state-ml {
         margin-left: 0.4rem;
+    }
+
+    .pnl-live-main {
+        width: 100%;
+        margin-bottom: 0.8rem;
+        padding: 1.2rem 1.2rem 0.2rem 1.2rem;
+    }
+
+    .pnl-live-main-strategies {
+        width: 96%;
+        padding: 1.2rem 1.2rem 0.2rem 1.2rem;
+    }
+
+    .live-state-ml-web {
+        margin-left: 0rem;
+    }
+
+    .mb-mobile {
+        margin-bottom: 0.6rem;
+    }
+
+    .ml-mobile {
+        margin-left: 0.3rem;
     }
 
     /* .overall-live {
