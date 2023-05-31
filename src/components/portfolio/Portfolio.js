@@ -55,7 +55,7 @@ const Portfolio = () => {
 
             if (temp_data.length != 0) {
               setStats(temp_data);
-              console.log("Here is stats -->", temp_data);
+              // console.log("Here is stats -->", temp_data);
               // console.log("Here is the data for current position", temp_data);
             }
           })
