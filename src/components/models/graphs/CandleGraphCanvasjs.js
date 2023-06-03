@@ -73,7 +73,11 @@ function CandleGraphCanvasjs(props) {
   } = useStateContext();
   useEffect(() => {
     try {
-      if (props.model_name.includes("strategy")) {
+      if (
+        props.model_name.includes("strategy") ||
+        props.model_name.includes("ZT1_") ||
+        props.model_name.includes("ZT2_")
+      ) {
         fetch(
           "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
           {
@@ -250,7 +254,11 @@ function CandleGraphCanvasjs(props) {
   const [current_position, set_current_position] = useState({});
   useEffect(() => {
     try {
-      if (props.model_name.includes("strategy")) {
+      if (
+        props.model_name.includes("strategy") ||
+        props.model_name.includes("ZT1_") ||
+        props.model_name.includes("ZT2_")
+      ) {
         // console.log("Here is it ", strategies[props.model_name]);
         fetch(
           `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies`,

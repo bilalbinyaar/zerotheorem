@@ -95,7 +95,11 @@ const ModelDetailsLeft = (props) => {
 
   useEffect(() => {
     try {
-      if (props.model_name.includes("strategy")) {
+      if (
+        props.model_name.includes("strategy") ||
+        props.model_name.includes("ZT1_") ||
+        props.model_name.includes("ZT2_")
+      ) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
           method: "GET",
           headers: {
@@ -213,15 +217,13 @@ const ModelDetailsLeft = (props) => {
                 }
                 if (JSON.stringify(model_names) !== "{}") {
                   // console.log("Sortable -->", model_names);
-
                   // const sorted = Object.keys(model_names)
                   //   .map((key) => {
                   //     return { ...model_names[key], key };
                   //   })
                   //   .sort((a, b) => b.total_pnl - a.total_pnl);
-                  setStats(model_names);
-                  Set_stats_cache({ stats: model_names });
-
+                  // setStats(model_names);
+                  // Set_stats_cache({ stats: model_names });
                   // Set_sorted_stats_cache({ sorted_stats: sorted });
                 }
               })
@@ -244,7 +246,11 @@ const ModelDetailsLeft = (props) => {
       if (!stats) {
         return;
       } else {
-        if (props.model_name.includes("strategy")) {
+        if (
+          props.model_name.includes("strategy") ||
+          props.model_name.includes("ZT1_") ||
+          props.model_name.includes("ZT2_")
+        ) {
           fetch(
             "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
             {
@@ -412,13 +418,13 @@ const ModelDetailsLeft = (props) => {
                 if (JSON.stringify(data_for_strategies) !== "{}") {
                   setStrategies(data_for_strategies);
                   //  console.log("Strategies final -->", data_for_strategies);
-                  Set_strategies_cache({ strategies: data_for_strategies });
-                  Set_coin_search_selection_cache({
-                    coin_names: coin_names,
-                  });
-                  Set_model_search_selection_cache({
-                    model_names: model_names,
-                  });
+                  // Set_strategies_cache({ strategies: data_for_strategies });
+                  // Set_coin_search_selection_cache({
+                  //   coin_names: coin_names,
+                  // });
+                  // Set_model_search_selection_cache({
+                  //   model_names: model_names,
+                  // });
                   // console.log("Here are model names --->", model_names);
                 }
               })

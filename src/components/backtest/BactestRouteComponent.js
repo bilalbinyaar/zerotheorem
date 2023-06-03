@@ -1418,19 +1418,17 @@ const BactestRouteComponent = () => {
                   >
                     <MenuItem value="All">Horizons</MenuItem>
                     <MenuItem value={"24h"}>24h</MenuItem>
+                    <MenuItem value={"13h"}>13h</MenuItem>
                     <MenuItem value={"12h"}>12h</MenuItem>
+                    <MenuItem value={"11h"}>11h</MenuItem>
+                    <MenuItem value={"9h"}>9h</MenuItem>
                     <MenuItem value={"8h"}>8h</MenuItem>
-                    <MenuItem value={"6h"}>6h</MenuItem>
-                    <MenuItem value={"4h"}>4h</MenuItem>
-                    <MenuItem value={"3h"}>3h</MenuItem>
-                    <MenuItem value={"2h"}>2h</MenuItem>
-                    <MenuItem value={"1h"}>1h</MenuItem>
                   </Select>
                 </FormControl>
               </div>
 
               <div className="horizon-right">
-                <Autocomplete
+                {/* <Autocomplete
                   id="country-select-demo"
                   className="currency-auto"
                   sx={{
@@ -1653,7 +1651,7 @@ const BactestRouteComponent = () => {
                       }}
                     />
                   )}
-                />
+                /> */}
                 <Autocomplete
                   id="country-select-demo"
                   className="model-auto"
@@ -1925,6 +1923,23 @@ const BactestRouteComponent = () => {
                       24h
                     </li>
                     <li
+                      id="hours-listings hour_filter_13"
+                      style={{
+                        background: selectedItem === "13h" ? "#fddd4e" : "",
+                        color: selectedItem === "13h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_13",
+                          "13h"
+                        );
+                        setSelectedItem("13h");
+                      }}
+                    >
+                      13h
+                    </li>
+                    <li
                       id="hours-listings hour_filter_12"
                       style={{
                         background: selectedItem === "12h" ? "#fddd4e" : "",
@@ -1940,6 +1955,40 @@ const BactestRouteComponent = () => {
                       }}
                     >
                       12h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_11"
+                      style={{
+                        background: selectedItem === "11h" ? "#fddd4e" : "",
+                        color: selectedItem === "11h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_11",
+                          "11h"
+                        );
+                        setSelectedItem("11h");
+                      }}
+                    >
+                      11h
+                    </li>
+                    <li
+                      id="hours-listings hour_filter_9"
+                      style={{
+                        background: selectedItem === "9h" ? "#fddd4e" : "",
+                        color: selectedItem === "9h" ? "black" : "",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleChangeForTimeHorizonSelection(
+                          "hour_filter_9",
+                          "9h"
+                        );
+                        setSelectedItem("9h");
+                      }}
+                    >
+                      9h
                     </li>
                     <li
                       id="hours-listings hour_filter_8"
@@ -1958,7 +2007,7 @@ const BactestRouteComponent = () => {
                     >
                       8h
                     </li>
-                    <li
+                    {/* <li
                       id="hours-listings hour_filter_3"
                       style={{
                         background: selectedItem === "6h" ? "#fddd4e" : "",
@@ -2041,13 +2090,13 @@ const BactestRouteComponent = () => {
                       }}
                     >
                       1h
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
 
               <div className="horizon-right">
-                <Autocomplete
+                {/* <Autocomplete
                   id="country-select-demo"
                   sx={{
                     width: 220,
@@ -2072,7 +2121,7 @@ const BactestRouteComponent = () => {
                       }}
                     />
                   )}
-                />
+                /> */}
                 {/* <Select
                   placeholder="Models"
                   options={model_search_selection}

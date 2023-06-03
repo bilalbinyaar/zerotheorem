@@ -19,7 +19,11 @@ function SplineGraphCanvasjs(props) {
   var CanvasJS = CanvasJSReact.CanvasJS;
   var CanvasJSChart = CanvasJSReact.CanvasJSChart;
   useEffect(() => {
-    if (props.model_name.includes("strategy")) {
+    if (
+      props.model_name.includes("strategy") ||
+      props.model_name.includes("ZT1_") ||
+      props.model_name.includes("ZT2_")
+    ) {
       fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
         method: "GET",
         headers: {
@@ -380,7 +384,11 @@ function SplineGraphCanvasjs(props) {
   }, []);
 
   useEffect(() => {
-    if (props.model_name.includes("strategy")) {
+    if (
+      props.model_name.includes("strategy") ||
+      props.model_name.includes("ZT1_") ||
+      props.model_name.includes("ZT2_")
+    ) {
       if (cummulative_pnl.length != 0) {
         // console.log("Canvasjs data -->", cummulative_pnl);
         setOptions({

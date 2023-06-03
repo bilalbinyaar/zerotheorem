@@ -327,7 +327,11 @@ const BacktestComponent = (props) => {
       if (topPerformerModels == null) {
         return;
       } else {
-        if (props.model_name.includes("strategy")) {
+        if (
+          props.model_name.includes("strategy") ||
+          props.model_name.includes("ZT1_") ||
+          props.model_name.includes("ZT2_")
+        ) {
           fetch(
             "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
             {
@@ -540,7 +544,11 @@ const BacktestComponent = (props) => {
   useEffect(() => {
     try {
       if (Flag == null) {
-        if (props.model_name.includes("strategy")) {
+        if (
+          props.model_name.includes("strategy") ||
+          props.model_name.includes("ZT1_") ||
+          props.model_name.includes("ZT2_")
+        ) {
           fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
             method: "GET",
             headers: {
@@ -1355,7 +1363,9 @@ const BacktestComponent = (props) => {
   return (
     <div>
       <div className="back-test models-page-backtest">
-        {props.model_name.includes("strategy") ? null : (
+        {props.model_name.includes("strategy") ||
+        props.model_name.includes("ZT1_") ||
+        props.model_name.includes("ZT2_") ? null : (
           <div className="container">
             <h1>Backtest</h1>
             <p className="backtest-description">

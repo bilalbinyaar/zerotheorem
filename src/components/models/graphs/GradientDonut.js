@@ -52,7 +52,11 @@ const GradientDonut = (props) => {
           }
         })
         .catch((err) => console.log(err));
-    } else if (props.model_name.includes("strategy")) {
+    } else if (
+      props.model_name.includes("strategy") ||
+      props.model_name.includes("ZT1_") ||
+      props.model_name.includes("ZT2_")
+    ) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
         method: "GET",
         headers: {
@@ -336,7 +340,11 @@ const GradientDonut = (props) => {
         //   setIsLoaded(true);
         //   // console.log("Data for setting stat -->", data_for_stat);
         // }
-      } else if (props.model_name.includes("strategy")) {
+      } else if (
+        props.model_name.includes("strategy") ||
+        props.model_name.includes("ZT1_") ||
+        props.model_name.includes("ZT2_")
+      ) {
         var data_for_stat = [];
         // console.log("Backtest --->", stats);
         data_for_stat.push(stats[props.model_name].win_percentage);
@@ -364,7 +372,17 @@ const GradientDonut = (props) => {
   const options = {
     labels: labels,
     colors: props.model_name.includes("collection")
-      ? ["#16C784", "#FF2E2E", "#F9A52B", "#4287f5", "#9B59B6"]
+      ? [
+          "#16C784",
+          "#FF2E2E",
+          "#F9A52B",
+          "#4287f5",
+          "#9B59B6",
+          "#FFD700",
+          "#00FFFF",
+          "#FF1493",
+          "#008080",
+        ]
       : ["#16C784", "#FF2E2E"],
     chart: {
       width: 380,

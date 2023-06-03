@@ -42,13 +42,16 @@ const HeatMapChart = () => {
           for (var i = 0; i < data["response"].length; i++) {
             var temp_arr = [];
             for (let strategy_name in data["response"][i]) {
-              temp_arr.push(parseFloat(data["response"][i][strategy_name]));
+              if (parseFloat(data["response"][i][strategy_name])) {
+                temp_arr.push(parseFloat(data["response"][i][strategy_name]));
+              }
             }
             temp_correlations.push(temp_arr);
           }
           if (temp_correlations.length > 0) {
             // console.log("Correlations -->", temp_correlations);
             setCorrelations(temp_correlations);
+            console.log(temp_correlations);
             // console.log("Here are keys -->", Object.keys(data["response"][0]));
             setStrategies(Object.keys(data["response"][0]));
             setIsLoaded(true);

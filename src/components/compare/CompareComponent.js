@@ -490,22 +490,19 @@ const CompareComponent = () => {
       label: "24h",
     },
     {
+      label: "13h",
+    },
+    {
       label: "12h",
     },
     {
-      label: "6h",
+      label: "11h",
     },
     {
-      label: "4h",
+      label: "9h",
     },
     {
-      label: "3h",
-    },
-    {
-      label: "2h",
-    },
-    {
-      label: "1h",
+      label: "8h",
     },
   ]);
   const [time_horizons2, set_time_horizons2] = useState([
@@ -516,22 +513,19 @@ const CompareComponent = () => {
       label: "24h",
     },
     {
+      label: "13h",
+    },
+    {
       label: "12h",
     },
     {
-      label: "6h",
+      label: "11h",
     },
     {
-      label: "4h",
+      label: "9h",
     },
     {
-      label: "3h",
-    },
-    {
-      label: "2h",
-    },
-    {
-      label: "1h",
+      label: "8h",
     },
   ]);
   const [model_names2, set_model_names2] = useState([]);
@@ -1263,7 +1257,7 @@ const CompareComponent = () => {
                             )}
                           />
                           {/* CURRENCIES SEARCH BAR */}
-                          <Autocomplete
+                          {/* <Autocomplete
                             id="country-select-demo"
                             className="model-compare-search"
                             sx={{
@@ -1504,7 +1498,7 @@ const CompareComponent = () => {
                                 }}
                               />
                             )}
-                          />
+                          /> */}
                           {/* MODEL SEARCH BAR */}
                           <Autocomplete
                             id="country-select-demo"
@@ -1804,6 +1798,24 @@ const CompareComponent = () => {
                                 24h
                               </li>
                               <li
+                                id="hours-listings hour_filter_13"
+                                style={{
+                                  background:
+                                    selectedItem === "13h" ? "#fddd4e" : "",
+                                  color: selectedItem === "13h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_13",
+                                    "13h"
+                                  );
+                                  setSelectedItem("13h");
+                                }}
+                              >
+                                13h
+                              </li>
+                              <li
                                 id="hours-listings hour_filter_12"
                                 style={{
                                   background:
@@ -1820,6 +1832,42 @@ const CompareComponent = () => {
                                 }}
                               >
                                 12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_11"
+                                style={{
+                                  background:
+                                    selectedItem === "11h" ? "#fddd4e" : "",
+                                  color: selectedItem === "11h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_1",
+                                    "11h"
+                                  );
+                                  setSelectedItem("11h");
+                                }}
+                              >
+                                11h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_9"
+                                style={{
+                                  background:
+                                    selectedItem === "9h" ? "#fddd4e" : "",
+                                  color: selectedItem === "9h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_9",
+                                    "9h"
+                                  );
+                                  setSelectedItem("9h");
+                                }}
+                              >
+                                9h
                               </li>
                               <li
                                 id="hours-listings hour_filter_8"
@@ -1839,7 +1887,7 @@ const CompareComponent = () => {
                               >
                                 8h
                               </li>
-                              <li
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -1874,8 +1922,8 @@ const CompareComponent = () => {
                                 }}
                               >
                                 4h
-                              </li>
-                              <li
+                              </li> */}
+                              {/* <li
                                 style={{
                                   background:
                                     selectedItem === "3h" ? "#fddd4e" : "",
@@ -1927,7 +1975,7 @@ const CompareComponent = () => {
                                 }}
                               >
                                 1h
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         </div>
@@ -2175,7 +2223,7 @@ const CompareComponent = () => {
                             )}
                           />
                           {/* CURRENCIES SEARCH BAR */}
-                          <Autocomplete
+                          {/* <Autocomplete
                             id="country-select-demo"
                             className="model-compare-search"
                             sx={{
@@ -2416,7 +2464,7 @@ const CompareComponent = () => {
                                 }}
                               />
                             )}
-                          />
+                          /> */}
                         </div>
                       </div>
                       {model_name_1 ? (
@@ -2676,7 +2724,7 @@ const CompareComponent = () => {
                             )}
                           />
                           {/* CURRENCIES SEARCH BAR */}
-                          <Autocomplete
+                          {/* <Autocomplete
                             id="country-select-demo"
                             className="model-compare-search"
                             sx={{
@@ -2917,7 +2965,7 @@ const CompareComponent = () => {
                                 }}
                               />
                             )}
-                          />
+                          /> */}
                           {/* MODEL SEARCH BAR */}
                           <Autocomplete
                             id="country-select-demo"
@@ -3216,6 +3264,24 @@ const CompareComponent = () => {
                                 24h
                               </li>
                               <li
+                                id="hours-listings hour_filter_13"
+                                style={{
+                                  background:
+                                    selectedItem2 === "13h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "13h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_13",
+                                    "13h"
+                                  );
+                                  setSelectedItem2("13h");
+                                }}
+                              >
+                                13h
+                              </li>
+                              <li
                                 id="hours-listings hour_filter_12"
                                 style={{
                                   background:
@@ -3232,6 +3298,42 @@ const CompareComponent = () => {
                                 }}
                               >
                                 12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_11"
+                                style={{
+                                  background:
+                                    selectedItem2 === "11h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "11h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_11",
+                                    "11h"
+                                  );
+                                  setSelectedItem2("11h");
+                                }}
+                              >
+                                11h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_9"
+                                style={{
+                                  background:
+                                    selectedItem2 === "9h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "9h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_9",
+                                    "9h"
+                                  );
+                                  setSelectedItem2("9h");
+                                }}
+                              >
+                                9h
                               </li>
                               <li
                                 id="hours-listings hour_filter_8"
@@ -3251,7 +3353,7 @@ const CompareComponent = () => {
                               >
                                 8h
                               </li>
-                              <li
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -3268,8 +3370,8 @@ const CompareComponent = () => {
                                 }}
                               >
                                 6h
-                              </li>
-                              <li
+                              </li> */}
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -3339,7 +3441,7 @@ const CompareComponent = () => {
                                 }}
                               >
                                 1h
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         </div>
@@ -3586,7 +3688,7 @@ const CompareComponent = () => {
                             )}
                           />
                           {/* CURRENCIES SEARCH BAR */}
-                          <Autocomplete
+                          {/* <Autocomplete
                             id="country-select-demo"
                             className="model-compare-search"
                             sx={{
@@ -3827,7 +3929,7 @@ const CompareComponent = () => {
                                 }}
                               />
                             )}
-                          />
+                          /> */}
                         </div>
                       </div>
                       {model_name_2 ? (
@@ -3888,6 +3990,24 @@ const CompareComponent = () => {
                                 24h
                               </li>
                               <li
+                                id="hours-listings hour_filter_13"
+                                style={{
+                                  background:
+                                    selectedItem3 === "13h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "13h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_13",
+                                    "13h"
+                                  );
+                                  setSelectedItem3("13h");
+                                }}
+                              >
+                                13h
+                              </li>
+                              <li
                                 id="hours-listings hour_filter_12"
                                 style={{
                                   background:
@@ -3904,6 +4024,42 @@ const CompareComponent = () => {
                                 }}
                               >
                                 12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_11"
+                                style={{
+                                  background:
+                                    selectedItem3 === "11h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "11h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_11",
+                                    "11h"
+                                  );
+                                  setSelectedItem3("11h");
+                                }}
+                              >
+                                11h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_9"
+                                style={{
+                                  background:
+                                    selectedItem3 === "9h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "9h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_9",
+                                    "9h"
+                                  );
+                                  setSelectedItem3("9h");
+                                }}
+                              >
+                                9h
                               </li>
                               <li
                                 id="hours-listings hour_filter_8"
@@ -3923,7 +4079,7 @@ const CompareComponent = () => {
                               >
                                 8h
                               </li>
-                              <li
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -4011,7 +4167,7 @@ const CompareComponent = () => {
                                 }}
                               >
                                 1h
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         </div>
@@ -4259,7 +4415,7 @@ const CompareComponent = () => {
                             )}
                           />
                           {/* CURRENCIES SEARCH BAR */}
-                          <Autocomplete
+                          {/* <Autocomplete
                             id="country-select-demo"
                             className="model-compare-search"
                             sx={{
@@ -4500,7 +4656,7 @@ const CompareComponent = () => {
                                 }}
                               />
                             )}
-                          />
+                          /> */}
                         </div>
                       </div>
                       {model_name_3 ? (

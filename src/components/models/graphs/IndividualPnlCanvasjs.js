@@ -29,7 +29,11 @@ const IndividualPnlCanvasjs = (props) => {
   useEffect(() => {
     if (!individual_pnl_graph_cache[props.model_name]) {
       // console.log("I received model name for graph -->", props.model_name);
-      if (props.model_name.includes("strategy")) {
+      if (
+        props.model_name.includes("strategy") ||
+        props.model_name.includes("ZT1_") ||
+        props.model_name.includes("ZT2_")
+      ) {
         fetch(
           `https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`,
           {
@@ -47,7 +51,7 @@ const IndividualPnlCanvasjs = (props) => {
               if (
                 (parseFloat(data["response"][index].pnl) != 0 ||
                   parseFloat(data["response"][index].pnl) != -0) &&
-                parseInt(data["response"][index].in_position) == 0
+                parseFloat(data["response"][index].in_position) == 0
               ) {
                 console.log(
                   "Here is PNL -->",

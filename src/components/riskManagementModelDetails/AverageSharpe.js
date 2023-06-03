@@ -25,11 +25,15 @@ function AverageSharpe(props) {
   const [data_for_pnl_graph, set_data_for_pnl_graph] = useState([]);
   const [cummulative_pnl, set_cum_pnl] = useState([]);
   const [colors, setColors] = useState([
-    { strategy_1: "#16C784" },
-    { strategy_2: "#FF2E2E" },
-    { strategy_3: "#F9A52B" },
-    { strategy_4: "#4287f5" },
-    { strategy_5: "#9B59B6" },
+    { "ZT1-SM8H-1": "#16C784" },
+    { "ZT1-SE24H-1T": "#FF2E2E" },
+    { "ZT1-SE24H-1": "#F9A52B" },
+    { "ZT1-SE12H-1": "#4287f5" },
+    { "ZT1-SE8H-1": "#9B59B6" },
+    { "ZT2-SE24H-1": "#FFD700" },
+    { "ZT1-SE9H-1": "#00FFFF" },
+    { "ZT1-SE11H-1": "#FF1493" },
+    { "ZT1-SE13H-1": "#008080" },
   ]);
   useEffect(() => {
     // console.log("I received model name for graph -->", props.model_name);

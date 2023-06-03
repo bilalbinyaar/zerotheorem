@@ -20,6 +20,19 @@ function Kelly_Allocation_ApexCharts() {
   const [data_for_graph_historical5, set_data_for_graph_historical5] = useState(
     []
   );
+  const [data_for_graph_historical6, set_data_for_graph_historical6] = useState(
+    []
+  );
+  const [data_for_graph_historical7, set_data_for_graph_historical7] = useState(
+    []
+  );
+  const [data_for_graph_historical8, set_data_for_graph_historical8] = useState(
+    []
+  );
+  const [data_for_graph_historical9, set_data_for_graph_historical9] = useState(
+    []
+  );
+
   const forColor = (total_pnl, id) => {
     try {
       if (total_pnl < 0) {
@@ -115,6 +128,10 @@ function Kelly_Allocation_ApexCharts() {
             const temp_data_4 = [];
 
             const temp_data_5 = [];
+            const temp_data_6 = [];
+            const temp_data_7 = [];
+            const temp_data_8 = [];
+            const temp_data_9 = [];
 
             // console.log(
             //   "Finally btc data -->",
@@ -142,6 +159,23 @@ function Kelly_Allocation_ApexCharts() {
                 x: new Date(parseInt(data["response"][i].datetime) * 1000),
                 y: data["response"][i].strategy_5,
               });
+
+              temp_data_6.push({
+                x: new Date(parseInt(data["response"][i].datetime) * 1000),
+                y: data["response"][i].strategy_5,
+              });
+              temp_data_7.push({
+                x: new Date(parseInt(data["response"][i].datetime) * 1000),
+                y: data["response"][i].strategy_5,
+              });
+              temp_data_8.push({
+                x: new Date(parseInt(data["response"][i].datetime) * 1000),
+                y: data["response"][i].strategy_5,
+              });
+              temp_data_9.push({
+                x: new Date(parseInt(data["response"][i].datetime) * 1000),
+                y: data["response"][i].strategy_5,
+              });
             }
 
             if (temp_data_1.length != 0) {
@@ -152,6 +186,10 @@ function Kelly_Allocation_ApexCharts() {
               set_data_for_graph_historical4(temp_data_4);
 
               set_data_for_graph_historical5(temp_data_5);
+              set_data_for_graph_historical6(temp_data_6);
+              set_data_for_graph_historical7(temp_data_7);
+              set_data_for_graph_historical8(temp_data_8);
+              set_data_for_graph_historical9(temp_data_9);
 
               // console.log("Here is the data for current position", temp_data);
             }
