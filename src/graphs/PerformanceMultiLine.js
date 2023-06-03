@@ -18,6 +18,8 @@ const PerformanceMultiLine = (props) => {
     set_model_name(props.model_name);
   }
   const [dataPoints, setDataPoints] = useState([]);
+  const [dataPoints2, setDataPoints2] = useState([]);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
@@ -96,12 +98,14 @@ const PerformanceMultiLine = (props) => {
                   parseInt(data["response"][index].ledger_timestamp) * 1000
                 ),
                 y: parseFloat(data["response"][index].pnl_sum),
+                smooth: false,
               });
               cum_pnl_2.push({
                 x: new Date(
                   parseInt(data["response"][index].ledger_timestamp) * 1000
                 ),
-                y: parseFloat(data["response"][index].pnl_sum * 10),
+                y: parseFloat(data["response"][index].smooth_pnl_sum),
+                smooth: true,
               });
             }
           }
@@ -109,6 +113,7 @@ const PerformanceMultiLine = (props) => {
           // await delay(1000);
           if (cum_pnl.length != 0) {
             set_cum_pnl(cum_pnl);
+            setDataPoints2(cum_pnl_2);
             let len = data["response"].length - 1;
             let start_time = parseInt(data["response"][0].ledger_timestamp);
             let end_time = parseInt(data["response"][len].ledger_timestamp);
@@ -206,24 +211,53 @@ const PerformanceMultiLine = (props) => {
               "DD/MM/YYYY HH:mm:ss"
             );
             let content = `<strong>${date}</strong><br/><br/>`;
-
             e.entries.forEach((entry) => {
-              content += `<span style="color: ${entry.dataPoint.color};">PNL: </span>${entry.dataPoint.y}<br/>`;
+              if (entry.dataPoint.smooth == false) {
+                content += `<span style="color: black;">PNL Sum: </span>${entry.dataPoint.y}<br/>`;
+              } else {
+                content += `<span style="color: black;">Smooth PNL Sum: </span>${entry.dataPoint.y}<br/>`;
+              }
             });
 
             return content;
           },
         },
+        legend: {
+          fontSize: 15,
+          verticalAlign: "top",
+        },
         data: [
           {
-            showInLegend: false,
+            showInLegend: true,
+            legendText: "PNL Sum",
+            color: "#16c784",
+            fontSize: 40,
+
             type: "spline",
             yValueFormatString: "#,##0",
+            legendMarkerBorderColor: "#008000",
+
             xValueType: "dateTime",
             dataPoints: dataPoints.map((point) => ({
               ...point,
-              color: point.y >= 0 ? "green" : "red",
-              lineColor: point.y >= 0 ? "green" : "red",
+              color: point.y >= 0 ? "#16c784" : "#ff2e2e",
+              lineColor: point.y >= 0 ? "#16c784" : "#ff2e2e",
+              legendMarkerColor: "#ff2e2e",
+            })),
+          },
+          {
+            showInLegend: true,
+            type: "spline",
+            legendText: "Smooth PNL Sum",
+            color: "#fddd4e",
+
+            yValueFormatString: "#,##0",
+            // lineColor: "#fddd4e",
+            xValueType: "dateTime",
+            dataPoints: dataPoints2.map((point) => ({
+              ...point,
+              color: "#fddd4e",
+              // lineColor: "#fddd4e",
             })),
           },
         ],
@@ -242,8 +276,19 @@ const PerformanceMultiLine = (props) => {
           xValueType: "dateTime",
           dataPoints: dataPoints.map((point) => ({
             ...point,
-            color: point.y >= 0 ? "green" : "red",
-            lineColor: point.y >= 0 ? "green" : "red",
+            color: point.y >= 0 ? "#16c784" : "#ff2e2e",
+            lineColor: point.y >= 0 ? "#16c784" : "#ff2e2e",
+          })),
+        },
+        {
+          showInLegend: false,
+          type: "spline",
+          yValueFormatString: "#,##0",
+          xValueType: "dateTime",
+          dataPoints: dataPoints2.map((point) => ({
+            ...point,
+            color: "#fddd4e",
+            lineColor: "#fddd4e",
           })),
         },
       ],

@@ -19,7 +19,7 @@ const Performance = () => {
       <LivePNL />
       {/* <PerformanceGraphs /> */}
       <PerformanceDataGrid />
-      
+
       {/* <CurrentPortfolio /> */}
       {/* <ScatterPlotApexCharts /> */}
       {/* <PerformanceLineCharts /> */}

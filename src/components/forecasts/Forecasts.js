@@ -544,9 +544,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[0].strategy_name.replace("_", "-")}
+                                )[0].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -683,9 +683,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[1].strategy_name.replace("_", "-")}
+                                )[1].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -821,9 +821,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[2].strategy_name.replace("_", "-")}
+                                )[2].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -956,9 +956,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[3].strategy_name.replace("_", "-")}
+                                )[3].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -1091,9 +1091,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[4].strategy_name.replace("_", "-")}
+                                )[4].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -1227,9 +1227,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[5].strategy_name.replace("_", "-")}
+                                )[5].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -1362,9 +1362,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[6].strategy_name.replace("_", "-")}
+                                )[6].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -1497,9 +1497,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[7].strategy_name.replace("_", "-")}
+                                )[7].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -1632,9 +1632,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[8].strategy_name.replace("_", "-")}
+                                )[8].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -1767,9 +1767,9 @@ const Forecasts = () => {
                           >
                             {Object.keys(topPerformerModels).length > 0 ? (
                               <Link
-                                to={Object.values(
+                                to={`/${Object.values(
                                   topPerformerModels
-                                )[9].strategy_name.replace("_", "-")}
+                                )[9].strategy_name.replace("_", "-")}`}
                               >
                                 <h3>
                                   {Object.values(
@@ -1919,9 +1919,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[0].strategy_name.replace("_", "-")}
+                              )[0].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2042,9 +2042,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[1].strategy_name.replace("_", "-")}
+                              )[1].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2165,9 +2165,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[2].strategy_name.replace("_", "-")}
+                              )[2].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2288,9 +2288,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[3].strategy_name.replace("_", "-")}
+                              )[3].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2411,9 +2411,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[4].strategy_name.replace("_", "-")}
+                              )[4].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2534,9 +2534,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[5].strategy_name.replace("_", "-")}
+                              )[5].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2658,9 +2658,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[6].strategy_name.replace("_", "-")}
+                              )[6].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2781,9 +2781,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[7].strategy_name.replace("_", "-")}
+                              )[7].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -2904,9 +2904,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[8].strategy_name.replace("_", "-")}
+                              )[8].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(
@@ -3027,9 +3027,9 @@ const Forecasts = () => {
                         >
                           {Object.keys(topPerformerModels).length > 0 ? (
                             <Link
-                              to={Object.values(
+                              to={`/${Object.values(
                                 topPerformerModels
-                              )[9].strategy_name.replace("_", "-")}
+                              )[9].strategy_name.replace("_", "-")}`}
                             >
                               <h3>
                                 {Object.values(

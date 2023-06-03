@@ -93,9 +93,15 @@
   margin-right: 0.2rem;
 }
 
-
 .indicator-short {
   color: var(--color-day-red);
+  width: 14px;
+  margin-left: 1.4rem;
+  margin-right: 0.2rem;
+}
+
+.indicator-smooth {
+  color: var(--color-day-yellow);
   width: 14px;
   margin-left: 1.4rem;
   margin-right: 0.2rem;
@@ -218,9 +224,9 @@
     overflow-x: scroll;
     margin-top: 0.6rem;
     /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  } 
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   .overview-wapper::-webkit-scrollbar {
@@ -250,7 +256,6 @@
   }
 }
 
-
 @media screen and (max-width: 568px) {
   .overview-mobile {
     display: flex;
@@ -262,9 +267,9 @@
     overflow-x: scroll;
     margin-top: 0.6rem;
     /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  } 
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   .overview-wapper::-webkit-scrollbar {
@@ -296,5 +301,4 @@
     justify-content: center;
     align-items: center;
   }
-
 }

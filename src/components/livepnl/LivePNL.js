@@ -277,7 +277,7 @@ const LivePNL = () => {
           <div className="pnl-live-main">
             <h3>Overall</h3>
             <div className="overall-live overall-live-stats">
-              <h3>PNL</h3>
+              <h3>Individual PNL</h3>
               <h3
                 //   className="live-stats"
                 id="pnl-color5"
@@ -343,7 +343,6 @@ const LivePNL = () => {
           <div className="divider-div-pnl-live"></div>
 
           <div className="strategies-live-stats">
-
             <div className="pnl-live-main-strategies for-h3-mb mb-mobile">
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
@@ -359,7 +358,7 @@ const LivePNL = () => {
               </div>
               <div className="overall-live strategy-live-stats">
                 <div className="link-icon-div for-h3-mb">
-                  <h3>PNL</h3>
+                  <h3>Individual PNL</h3>
                   {/* <BiLinkExternal className="model-link-icon" /> */}
                 </div>
                 <h3
@@ -418,7 +417,7 @@ const LivePNL = () => {
               </div>
               <div className="overall-live strategy-live-stats live-state-ml for-h3-mb">
                 <div className="link-icon-div for-h3-mb">
-                  <h3>PNL</h3>
+                  <h3>Individual PNL</h3>
                   {/* <BiLinkExternal className="model-link-icon" /> */}
                 </div>
                 <h3
@@ -477,7 +476,7 @@ const LivePNL = () => {
               </div>
               <div className="overall-live strategy-live-stats for-h3-mb">
                 <div className="link-icon-div for-h3-mb">
-                  <h3>PNL</h3>
+                  <h3>Individual PNL</h3>
                   {/* <BiLinkExternal className="model-link-icon" /> */}
                 </div>
                 <h3
@@ -536,7 +535,7 @@ const LivePNL = () => {
               </div>
               <div className="overall-live strategy-live-stats live-state-ml for-h3-mb">
                 <div className="link-icon-div for-h3-mb">
-                  <h3>PNL</h3>
+                  <h3>Individual PNL</h3>
                   {/* <BiLinkExternal className="model-link-icon" /> */}
                 </div>
 
@@ -597,7 +596,7 @@ const LivePNL = () => {
               </div>
               <div className="overall-live strategy-live-stats for-h3-mb">
                 <div className="link-icon-div for-h3-mb">
-                  <h3>PNL</h3>
+                  <h3>Individual PNL</h3>
                   {/* <BiLinkExternal className="model-link-icon" /> */}
                 </div>
                 <h3
