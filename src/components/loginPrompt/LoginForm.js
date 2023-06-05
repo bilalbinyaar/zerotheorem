@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import videoBackground from "../../assets/2x-bg.mp4";
 import logoWhite from "../../assets/logo-white.svg";
 import { set_login } from "../../store";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function LoginForm() {
@@ -217,18 +217,24 @@ function LoginForm() {
               ) {
                 setAuthCheckLoginInvestor(true);
                 handleInvestorLogin();
+              } else if (
+                adminUserMain.investorPassword == input &&
+                adminUserMain.investorSecondary == email
+              ) {
+                setAuthCheckLoginInvestor(true);
+                handleInvestorLogin();
               } else {
-                 event.stopPropagation();
+                event.stopPropagation();
                 //  alert("Kindly input valid login credentials")
                 Swal.fire({
-                title: "Invalid access credentials",
-                icon: "error",
-                timer: 3000,
-                timerProgressBar: true,
-                toast: true,
-                position: "top-right",
-                showConfirmButton: false,
-              });            
+                  title: "Invalid access credentials",
+                  icon: "error",
+                  timer: 3000,
+                  timerProgressBar: true,
+                  toast: true,
+                  position: "top-right",
+                  showConfirmButton: false,
+                });
               }
             }}
           />

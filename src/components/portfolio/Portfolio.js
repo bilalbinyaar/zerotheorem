@@ -245,12 +245,12 @@ const Portfolio = () => {
                   )
                 ) : null}
                 <p
-                  id="pnl-color14"
+                  id="pnl-color144"
                   onChange={
                     stats["live_pnls"]
                       ? forColor(
                           parseFloat(stats["live_pnls"].pnl_30),
-                          "pnl-color14"
+                          "pnl-color144"
                         )
                       : null
                   }

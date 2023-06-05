@@ -928,12 +928,12 @@ const LivePNL = () => {
 
                 <h3
                   className="live-stats"
-                  id="pnl-color4"
+                  id="pnl-color48"
                   onChange={
                     stats["8"]
                       ? forColor(
                           `${parseFloat(stats["8"].current_pnl)}`,
-                          "pnl-color4"
+                          "pnl-color48"
                         )
                       : null
                   }
@@ -949,14 +949,14 @@ const LivePNL = () => {
 
                 <h3
                   className="live-stats"
-                  id="pnl-color44"
+                  id="pnl-color448"
                   onChange={
                     stats["8"]
                       ? forColor(
                           `${parseFloat(
                             stats["8"].portfolio_live_pnl_percent
                           )}`,
-                          "pnl-color44"
+                          "pnl-color448"
                         )
                       : null
                   }
