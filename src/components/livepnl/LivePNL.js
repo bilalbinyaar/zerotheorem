@@ -346,7 +346,7 @@ const LivePNL = () => {
           <div className="divider-div-pnl-live"></div> */}
 
           <div className="strategies-live-stats">
-            <div className="pnl-live-main-strategies for-h3-mb mb-mobile">
+            <div className="pnl-live-main-strategies live-state-ml-web for-h3-mb mb-mobile">
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">Overall</h3>
               </div>

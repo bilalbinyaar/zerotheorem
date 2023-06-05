@@ -248,7 +248,7 @@ const PerformanceMultiLine = (props) => {
           {
             showInLegend: true,
             type: "spline",
-            legendText: "Smooth PNL Sum",
+            legendText: "30d Moving Average",
             color: "#fddd4e",
 
             yValueFormatString: "#,##0",

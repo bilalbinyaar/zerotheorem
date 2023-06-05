@@ -53,7 +53,13 @@ const HeatMapChart = () => {
             setCorrelations(temp_correlations);
             console.log(temp_correlations);
             // console.log("Here are keys -->", Object.keys(data["response"][0]));
-            setStrategies(Object.keys(data["response"][0]));
+            var list_of_names = Object.keys(data["response"][0]);
+            for (let i = 0; i < list_of_names; i++) {
+              list_of_names[i] = list_of_names[i].replace(/_/g, "-");
+            }
+            // console.log("List of names -->", list_of_names);
+
+            setStrategies(list_of_names);
             setIsLoaded(true);
             // console.log("Sortable -->", model_names);
             // const sorted = Object.keys(model_names)
@@ -73,9 +79,14 @@ const HeatMapChart = () => {
 
   const series = strategies.map((variable, index) => ({
     // name: "Strategy",
-    name: " " + variable,
+    name: " " + variable.replace(/_/g, "-"),
     data: correlations[index],
   }));
+  const xLables = strategies.map((variable, index) => [
+    // name: "Strategy",
+    " " + variable.replace(/_/g, "-"),
+    // data: correlations[index],
+  ]);
 
   const options = {
     chart: {
@@ -111,7 +122,7 @@ const HeatMapChart = () => {
       width: 1,
     },
     xaxis: {
-      categories: strategies,
+      categories: xLables,
       labels: {
         style: {
           colors: "#000000",
@@ -119,7 +130,7 @@ const HeatMapChart = () => {
       },
     },
     yaxis: {
-      categories: strategies,
+      // categories: series.name,
       opposite: false,
       forceNiceScale: false,
       floating: false,
