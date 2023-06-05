@@ -181,7 +181,7 @@ const BacktestComponent = (props) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
       // setRows({});
-      set_model_selected_for_backtest(values.label.replace("-", "_"));
+      set_model_selected_for_backtest(values.label.replace(/-/g, "_"));
       const res = rows_cached.filter((item) => {
         return item.modelName == values.label;
       });
@@ -292,7 +292,7 @@ const BacktestComponent = (props) => {
               key,
               strategies[key].current_position,
             ],
-            modelName: key.replace("_", "-"),
+            modelName: key.replace(/_/g, "-"),
             currency: strategies[key].currency,
             timeHorizon: strategies[key].time_horizon,
             dateAdded: strategies[key].date_started,
@@ -350,9 +350,9 @@ const BacktestComponent = (props) => {
               var unique_coins = {};
               var index = 0;
               for (var i = 0; i < data["response"].length; i++) {
-                // var name = data["response"][i].strategy_name.replace("_", "-");
+                // var name = data["response"][i].strategy_name.replace(/_/g, "-");
                 model_names.push({
-                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  label: data["response"][i].strategy_name.replace(/_/g, "-"),
                   value: data["response"][i].time_horizon,
                   currency: data["response"][i].currency,
                 });
@@ -437,9 +437,9 @@ const BacktestComponent = (props) => {
                 var unique_coins = {};
                 var index = 0;
                 for (var i = 0; i < data["response"].length; i++) {
-                  // var name = data["response"][i].strategy_name.replace("_", "-");
+                  // var name = data["response"][i].strategy_name.replace(/_/g, "-");
                   model_names.push({
-                    label: data["response"][i].strategy_name.replace("_", "-"),
+                    label: data["response"][i].strategy_name.replace(/_/g, "-"),
                     value: data["response"][i].time_horizon,
                     currency: data["response"][i].currency,
                   });
@@ -778,7 +778,7 @@ const BacktestComponent = (props) => {
   var fee = "";
 
   if (location.state) {
-    model_name = location.state.model_name.replace("_", "-");
+    model_name = location.state.model_name.replace(/_/g, "-");
     currency = location.state.currency;
     time_horizon = location.state.time_horizon;
     time_horizon2 = location.state.time_horizon;
@@ -794,7 +794,7 @@ const BacktestComponent = (props) => {
     label: currency,
   });
   const [model_selected_for_backted, set_model_selected_for_backtest] =
-    useState(model_name.replace("-", "_"));
+    useState(model_name.replace(/-/g, "_"));
   const [selectedDate, setSelectedDate] = useState(null);
   const [date_selected_for_backtest, set_date_selected_for_backtest] =
     useState(null);
@@ -1299,13 +1299,13 @@ const BacktestComponent = (props) => {
         if (!name.includes("backtest")) {
           set_default_value_model({ label: name });
           set_default_value_currency({
-            label: strategies[name.replace("-", "_")].currency,
+            label: strategies[name.replace(/-/g, "_")].currency,
           });
           // set_model_name_for_result_backtest_result
-          setSelectedItem(strategies[name.replace("-", "_")].time_horizon);
-          setTimeH(strategies[name.replace("-", "_")].time_horizon);
+          setSelectedItem(strategies[name.replace(/-/g, "_")].time_horizon);
+          setTimeH(strategies[name.replace(/-/g, "_")].time_horizon);
 
-          const dateStr = strategies[name.replace("-", "_")].date_started;
+          const dateStr = strategies[name.replace(/-/g, "_")].date_started;
           const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
           // console.log(
           //   "Debugg model -->",
@@ -1313,30 +1313,30 @@ const BacktestComponent = (props) => {
           //   dateStr,
           //   dayjs.unix(unixTimestamp)
           // );
-          set_model_selected_for_backtest(name.replace("-", "_"));
+          set_model_selected_for_backtest(name.replace(/-/g, "_"));
           setDisableBefore(dayjs.unix(unixTimestamp));
           setSelectedDate(dayjs.unix(unixTimestamp));
           set_date_selected_for_backtest(unixTimestamp);
-          // set_model_name_for_result_backtest_result(name.replace("-", "_"));
-          // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
+          // set_model_name_for_result_backtest_result(name.replace(/-/g, "_"));
+          // set_model_name_for_result_backtest_result_stats(name.replace(/-/g, "_"));
 
           set_date_selected_for_backtest_mobile(unixTimestamp);
-          set_model_name_for_result_backtest_result(name.replace("-", "_"));
+          set_model_name_for_result_backtest_result(name.replace(/-/g, "_"));
           set_model_name_for_result_backtest_result_stats(
-            name.replace("-", "_")
+            name.replace(/-/g, "_")
           );
 
-          // setSelectedDate(strategies[name.replace("-", "_")].start_date);
+          // setSelectedDate(strategies[name.replace(/-/g, "_")].start_date);
           // console.log("Pathname -->", name, default_value_model);
         } else {
           // set_default_value_model(nul);
           // set_default_value_currency({
-          //   label: strategies[name.replace("-", "_")].currency,
+          //   label: strategies[name.replace(/-/g, "_")].currency,
           // });
           // set_model_name_for_result_backtest_result
-          // setSelectedItem(strategies[name.replace("-", "_")].time_horizon);
-          // setTimeH(strategies[name.replace("-", "_")].time_horizon);
-          // const dateStr = strategies[name.replace("-", "_")].date_started;
+          // setSelectedItem(strategies[name.replace(/-/g, "_")].time_horizon);
+          // setTimeH(strategies[name.replace(/-/g, "_")].time_horizon);
+          // const dateStr = strategies[name.replace(/-/g, "_")].date_started;
           // const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
           // console.log(
           //   "Debugg model -->",
@@ -1344,15 +1344,15 @@ const BacktestComponent = (props) => {
           //   dateStr,
           //   dayjs.unix(unixTimestamp)
           // );
-          // set_model_selected_for_backtest(name.replace("-", "_"));
+          // set_model_selected_for_backtest(name.replace(/-/g, "_"));
           // setDisableBefore(dayjs.unix(unixTimestamp));
           // setSelectedDate(dayjs.unix(unixTimestamp));
           // set_date_selected_for_backtest(unixTimestamp);
-          // set_model_name_for_result_backtest_result(name.replace("-", "_"));
-          // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
+          // set_model_name_for_result_backtest_result(name.replace(/-/g, "_"));
+          // set_model_name_for_result_backtest_result_stats(name.replace(/-/g, "_"));
           // set_date_selected_for_backtest_mobile(unixTimestamp);
-          // set_model_name_for_result_backtest_result(name.replace("-", "_"));
-          // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
+          // set_model_name_for_result_backtest_result(name.replace(/-/g, "_"));
+          // set_model_name_for_result_backtest_result_stats(name.replace(/-/g, "_"));
         }
       }
     } catch (error) {

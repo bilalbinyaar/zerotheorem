@@ -270,7 +270,7 @@ const ModelDetailsLeft = (props) => {
               var index = 0;
               for (var i = 0; i < data["response"].length; i++) {
                 model_names.push({
-                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  label: data["response"][i].strategy_name.replace(/_/g, "-"),
                   value: data["response"][i].time_horizon,
                   currency: data["response"][i].currency,
                 });
@@ -355,7 +355,7 @@ const ModelDetailsLeft = (props) => {
                 var index = 0;
                 for (var i = 0; i < data["response"].length; i++) {
                   model_names.push({
-                    label: data["response"][i].strategy_name.replace("_", "-"),
+                    label: data["response"][i].strategy_name.replace(/_/g, "-"),
                     value: data["response"][i].time_horizon,
                     currency: data["response"][i].currency,
                   });
@@ -467,7 +467,7 @@ const ModelDetailsLeft = (props) => {
     <div className="model-details-left">
       <div className="model-details-left-top">
         <AiFillDollarCircle className="model-details-left-top-icon" />
-        <h2>{props.model_name.replace("_", "-")}</h2>
+        <h2>{props.model_name.replace(/_/g, "-")}</h2>
         <div className="model-details-left-top-percentage " id="pnl-bg">
           {stats[props.model_name] ? (
             stats[props.model_name].total_pnl > 0 ? (

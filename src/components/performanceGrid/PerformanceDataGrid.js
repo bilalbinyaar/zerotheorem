@@ -240,7 +240,7 @@ const PerformanceDataGrid = () => {
               key,
               strategies[key].current_position,
             ],
-            modelName: key.replace("_", "-"),
+            modelName: key.replace(/_/g, "-"),
             currency: strategies[key].currency,
             timeHorizon: strategies[key].time_horizon,
             dateAdded: strategies[key].date_started,
@@ -360,9 +360,9 @@ const PerformanceDataGrid = () => {
             var unique_coins = {};
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
-              // var name = data["response"][i].strategy_name.replace("_", "-");
+              // var name = data["response"][i].strategy_name.replace(/_/g, "-");
               model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
+                label: data["response"][i].strategy_name.replace(/_/g, "-"),
                 value: data["response"][i].time_horizon,
                 currency: data["response"][i].currency,
               });
@@ -506,7 +506,7 @@ const PerformanceDataGrid = () => {
   // To Link Grid Rows to Models Component
   const linkModels = useNavigate();
   const handleRowClickEvent = (params) => {
-    // linkModels(`/${params.row.modelName.replace("_", "-")}`);
+    // linkModels(`/${params.row.modelName.replace(/_/g, "-")}`);
   };
   // To Link Grid Rows to Models Component
 
@@ -1190,7 +1190,7 @@ const PerformanceDataGrid = () => {
       flex: 1,
       renderCell: (cellValues) => {
         return (
-          <DataGridGraph model_name={cellValues.value.replace("-", "_")} />
+          <DataGridGraph model_name={cellValues.value.replace(/-/g, "_")} />
         );
       },
     },
@@ -1288,7 +1288,7 @@ const PerformanceDataGrid = () => {
         });
       }
     } else {
-      linkModels(`/${params.row.modelName.replace("_", "-")}`);
+      linkModels(`/${params.row.modelName.replace(/_/g, "-")}`);
     }
   }
   return (

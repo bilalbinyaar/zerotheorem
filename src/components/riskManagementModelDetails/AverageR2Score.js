@@ -142,6 +142,9 @@ function AverageR2Score(props) {
         axisX: {
           //   lineColor: "#43577533",
           labelFontSize: 10,
+          // labelAutoFit: true,
+          labelAngle: 70,
+
           // crosshair: {
           //   enabled: false,
           //   snapToDataPoint: false,
@@ -173,7 +176,9 @@ function AverageR2Score(props) {
             let content = ``;
 
             e.entries.forEach((entry) => {
-              content += `<span style="color: ${entry.dataPoint.label};">Average R2 Score: </span>${entry.dataPoint.y}<br/>`;
+              content += `
+              <span style="color: ${entry.dataPoint.label};">Name: </span>${entry.dataPoint.label}<br/>
+              <span style="color: ${entry.dataPoint.label};">Average R2 Score: </span>${entry.dataPoint.y}<br/>`;
             });
 
             return content;

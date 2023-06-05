@@ -142,7 +142,7 @@ const ModelNameCol = (props) => {
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
               model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
+                label: data["response"][i].strategy_name.replace(/_/g, "-"),
                 value: data["response"][i].time_horizon,
                 currency: data["response"][i].currency,
               });
@@ -233,9 +233,9 @@ const ModelNameCol = (props) => {
   return (
     <div className="forecasts-model-name">
       <div className="forecasts-model-name-icon-div">
-        {/* {props.value[2].replace("_", "-")} */}
-        <Link to={props.value[2].replace("_", "-")}>
-        <h3>{props.value[2].replace("_", "-")} </h3>
+        {/* {props.value[2].replace(/_/g, "-")} */}
+        <Link to={props.value[2].replace(/_/g, "-")}>
+          <h3>{props.value[2].replace(/_/g, "-")} </h3>
         </Link>
         <BiLinkExternal className="model-link-icon" />
       </div>

@@ -232,7 +232,7 @@ const CompareComponent = () => {
   const handleChangeForModelSelection1 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
-      set_model_name_1(values.label.replace("-", "_"));
+      set_model_name_1(values.label.replace(/-/g, "_"));
       // setStrategies(strategies_cache);
 
       // setRows({});
@@ -249,7 +249,7 @@ const CompareComponent = () => {
   const handleChangeForModelSelection2 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
-      set_model_name_2(values.label.replace("-", "_"));
+      set_model_name_2(values.label.replace(/-/g, "_"));
 
       // setRows({});
       // const res = rows_cached.filter((item) => {
@@ -266,7 +266,7 @@ const CompareComponent = () => {
   const handleChangeForModelSelection3 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
-      set_model_name_3(values.label.replace("-", "_"));
+      set_model_name_3(values.label.replace(/-/g, "_"));
 
       // setRows({});
       // const res = rows_cached.filter((item) => {
@@ -559,9 +559,9 @@ const CompareComponent = () => {
             var unique_coins = {};
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
-              // var name = data["response"][i].strategy_name.replace("_", "-");
+              // var name = data["response"][i].strategy_name.replace(/_/g, "-");
               model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
+                label: data["response"][i].strategy_name.replace(/_/g, "-"),
                 value: data["response"][i].time_horizon,
                 currency: data["response"][i].currency,
               });
@@ -656,9 +656,9 @@ const CompareComponent = () => {
               var unique_coins = {};
               var index = 0;
               for (var i = 0; i < data["response"].length; i++) {
-                // var name = data["response"][i].strategy_name.replace("_", "-");
+                // var name = data["response"][i].strategy_name.replace(/_/g, "-");
                 model_names.push({
-                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  label: data["response"][i].strategy_name.replace(/_/g, "-"),
                   value: data["response"][i].time_horizon,
                   currency: data["response"][i].currency,
                 });
@@ -1745,7 +1745,7 @@ const CompareComponent = () => {
                           />
                           {model_name_1 ? (
                             <ComparisonChartCanvas
-                              model_name={model_name_1.replace("-", "_")}
+                              model_name={model_name_1.replace(/-/g, "_")}
                             />
                           ) : null}
                         </div>
@@ -2469,7 +2469,7 @@ const CompareComponent = () => {
                       </div>
                       {model_name_1 ? (
                         <ComparisonChartCanvas
-                          model_name={model_name_1.replace("-", "_")}
+                          model_name={model_name_1.replace(/-/g, "_")}
                         />
                       ) : null}
                     </div>
@@ -3211,7 +3211,7 @@ const CompareComponent = () => {
                           />
                           {model_name_2 ? (
                             <ComparisonChartCanvas
-                              model_name={model_name_2.replace("-", "_")}
+                              model_name={model_name_2.replace(/-/g, "_")}
                             />
                           ) : null}{" "}
                         </div>
@@ -3934,7 +3934,7 @@ const CompareComponent = () => {
                       </div>
                       {model_name_2 ? (
                         <ComparisonChartCanvas
-                          model_name={model_name_2.replace("-", "_")}
+                          model_name={model_name_2.replace(/-/g, "_")}
                         />
                       ) : null}
                     </div>
@@ -4661,7 +4661,7 @@ const CompareComponent = () => {
                       </div>
                       {model_name_3 ? (
                         <ComparisonChartCanvas
-                          model_name={model_name_3.replace("-", "_")}
+                          model_name={model_name_3.replace(/-/g, "_")}
                         />
                       ) : null}
                     </div>

@@ -38,7 +38,7 @@ const LivePNL = () => {
   //         var index = 0;
   //         for (var i = 0; i < data["response"].length; i++) {
   //           model_names.push({
-  //             label: data["response"][i].strategy_name.replace("_", "-"),
+  //             label: data["response"][i].strategy_name.replace(/_/g, "-"),
   //             value: data["response"][i].time_horizon,
   //             currency: data["response"][i].currency,
   //           });
@@ -120,7 +120,7 @@ const LivePNL = () => {
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
               model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
+                label: data["response"][i].strategy_name.replace(/_/g, "-"),
                 value: data["response"][i].time_horizon,
                 currency: data["response"][i].currency,
               });
@@ -166,7 +166,10 @@ const LivePNL = () => {
                 forecast_time: dt_str,
                 next_forecast: data["response"][i].next_forecast,
                 current_price: data["response"][i].current_price,
-                strategy_name: data["response"][i].strategy_name,
+                strategy_name: data["response"][i].strategy_name.replace(
+                  /_/g,
+                  "-"
+                ),
                 current_pnl: data["response"][i].current_pnl,
                 portfolio_live_pnl_percent:
                   data["response"][i].portfolio_live_pnl_percent,
@@ -202,7 +205,7 @@ const LivePNL = () => {
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
               model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
+                label: data["response"][i].strategy_name.replace(/_/g, "-"),
                 value: data["response"][i].time_horizon,
                 currency: data["response"][i].currency,
               });
@@ -435,8 +438,8 @@ const LivePNL = () => {
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["0"] ? (
-                    <Link to={stats["0"].strategy_name}>
-                      {stats["0"].strategy_name}{" "}
+                    <Link to={stats["0"].strategy_name.replace(/-/g, "_")}>
+                      {stats["0"].strategy_name}
                     </Link>
                   ) : (
                     "Loading"
@@ -494,7 +497,7 @@ const LivePNL = () => {
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["1"] ? (
-                    <Link to={stats["1"].strategy_name}>
+                    <Link to={stats["1"].strategy_name.replace(/-/g, "_")}>
                       {stats["1"].strategy_name}{" "}
                     </Link>
                   ) : (
@@ -553,7 +556,7 @@ const LivePNL = () => {
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["2"] ? (
-                    <Link to={stats["2"].strategy_name}>
+                    <Link to={stats["2"].strategy_name.replace(/-/g, "_")}>
                       {stats["2"].strategy_name}{" "}
                     </Link>
                   ) : (
@@ -612,7 +615,7 @@ const LivePNL = () => {
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["3"] ? (
-                    <Link to={stats["3"].strategy_name}>
+                    <Link to={stats["3"].strategy_name.replace(/-/g, "_")}>
                       {stats["3"].strategy_name}{" "}
                     </Link>
                   ) : (
@@ -668,11 +671,15 @@ const LivePNL = () => {
                 </h3>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="live-pnl-stats-div">
+          <div className="strategies-live-stats">
             <div className="pnl-live-main-strategies live-state-ml-web mb-mobile ml-mobile">
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["4"] ? (
-                    <Link to={stats["4"].strategy_name}>
+                    <Link to={stats["4"].strategy_name.replace(/-/g, "_")}>
                       {stats["4"].strategy_name}{" "}
                     </Link>
                   ) : (
@@ -728,15 +735,12 @@ const LivePNL = () => {
                 </h3>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="live-pnl-stats-div">
-          <div className="strategies-live-stats">
-            <div className="pnl-live-main-strategies for-h3-mb mb-mobile">
+
+            <div className="pnl-live-main-strategies live-state-ml-web for-h3-mb mb-mobile">
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["5"] ? (
-                    <Link to={stats["5"].strategy_name}>
+                    <Link to={stats["5"].strategy_name.replace(/-/g, "_")}>
                       {stats["5"].strategy_name}{" "}
                     </Link>
                   ) : (
@@ -793,7 +797,7 @@ const LivePNL = () => {
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["6"] ? (
-                    <Link to={stats["6"].strategy_name}>
+                    <Link to={stats["6"].strategy_name.replace(/-/g, "_")}>
                       {stats["6"].strategy_name}{" "}
                     </Link>
                   ) : (
@@ -852,7 +856,7 @@ const LivePNL = () => {
               <div className="link-icon-div for-h3-mb">
                 <h3 className="strategies-color">
                   {stats["7"] ? (
-                    <Link to={stats["7"].strategy_name}>
+                    <Link to={stats["7"].strategy_name.replace(/-/g, "_")}>
                       {stats["7"].strategy_name}{" "}
                     </Link>
                   ) : (

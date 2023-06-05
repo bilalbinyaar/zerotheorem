@@ -415,7 +415,11 @@ const GradientDonut = (props) => {
     },
     legend: {
       formatter: function (val, opts) {
-        return val + " - " + opts.w.globals.series[opts.seriesIndex];
+        return (
+          val.replace(/_/g, "-") +
+          "     " +
+          opts.w.globals.series[opts.seriesIndex]
+        );
       },
     },
 

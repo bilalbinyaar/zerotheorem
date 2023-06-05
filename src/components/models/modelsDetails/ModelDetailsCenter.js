@@ -375,7 +375,7 @@ const ModelDetailsCenter = (props) => {
               var index = 0;
               for (var i = 0; i < data["response"].length; i++) {
                 model_names.push({
-                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  label: data["response"][i].strategy_name.replace(/_/g, "-"),
                   value: data["response"][i].time_horizon,
                   currency: data["response"][i].currency,
                 });
@@ -454,7 +454,7 @@ const ModelDetailsCenter = (props) => {
                 var index = 0;
                 for (var i = 0; i < data["response"].length; i++) {
                   model_names.push({
-                    label: data["response"][i].strategy_name.replace("_", "-"),
+                    label: data["response"][i].strategy_name.replace(/_/g, "-"),
                     value: data["response"][i].time_horizon,
                     currency: data["response"][i].currency,
                   });

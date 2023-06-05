@@ -5,6 +5,8 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 
 const DrawDownTableBacktest = (props) => {
+  console.log("Model name received -->", props.model_name);
+
   // console.log("I received model name -->", props.model_name);
   // const [model_name, set_model_name] = useState(props.model_name);
   const [stats, setStats] = useState({});
@@ -76,7 +78,10 @@ const DrawDownTableBacktest = (props) => {
           }
         })
         .catch((err) => console.log(err));
-    } else if (props.model_name.includes("strategy")) {
+    } else if (
+      props.model_name.includes("strategy") ||
+      props.model_name.split("_").length == 3
+    ) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
         method: "GET",
         headers: {

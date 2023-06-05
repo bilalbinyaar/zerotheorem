@@ -142,6 +142,8 @@ function AverageSharpe(props) {
         axisX: {
           //   lineColor: "#43577533",
           labelFontSize: 10,
+          labelAngle: 70,
+
           // crosshair: {
           //   enabled: false,
           //   snapToDataPoint: false,
@@ -173,7 +175,9 @@ function AverageSharpe(props) {
             let content = ``;
 
             e.entries.forEach((entry) => {
-              content += `<span style="color: ${entry.dataPoint.label};">Average Sharpe: </span>${entry.dataPoint.y}<br/>`;
+              content += `
+              <span style="color: ${entry.dataPoint.label};">Name: </span>${entry.dataPoint.label}<br/>
+              <span style="color: ${entry.dataPoint.label};">Average Sharpe: </span>${entry.dataPoint.y}<br/>`;
             });
 
             return content;

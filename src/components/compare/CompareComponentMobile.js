@@ -81,7 +81,7 @@ const CompareComponentMobile = () => {
   const handleChangeForModelSelection1 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
-      set_model_name_1(values.label.replace("-", "_"));
+      set_model_name_1(values.label.replace(/-/g, "_"));
       // setStrategies(strategies_cache);
 
       // setRows({});
@@ -98,7 +98,7 @@ const CompareComponentMobile = () => {
   const handleChangeForModelSelection2 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
-      set_model_name_2(values.label.replace("-", "_"));
+      set_model_name_2(values.label.replace(/-/g, "_"));
 
       // setRows({});
       // const res = rows_cached.filter((item) => {
@@ -115,7 +115,7 @@ const CompareComponentMobile = () => {
   const handleChangeForModelSelection3 = (event, values) => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
-      set_model_name_3(values.label.replace("-", "_"));
+      set_model_name_3(values.label.replace(/-/g, "_"));
 
       // setRows({});
       // const res = rows_cached.filter((item) => {
@@ -238,9 +238,9 @@ const CompareComponentMobile = () => {
             var unique_coins = {};
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
-              // var name = data["response"][i].strategy_name.replace("_", "-");
+              // var name = data["response"][i].strategy_name.replace(/_/g, "-");
               model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
+                label: data["response"][i].strategy_name.replace(/_/g, "-"),
                 value: data["response"][i].time_horizon,
                 currency: data["response"][i].currency,
               });

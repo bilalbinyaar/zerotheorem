@@ -27,7 +27,7 @@ import Backtest from "./Backtest";
 const Models = () => {
   const location = useLocation();
   // console.log("Pathname -->", location.pathname.replace("/", ""));
-  const name = location.pathname.replace("/", "").replace("-", "_");
+  const name = location.pathname.replace("/", "").replace(/-/g, "_");
   // console.log("Here is model name -->", name);
   // if (name.includes("all-models")) {
   //   name = name.replace("all-models", "");
@@ -39,7 +39,7 @@ const Models = () => {
   }
   // console.log("name is ", name);
   // console.log("Name -->", name);
-  // name = name.replace("-", "_");
+  // name = name.replace(/-/g, "_");
   // console.log("This is name for cum pnl", location.state.model_name);
 
   // SCROLL TO TOP

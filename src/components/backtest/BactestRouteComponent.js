@@ -152,7 +152,7 @@ const BactestRouteComponent = () => {
     // console.log("Search dropdown -->", values);
     if (values != null) {
       // setRows({});
-      set_model_selected_for_backtest(values.label.replace("-", "_"));
+      set_model_selected_for_backtest(values.label.replace(/-/g, "_"));
       const res = rows_cached.filter((item) => {
         return item.modelName == values.label;
       });
@@ -264,7 +264,7 @@ const BactestRouteComponent = () => {
               key,
               strategies[key].current_position,
             ],
-            modelName: key.replace("_", "-"),
+            modelName: key.replace(/_/g, "-"),
             currency: strategies[key].currency,
             timeHorizon: strategies[key].time_horizon,
             dateAdded: strategies[key].date_started,
@@ -318,9 +318,9 @@ const BactestRouteComponent = () => {
               var unique_coins = {};
               var index = 0;
               for (var i = 0; i < data["response"].length; i++) {
-                // var name = data["response"][i].strategy_name.replace("_", "-");
+                // var name = data["response"][i].strategy_name.replace(/_/g, "-");
                 model_names.push({
-                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  label: data["response"][i].strategy_name.replace(/_/g, "-"),
                   value: data["response"][i].time_horizon,
                   currency: data["response"][i].currency,
                 });
@@ -424,9 +424,9 @@ const BactestRouteComponent = () => {
                 var unique_coins = {};
                 var index = 0;
                 for (var i = 0; i < data["response"].length; i++) {
-                  // var name = data["response"][i].strategy_name.replace("_", "-");
+                  // var name = data["response"][i].strategy_name.replace(/_/g, "-");
                   model_names.push({
-                    label: data["response"][i].strategy_name.replace("_", "-"),
+                    label: data["response"][i].strategy_name.replace(/_/g, "-"),
                     value: data["response"][i].time_horizon,
                     currency: data["response"][i].currency,
                   });
@@ -770,7 +770,7 @@ const BactestRouteComponent = () => {
   var backtest_start_date = "";
   var default_date_selected_for_backtest = "";
   if (location.state) {
-    model_name = location.state.model_name.replace("_", "-");
+    model_name = location.state.model_name.replace(/_/g, "-");
     // currency = location.state.currency;
     // time_horizon = location.state.time_horizon;
     // time_horizon2 = location.state.time_horizon;
@@ -797,7 +797,7 @@ const BactestRouteComponent = () => {
     label: currency,
   });
   const [model_selected_for_backted, set_model_selected_for_backtest] =
-    useState(model_name.replace("-", "_"));
+    useState(model_name.replace(/-/g, "_"));
   const [selectedDate, setSelectedDate] = useState(backtest_start_date);
   const [date_selected_for_backtest, set_date_selected_for_backtest] = useState(
     default_date_selected_for_backtest
@@ -1326,7 +1326,7 @@ const BactestRouteComponent = () => {
           setSelectedDate(dayjs.unix(unixTimestamp));
           // setDisableBefore(dayjs.unix(unixTimestamp));
 
-          set_model_selected_for_backtest(model.replace("-", "_"));
+          set_model_selected_for_backtest(model.replace(/-/g, "_"));
           set_take_profit_selected_for_backtest(
             parseFloat(strategies[model].take_profit) + ""
           );
@@ -1338,7 +1338,7 @@ const BactestRouteComponent = () => {
           );
           set_fee_selected_for_backtest(parseFloat(strategies[model].fee) + "");
 
-          set_model_selected_for_backtest_mobile(model.replace("-", "_"));
+          set_model_selected_for_backtest_mobile(model.replace(/-/g, "_"));
           set_take_profit_selected_for_backtest_mobile(
             parseFloat(strategies[model].take_profit) + ""
           );
@@ -1355,13 +1355,13 @@ const BactestRouteComponent = () => {
           // console.log("Strategies -->", parseFloat(strategies[model].fee));
           setDisableBefore(dayjs.unix(unixTimestamp));
           set_date_selected_for_backtest(unixTimestamp);
-          // set_model_name_for_result_backtest_result(name.replace("-", "_"));
-          // set_model_name_for_result_backtest_result_stats(name.replace("-", "_"));
+          // set_model_name_for_result_backtest_result(name.replace(/-/g, "_"));
+          // set_model_name_for_result_backtest_result_stats(name.replace(/-/g, "_"));
 
           set_date_selected_for_backtest_mobile(unixTimestamp);
-          // set_model_name_for_result_backtest_result(model.replace("-", "_"));
+          // set_model_name_for_result_backtest_result(model.replace(/-/g, "_"));
           // set_model_name_for_result_backtest_result_stats(
-          //   model.replace("-", "_")
+          //   model.replace(/-/g, "_")
           // );
         }
       }

@@ -234,7 +234,7 @@ const RecentlyViewed = (props) => {
             var index = 0;
             for (var i = 0; i < data["response"].length; i++) {
               model_names.push({
-                label: data["response"][i].strategy_name.replace("_", "-"),
+                label: data["response"][i].strategy_name.replace(/_/g, "-"),
                 value: data["response"][i].time_horizon,
                 currency: data["response"][i].currency,
               });
@@ -316,7 +316,7 @@ const RecentlyViewed = (props) => {
               var index = 0;
               for (var i = 0; i < data["response"].length; i++) {
                 model_names.push({
-                  label: data["response"][i].strategy_name.replace("_", "-"),
+                  label: data["response"][i].strategy_name.replace(/_/g, "-"),
                   value: data["response"][i].time_horizon,
                   currency: data["response"][i].currency,
                 });
@@ -451,7 +451,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[0].strategy_name.replace("_", "-")}`
+                //     )[0].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -460,12 +460,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[0].strategy_name.replace("_", "-")}`}
+                      )[0].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[0].strategy_name.replace("_", "-")}
+                        )[0].strategy_name.replace(/_/g, "-")}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -558,7 +558,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[1].strategy_name.replace("_", "-")}`
+                //     )[1].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -567,12 +567,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[1].strategy_name.replace("_", "-")}`}
+                      )[1].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[1].strategy_name.replace("_", "-")}{" "}
+                        )[1].strategy_name.replace(/_/g, "-")}{" "}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -664,7 +664,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[2].strategy_name.replace("_", "-")}`
+                //     )[2].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -673,12 +673,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[2].strategy_name.replace("_", "-")}`}
+                      )[2].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[2].strategy_name.replace("_", "-")}{" "}
+                        )[2].strategy_name.replace(/_/g, "-")}{" "}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -770,7 +770,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[3].strategy_name.replace("_", "-")}`
+                //     )[3].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -779,12 +779,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[3].strategy_name.replace("_", "-")}`}
+                      )[3].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[3].strategy_name.replace("_", "-")}{" "}
+                        )[3].strategy_name.replace(/_/g, "-")}{" "}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -876,7 +876,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[4].strategy_name.replace("_", "-")}`
+                //     )[4].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -885,12 +885,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[4].strategy_name.replace("_", "-")}`}
+                      )[4].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[4].strategy_name.replace("_", "-")}{" "}
+                        )[4].strategy_name.replace(/_/g, "-")}{" "}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -984,7 +984,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[0].strategy_name.replace("_", "-")}`
+                //     )[0].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -993,12 +993,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[0].strategy_name.replace("_", "-")}`}
+                      )[0].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[0].strategy_name.replace("_", "-")}
+                        )[0].strategy_name.replace(/_/g, "-")}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -1127,7 +1127,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[1].strategy_name.replace("_", "-")}`
+                //     )[1].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -1136,12 +1136,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[1].strategy_name.replace("_", "-")}`}
+                      )[1].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[1].strategy_name.replace("_", "-")}
+                        )[1].strategy_name.replace(/_/g, "-")}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -1268,7 +1268,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[2].strategy_name.replace("_", "-")}`
+                //     )[2].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -1277,12 +1277,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[2].strategy_name.replace("_", "-")}`}
+                      )[2].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[2].strategy_name.replace("_", "-")}
+                        )[2].strategy_name.replace(/_/g, "-")}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -1409,7 +1409,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[3].strategy_name.replace("_", "-")}`
+                //     )[3].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -1418,12 +1418,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[3].strategy_name.replace("_", "-")}`}
+                      )[3].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[3].strategy_name.replace("_", "-")}
+                        )[3].strategy_name.replace(/_/g, "-")}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
@@ -1550,7 +1550,7 @@ const RecentlyViewed = (props) => {
                 //   linkModels(
                 //     `/${Object.values(
                 //       topPerformerModels
-                //     )[4].strategy_name.replace("_", "-")}`
+                //     )[4].strategy_name.replace(/_/g, "-")}`
                 //   );
                 // }}
               >
@@ -1559,12 +1559,12 @@ const RecentlyViewed = (props) => {
                     <Link
                       to={`/${Object.values(
                         topPerformerModels
-                      )[4].strategy_name.replace("_", "-")}`}
+                      )[4].strategy_name.replace(/_/g, "-")}`}
                     >
                       <h3>
                         {Object.values(
                           topPerformerModels
-                        )[4].strategy_name.replace("_", "-")}
+                        )[4].strategy_name.replace(/_/g, "-")}
                         <BiLinkExternal className="model-link-icon" />
                       </h3>
                     </Link>
