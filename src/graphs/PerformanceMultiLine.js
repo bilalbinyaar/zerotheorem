@@ -30,7 +30,10 @@ const PerformanceMultiLine = (props) => {
 
   useEffect(() => {
     // console.log("I received model name for graph -->", props.model_name);
-    if (props.model_name.includes("strategy")) {
+    if (
+      props.model_name.includes("strategy") ||
+      props.model_name.split("_").length == 3
+    ) {
       fetch(`https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/${props.model_name}`, {
         method: "GET",
         headers: {

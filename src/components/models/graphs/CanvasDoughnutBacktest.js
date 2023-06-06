@@ -96,7 +96,10 @@ const CanvasDoughnutBacktest = (props) => {
             }
           })
           .catch((err) => console.log(err));
-      } else if (props.model_name.includes("strategy")) {
+      } else if (
+        props.model_name.includes("strategy") ||
+        props.model_name.split("_").length == 3
+      ) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
           method: "GET",
           headers: {

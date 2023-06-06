@@ -862,6 +862,7 @@ export default function Navbar() {
                   handlePersistantLogin();
 
                   linkModels(`/`);
+                  window.location.reload();
                 }}
               >
                 Logout
@@ -883,6 +884,7 @@ export default function Navbar() {
                   });
                   setCheckLoginMain(false);
                   linkModels(`/`);
+                  window.location.reload();
                 }}
               >
                 Logout

@@ -537,6 +537,7 @@ export default function NavMobile(props) {
                     handlePersistantLogin();
                     setAuthCheckLoginInvestor(false);
                     linkModels(`/`);
+                    window.location.reload();
                   }}
                 >
                   <AiOutlineLogout className="nav-icons" />
@@ -651,6 +652,7 @@ export default function NavMobile(props) {
                     handlePersistantLogin();
                     setCheckLoginMain(false);
                     linkModels(`/`);
+                    window.location.reload();
                   }}
                 >
                   <AiOutlineLogout className="nav-icons" />

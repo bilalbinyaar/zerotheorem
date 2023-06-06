@@ -14,7 +14,10 @@ const DoughnutRadialBar = (props) => {
   const [series, setSeries] = useState([]);
   const { stats_cache, Set_stats_cache } = useStateContext();
   useEffect(() => {
-    if (props.model_name.includes("strategy")) {
+    if (
+      props.model_name.includes("strategy") ||
+      props.model_name.split("_").length == 3
+    ) {
       fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
         method: "GET",
         headers: {

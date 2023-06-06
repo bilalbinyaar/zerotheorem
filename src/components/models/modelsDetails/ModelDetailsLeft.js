@@ -97,8 +97,7 @@ const ModelDetailsLeft = (props) => {
     try {
       if (
         props.model_name.includes("strategy") ||
-        props.model_name.includes("ZT1_") ||
-        props.model_name.includes("ZT2_")
+        props.model_name.split("_").length == 3
       ) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
           method: "GET",
@@ -248,8 +247,7 @@ const ModelDetailsLeft = (props) => {
       } else {
         if (
           props.model_name.includes("strategy") ||
-          props.model_name.includes("ZT1_") ||
-          props.model_name.includes("ZT2_")
+          props.model_name.split("_").length == 3
         ) {
           fetch(
             "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
@@ -549,7 +547,8 @@ const ModelDetailsLeft = (props) => {
 
         <div className="model-details-body-left-four">
           {strategies[props.model_name] ? (
-            props.model_name.includes("strategy") ? (
+            props.model_name.includes("strategy") ||
+            props.model_name.split("_").length == 3 ? (
               <div className="model-details-left-body">
                 <div className="model-details-left-body-stats compare-btn-div">
                   <Link
@@ -588,7 +587,8 @@ const ModelDetailsLeft = (props) => {
 
           <div className="model-details-left-body">
             {strategies[props.model_name] ? (
-              props.model_name.includes("strategy") ? (
+              props.model_name.includes("strategy") ||
+              props.model_name.split("_").length == 3 ? (
                 <div className="model-details-left-body-stats compare-btn-div">
                   <Link
                     to="/backtest"

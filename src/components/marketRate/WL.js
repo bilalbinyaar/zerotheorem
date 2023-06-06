@@ -5,7 +5,7 @@ const WL = (props) => {
   return (
     <div className="doughnut-dr">
       <h2 className="for-mb-returns">Daily Win/Loss</h2>
-      <GradientDonut model_name={"daily_wins_loss"} />
+      <GradientDonut model_name={"DailyWinsLosses"} />
     </div>
   );
 };

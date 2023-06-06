@@ -329,8 +329,7 @@ const BacktestComponent = (props) => {
       } else {
         if (
           props.model_name.includes("strategy") ||
-          props.model_name.includes("ZT1_") ||
-          props.model_name.includes("ZT2_")
+          props.model_name.split("_").length == 3
         ) {
           fetch(
             "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
@@ -546,8 +545,7 @@ const BacktestComponent = (props) => {
       if (Flag == null) {
         if (
           props.model_name.includes("strategy") ||
-          props.model_name.includes("ZT1_") ||
-          props.model_name.includes("ZT2_")
+          props.model_name.split("_").length == 3
         ) {
           fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
             method: "GET",
@@ -1364,8 +1362,7 @@ const BacktestComponent = (props) => {
     <div>
       <div className="back-test models-page-backtest">
         {props.model_name.includes("strategy") ||
-        props.model_name.includes("ZT1_") ||
-        props.model_name.includes("ZT2_") ? null : (
+        props.model_name.split("_").length == 3 ? null : (
           <div className="container">
             <h1>Backtest</h1>
             <p className="backtest-description">
@@ -1635,7 +1632,8 @@ const BacktestComponent = (props) => {
               model_name={model_name_for_result_backtest_result_stats}
             />
           ) : null}
-          {props.model_name.includes("strategy") ? (
+          {props.model_name.includes("strategy") ||
+          props.model_name.split("_").length == 3 ? (
             <RecentlyViewed />
           ) : (
             <RecentlyViewed />

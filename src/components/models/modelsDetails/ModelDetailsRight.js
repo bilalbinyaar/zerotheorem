@@ -14,8 +14,7 @@ const ModelDetailsRight = (props) => {
     try {
       if (
         props.model_name.includes("strategy") ||
-        props.model_name.includes("ZT1_") ||
-        props.model_name.includes("ZT2_")
+        props.model_name.split("_").length == 3
       ) {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
           method: "GET",

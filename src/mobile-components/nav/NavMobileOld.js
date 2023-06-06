@@ -630,6 +630,8 @@ export default function NavMobileOld(props) {
                   toCloseNav();
                   setAuthCheckLogin(false);
                   auth.signOut();
+                  window.location.reload();
+
                   // linkModels(`/`);
                 }}
               >
