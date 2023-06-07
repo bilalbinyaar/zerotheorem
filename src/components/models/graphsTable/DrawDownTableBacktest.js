@@ -5,7 +5,7 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { Tooltip } from "@mui/material";
 
 const DrawDownTableBacktest = (props) => {
-  console.log("Model name received -->", props.model_name);
+  // console.log("Model name received -->", props.model_name);
 
   // console.log("I received model name -->", props.model_name);
   // const [model_name, set_model_name] = useState(props.model_name);
@@ -90,7 +90,7 @@ const DrawDownTableBacktest = (props) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data["response"][0]);
+          // console.log(data["response"][0]);
           var model_names = {};
           for (var i = 0; i < data["response"].length; i++) {
             // console.log(data["response"][i].strategy_name);

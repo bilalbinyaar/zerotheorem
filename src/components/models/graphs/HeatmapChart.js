@@ -51,7 +51,7 @@ const HeatMapChart = () => {
           if (temp_correlations.length > 0) {
             // console.log("Correlations -->", temp_correlations);
             setCorrelations(temp_correlations);
-            console.log(temp_correlations);
+            // console.log(temp_correlations);
             // console.log("Here are keys -->", Object.keys(data["response"][0]));
             var list_of_names = Object.keys(data["response"][0]);
             for (let i = 0; i < list_of_names; i++) {
