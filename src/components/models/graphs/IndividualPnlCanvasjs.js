@@ -52,10 +52,10 @@ const IndividualPnlCanvasjs = (props) => {
                   parseFloat(data["response"][index].pnl) != -0) &&
                 parseFloat(data["response"][index].in_position) == 0
               ) {
-                console.log(
-                  "Here is PNL -->",
-                  parseInt(data["response"][index].in_position) == 0
-                );
+                // console.log(
+                //   "Here is PNL -->",
+                //   parseInt(data["response"][index].in_position) == 0
+                // );
                 cum_pnl.push({
                   x: new Date(
                     parseInt(data["response"][index].ledger_timestamp) * 1000

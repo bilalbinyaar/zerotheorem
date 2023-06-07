@@ -23,7 +23,7 @@ const PerformanceTableBacktest = (props) => {
         )
           .then((response) => response.json())
           .then((data) => {
-            console.log(data["response"][0]);
+            // console.log(data["response"][0]);
             var model_names = {};
             for (var i = 0; i < data["response"].length; i++) {
               // console.log(data["response"][i].strategy_name);
@@ -89,7 +89,7 @@ const PerformanceTableBacktest = (props) => {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data["response"][0]);
+            // console.log(data["response"][0]);
             var model_names = {};
             for (var i = 0; i < data["response"].length; i++) {
               // console.log(data["response"][i].strategy_name);

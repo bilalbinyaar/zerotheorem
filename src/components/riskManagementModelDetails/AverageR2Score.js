@@ -63,7 +63,7 @@ function AverageR2Score(props) {
           // await delay(1000);
           if (cum_pnl.length != 0) {
             set_cum_pnl(cum_pnl);
-            console.log("R2 score -->", cum_pnl);
+            // console.log("R2 score -->", cum_pnl);
             // let len = data["response"].length - 1;
             // let start_time = parseInt(data["response"][0].ledger_timestamp);
             // let end_time = parseInt(data["response"][len].ledger_timestamp);

@@ -67,7 +67,7 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
             var temp_negative_series = [];
             var temp_last_data_positive = {};
             var temp_last_data_negative = {};
-            console.log("Main series lenght -->", data["response"]);
+            // console.log("Main series lenght -->", data["response"]);
             for (var index = 0; index < data["response"].length; index++) {
               if (index + 1 == data["response"].length) {
                 if (temp_positive_series.length != 0) {
@@ -344,7 +344,7 @@ const CanvasjsSplineAreaChartWithRangeSelecetor = (props) => {
       if (cummulative_pnl.length != 0) {
         // console.log("Negative graph -->", cummulative_pnl);
         setDataPoints(cummulative_pnl);
-        console.log("Datapoints --->", cummulative_pnl);
+        // console.log("Datapoints --->", cummulative_pnl);
         // console.log("I am here with values -->", start, end);
         setOptions({
           // title: {
