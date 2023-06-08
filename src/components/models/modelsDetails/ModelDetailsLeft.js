@@ -551,35 +551,65 @@ const ModelDetailsLeft = (props) => {
             props.model_name.split("_").length == 3 ? (
               <div className="model-details-left-body">
                 <div className="model-details-left-body-stats compare-btn-div">
-                  <Link
-                    to="/compare"
-                    state={{
-                      model_name: `${props.model_name}`,
-                      currency: `${strategies[props.model_name].currency}`,
-                      time_horizon: `${
-                        strategies[props.model_name].time_horizon
-                      }`,
-                    }}
-                  >
-                    <p className="compare-btn">Compare</p>
-                  </Link>
+                  {props.model_name.split("_").length == 3 ? (
+                    <Link
+                      to="/compare-strategies"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Compare</p>
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/compare-models"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Compare</p>
+                    </Link>
+                  )}
                 </div>
               </div>
             ) : (
               <div className="model-details-left-body">
                 <div className="model-details-left-body-stats compare-btn-div">
-                  <Link
-                    to="/compare"
-                    state={{
-                      model_name: `${props.model_name}`,
-                      currency: `${strategies[props.model_name].currency}`,
-                      time_horizon: `${
-                        strategies[props.model_name].time_horizon
-                      }`,
-                    }}
-                  >
-                    <p className="compare-btn">Compare</p>
-                  </Link>
+                  {props.model_name.split("_").length == 3 ? (
+                    <Link
+                      to="/compare-strategies"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Compare</p>
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/compare-models"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Compare</p>
+                    </Link>
+                  )}
                 </div>
               </div>
             )
@@ -590,45 +620,63 @@ const ModelDetailsLeft = (props) => {
               props.model_name.includes("strategy") ||
               props.model_name.split("_").length == 3 ? (
                 <div className="model-details-left-body-stats compare-btn-div">
-                  <Link
-                    to="/backtest"
-                    state={{
-                      model_name: `${props.model_name}`,
-                      currency: `${strategies[props.model_name].currency}`,
-                      time_horizon: `${
-                        strategies[props.model_name].time_horizon
-                      }`,
-                      take_profit: `${
-                        strategies[props.model_name].take_profit
-                      }`,
-                      stop_loss: `${strategies[props.model_name].stop_loss}`,
-                      time_stop: `${strategies[props.model_name].time_stop}`,
-                      fee: `${strategies[props.model_name].fee}`,
-                      backtest_start_date: `${
-                        strategies[props.model_name].backtest_start_date
-                      }`,
-                      time_horizon: `${
-                        strategies[props.model_name].time_horizon
-                      }`,
-                    }}
-                  >
-                    <p className="compare-btn">Backtest</p>
-                  </Link>
+                  {props.model_name.split("_").length == 3 ? (
+                    <Link
+                      to="/backtest-strategies"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Backtest</p>
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/backtest-models"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Backtest</p>
+                    </Link>
+                  )}
                 </div>
               ) : (
                 <div className="model-details-left-body-stats compare-btn-div">
-                  <Link
-                    to="/backtest"
-                    state={{
-                      model_name: `${props.model_name}`,
-                      currency: `${strategies[props.model_name].currency}`,
-                      time_horizon: `${
-                        strategies[props.model_name].time_horizon
-                      }`,
-                    }}
-                  >
-                    <p className="compare-btn">Backtest</p>
-                  </Link>
+                  {props.model_name.split("_").length == 3 ? (
+                    <Link
+                      to="/backtest-strategies"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Backtest</p>
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/backtest-models"
+                      state={{
+                        model_name: `${props.model_name}`,
+                        currency: `${strategies[props.model_name].currency}`,
+                        time_horizon: `${
+                          strategies[props.model_name].time_horizon
+                        }`,
+                      }}
+                    >
+                      <p className="compare-btn">Backtest</p>
+                    </Link>
+                  )}
                 </div>
               )
             ) : null}

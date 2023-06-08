@@ -392,6 +392,7 @@ const GradientDonut = (props) => {
           "#00FFFF",
           "#FF1493",
           "#008080",
+          "#DA6B85",
         ]
       : ["#16C784", "#FF2E2E"],
     chart: {

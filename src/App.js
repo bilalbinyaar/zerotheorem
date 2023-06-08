@@ -26,7 +26,7 @@ import SenstitivityAnalysisMarketSpecificAlpha from "../src/components/resources
 import SenstitivityAnalysisSingleAlphaCas from "../src/components/resources/derivations/SenstitivityAnalysisSingleAlphaCas";
 import TheGoverningEquation from "../src/components/resources/derivations/TheGoverningEquation";
 import TheUnderlyingAssumptions from "../src/components/resources/derivations/TheUnderlyingAssumptions";
-import BactestRouteComponent from "./components/backtest/BactestRouteComponent";
+// import BactestRouteComponent from "./components/backtest/BacktestRouteComponentStrategies";
 import Documentation from "./pages/Documentation";
 // import { database } from "./firebase_config";
 // import { ref, onValue, set } from "firebase/database";
@@ -40,6 +40,8 @@ import Performance from "./pages/Performance";
 import { useSelector, useDispatch } from "react-redux";
 import { set_login } from "./store";
 import RiskManagement from "./pages/RiskManagement";
+import BacktestRouteComponentModels from "./components/backtest/BacktestRouteComponentModels";
+import BacktestRouteComponentStrategies from "./components/backtest/BacktestRouteComponentStrategies";
 // import dotenv from "dotenv";
 function App() {
   // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
@@ -106,8 +108,16 @@ function App() {
                 /> */}
                 {/* <Route path="/contact" element={<Contact />} /> */}
 
-                <Route path="/compare" element={<Compare />} />
-                <Route path="/backtest" element={<BactestRouteComponent />} />
+                <Route path="/compare-strategies" element={<Compare />} />
+                <Route
+                  path="/backtest-strategies"
+                  element={<BacktestRouteComponentStrategies />}
+                />
+                <Route path="/compare-models" element={<Compare />} />
+                <Route
+                  path="/backtest-models"
+                  element={<BacktestRouteComponentStrategies />}
+                />
                 <Route path="/api" element={<Documentation />} />
                 {/* <Route path="/performance" element={<Performance />} /> */}
                 <Route path="/risk-management" element={<RiskManagement />} />
@@ -193,8 +203,16 @@ function App() {
                 />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/all-models" element={<Home />} />
-                <Route path="/compare" element={<Compare />} />
-                <Route path="/backtest" element={<BactestRouteComponent />} />
+                <Route path="/compare-strategies" element={<Compare />} />
+                <Route
+                  path="/backtest-strategies"
+                  element={<BacktestRouteComponentStrategies />}
+                />
+                <Route path="/compare-models" element={<Compare />} />
+                <Route
+                  path="/backtest-models"
+                  element={<BacktestRouteComponentModels />}
+                />
                 <Route path="/api" element={<Documentation />} />
                 {/* <Route path="/performance" element={<Performance />} /> */}
                 <Route path="/risk-management" element={<RiskManagement />} />

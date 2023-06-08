@@ -47,7 +47,7 @@ import GraphsTableBacktest from "../models/graphsTable/GraphsTableBacktest";
 import { faLariSign, faListAlt } from "@fortawesome/free-solid-svg-icons";
 import { ThreeDots } from "react-loader-spinner";
 import { isNumber } from "@amcharts/amcharts5/.internal/core/util/Type";
-const BactestRouteComponent = () => {
+const BacktestRouteComponentModels = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -2445,4 +2445,4 @@ const BactestRouteComponent = () => {
   );
 };
 
-export default BactestRouteComponent;
+export default BacktestRouteComponentModels;

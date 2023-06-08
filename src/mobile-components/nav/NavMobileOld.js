@@ -485,7 +485,7 @@ export default function NavMobileOld(props) {
         <ul id="mobile-nav" className={click ? "nav-menu active" : "nav-menu"}>
           <CustomLink to="/">Forecasts</CustomLink>
           <CustomLink
-            to="/compare"
+            to="/compare-models"
             onClick={toCloseNav}
             state={{ model_name: `${props.model_name}` }}
           >
@@ -534,7 +534,7 @@ export default function NavMobileOld(props) {
             </CustomLink>
             <CustomLink
               className="mobile-submenu"
-              to="/compare"
+              to="/compare-models"
               onClick={toCloseNav}
             >
               <BiColumns className="nav-icons nav-icons-mobile" />

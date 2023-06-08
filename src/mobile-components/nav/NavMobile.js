@@ -505,7 +505,7 @@ export default function NavMobile(props) {
                   <MdManageAccounts className="nav-icons" />
                   Risk Management
                 </CustomLink>
-                <CustomLink to="/compare" onClick={toCloseNav}>
+                <CustomLink to="/compare-models" onClick={toCloseNav}>
                   <BiColumns className="nav-icons nav-icons-mobile" />
                   Compare
                 </CustomLink>
@@ -577,7 +577,7 @@ export default function NavMobile(props) {
                 </CustomLink>
                 <CustomLink
                   className="mobile-submenu"
-                  to="/compare"
+                  to="/compare-models"
                   onClick={toCloseNav}
                 >
                   <BiColumns className="nav-icons nav-icons-mobile" />

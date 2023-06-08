@@ -512,10 +512,10 @@ export default function Navbar() {
               <CustomLink to="/risk-management" onClick={toCloseNav}>
                 Risk Management
               </CustomLink>
-              <CustomLink to="/compare" className="menu-item">
+              <CustomLink to="/compare-strategies" className="menu-item">
                 Compare
               </CustomLink>
-              <CustomLink to="/backtest" className="menu-item">
+              <CustomLink to="/backtest-strategies" className="menu-item">
                 Backtest
               </CustomLink>
 
@@ -556,7 +556,7 @@ export default function Navbar() {
                   </CustomLink>
                   <CustomLink
                     className="sub-menu-item"
-                    to="/compare"
+                    to="/compare-models"
                     onClick={toCloseNav}
                   >
                     Compare
