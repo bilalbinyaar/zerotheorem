@@ -896,14 +896,14 @@ const LivePNL = () => {
           </div>
         </div>  */}
 
-
-
         <table className="live-pnl-table">
-
           <tr>
             <th className="live-pnl-table-head">
-              <h3>PNL</h3></th>
-            <td className="live-pnl-table-data"><p>Overall</p></td>
+              <h3>PNL</h3>
+            </th>
+            <td className="live-pnl-table-data">
+              <p>Overall</p>
+            </td>
             <td className="live-pnl-table-data">
               <div className="link-icon-div for-h3-mb">
                 <p className="strategies-color">
@@ -1034,16 +1034,17 @@ const LivePNL = () => {
 
           <tr className="for-border-bottom">
             <th className="live-pnl-table-head">
-              <h3>Individual</h3></th>
+              <h3>Individual</h3>
+            </th>
             <td className="live-pnl-table-data">
               <p
-                  //   className="live-stats"
-                  id="pnl-color53"
-                  onChange={
-                    stats["4"]
-                      ? forColor(
-                          `${(
-                            parseFloat(stats["0"].current_pnl) +
+                //   className="live-stats"
+                id="pnl-color53"
+                onChange={
+                  stats["4"]
+                    ? forColor(
+                        `${(
+                          (parseFloat(stats["0"].current_pnl) +
                             parseFloat(stats["1"].current_pnl) +
                             parseFloat(stats["2"].current_pnl) +
                             parseFloat(stats["3"].current_pnl) +
@@ -1051,16 +1052,17 @@ const LivePNL = () => {
                             parseFloat(stats["5"].current_pnl) +
                             parseFloat(stats["6"].current_pnl) +
                             parseFloat(stats["7"].current_pnl) +
-                            parseFloat(stats["8"].current_pnl)
-                          ).toFixed(2)}`,
-                          "pnl-color53"
-                        )
-                      : null
-                  }
-                >
-                  {stats["4"]
-                    ? `${(
-                        parseFloat(stats["0"].current_pnl) +
+                            parseFloat(stats["8"].current_pnl)) /
+                          9
+                        ).toFixed(2)}`,
+                        "pnl-color53"
+                      )
+                    : null
+                }
+              >
+                {stats["4"]
+                  ? `${(
+                      (parseFloat(stats["0"].current_pnl) +
                         parseFloat(stats["1"].current_pnl) +
                         parseFloat(stats["2"].current_pnl) +
                         parseFloat(stats["3"].current_pnl) +
@@ -1068,376 +1070,361 @@ const LivePNL = () => {
                         parseFloat(stats["5"].current_pnl) +
                         parseFloat(stats["6"].current_pnl) +
                         parseFloat(stats["7"].current_pnl) +
-                        parseFloat(stats["8"].current_pnl)
-                      ).toFixed(2)}%`
-                    : null}
-                </p>
+                        parseFloat(stats["8"].current_pnl)) /
+                      9
+                    ).toFixed(2)}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color23"
-                  onChange={
-                    stats["0"]
-                      ? forColor(
-                          `${parseFloat(stats["0"].current_pnl)}`,
-                          "pnl-color23"
-                        )
-                      : null
-                  }
-                >
-                  {stats["0"] ? `${stats["0"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color23"
+                onChange={
+                  stats["0"]
+                    ? forColor(
+                        `${parseFloat(stats["0"].current_pnl)}`,
+                        "pnl-color23"
+                      )
+                    : null
+                }
+              >
+                {stats["0"] ? `${stats["0"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color2"
-                  onChange={
-                    stats["1"]
-                      ? forColor(
-                          `${parseFloat(stats["1"].current_pnl)}`,
-                          "pnl-color2"
-                        )
-                      : null
-                  }
-                >
-                  {stats["1"] ? `${stats["1"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color2"
+                onChange={
+                  stats["1"]
+                    ? forColor(
+                        `${parseFloat(stats["1"].current_pnl)}`,
+                        "pnl-color2"
+                      )
+                    : null
+                }
+              >
+                {stats["1"] ? `${stats["1"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color333"
-                  onChange={
-                    stats["2"]
-                      ? forColor(
-                          `${parseFloat(stats["2"].current_pnl)}`,
-                          "pnl-color333"
-                        )
-                      : null
-                  }
-                >
-                  {stats["2"] ? `${stats["2"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color333"
+                onChange={
+                  stats["2"]
+                    ? forColor(
+                        `${parseFloat(stats["2"].current_pnl)}`,
+                        "pnl-color333"
+                      )
+                    : null
+                }
+              >
+                {stats["2"] ? `${stats["2"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color4"
-                  onChange={
-                    stats["3"]
-                      ? forColor(
-                          `${parseFloat(stats["3"].current_pnl)}`,
-                          "pnl-color4"
-                        )
-                      : null
-                  }
-                >
-                  {stats["3"] ? `${stats["3"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color4"
+                onChange={
+                  stats["3"]
+                    ? forColor(
+                        `${parseFloat(stats["3"].current_pnl)}`,
+                        "pnl-color4"
+                      )
+                    : null
+                }
+              >
+                {stats["3"] ? `${stats["3"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color43"
-                  onChange={
-                    stats["4"]
-                      ? forColor(
-                          `${parseFloat(stats["4"].current_pnl)}`,
-                          "pnl-color43"
-                        )
-                      : null
-                  }
-                >
-                  {stats["4"] ? `${stats["4"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color43"
+                onChange={
+                  stats["4"]
+                    ? forColor(
+                        `${parseFloat(stats["4"].current_pnl)}`,
+                        "pnl-color43"
+                      )
+                    : null
+                }
+              >
+                {stats["4"] ? `${stats["4"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color14"
-                  onChange={
-                    stats["5"]
-                      ? forColor(
-                          `${parseFloat(stats["5"].current_pnl)}`,
-                          "pnl-color14"
-                        )
-                      : null
-                  }
-                >
-                  {stats["5"] ? `${stats["5"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color14"
+                onChange={
+                  stats["5"]
+                    ? forColor(
+                        `${parseFloat(stats["5"].current_pnl)}`,
+                        "pnl-color14"
+                      )
+                    : null
+                }
+              >
+                {stats["5"] ? `${stats["5"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color246"
-                  onChange={
-                    stats["6"]
-                      ? forColor(
-                          `${parseFloat(stats["6"].current_pnl)}`,
-                          "pnl-color246"
-                        )
-                      : null
-                  }
-                >
-                  {stats["6"] ? `${stats["6"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color246"
+                onChange={
+                  stats["6"]
+                    ? forColor(
+                        `${parseFloat(stats["6"].current_pnl)}`,
+                        "pnl-color246"
+                      )
+                    : null
+                }
+              >
+                {stats["6"] ? `${stats["6"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color3"
-                  onChange={
-                    stats["7"]
-                      ? forColor(
-                          `${parseFloat(stats["7"].current_pnl)}`,
-                          "pnl-color3"
-                        )
-                      : null
-                  }
-                >
-                  {stats["7"] ? `${stats["7"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color3"
+                onChange={
+                  stats["7"]
+                    ? forColor(
+                        `${parseFloat(stats["7"].current_pnl)}`,
+                        "pnl-color3"
+                      )
+                    : null
+                }
+              >
+                {stats["7"] ? `${stats["7"].current_pnl}%` : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color48"
-                  onChange={
-                    stats["8"]
-                      ? forColor(
-                          `${parseFloat(stats["8"].current_pnl)}`,
-                          "pnl-color48"
-                        )
-                      : null
-                  }
-                >
-                  {stats["8"] ? `${stats["8"].current_pnl}%` : null}
-                </p>
+                className="live-stats"
+                id="pnl-color48"
+                onChange={
+                  stats["8"]
+                    ? forColor(
+                        `${parseFloat(stats["8"].current_pnl)}`,
+                        "pnl-color48"
+                      )
+                    : null
+                }
+              >
+                {stats["8"] ? `${stats["8"].current_pnl}%` : null}
+              </p>
             </td>
           </tr>
 
           <tr>
-            <th className="live-pnl-table-head"><h3>Portfolio</h3></th>
+            <th className="live-pnl-table-head">
+              <h3>Portfolio</h3>
+            </th>
             <td className="live-pnl-table-data">
               <p
-                  //   className="live-stats"
-                  id="pnl-color55"
-                  onChange={
-                    stats["4"]
-                      ? forColor(
-                          `${(
-                            parseFloat(stats["0"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["1"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["2"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["3"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["4"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["5"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["6"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["7"].portfolio_live_pnl_percent) +
-                            parseFloat(stats["8"].portfolio_live_pnl_percent)
-                          ).toFixed(2)}`,
-                          "pnl-color55"
-                        )
-                      : null
-                  }
-                >
-                  {stats["4"]
-                    ? `${(
-                        parseFloat(stats["0"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["1"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["2"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["3"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["4"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["5"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["6"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["7"].portfolio_live_pnl_percent) +
-                        parseFloat(stats["8"].portfolio_live_pnl_percent)
-                      ).toFixed(2)}%`
-                    : null}
-                </p>
+                //   className="live-stats"
+                id="pnl-color55"
+                onChange={
+                  stats["4"]
+                    ? forColor(
+                        `${(
+                          parseFloat(stats["0"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["1"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["2"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["3"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["4"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["5"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["6"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["7"].portfolio_live_pnl_percent) +
+                          parseFloat(stats["8"].portfolio_live_pnl_percent)
+                        ).toFixed(2)}`,
+                        "pnl-color55"
+                      )
+                    : null
+                }
+              >
+                {stats["4"]
+                  ? `${(
+                      parseFloat(stats["0"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["1"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["2"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["3"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["4"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["5"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["6"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["7"].portfolio_live_pnl_percent) +
+                      parseFloat(stats["8"].portfolio_live_pnl_percent)
+                    ).toFixed(2)}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color223"
-                  onChange={
-                    stats["0"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["0"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color223"
-                        )
-                      : null
-                  }
-                >
-                  {stats["0"]
-                    ? `${stats["0"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color223"
+                onChange={
+                  stats["0"]
+                    ? forColor(
+                        `${parseFloat(stats["0"].portfolio_live_pnl_percent)}`,
+                        "pnl-color223"
+                      )
+                    : null
+                }
+              >
+                {stats["0"]
+                  ? `${stats["0"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color22"
-                  onChange={
-                    stats["1"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["1"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color22"
-                        )
-                      : null
-                  }
-                >
-                  {stats["1"]
-                    ? `${stats["1"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color22"
+                onChange={
+                  stats["1"]
+                    ? forColor(
+                        `${parseFloat(stats["1"].portfolio_live_pnl_percent)}`,
+                        "pnl-color22"
+                      )
+                    : null
+                }
+              >
+                {stats["1"]
+                  ? `${stats["1"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color333"
-                  onChange={
-                    stats["2"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["2"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color333"
-                        )
-                      : null
-                  }
-                >
-                  {stats["2"]
-                    ? `${stats["2"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color333"
+                onChange={
+                  stats["2"]
+                    ? forColor(
+                        `${parseFloat(stats["2"].portfolio_live_pnl_percent)}`,
+                        "pnl-color333"
+                      )
+                    : null
+                }
+              >
+                {stats["2"]
+                  ? `${stats["2"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color44"
-                  onChange={
-                    stats["3"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["3"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color44"
-                        )
-                      : null
-                  }
-                >
-                  {stats["3"]
-                    ? `${stats["3"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color44"
+                onChange={
+                  stats["3"]
+                    ? forColor(
+                        `${parseFloat(stats["3"].portfolio_live_pnl_percent)}`,
+                        "pnl-color44"
+                      )
+                    : null
+                }
+              >
+                {stats["3"]
+                  ? `${stats["3"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color443"
-                  onChange={
-                    stats["4"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["4"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color443"
-                        )
-                      : null
-                  }
-                >
-                  {stats["4"]
-                    ? `${stats["4"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color443"
+                onChange={
+                  stats["4"]
+                    ? forColor(
+                        `${parseFloat(stats["4"].portfolio_live_pnl_percent)}`,
+                        "pnl-color443"
+                      )
+                    : null
+                }
+              >
+                {stats["4"]
+                  ? `${stats["4"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color154"
-                  onChange={
-                    stats["5"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["5"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color154"
-                        )
-                      : null
-                  }
-                >
-                  {stats["5"]
-                    ? `${stats["5"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color154"
+                onChange={
+                  stats["5"]
+                    ? forColor(
+                        `${parseFloat(stats["5"].portfolio_live_pnl_percent)}`,
+                        "pnl-color154"
+                      )
+                    : null
+                }
+              >
+                {stats["5"]
+                  ? `${stats["5"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color2246"
-                  onChange={
-                    stats["6"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["6"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color2246"
-                        )
-                      : null
-                  }
-                >
-                  {stats["6"]
-                    ? `${stats["6"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color2246"
+                onChange={
+                  stats["6"]
+                    ? forColor(
+                        `${parseFloat(stats["6"].portfolio_live_pnl_percent)}`,
+                        "pnl-color2246"
+                      )
+                    : null
+                }
+              >
+                {stats["6"]
+                  ? `${stats["6"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color33"
-                  onChange={
-                    stats["7"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["7"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color33"
-                        )
-                      : null
-                  }
-                >
-                  {stats["7"]
-                    ? `${stats["7"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color33"
+                onChange={
+                  stats["7"]
+                    ? forColor(
+                        `${parseFloat(stats["7"].portfolio_live_pnl_percent)}`,
+                        "pnl-color33"
+                      )
+                    : null
+                }
+              >
+                {stats["7"]
+                  ? `${stats["7"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
             <td className="live-pnl-table-data">
               <p
-                  className="live-stats"
-                  id="pnl-color448"
-                  onChange={
-                    stats["8"]
-                      ? forColor(
-                          `${parseFloat(
-                            stats["8"].portfolio_live_pnl_percent
-                          )}`,
-                          "pnl-color448"
-                        )
-                      : null
-                  }
-                >
-                  {stats["8"]
-                    ? `${stats["8"].portfolio_live_pnl_percent}%`
-                    : null}
-                </p>
+                className="live-stats"
+                id="pnl-color448"
+                onChange={
+                  stats["8"]
+                    ? forColor(
+                        `${parseFloat(stats["8"].portfolio_live_pnl_percent)}`,
+                        "pnl-color448"
+                      )
+                    : null
+                }
+              >
+                {stats["8"]
+                  ? `${stats["8"].portfolio_live_pnl_percent}%`
+                  : null}
+              </p>
             </td>
           </tr>
         </table>
