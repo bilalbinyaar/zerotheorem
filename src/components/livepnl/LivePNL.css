@@ -128,20 +128,25 @@
 }
 
 .live-pnl-table-data {
-  padding: 0.3rem 0.5rem;
+  padding: 0.6rem 0.4rem;
 }
 
 .live-pnl-table-head {
-  padding: 0.3rem 0.6rem;
+  padding: 0.6rem 0.5rem;
 }
 
 .live-pnl-table-data p {
   margin-top: 0;
-  font-size: 13px;
+  font-size: 12px;
 }
 
-.for-border-bottom {
+/* .for-border-bottom {
   border-bottom: 2px solid var(--color-day-black);
+} */
+
+table, th, td {
+  border: 1px solid var(--color-grid-border);
+  border-collapse: collapse;
 }
 
 @media screen and (max-width: 768px) {
@@ -209,6 +214,15 @@
 
   .ml-mobile {
     margin-left: 0.3rem;
+  }
+
+  .live-pnl-table {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .link-icon-div {
+    justify-content: center;
   }
 
   /* .overall-live {
