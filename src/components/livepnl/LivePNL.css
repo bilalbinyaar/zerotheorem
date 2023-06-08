@@ -118,6 +118,32 @@
   text-decoration: none !important;
 }
 
+
+.live-pnl-table {
+  width: 100%;
+  border: 0;
+  background-color: var(--color-forecasts-card);
+  margin-top: 2rem;
+  padding: 0.8rem;
+}
+
+.live-pnl-table-data {
+  padding: 0.3rem 0.5rem;
+}
+
+.live-pnl-table-head {
+  padding: 0.3rem 0.6rem;
+}
+
+.live-pnl-table-data p {
+  margin-top: 0;
+  font-size: 13px;
+}
+
+.for-border-bottom {
+  border-bottom: 2px solid var(--color-day-black);
+}
+
 @media screen and (max-width: 768px) {
   .live-pnl .container {
     padding: 0.2rem 0rem 0rem 0rem;
