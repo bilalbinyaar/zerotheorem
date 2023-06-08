@@ -360,17 +360,20 @@ const LivePNL = () => {
                   onChange={
                     stats["4"]
                       ? forColor(
-                          `${(
-                            parseFloat(stats["0"].current_pnl) +
-                            parseFloat(stats["1"].current_pnl) +
-                            parseFloat(stats["2"].current_pnl) +
-                            parseFloat(stats["3"].current_pnl) +
-                            parseFloat(stats["4"].current_pnl) +
-                            parseFloat(stats["5"].current_pnl) +
-                            parseFloat(stats["6"].current_pnl) +
-                            parseFloat(stats["7"].current_pnl) +
-                            parseFloat(stats["8"].current_pnl)
-                          ).toFixed(2)}`,
+                          `${
+                            (
+                              (parseFloat(stats["0"].current_pnl) +
+                                parseFloat(stats["1"].current_pnl) +
+                                parseFloat(stats["2"].current_pnl) +
+                                parseFloat(stats["3"].current_pnl) +
+                                parseFloat(stats["4"].current_pnl) +
+                                parseFloat(stats["5"].current_pnl) +
+                                parseFloat(stats["6"].current_pnl) +
+                                parseFloat(stats["7"].current_pnl) +
+                                parseFloat(stats["8"].current_pnl)) /
+                              9
+                            ).toFixed(2) / 9
+                          }`,
                           "pnl-color53"
                         )
                       : null
@@ -378,15 +381,16 @@ const LivePNL = () => {
                 >
                   {stats["4"]
                     ? `${(
-                        parseFloat(stats["0"].current_pnl) +
-                        parseFloat(stats["1"].current_pnl) +
-                        parseFloat(stats["2"].current_pnl) +
-                        parseFloat(stats["3"].current_pnl) +
-                        parseFloat(stats["4"].current_pnl) +
-                        parseFloat(stats["5"].current_pnl) +
-                        parseFloat(stats["6"].current_pnl) +
-                        parseFloat(stats["7"].current_pnl) +
-                        parseFloat(stats["8"].current_pnl)
+                        (parseFloat(stats["0"].current_pnl) +
+                          parseFloat(stats["1"].current_pnl) +
+                          parseFloat(stats["2"].current_pnl) +
+                          parseFloat(stats["3"].current_pnl) +
+                          parseFloat(stats["4"].current_pnl) +
+                          parseFloat(stats["5"].current_pnl) +
+                          parseFloat(stats["6"].current_pnl) +
+                          parseFloat(stats["7"].current_pnl) +
+                          parseFloat(stats["8"].current_pnl)) /
+                        9
                       ).toFixed(2)}%`
                     : null}
                 </h3>
