@@ -125,14 +125,20 @@
   background-color: var(--color-forecasts-card);
   margin-top: 2rem;
   padding: 0.8rem;
+  border: 1px solid var(--color-grid-border);
+  border-collapse: collapse;
 }
 
 .live-pnl-table-data {
   padding: 0.6rem 0.4rem;
+  border: 1px solid var(--color-grid-border);
+  border-collapse: collapse;
 }
 
 .live-pnl-table-head {
   padding: 0.6rem 0.5rem;
+  border: 1px solid var(--color-grid-border);
+  border-collapse: collapse;
 }
 
 .live-pnl-table-data p {
@@ -144,10 +150,6 @@
   border-bottom: 2px solid var(--color-day-black);
 } */
 
-table, th, td {
-  border: 1px solid var(--color-grid-border);
-  border-collapse: collapse;
-}
 
 @media screen and (max-width: 768px) {
   .live-pnl .container {
