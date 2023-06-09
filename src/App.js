@@ -42,6 +42,7 @@ import { set_login } from "./store";
 import RiskManagement from "./pages/RiskManagement";
 import BacktestRouteComponentModels from "./components/backtest/BacktestRouteComponentModels";
 import BacktestRouteComponentStrategies from "./components/backtest/BacktestRouteComponentStrategies";
+import CompareStrategies from "./pages/CompareStrategies";
 // import dotenv from "dotenv";
 function App() {
   // const id = cryptoRandomString({ length: 10, type: "alphanumeric" });
@@ -108,7 +109,10 @@ function App() {
                 /> */}
                 {/* <Route path="/contact" element={<Contact />} /> */}
 
-                <Route path="/compare-strategies" element={<Compare />} />
+                <Route
+                  path="/compare-strategies"
+                  element={<CompareStrategies />}
+                />
                 <Route
                   path="/backtest-strategies"
                   element={<BacktestRouteComponentStrategies />}
@@ -203,7 +207,10 @@ function App() {
                 />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/all-models" element={<Home />} />
-                <Route path="/compare-strategies" element={<Compare />} />
+                <Route
+                  path="/compare-strategies"
+                  element={<CompareStrategies />}
+                />
                 <Route
                   path="/backtest-strategies"
                   element={<BacktestRouteComponentStrategies />}

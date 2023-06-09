@@ -569,7 +569,7 @@ export default function NavMobile(props) {
                 </CustomLink>
                 <CustomLink
                   className="mobile-submenu"
-                  to="/backtest"
+                  to="/backtest-models"
                   onClick={toCloseNav}
                 >
                   <BsGraphUp className="nav-icons nav-icons-mobile" />
