@@ -1124,63 +1124,48 @@ const BacktestRouteComponentStrategies = () => {
             set_time_horizon_for_stop_time(strategies[model].time_horizon);
           }
           const unixTimestamp = Math.floor(new Date(dateStr).getTime() / 1000);
-          if (unixTimestamp) {
-            setSelectedDate(dayjs.unix(unixTimestamp));
-          }
+          setSelectedDate(dayjs.unix(unixTimestamp));
+
           // setDisableBefore(dayjs.unix(unixTimestamp));
           if (model.replace(/-/g, "_")) {
             set_model_selected_for_backtest(model.replace(/-/g, "_"));
           }
-          if (parseFloat(strategies[model].take_profit)) {
-            set_take_profit_selected_for_backtest(
-              parseFloat(strategies[model].take_profit) + ""
-            );
-          }
-          if (parseFloat(strategies[model].stop_loss)) {
-            set_stop_loss_selected_for_backtest(
-              parseFloat(strategies[model].stop_loss) + ""
-            );
-          }
-          if (parseFloat(strategies[model].time_stop)) {
-            set_stop_time_selected_for_backtest(
-              parseFloat(strategies[model].time_stop) + ""
-            );
-          }
-          if (parseFloat(strategies[model].fee)) {
-            set_fee_selected_for_backtest(
-              parseFloat(strategies[model].fee) + ""
-            );
-          }
-          if (model.replace(/-/g, "_")) {
-            set_model_selected_for_backtest_mobile(model.replace(/-/g, "_"));
-          }
-          if (parseFloat(strategies[model].take_profit)) {
-            set_take_profit_selected_for_backtest_mobile(
-              parseFloat(strategies[model].take_profit) + ""
-            );
-          }
-          if (parseFloat(strategies[model].stop_loss)) {
-            set_stop_loss_selected_for_backtest_mobile(
-              parseFloat(strategies[model].stop_loss) + ""
-            );
-          }
-          if (parseFloat(strategies[model].time_stop)) {
-            set_stop_time_selected_for_backtest_mobile(
-              parseFloat(strategies[model].time_stop) + ""
-            );
-          }
-          if (parseFloat(strategies[model].fee)) {
-            set_fee_selected_for_backtest_mobile(
-              parseFloat(strategies[model].fee) + ""
-            );
-          }
+          set_take_profit_selected_for_backtest(
+            parseFloat(strategies[model].take_profit) + ""
+          );
+
+          set_stop_loss_selected_for_backtest(
+            parseFloat(strategies[model].stop_loss) + ""
+          );
+
+          set_stop_time_selected_for_backtest(
+            parseFloat(strategies[model].time_stop) + ""
+          );
+
+          set_fee_selected_for_backtest(parseFloat(strategies[model].fee) + "");
+
+          set_model_selected_for_backtest_mobile(model.replace(/-/g, "_"));
+
+          set_take_profit_selected_for_backtest_mobile(
+            parseFloat(strategies[model].take_profit) + ""
+          );
+
+          set_stop_loss_selected_for_backtest_mobile(
+            parseFloat(strategies[model].stop_loss) + ""
+          );
+
+          set_stop_time_selected_for_backtest_mobile(
+            parseFloat(strategies[model].time_stop) + ""
+          );
+
+          set_fee_selected_for_backtest_mobile(
+            parseFloat(strategies[model].fee) + ""
+          );
 
           // console.log("Strategies -->", parseFloat(strategies[model].fee));
-          if (dayjs.unix(unixTimestamp)) {
-            setDisableBefore(dayjs.unix(unixTimestamp));
-            set_date_selected_for_backtest(unixTimestamp);
-            set_date_selected_for_backtest_mobile(unixTimestamp);
-          }
+          setDisableBefore(dayjs.unix(unixTimestamp));
+          set_date_selected_for_backtest(unixTimestamp);
+          set_date_selected_for_backtest_mobile(unixTimestamp);
 
           // set_model_name_for_result_backtest_result(name.replace(/-/g, "_"));
           // set_model_name_for_result_backtest_result_stats(name.replace(/-/g, "_"));
