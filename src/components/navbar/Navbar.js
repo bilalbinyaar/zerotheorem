@@ -549,7 +549,7 @@ export default function Navbar() {
                   </CustomLink>
                   <CustomLink
                     className="sub-menu-item"
-                    to="/backtest"
+                    to="/backtest-models"
                     onClick={toCloseNav}
                   >
                     Backtest

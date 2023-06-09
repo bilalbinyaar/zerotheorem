@@ -296,19 +296,16 @@ const BacktestRouteComponentModels = () => {
 
   useEffect(() => {
     try {
-      if (authCheckLoginInvestor == true) {
-        if (topPerformerModels == null) {
-          return;
-        } else {
-          fetch(
-            "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-              },
-            }
-          )
+      if (topPerformerModels == null) {
+        return;
+      } else {
+        if (Object.keys(strategies_cache).length == 0) {
+          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+            },
+          })
             .then((response) => response.json())
             .then((data) => {
               // console.log(data["response"].length);
@@ -374,153 +371,37 @@ const BacktestRouteComponentModels = () => {
                   strategy_name: data["response"][i].strategy_name,
                   current_pnl: data["response"][i].current_pnl,
                   position_start_time: data["response"][i].position_start_time,
-                  fee: data["response"][i].fee,
-                  stop_loss: data["response"][i].stop_loss,
-                  take_profit: data["response"][i].take_profit,
-                  backtest_start_date: data["response"][i].backtest_start_date,
-                  time_stop: data["response"][i].time_stop,
                 };
                 index++;
               }
               if (JSON.stringify(data_for_strategies) !== "{}") {
                 setStrategies(data_for_strategies);
                 set_model_search_selection(model_names);
-                set_coin_search_selection(coin_names);
-                Set_strategies_cache({
-                  strategies: data_for_strategies,
-                });
+                //  console.log("Strategies final -->", data_for_strategies);
+                Set_strategies_cache({ strategies: data_for_strategies });
                 Set_coin_search_selection_cache({
                   coin_names: coin_names,
                 });
                 Set_model_search_selection_cache({
                   model_names: model_names,
                 });
-                //  console.log("Strategies final -->", data_for_strategies);
                 // console.log("Here are model names --->", model_names);
               }
             })
             .catch((err) => console.log(err));
-        }
-      } else {
-        if (topPerformerModels == null) {
-          return;
         } else {
-          if (Object.keys(strategies_cache).length == 0) {
-            fetch(
-              "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies",
-              {
-                method: "GET",
-                headers: {
-                  Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-                },
-              }
-            )
-              .then((response) => response.json())
-              .then((data) => {
-                // console.log(data["response"].length);
-                var data_for_strategies = {};
-                var model_names = [];
-                var coin_names = [];
-                var unique_coins = {};
-                var index = 0;
-                for (var i = 0; i < data["response"].length; i++) {
-                  // var name = data["response"][i].strategy_name.replace(/_/g, "-");
-                  model_names.push({
-                    label: data["response"][i].strategy_name.replace(/_/g, "-"),
-                    value: data["response"][i].time_horizon,
-                    currency: data["response"][i].currency,
-                  });
-                  if (!unique_coins[data["response"][i].currency]) {
-                    unique_coins[data["response"][i].currency] = 1;
-                    coin_names.push({
-                      label: data["response"][i].currency,
-                      // value: i,
-                    });
-                  }
-                  var dt = new Date(
-                    parseInt(data["response"][i].forecast_time) * 1000
-                  ).toLocaleString();
-                  // console.log("Locale string -->", dt);
-                  var year = dt.split("/")[2].split(",")[0];
-                  var month = dt.split("/")[0];
-                  if (month.length == 1) {
-                    month = "0" + month;
-                  }
-                  var day = dt.split("/")[1];
-                  if (day.length == 1) {
-                    day = "0" + day;
-                  }
-                  var hours = dt.split(", ")[1].split(":")[0];
-                  if (hours.length == 1) {
-                    hours = "0" + hours;
-                  }
-                  var minutes = dt.split(":")[1];
-                  if (minutes.length == 1) {
-                    minutes = "0" + minutes;
-                  }
-                  var curr_time_version = dt.split(" ")[2];
-                  if (curr_time_version == "PM") {
-                    hours = parseInt(hours) + 12;
-                  }
-                  var dt_str =
-                    year +
-                    "-" +
-                    month +
-                    "-" +
-                    day +
-                    " " +
-                    hours +
-                    ":" +
-                    minutes;
-                  // console.log("DT", dt, dt_str);
+          // console.log(
+          //   "I am using cached value of strategies -->",
+          //   strategies_cache
+          // );
+          setStrategies(strategies_cache["strategies"]);
+          // console.log(
+          //   "Here are model names c--->",
+          //   model_selection_cache["model_names"]
+          // );
 
-                  data_for_strategies[data["response"][i].strategy_name] = {
-                    current_position: data["response"][i].current_position,
-                    time_horizon: data["response"][i].time_horizon,
-                    currency: data["response"][i].currency,
-                    date_started: data["response"][i].date_started,
-                    entry_price: data["response"][i].entry_price,
-                    forecast_time: dt_str,
-                    // .split(".")[0]
-                    // .slice(0, -3),
-                    next_forecast: data["response"][i].next_forecast,
-                    current_price: data["response"][i].current_price,
-                    strategy_name: data["response"][i].strategy_name,
-                    current_pnl: data["response"][i].current_pnl,
-                    position_start_time:
-                      data["response"][i].position_start_time,
-                  };
-                  index++;
-                }
-                if (JSON.stringify(data_for_strategies) !== "{}") {
-                  setStrategies(data_for_strategies);
-                  set_model_search_selection(model_names);
-                  //  console.log("Strategies final -->", data_for_strategies);
-                  Set_strategies_cache({ strategies: data_for_strategies });
-                  Set_coin_search_selection_cache({
-                    coin_names: coin_names,
-                  });
-                  Set_model_search_selection_cache({
-                    model_names: model_names,
-                  });
-                  // console.log("Here are model names --->", model_names);
-                }
-              })
-              .catch((err) => console.log(err));
-          } else {
-            // console.log(
-            //   "I am using cached value of strategies -->",
-            //   strategies_cache
-            // );
-            setStrategies(strategies_cache["strategies"]);
-            // console.log(
-            //   "Here are model names c--->",
-            //   model_selection_cache["model_names"]
-            // );
-
-            set_coin_search_selection(coin_selection_cache["coin_names"]);
-            set_model_search_selection(model_selection_cache["model_names"]);
-          }
+          set_coin_search_selection(coin_selection_cache["coin_names"]);
+          set_model_search_selection(model_selection_cache["model_names"]);
         }
       }
     } catch (error) {
@@ -531,8 +412,8 @@ const BacktestRouteComponentModels = () => {
   useEffect(() => {
     try {
       if (Flag == null) {
-        if (authCheckLoginInvestor == true) {
-          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
+        if (Object.keys(stats_cache).length == 0) {
+          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
@@ -588,89 +469,23 @@ const BacktestRouteComponentModels = () => {
                     return { ...model_names[key], key };
                   })
                   .sort((a, b) => b.total_pnl - a.total_pnl);
+                Set_stats_cache({ stats: model_names });
                 setPnlForEachStrategy(model_names);
 
+                Set_sorted_stats_cache({ sorted_stats: sorted });
                 setTopPerformersModels(sorted);
                 setFlag(true);
               }
             })
             .catch((err) => console.log(err));
         } else {
-          if (Object.keys(stats_cache).length == 0) {
-            fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-              },
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                // console.log(data["response"].length);
-                var model_names = {};
-                for (var i = 0; i < data["response"].length; i++) {
-                  // console.log(data["response"][i].strategy_name);
-                  // var name = data["response"][i].strategy_name;
-                  model_names[data["response"][i].strategy_name] = {
-                    strategy_name: data["response"][i].strategy_name,
-                    current_drawdown: data["response"][i].current_drawdown,
-                    curr_drawdown_duration:
-                      data["response"][i].curr_drawdown_duration,
-                    average_drawdown: data["response"][i].average_drawdown,
-                    average_drawdown_duration:
-                      data["response"][i].average_drawdown_duration,
-                    max_drawdown: data["response"][i].max_drawdown,
-                    max_drawdown_duration:
-                      data["response"][i].max_drawdown_duration,
-                    r2_score: data["response"][i].r2_score,
-                    sharpe: data["response"][i].sharpe,
-                    sortino: data["response"][i].sortino,
-                    total_pnl: data["response"][i].total_pnl,
-                    total_positive_pnl: data["response"][i].total_positive_pnl,
-                    total_negative_pnl: data["response"][i].total_negative_pnl,
-                    total_wins: data["response"][i].total_wins,
-                    total_losses: data["response"][i].total_losses,
-                    consective_wins: data["response"][i].consective_wins,
-                    consective_losses: data["response"][i].consective_losses,
-                    win_percentage: data["response"][i].win_percentage,
-                    loss_percentage: data["response"][i].loss_percentage,
-                    pnl_sum_1: data["response"][i].pnl_sum_1,
-                    pnl_sum_7: data["response"][i].pnl_sum_7,
-                    pnl_sum_15: data["response"][i].pnl_sum_15,
-                    pnl_sum_30: data["response"][i].pnl_sum_30,
-                    pnl_sum_45: data["response"][i].pnl_sum_45,
-                    pnl_sum_60: data["response"][i].pnl_sum_60,
-                    average_daily_pnl: data["response"][i].average_daily_pnl,
-                    win_loss_ratio: data["response"][i].win_loss_ratio,
-
-                    rank: data["response"][i].rank,
-                  };
-                }
-                if (JSON.stringify(model_names) !== "{}") {
-                  // console.log("Sortable -->", model_names);
-
-                  const sorted = Object.keys(model_names)
-                    .map((key) => {
-                      return { ...model_names[key], key };
-                    })
-                    .sort((a, b) => b.total_pnl - a.total_pnl);
-                  Set_stats_cache({ stats: model_names });
-                  setPnlForEachStrategy(model_names);
-
-                  Set_sorted_stats_cache({ sorted_stats: sorted });
-                  setTopPerformersModels(sorted);
-                  setFlag(true);
-                }
-              })
-              .catch((err) => console.log(err));
-          } else {
-            // console.log(
-            //   "I am using cached values of sorted stats -->",
-            //   sorted_stats_cache
-            // );
-            setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
-            setPnlForEachStrategy(stats_cache["stats"]);
-            setFlag(true);
-          }
+          // console.log(
+          //   "I am using cached values of sorted stats -->",
+          //   sorted_stats_cache
+          // );
+          setTopPerformersModels(sorted_stats_cache["sorted_stats"]);
+          setPnlForEachStrategy(stats_cache["stats"]);
+          setFlag(true);
         }
       }
     } catch (error) {
@@ -1404,12 +1219,11 @@ const BacktestRouteComponentModels = () => {
         <p className="backtest-description">
           To conduct a personalized backtest, begin by choosing a strategy
           through either the time horizon and currencies filter or by selecting
-          from the strategies dropdown menu. Afterwards, adjust the backtest
-          inputs to fit your preferences, including the start date, which must
-          not be earlier than the strategy's Start date (default value).
-          Additionally, set the take profit and stop loss values within a range
-          of 0 to 100, and specify a fee for each transaction with a value
-          between 0 and 1.
+          from the models dropdown menu. Afterwards, adjust the backtest inputs
+          to fit your preferences, including the start date, which must not be
+          earlier than the strategy's Start date (default value). Additionally,
+          set the take profit and stop loss values within a range of 0 to 100,
+          and specify a fee for each transaction with a value between 0 and 1.
         </p>
 
         {windowWidth.current <= 768 ? (
@@ -1445,11 +1259,13 @@ const BacktestRouteComponentModels = () => {
                   >
                     <MenuItem value="All">Horizons</MenuItem>
                     <MenuItem value={"24h"}>24h</MenuItem>
-                    <MenuItem value={"13h"}>13h</MenuItem>
                     <MenuItem value={"12h"}>12h</MenuItem>
-                    <MenuItem value={"11h"}>11h</MenuItem>
-                    <MenuItem value={"9h"}>9h</MenuItem>
                     <MenuItem value={"8h"}>8h</MenuItem>
+                    <MenuItem value={"6h"}>6h</MenuItem>
+                    <MenuItem value={"4h"}>4h</MenuItem>
+                    <MenuItem value={"3h"}>3h</MenuItem>
+                    <MenuItem value={"2h"}>2h</MenuItem>
+                    <MenuItem value={"1h"}>1h</MenuItem>
                   </Select>
                 </FormControl>
               </div>
@@ -1894,7 +1710,7 @@ const BacktestRouteComponentModels = () => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Strategies"
+                      label="Models"
                       inputProps={{
                         ...params.inputProps,
                         style: { width: "70%" }, // set the width to auto
@@ -1950,23 +1766,6 @@ const BacktestRouteComponentModels = () => {
                       24h
                     </li>
                     <li
-                      id="hours-listings hour_filter_13"
-                      style={{
-                        background: selectedItem === "13h" ? "#fddd4e" : "",
-                        color: selectedItem === "13h" ? "black" : "",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        handleChangeForTimeHorizonSelection(
-                          "hour_filter_13",
-                          "13h"
-                        );
-                        setSelectedItem("13h");
-                      }}
-                    >
-                      13h
-                    </li>
-                    <li
                       id="hours-listings hour_filter_12"
                       style={{
                         background: selectedItem === "12h" ? "#fddd4e" : "",
@@ -1982,40 +1781,6 @@ const BacktestRouteComponentModels = () => {
                       }}
                     >
                       12h
-                    </li>
-                    <li
-                      id="hours-listings hour_filter_11"
-                      style={{
-                        background: selectedItem === "11h" ? "#fddd4e" : "",
-                        color: selectedItem === "11h" ? "black" : "",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        handleChangeForTimeHorizonSelection(
-                          "hour_filter_11",
-                          "11h"
-                        );
-                        setSelectedItem("11h");
-                      }}
-                    >
-                      11h
-                    </li>
-                    <li
-                      id="hours-listings hour_filter_9"
-                      style={{
-                        background: selectedItem === "9h" ? "#fddd4e" : "",
-                        color: selectedItem === "9h" ? "black" : "",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        handleChangeForTimeHorizonSelection(
-                          "hour_filter_9",
-                          "9h"
-                        );
-                        setSelectedItem("9h");
-                      }}
-                    >
-                      9h
                     </li>
                     <li
                       id="hours-listings hour_filter_8"
@@ -2034,7 +1799,7 @@ const BacktestRouteComponentModels = () => {
                     >
                       8h
                     </li>
-                    {/* <li
+                    <li
                       id="hours-listings hour_filter_3"
                       style={{
                         background: selectedItem === "6h" ? "#fddd4e" : "",
@@ -2117,7 +1882,7 @@ const BacktestRouteComponentModels = () => {
                       }}
                     >
                       1h
-                    </li> */}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -2175,7 +1940,7 @@ const BacktestRouteComponentModels = () => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Strategies"
+                      label="Models"
                       inputProps={{
                         ...params.inputProps,
                         autoComplete: "new-password", // disable autocomplete and autofill

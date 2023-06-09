@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom";
 import TvSplineAreaChartTopPerformer from "../models/graphs/TvSplineAreaChartTopPerformer";
 import CompareComponentMobile from "./CompareComponentMobile";
 import Timer from "../timer/Timer";
-const CompareComponent = () => {
+const CompareComponentStrategies = () => {
   const forBgColor = (total_pnl, id) => {
     if (total_pnl < 0) {
       document
@@ -490,22 +490,19 @@ const CompareComponent = () => {
       label: "24h",
     },
     {
+      label: "13h",
+    },
+    {
       label: "12h",
     },
     {
-      label: "6h",
+      label: "11h",
     },
     {
-      label: "4h",
+      label: "9h",
     },
     {
-      label: "3h",
-    },
-    {
-      label: "2h",
-    },
-    {
-      label: "1h",
+      label: "8h",
     },
   ]);
   const [time_horizons2, set_time_horizons2] = useState([
@@ -516,22 +513,19 @@ const CompareComponent = () => {
       label: "24h",
     },
     {
+      label: "13h",
+    },
+    {
       label: "12h",
     },
     {
-      label: "6h",
+      label: "11h",
     },
     {
-      label: "4h",
+      label: "9h",
     },
     {
-      label: "3h",
-    },
-    {
-      label: "2h",
-    },
-    {
-      label: "1h",
+      label: "8h",
     },
   ]);
   const [model_names2, set_model_names2] = useState([]);
@@ -546,369 +540,170 @@ const CompareComponent = () => {
 
   useEffect(() => {
     try {
-      if (authCheckLoginInvestor == true) {
-        fetch(
-          "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-            },
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"].length);
+          var data_for_strategies = {};
+          var model_names = [];
+          var coin_names = [];
+          var unique_coins = {};
+          var index = 0;
+          for (var i = 0; i < data["response"].length; i++) {
+            // var name = data["response"][i].strategy_name.replace(/_/g, "-");
+            model_names.push({
+              label: data["response"][i].strategy_name.replace(/_/g, "-"),
+              value: data["response"][i].time_horizon,
+              currency: data["response"][i].currency,
+            });
+            if (!unique_coins[data["response"][i].currency]) {
+              unique_coins[data["response"][i].currency] = 1;
+              coin_names.push({
+                label: data["response"][i].currency,
+                // value: i,
+              });
+            }
+            var dt = new Date(
+              parseInt(data["response"][i].forecast_time) * 1000
+            ).toLocaleString();
+
+            var year = dt.split("/")[2].split(",")[0];
+            var month = dt.split("/")[0];
+            if (month.length == 1) {
+              month = "0" + month;
+            }
+            var day = dt.split("/")[1];
+            if (day.length == 1) {
+              day = "0" + day;
+            }
+            var hours = dt.split(", ")[1].split(":")[0];
+            if (hours.length == 1) {
+              hours = "0" + hours;
+            }
+            var minutes = dt.split(":")[1];
+            if (minutes.length == 1) {
+              minutes = "0" + minutes;
+            }
+            var dt_str =
+              year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+            // console.log("DT", dt, dt_str);
+            var curr_time_version = dt.split(" ")[2];
+            if (curr_time_version == "PM") {
+              hours = parseInt(hours) + 12;
+            }
+            data_for_strategies[data["response"][i].strategy_name] = {
+              current_position: data["response"][i].current_position,
+              time_horizon: data["response"][i].time_horizon,
+              currency: data["response"][i].currency,
+              date_started: data["response"][i].date_started,
+              entry_price: data["response"][i].entry_price,
+              forecast_time: dt_str,
+              // .split(".")[0]
+              // .slice(0, -3),
+              next_forecast: data["response"][i].next_forecast,
+              current_price: data["response"][i].current_price,
+              strategy_name: data["response"][i].strategy_name,
+              current_pnl: data["response"][i].current_pnl,
+              position_start_time: data["response"][i].position_start_time,
+            };
+            index++;
           }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log(data["response"].length);
-            var data_for_strategies = {};
-            var model_names = [];
-            var coin_names = [];
-            var unique_coins = {};
-            var index = 0;
-            for (var i = 0; i < data["response"].length; i++) {
-              // var name = data["response"][i].strategy_name.replace(/_/g, "-");
-              model_names.push({
-                label: data["response"][i].strategy_name.replace(/_/g, "-"),
-                value: data["response"][i].time_horizon,
-                currency: data["response"][i].currency,
-              });
-              if (!unique_coins[data["response"][i].currency]) {
-                unique_coins[data["response"][i].currency] = 1;
-                coin_names.push({
-                  label: data["response"][i].currency,
-                  // value: i,
-                });
-              }
-              var dt = new Date(
-                parseInt(data["response"][i].forecast_time) * 1000
-              ).toLocaleString();
+          if (JSON.stringify(data_for_strategies) !== "{}") {
+            setStrategies(data_for_strategies);
+            set_model_names(model_names);
+            set_model_names2(model_names);
+            set_model_names3(model_names);
 
-              var year = dt.split("/")[2].split(",")[0];
-              var month = dt.split("/")[0];
-              if (month.length == 1) {
-                month = "0" + month;
-              }
-              var day = dt.split("/")[1];
-              if (day.length == 1) {
-                day = "0" + day;
-              }
-              var hours = dt.split(", ")[1].split(":")[0];
-              if (hours.length == 1) {
-                hours = "0" + hours;
-              }
-              var minutes = dt.split(":")[1];
-              if (minutes.length == 1) {
-                minutes = "0" + minutes;
-              }
-              var dt_str =
-                year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-              // console.log("DT", dt, dt_str);
-              var curr_time_version = dt.split(" ")[2];
-              if (curr_time_version == "PM") {
-                hours = parseInt(hours) + 12;
-              }
-              data_for_strategies[data["response"][i].strategy_name] = {
-                current_position: data["response"][i].current_position,
-                time_horizon: data["response"][i].time_horizon,
-                currency: data["response"][i].currency,
-                date_started: data["response"][i].date_started,
-                entry_price: data["response"][i].entry_price,
-                forecast_time: dt_str,
-                // .split(".")[0]
-                // .slice(0, -3),
-                next_forecast: data["response"][i].next_forecast,
-                current_price: data["response"][i].current_price,
-                strategy_name: data["response"][i].strategy_name,
-                current_pnl: data["response"][i].current_pnl,
-                position_start_time: data["response"][i].position_start_time,
-              };
-              index++;
-            }
-            if (JSON.stringify(data_for_strategies) !== "{}") {
-              setStrategies(data_for_strategies);
-              set_model_names(model_names);
-              set_model_names2(model_names);
-              set_model_names3(model_names);
-
-              set_currencies(coin_names);
-              set_currencies2(coin_names);
-              set_currencies3(coin_names);
-              // console.log("Using model names -->", model_names);
-              //  console.log("Strategies final -->", data_for_strategies);
-              Set_strategies_cache({ strategies: data_for_strategies });
-              Set_coin_search_selection_cache({
-                coin_names: coin_names,
-              });
-              Set_model_search_selection_cache({
-                model_names: model_names,
-              });
-              // console.log("Here are model names --->", model_names);
-            }
-          })
-          .catch((err) => console.log(err));
-      } else {
-        if (Object.keys(strategies_cache).length == 0) {
-          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_strategies", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-            },
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              // console.log(data["response"].length);
-              var data_for_strategies = {};
-              var model_names = [];
-              var coin_names = [];
-              var unique_coins = {};
-              var index = 0;
-              for (var i = 0; i < data["response"].length; i++) {
-                // var name = data["response"][i].strategy_name.replace(/_/g, "-");
-                model_names.push({
-                  label: data["response"][i].strategy_name.replace(/_/g, "-"),
-                  value: data["response"][i].time_horizon,
-                  currency: data["response"][i].currency,
-                });
-                if (!unique_coins[data["response"][i].currency]) {
-                  unique_coins[data["response"][i].currency] = 1;
-                  coin_names.push({
-                    label: data["response"][i].currency,
-                    // value: i,
-                  });
-                }
-                var dt = new Date(
-                  parseInt(data["response"][i].forecast_time) * 1000
-                ).toLocaleString();
-
-                var year = dt.split("/")[2].split(",")[0];
-                var month = dt.split("/")[0];
-                if (month.length == 1) {
-                  month = "0" + month;
-                }
-                var day = dt.split("/")[1];
-                if (day.length == 1) {
-                  day = "0" + day;
-                }
-                var hours = dt.split(", ")[1].split(":")[0];
-                if (hours.length == 1) {
-                  hours = "0" + hours;
-                }
-                var minutes = dt.split(":")[1];
-                if (minutes.length == 1) {
-                  minutes = "0" + minutes;
-                }
-                var dt_str =
-                  year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-                // console.log("DT", dt, dt_str);
-                var curr_time_version = dt.split(" ")[2];
-                if (curr_time_version == "PM") {
-                  hours = parseInt(hours) + 12;
-                }
-                data_for_strategies[data["response"][i].strategy_name] = {
-                  current_position: data["response"][i].current_position,
-                  time_horizon: data["response"][i].time_horizon,
-                  currency: data["response"][i].currency,
-                  date_started: data["response"][i].date_started,
-                  entry_price: data["response"][i].entry_price,
-                  forecast_time: dt_str,
-                  // .split(".")[0]
-                  // .slice(0, -3),
-                  next_forecast: data["response"][i].next_forecast,
-                  current_price: data["response"][i].current_price,
-                  strategy_name: data["response"][i].strategy_name,
-                  current_pnl: data["response"][i].current_pnl,
-                  position_start_time: data["response"][i].position_start_time,
-                };
-                index++;
-              }
-              if (JSON.stringify(data_for_strategies) !== "{}") {
-                setStrategies(data_for_strategies);
-                set_model_names(model_names);
-                set_model_names2(model_names);
-                set_model_names3(model_names);
-
-                set_currencies(coin_names);
-                set_currencies2(coin_names);
-                set_currencies3(coin_names);
-                // console.log("Using model names -->", model_names);
-                //  console.log("Strategies final -->", data_for_strategies);
-                Set_strategies_cache({ strategies: data_for_strategies });
-                Set_coin_search_selection_cache({
-                  coin_names: coin_names,
-                });
-                Set_model_search_selection_cache({
-                  model_names: model_names,
-                });
-                // console.log("Here are model names --->", model_names);
-              }
-            })
-            .catch((err) => console.log(err));
-        } else {
-          // console.log(
-          //   "I am using cached value of strategies -->",
-          //   strategies_cache
-          // );
-          setStrategies(strategies_cache["strategies"]);
-          // console.log(
-          //   "Here are model names c--->",
-          //   model_selection_cache["model_names"]
-          // );
-          // console.log(
-          //   "Using model names -->",
-          //   model_selection_cache["model_names"]
-          // );
-          set_model_names(model_selection_cache["model_names"]);
-          set_model_names2(model_selection_cache["model_names"]);
-          set_model_names3(model_selection_cache["model_names"]);
-          set_currencies(coin_selection_cache["coin_names"]);
-          set_currencies2(coin_selection_cache["coin_names"]);
-          set_currencies3(coin_selection_cache["coin_names"]);
-        }
-      }
+            set_currencies(coin_names);
+            set_currencies2(coin_names);
+            set_currencies3(coin_names);
+            // console.log("Using model names -->", model_names);
+            //  console.log("Strategies final -->", data_for_strategies);
+            // Set_strategies_cache({ strategies: data_for_strategies });
+            // Set_coin_search_selection_cache({
+            //   coin_names: coin_names,
+            // });
+            // Set_model_search_selection_cache({
+            //   model_names: model_names,
+            // });
+            // console.log("Here are model names --->", model_names);
+          }
+        })
+        .catch((err) => console.log(err));
     } catch (error) {
       console.log("Error occured");
     }
   }, []);
   useEffect(() => {
     try {
-      if (authCheckLoginInvestor == true) {
-        fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-          },
+      fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data["response"].length);
+          var model_names = {};
+          for (var i = 0; i < data["response"].length; i++) {
+            // console.log(data["response"][i].strategy_name);
+            // var name = data["response"][i].strategy_name;
+            model_names[data["response"][i].strategy_name] = {
+              strategy_name: data["response"][i].strategy_name,
+              current_drawdown: data["response"][i].current_drawdown,
+              curr_drawdown_duration:
+                data["response"][i].curr_drawdown_duration,
+              average_drawdown: data["response"][i].average_drawdown,
+              average_drawdown_duration:
+                data["response"][i].average_drawdown_duration,
+              max_drawdown: data["response"][i].max_drawdown,
+              max_drawdown_duration: data["response"][i].max_drawdown_duration,
+              r2_score: data["response"][i].r2_score,
+              sharpe: data["response"][i].sharpe,
+              sortino: data["response"][i].sortino,
+              total_pnl: data["response"][i].total_pnl, // defaultValue={default_value}
+
+              total_positive_pnl: data["response"][i].total_positive_pnl,
+              total_negative_pnl: data["response"][i].total_negative_pnl,
+              total_wins: data["response"][i].total_wins,
+              total_losses: data["response"][i].total_losses,
+              consective_wins: data["response"][i].consective_wins, // defaultValue={default_value}
+
+              consective_losses: data["response"][i].consective_losses,
+              win_percentage: data["response"][i].win_percentage,
+              loss_percentage: data["response"][i].loss_percentage,
+              pnl_sum_1: data["response"][i].pnl_sum_1,
+              pnl_sum_7: data["response"][i].pnl_sum_7,
+              pnl_sum_15: data["response"][i].pnl_sum_15,
+              pnl_sum_30: data["response"][i].pnl_sum_30,
+              pnl_sum_45: data["response"][i].pnl_sum_45,
+              pnl_sum_60: data["response"][i].pnl_sum_60,
+              average_daily_pnl: data["response"][i].average_daily_pnl,
+              win_loss_ratio: data["response"][i].win_loss_ratio,
+
+              rank: data["response"][i].rank,
+            };
+          }
+          if (JSON.stringify(model_names) !== "{}") {
+            // console.log("Sortable -->", model_names);
+
+            const sorted = Object.keys(model_names)
+              .map((key) => {
+                return { ...model_names[key], key };
+              })
+              .sort((a, b) => b.total_pnl - a.total_pnl);
+            // Set_stats_cache({ stats: model_names });
+            set_stats(model_names);
+            // Set_sorted_stats_cache({ sorted_stats: sorted });
+          }
         })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log(data["response"].length);
-            var model_names = {};
-            for (var i = 0; i < data["response"].length; i++) {
-              // console.log(data["response"][i].strategy_name);
-              // var name = data["response"][i].strategy_name;
-              model_names[data["response"][i].strategy_name] = {
-                strategy_name: data["response"][i].strategy_name,
-                current_drawdown: data["response"][i].current_drawdown,
-                curr_drawdown_duration:
-                  data["response"][i].curr_drawdown_duration,
-                average_drawdown: data["response"][i].average_drawdown,
-                average_drawdown_duration:
-                  data["response"][i].average_drawdown_duration,
-                max_drawdown: data["response"][i].max_drawdown,
-                max_drawdown_duration:
-                  data["response"][i].max_drawdown_duration,
-                r2_score: data["response"][i].r2_score,
-                sharpe: data["response"][i].sharpe,
-                sortino: data["response"][i].sortino,
-                total_pnl: data["response"][i].total_pnl, // defaultValue={default_value}
-
-                total_positive_pnl: data["response"][i].total_positive_pnl,
-                total_negative_pnl: data["response"][i].total_negative_pnl,
-                total_wins: data["response"][i].total_wins,
-                total_losses: data["response"][i].total_losses,
-                consective_wins: data["response"][i].consective_wins, // defaultValue={default_value}
-
-                consective_losses: data["response"][i].consective_losses,
-                win_percentage: data["response"][i].win_percentage,
-                loss_percentage: data["response"][i].loss_percentage,
-                pnl_sum_1: data["response"][i].pnl_sum_1,
-                pnl_sum_7: data["response"][i].pnl_sum_7,
-                pnl_sum_15: data["response"][i].pnl_sum_15,
-                pnl_sum_30: data["response"][i].pnl_sum_30,
-                pnl_sum_45: data["response"][i].pnl_sum_45,
-                pnl_sum_60: data["response"][i].pnl_sum_60,
-                average_daily_pnl: data["response"][i].average_daily_pnl,
-                win_loss_ratio: data["response"][i].win_loss_ratio,
-
-                rank: data["response"][i].rank,
-              };
-            }
-            if (JSON.stringify(model_names) !== "{}") {
-              // console.log("Sortable -->", model_names);
-
-              const sorted = Object.keys(model_names)
-                .map((key) => {
-                  return { ...model_names[key], key };
-                })
-                .sort((a, b) => b.total_pnl - a.total_pnl);
-              Set_stats_cache({ stats: model_names });
-              set_stats(model_names);
-              Set_sorted_stats_cache({ sorted_stats: sorted });
-            }
-          })
-          .catch((err) => console.log(err));
-      } else {
-        if (Object.keys(stats_cache).length == 0) {
-          fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get_stats", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_SECRET_KEY}`,
-            },
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              // console.log(data["response"].length);
-              var model_names = {};
-              for (var i = 0; i < data["response"].length; i++) {
-                // console.log(data["response"][i].strategy_name);
-                // var name = data["response"][i].strategy_name;
-                model_names[data["response"][i].strategy_name] = {
-                  strategy_name: data["response"][i].strategy_name,
-                  current_drawdown: data["response"][i].current_drawdown,
-                  curr_drawdown_duration:
-                    data["response"][i].curr_drawdown_duration,
-                  average_drawdown: data["response"][i].average_drawdown,
-                  average_drawdown_duration:
-                    data["response"][i].average_drawdown_duration,
-                  max_drawdown: data["response"][i].max_drawdown,
-                  max_drawdown_duration:
-                    data["response"][i].max_drawdown_duration,
-                  r2_score: data["response"][i].r2_score,
-                  sharpe: data["response"][i].sharpe,
-                  sortino: data["response"][i].sortino,
-                  total_pnl: data["response"][i].total_pnl, // defaultValue={default_value}
-
-                  total_positive_pnl: data["response"][i].total_positive_pnl,
-                  total_negative_pnl: data["response"][i].total_negative_pnl,
-                  total_wins: data["response"][i].total_wins,
-                  total_losses: data["response"][i].total_losses,
-                  consective_wins: data["response"][i].consective_wins, // defaultValue={default_value}
-
-                  consective_losses: data["response"][i].consective_losses,
-                  win_percentage: data["response"][i].win_percentage,
-                  loss_percentage: data["response"][i].loss_percentage,
-                  pnl_sum_1: data["response"][i].pnl_sum_1,
-                  pnl_sum_7: data["response"][i].pnl_sum_7,
-                  pnl_sum_15: data["response"][i].pnl_sum_15,
-                  pnl_sum_30: data["response"][i].pnl_sum_30,
-                  pnl_sum_45: data["response"][i].pnl_sum_45,
-                  pnl_sum_60: data["response"][i].pnl_sum_60,
-                  average_daily_pnl: data["response"][i].average_daily_pnl,
-                  win_loss_ratio: data["response"][i].win_loss_ratio,
-
-                  rank: data["response"][i].rank,
-                };
-              }
-              if (JSON.stringify(model_names) !== "{}") {
-                // console.log("Sortable -->", model_names);
-
-                const sorted = Object.keys(model_names)
-                  .map((key) => {
-                    return { ...model_names[key], key };
-                  })
-                  .sort((a, b) => b.total_pnl - a.total_pnl);
-                Set_stats_cache({ stats: model_names });
-                set_stats(model_names);
-                Set_sorted_stats_cache({ sorted_stats: sorted });
-              }
-            })
-            .catch((err) => console.log(err));
-        } else {
-          // console.log(
-          //   "I am using cached values of sorted stats -->",
-          //   sorted_stats_cache
-          // );
-          set_stats(stats_cache["stats"]);
-        }
-      }
+        .catch((err) => console.log(err));
     } catch (error) {
       console.log("Error occured");
     }
@@ -985,18 +780,18 @@ const CompareComponent = () => {
         <h1>Compare</h1>
         {windowWidth.current <= 768 ? (
           <p className="compare-description">
-            Compare any two models by selecting them in the columns below, where
-            you can review their details and performance metrics. To refine your
-            search, use the time horizon and currency filters to locate a
-            specific strategy, or type in the strategy name directly to select
-            it. The best values are colored green with the exception of the
-            Forecast where Long is always green and Short is always red.
+            Compare any two strategies by selecting them in the columns below,
+            where you can review their details and performance metrics. To
+            refine your search, use the time horizon and currency filters to
+            locate a specific strategy, or type in the strategy name directly to
+            select it. The best values are colored green with the exception of
+            the Forecast where Long is always green and Short is always red.
           </p>
         ) : (
           <p className="compare-description">
-            Compare up to three models by selecting them in the columns below,
-            where you can review their details and performance metrics. To
-            refine your search, use the time horizon and currency filters to
+            Compare up to three strategies by selecting them in the columns
+            below, where you can review their details and performance metrics.
+            To refine your search, use the time horizon and currency filters to
             locate a specific strategy, or type in the strategy name directly to
             select it. The best values are colored green with the exception of
             the Forecast where Long is always green and Short is always red.
@@ -1739,7 +1534,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -1766,7 +1561,7 @@ const CompareComponent = () => {
                         </h3>
                         <div className="horizon-left-comparison">
                           <div className="hours-list-comparison">
-                            <ul id="hours-list-div-comparsion">
+                            <ul id="hours-list-div-comparison">
                               <li
                                 id="hours-listings hours_filter_All"
                                 style={{
@@ -1804,6 +1599,24 @@ const CompareComponent = () => {
                                 24h
                               </li>
                               <li
+                                id="hours-listings hour_filter_13"
+                                style={{
+                                  background:
+                                    selectedItem === "13h" ? "#fddd4e" : "",
+                                  color: selectedItem === "13h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_13",
+                                    "13h"
+                                  );
+                                  setSelectedItem("13h");
+                                }}
+                              >
+                                13h
+                              </li>
+                              <li
                                 id="hours-listings hour_filter_12"
                                 style={{
                                   background:
@@ -1820,6 +1633,42 @@ const CompareComponent = () => {
                                 }}
                               >
                                 12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_11"
+                                style={{
+                                  background:
+                                    selectedItem === "11h" ? "#fddd4e" : "",
+                                  color: selectedItem === "11h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_1",
+                                    "11h"
+                                  );
+                                  setSelectedItem("11h");
+                                }}
+                              >
+                                11h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_9"
+                                style={{
+                                  background:
+                                    selectedItem === "9h" ? "#fddd4e" : "",
+                                  color: selectedItem === "9h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection(
+                                    "hour_filter_9",
+                                    "9h"
+                                  );
+                                  setSelectedItem("9h");
+                                }}
+                              >
+                                9h
                               </li>
                               <li
                                 id="hours-listings hour_filter_8"
@@ -1839,7 +1688,7 @@ const CompareComponent = () => {
                               >
                                 8h
                               </li>
-                              <li
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -1874,8 +1723,8 @@ const CompareComponent = () => {
                                 }}
                               >
                                 4h
-                              </li>
-                              <li
+                              </li> */}
+                              {/* <li
                                 style={{
                                   background:
                                     selectedItem === "3h" ? "#fddd4e" : "",
@@ -1927,7 +1776,7 @@ const CompareComponent = () => {
                                 }}
                               >
                                 1h
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         </div>
@@ -2164,7 +2013,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -3151,7 +3000,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -3178,7 +3027,7 @@ const CompareComponent = () => {
                         </h3>
                         <div className="horizon-left-comparison">
                           <div className="hours-list-comparison">
-                            <ul id="hours-list-div-comparsion">
+                            <ul id="hours-list-div-comparison">
                               <li
                                 id="hours-listings hours_filter_All"
                                 style={{
@@ -3216,6 +3065,24 @@ const CompareComponent = () => {
                                 24h
                               </li>
                               <li
+                                id="hours-listings hour_filter_13"
+                                style={{
+                                  background:
+                                    selectedItem2 === "13h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "13h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_13",
+                                    "13h"
+                                  );
+                                  setSelectedItem2("13h");
+                                }}
+                              >
+                                13h
+                              </li>
+                              <li
                                 id="hours-listings hour_filter_12"
                                 style={{
                                   background:
@@ -3232,6 +3099,42 @@ const CompareComponent = () => {
                                 }}
                               >
                                 12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_11"
+                                style={{
+                                  background:
+                                    selectedItem2 === "11h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "11h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_11",
+                                    "11h"
+                                  );
+                                  setSelectedItem2("11h");
+                                }}
+                              >
+                                11h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_9"
+                                style={{
+                                  background:
+                                    selectedItem2 === "9h" ? "#fddd4e" : "",
+                                  color: selectedItem2 === "9h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection2(
+                                    "hour_filter_9",
+                                    "9h"
+                                  );
+                                  setSelectedItem2("9h");
+                                }}
+                              >
+                                9h
                               </li>
                               <li
                                 id="hours-listings hour_filter_8"
@@ -3251,7 +3154,7 @@ const CompareComponent = () => {
                               >
                                 8h
                               </li>
-                              <li
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -3268,8 +3171,8 @@ const CompareComponent = () => {
                                 }}
                               >
                                 6h
-                              </li>
-                              <li
+                              </li> */}
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -3339,7 +3242,7 @@ const CompareComponent = () => {
                                 }}
                               >
                                 1h
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         </div>
@@ -3575,7 +3478,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -3850,7 +3753,7 @@ const CompareComponent = () => {
                         </h3>
                         <div className="horizon-left-comparison">
                           <div className="hours-list-comparison">
-                            <ul id="hours-list-div-comparsion">
+                            <ul id="hours-list-div-comparison">
                               <li
                                 id="hours-listings hours_filter_All"
                                 style={{
@@ -3888,6 +3791,24 @@ const CompareComponent = () => {
                                 24h
                               </li>
                               <li
+                                id="hours-listings hour_filter_13"
+                                style={{
+                                  background:
+                                    selectedItem3 === "13h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "13h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_13",
+                                    "13h"
+                                  );
+                                  setSelectedItem3("13h");
+                                }}
+                              >
+                                13h
+                              </li>
+                              <li
                                 id="hours-listings hour_filter_12"
                                 style={{
                                   background:
@@ -3904,6 +3825,42 @@ const CompareComponent = () => {
                                 }}
                               >
                                 12h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_11"
+                                style={{
+                                  background:
+                                    selectedItem3 === "11h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "11h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_11",
+                                    "11h"
+                                  );
+                                  setSelectedItem3("11h");
+                                }}
+                              >
+                                11h
+                              </li>
+                              <li
+                                id="hours-listings hour_filter_9"
+                                style={{
+                                  background:
+                                    selectedItem3 === "9h" ? "#fddd4e" : "",
+                                  color: selectedItem3 === "9h" ? "black" : "",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  handleChangeForTimeHorizonSelection3(
+                                    "hour_filter_9",
+                                    "9h"
+                                  );
+                                  setSelectedItem3("9h");
+                                }}
+                              >
+                                9h
                               </li>
                               <li
                                 id="hours-listings hour_filter_8"
@@ -3923,7 +3880,7 @@ const CompareComponent = () => {
                               >
                                 8h
                               </li>
-                              <li
+                              {/* <li
                                 id="hours-listings hour_filter_3"
                                 style={{
                                   background:
@@ -4011,7 +3968,7 @@ const CompareComponent = () => {
                                 }}
                               >
                                 1h
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         </div>
@@ -4248,7 +4205,7 @@ const CompareComponent = () => {
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                label="Models"
+                                label="Strategies"
                                 inputProps={{
                                   ...params.inputProps,
                                   style: { width: "70%" }, // set the width to auto
@@ -9640,4 +9597,4 @@ const CompareComponent = () => {
   );
 };
 
-export default CompareComponent;
+export default CompareComponentStrategies;
