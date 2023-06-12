@@ -13,6 +13,18 @@ import MarketRate from "../components/marketRate/MarketRate";
 const Performance = () => {
   return (
     <React.Fragment>
+      <Helmet>
+        <title>
+          Zero Theorem | An Economic Framework for Valuing (Forecasting) Bitcoin
+          Price
+        </title>
+        <meta
+          name="description"
+          content="An economic framework for the prediction/forecast of Bitcoin and other cryptocurrencies using AI and ML models with a comprehensive evaluation of back and forward tests."
+        />
+        {/* CANONICAL TAG */}
+        <link rel="canonical" href="https://zerotheorem.com/" />
+      </Helmet>
       <Portfolio />
       <PortfolioDaily />
       <MarketRate />
