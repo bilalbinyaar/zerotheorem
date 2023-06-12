@@ -319,7 +319,7 @@ const PerformanceMultiLine = (props) => {
       ) : (
         <div className="container loader-container">
           <ThreeDots
-            className="backtest-loader"
+            className="backtest-loader loader-responsiveness"
             color="#fddd4e"
             height={80}
             width={80}

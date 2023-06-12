@@ -654,8 +654,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -792,8 +792,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -927,8 +927,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -1062,8 +1062,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -1197,8 +1197,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -1333,8 +1333,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -1468,8 +1468,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -1603,8 +1603,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -1738,8 +1738,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -1873,8 +1873,8 @@ const Forecasts = () => {
                               <ThreeDots
                                 className="backtest-loader"
                                 color="#fddd4e"
-                                height={80}
-                                width={80}
+                                height={60}
+                                width={60}
                               />
                             </div>
                           </div>
@@ -2013,8 +2013,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2136,8 +2136,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2259,8 +2259,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2382,8 +2382,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2505,8 +2505,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2629,8 +2629,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2752,8 +2752,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2875,8 +2875,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -2998,8 +2998,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>
@@ -3121,8 +3121,8 @@ const Forecasts = () => {
                             <ThreeDots
                               className="backtest-loader"
                               color="#fddd4e"
-                              height={80}
-                              width={80}
+                              height={60}
+                              width={60}
                             />
                           </div>
                         </div>

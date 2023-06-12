@@ -10,6 +10,8 @@ import ScatterPlotApexCharts from "../components/models/graphs/ScatterPlotApexCh
 import PerformanceLineCharts from "../components/performanceLineCharts/PerformanceLineCharts";
 import PortfolioDaily from "../components/portfolioDaily/PortfolioDaily";
 import MarketRate from "../components/marketRate/MarketRate";
+import { Helmet } from "react-helmet";
+
 const Performance = () => {
   return (
     <React.Fragment>

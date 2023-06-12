@@ -137,7 +137,11 @@ p {
     margin-top: 6px;
   }
 
+  
+
 }
+
+
 
 /* MUI CSS */
 .MuiTablePagination-displayedRows {
@@ -1512,3 +1516,31 @@ pre[class*="language-"] {
     width: 100%;
   } */
 }
+
+
+.loader-container {
+ display: flex !important;
+  justify-content: center !important;
+  align-items: center !important; 
+}
+
+
+.backtest-loader {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 50px !important;
+  height: 50px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .backtest-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+
