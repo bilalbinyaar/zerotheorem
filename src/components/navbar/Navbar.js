@@ -143,7 +143,7 @@ export default function Navbar() {
 
         // The signed-in user info.
         const user = result.user.email;
-        console.log(user);
+        // console.log(user);
         // alert("Successfully login with email " + user);
         Swal.fire({
           title: "Login successful",
