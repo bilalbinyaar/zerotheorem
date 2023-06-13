@@ -231,7 +231,7 @@ const PerformanceMultiLine = (props) => {
         },
         data: [
           {
-            showInLegend: true,
+            showInLegend: false,
             legendText: "PNL Sum",
             color: "#16c784",
             fontSize: 40,
@@ -249,7 +249,7 @@ const PerformanceMultiLine = (props) => {
             })),
           },
           {
-            showInLegend: true,
+            showInLegend: false,
             type: "spline",
             legendText: "30d Moving Average",
             color: "#fddd4e",

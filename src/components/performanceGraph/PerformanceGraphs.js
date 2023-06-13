@@ -12,6 +12,8 @@ const PerformanceGraphs = () => {
         <div className="performance-graphs-main">
           <h2>Portfolio Returns</h2>
 
+          
+
           <div className="overview-indicators for-performance-legends">
             <div className="indicator">
               <RiCheckboxBlankFill className="indicator-long" />
