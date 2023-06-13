@@ -97,6 +97,27 @@
   cursor: pointer;
 }
 
+.model-details-left-body-stats-total-pnl {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  border-radius: 4.5px;
+  background-color: var(--color-forecasts-card) !important;
+  padding: 3px 7px;
+  cursor: pointer;
+  box-shadow: 0px 4.25225px 4.25225px rgba(0, 0, 0, 0.15);
+}
+
+.t-pnl p {
+  color: var(--color-day-black);
+}
+
+.color-pnl-body-stat {
+  color: #16c784 !important;
+}
+
 .model-details-left-body-icon {
   font-size: 8px;
 }
