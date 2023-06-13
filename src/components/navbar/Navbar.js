@@ -501,7 +501,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {authCheckLoginInvestor == true ? (
+          {authCheckLoginInvestor == "TrueSignal" ? (
             <ul
               id="mobile-nav"
               className={click ? "nav-menu active" : "nav-menu"}
@@ -629,7 +629,7 @@ export default function Navbar() {
 
           {toggle && (
             <ul className={click ? "nav-menu active" : "nav-menu"}>
-              {authCheckLoginInvestor === true ? (
+              {authCheckLoginInvestor === "TrueSignal" ? (
                 <div>
                   <p className="welcome-user welcome-user-mobile">
                     Welcome, {userEmail}
@@ -844,7 +844,7 @@ export default function Navbar() {
             </div>
           ) } */}
 
-          {authCheckLoginInvestor == true ? (
+          {authCheckLoginInvestor == "TrueSignal" ? (
             <div className="btn-group nav-btn">
               <button
                 className="btn btn-nav"

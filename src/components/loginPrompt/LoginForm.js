@@ -215,13 +215,13 @@ function LoginForm() {
                 adminUserMain.investorPassword == input &&
                 adminUserMain.investorMain == email
               ) {
-                setAuthCheckLoginInvestor(true);
+                setAuthCheckLoginInvestor("TrueSignal");
                 handleInvestorLogin();
               } else if (
                 adminUserMain.investorPassword == input &&
                 adminUserMain.investorSecondary == email
               ) {
-                setAuthCheckLoginInvestor(true);
+                setAuthCheckLoginInvestor("TrueSignal");
                 handleInvestorLogin();
               } else {
                 event.stopPropagation();

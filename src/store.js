@@ -52,7 +52,7 @@ const loginSlice = createSlice({
   reducers: {
     set_login: (state) => {
       return produce(state, (draftState) => {
-        draftState.loginFlag = true;
+        draftState.loginFlag = "TrueSignal";
       });
     },
     set_login_flase: (state) => {

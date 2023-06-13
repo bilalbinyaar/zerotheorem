@@ -89,8 +89,8 @@ function App() {
   return (
     !loading && (
       <React.Fragment>
-        {checkLoginMain == true || authCheckLoginInvestor == true ? (
-          authCheckLoginInvestor == true ? (
+        {checkLoginMain == true || authCheckLoginInvestor == "TrueSignal" ? (
+          authCheckLoginInvestor == "TrueSignal" ? (
             <div>
               <Navbar />
               <Routes basename="/zero-theorem">

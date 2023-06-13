@@ -204,8 +204,17 @@ const GradientDonut = (props) => {
             var temp_stats = [];
             for (var i = 0; i < data["response"].length; i++) {
               // console.log(data["response"][i].strategy_name);
-              temp_stats.push(data["response"][i].daily_wins);
-              temp_stats.push(data["response"][i].daily_losses);
+              var total =
+                data["response"][i].daily_wins +
+                data["response"][i].daily_losses;
+              var loss_percentage = parseFloat(
+                ((data["response"][i].daily_losses / total) * 100).toFixed(2)
+              );
+              var win_percentage = parseFloat(
+                ((data["response"][i].daily_wins / total) * 100).toFixed(2)
+              );
+              temp_stats.push(win_percentage);
+              temp_stats.push(loss_percentage);
 
               // model_names[data["response"][i].strategy_name] = {
               //   strategy_name: data["response"][i].strategy_name,
@@ -417,7 +426,8 @@ const GradientDonut = (props) => {
         return (
           val.replace(/_/g, "-") +
           "     " +
-          opts.w.globals.series[opts.seriesIndex]
+          opts.w.globals.series[opts.seriesIndex] +
+          "%"
         );
       },
     },
