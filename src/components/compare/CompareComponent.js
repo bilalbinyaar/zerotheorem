@@ -546,7 +546,7 @@ const CompareComponent = () => {
 
   useEffect(() => {
     try {
-      if (authCheckLoginInvestor == true) {
+      if (authCheckLoginInvestor == "TrueSignal") {
         fetch(
           "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
           {
@@ -770,7 +770,7 @@ const CompareComponent = () => {
   }, []);
   useEffect(() => {
     try {
-      if (authCheckLoginInvestor == true) {
+      if (authCheckLoginInvestor == "TrueSignal") {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
           method: "GET",
           headers: {

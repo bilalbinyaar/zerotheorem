@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CanvasJSReact from "../canvasjs.react";
+import { useStateContext } from "../ContextProvider";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Kelly_Growth_ApexCharts() {
+  const { theme } = useStateContext();
+
   const [timer_for_current, set_timer_for_current_position] = useState(null);
   const [data_for_graph_historical, set_data_for_graph_historical] = useState(
     []
@@ -98,15 +101,18 @@ function Kelly_Growth_ApexCharts() {
 
     axisX: {
       includeZero: false,
-      labelFontSize: 10,
+      labelFontSize: 11,
       gridColor: "#43577533",
       tickColor: "#43577533",
       lineColor: "#43577533",
+      labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
     },
 
     axisY: {
       includeZero: false,
-      labelFontSize: 10,
+      labelFontSize: 11,
+      labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
+
       gridColor: "#43577533",
       tickColor: "#43577533",
     },

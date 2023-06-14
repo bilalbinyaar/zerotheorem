@@ -8,6 +8,8 @@ const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 // import PerformanceBarChart from "../../graphs/PerformanceBarChart";
 function AverageSharpe(props) {
+  const { theme } = useStateContext();
+
   const windowWidth = useRef(window.innerWidth);
 
   var flag = false;
@@ -142,8 +144,9 @@ function AverageSharpe(props) {
 
         axisX: {
           //   lineColor: "#43577533",
-          labelFontSize: 10,
+          labelFontSize: 11,
           labelAngle: 70,
+          labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
 
           // crosshair: {
           //   enabled: false,
@@ -156,7 +159,8 @@ function AverageSharpe(props) {
           // prefix: "$",
           gridColor: "#43577533",
           tickColor: "#43577533",
-          labelFontSize: 10,
+          labelFontSize: 11,
+          labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
           crosshair: {
             enabled: false,
 

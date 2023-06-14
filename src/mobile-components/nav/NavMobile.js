@@ -495,7 +495,7 @@ export default function NavMobile(props) {
           //   <ul className={click ? "nav-menu active" : "nav-menu"}>
 
           <div>
-            {authCheckLoginInvestor == true ? (
+            {authCheckLoginInvestor == "TrueSignal" ? (
               <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <CustomLink to="/" onClick={toCloseNav}>
                   <AiFillHome className="nav-icons" />

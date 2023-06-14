@@ -58,7 +58,7 @@ const RecentlyViewed = (props) => {
   const [topPerformerModels, setTopPerformersModels] = useState([]);
   useEffect(() => {
     try {
-      if (authCheckLoginInvestor == true) {
+      if (authCheckLoginInvestor == "TrueSignal") {
         fetch("https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_stats", {
           method: "GET",
           headers: {
@@ -214,7 +214,7 @@ const RecentlyViewed = (props) => {
 
   useEffect(() => {
     try {
-      if (authCheckLoginInvestor == true) {
+      if (authCheckLoginInvestor == "TrueSignal") {
         fetch(
           "https://zt-rest-api-rmkp2vbpqq-uc.a.run.app/get/live_strategies",
           {
@@ -421,7 +421,7 @@ const RecentlyViewed = (props) => {
       ) : null}
 
       <div>
-        {authCheckLoginInvestor == true ? (
+        {authCheckLoginInvestor == "TrueSignal" ? (
           <h2>Top Strategies</h2>
         ) : (
           <h2>Popular Models</h2>

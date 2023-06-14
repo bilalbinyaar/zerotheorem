@@ -6,11 +6,10 @@ import { RiCheckboxBlankFill } from "react-icons/ri";
 const PR = () => {
   return (
     <div className="test-dr">
-
       <div className="portfolio-indicators">
         <h2>Portfolio Returns</h2>
 
-        <div className="inter-grad-indicators">
+        {/* <div className="inter-grad-indicators">
           <div className="inter-grad-sep">
             <h3 className="c-pnl">--- </h3>
             <p className="ml-inner-inter-grad">PNL Sum</p>
@@ -19,21 +18,10 @@ const PR = () => {
             <h3 className="c-moving">--- </h3>
             <p className="ml-inner-inter-grad">30d Moving Average</p>
           </div>
-        </div>
+        </div> */}
       </div>
-      
 
-      <div className="inter-grad for-mb-returns">
-        <div className="inter-grad-sep">
-          <h3>Intercept :  </h3>
-          <h3 className="fw-inter-grad ml-inner-inter-grad">2.54%</h3>
-        </div>
-        <div className="inter-grad-sep ml-inter-grad">
-          <h3>Gradient : </h3>
-          <h3 className="fw-inter-grad ml-inner-inter-grad">1.54%</h3>
-        </div>
-      </div>
-      {/* <div className="overview-indicators for-performance-legends">
+      <div className="overview-indicators for-performance-legends">
         <div className="indicator">
           <RiCheckboxBlankFill className="indicator-long" />
           <p>PNL Sum</p>
@@ -42,7 +30,7 @@ const PR = () => {
           <RiCheckboxBlankFill className="indicator-smooth" />
           <p>Smooth PNL Sum</p>
         </div>
-      </div> */}
+      </div>
       <PerformanceMultiLine model_name={"ZT1_0M24BTC1"} />
     </div>
   );

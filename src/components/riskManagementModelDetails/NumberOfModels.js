@@ -9,6 +9,7 @@ const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 // import PerformanceBarChart from "../../graphs/PerformanceBarChart";
 function NumberOfModels(props) {
   const windowWidth = useRef(window.innerWidth);
+  const { theme } = useStateContext();
 
   var flag = false;
   // if (windowWidth.current <= 480) {
@@ -142,8 +143,9 @@ function NumberOfModels(props) {
 
         axisX: {
           //   lineColor: "#43577533",
-          labelFontSize: 10,
+          labelFontSize: 11,
           labelAngle: 70,
+          labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
 
           // crosshair: {
           //   enabled: false,
@@ -156,7 +158,8 @@ function NumberOfModels(props) {
           // prefix: "$",
           gridColor: "#43577533",
           tickColor: "#43577533",
-          labelFontSize: 10,
+          labelFontSize: 11,
+          labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
           crosshair: {
             enabled: false,
 

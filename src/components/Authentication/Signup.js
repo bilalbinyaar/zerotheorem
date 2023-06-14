@@ -60,10 +60,10 @@ function Signup({ Login, error }) {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
 
-        // The signed-in user info.
-        const user = result.user.email;
-        console.log(user);
-        alert("New user is successfully created with email " + user);
+        // // The signed-in user info.
+        // const user = result.user.email;
+        // console.log(user);
+        // alert("New user is successfully created with email " + user);
       })
       .catch((error) => {
         // Handle Errors here.

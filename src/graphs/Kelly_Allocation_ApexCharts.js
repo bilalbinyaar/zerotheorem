@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CanvasJSReact from "../canvasjs.react";
+import { useStateContext } from "../ContextProvider";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Kelly_Allocation_ApexCharts() {
+  const { theme } = useStateContext();
+
   const [timer_for_current, set_timer_for_current_position] = useState(null);
   const [strategy_names, set_strategy_names] = useState([]);
   const [data_for_graph_historical, set_data_for_graph_historical] = useState(
@@ -296,24 +299,27 @@ function Kelly_Allocation_ApexCharts() {
 
     axisX: {
       includeZero: false,
-      labelFontSize: 10,
+      labelFontSize: 11,
       gridColor: "#43577533",
       tickColor: "#43577533",
       lineColor: "#43577533",
+      labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
     },
 
     axisY: {
       includeZero: false,
-      labelFontSize: 10,
+      labelFontSize: 11,
       gridColor: "#43577533",
       tickColor: "#43577533",
+      labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
     },
 
     axisY2: {
       includeZero: true,
       gridColor: "#B5E5F5",
       tickColor: "#B5E5F5",
-      labelFontSize: 10,
+      labelFontSize: 11,
+      labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
     },
 
     data: [
@@ -321,10 +327,12 @@ function Kelly_Allocation_ApexCharts() {
         type: "line",
         color: "#16C784",
         // axisYType: "primary",
+
         labelFontSize: 10,
         gridColor: "#43577533",
         tickColor: "#43577533",
         showInLegend: true,
+
         name: strategy_names[0] ? strategy_names[0] : null,
         dataPoints: data_for_graph_historical,
       },
@@ -406,6 +414,7 @@ function Kelly_Allocation_ApexCharts() {
         color: "#DA6B85",
         // axisYType: "secondary",
         labelFontSize: 10,
+
         showInLegend: true,
         name: strategy_names[9] ? strategy_names[9] : null,
         dataPoints: data_for_graph_historical10,

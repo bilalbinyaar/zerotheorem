@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-main-div">
-        {authCheckLoginInvestor == true ? (
+        {authCheckLoginInvestor == "TrueSignal" ? (
           <div className="container investor-container">
             <div className="footer-logo-div investor-logo-div">
               {theme === "dark-theme" ? (
@@ -252,7 +252,7 @@ const Footer = () => {
             <div className="forecasts-card footer-card">
               <div className="announcement-card">
                 <div className="announcement-news">
-                  {authCheckLoginInvestor == true ? (
+                  {authCheckLoginInvestor == "TrueSignal" ? (
                     <div className="news-inner footer-news-inner inner-footer-bar footer-news-inner-investor"></div>
                   ) : (
                     <div className="news-inner footer-news-inner inner-footer-bar">

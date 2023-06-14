@@ -8,6 +8,8 @@ const CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 // import PerformanceBarChart from "../../graphs/PerformanceBarChart";
 function AverageR2Score(props) {
+  const { theme } = useStateContext();
+
   const windowWidth = useRef(window.innerWidth);
 
   var flag = false;
@@ -142,9 +144,10 @@ function AverageR2Score(props) {
 
         axisX: {
           //   lineColor: "#43577533",
-          labelFontSize: 10,
+          labelFontSize: 11,
           // labelAutoFit: true,
           labelAngle: 70,
+          labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
 
           // crosshair: {
           //   enabled: false,
@@ -157,7 +160,9 @@ function AverageR2Score(props) {
           // prefix: "$",
           gridColor: "#43577533",
           tickColor: "#43577533",
-          labelFontSize: 10,
+          labelFontSize: 11,
+          labelFontColor: theme == "dark-theme" ? "#fff" : "#000000",
+
           crosshair: {
             enabled: false,
 

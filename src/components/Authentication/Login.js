@@ -31,8 +31,8 @@ function Login({ Login, error }) {
 
         // The signed-in user info.
         const user = result.user.email;
-        console.log(user);
-        alert("Successfully login with email " + user);
+        // console.log(user);
+        // alert("Successfully login with email " + user);
       })
       .catch((error) => {
         // Handle Errors here.

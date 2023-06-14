@@ -60,7 +60,7 @@ const Portfolio = () => {
             }
           })
           .catch((err) => {
-            alert("Error occured");
+            // alert("Error occured");
           });
       }
       setTimeout(() => {
@@ -89,11 +89,12 @@ const Portfolio = () => {
             }
 
             if (temp_data.length != 0) {
+              // console.log(temp_data);
               setStats(temp_data);
               // console.log("Here is the data for current position", temp_data);
             }
-          })
-          .catch((err) => alert("Error occured"));
+          });
+        // .catch((err) => alert("Error occured"));
         set_timer_for_current_position(new Date());
       }, 60000);
     } catch (error) {
